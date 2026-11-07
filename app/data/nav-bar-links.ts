@@ -80,7 +80,22 @@ export const links: NavItem[] = [
         ],
       },
       {
-        subgroup: "grammar",
+        subgroup: "word formation",
+        children: [
+          {
+            href: "/grammar/prefixes-suffixes",
+            label: "prefixes & suffixes",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/latin-plurals",
+            label: "latin plurals",
+            icon: BookMarked,
+          },
+        ],
+      },
+      {
+        subgroup: "verb tenses",
         children: [
           {
             href: "/grammar/future-forms",
@@ -93,23 +108,13 @@ export const links: NavItem[] = [
             icon: BookMarked,
           },
           {
-            href: "/grammar/prefixes-suffixes",
-            label: "prefixes & suffixes",
-            icon: BookMarked,
-          },
-          {
-            href: "/grammar/latin-plurals",
-            label: "latin plurals",
-            icon: BookMarked,
-          },
-          {
             href: "/grammar/present-perfect",
             label: "present perfect",
             icon: BookMarked,
           },
           {
             href: "/grammar/present-perfect-progressive",
-            label: "present perfect p.",
+            label: "present perfect progressive",
             icon: BookMarked,
           },
           {
@@ -119,9 +124,14 @@ export const links: NavItem[] = [
           },
           {
             href: "/grammar/past-perfect-progressive",
-            label: "past perfect p.",
+            label: "past perfect progressive",
             icon: BookMarked,
           },
+        ],
+      },
+      {
+        subgroup: "grammar structures",
+        children: [
           {
             href: "/grammar/conditionals",
             label: "conditionals",
