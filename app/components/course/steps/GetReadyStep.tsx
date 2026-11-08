@@ -79,6 +79,13 @@ function ActivityBlock({
       <ul className="grid gap-3">
         {activity.questions.map((question, index) => {
           const answerIsVisible = visibleAnswers.has(question.prompt);
+          const supportIsAlwaysVisible = question.support?.every((support) => {
+            const normalizedSupport = support.trim().toLowerCase();
+            return (
+              normalizedSupport.startsWith("i can see") ||
+              normalizedSupport.startsWith("i think")
+            );
+          });
           return (
             <Fragment key={question.prompt}>
               <li className="rounded-xl bg-white text-slate-800">
@@ -91,7 +98,7 @@ function ActivityBlock({
                     ariaLabel={`Play ${question.prompt}`}
                   />
                   <p className="font-semibold">{question.prompt}</p>
-                  {question.support?.length ? (
+                  {question.support?.length && !supportIsAlwaysVisible ? (
                     <Button
                       ariaLabel={
                         answerIsVisible ? "Hide answer" : "Show answer"
@@ -113,8 +120,11 @@ function ActivityBlock({
                         )
                       }
                     />
+                  ) : question.support?.length ? (
+                    <span aria-hidden="true" />
                   ) : null}
-                  {answerIsVisible && question.support?.length ? (
+                  {(answerIsVisible || supportIsAlwaysVisible) &&
+                  question.support?.length ? (
                     <p className="font-normal">
                       {question.support.join(" / ")}
                     </p>
