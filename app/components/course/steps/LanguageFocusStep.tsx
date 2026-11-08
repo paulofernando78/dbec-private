@@ -309,15 +309,14 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
   const usesPortugueseSupport = data.supportLanguage === "pt-BR";
 
   return (
-    <div className="rounded-2xl bg-[var(--surface)] p-4">
+    <div className="rounded-2xl bg-(--surface) p-4">
       {data.visuals?.length ? (
         <section className="mb-6" aria-label="Target language visuals">
-          <h3 className="mb-3 text-lg font-black">Target language</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {data.visuals.map(({ image, caption }) => (
               <figure
                 key={`${image}-${caption}`}
-                className="overflow-hidden rounded-xl bg-[var(--background)]"
+                className="overflow-hidden rounded-xl bg-(--background)"
               >
                 <img
                   src={image}
@@ -398,7 +397,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                 {group && group !== previousGroup && (
                   <h4 className="text-lg font-black">{group}</h4>
                 )}
-                <article className="space-y-4 rounded-xl bg-[var(--background)] p-4">
+                <article className="space-y-4 rounded-xl var(--background) p-4">
                 <div>
                   <h4 className="text-xl font-normal">
                     {titleText}
@@ -440,7 +439,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                       className="stroke-0!"
                       wrapperClassName="shrink-0"
                     />
-                    <p className="text-xl leading-7 text-[var(--text-color)]">
+                    <p className="text-xl leading-7 text-(--text-color)">
                       {renderPronunciationModel(titleText, pronunciation)}
                     </p>
                   </div>
@@ -461,7 +460,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                           {block.values.map((value) => (
                             <span
                               key={value}
-                              className="rounded-lg bg-[var(--surface)] px-3 py-2"
+                              className="rounded-lg bg-(--surface) px-3 py-2"
                             >
                               {value}
                             </span>
@@ -494,7 +493,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                         className="overflow-hidden rounded-lg border border-gray-300"
                       >
                         <table className="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
-                          <thead className="bg-[var(--surface)]">
+                          <thead className="bg-(--surface)">
                             <tr>
                               {columns.map(({ header }, columnIndex) => (
                                 <th
