@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
+import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
 import type { LanguageFocusData } from "@/data/course/lesson-step-types";
 import { GrammarTopicCards } from "@/features/Grammar";
 import { VocabularyTopicCards } from "@/features/Vocabulary";
@@ -313,7 +314,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
       {data.visuals?.length ? (
         <section className="mb-6" aria-label="Target language visuals">
           <div className="grid gap-4 sm:grid-cols-2">
-            {data.visuals.map(({ image, caption }) => (
+            {data.visuals.map(({ image, caption, audio }) => (
               <figure
                 key={`${image}-${caption}`}
                 className="overflow-hidden rounded-xl bg-(--background)"
@@ -324,7 +325,20 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                   className="aspect-video w-full object-cover"
                 />
                 {caption ? (
-                  <figcaption className="p-3 font-semibold">{caption}</figcaption>
+                  <figcaption className="flex items-center gap-2 p-3 font-semibold">
+                    {audio ? (
+                      <Audio
+                        asButton
+                        ariaLabel={`Play ${caption}`}
+                        src={audio}
+                        fallbackText={caption}
+                        speechLang="en-US"
+                        className="stroke-0!"
+                        wrapperClassName="shrink-0"
+                      />
+                    ) : null}
+                    <span>{caption}</span>
+                  </figcaption>
                 ) : null}
               </figure>
             ))}
@@ -397,7 +411,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                 {group && group !== previousGroup && (
                   <h4 className="text-lg font-black">{group}</h4>
                 )}
-                <article className="space-y-4 rounded-xl var(--background) p-4">
+                <article className="space-y-4 rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
                 <div>
                   <h4 className="text-xl font-normal">
                     {titleText}
@@ -425,9 +439,6 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                   >
                     {usesPortugueseSupport ? "Pronúncia" : "Pronunciation"}
                   </h5>
-                  <p className="mb-2 text-base leading-6 text-gray-500">
-                    {renderPronunciation(pronunciation, titleText)}
-                  </p>
                   <div className="flex items-center gap-3">
                     <Audio
                       asButton
@@ -440,7 +451,11 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                       wrapperClassName="shrink-0"
                     />
                     <p className="text-xl leading-7 text-(--text-color)">
-                      {renderPronunciationModel(titleText, pronunciation)}
+                      {Array.isArray(pronunciation) ? (
+                        <InlineRichContent value={pronunciation} />
+                      ) : (
+                        renderPronunciationModel(titleText, pronunciation)
+                      )}
                     </p>
                   </div>
                 </section>

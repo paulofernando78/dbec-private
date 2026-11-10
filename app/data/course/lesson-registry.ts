@@ -176,13 +176,6 @@ const auditA1LessonImages = (key: string, lesson: LessonContent): LessonContent 
     getReady.slides.length - 1,
   );
   const selectedSlide = getReady.slides[selectedIndex];
-  const targetLanguageVisuals = getReady.slides
-    .filter((slide, index) => index !== selectedIndex && slide.image)
-    .map((slide) => ({
-      image: slide.image as string,
-      caption: slide.quote,
-    }));
-
   return {
     ...lesson,
     steps: lesson.steps.map((step) => {
@@ -214,17 +207,13 @@ const auditA1LessonImages = (key: string, lesson: LessonContent): LessonContent 
         };
       }
 
-      if (step.type === "language-focus" && targetLanguageVisuals.length) {
-        return { ...step, visuals: targetLanguageVisuals };
-      }
-
       return step;
     }),
   };
 };
 
 export const lessonRegistry: Record<string, LessonContent> = {
-  "a1/1/1": auditA1LessonImages("1/1", a1Unit1Lesson1),
+  "a1/1/1": a1Unit1Lesson1,
   ...Object.fromEntries(
     Object.entries(a1SkeletonLessons).map(([key, lesson]) => [
       `a1/${key}`,

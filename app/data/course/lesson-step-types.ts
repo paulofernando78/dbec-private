@@ -70,11 +70,12 @@ export type LanguageFocusData = StepExtension & {
   visuals?: readonly {
     image: string;
     caption: string;
+    audio?: string;
   }[];
   items: readonly (readonly [
     title: RichContent | string,
     meaning: string,
-    pronunciation: string,
+    pronunciation: RichContent | string,
     form:
       | string
       | readonly {
