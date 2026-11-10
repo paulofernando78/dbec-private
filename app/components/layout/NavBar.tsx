@@ -6,12 +6,18 @@ import { Button } from "@/components/ui/Button";
 import { GlobalSearch } from "./GlobalSearch";
 
 type NavBarProps = {
+  isOpen: boolean;
   closeNavBar: () => void;
   isNotesOpen: boolean;
   toggleNotes: () => void;
 };
 
-export function NavBar({ closeNavBar, isNotesOpen, toggleNotes }: NavBarProps) {
+export function NavBar({
+  isOpen,
+  closeNavBar,
+  isNotesOpen,
+  toggleNotes,
+}: NavBarProps) {
   const [dashboardPath, setDashboardPath] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -70,8 +76,11 @@ export function NavBar({ closeNavBar, isNotesOpen, toggleNotes }: NavBarProps) {
 
   return (
     <nav
-      className="w-max max-[390px]:w-full h-[calc(100%_-_0rem)] p-4 text-gray-500 bg-(--surface) rounded-xl overflow-y-auto
-        "
+      className={`z-20 h-full min-h-0 w-max overflow-y-auto rounded-xl bg-(--surface) p-4 text-gray-500 transition-transform duration-500 ease-in-out
+        max-[700px]:absolute max-[700px]:-translate-x-100
+        max-[420px]:w-full
+        max-[390px]:-translate-x-full
+        ${isOpen ? "max-[700px]:translate-x-0 max-[390px]:translate-x-0" : ""}`}
     >
       {links.map((item) => {
         if ("group" in item) {
