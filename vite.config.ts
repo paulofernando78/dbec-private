@@ -4,6 +4,7 @@ import { createReadStream } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
+import { dictionaryOpenRouter } from "./functions/_dictionary-openrouter.mjs";
 
 import { students as developmentStudents } from "./app/data/students";
 
@@ -12,7 +13,7 @@ const localNotes = new Map<string, { teacher: string; student: string }>();
 const localAiTutorRequests = new Map<string, number[]>();
 const localDictionaryTtsCache = new Map<
   string,
-  { audio: Buffer; model: string; usedFallback: boolean }
+  { audio: Buffer; model: string; usedFallback: boolean; contentType?: string }
 >();
 let localSession: { username: string; role: string; studentId?: string } | null =
   null;
@@ -272,9 +273,9 @@ const localAuth = (): Plugin => ({
 
           const cached = localDictionaryTtsCache.get(text);
           if (cached) {
-            response.setHeader("Content-Type", "audio/wav");
+            response.setHeader("Content-Type", cached.contentType ?? "audio/wav");
             response.setHeader("Content-Length", String(cached.audio.length));
-            response.setHeader("X-Gemini-Model", cached.model);
+            response.setHeader(cached.contentType ? "X-OpenRouter-Model" : "X-Gemini-Model", cached.model);
             response.setHeader(
               "X-Gemini-Fallback",
               cached.usedFallback ? "true" : "false",
@@ -298,7 +299,10 @@ const localAuth = (): Plugin => ({
             .split(",")
             .map((model) => model.trim())
             .filter(Boolean);
-          if (!apiKey) {
+          const openRouterKey = variables.match(/^OPENROUTER_API_KEY=(.*)$/m)?.[1]?.trim();
+          const openRouterModels = variables.match(/^OPENROUTER_TTS_MODELS=(.*)$/m)?.[1]?.trim();
+          const openRouterVoice = variables.match(/^OPENROUTER_TTS_VOICE=(.*)$/m)?.[1]?.trim();
+          if (!apiKey && !openRouterKey) {
             response.statusCode = 503;
             response.end(
               JSON.stringify({ error: "Dictionary TTS is not configured." }),
@@ -307,7 +311,7 @@ const localAuth = (): Plugin => ({
           }
 
           let skippedModels = 0;
-          for (const model of models) {
+          for (const model of apiKey ? models : []) {
             let geminiResponse;
             try {
               geminiResponse = await fetch(
@@ -316,7 +320,7 @@ const localAuth = (): Plugin => ({
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
-                    "x-goog-api-key": apiKey,
+                    "x-goog-api-key": apiKey ?? "",
                   },
                   body: JSON.stringify({
                     contents: [{
@@ -397,10 +401,23 @@ const localAuth = (): Plugin => ({
             return;
           }
 
+          const fallback = await dictionaryOpenRouter(text, openRouterKey, openRouterModels, openRouterVoice);
+          if (fallback) {
+            const audio = Buffer.from(fallback.audio);
+            const contentType = "audio/mpeg";
+            localDictionaryTtsCache.set(text, {
+              audio, model: fallback.model, usedFallback: true, contentType,
+            });
+            response.setHeader("Content-Type", contentType);
+            response.setHeader("Content-Length", String(audio.length));
+            response.setHeader("X-OpenRouter-Model", fallback.model);
+            response.end(audio);
+            return;
+          }
           response.statusCode = 503;
           response.end(
             JSON.stringify({
-              error: "All available TTS models have reached their usage limits.",
+              error: "Dictionary TTS is temporarily unavailable.",
             }),
           );
         } catch (error) {

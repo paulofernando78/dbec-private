@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { dictionaryOpenRouter } from "../_dictionary-openrouter.mjs";
 
 const defaultModels = [
   "gemini-3.8-flash-tts",
@@ -52,7 +53,7 @@ export async function onRequestGet(context) {
   if (!session) {
     return Response.json({ error: "Unauthorized." }, { status: 401 });
   }
-  if (!context.env.GEMINI_API_KEY) {
+  if (!context.env.GEMINI_API_KEY && !context.env.OPENROUTER_API_KEY) {
     return Response.json({ error: "Dictionary TTS is not configured." }, { status: 503 });
   }
 
@@ -90,7 +91,7 @@ export async function onRequestGet(context) {
     },
   });
 
-  for (const model of models) {
+  for (const model of context.env.GEMINI_API_KEY ? models : []) {
     let geminiResponse;
     try {
       geminiResponse = await fetch(
@@ -122,7 +123,7 @@ export async function onRequestGet(context) {
         skippedModels.push(model);
         continue;
       }
-      return Response.json({ error: "Dictionary TTS could not generate audio." }, { status: 502 });
+      break;
     }
 
     const candidate = result?.candidates?.[0];
@@ -157,8 +158,27 @@ export async function onRequestGet(context) {
     return response;
   }
 
+  const fallback = await dictionaryOpenRouter(
+    text,
+    context.env.OPENROUTER_API_KEY,
+    context.env.OPENROUTER_TTS_MODELS,
+    context.env.OPENROUTER_TTS_VOICE,
+  );
+  if (fallback) {
+    const response = new Response(fallback.audio, {
+      headers: {
+        "Content-Type": "audio/mpeg",
+        "Cache-Control": cacheControl,
+        "Content-Length": String(fallback.audio.byteLength),
+        "X-OpenRouter-Model": fallback.model,
+      },
+    });
+    context.waitUntil(cache.put(context.request, response.clone()));
+    return response;
+  }
+
   return Response.json(
-    { error: "All available TTS models have reached their usage limits." },
+    { error: "Dictionary TTS is temporarily unavailable." },
     { status: 503, headers: { "Cache-Control": "no-store" } },
   );
 }
