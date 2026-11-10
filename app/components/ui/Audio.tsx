@@ -498,57 +498,61 @@ export const Audio = ({
     }
   };
 
-  const icon = loading || !ready ? (
-        <LoaderCircle
-          size={16}
-          className={`${className ?? ""} animate-spin`}
-          color="var(--button-icon)"
-        />
-      ) : playing ? (
-        <Pause
-          size={16}
-          className={className}
-          fill="var(--button-icon)"
-        />
-      ) : (
-        <Play
-          size={16}
-          className={className}
-          fill="var(--button-icon)"
-          stroke="none"
-          style={{ stroke: "none" }}
-        />
-      );
+  const icon =
+    loading || !ready ? (
+      <LoaderCircle
+        size={16}
+        className={`${className ?? ""} animate-spin`}
+        color="var(--button-icon)"
+      />
+    ) : playing ? (
+      <Pause size={16} className={className} fill="var(--button-icon)" />
+    ) : (
+      <Play
+        size={16}
+        className={className}
+        fill="var(--button-icon)"
+        stroke="none"
+        style={{ stroke: "none" }}
+      />
+    );
 
   const audioElement = isAudioFile ? (
-        <audio
-          ref={audioRef}
-          src={primarySource}
-          preload="none"
-          onWaiting={() => setLoading(true)}
-          onPlaying={() => {
-            advancingPlaylistRef.current = false;
-            setLoading(false);
-            setPlaying(true);
-          }}
-          onCanPlay={() => setLoading(false)}
-          onLoadedMetadata={(event) => {
-            event.currentTarget.playbackRate = playbackRateRef.current;
-            setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0);
-            setReady(true);
-          }}
-          onTimeUpdate={(event) => setProgress(event.currentTarget.currentTime)}
-          onEnded={handleEnded}
-          onPause={handlePause}
-          onError={() => {
-            setReady(true);
-            playCurrentSourceFallback();
-          }}
-        />
-      ) : null;
+    <audio
+      ref={audioRef}
+      src={primarySource}
+      preload="none"
+      onWaiting={() => setLoading(true)}
+      onPlaying={() => {
+        advancingPlaylistRef.current = false;
+        setLoading(false);
+        setPlaying(true);
+      }}
+      onCanPlay={() => setLoading(false)}
+      onLoadedMetadata={(event) => {
+        event.currentTarget.playbackRate = playbackRateRef.current;
+        setDuration(
+          Number.isFinite(event.currentTarget.duration)
+            ? event.currentTarget.duration
+            : 0,
+        );
+        setReady(true);
+      }}
+      onTimeUpdate={(event) => setProgress(event.currentTarget.currentTime)}
+      onEnded={handleEnded}
+      onPause={handlePause}
+      onError={() => {
+        setReady(true);
+        playCurrentSourceFallback();
+      }}
+    />
+  ) : null;
 
   const speechDurationText =
-    speechFullTextRef.current || primarySource.trim() || defaultFallbackText || "";
+    speechFullTextRef.current ||
+    primarySource.trim() ||
+    defaultFallbackText ||
+    "";
   const estimatedSpeechDuration = Math.max(
     1,
     Math.ceil(
@@ -571,26 +575,26 @@ export const Audio = ({
 
   const playerControls = (
     <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-          <span className="shrink-0 whitespace-nowrap text-xs font-semibold tabular-nums text-slate-500 sm:text-sm">
-            {formatTime(displayedProgress)} / {formatTime(displayedDuration)}
-          </span>
-          <input
-            type="range"
-            min={0}
-            max={Math.max(duration, 1)}
-            step={isAudioFile ? 0.1 : 1}
-            value={Math.min(progress, Math.max(duration, 1))}
-            onChange={(event) => handleSeek(Number(event.currentTarget.value))}
-            aria-label="Audio progress"
-            className="h-2 min-w-0 flex-1 cursor-pointer appearance-none rounded-full bg-slate-300 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-slate-400 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-slate-400"
-          />
-          <Button
-            onClick={togglePlaybackRate}
-            pressed={playbackRate === 0.75}
-            ariaLabel={`Playback speed: ${playbackRate === 1 ? "normal" : "slow"}. Click to switch to ${playbackRate === 1 ? "slow" : "normal"}.`}
-            icon={playbackRate === 1 ? <Rabbit /> : <Turtle />}
-          />
-        </div>
+      <Button
+        onClick={togglePlaybackRate}
+        pressed={playbackRate === 0.75}
+        ariaLabel={`Playback speed: ${playbackRate === 1 ? "normal" : "slow"}. Click to switch to ${playbackRate === 1 ? "slow" : "normal"}.`}
+        icon={playbackRate === 1 ? <Rabbit /> : <Turtle />}
+      />
+      <span className="shrink-0 whitespace-nowrap text-xs font-semibold tabular-nums text-slate-500 sm:text-sm">
+        {formatTime(displayedProgress)} / {formatTime(displayedDuration)}
+      </span>
+      <input
+        type="range"
+        min={0}
+        max={Math.max(duration, 1)}
+        step={isAudioFile ? 0.1 : 1}
+        value={Math.min(progress, Math.max(duration, 1))}
+        onChange={(event) => handleSeek(Number(event.currentTarget.value))}
+        aria-label="Audio progress"
+        className="h-2 min-w-0 flex-1 cursor-pointer appearance-none rounded-full bg-slate-300 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-slate-400 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-slate-400"
+      />
+    </div>
   );
 
   const content = (
@@ -607,7 +611,9 @@ export const Audio = ({
         <Button
           ariaLabel={ariaLabel}
           icon={icon}
-          onClick={loading ? handleStop : playing ? handlePauseButton : handlePlay}
+          onClick={
+            loading ? handleStop : playing ? handlePauseButton : handlePlay
+          }
         />
         {playerControls}
         {audioElement}
@@ -620,7 +626,9 @@ export const Audio = ({
       <Button
         ariaLabel={ariaLabel}
         className={wrapperClassName}
-        onClick={loading ? handleStop : playing ? handlePauseButton : handlePlay}
+        onClick={
+          loading ? handleStop : playing ? handlePauseButton : handlePlay
+        }
       >
         {content}
       </Button>
@@ -633,7 +641,9 @@ export const Audio = ({
         ariaLabel={ariaLabel}
         className={wrapperClassName}
         icon={content}
-        onClick={loading ? handleStop : playing ? handlePauseButton : handlePlay}
+        onClick={
+          loading ? handleStop : playing ? handlePauseButton : handlePlay
+        }
       />
     );
   }

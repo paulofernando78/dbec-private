@@ -15,8 +15,6 @@ import type {
   GetReadyData,
 } from "@/data/course/lesson-step-types";
 
-const GET_READY_INSTRUCTION = "Look at the picture.";
-
 function ActivityBlock({
   title,
   activity,
@@ -37,7 +35,7 @@ function ActivityBlock({
   } as const;
 
   return (
-    <section className="rounded-xl bg-[var(--background)] p-4">
+    <section className="rounded-xl bg-(--background) p-4">
       <div className="mb-4 flex items-center gap-4">
         <h4 className="font-black uppercase tracking-wide">{title}</h4>
         {activity.interaction?.length ? (
@@ -189,8 +187,8 @@ export function GetReadyStep({ data }: { data: GetReadyData }) {
   };
 
   return (
-    <div className="rounded-2xl bg-[var(--surface)] p-4 pb-5.5">
-      <h3 className="mb-4 text-lg font-bold">{GET_READY_INSTRUCTION}</h3>
+    <div className="rounded-2xl bg(--surface)] p-4 pb-5.5">
+      <h3 className="mb-4 text-lg font-bold">Look at the picture.</h3>
       <div className="relative">
         <div
           ref={carouselRef}
@@ -232,13 +230,13 @@ export function GetReadyStep({ data }: { data: GetReadyData }) {
               ariaLabel="Show previous image"
               icon={<ChevronLeft aria-hidden="true" />}
               onClick={() => changeImage(-1)}
-              className="absolute! top-1/2 left-3 z-10 size-10! -translate-y-1/2 rounded-full! p-[3px]! opacity-75 transition-opacity hover:opacity-100 [&>span]:rounded-full!"
+              className="absolute! top-1/2 left-3 z-10 size-10! -translate-y-1/2 rounded-full! p-0.75! opacity-75 transition-opacity hover:opacity-100 [&>span]:rounded-full!"
             />
             <Button
               ariaLabel="Show next image"
               icon={<ChevronRight aria-hidden="true" />}
               onClick={() => changeImage(1)}
-              className="absolute! top-1/2 right-3 z-10 size-10! -translate-y-1/2 rounded-full! p-[3px]! opacity-75 transition-opacity hover:opacity-100 [&>span]:rounded-full!"
+              className="absolute! top-1/2 right-3 z-10 size-10! -translate-y-1/2 rounded-full! p-0.75! opacity-75 transition-opacity hover:opacity-100 [&>span]:rounded-full!"
             />
           </>
         ) : null}

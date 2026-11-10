@@ -16,9 +16,26 @@ import {
 
 export default function Audiobooks() {
   const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [completedAudiobooks, setCompletedAudiobooks] = useState<Set<string>>(
     new Set(),
   );
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/session", { headers: { Accept: "application/json" } })
+      .then((response) => {
+        if (active) setIsAuthenticated(response.ok);
+      })
+      .catch(() => {
+        if (active) setIsAuthenticated(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     setCompletedAudiobooks(
@@ -73,6 +90,7 @@ export default function Audiobooks() {
               );
               const isCompleted =
                 isAvailable && completedAudiobooks.has(item.slug);
+              const isLocked = isAuthenticated === false;
 
               return {
                 id: item.slug,
@@ -80,10 +98,10 @@ export default function Audiobooks() {
                 description: item.description,
                 meta: item.duration,
                 isCompleted,
-                isLocked: !isAvailable,
-                ariaLabel: `${isAvailable ? (isCompleted ? "Completed" : "Open") : "Locked"} ${item.title}`,
+                isLocked,
+                ariaLabel: `${isLocked ? "Locked" : isCompleted ? "Completed" : "Open"} ${item.title}`,
                 onClick:
-                  isAvailable && item.slug in audiobooks
+                  isAuthenticated && isAvailable && item.slug in audiobooks
                     ? () => navigate(`/audiobooks/${item.slug}`)
                     : undefined,
               };
