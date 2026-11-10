@@ -27,6 +27,7 @@ export function useNotesRealtime(
   const socketRef = useRef<WebSocket | null>(null);
   const callbackRef = useRef(onRemoteUpdate);
   const saveTimersRef = useRef<Partial<Record<NoteType, number>>>({});
+  const saveQueuesRef = useRef<Partial<Record<NoteType, Promise<void>>>>({});
   const pendingNotesRef = useRef<Partial<Record<NoteType, string>>>({});
   const lastReceivedRef = useRef<Partial<Record<NoteType, string>>>({});
   const lastLocalEditRef = useRef<Partial<Record<NoteType, number>>>({});
@@ -115,6 +116,16 @@ export function useNotesRealtime(
             (update.noteType === "teacher" || update.noteType === "student") &&
             typeof update.content === "string"
           ) {
+            const wasRecentlyEdited =
+              Date.now() - (lastLocalEditRef.current[update.noteType] ?? 0) <
+              10_000;
+            if (
+              wasRecentlyEdited ||
+              pendingNotesRef.current[update.noteType] !== undefined
+            ) {
+              return;
+            }
+
             lastReceivedRef.current[update.noteType] = update.content;
             callbackRef.current(update.noteType, update.content);
           }
@@ -152,7 +163,12 @@ export function useNotesRealtime(
       const canEditNote =
         role === "teacher" || (role === "student" && noteType === "student");
 
-      if (canEditNote && socketRef.current?.readyState === WebSocket.OPEN) {
+      if (!canEditNote || !studentId) return;
+
+      lastLocalEditRef.current[noteType] = Date.now();
+      pendingNotesRef.current[noteType] = content;
+
+      if (socketRef.current?.readyState === WebSocket.OPEN) {
         socketRef.current.send(
           JSON.stringify({
             type: "note:update",
@@ -163,33 +179,43 @@ export function useNotesRealtime(
         );
       }
 
-      if (!canEditNote || !studentId) return;
-
-      lastLocalEditRef.current[noteType] = Date.now();
-      pendingNotesRef.current[noteType] = content;
       const currentTimer = saveTimersRef.current[noteType];
       if (currentTimer) window.clearTimeout(currentTimer);
 
-      saveTimersRef.current[noteType] = window.setTimeout(async () => {
-        try {
-          const response = await fetch("/api/notes", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ studentId, noteType, content }),
-          });
+      saveTimersRef.current[noteType] = window.setTimeout(() => {
+        const previousSave = saveQueuesRef.current[noteType] ?? Promise.resolve();
+        const currentSave = previousSave
+          .catch(() => undefined)
+          .then(async () => {
+            if (pendingNotesRef.current[noteType] !== content) return;
 
-          if (response.ok && pendingNotesRef.current[noteType] === content) {
-            lastReceivedRef.current[noteType] = content;
-            delete pendingNotesRef.current[noteType];
-          }
-        } catch {
-          // The existing blur save remains a final retry for network failures.
-        } finally {
-          if (pendingNotesRef.current[noteType] === content) {
-            delete pendingNotesRef.current[noteType];
-          }
-          delete saveTimersRef.current[noteType];
-        }
+            const response = await fetch("/api/notes", {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ studentId, noteType, content }),
+            });
+
+            if (!response.ok) return;
+
+            if (pendingNotesRef.current[noteType] === content) {
+              lastReceivedRef.current[noteType] = content;
+              delete pendingNotesRef.current[noteType];
+            }
+          });
+        saveQueuesRef.current[noteType] = currentSave;
+
+        void currentSave
+          .catch(() => {
+            // A later queued save can retry after transient network failures.
+          })
+          .finally(() => {
+            if (saveQueuesRef.current[noteType] === currentSave) {
+              delete saveQueuesRef.current[noteType];
+            }
+            if (saveTimersRef.current[noteType]) {
+              delete saveTimersRef.current[noteType];
+            }
+          });
       }, 400);
     },
     [role, studentId],
