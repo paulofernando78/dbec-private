@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-plans-birthday.avif?v=1`,
-      quote: "Laura is going to celebrate her birthday.",
-      questions: [
-        {
-          prompt: "What is she going to celebrate?",
-          support: ["She’s going to celebrate her birthday."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-plans-pasta.avif?v=1`,
-      quote: "Pedro is going to make pasta for lunch.",
-      questions: [
-        {
-          prompt: "What is he going to make?",
-          support: ["He’s going to make pasta."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-takes-bus.avif?v=1`,
-      quote: "Naomi is going to take the bus.",
-      questions: [
-        {
-          prompt: "How is she going to travel?",
-          support: ["She’s going to travel by bus."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

@@ -9,7 +9,6 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
-      image: `${imageRoot}/meet-and-connect.avif?v=1`,
       audio: false,
       quote: "",
       discuss: {
@@ -25,6 +24,8 @@ export const getReady = {
           },
         ],
       },
-    },
+
+      image: `${imageRoot}/meet-and-connect.avif?v=1`,
+      },
   ],
 } satisfies GetReadyData;

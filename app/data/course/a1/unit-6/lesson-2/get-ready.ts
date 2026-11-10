@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-gets-up-at-seven.avif?v=1`,
-      quote: "Pedro gets up at seven every day.",
-      questions: [
-        {
-          prompt: "What time does Pedro get up?",
-          support: ["He gets up at seven.", "He gets up at eight."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-eats-breakfast.avif?v=1`,
-      quote: "Laura eats breakfast in the morning.",
-      questions: [
-        {
-          prompt: "What does Laura do in the morning?",
-          support: ["She eats breakfast.", "She goes to bed."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-rides-his-bike.avif?v=1`,
-      quote: "Eric rides his bike every day.",
-      questions: [
-        {
-          prompt: "How does Eric leave home?",
-          support: ["He rides his bike.", "He takes the train."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

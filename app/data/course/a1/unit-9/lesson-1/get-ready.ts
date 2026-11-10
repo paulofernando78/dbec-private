@@ -9,26 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imagePath}/checking-for-milk.avif?v=2`,
-      quote: "Is there any milk?",
-      questions: [
-        { prompt: "What food can you see?", support: ["I can see …"] },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imagePath}/some-milk.avif?v=2`,
-      quote: "Yes, there is some milk.",
-      questions: [
-        {
-          prompt: "Is there any milk?",
-          support: ["Yes, there is.", "No, there isn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imagePath}/a-few-tomatoes.avif?v=2`,
-      quote: "We need a few tomatoes.",
-      questions: [{ prompt: "What do we need?", support: ["We need …"] }],
-    },
+      },
   ],
 } satisfies GetReadyData;

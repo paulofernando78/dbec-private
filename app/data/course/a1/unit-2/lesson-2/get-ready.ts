@@ -11,26 +11,23 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
-      image: mobileImage,
       audio: false,
       quote: "",
-      questions: [
-        {
-          prompt: "What objects are on the desk?",
-          support: [
-            "mobile phone",
-            "keys",
-            "keyboard",
-            "mouse",
-            "phone adapter",
-            "pens",
-            "monitor",
-            "printer",
-            "folders",
-          ],
-          supportDisplay: "bullets",
-        },
-      ],
-    },
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
+      image: mobileImage,
+      },
   ],
 } satisfies GetReadyData;

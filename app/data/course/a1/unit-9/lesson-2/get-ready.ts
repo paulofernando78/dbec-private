@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-eats-breakfast.avif?v=1`,
-      quote: "Laura always eats breakfast.",
-      questions: [
-        {
-          prompt: "Do you eat breakfast every day?",
-          support: ["Yes, I do.", "No, I don’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-cooks-at-home.avif?v=1`,
-      quote: "Pedro often cooks at home.",
-      questions: [
-        {
-          prompt: "Do you cook at home?",
-          support: ["I usually …", "I never …"],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-drinks-tea.avif?v=1`,
-      quote: "Eric never drinks coffee. He often drinks tea.",
-      questions: [
-        {
-          prompt: "What do you drink in the morning?",
-          support: ["I drink …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

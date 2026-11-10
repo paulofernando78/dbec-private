@@ -9,40 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/international-event.avif?v=1`,
-      quote: "Where are you from?",
-      questions: [
-        {
-          prompt: "What can you see?",
-          support: ["A world map."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-pedro-eric-naomi-clean-shaven.avif?v=3`,
-      quote:
-        "Laura is from Los Angeles. Pedro is from São Paulo. Eric is from London. Naomi is from Tokyo.",
-      questions: [
-        {
-          prompt: "Where are they from?",
-          support: [
-            "Laura is from the United States.",
-            "Pedro is from Brazil.",
-            "Eric is from England.",
-            "Naomi is from Japan.",
-          ],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/brazilian-participant.avif?v=3`,
-      quote: "Are you Brazilian? — Yes, I am.",
-      questions: [
-        {
-          prompt: "Where are you from?",
-          support: ["I’m from …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

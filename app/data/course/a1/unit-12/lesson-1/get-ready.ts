@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-has-cold.avif?v=1`,
-      quote: "Eric has a cold. He doesn’t feel well.",
-      questions: [
-        {
-          prompt: "What’s the matter?",
-          support: ["He has a cold."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-has-fever.avif?v=1`,
-      quote: "Pedro has a fever. He feels awful.",
-      questions: [
-        {
-          prompt: "How does he feel?",
-          support: ["He feels awful."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-sore-throat.avif?v=1`,
-      quote: "Naomi has a sore throat.",
-      questions: [
-        {
-          prompt: "Which part of her body is sore?",
-          support: ["Her throat is sore."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

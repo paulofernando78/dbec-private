@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/studying-english-evening.avif?v=1`,
-      quote: "What are you doing? — I’m studying English.",
-      questions: [
-        {
-          prompt: "What is he doing?",
-          support: ["He’s studying English.", "He’s watching TV."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eva-sleeping-at-night.avif?v=1`,
-      quote: "What’s Eva doing? — She’s sleeping.",
-      questions: [
-        {
-          prompt: "Is she sleeping?",
-          support: ["Yes, she is.", "No, she isn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/mia-leo-watching-tv.avif?v=1`,
-      quote: "What are they doing? — They’re watching TV.",
-      questions: [
-        {
-          prompt: "What are they doing?",
-          support: ["They’re watching TV.", "They’re working."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

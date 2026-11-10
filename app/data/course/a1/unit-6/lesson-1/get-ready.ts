@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-takes-the-train.avif?v=1`,
-      quote: "I take the train.",
-      questions: [
-        {
-          prompt: "How does Pedro travel?",
-          support: ["He takes the train.", "He drives a car."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-goes-by-bus.avif?v=1`,
-      quote: "Laura goes by bus.",
-      questions: [
-        {
-          prompt: "How does Laura travel?",
-          support: ["She goes by bus.", "She walks."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-rides-his-bike.avif?v=1`,
-      quote: "Eric rides his bike.",
-      questions: [
-        {
-          prompt: "How does Eric travel?",
-          support: ["He rides his bike.", "He takes the bus."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

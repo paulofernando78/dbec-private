@@ -9,38 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/rainy-morning-eric.avif?v=1`,
-      quote: "Laura and Eric are wearing coats.",
-      questions: [
-        {
-          prompt: "Is it raining?",
-          support: ["Yes, it is."],
-        },
-        {
-          prompt: "What are they wearing?",
-          support: ["They're wearing coats."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/cold-windy-day-eric.avif?v=1`,
-      quote: "It’s cold and windy. Eric is wearing a coat and a scarf.",
-      questions: [
-        {
-          prompt: "What is Eric wearing?",
-          support: ["He’s wearing a coat and a scarf."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/hot-sunny-afternoon.avif?v=2`,
-      quote: "It’s hot and sunny. They’re wearing light clothes.",
-      questions: [
-        {
-          prompt: "What are they wearing?",
-          support: ["Naomi is wearing a dress.", "Pedro is wearing shorts."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

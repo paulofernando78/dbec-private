@@ -9,38 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-points-to-camila.avif?v=1`,
-      quote: "Who’s that? — She’s my cousin, Camila.",
-      questions: [
-        {
-          prompt: "What does Camila look like?",
-          support: ["She’s tall.", "She has long, curly hair."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/how-old-is-camila.avif?v=1`,
-      quote: "How old is she? — She’s twenty-four.",
-      questions: [
-        {
-          prompt: "Young or old?",
-          support: ["She’s young.", "She’s old."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/camila-friendly-and-quiet.avif?v=1`,
-      quote: "What’s she like? — She’s friendly and quiet.",
-      questions: [
-        {
-          prompt: "Friendly or serious?",
-          support: ["She’s friendly.", "She’s serious."],
-        },
-        {
-          prompt: "Quiet or talkative?",
-          support: ["She’s quiet.", "She’s talkative."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

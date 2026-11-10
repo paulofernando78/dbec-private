@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomis-job-is-rewarding.avif?v=1`,
-      quote: "Naomi's job is rewarding.",
-      questions: [
-        {
-          prompt: "Easy or difficult?",
-          support: ["Easy.", "Difficult."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/lauras-job-is-stressful.avif?v=1`,
-      quote: "Laura's job is sometimes stressful.",
-      questions: [
-        {
-          prompt: "Is the job stressful?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/erics-job-is-interesting.avif?v=1`,
-      quote: "Eric's job is interesting.",
-      questions: [
-        {
-          prompt: "Is this job interesting?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

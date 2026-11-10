@@ -9,12 +9,23 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/family-album-discussion.avif?v=1`,
-      quote: "Family stories",
-      questions: [
-        { prompt: "What do you notice in the room?", support: ["I can see ..."] },
-        { prompt: "What might the family talk about?", support: ["Maybe they talk about ..."] },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

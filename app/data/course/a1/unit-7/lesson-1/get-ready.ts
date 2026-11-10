@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-lives-in-an-apartment.avif?v=1`,
-      quote: "Laura lives in an apartment.",
-      questions: [
-        {
-          prompt: "House or apartment?",
-          support: ["A house.", "An apartment."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-has-a-balcony.avif?v=1`,
-      quote: "Pedro's apartment has a balcony.",
-      questions: [
-        {
-          prompt: "Does it have a balcony?",
-          support: ["Yes, it does.", "No, it doesn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-shows-her-apartment.avif?v=1`,
-      quote: "Naomi lives in a cozy apartment.",
-      questions: [
-        {
-          prompt: "Do you live in a house or an apartment?",
-          support: ["I live in …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

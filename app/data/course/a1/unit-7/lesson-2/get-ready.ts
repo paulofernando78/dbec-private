@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-on-the-sofa.avif?v=1`,
-      quote: "There is a sofa in the living room.",
-      questions: [
-        {
-          prompt: "What is in the room?",
-          support: ["There is a sofa.", "There are two lamps."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-and-two-lamps.avif?v=1`,
-      quote: "There are two lamps by the bed.",
-      questions: [
-        {
-          prompt: "How many lamps are there?",
-          support: ["There are two lamps."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-opens-the-dishwasher.avif?v=1`,
-      quote: "Is there a dishwasher? — Yes, there is.",
-      questions: [
-        {
-          prompt: "Is there a dishwasher?",
-          support: ["Yes, there is.", "No, there isn’t."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

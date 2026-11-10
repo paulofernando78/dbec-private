@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-is-a-designer.avif?v=1`,
-      quote: "Eric is a designer.",
-      questions: [
-        {
-          prompt: "What’s his job?",
-          support: ["He’s a designer."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-works-at-a-hotel.avif?v=1`,
-      quote: "Laura works at a hotel.",
-      questions: [
-        {
-          prompt: "Where does she work?",
-          support: ["She works at a hotel."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-is-a-student.avif?v=1`,
-      quote: "Pedro is a student.",
-      questions: [
-        {
-          prompt: "What do you do?",
-          support: ["I’m a …", "I’m a student."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

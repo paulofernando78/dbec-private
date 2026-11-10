@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/drugstore-next-to-bookstore.avif?v=1`,
-      quote: "The drugstore is next to the bookstore.",
-      questions: [
-        {
-          prompt: "Where can Laura buy cold medicine?",
-          support: ["At the drugstore."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/post-office-between-shops.avif?v=1`,
-      quote: "The post office is between the bank and the coffee shop.",
-      questions: [
-        {
-          prompt: "Where can Pedro buy stamps?",
-          support: ["At the post office."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/coffee-shop-on-corner.avif?v=1`,
-      quote: "The coffee shop is on the corner.",
-      questions: [
-        {
-          prompt: "Where is the coffee shop?",
-          support: ["It’s on the corner."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

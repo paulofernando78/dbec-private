@@ -9,18 +9,23 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/weekend-picnic-discussion.avif?v=1`,
-      quote: "A weekend together",
-      questions: [
-        {
-          prompt: "What do you notice in the picture?",
-          support: ["I can see ..."],
-        },
-        {
-          prompt: "Which activity looks interesting to you?",
-          support: ["The ... looks interesting."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-plays-volleyball.avif?v=1`,
-      quote: "Pedro plays volleyball.",
-      questions: [
-        {
-          prompt: "What sport is this?",
-          support: ["It’s volleyball."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-plays-tennis.avif?v=1`,
-      quote: "Naomi plays tennis.",
-      questions: [
-        {
-          prompt: "Do you play this sport?",
-          support: ["Yes, I do.", "No, I don’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-watches-soccer.avif?v=1`,
-      quote: "Eric watches soccer every weekend.",
-      questions: [
-        {
-          prompt: "What sports do you watch?",
-          support: ["I watch …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

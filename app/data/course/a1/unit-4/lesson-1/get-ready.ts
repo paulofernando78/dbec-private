@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/whose-blue-jacket.avif?v=3`,
-      quote: "Whose jacket is this? — It’s Eric’s.",
-      questions: [
-        {
-          prompt: "Whose jacket is this?",
-          support: ["It’s Eric’s.", "It’s Laura’s."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/is-this-your-scarf.avif?v=2`,
-      quote: "Is this your scarf? — Yes, it’s mine.",
-      questions: [
-        {
-          prompt: "Is this Naomi’s scarf?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/whose-gloves.avif?v=2`,
-      quote: "Whose gloves are these? — They’re Laura’s.",
-      questions: [
-        {
-          prompt: "Whose gloves are these?",
-          support: ["They’re Laura’s.", "They’re Naomi’s."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

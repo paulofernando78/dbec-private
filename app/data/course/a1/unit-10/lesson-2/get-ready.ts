@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-can-dance.avif?v=1`,
-      quote: "Laura can dance very well.",
-      questions: [
-        {
-          prompt: "Can she dance?",
-          support: ["Yes, she can."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-can-play-guitar.avif?v=1`,
-      quote: "Eric can play the guitar.",
-      questions: [
-        {
-          prompt: "What can he do?",
-          support: ["He can play the guitar."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-can-draw.avif?v=1`,
-      quote: "Naomi can draw.",
-      questions: [
-        {
-          prompt: "What can you do well?",
-          support: ["I can …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

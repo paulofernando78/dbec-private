@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/eric-rests-at-home.avif?v=1`,
-      quote: "Rest at home today.",
-      questions: [
-        {
-          prompt: "What should Eric do?",
-          support: ["He should rest at home."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-drinks-tea.avif?v=1`,
-      quote: "Drink warm chamomile tea.",
-      questions: [
-        {
-          prompt: "What is Naomi drinking?",
-          support: ["She’s drinking warm chamomile tea."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-does-not-exercise.avif?v=1`,
-      quote: "Don’t exercise with a fever.",
-      questions: [
-        {
-          prompt: "Should Pedro exercise today?",
-          support: ["No, he shouldn’t."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

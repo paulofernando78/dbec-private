@@ -9,23 +9,23 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
-      image: `${imagePath}/laura-eric-looking-back.avif?v=4`,
       audio: false,
-      quote: "Look at Laura and Eric’s social media profiles.",
+      quote: "",
       discuss: {
-        interaction: ["pairs"],
+        interaction: ["pairs", "teacher-class"],
         questions: [
           {
-            prompt: "What information can you see in the profiles?",
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
           },
           {
-            prompt: "Which profile is more interesting to you? Why?",
-          },
-          {
-            prompt: "What information do people usually share on social media profiles?",
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
           },
         ],
       },
-    },
+
+      image: `${imagePath}/laura-eric-looking-back.avif?v=4`,
+      },
   ],
 } satisfies GetReadyData;

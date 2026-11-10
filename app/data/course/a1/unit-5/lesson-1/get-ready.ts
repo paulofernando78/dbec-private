@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/seven-oclock.avif?v=2`,
-      quote: "What time is it? — It’s seven o’clock.",
-      questions: [
-        {
-          prompt: "What time is it?",
-          support: ["It’s seven o’clock."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/sao-paulo-london.avif?v=1`,
-      quote: "It’s 6:45 A.M. in São Paulo. It’s 10:45 A.M. in London.",
-      questions: [
-        {
-          prompt: "Is it the same time in both cities?",
-          support: ["No, it isn’t."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/lunch-at-twelve-thirty.avif?v=2`,
-      quote: "Lunch is at 12:30 P.M.",
-      questions: [
-        {
-          prompt: "What time is your lunch?",
-          support: ["My lunch is at …"],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

@@ -9,54 +9,19 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
-      image: `${imagePath}/laptop.avif?v=3`,
-      quote: "What’s this? It’s a laptop computer.",
-      questions: [
-        {
-          prompt: "What’s this?",
-          support: ["It’s a laptop computer.", "It’s a phone."],
-        },
-      ],
-    },
-    {
-      image: `${imagePath}/adapter.avif?v=3`,
-      quote: "What’s this? It’s an adapter.",
-      questions: [
-        {
-          prompt: "What’s this?",
-          support: ["It’s an adapter.", "It’s a charger."],
-        },
-      ],
-    },
-    {
-      image: `${imagePath}/notebooks.avif?v=3`,
-      quote: "What are these? They’re notebooks.",
-      questions: [
-        {
-          prompt: "What are these?",
-          support: ["They’re notebooks.", "They’re folders."],
-        },
-      ],
-    },
-    {
-      image: `${imagePath}/keys.avif?v=1`,
-      quote: "What are these? They’re keys.",
-      questions: [
-        {
-          prompt: "What are these?",
-          support: ["They’re keys.", "They’re notebooks."],
-        },
-      ],
-    },
-    {
-      image: `${imagePath}/headset.avif?v=1`,
-      quote: "What’s this? It’s a headset.",
-      questions: [
-        {
-          prompt: "What’s this?",
-          support: ["It’s a headset.", "It’s a phone."],
-        },
-      ],
-    },
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What can you see in the picture?",
+            support: ["I can see ..."],
+          },
+        ],
+      },
+
+      image: `${imagePath}/desk-objects.avif?v=1`,
+      },
   ],
 } satisfies GetReadyData;

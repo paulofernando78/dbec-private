@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-prepares-party.avif?v=1`,
-      quote: "Laura is going to have a party at home.",
-      questions: [
-        {
-          prompt: "Where is she going to celebrate?",
-          support: ["She’s going to celebrate at home."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-arrives-by-taxi.avif?v=1`,
-      quote: "Naomi is going to take a taxi to the party.",
-      questions: [
-        {
-          prompt: "How is she going to get there?",
-          support: ["She’s going to take a taxi."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/friends-watch-fireworks.avif?v=1`,
-      quote: "They’re going to watch fireworks at midnight.",
-      questions: [
-        {
-          prompt: "What are they going to do at midnight?",
-          support: ["They’re going to watch fireworks."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

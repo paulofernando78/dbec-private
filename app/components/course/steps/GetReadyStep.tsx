@@ -35,7 +35,7 @@ function ActivityBlock({
   } as const;
 
   return (
-    <section className="rounded-xl bg-(--background) p-4">
+    <section className="rounded-xl bg-(--surface) p-4">
       <div className="mb-4 flex items-center gap-4">
         <h4 className="font-black uppercase tracking-wide">{title}</h4>
         {activity.interaction?.length ? (
@@ -86,7 +86,7 @@ function ActivityBlock({
           });
           return (
             <Fragment key={question.prompt}>
-              <li className="rounded-xl bg-white text-slate-800">
+              <li className="rounded-xl bg-(--background) p-3 text-slate-800">
                 <div className="grid grid-cols-[auto_1fr] items-center gap-x-3">
                   <Audio
                     asButton
@@ -286,11 +286,11 @@ export function GetReadyStep({ data }: { data: GetReadyData }) {
         </div>
       ) : null}
       {data.slides[currentImage].questions?.length ? (
-        <div className="mt-4 rounded-xl bg-white p-4 text-slate-800">
+        <div className="mt-4 rounded-xl bg-(--surface) p-4 text-slate-800">
           <h4 className="mb-2 font-black">Discuss</h4>
           <ul className="grid gap-3">
             {data.slides[currentImage].questions.map((question) => (
-              <li key={question.prompt}>
+              <li key={question.prompt} className="rounded-xl bg-(--background) p-3">
                 <p className="font-semibold">{question.prompt}</p>
                 {question.support?.length &&
                 question.supportDisplay === "bullets" ? (

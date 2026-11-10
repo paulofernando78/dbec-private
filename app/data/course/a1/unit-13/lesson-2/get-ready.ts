@@ -9,34 +9,61 @@ export const getReady = {
   label: "Get ready",
   slides: [
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/laura-asks-directions.avif?v=1`,
-      quote: "Laura asks Eric for directions.",
-      questions: [
-        {
-          prompt: "How can she get to the square?",
-          support: ["Go straight along the avenue."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/pedro-walks-straight.avif?v=1`,
-      quote: "Pedro walks straight for two blocks.",
-      questions: [
-        {
-          prompt: "Which way should he go?",
-          support: ["He should go straight."],
-        },
-      ],
-    },
+      },
     {
+      audio: false,
+      quote: "",
+      discuss: {
+        interaction: ["pairs", "teacher-class"],
+        questions: [
+          {
+            prompt: "What do you notice in the picture?",
+            support: ["I can see ..."],
+          },
+          {
+            prompt: "What do you think is happening?",
+            support: ["I think ..."],
+          },
+        ],
+      },
+
       image: `${imageRoot}/naomi-turns-right.avif?v=1`,
-      quote: "Naomi turns right at the park.",
-      questions: [
-        {
-          prompt: "Does she turn left or right?",
-          support: ["She turns right."],
-        },
-      ],
-    },
+      },
   ],
 } satisfies GetReadyData;

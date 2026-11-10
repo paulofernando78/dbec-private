@@ -9,6 +9,23 @@ export const languageFocus = {
   component: TheNumbers,
   instruction:
     "Listen, repeat, and notice four useful expressions for exchanging contact information.",
+  visuals: [
+    {
+      image:
+        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/phone-number.avif?v=1",
+      caption: "What’s your phone number?",
+    },
+    {
+      image:
+        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/email.avif?v=2",
+      caption: "Here’s my card.",
+    },
+    {
+      image:
+        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/goodbye.avif?v=1",
+      caption: "Goodbye. See you soon.",
+    },
+  ],
   items: [
     [
       [bold("What’s your phone number"), "?"],
