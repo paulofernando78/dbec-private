@@ -143,7 +143,7 @@ export function NavBar({
                   onClick={toggleNotes}
                   className="size-10! p-0.75!"
                 />
-                <span className="font-bold uppercase">Notes</span>
+                <span className="font-bold uppercase">notes shortcut</span>
               </div>
             </div>
           ) : null;

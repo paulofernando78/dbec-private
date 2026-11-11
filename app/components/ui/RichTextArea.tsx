@@ -662,6 +662,8 @@ export function RichTextArea({
         {blocks.map((block) => (
           <div
             key={block.id}
+            data-author-role={block.author?.role}
+            data-author-id={block.author?.id}
             className={`group relative flex min-h-7 items-start rounded px-1 transition-colors ${
               draggedBlockId === block.id ? "opacity-45" : "hover:bg-slate-50"
             }`}
@@ -714,6 +716,14 @@ export function RichTextArea({
               }}
               onInput={(event) => {
                 const html = event.currentTarget.innerHTML;
+                const blockElement = event.currentTarget.parentElement;
+                const authorStyle = authorBlockStyle(author);
+                if (blockElement && author && authorStyle) {
+                  blockElement.dataset.authorRole = author.role;
+                  blockElement.dataset.authorId = author.id;
+                  blockElement.title = `${author.name} · ${author.role === "teacher" ? "Professor" : "Aluno"}`;
+                  Object.assign(blockElement.style, authorStyle);
+                }
                 setBlocks((current) =>
                   current.map((currentBlock) =>
                     currentBlock.id === block.id
