@@ -147,7 +147,7 @@ export function StudentNotesPanel({
   if (!session || !isOpen || !panelHost) return null;
 
   return createPortal(
-        <div className="pointer-events-auto max-h-full w-full translate-y-[0.05rem] touch-pan-y overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]">
+        <div className="pointer-events-auto flex h-full max-h-full w-full translate-y-[0.05rem] touch-pan-y flex-col overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]">
           <div className="mb-3 flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-black">Notes</h2>
@@ -177,8 +177,8 @@ export function StudentNotesPanel({
 
           {studentId && (
             <>
-              <div className="grid grid-cols-2 items-stretch gap-3 max-[930px]:grid-cols-1">
-                <Card title="Shared notes" className="bg-(--background)">
+              <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:grid-cols-1">
+                <Card title="Shared notes" className="flex min-h-0 flex-col overflow-hidden bg-(--background)">
                   <p className="mb-2 text-xs text-slate-500" title={`Signed in as ${session.displayName ?? session.role}`}>
                     {activeWriter
                       ? `${activeWriter.name} está escrevendo`
@@ -191,9 +191,10 @@ export function StudentNotesPanel({
                       sendNote("student", content, true);
                     }}
                     onBlur={() => void saveNote()}
+                    className="min-h-0 max-h-none flex-1"
                   />
                 </Card>
-                <AiTutor className="mt-0 h-full min-h-[36rem]" fill />
+                <AiTutor className="mt-0 h-full min-h-0" fill />
               </div>
             </>
           )}

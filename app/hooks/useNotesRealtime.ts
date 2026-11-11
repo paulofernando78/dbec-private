@@ -205,6 +205,8 @@ export function useNotesRealtime(
       const currentTimer = saveTimersRef.current[noteType];
       if (currentTimer) window.clearTimeout(currentTimer);
 
+      // Let this short debounce finish even if the dashboard unmounts while
+      // switching from the teacher view to the student's view.
       saveTimersRef.current[noteType] = window.setTimeout(() => {
         const previousSave = saveQueuesRef.current[noteType] ?? Promise.resolve();
         const currentSave = previousSave
@@ -242,15 +244,6 @@ export function useNotesRealtime(
       }, 400);
     },
     [role, studentId],
-  );
-
-  useEffect(
-    () => () => {
-      for (const timer of Object.values(saveTimersRef.current)) {
-        if (timer) window.clearTimeout(timer);
-      }
-    },
-    [],
   );
 
   return { connectionState, sendNote };
