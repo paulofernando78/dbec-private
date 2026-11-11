@@ -73,23 +73,27 @@ export function NavBar({
       </div>
     );
   };
+  const navbarBlockStyle = `
+    p-4 rounded-xl bg-gray-200
+  `
+
 
   return (
     <nav
-      className={`z-20 h-full min-h-0 w-max overflow-y-auto rounded-xl bg-(--surface) p-4 text-gray-500 transition-transform duration-500 ease-in-out
-        max-[700px]:absolute max-[700px]:-translate-x-100
-        max-[420px]:w-full
-        max-[390px]:-translate-x-full
-        ${isOpen ? "max-[700px]:translate-x-0 max-[390px]:translate-x-0" : ""}`}
+      className={`space-y-4 h-full min-h-0 w-max overflow-y-auto rounded-xl bg-(--surface) p-4 text-gray-500 transition-transform duration-500 ease-in-out z-20
+      max-[700px]:absolute max-[700px]:-translate-x-100
+      max-[420px]:w-full
+      max-[390px]:-translate-x-full
+      ${isOpen ? "max-[700px]:translate-x-0 max-[390px]:translate-x-0" : ""}`}
     >
       {links.map((item) => {
         if ("group" in item) {
           return (
-            <div key={item.group} className="mt-6">
+            <div key={item.group} className={navbarBlockStyle}>
               <p className="mb-2 font-black uppercase tracking-wider">
                 {item.group}
               </p>
-              <div className="space-y-2 pl-2">
+              <div className="space-y-2">
                 {item.children.map((child) => {
                   if ("subgroup" in child) {
                     return (
@@ -97,7 +101,7 @@ export function NavBar({
                         <p className="mb-2 text-xs font-black uppercase tracking-wider text-gray-400">
                           {child.subgroup}
                         </p>
-                        <div className="space-y-2 pl-2">
+                        <div className="space-y-2">
                           {child.children.map(({ href, label, icon: Icon }) =>
                             Icon ? (
                               <div key={href}>
@@ -128,10 +132,10 @@ export function NavBar({
 
         if (href === "/dashboard") {
           return dashboardPath ? (
-            <div key={href}>
+            <div key={href} className={navbarBlockStyle}>
               <GlobalSearch closeNavBar={closeNavBar} />
               {renderNavigationButton(dashboardPath, "Dashboard", User, "mb-2")}
-              <div className="mb-2 flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Button
                   ariaLabel={isNotesOpen ? "Close notes" : "Open notes"}
                   pressed={isNotesOpen}
