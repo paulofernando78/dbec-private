@@ -74,6 +74,11 @@ export default function LessonPage() {
   const basePath = `${sectionPath}/unit/${unit}/lesson/${lesson}`;
   const go = (slug: string) => navigate(`${basePath}/${slug}`);
   const finish = () => {
+    if (lessonData.isCheckpoint) {
+      navigate(sectionPath);
+      return;
+    }
+
     completeLesson(level, unit, lesson);
     navigate(sectionPath);
   };

@@ -12,6 +12,7 @@ export type LessonContent = {
   unit: { number: number; title: string };
   lesson: { number: number; title: string };
   steps: readonly LessonStepData[];
+  isCheckpoint?: boolean;
 };
 
 const seeds: readonly LessonSeed[] = [

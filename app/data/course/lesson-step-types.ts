@@ -137,6 +137,23 @@ export type CanYouData = StepExtension & {
   checks: readonly string[];
 };
 
+export type ReviewData = StepExtension & {
+  type: "review";
+  slug: string;
+  label: string;
+  instruction: string;
+  sections: readonly {
+    lessonTitle: string;
+    questions: readonly {
+      context?: string;
+      question: string;
+      options: readonly string[];
+      answer: string;
+    }[];
+    sentences: readonly { prompt: string; answer: string }[];
+  }[];
+};
+
 export type LessonStepData =
   | GetReadyData
   | ListenData
@@ -144,4 +161,5 @@ export type LessonStepData =
   | ConceptCheckData
   | TryItData
   | UseItData
-  | CanYouData;
+  | CanYouData
+  | ReviewData;

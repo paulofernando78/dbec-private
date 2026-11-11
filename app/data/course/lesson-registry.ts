@@ -160,6 +160,12 @@ import { b2Unit12Lesson1 } from "./b2/unit-12/lesson-1";
 import { b2Unit12Lesson2 } from "./b2/unit-12/lesson-2";
 import { c1SkeletonLessons } from "./c1/skeleton-lessons";
 import { travelLessons } from "@/data/travel/lessons";
+import { levels } from "./index";
+import type {
+  ConceptCheckData,
+  ReviewData,
+  TryItData,
+} from "./lesson-step-types";
 
 const a1DiscussionImageIndex: Readonly<Record<string, number>> = {
   "1/2": 1,
@@ -387,3 +393,53 @@ export const lessonRegistry: Record<string, LessonContent> = {
   "a1/16/1": selectA1DiscussionImage("16/1", a1Unit16Lesson1),
   "a1/16/2": selectA1DiscussionImage("16/2", a1Unit16Lesson2),
 };
+
+const makeCheckpointSection = (
+  lesson: LessonContent,
+): ReviewData["sections"][number] => {
+  const conceptCheck = lesson.steps.find(
+    (step): step is ConceptCheckData => step.type === "concept-check",
+  );
+  const tryIt = lesson.steps.find(
+    (step): step is TryItData => step.type === "try-it",
+  );
+
+  return {
+    lessonTitle: lesson.lesson.title,
+    questions: conceptCheck?.questions ?? [],
+    sentences:
+      tryIt?.items.slice(0, 2).map((item) => ({
+        prompt: item.words.join(" "),
+        answer: item.answer.join(" "),
+      })) ?? [],
+  };
+};
+
+for (const level of Object.values(levels)) {
+  for (const unit of level.units) {
+    const firstLesson = lessonRegistry[`${level.slug}/${unit.number}/1`];
+    const secondLesson = lessonRegistry[`${level.slug}/${unit.number}/2`];
+    if (!firstLesson || !secondLesson) continue;
+
+    const checkpointTitle =
+      unit.lessons[2]?.title ?? `Checkpoint ${unit.number}`;
+    const sections = [firstLesson, secondLesson].map(makeCheckpointSection);
+
+    lessonRegistry[`${level.slug}/${unit.number}/3`] = {
+      level: level.slug,
+      unit: { number: unit.number, title: unit.title },
+      lesson: { number: 3, title: checkpointTitle },
+      isCheckpoint: true,
+      steps: [
+        {
+          type: "review",
+          slug: "review",
+          label: "Review",
+          instruction:
+            "Review both lessons. Check what you remember, then rebuild key sentences.",
+          sections,
+        },
+      ],
+    };
+  }
+}

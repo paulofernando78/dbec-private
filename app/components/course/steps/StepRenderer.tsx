@@ -4,6 +4,7 @@ import { ConceptCheckStep } from "./ConceptCheckStep";
 import { GetReadyStep } from "./GetReadyStep";
 import { LanguageFocusStep } from "./LanguageFocusStep";
 import { ListenStep } from "./ListenStep";
+import { ReviewStep } from "./ReviewStep";
 import { TryItStep } from "./TryItStep";
 import { UseItStep } from "./UseItStep";
 
@@ -32,6 +33,9 @@ export function StepRenderer({ data }: { data: LessonStepData }) {
       break;
     case "can-you":
       step = <CanYouStep data={data} />;
+      break;
+    case "review":
+      step = <ReviewStep data={data} />;
       break;
   }
 

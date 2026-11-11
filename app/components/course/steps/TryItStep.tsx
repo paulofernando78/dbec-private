@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   closestCenter,
   DndContext,
   KeyboardSensor,
   PointerSensor,
+  pointerWithin,
   useDroppable,
   useSensor,
   useSensors,
@@ -119,6 +120,7 @@ function SentenceBuilder({
   const [bank, setBank] = useState<Token[]>(initialTokens);
   const [answer, setAnswer] = useState<Token[]>([]);
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
+  const didDragRef = useRef(false);
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
     useSensor(KeyboardSensor, {
@@ -179,6 +181,26 @@ function SentenceBuilder({
     moveToken(token, from, to, overIndex >= 0 ? overIndex : undefined);
   };
 
+  const handleDragStart = () => {
+    didDragRef.current = true;
+  };
+
+  const handleDragFinish = () => {
+    requestAnimationFrame(() => {
+      didDragRef.current = false;
+    });
+  };
+
+  const collisionDetection = (args: Parameters<typeof closestCenter>[0]) => {
+    const pointerCollisions = pointerWithin(args);
+    return pointerCollisions.length ? pointerCollisions : closestCenter(args);
+  };
+
+  const handleTokenClick = (token: Token, from: ContainerName, to: ContainerName) => {
+    if (didDragRef.current) return;
+    moveToken(token, from, to);
+  };
+
   const showAnswer = () => {
     const unused = [...initialTokens];
     const ordered = correctAnswer.map((word) => {
@@ -207,8 +229,13 @@ function SentenceBuilder({
     <article className="rounded-xl bg-[var(--background)] p-4">
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
+        collisionDetection={collisionDetection}
+        onDragStart={handleDragStart}
+        onDragEnd={(event) => {
+          handleDragEnd(event);
+          handleDragFinish();
+        }}
+        onDragCancel={handleDragFinish}
       >
         <div className="mb-3 flex items-start gap-2">
           <b className="pt-3">{number}.</b>
@@ -216,14 +243,14 @@ function SentenceBuilder({
             <WordContainer
               id="bank"
               tokens={bank}
-              onTokenClick={(token) => moveToken(token, "bank", "answer")}
+              onTokenClick={(token) => handleTokenClick(token, "bank", "answer")}
             />
           </div>
         </div>
         <WordContainer
           id="answer"
           tokens={answer}
-          onTokenClick={(token) => moveToken(token, "answer", "bank")}
+          onTokenClick={(token) => handleTokenClick(token, "answer", "bank")}
         />
       </DndContext>
 
