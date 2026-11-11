@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
+          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
+          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
+          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
         ],
       },
 

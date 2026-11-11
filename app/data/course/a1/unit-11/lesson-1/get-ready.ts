@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
+          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
+          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
+          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
         ],
       },
 

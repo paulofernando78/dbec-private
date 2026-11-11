@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
+          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
+          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
+          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
         ],
       },
 

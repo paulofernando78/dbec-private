@@ -1,128 +1,71 @@
 import type { LanguageFocusData } from "../../../lesson-step-types";
 import { bold } from "@/helpers/content";
 
+const imageBase =
+  "/media/images/course/a1/unit-1/lesson-1-hello/language-focus/";
+
 export const languageFocus = {
   type: "language-focus",
   slug: "language-focus",
   label: "Language focus",
   supportLanguage: "pt-BR",
   instruction:
-    "Listen, repeat, and notice four useful expressions for meeting someone.",
-  visuals: [
-     {
-      image: "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif?v=2",
-      caption: "Hi, my name’s Laura.",
-      audio: "/media/audio/course/a1/unit-1/lesson-1-hello/get-ready/audio-1.mp3",
-    },
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/pic-2.avif?v=3",
-      caption: "Hello, I’m Eric.",
-      audio:
-        "/media/audio/course/a1/unit-1/lesson-1-hello/get-ready/audio-2.mp3",
-    },
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/tony-manager.avif?v=4",
-      caption: "This is Tony. He’s the manager.",
-      audio:
-        "/media/audio/course/a1/unit-1/lesson-1-hello/get-ready/audio-3.mp3",
-    },
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/naomi-receptionist.avif?v=2",
-      caption: "This is Naomi. She’s the receptionist.",
-      audio:
-        "/media/audio/course/a1/unit-1/lesson-1-hello/get-ready/audio-4.mp3",
-    },
-  ],
+    "Listen, repeat, and notice how people greet and introduce themselves.",
   items: [
     [
-      "Hello. I’m Laura. — Hi. I’m Eric.",
-      "Use Hello ou Hi para cumprimentar alguém. Use I’m seguido do seu nome para se apresentar.",
-      ["I’m ", bold("Lau"), "ra. I’m ", bold("Er"), "ic."],
+      "Hi, my name’s Laura.",
+      "Use Hi to greet someone. My name’s introduces your name.",
       [
-        {
-          columns: [
-            { header: "saudação", example: "Hello." },
-            { header: "sujeito", example: "I" },
-            { header: "verbo be", example: "’m" },
-            { header: "nome", example: "Laura." },
-          ],
-        },
-        {
-          columns: [
-            { header: "saudação", example: "Hi." },
-            { header: "sujeito", example: "I" },
-            { header: "verbo be", example: "’m" },
-            { header: "nome", example: "Eric." },
-          ],
-        },
+        bold("Hi"),
+        ", my name’s ",
+        bold("Laura"),
+        ". Say Laura as two syllables: Lau-ra.",
       ],
+      "greeting + my name’s + name",
       undefined,
-      "Olá. Eu sou Laura. — Oi. Eu sou Eric.",
+      "Oi, meu nome é Laura.",
+      undefined,
+      [{ image: `${imageBase}laura.avif`, caption: "Hi, my name’s Laura." }],
     ],
     [
-      "What’s your name?",
-      "Use esta pergunta para saber o nome de outra pessoa.",
-      [bold("What’s"), " your ", bold("name?")],
-      [
-        {
-          columns: [
-            { header: "palavra interrogativa", example: "What" },
-            { header: "verbo be", example: "’s" },
-            { header: "adjetivo possessivo", example: "your" },
-            { header: "substantivo", example: "name?" },
-          ],
-        },
-      ],
+      "Hello, I’m Eric.",
+      "Hello is a friendly greeting. I’m is the short form of I am.",
+      [bold("Hello"), ", ", bold("I’m"), " Eric."],
+      "greeting + I’m + name",
       undefined,
-      "Qual é o seu nome?",
+      "Olá, eu sou Eric.",
+      undefined,
+      [{ image: `${imageBase}eric.avif`, caption: "Hello, I’m Eric." }],
     ],
     [
-      "My name is Laura.",
-      "Use My name is seguido do seu nome para responder.",
-      ["My name is ", bold("Lau"), "ra."],
+      "How are you? I’m Tony. I’m the manager.",
+      "Ask How are you? to greet someone. Use I’m + job to introduce your role.",
+      [bold("How are you"), "? I’m Tony. I’m the ", bold("manager"), "."],
+      "How are you? + I’m + name + I’m + a/the + job",
+      undefined,
+      "Como vai? Eu sou Tony. Sou o gerente.",
+      undefined,
       [
         {
-          columns: [
-            { header: "adjetivo possessivo", example: "My" },
-            { header: "substantivo", example: "name" },
-            { header: "verbo be", example: "is" },
-            { header: "nome", example: "Laura." },
-          ],
+          image: `${imageBase}tony.avif?v=2`,
+          caption: "How are you? I’m Tony. I’m the manager.",
         },
       ],
-      undefined,
-      "Meu nome é Laura.",
     ],
     [
-      "Nice to meet you. — Nice to meet you, too.",
-      "Use esta expressão quando conhecer alguém. Na resposta, too mostra que o sentimento é recíproco.",
-      [bold("Nice"), " to ", bold("meet"), " you. ", bold("Nice"), " to ", bold("meet"), " you, too."],
+      "How’s it going? I’m Naomi. I’m the receptionist.",
+      "How’s it going? is an informal greeting. Use I’m + job to introduce your role.",
+      [bold("How’s it going"), "? I’m Naomi. I’m the ", bold("receptionist"), "."],
+      "How’s it going? + I’m + name + I’m + a/the + job",
+      undefined,
+      "Como vão as coisas? Eu sou Naomi. Sou a recepcionista.",
+      undefined,
       [
         {
-          columns: [
-            {
-              header: "expressão fixa",
-              example: "Nice to meet",
-            },
-            { header: "pronome objeto", example: "you." },
-          ],
-        },
-        {
-          columns: [
-            {
-              header: "expressão fixa",
-              example: "Nice to meet",
-            },
-            { header: "pronome objeto", example: "you," },
-            { header: "também", example: "too." },
-          ],
+          image: `${imageBase}naomi.avif?v=2`,
+          caption: "How’s it going? I’m Naomi. I’m the receptionist.",
         },
       ],
-      undefined,
-      "Prazer em conhecer você. — Prazer em conhecer você também.",
     ],
   ],
 } satisfies LanguageFocusData;

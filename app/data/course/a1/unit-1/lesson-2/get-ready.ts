@@ -11,14 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
+          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
         ],
       },
 
@@ -31,19 +25,13 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
+          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
         ],
       },
 
       image:
-        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/email.avif?v=2",
+        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/contact-exchange.avif?v=1",
       },
     {
       audio: false,
@@ -51,14 +39,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
+          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
         ],
       },
 

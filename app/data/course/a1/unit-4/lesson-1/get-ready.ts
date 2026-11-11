@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
+          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
+          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
+          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
         ],
       },
 

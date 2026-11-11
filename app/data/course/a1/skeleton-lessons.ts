@@ -26,14 +26,8 @@ const seeds: readonly LessonSeed[] = [
       "Are you on social media?",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Phone number or email?",
-          support: ["Phone number.", "Email."],
-        },
-      ],
-      [{ prompt: "Is this an email address?", support: ["Yes.", "No."] }],
-      [{ prompt: "Hello or goodbye?", support: ["Hello.", "Goodbye."] }],
+      [{ prompt: "Phone number or email?", support: ["Phone number.", "Email."] }],
+      [{ prompt: "Phone call or message?", support: ["A phone call.", "A message."] }]
     ],
   },
   {
@@ -46,36 +40,8 @@ const seeds: readonly LessonSeed[] = [
       "They're keys.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "What’s this?",
-          support: ["It’s a laptop computer.", "It’s a phone."],
-        },
-      ],
-      [
-        {
-          prompt: "What’s this?",
-          support: ["It’s an adapter.", "It’s a charger."],
-        },
-      ],
-      [
-        {
-          prompt: "What are these?",
-          support: ["They’re notebooks.", "They’re folders."],
-        },
-      ],
-      [
-        {
-          prompt: "What are these?",
-          support: ["They’re keys.", "They’re notebooks."],
-        },
-      ],
-      [
-        {
-          prompt: "What’s this?",
-          support: ["It’s a headset.", "It’s a phone."],
-        },
-      ],
+      [{ prompt: "One object or several?", support: ["One object.", "Several objects."] }],
+      [{ prompt: "Desk item or personal item?", support: ["A desk item.", "A personal item."] }]
     ],
   },
   {
@@ -88,35 +54,8 @@ const seeds: readonly LessonSeed[] = [
       "Yes, it is.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "What objects are on the desk?",
-          support: [
-            "mobile phone",
-            "keys",
-            "keyboard",
-            "mouse",
-            "phone adapter",
-            "pens",
-            "monitor",
-            "printer",
-            "folders",
-          ],
-          supportDisplay: "bullets",
-        },
-      ],
-      [
-        {
-          prompt: "Is it under the chair?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "Where are the folders?",
-          support: ["Next to the printer.", "On the chair."],
-        },
-      ],
+      [{ prompt: "On the desk or under the chair?", support: ["On the desk.", "Under the chair."] }],
+      [{ prompt: "Phone or keys?", support: ["A phone.", "Keys."] }]
     ],
   },
   {
@@ -130,13 +69,7 @@ const seeds: readonly LessonSeed[] = [
     ],
     getReadyQuestions: [
       [{ prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] }],
-      [{ prompt: "Where are you from?", support: ["I’m from …"] }],
-      [
-        {
-          prompt: "Are you Brazilian?",
-          support: ["Yes, I am.", "No, I’m not."],
-        },
-      ],
+      [{ prompt: "Portuguese or English?", support: ["Portuguese.", "English."] }]
     ],
   },
   {
@@ -149,9 +82,8 @@ const seeds: readonly LessonSeed[] = [
       "She's tall and friendly.",
     ],
     getReadyQuestions: [
-      [{ prompt: "Family or friends?", support: ["Family.", "Friends."] }],
-      [{ prompt: "Who’s that?", support: ["He’s my …", "She’s my …"] }],
       [{ prompt: "Tall or short?", support: ["Tall.", "Short."] }],
+      [{ prompt: "Friendly or quiet?", support: ["Friendly.", "Quiet."] }]
     ],
   },
   {
@@ -164,24 +96,8 @@ const seeds: readonly LessonSeed[] = [
       "The jacket is mine.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Whose jacket is this?",
-          support: ["It’s Eric’s.", "It’s Laura’s."],
-        },
-      ],
-      [
-        {
-          prompt: "Is this your scarf?",
-          support: ["Yes, it’s mine.", "No, it isn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "Whose gloves are these?",
-          support: ["They’re Laura’s.", "They’re Naomi’s."],
-        },
-      ],
+      [{ prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] }],
+      [{ prompt: "Laura or Eric?", support: ["Laura.", "Eric."] }]
     ],
   },
   {
@@ -194,14 +110,8 @@ const seeds: readonly LessonSeed[] = [
       "It isn't snowing.",
     ],
     getReadyQuestions: [
-      [{ prompt: "Is it raining?", support: ["Yes, it is.", "No, it isn’t."] }],
-      [
-        {
-          prompt: "A raincoat or a T-shirt?",
-          support: ["A raincoat.", "A T-shirt."],
-        },
-      ],
-      [{ prompt: "What are you wearing?", support: ["I’m wearing …"] }],
+      [{ prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] }],
+      [{ prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] }]
     ],
   },
   {
@@ -214,9 +124,8 @@ const seeds: readonly LessonSeed[] = [
       "It's noon.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What time is it?", support: ["It’s … o’clock."] }],
-      [{ prompt: "Morning or evening?", support: ["Morning.", "Evening."] }],
-      [{ prompt: "What time is lunch?", support: ["At …"] }],
+      [{ prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] }],
+      [{ prompt: "Morning or evening?", support: ["Morning.", "Evening."] }]
     ],
   },
   {
@@ -229,14 +138,8 @@ const seeds: readonly LessonSeed[] = [
       "She's sleeping.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "What is she doing?",
-          support: ["She’s studying.", "She’s sleeping."],
-        },
-      ],
-      [{ prompt: "Is he working?", support: ["Yes, he is.", "No, he isn’t."] }],
-      [{ prompt: "What are you doing now?", support: ["I’m …"] }],
+      [{ prompt: "Studying or sleeping?", support: ["Studying.", "Sleeping."] }],
+      [{ prompt: "Daytime or nighttime?", support: ["Daytime.", "Nighttime."] }]
     ],
   },
   {
@@ -249,19 +152,8 @@ const seeds: readonly LessonSeed[] = [
       "They use the subway.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Bus, train, or bike?",
-          support: ["Bus.", "Train.", "Bike."],
-        },
-      ],
-      [{ prompt: "How does she go to work?", support: ["She goes by …"] }],
-      [
-        {
-          prompt: "How do you go to work or school?",
-          support: ["I go by …", "I walk."],
-        },
-      ],
+      [{ prompt: "Bus, train, or bike?", support: ["Bus.", "Train.", "Bike."] }],
+      [{ prompt: "Car or subway?", support: ["A car.", "The subway."] }]
     ],
   },
   {
@@ -274,14 +166,8 @@ const seeds: readonly LessonSeed[] = [
       "Yes, I do.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What time do you get up?", support: ["I get up at …"] }],
-      [
-        {
-          prompt: "Do you study every day?",
-          support: ["Yes, I do.", "No, I don’t."],
-        },
-      ],
-      [{ prompt: "Morning or evening?", support: ["Morning.", "Evening."] }],
+      [{ prompt: "Seven or eight o’clock?", support: ["Seven o’clock.", "Eight o’clock."] }],
+      [{ prompt: "Morning or evening?", support: ["Morning.", "Evening."] }]
     ],
   },
   {
@@ -294,24 +180,8 @@ const seeds: readonly LessonSeed[] = [
       "Yes, it does.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "House or apartment?",
-          support: ["A house.", "An apartment."],
-        },
-      ],
-      [
-        {
-          prompt: "Does it have a balcony?",
-          support: ["Yes, it does.", "No, it doesn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "Do you live in a house or an apartment?",
-          support: ["I live in …"],
-        },
-      ],
+      [{ prompt: "House or apartment?", support: ["A house.", "An apartment."] }],
+      [{ prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] }]
     ],
   },
   {
@@ -324,24 +194,8 @@ const seeds: readonly LessonSeed[] = [
       "Yes, there is.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "What is in the room?",
-          support: ["There is a …", "There are …"],
-        },
-      ],
-      [
-        {
-          prompt: "Is there a sofa?",
-          support: ["Yes, there is.", "No, there isn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "How many lamps are there?",
-          support: ["There are … lamps."],
-        },
-      ],
+      [{ prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] }],
+      [{ prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] }]
     ],
   },
   {
@@ -354,9 +208,8 @@ const seeds: readonly LessonSeed[] = [
       "I work in an office.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What’s his job?", support: ["He’s a …"] }],
-      [{ prompt: "Where does she work?", support: ["She works in …"] }],
-      [{ prompt: "What do you do?", support: ["I’m a …", "I’m a student."] }],
+      [{ prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] }],
+      [{ prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] }]
     ],
   },
   {
@@ -369,19 +222,8 @@ const seeds: readonly LessonSeed[] = [
       "That sounds interesting.",
     ],
     getReadyQuestions: [
-      [{ prompt: "Easy or difficult?", support: ["Easy.", "Difficult."] }],
-      [
-        {
-          prompt: "Is the job stressful?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "Is this job interesting?",
-          support: ["Yes, it is.", "No, it isn’t."],
-        },
-      ],
+      [{ prompt: "Rewarding or stressful?", support: ["Rewarding.", "Stressful."] }],
+      [{ prompt: "Interesting or difficult?", support: ["Interesting.", "Difficult."] }]
     ],
   },
   {
@@ -394,14 +236,8 @@ const seeds: readonly LessonSeed[] = [
       "I don't have any rice.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What food can you see?", support: ["I can see …"] }],
-      [
-        {
-          prompt: "Is there any milk?",
-          support: ["Yes, there is.", "No, there isn’t."],
-        },
-      ],
-      [{ prompt: "What do we need?", support: ["We need …"] }],
+      [{ prompt: "Milk or juice?", support: ["Milk.", "Juice."] }],
+      [{ prompt: "Tomatoes or rice?", support: ["Tomatoes.", "Rice."] }]
     ],
   },
   {
@@ -414,19 +250,8 @@ const seeds: readonly LessonSeed[] = [
       "He never drinks coffee.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Do you eat breakfast every day?",
-          support: ["Yes, I do.", "No, I don’t."],
-        },
-      ],
-      [
-        {
-          prompt: "Do you cook at home?",
-          support: ["I usually …", "I never …"],
-        },
-      ],
-      [{ prompt: "What do you drink in the morning?", support: ["I drink …"] }],
+      [{ prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] }],
+      [{ prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] }]
     ],
   },
   {
@@ -439,14 +264,8 @@ const seeds: readonly LessonSeed[] = [
       "Yes, I watch it every weekend.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What sport is this?", support: ["It’s …"] }],
-      [
-        {
-          prompt: "Do you play this sport?",
-          support: ["Yes, I do.", "No, I don’t."],
-        },
-      ],
-      [{ prompt: "What sports do you watch?", support: ["I watch …"] }],
+      [{ prompt: "Volleyball, tennis, or soccer?", support: ["Volleyball.", "Tennis.", "Soccer."] }],
+      [{ prompt: "Player or fan?", support: ["A player.", "A fan."] }]
     ],
   },
   {
@@ -459,14 +278,8 @@ const seeds: readonly LessonSeed[] = [
       "No, I can't.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Can she dance?",
-          support: ["Yes, she can.", "No, she can’t."],
-        },
-      ],
-      [{ prompt: "What can he do?", support: ["He can …"] }],
-      [{ prompt: "What can you do well?", support: ["I can …"] }],
+      [{ prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] }],
+      [{ prompt: "Music or art?", support: ["Music.", "Art."] }]
     ],
   },
   {
@@ -479,19 +292,8 @@ const seeds: readonly LessonSeed[] = [
       "No, I'm going to stay home.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Home or movie theater?",
-          support: ["Home.", "Movie theater."],
-        },
-      ],
-      [{ prompt: "What is she going to do?", support: ["She’s going to …"] }],
-      [
-        {
-          prompt: "What are you going to do tonight?",
-          support: ["I’m going to …"],
-        },
-      ],
+      [{ prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] }],
+      [{ prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] }]
     ],
   },
   {
@@ -504,24 +306,8 @@ const seeds: readonly LessonSeed[] = [
       "Our friends and family are coming.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "How are they going to celebrate?",
-          support: ["They’re going to …"],
-        },
-      ],
-      [
-        {
-          prompt: "Who is going to come?",
-          support: ["Friends.", "Family.", "Both."],
-        },
-      ],
-      [
-        {
-          prompt: "Do you like big or small parties?",
-          support: ["Big parties.", "Small parties."],
-        },
-      ],
+      [{ prompt: "Friends or family?", support: ["Friends.", "Family."] }],
+      [{ prompt: "Cake or fireworks?", support: ["Cake.", "Fireworks."] }]
     ],
   },
   {
@@ -534,19 +320,8 @@ const seeds: readonly LessonSeed[] = [
       "My back hurts.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What’s wrong?", support: ["A headache.", "A backache."] }],
-      [
-        {
-          prompt: "Does she feel well?",
-          support: ["Yes, she does.", "No, she doesn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "What do you do when you feel sick?",
-          support: ["I rest.", "I drink water."],
-        },
-      ],
+      [{ prompt: "Cold or sore throat?", support: ["A cold.", "A sore throat."] }],
+      [{ prompt: "Headache or fever?", support: ["A headache.", "A fever."] }]
     ],
   },
   {
@@ -559,19 +334,8 @@ const seeds: readonly LessonSeed[] = [
       "Don't go to work today.",
     ],
     getReadyQuestions: [
-      [{ prompt: "Water or medicine?", support: ["Water.", "Medicine."] }],
-      [
-        {
-          prompt: "What is the advice?",
-          support: ["Get some rest.", "Go to work."],
-        },
-      ],
-      [
-        {
-          prompt: "Good advice or bad advice?",
-          support: ["Good advice.", "Bad advice."],
-        },
-      ],
+      [{ prompt: "Tea or water?", support: ["Tea.", "Water."] }],
+      [{ prompt: "Rest or exercise?", support: ["Rest.", "Exercise."] }]
     ],
   },
   {
@@ -584,19 +348,8 @@ const seeds: readonly LessonSeed[] = [
       "The pharmacy is next to the supermarket.",
     ],
     getReadyQuestions: [
-      [{ prompt: "What places can you see?", support: ["I can see a …"] }],
-      [
-        {
-          prompt: "Where is the pharmacy?",
-          support: ["Next to …", "Across from …"],
-        },
-      ],
-      [
-        {
-          prompt: "Where do you buy a charger?",
-          support: ["At an electronics store."],
-        },
-      ],
+      [{ prompt: "Drugstore or bookstore?", support: ["A drugstore.", "A bookstore."] }],
+      [{ prompt: "Next to or between?", support: ["Next to.", "Between."] }]
     ],
   },
   {
@@ -610,8 +363,7 @@ const seeds: readonly LessonSeed[] = [
     ],
     getReadyQuestions: [
       [{ prompt: "Left or right?", support: ["Left.", "Right."] }],
-      [{ prompt: "Where is the station?", support: ["It’s …"] }],
-      [{ prompt: "How do I get there?", support: ["Go straight.", "Turn …"] }],
+      [{ prompt: "Straight or turn?", support: ["Straight.", "Turn."] }]
     ],
   },
   {
@@ -624,14 +376,8 @@ const seeds: readonly LessonSeed[] = [
       "I stayed home and relaxed.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "What did she do?",
-          support: ["She visited …", "She stayed …"],
-        },
-      ],
-      [{ prompt: "Home or concert?", support: ["Home.", "A concert."] }],
-      [{ prompt: "What did you do last weekend?", support: ["I …"] }],
+      [{ prompt: "Picnic or concert?", support: ["A picnic.", "A concert."] }],
+      [{ prompt: "Yesterday or today?", support: ["Yesterday.", "Today."] }]
     ],
   },
   {
@@ -644,19 +390,8 @@ const seeds: readonly LessonSeed[] = [
       "We stayed at a small hotel.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Where was the vacation?",
-          support: ["At the beach.", "In the city."],
-        },
-      ],
-      [
-        {
-          prompt: "Did they enjoy it?",
-          support: ["Yes, they did.", "No, they didn’t."],
-        },
-      ],
-      [{ prompt: "Where did they stay?", support: ["They stayed at …"] }],
+      [{ prompt: "Beach or city?", support: ["The beach.", "The city."] }],
+      [{ prompt: "By plane or by bus?", support: ["By plane.", "By bus."] }]
     ],
   },
   {
@@ -669,9 +404,8 @@ const seeds: readonly LessonSeed[] = [
       "We were a big family.",
     ],
     getReadyQuestions: [
-      [{ prompt: "Child or adult?", support: ["A child.", "An adult."] }],
-      [{ prompt: "Where was he born?", support: ["He was born in …"] }],
-      [{ prompt: "What were their jobs?", support: ["They were …"] }],
+      [{ prompt: "A child or an adult?", support: ["A child.", "An adult."] }],
+      [{ prompt: "Brazil or another country?", support: ["Brazil.", "Another country."] }]
     ],
   },
   {
@@ -685,13 +419,7 @@ const seeds: readonly LessonSeed[] = [
     ],
     getReadyQuestions: [
       [{ prompt: "School or work?", support: ["School.", "Work."] }],
-      [{ prompt: "What was her favorite subject?", support: ["It was …"] }],
-      [
-        {
-          prompt: "Did you like school? Why?",
-          support: ["Yes, because …", "No, because …"],
-        },
-      ],
+      [{ prompt: "English or art?", support: ["English.", "Art."] }]
     ],
   },
   {
@@ -704,24 +432,8 @@ const seeds: readonly LessonSeed[] = [
       "Please ask her to call me.",
     ],
     getReadyQuestions: [
-      [
-        {
-          prompt: "Phone call or message?",
-          support: ["A phone call.", "A message."],
-        },
-      ],
-      [
-        {
-          prompt: "Is Julia available?",
-          support: ["Yes, she is.", "No, she isn’t."],
-        },
-      ],
-      [
-        {
-          prompt: "What is the message?",
-          support: ["Please call …", "Please tell …"],
-        },
-      ],
+      [{ prompt: "Phone call or message?", support: ["A phone call.", "A message."] }],
+      [{ prompt: "Available or busy?", support: ["Available.", "Busy."] }]
     ],
   },
   {
@@ -735,13 +447,7 @@ const seeds: readonly LessonSeed[] = [
     ],
     getReadyQuestions: [
       [{ prompt: "Party or dinner?", support: ["A party.", "Dinner."] }],
-      [{ prompt: "Does the person accept?", support: ["Yes.", "No."] }],
-      [
-        {
-          prompt: "Invite a classmate.",
-          support: ["Would you like to …?", "Do you want to …?"],
-        },
-      ],
+      [{ prompt: "Coffee or a movie?", support: ["Coffee.", "A movie."] }]
     ],
   },
 ];
@@ -1163,12 +869,14 @@ const createLesson = ({
       type: "get-ready",
       slug: "get-ready",
       label: "Get ready",
-      slides: phrases.slice(0, 3).map((quote, index) => ({
-        image: "",
-        audio: "",
-        quote,
-        questions: getReadyQuestions[index] ?? [],
-      })),
+      slides: [
+        {
+          image: "",
+          audio: false,
+          quote: "",
+          questions: getReadyQuestions.flat(),
+        },
+      ],
     },
     {
       type: "listen",

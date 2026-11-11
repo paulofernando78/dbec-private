@@ -71,7 +71,7 @@ const RadioComponent = ({
   };
 
   return (
-    <div className={["mb-4", className].filter(Boolean).join(" ")}>
+    <div className={[className].filter(Boolean).join(" ")}>
       {instruction && <p className="mb-4 font-bold">{instruction}</p>}
       {questions.map((q, qIndex) => (
         <div
@@ -167,7 +167,7 @@ const RadioComponent = ({
       )}
 
       {scoredQuestions.length > 0 && (
-        <div className="mt-4 flex gap-2 mb-2">
+        <div className="mt-4 flex gap-2">
           <Button variant="check" icon={<Check />} onClick={handleCheck} />
           <Button variant="reset" icon={<RotateCcw />} onClick={handleReset} />
         </div>

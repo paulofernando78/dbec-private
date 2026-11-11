@@ -187,7 +187,7 @@ export function GetReadyStep({ data }: { data: GetReadyData }) {
   };
 
   return (
-    <div className="rounded-2xl bg(--surface)] p-4 pb-5.5">
+    <div className="rounded-2xl bg-(--surface) p-4 pb-5.5">
       <h3 className="mb-4 text-lg font-bold">Look at the picture.</h3>
       <div className="relative">
         <div

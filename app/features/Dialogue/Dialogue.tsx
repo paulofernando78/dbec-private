@@ -73,7 +73,7 @@ export const Dialogue = ({
   );
 
   return (
-    <div className="space-y-4 mb-4">
+    <div className="space-y-4 mb-0.5">
       <div className="flex items-center gap-2">
         <b><InlineRichContent value={instruction}/></b>
       </div>

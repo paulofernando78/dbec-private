@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
+          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
+          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
+          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
         ],
       },
 

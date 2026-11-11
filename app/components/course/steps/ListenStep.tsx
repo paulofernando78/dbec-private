@@ -66,7 +66,7 @@ export function ListenStep({ data }: { data: ListenData }) {
         />
       </section>
 
-      <section className="rounded-xl bg-[var(--background)] p-4">
+      <section className="rounded-xl bg-(--background) p-4">
         <div>
           {data.followUpInstruction && (
             <h4 className="mb-2 font-bold">{data.followUpInstruction}</h4>
@@ -130,7 +130,7 @@ export function ListenStep({ data }: { data: ListenData }) {
           </div>
 
           {showExtraConversation && (
-            <div className="mt-4 space-y-3 rounded-xl bg-[var(--surface)] p-4">
+            <div className="mt-4 space-y-3 rounded-xl bg-(--surface) p-4">
               {data.extraDialogue.dialogue.map(([speaker, line], index) => (
                 <p key={`${speaker}-${index}`}>
                   <b className="rounded-lg border border-gray-400 px-1 py-1">

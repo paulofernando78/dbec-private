@@ -5,7 +5,7 @@ export const listen = {
   type: "listen",
   slug: "listen",
   label: "Listen",
-  instruction: "First listen: Pedro is in Brazil and Eric is in England. Listen for the topic.",
+  instruction: "Listen to Pedro in Brazil and Eric in England. Listen for the topic.",
   image:
     "/media/images/course/a1/unit-5/lesson-1-what-time-is-it-there/listen/pedro-eric-phone-call.avif?v=3",
   imageAlt:

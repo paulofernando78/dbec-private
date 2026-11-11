@@ -5,7 +5,7 @@ export const listen = {
   type: "listen",
   slug: "listen",
   label: "Listen",
-  instruction: "First listen: two coworkers and missing office items. Listen for the situation.",
+  instruction: "Listen to a conversation between two coworkers about missing office items. Listen for the situation.",
   image:
     "/media/images/course/a1/unit-2/lesson-2-where-is-it/listen/eric-pedro-office-conversation.avif?v=1",
   imageAlt: "Pedro and Eric talking beside a desk while looking for office items.",

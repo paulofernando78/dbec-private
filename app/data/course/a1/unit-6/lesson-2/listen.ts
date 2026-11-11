@@ -5,7 +5,7 @@ export const listen = {
   type: "listen",
   slug: "listen",
   label: "Listen",
-  instruction: "First listen: Sara talks about a weekday. Listen for her wake-up time.",
+  instruction: "Listen to Sara talk about a weekday. Listen for her wake-up time.",
   audio: "/media/audio/course/a1/unit-6/lesson-2-every-day/listen/listen.mp3",
   dialogue: [
     ["A", [mark("What time do you get up"), ", Sara?"]],

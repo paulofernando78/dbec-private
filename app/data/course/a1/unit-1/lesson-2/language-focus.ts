@@ -9,23 +9,6 @@ export const languageFocus = {
   component: TheNumbers,
   instruction:
     "Listen, repeat, and notice four useful expressions for exchanging contact information.",
-  visuals: [
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/phone-number.avif?v=1",
-      caption: "What’s your phone number?",
-    },
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/email.avif?v=2",
-      caption: "Here’s my card.",
-    },
-    {
-      image:
-        "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/goodbye.avif?v=1",
-      caption: "Goodbye. See you soon.",
-    },
-  ],
   items: [
     [
       [bold("What’s your phone number"), "?"],
@@ -35,6 +18,12 @@ export const languageFocus = {
       undefined,
       "Qual é o seu número de telefone?",
       "Phone number",
+      [
+        {
+          image: "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/phone-number.avif?v=1",
+          caption: "What’s your phone number?",
+        },
+      ],
     ],
     [
       [bold("It’s"), " 5510-8246."],
@@ -44,6 +33,7 @@ export const languageFocus = {
       undefined,
       "É 5510-8246.",
       "Phone number",
+      undefined,
     ],
     [
       [bold("What’s your email address"), "? — It’s sofia@example.com."],
@@ -53,6 +43,12 @@ export const languageFocus = {
       undefined,
       "Qual é o seu endereço de e-mail? — É sofia@example.com.",
       "Email address",
+      [
+        {
+          image: "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/email.avif?v=2",
+          caption: "Here’s my card.",
+        },
+      ],
     ],
     [
       [bold("Goodbye"), ". — ", bold("See you soon"), "."],
@@ -62,6 +58,12 @@ export const languageFocus = {
       undefined,
       "Tchau. — Até logo.",
       "Ending the conversation",
+      [
+        {
+          image: "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/goodbye.avif?v=1",
+          caption: "Goodbye. See you soon.",
+        },
+      ],
     ],
   ],
 } satisfies LanguageFocusData;

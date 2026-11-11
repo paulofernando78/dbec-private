@@ -4,6 +4,7 @@ import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
 import type { LanguageFocusData } from "@/data/course/lesson-step-types";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GrammarTopicCards } from "@/features/Grammar";
 import { VocabularyTopicCards } from "@/features/Vocabulary";
 
@@ -310,41 +311,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
   const usesPortugueseSupport = data.supportLanguage === "pt-BR";
 
   return (
-    <div className="rounded-2xl bg-(--surface) p-4">
-      {data.visuals?.length ? (
-        <section className="mb-6" aria-label="Target language visuals">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {data.visuals.map(({ image, caption, audio }) => (
-              <figure
-                key={`${image}-${caption}`}
-                className="overflow-hidden rounded-xl bg-(--background)"
-              >
-                <img
-                  src={image}
-                  alt={caption}
-                  className="aspect-video w-full object-cover"
-                />
-                {caption ? (
-                  <figcaption className="flex items-center gap-2 p-3 font-semibold">
-                    {audio ? (
-                      <Audio
-                        asButton
-                        ariaLabel={`Play ${caption}`}
-                        src={audio}
-                        fallbackText={caption}
-                        speechLang="en-US"
-                        className="stroke-0!"
-                        wrapperClassName="shrink-0"
-                      />
-                    ) : null}
-                    <span>{caption}</span>
-                  </figcaption>
-                ) : null}
-              </figure>
-            ))}
-          </div>
-        </section>
-      ) : null}
+    <div className="rounded-2xl p-4">
       <div
         className="mb-4 flex gap-2"
         aria-label="Pronunciation and translation options"
@@ -389,7 +356,19 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
 
       <div className="grid gap-4">
         {data.items.map(
-          ([title, meaning, pronunciation, form, audio, translationPt, group], index) => {
+          (
+            [
+              title,
+              meaning,
+              pronunciation,
+              form,
+              audio,
+              translationPt,
+              group,
+              itemVisuals,
+            ],
+            index,
+          ) => {
             const previousGroup = index > 0 ? data.items[index - 1]?.[6] : undefined;
             const titleText =
               typeof title === "string"
@@ -402,7 +381,9 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
             const audioSource = audio?.[accent] ?? titleText;
             const speechLang = accent === "uk" ? "en-GB" : "en-US";
             const formBlocks: FormBlock[] =
-              typeof form === "string"
+              !form
+                ? []
+                : typeof form === "string"
                 ? buildLegacyFormBlocks(form, titleText)
                 : form.map(({ columns }) => ({ kind: "table", columns }));
 
@@ -411,10 +392,33 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                 {group && group !== previousGroup && (
                   <h4 className="text-lg font-black">{group}</h4>
                 )}
-                <article className="space-y-4 rounded-xl bg-white p-4 shadow-sm dark:bg-slate-900">
+                <article className="space-y-4 rounded-xl bg-(--surface) p-4 shadow-sm">
+                  <div className="overflow-hidden rounded-xl">
+                    {itemVisuals?.[0] ? (
+                      <img
+                        src={itemVisuals[0].image}
+                        alt={itemVisuals[0].caption}
+                        className="aspect-video w-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="relative grid aspect-video place-items-center rounded-xl bg-[#d0dbe8] px-16 text-center text-sm font-bold tracking-wide text-[#647b99]"
+                        role="img"
+                        aria-label={`Image placeholder ${index + 1}`}
+                      >
+                        <span>IMAGE PLACEHOLDER {index + 1}</span>
+                        <span className="absolute left-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
+                          <ChevronLeft aria-hidden="true" />
+                        </span>
+                        <span className="absolute right-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
+                          <ChevronRight aria-hidden="true" />
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 <div>
-                  <h4 className="text-xl font-normal">
-                    {titleText}
+                  <h4 className="text-xl font-semibold">
+                    <InlineRichContent value={title} />
                     {showPortuguese && translationPt ? (
                       <span className="font-normal text-gray-500">
                         {" "}
@@ -423,43 +427,48 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                     ) : null}
                   </h4>
                 </div>
-                <section>
-                  <h5
-                    className={`mb-1 font-black ${usesPortugueseSupport ? "text-gray-500" : ""}`}
-                  >
-                    {usesPortugueseSupport ? "Significado" : "Meaning"}
-                  </h5>
-                  <p className={usesPortugueseSupport ? "text-gray-500" : ""}>
-                    {meaning}
-                  </p>
-                </section>
-                <section>
-                  <h5
-                    className={`mb-1 font-black ${usesPortugueseSupport ? "text-gray-500" : ""}`}
-                  >
-                    {usesPortugueseSupport ? "Pronúncia" : "Pronunciation"}
-                  </h5>
-                  <div className="flex items-center gap-3">
-                    <Audio
-                      asButton
-                      ariaLabel={`Play ${titleText}`}
-                      key={`${accent}-${audioSource}`}
-                      src={audioSource}
-                      fallbackText={titleText}
-                      speechLang={speechLang}
-                      className="stroke-0!"
-                      wrapperClassName="shrink-0"
-                    />
-                    <p className="text-xl leading-7 text-(--text-color)">
-                      {Array.isArray(pronunciation) ? (
-                        <InlineRichContent value={pronunciation} />
-                      ) : (
-                        renderPronunciationModel(titleText, pronunciation)
-                      )}
+                {meaning ? (
+                  <section className="rounded-lg bg-(--background) p-3">
+                    <h5
+                      className={`mb-1 font-black ${usesPortugueseSupport ? "text-gray-500" : ""}`}
+                    >
+                      {usesPortugueseSupport ? "Significado" : "Meaning"}
+                    </h5>
+                    <p className={usesPortugueseSupport ? "text-gray-500" : ""}>
+                      {meaning}
                     </p>
-                  </div>
-                </section>
-                <section className="space-y-3">
+                  </section>
+                ) : null}
+                {pronunciation ? (
+                  <section className="rounded-lg bg-(--background) p-3">
+                    <h5
+                      className={`mb-1 font-black ${usesPortugueseSupport ? "text-gray-500" : ""}`}
+                    >
+                      {usesPortugueseSupport ? "Pronúncia" : "Pronunciation"}
+                    </h5>
+                    <div className="flex items-center gap-3">
+                      <Audio
+                        asButton
+                        ariaLabel={`Play ${titleText}`}
+                        key={`${accent}-${audioSource}`}
+                        src={audioSource}
+                        fallbackText={titleText}
+                        speechLang={speechLang}
+                        className="stroke-0!"
+                        wrapperClassName="shrink-0"
+                      />
+                      <p className="text-xl leading-7 text-(--text-color)">
+                        {Array.isArray(pronunciation) ? (
+                          <InlineRichContent value={pronunciation} />
+                        ) : (
+                          renderPronunciationModel(titleText, pronunciation)
+                        )}
+                      </p>
+                    </div>
+                  </section>
+                ) : null}
+                {formBlocks.length ? (
+                <section className="space-y-3 rounded-lg bg-(--background) p-3">
                   <h5
                     className={`font-black ${usesPortugueseSupport ? "text-gray-500" : ""}`}
                   >
@@ -539,6 +548,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                     );
                   })}
                 </section>
+                ) : null}
                 </article>
               </div>
             );

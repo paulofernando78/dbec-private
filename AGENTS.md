@@ -17,6 +17,7 @@
 
 ## Recurring character continuity
 
+- Use [docs/characters.md](docs/characters.md) as the per-character reference guide, including the generated portrait references. Keep those documentation images in `docs/characters/references/`; they are not lesson assets and must not be uploaded to R2.
 - Treat the following descriptions as the canonical character designs for all future course illustrations. When an existing course image is supplied as an identity reference, preserve these traits even if that reference is imperfect.
 - Pedro always has naturally black, curly hair, dark-brown eyes, warm medium-tan skin, and a rounded friendly face. He is always clean-shaven: do not give him a mustache, goatee, beard, chin hair, or visible beard shadow. His expressions and posture are open, energetic, and relaxed. A green cap is appropriate in casual outdoor scenes, but it is not mandatory in every context.
 - Eric must remain immediately distinguishable from Pedro. Eric has light-brown, slightly wavy hair—never black—blue-green eyes, fair skin with a subtle cool undertone, a longer and narrower face, finer cheekbones, a straighter and narrower nose, and a neat close-trimmed medium-brown beard that is less full than Pedro's.

@@ -40,6 +40,10 @@ const words = (sentence: string) => sentence.split(" ");
 const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
   const unitData = c1.units[unit - 1];
   const lessonData = unitData.lessons[lesson - 1];
+  const leadInSlug = lessonData.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
   const lessonObjective = lessonData.description.replace(
     /^By the end of this lesson, students will be (?:better )?able to /,
     "",
@@ -50,7 +54,17 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
       type: "get-ready",
       slug: "get-ready",
       label: "Get ready",
-      slides: phrases.slice(0, 3).map((quote) => ({ image: "", audio: "", quote })),
+      slides: [
+        {
+          image: `/media/images/course/c1/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
+          audio: false,
+          quote: "",
+          questions: [
+            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
+            { prompt: "What do you think is happening?", support: ["I think ..."] },
+          ],
+        },
+      ],
     },
     {
       type: "listen",

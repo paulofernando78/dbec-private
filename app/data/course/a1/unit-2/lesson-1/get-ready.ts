@@ -14,10 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What can you see in the picture?",
-            support: ["I can see ..."],
-          },
+          { prompt: "One object or several?", support: ["One object.", "Several objects."] },
+          { prompt: "Desk item or personal item?", support: ["A desk item.", "A personal item."] },
         ],
       },
 

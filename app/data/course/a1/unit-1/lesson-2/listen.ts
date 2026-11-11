@@ -6,9 +6,9 @@ export const listen = {
   slug: "listen",
   label: "Listen",
   instruction:
-    "First listen: Laura and Eric exchange contact information.",
+    "Listen to Laura and Eric exchange contact information.",
   image:
-    "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/listen/contact-information.avif?v=1",
+    "/media/images/course/a1/unit-1/lesson-2-stay-in-touch/listen/contact-information.avif?v=2",
   imageAlt: "Laura watches as Eric saves her contact information on his phone",
   audio: "/media/audio/course/a1/unit-1/lesson-2-stay-in-touch/listen/listen.mp3",
   dialogue: [

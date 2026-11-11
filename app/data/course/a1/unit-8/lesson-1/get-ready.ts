@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
+          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
+          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
+          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
         ],
       },
 

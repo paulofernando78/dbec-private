@@ -74,9 +74,10 @@ export type LanguageFocusData = StepExtension & {
   }[];
   items: readonly (readonly [
     title: RichContent | string,
-    meaning: string,
-    pronunciation: RichContent | string,
+    meaning: string | undefined,
+    pronunciation: RichContent | string | undefined,
     form:
+      | undefined
       | string
       | readonly {
           columns: readonly {
@@ -87,6 +88,11 @@ export type LanguageFocusData = StepExtension & {
     audio?: { us?: string; uk?: string },
     translationPt?: string,
     group?: string,
+    visuals?: readonly {
+      image: string;
+      caption: string;
+      audio?: string;
+    }[],
   ])[];
 };
 

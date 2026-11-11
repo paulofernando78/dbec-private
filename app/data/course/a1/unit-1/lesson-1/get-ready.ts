@@ -11,18 +11,12 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Hello or hi?", support: ["Hello.", "Hi."] },
+          { prompt: "First meeting or goodbye?", support: ["First meeting.", "Goodbye."] },
         ],
       },
 
-      image: "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif?v=2",
+      image: "/media/images/course/a1/unit-1/lesson-1-hello/get-ready/characters-together.avif?v=2",
       },
   ],
 } satisfies GetReadyData;

@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Beach or city?", support: ["The beach.", "The city."] },
+          { prompt: "By plane or by bus?", support: ["By plane.", "By bus."] },
         ],
       },
 

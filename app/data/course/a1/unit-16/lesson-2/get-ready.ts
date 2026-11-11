@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Party or dinner?", support: ["A party.", "Dinner."] },
+          { prompt: "Coffee or a movie?", support: ["Coffee.", "A movie."] },
         ],
       },
 

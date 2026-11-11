@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
+          { prompt: "Music or art?", support: ["Music.", "Art."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Music or art?", support: ["Music.", "Art."] },
+          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
+          { prompt: "Music or art?", support: ["Music.", "Art."] },
         ],
       },
 

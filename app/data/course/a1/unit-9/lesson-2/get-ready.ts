@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
+          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
+          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
+          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
         ],
       },
 

@@ -16,14 +16,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "On the desk or under the chair?", support: ["On the desk.", "Under the chair."] },
+          { prompt: "Phone or keys?", support: ["A phone.", "Keys."] },
         ],
       },
 

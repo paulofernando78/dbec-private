@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
+          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
+          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
+          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
         ],
       },
 

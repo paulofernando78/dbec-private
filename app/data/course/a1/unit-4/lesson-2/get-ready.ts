@@ -14,14 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
+          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
         ],
       },
 
@@ -33,14 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
+          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
         ],
       },
 
@@ -52,14 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
-          },
-          {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
-          },
+          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
+          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
         ],
       },
 
