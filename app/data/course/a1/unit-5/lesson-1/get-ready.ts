@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
+          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
+          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
-          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
+          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
+          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Seven or nine o’clock?", support: ["Seven o’clock.", "Nine o’clock."] },
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
+          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
+          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
         ],
       },
 

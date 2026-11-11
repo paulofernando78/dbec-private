@@ -43,6 +43,41 @@ const seeds: readonly LessonSeed[] = [
   { unit: 16, lesson: 2, phrases: ["Leo said that he was changing jobs.", "He told me that the new role was more challenging.", "Did he say when he would start?", "Yes, he said he would start the following Monday."] },
 ];
 
+const getReadyDiscuss: Record<string, readonly [string, string]> = {
+  "1/1": ["Which details in the picture could help someone ask about the people's past?", "What past question would you ask first, and what answer might you expect?"],
+  "1/2": ["What childhood memory might the person be describing?", "Which object or expression in the picture gives you an idea?"],
+  "2/1": ["What city problem can you spot, and who might it affect most?", "Which public service could help improve this situation?"],
+  "2/2": ["What information does the person seem to need?", "How could you ask for that information politely and clearly?"],
+  "3/1": ["Which home would better fit the people in the picture? Use two visible clues.", "What might be too small, too far, or convenient enough for them?"],
+  "3/2": ["What change does the person seem to wish for?", "Which part of the scene might explain why they want things to be different?"],
+  "4/1": ["What experience might the people be sharing from the photos?", "What detail could tell you when it happened?"],
+  "4/2": ["What dish are the people preparing, and what step might come next?", "Which ingredients or tools can you identify in the picture?"],
+  "5/1": ["What future plan might the people be discussing?", "Which clue suggests whether it is already decided or still a possibility?"],
+  "5/2": ["What travel problem might the person be preparing for?", "Which two pieces of advice would be most useful before this trip?"],
+  "6/1": ["What request could someone make in this situation?", "What action would the other person take to respond?"],
+  "6/2": ["What polite request would make sense in this setting?", "How could the listener agree while sounding considerate?"],
+  "7/1": ["What might the tool or app be used for? Point to a clue.", "What other everyday task could it help someone do?"],
+  "7/2": ["What problem might the person be trying to solve?", "Which suggestion would you try first, and what should happen after that?"],
+  "8/1": ["What celebration might be taking place, and when does it happen?", "Which details make this event feel special to the people there?"],
+  "8/2": ["What custom might the people be following?", "At what point in a visit or ceremony might this happen?"],
+  "9/1": ["What can you infer about this person's past, present, and next step?", "Which detail suggests a change over time?"],
+  "9/2": ["What unexpected situation might the person be thinking about?", "What could happen next if their concern becomes real?"],
+  "10/1": ["What skill might be important for the work shown?", "Which visible action or tool suggests that skill?"],
+  "10/2": ["What kind of job might suit this person?", "Which detail in the scene would influence their choice?"],
+  "11/1": ["What landmark or artwork can you identify?", "Who might have created it, and what clue suggests its purpose?"],
+  "11/2": ["What feature of this country stands out in the picture?", "What would you tell a visitor about this place?"],
+  "12/1": ["What event might have happened just before this moment?", "Which detail separates the main event from the background activity?"],
+  "12/2": ["What have the people been doing recently?", "What clues show how long they have been doing it?"],
+  "13/1": ["What kind of story or program is the person watching?", "Would you describe it as exciting, relaxing, or surprising? Why?"],
+  "13/2": ["What movie or entertainment story might these people be discussing?", "Which person or detail would you ask them to explain?"],
+  "14/1": ["What message might this gesture communicate?", "How certain are you, and what clue helps you interpret it?"],
+  "14/2": ["What rule does the sign communicate?", "What are people allowed, required, or not allowed to do here?"],
+  "15/1": ["What choice might someone face in this situation?", "What would you do, and what detail in the picture affects your decision?"],
+  "15/2": ["What might the person wish they had done differently?", "What could have prevented the problem shown?"],
+  "16/1": ["What excuse or request might the person be making on the phone?", "What would you need to know before responding?"],
+  "16/2": ["What message might one person be reporting to someone else?", "Which details should they repeat exactly to avoid changing the meaning?"],
+};
+
 const words = (sentence: string) => sentence.split(" ");
 
 const outcomes: Record<string, string> = {
@@ -233,10 +268,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           image: `/media/images/course/a2-b1/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
           audio: false,
           quote: "",
-          questions: [
-            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
-            { prompt: "What do you think is happening?", support: ["I think ..."] },
-          ],
+          discuss: {
+            interaction: ["pairs", "teacher-class"],
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+          },
         },
       ],
     },

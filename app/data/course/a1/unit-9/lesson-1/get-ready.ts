@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Milk or juice?", support: ["Milk.", "Juice."] },
-          { prompt: "Tomatoes or rice?", support: ["Tomatoes.", "Rice."] },
+          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
+          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tomatoes or rice?", support: ["Tomatoes.", "Rice."] },
-          { prompt: "Milk or juice?", support: ["Milk.", "Juice."] },
+          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
+          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Milk or juice?", support: ["Milk.", "Juice."] },
-          { prompt: "Tomatoes or rice?", support: ["Tomatoes.", "Rice."] },
+          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
+          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
         ],
       },
 

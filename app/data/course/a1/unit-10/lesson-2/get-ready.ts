@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
-          { prompt: "Music or art?", support: ["Music.", "Art."] },
+          { prompt: "What talent is each person showing?", support: ["They can ..."] },
+          { prompt: "What are you able to do well?", support: ["I can ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Music or art?", support: ["Music.", "Art."] },
-          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
+          { prompt: "What talent is each person showing?", support: ["They can ..."] },
+          { prompt: "What are you able to do well?", support: ["I can ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Dance, guitar, or drawing?", support: ["Dance.", "Guitar.", "Drawing."] },
-          { prompt: "Music or art?", support: ["Music.", "Art."] },
+          { prompt: "What talent is each person showing?", support: ["They can ..."] },
+          { prompt: "What are you able to do well?", support: ["I can ..."] },
         ],
       },
 

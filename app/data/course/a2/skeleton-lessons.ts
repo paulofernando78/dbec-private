@@ -43,6 +43,41 @@ const seeds: readonly LessonSeed[] = [
   { unit: 16, lesson: 2, phrases: ["I plan to study engineering.", "I'd like to work abroad.", "Do you hope to travel next year?", "Yes, I want to visit Canada."] },
 ];
 
+const getReadyDiscuss: Record<string, readonly [string, string]> = {
+  "1/1": ["What clues show these people are meeting for the first time?", "What could each person ask to find something they have in common?"],
+  "1/2": ["What might these students have in common?", "How could one person politely join this conversation?"],
+  "2/1": ["What job could the person in this setting have? Which detail gives you a clue?", "What would you ask to learn where this person works?"],
+  "2/2": ["Which person seems busiest, and what in the picture suggests that?", "When might these people have time to meet? Give a reason."],
+  "3/1": ["Which item would you choose if you had a limited budget? Why?", "What details might help you compare the prices of these products?"],
+  "3/2": ["Which jacket seems more practical for this situation? What makes you think so?", "What could make someone prefer the other jacket?"],
+  "4/1": ["What kind of entertainment are these people enjoying? What clues do you see?", "Would you choose the same show or movie? Why?"],
+  "4/2": ["What activity might these people be inviting someone to do?", "What could make one person accept or politely decline?"],
+  "5/1": ["What are the family members doing in this moment?", "Which activity might be temporary, and what detail suggests that?"],
+  "5/2": ["What details suggest how big this family or group is?", "What might be enjoyable or challenging about a gathering like this?"],
+  "6/1": ["Which activity in the picture would you choose for your weekly routine?", "What equipment or setting clues tell you how the activity is done?"],
+  "6/2": ["What kind of exercise are the people doing, and how can you tell?", "How often do you think they do it? What in the picture supports your guess?"],
+  "7/1": ["What do you think these people did before this moment?", "Which detail could help them tell the story of their weekend?"],
+  "7/2": ["Where might these people be on vacation? What clues point to that place?", "How would you describe the weather and what could they do there?"],
+  "8/1": ["Which useful places can you identify in this neighborhood?", "Where would you go first, and how would you explain the location?"],
+  "8/2": ["What makes this neighborhood convenient or inconvenient?", "Which details about traffic, shops, or services support your opinion?"],
+  "9/1": ["How would you describe the person so a partner could identify them?", "Which two visible details are the most useful clues?"],
+  "9/2": ["Choose one person in the picture and describe where they are and what they are doing.", "What detail would help someone distinguish that person from the others?"],
+  "10/1": ["What activities on the screen seem completed, and which may still be left to do?", "What would you ask to find out whether someone has done them yet?"],
+  "10/2": ["What experience might these people be remembering or sharing?", "What follow-up question would help you learn when or where it happened?"],
+  "11/1": ["What place might this person recommend to a visitor?", "What would make the place interesting, and what detail in the picture supports your guess?"],
+  "11/2": ["What might this person be deciding where to visit?", "What advice would you give a visitor, and why?"],
+  "12/1": ["What health problem might the person be describing? Which clue suggests it?", "What helpful next step could someone recommend?"],
+  "12/2": ["What might the customer be asking the pharmacist for?", "Which details would help the pharmacist recommend the right product?"],
+  "13/1": ["Which food do you think each person likes? What clues do you notice?", "How could two people with different tastes choose a meal together?"],
+  "13/2": ["What are the people ordering or serving?", "What would you ask before choosing something from this menu?"],
+  "14/1": ["Which place or landmark can you recognize, and what tells you where it is?", "What comparison could you make between two places in the picture?"],
+  "14/2": ["What places are being compared on the map or screen?", "Which distance or measurement would be useful to know before traveling?"],
+  "15/1": ["What plans or appointments can you find on the calendar?", "Which time could work for everyone to meet? Explain your choice."],
+  "15/2": ["What information might one person need to pass on to someone else?", "How could you make sure the message is accurate and complete?"],
+  "16/1": ["What change might be happening in these people's lives?", "Which detail suggests how they feel about this new chapter?"],
+  "16/2": ["What future goal might this person be planning for?", "What is one useful question to learn how they hope to reach it?"],
+};
+
 const words = (sentence: string) => sentence.split(" ");
 
 const ccqs: Record<string, readonly {
@@ -269,10 +304,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           image: `/media/images/course/a2/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
           audio: false,
           quote: "",
-          questions: [
-            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
-            { prompt: "What do you think is happening?", support: ["I think ..."] },
-          ],
+          discuss: {
+            interaction: ["pairs", "teacher-class"],
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+          },
         },
       ],
     },

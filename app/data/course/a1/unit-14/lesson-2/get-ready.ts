@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Beach or city?", support: ["The beach.", "The city."] },
-          { prompt: "By plane or by bus?", support: ["By plane.", "By bus."] },
+          { prompt: "Where did the people go on vacation?", support: ["They went to ..."] },
+          { prompt: "How did they travel, and what might they do there?", support: ["They went by ... and ..."] },
         ],
       },
 

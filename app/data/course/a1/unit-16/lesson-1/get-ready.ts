@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
-          { prompt: "Available or busy?", support: ["Available.", "Busy."] },
+          { prompt: "Why might Laura have missed a call?", support: ["She might have been ..."] },
+          { prompt: "What information should she leave in a clear message?", support: ["She should say ..."] },
         ],
       },
 

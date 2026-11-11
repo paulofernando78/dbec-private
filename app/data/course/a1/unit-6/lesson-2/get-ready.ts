@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Seven or eight o’clock?", support: ["Seven o’clock.", "Eight o’clock."] },
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
+          { prompt: "What daily activity is the person doing?", support: ["They are ..."] },
+          { prompt: "When do you usually do this activity?", support: ["I usually ... in the ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
-          { prompt: "Seven or eight o’clock?", support: ["Seven o’clock.", "Eight o’clock."] },
+          { prompt: "What daily activity is the person doing?", support: ["They are ..."] },
+          { prompt: "When do you usually do this activity?", support: ["I usually ... in the ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Seven or eight o’clock?", support: ["Seven o’clock.", "Eight o’clock."] },
-          { prompt: "Morning or evening?", support: ["Morning.", "Evening."] },
+          { prompt: "What daily activity is the person doing?", support: ["They are ..."] },
+          { prompt: "When do you usually do this activity?", support: ["I usually ... in the ..."] },
         ],
       },
 

@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Friends or family?", support: ["Friends.", "Family."] },
-          { prompt: "Cake or fireworks?", support: ["Cake.", "Fireworks."] },
+          { prompt: "What celebration is happening in these scenes?", support: ["They are celebrating ..."] },
+          { prompt: "How did the guest arrive, and what might happen next?", support: ["They arrived by ...; next, ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Cake or fireworks?", support: ["Cake.", "Fireworks."] },
-          { prompt: "Friends or family?", support: ["Friends.", "Family."] },
+          { prompt: "What celebration is happening in these scenes?", support: ["They are celebrating ..."] },
+          { prompt: "How did the guest arrive, and what might happen next?", support: ["They arrived by ...; next, ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Friends or family?", support: ["Friends.", "Family."] },
-          { prompt: "Cake or fireworks?", support: ["Cake.", "Fireworks."] },
+          { prompt: "What celebration is happening in these scenes?", support: ["They are celebrating ..."] },
+          { prompt: "How did the guest arrive, and what might happen next?", support: ["They arrived by ...; next, ..."] },
         ],
       },
 

@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tea or water?", support: ["Tea.", "Water."] },
-          { prompt: "Rest or exercise?", support: ["Rest.", "Exercise."] },
+          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
+          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rest or exercise?", support: ["Rest.", "Exercise."] },
-          { prompt: "Tea or water?", support: ["Tea.", "Water."] },
+          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
+          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tea or water?", support: ["Tea.", "Water."] },
-          { prompt: "Rest or exercise?", support: ["Rest.", "Exercise."] },
+          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
+          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
         ],
       },
 

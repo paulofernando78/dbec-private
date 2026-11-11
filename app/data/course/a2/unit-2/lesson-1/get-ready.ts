@@ -15,12 +15,12 @@ export const getReady = {
         interaction: ["pairs", "teacher-class"],
         questions: [
           {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
+            prompt: "What job could the person in this setting have? Which detail gives you a clue?",
+            support: ["They could be a ... because ..."],
           },
           {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
+            prompt: "What would you ask to learn where this person works?",
+            support: ["I would ask ..."],
           },
         ],
       },

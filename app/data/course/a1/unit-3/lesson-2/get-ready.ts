@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tall or short?", support: ["Tall.", "Short."] },
-          { prompt: "Friendly or quiet?", support: ["Friendly.", "Quiet."] },
+          { prompt: "How would you describe the person Pedro is pointing to?", support: ["She looks ... and ..."] },
+          { prompt: "Which detail helps you identify the person in the group?", support: ["I think it is ... because ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Friendly or quiet?", support: ["Friendly.", "Quiet."] },
-          { prompt: "Tall or short?", support: ["Tall.", "Short."] },
+          { prompt: "How would you describe the person Pedro is pointing to?", support: ["She looks ... and ..."] },
+          { prompt: "Which detail helps you identify the person in the group?", support: ["I think it is ... because ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tall or short?", support: ["Tall.", "Short."] },
-          { prompt: "Friendly or quiet?", support: ["Friendly.", "Quiet."] },
+          { prompt: "How would you describe the person Pedro is pointing to?", support: ["She looks ... and ..."] },
+          { prompt: "Which detail helps you identify the person in the group?", support: ["I think it is ... because ..."] },
         ],
       },
 

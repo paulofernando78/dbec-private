@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rewarding or stressful?", support: ["Rewarding.", "Stressful."] },
-          { prompt: "Interesting or difficult?", support: ["Interesting.", "Difficult."] },
+          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
+          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Interesting or difficult?", support: ["Interesting.", "Difficult."] },
-          { prompt: "Rewarding or stressful?", support: ["Rewarding.", "Stressful."] },
+          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
+          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rewarding or stressful?", support: ["Rewarding.", "Stressful."] },
-          { prompt: "Interesting or difficult?", support: ["Interesting.", "Difficult."] },
+          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
+          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
         ],
       },
 

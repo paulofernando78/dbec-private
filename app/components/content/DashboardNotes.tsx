@@ -20,7 +20,7 @@ export const DashboardNotes = ({
   activeWriter,
 }: DashboardNotesProps) => {
   return (
-    <div className="flex min-h-[36rem] w-full min-w-0 flex-col rounded-xl bg-(--background) p-4">
+    <div className="flex h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem] w-full min-w-0 flex-col rounded-xl bg-(--background) p-4">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-lg font-bold">{title}</h3>
         {activeWriter ? (

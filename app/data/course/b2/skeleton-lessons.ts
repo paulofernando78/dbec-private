@@ -35,6 +35,33 @@ const seeds: readonly LessonSeed[] = [
   { unit: 12, lesson: 2, phrases: ["If I'd planned the route more carefully, I wouldn't be dealing with this exhausting detour now.", "I'd choose a slower, more environmentally friendly journey if time weren't so limited.", "Had we checked the weather forecast, we'd have packed more suitable clothing.", "For a multi-stop trip, flexible tickets are often worth the additional cost."] },
 ];
 
+const getReadyDiscuss: Record<string, readonly [string, string]> = {
+  "1/1": ["What first impression do the people make through their posture and clothing?", "Which visible behavior gives you the strongest clue about their personalities?"],
+  "1/2": ["What family relationship or shared activity can you infer from the scene?", "Which detail suggests a similarity or difference between the people?"],
+  "2/1": ["What mistake or problem might have led to this situation?", "What should someone have done earlier to prevent it?"],
+  "2/2": ["What explanations could account for the mystery in this scene?", "Which clue makes one explanation more convincing than the others?"],
+  "3/1": ["What makes this destination worth visiting?", "Which feature would matter most to a traveler with limited time?"],
+  "3/2": ["What quality of life might the people be comparing between cities?", "Which trade-off would matter most when choosing where to live?"],
+  "4/1": ["What might be affecting this person's energy at this time of day?", "Which small routine change could improve the situation?"],
+  "4/2": ["What might be disrupting this person's sleep?", "Which detail could suggest a cause or a possible solution?"],
+  "5/1": ["How might the people start a conversation in this setting?", "What opening would feel natural without making assumptions?"],
+  "5/2": ["What information might one person be reporting to the others?", "Which part should be presented as confirmed, and which might need checking?"],
+  "6/1": ["What news event might the people be following?", "How could they check whether the information is reliable?"],
+  "6/2": ["What makes this moment worth telling as a story?", "Which detail might be the turning point or the most surprising part?"],
+  "7/1": ["What technology is changing the way people work or communicate here?", "Who might benefit from this change, and who could be affected?"],
+  "7/2": ["What signs suggest the people are dealing with information overload?", "What could help them communicate more thoughtfully?"],
+  "8/1": ["What creative qualities might these people bring to their work?", "Which detail in the scene suggests how they develop or test ideas?"],
+  "8/2": ["What problem are the people trying to solve with this invention or idea?", "How could you judge whether the proposed solution would make a real difference?"],
+  "9/1": ["What custom or social expectation might be visible in this scene?", "How might the same behavior be interpreted differently in another place?"],
+  "9/2": ["What change might the person be adjusting to?", "Which past habit could help or make the adjustment harder?"],
+  "10/1": ["What is causing frustration in this situation?", "How could someone raise the issue firmly without escalating it?"],
+  "10/2": ["What complaint needs to be resolved here?", "What remedy would address both the immediate problem and its cause?"],
+  "11/1": ["What ethical choice might the people be facing?", "What principle could guide a fair decision, even if it has a cost?"],
+  "11/2": ["What personal value seems most important in this scene?", "What experience might have shaped that value?"],
+  "12/1": ["What might someone need to adapt to while living abroad?", "Which challenge could become easier with time or support?"],
+  "12/2": ["What travel problem might have caused the situation shown?", "What alternative plan could reduce the risk or improve the trip?"],
+};
+
 const words = (sentence: string) => sentence.split(" ");
 
 const outcomes: Record<string, string> = {
@@ -185,10 +212,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           image: `/media/images/course/b2/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
           audio: false,
           quote: "",
-          questions: [
-            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
-            { prompt: "What do you think is happening?", support: ["I think ..."] },
-          ],
+          discuss: {
+            interaction: ["pairs", "teacher-class"],
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+          },
         },
       ],
     },

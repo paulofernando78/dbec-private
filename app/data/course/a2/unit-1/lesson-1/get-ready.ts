@@ -15,12 +15,12 @@ export const getReady = {
         interaction: ["pairs", "teacher-class"],
         questions: [
           {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
+            prompt: "What clues show these people are meeting for the first time?",
+            support: ["They seem to be ... because ..."],
           },
           {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
+            prompt: "What could each person ask to get to know the other better?",
+            support: ["They could ask ..."],
           },
         ],
       },

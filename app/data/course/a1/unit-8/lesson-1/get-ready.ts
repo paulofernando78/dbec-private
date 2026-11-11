@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
-          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
+          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
+          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
-          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
+          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
+          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Designer, hotel worker, or student?", support: ["A designer.", "A hotel worker.", "A student."] },
-          { prompt: "Office, hotel, or school?", support: ["An office.", "A hotel.", "A school."] },
+          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
+          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
         ],
       },
 

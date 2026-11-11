@@ -11,8 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "At work or at home?", support: ["At work."] },
-          { prompt: "A first meeting or old friends?", support: ["A first meeting."] },
+          { prompt: "How do you think these people know each other?", support: ["They may be ... because ..."] },
+          { prompt: "What could one person say to start a friendly conversation?", support: ["They could say ..."] },
         ],
       },
 

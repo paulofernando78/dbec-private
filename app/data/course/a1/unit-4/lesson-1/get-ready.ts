@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
-          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
+          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
+          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
-          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
+          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
+          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Jacket or scarf?", support: ["A jacket.", "A scarf."] },
-          { prompt: "Laura or Eric?", support: ["Laura.", "Eric."] },
+          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
+          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
         ],
       },
 

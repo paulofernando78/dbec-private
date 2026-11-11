@@ -43,6 +43,41 @@ const seeds: readonly LessonSeed[] = [
   { unit: 16, lesson: 2, phrases: ["By this time next year, I'll have completed my certification.", "I'm going to apply for international positions this summer.", "I'll be working with a new team by the end of the year.", "In five years, I hope to have established my own company."] },
 ];
 
+const getReadyDiscuss: Record<string, readonly [string, string]> = {
+  "1/1": ["What qualities might make these people good friends?", "Which action or expression in the picture supports your impression?"],
+  "1/2": ["What do the people seem to appreciate about this moment?", "What would make you enjoy spending time in a place like this?"],
+  "2/1": ["What kind of work are the people discussing?", "Which skills would matter most in the job shown?"],
+  "2/2": ["What differences do you notice between these careers?", "Which person seems to have the more demanding job? What clues suggest that?"],
+  "3/1": ["What favor might one person be asking for?", "What would you need to know before agreeing to help?"],
+  "3/2": ["What message might the caller need to leave?", "How could they make the request clear without speaking directly to the person?"],
+  "4/1": ["What was happening when the main event took place?", "Which detail in the picture suggests what happened first?"],
+  "4/2": ["What may have happened before this scene?", "Which clue helps you reconstruct the order of events?"],
+  "5/1": ["What might be exciting or difficult about living in this place?", "Which detail would shape a newcomer's first impression?"],
+  "5/2": ["What should someone expect when arriving in this situation?", "Which detail could help them prepare in advance?"],
+  "6/1": ["What seems to be broken or not working properly?", "Which part would you inspect first to identify the problem?"],
+  "6/2": ["What repair or maintenance does this situation call for?", "What might happen if nobody fixes it soon?"],
+  "7/1": ["What environmental change can you observe?", "What might be causing it, based on the details in the picture?"],
+  "7/2": ["What action are the people taking to improve the situation?", "What additional step could make their effort more effective?"],
+  "8/1": ["What preference might the people be comparing?", "What would you rather choose, and what matters most to you?"],
+  "8/2": ["What learning method is this person using?", "How might this method help someone with a different strength?"],
+  "9/1": ["What service might the person need to get something done?", "What would they ask the professional to do for them?"],
+  "9/2": ["What problem are the people trying to solve?", "What practical suggestion could help, and what should they do first?"],
+  "10/1": ["What important event might this scene represent?", "What details could help place it in a particular time period?"],
+  "10/2": ["What future change are these people anticipating?", "Which clue suggests what may happen next?"],
+  "11/1": ["What milestone might the people be celebrating or remembering?", "What might have changed in their lives since then?"],
+  "11/2": ["What might the person regret about this situation?", "What could they have done differently at the time?"],
+  "12/1": ["What qualities seem important for success in the situation shown?", "Which detail in the image suggests those qualities?"],
+  "12/2": ["What might explain why this person is making that choice?", "What evidence in the picture supports your explanation?"],
+  "13/1": ["What do you think must have happened before this scene?", "Which clue makes your explanation more likely than another one?"],
+  "13/2": ["What could someone have done to prevent or improve this situation?", "Which action would have made the biggest difference?"],
+  "14/1": ["What process is taking place, and what might the next step be?", "Which tools or materials help you infer how it is made?"],
+  "14/2": ["What roles do the people have at work?", "Which detail suggests what each person is responsible for?"],
+  "15/1": ["What change are the people recommending?", "What reason could persuade others to support it?"],
+  "15/2": ["What opinion is being discussed?", "What detail in the scene might make someone agree or disagree?"],
+  "16/1": ["What accomplishment might this person feel proud of?", "What effort or challenge may have led to it?"],
+  "16/2": ["What goal might this person be working toward by next year?", "What first step would make that goal more achievable?"],
+};
+
 const words = (sentence: string) => sentence.split(" ");
 
 const outcomes: Record<string, string> = {
@@ -233,10 +268,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           image: `/media/images/course/b1/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
           audio: false,
           quote: "",
-          questions: [
-            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
-            { prompt: "What do you think is happening?", support: ["I think ..."] },
-          ],
+          discuss: {
+            interaction: ["pairs", "teacher-class"],
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+          },
         },
       ],
     },

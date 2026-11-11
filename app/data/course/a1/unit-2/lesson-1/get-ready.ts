@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "One object or several?", support: ["One object.", "Several objects."] },
-          { prompt: "Desk item or personal item?", support: ["A desk item.", "A personal item."] },
+          { prompt: "Which objects can you identify on the desk?", support: ["There is a laptop, and there are some books."] },
+          { prompt: "What might someone use one of these objects for?", support: ["They might use the ... to ..."] },
         ],
       },
 

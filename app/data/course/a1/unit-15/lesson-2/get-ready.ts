@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "School or work?", support: ["School.", "Work."] },
-          { prompt: "English or art?", support: ["English.", "Art."] },
+          { prompt: "What might the people remember from their school days?", support: ["They may remember ..."] },
+          { prompt: "What could you ask someone at a school reunion?", support: ["I could ask, “Did you ...?”"] },
         ],
       },
 

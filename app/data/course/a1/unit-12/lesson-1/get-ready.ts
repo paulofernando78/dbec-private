@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Cold or sore throat?", support: ["A cold.", "A sore throat."] },
-          { prompt: "Headache or fever?", support: ["A headache.", "A fever."] },
+          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
+          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Headache or fever?", support: ["A headache.", "A fever."] },
-          { prompt: "Cold or sore throat?", support: ["A cold.", "A sore throat."] },
+          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
+          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Cold or sore throat?", support: ["A cold.", "A sore throat."] },
-          { prompt: "Headache or fever?", support: ["A headache.", "A fever."] },
+          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
+          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
         ],
       },
 

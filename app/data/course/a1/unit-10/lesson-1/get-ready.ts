@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Volleyball, tennis, or soccer?", support: ["Volleyball.", "Tennis.", "Soccer."] },
-          { prompt: "Player or fan?", support: ["A player.", "A fan."] },
+          { prompt: "Which sport is each person playing or watching?", support: ["They are ..."] },
+          { prompt: "Which sport do you enjoy playing or watching? Why?", support: ["I enjoy ... because ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Player or fan?", support: ["A player.", "A fan."] },
-          { prompt: "Volleyball, tennis, or soccer?", support: ["Volleyball.", "Tennis.", "Soccer."] },
+          { prompt: "Which sport is each person playing or watching?", support: ["They are ..."] },
+          { prompt: "Which sport do you enjoy playing or watching? Why?", support: ["I enjoy ... because ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Volleyball, tennis, or soccer?", support: ["Volleyball.", "Tennis.", "Soccer."] },
-          { prompt: "Player or fan?", support: ["A player.", "A fan."] },
+          { prompt: "Which sport is each person playing or watching?", support: ["They are ..."] },
+          { prompt: "Which sport do you enjoy playing or watching? Why?", support: ["I enjoy ... because ..."] },
         ],
       },
 

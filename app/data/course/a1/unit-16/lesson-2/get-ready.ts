@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Party or dinner?", support: ["A party.", "Dinner."] },
-          { prompt: "Coffee or a movie?", support: ["Coffee.", "A movie."] },
+          { prompt: "What weekend activities are the people considering?", support: ["They are thinking about ..."] },
+          { prompt: "Which invitation would you accept, and what would you say?", support: ["I would ...; I would say ..."] },
         ],
       },
 

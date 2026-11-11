@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
-          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
+          { prompt: "What is each person doing at home?", support: ["They are ..."] },
+          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
-          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
+          { prompt: "What is each person doing at home?", support: ["They are ..."] },
+          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "One lamp or two?", support: ["One lamp.", "Two lamps."] },
-          { prompt: "Sofa or dishwasher?", support: ["A sofa.", "A dishwasher."] },
+          { prompt: "What is each person doing at home?", support: ["They are ..."] },
+          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
         ],
       },
 

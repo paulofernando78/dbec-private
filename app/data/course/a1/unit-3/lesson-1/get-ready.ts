@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
-          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
+          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
+          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
-          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
+          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
+          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Brazil or Mexico?", support: ["Brazil.", "Mexico."] },
-          { prompt: "Portuguese or English?", support: ["Portuguese.", "English."] },
+          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
+          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
         ],
       },
 

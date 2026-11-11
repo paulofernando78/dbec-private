@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Left or right?", support: ["Left.", "Right."] },
-          { prompt: "Straight or turn?", support: ["Straight.", "Turn."] },
+          { prompt: "Which direction does the person need to go?", support: ["They should go ..."] },
+          { prompt: "How would you give directions from this street corner?", support: ["Go ... and then ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Straight or turn?", support: ["Straight.", "Turn."] },
-          { prompt: "Left or right?", support: ["Left.", "Right."] },
+          { prompt: "Which direction does the person need to go?", support: ["They should go ..."] },
+          { prompt: "How would you give directions from this street corner?", support: ["Go ... and then ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Left or right?", support: ["Left.", "Right."] },
-          { prompt: "Straight or turn?", support: ["Straight.", "Turn."] },
+          { prompt: "Which direction does the person need to go?", support: ["They should go ..."] },
+          { prompt: "How would you give directions from this street corner?", support: ["Go ... and then ..."] },
         ],
       },
 

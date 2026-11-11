@@ -15,12 +15,12 @@ export const getReady = {
         interaction: ["pairs", "teacher-class"],
         questions: [
           {
-            prompt: "What do you notice in the picture?",
-            support: ["I can see ..."],
+            prompt: "Which details in the picture could help you ask about Laura and Eric’s past?",
+            support: ["The ... might remind them of ..."],
           },
           {
-            prompt: "What do you think is happening?",
-            support: ["I think ..."],
+            prompt: "What past question would you ask them first, and what answer might you expect?",
+            support: ["I would ask ... They might say ..."],
           },
         ],
       },

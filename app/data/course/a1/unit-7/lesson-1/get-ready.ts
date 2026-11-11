@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
-          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
+          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
+          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
-          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
+          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
+          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "House or apartment?", support: ["A house.", "An apartment."] },
-          { prompt: "Balcony or no balcony?", support: ["A balcony.", "No balcony."] },
+          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
+          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
         ],
       },
 

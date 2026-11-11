@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Studying or sleeping?", support: ["Studying.", "Sleeping."] },
-          { prompt: "Daytime or nighttime?", support: ["Daytime.", "Nighttime."] },
+          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
+          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Daytime or nighttime?", support: ["Daytime.", "Nighttime."] },
-          { prompt: "Studying or sleeping?", support: ["Studying.", "Sleeping."] },
+          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
+          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Studying or sleeping?", support: ["Studying.", "Sleeping."] },
-          { prompt: "Daytime or nighttime?", support: ["Daytime.", "Nighttime."] },
+          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
+          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
         ],
       },
 

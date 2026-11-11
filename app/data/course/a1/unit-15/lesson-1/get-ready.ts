@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "A child or an adult?", support: ["A child.", "An adult."] },
-          { prompt: "Brazil or another country?", support: ["Brazil.", "Another country."] },
+          { prompt: "Who do you think is in this family album?", support: ["It may show ..."] },
+          { prompt: "Which detail could tell you how the people are related?", support: ["They might be ... because ..."] },
         ],
       },
 

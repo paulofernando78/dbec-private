@@ -17,8 +17,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "On the desk or under the chair?", support: ["On the desk.", "Under the chair."] },
-          { prompt: "Phone or keys?", support: ["A phone.", "Keys."] },
+          { prompt: "Where is the phone or another object in the picture?", support: ["The ... is ... the ..."] },
+          { prompt: "How could you help someone find a misplaced item on this desk?", support: ["Look ... the ..."] },
         ],
       },
 

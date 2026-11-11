@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
-          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
+          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
+          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
-          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
+          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
+          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Birthday or dinner?", support: ["A birthday party.", "Dinner."] },
-          { prompt: "Tonight or the weekend?", support: ["Tonight.", "The weekend."] },
+          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
+          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
         ],
       },
 

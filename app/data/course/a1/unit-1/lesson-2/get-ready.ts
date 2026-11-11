@@ -11,8 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
-          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
+          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
+          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
         ],
       },
 
@@ -25,8 +25,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
-          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
+          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
+          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
         ],
       },
 
@@ -39,8 +39,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Phone number or email?", support: ["Phone number.", "Email."] },
-          { prompt: "Phone call or message?", support: ["A phone call.", "A message."] },
+          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
+          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
         ],
       },
 

@@ -35,6 +35,33 @@ const seeds: readonly LessonSeed[] = [
   { unit: 12, lesson: 2, phrases: ["Provided that expectations remain transparent, considerable autonomy can improve both motivation and accountability.", "Employees flourish when success is measured by meaningful outcomes rather than visible busyness.", "Even if a company offers generous benefits, poor management will eventually undermine retention.", "A resilient workplace succeeds insofar as people feel safe enough to challenge ineffective decisions."] },
 ];
 
+const getReadyDiscuss: Record<string, readonly [string, string]> = {
+  "1/1": ["What behavior in the image suggests trust or reciprocity between these people?", "Which quality would matter most to you in a close friend, and why?"],
+  "1/2": ["How might these people have reconnected or built their friendship?", "What advice could help them disagree without damaging trust?"],
+  "2/1": ["What does the clothing in the scene communicate about personal style?", "Which choice looks practical, expressive, or influenced by a trend? Explain."],
+  "2/2": ["What impression might someone form from this person's appearance and posture?", "Which detail might challenge or complicate that first impression?"],
+  "3/1": ["What benefit and potential risk could come from the innovation shown?", "Who should have a say in deciding whether it is safe to use?"],
+  "3/2": ["How does the technology in this scene shape the people's attention or choices?", "When does a useful tool start to feel intrusive or unnecessary?"],
+  "4/1": ["What belief or ritual might explain the behavior in this scene?", "How could the same action be viewed as superstition in one culture and caution in another?"],
+  "4/2": ["What details would make a claim in this scene seem credible or suspicious?", "How could someone verify the story before sharing it?"],
+  "5/1": ["What makes the film or scene visually compelling?", "Which element might explain why some viewers enjoy it while others do not?"],
+  "5/2": ["What feature of this program could keep an audience curious from one episode to the next?", "How much uncertainty should a successful story leave unresolved?"],
+  "6/1": ["What can you infer about the music from the listener's reaction?", "How might an unexpected rhythm or arrangement change the experience?"],
+  "6/2": ["What kind of work might happen behind this performance?", "How would you define success for the musician in the scene?"],
+  "7/1": ["What assumption about work or lifestyle might these people be questioning?", "Who might experience this change differently, and why?"],
+  "7/2": ["What change are the people responding to?", "How could involving the affected community make that change last?"],
+  "8/1": ["What need or impulse might be influencing the shopping choice?", "How would you tell the difference between a genuine bargain and an unnecessary purchase?"],
+  "8/2": ["What is this advertisement or campaign encouraging people to do?", "What information should be disclosed so consumers can judge the message fairly?"],
+  "9/1": ["What tension between animal welfare and conservation might this scene raise?", "What evidence would help people make a responsible decision?"],
+  "9/2": ["What challenges might researchers face while working in this environment?", "How could local knowledge strengthen the conservation work?"],
+  "10/1": ["How is the speaker adapting a complex idea for this audience?", "What could make the message clearer without removing important uncertainty?"],
+  "10/2": ["What makes the language in this scene appropriate or inappropriate for its audience?", "How might the same message need to change in a formal proposal?"],
+  "11/1": ["What sustained effort might have led to the achievement shown?", "Why might collaboration matter more here than individual recognition?"],
+  "11/2": ["What makes this person a convincing role model?", "How can acknowledging mistakes strengthen someone's influence?"],
+  "12/1": ["What decision could help this company grow without losing what makes it distinctive?", "Which risk in the scene would you address before expanding?"],
+  "12/2": ["What workplace condition might help employees feel motivated and accountable?", "What detail would show that people can safely challenge a bad decision?"],
+};
+
 const words = (sentence: string) => sentence.split(" ");
 
 const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
@@ -59,10 +86,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           image: `/media/images/course/c1/unit-${unit}/lesson-${lesson}-${leadInSlug}/get-ready/lead-in.avif?v=1`,
           audio: false,
           quote: "",
-          questions: [
-            { prompt: "What do you notice in the picture?", support: ["I can see ..."] },
-            { prompt: "What do you think is happening?", support: ["I think ..."] },
-          ],
+          discuss: {
+            interaction: ["pairs", "teacher-class"],
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+          },
         },
       ],
     },

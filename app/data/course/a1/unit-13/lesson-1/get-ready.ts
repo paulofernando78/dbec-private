@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Drugstore or bookstore?", support: ["A drugstore.", "A bookstore."] },
-          { prompt: "Next to or between?", support: ["Next to.", "Between."] },
+          { prompt: "Where is the drugstore in relation to the bookstore?", support: ["It is ... the ..."] },
+          { prompt: "Which shop would you visit, and how would you explain where it is?", support: ["I would go to ... It is ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Next to or between?", support: ["Next to.", "Between."] },
-          { prompt: "Drugstore or bookstore?", support: ["A drugstore.", "A bookstore."] },
+          { prompt: "Where is the drugstore in relation to the bookstore?", support: ["It is ... the ..."] },
+          { prompt: "Which shop would you visit, and how would you explain where it is?", support: ["I would go to ... It is ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Drugstore or bookstore?", support: ["A drugstore.", "A bookstore."] },
-          { prompt: "Next to or between?", support: ["Next to.", "Between."] },
+          { prompt: "Where is the drugstore in relation to the bookstore?", support: ["It is ... the ..."] },
+          { prompt: "Which shop would you visit, and how would you explain where it is?", support: ["I would go to ... It is ..."] },
         ],
       },
 

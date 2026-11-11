@@ -173,7 +173,7 @@ export default function Dashboard() {
           <span id="teacher-notes" className="absolute top-0" />
           <span id="student-notes" className="absolute top-0" />
           <Card title="Notes">
-            <div className="grid w-full grid-cols-2 items-stretch gap-4 max-[800px]:grid-cols-1">
+            <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[800px]:grid-cols-1">
               <DashboardNotes
                 title="Shared notes"
                 value={notes.student}
@@ -185,7 +185,7 @@ export default function Dashboard() {
                 }}
                 onSave={saveStudentNote}
               />
-              <AiTutor className="mt-0 h-full min-h-[36rem]" fill />
+              <AiTutor className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]" fill />
             </div>
           </Card>
         </div>

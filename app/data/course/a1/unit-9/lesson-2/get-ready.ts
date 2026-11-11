@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
-          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
+          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
+          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
-          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
+          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
+          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Breakfast or dinner?", support: ["Breakfast.", "Dinner."] },
-          { prompt: "Every day or sometimes?", support: ["Every day.", "Sometimes."] },
+          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
+          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
         ],
       },
 

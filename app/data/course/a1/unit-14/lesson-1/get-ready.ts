@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Picnic or concert?", support: ["A picnic.", "A concert."] },
-          { prompt: "Yesterday or today?", support: ["Yesterday.", "Today."] },
+          { prompt: "What did the people do together last weekend?", support: ["They ..."] },
+          { prompt: "Which detail helps you tell when or where they were?", support: ["I think they were ... because ..."] },
         ],
       },
 

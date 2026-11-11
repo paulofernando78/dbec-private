@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
-          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
+          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
+          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
-          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
+          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
+          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rainy or sunny?", support: ["Rainy.", "Sunny."] },
-          { prompt: "Raincoat or T-shirt?", support: ["A raincoat.", "A T-shirt."] },
+          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
+          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
         ],
       },
 
