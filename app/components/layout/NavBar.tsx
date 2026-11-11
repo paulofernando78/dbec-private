@@ -84,7 +84,7 @@ export function NavBar({
       max-[920px]:absolute max-[920px]:-translate-x-100
       max-[420px]:w-full
       max-[390px]:-translate-x-full
-      ${isOpen ? "max-[700px]:translate-x-0 max-[390px]:translate-x-0" : ""}`}
+      ${isOpen ? "max-[920px]:translate-x-0" : ""}`}
     >
       {links.map((item) => {
         if ("group" in item) {
