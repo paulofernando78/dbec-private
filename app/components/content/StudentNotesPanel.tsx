@@ -183,8 +183,8 @@ export function StudentNotesPanel({
 
           {studentId && (
             <>
-              <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:grid-cols-1">
-                <Card title="Shared notes" className="flex min-h-0 flex-col overflow-hidden bg-(--background)">
+              <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:flex-none max-[930px]:grid-cols-1">
+                <Card title="Shared notes" className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
                   <p className="mb-2 text-xs text-slate-500" title={`Signed in as ${session.displayName ?? session.role}`}>
                     {activeWriter
                       ? `${activeWriter.name} está escrevendo`
@@ -205,7 +205,7 @@ export function StudentNotesPanel({
                     className="min-h-0 max-h-none flex-1"
                   />
                 </Card>
-                <AiTutor className="mt-0 h-full min-h-0" fill />
+                <AiTutor className="mt-0 h-full min-h-0 max-[930px]:min-h-[24rem]" fill />
               </div>
             </>
           )}
