@@ -129,7 +129,7 @@ export function RichTextArea({
   const activeBlockRef = useRef<HTMLDivElement | null>(null);
   const savedSelectionRef = useRef<Range | null>(null);
   const lastEmittedValueRef = useRef(value);
-  const pendingExternalValueRef = useRef<string | null>(null);
+  const syncExternalValueRef = useRef(false);
   const [blocks, setBlocks] = useState<NoteBlock[]>(() => parseBlocks(value));
   const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null);
   const [dropTargetBlockId, setDropTargetBlockId] = useState<string | null>(null);
@@ -141,23 +141,58 @@ export function RichTextArea({
   useEffect(() => {
     if (value === lastEmittedValueRef.current) return;
 
-    if (editorAreaRef.current?.contains(document.activeElement)) {
-      pendingExternalValueRef.current = value;
-      return;
-    }
-
     lastEmittedValueRef.current = value;
-    pendingExternalValueRef.current = null;
-    setBlocks(parseBlocks(value));
+    syncExternalValueRef.current = true;
+    setBlocks((current) =>
+      parseBlocks(value).map((block, index) => ({
+        ...block,
+        id: current[index]?.id ?? block.id,
+      })),
+    );
   }, [value]);
 
   useEffect(() => {
+    const shouldSyncFocusedBlock = syncExternalValueRef.current;
+    const focusedEditor = activeBlockRef.current;
+    let caretOffset: number | null = null;
+    if (shouldSyncFocusedBlock && focusedEditor && editorAreaRef.current?.contains(focusedEditor)) {
+      const selection = window.getSelection();
+      if (selection?.rangeCount && focusedEditor.contains(selection.anchorNode)) {
+        const prefixRange = document.createRange();
+        prefixRange.selectNodeContents(focusedEditor);
+        prefixRange.setEnd(selection.anchorNode!, selection.anchorOffset);
+        caretOffset = prefixRange.toString().length;
+      }
+    }
+
     blocks.forEach((block) => {
       const editor = blockRefs.current[block.id];
-      if (!editor || editor === activeBlockRef.current) return;
+      if (!editor || (editor === activeBlockRef.current && !shouldSyncFocusedBlock)) return;
 
       if (editor.innerHTML !== block.html) editor.innerHTML = block.html;
     });
+
+    if (shouldSyncFocusedBlock && focusedEditor && caretOffset !== null) {
+      const textWalker = document.createTreeWalker(focusedEditor, NodeFilter.SHOW_TEXT);
+      let textNode = textWalker.nextNode();
+      let remaining = caretOffset;
+      while (textNode && remaining > textNode.textContent!.length) {
+        remaining -= textNode.textContent!.length;
+        textNode = textWalker.nextNode();
+      }
+      const range = document.createRange();
+      if (textNode) {
+        range.setStart(textNode, Math.min(remaining, textNode.textContent!.length));
+      } else {
+        range.selectNodeContents(focusedEditor);
+        range.collapse(false);
+      }
+      range.collapse(true);
+      const selection = window.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+    }
+    syncExternalValueRef.current = false;
   }, [blocks]);
 
   const blocksFromDom = () =>
@@ -168,18 +203,8 @@ export function RichTextArea({
 
   const emitBlocks = (nextBlocks = blocksFromDom()) => {
     const serialized = serializeBlocks(nextBlocks);
-    pendingExternalValueRef.current = null;
     lastEmittedValueRef.current = serialized;
     onChange(serialized);
-  };
-
-  const applyPendingExternalValue = () => {
-    const pendingValue = pendingExternalValueRef.current;
-    if (pendingValue === null) return;
-
-    pendingExternalValueRef.current = null;
-    lastEmittedValueRef.current = pendingValue;
-    setBlocks(parseBlocks(pendingValue));
   };
 
   const saveSelection = () => {
@@ -707,7 +732,6 @@ export function RichTextArea({
               onBlur={(event) => {
                 if (!editorAreaRef.current?.contains(event.relatedTarget)) {
                   onBlur();
-                  applyPendingExternalValue();
                 }
               }}
               onKeyDown={(event) => {
