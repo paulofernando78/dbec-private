@@ -135,16 +135,21 @@ export function useNotesRealtime(
             (update.noteType === "teacher" || update.noteType === "student") &&
             typeof update.content === "string"
           ) {
-            const wasRecentlyEdited =
-              Date.now() - (lastLocalEditRef.current[update.noteType] ?? 0) <
-              10_000;
-            if (
-              wasRecentlyEdited ||
-              pendingNotesRef.current[update.noteType] !== undefined
-            ) {
+            const localEditAt = lastLocalEditRef.current[update.noteType] ?? 0;
+            const remoteEditAt = update.updatedAt ?? Date.now();
+
+            // The room broadcasts only to the other connected clients, so a
+            // recent local edit is not an echo. Ignore only a remote change
+            // that is actually older than the user's unsaved local edit.
+            if (localEditAt > remoteEditAt + 250) {
               return;
             }
 
+            if (saveTimersRef.current[update.noteType]) {
+              window.clearTimeout(saveTimersRef.current[update.noteType]);
+              delete saveTimersRef.current[update.noteType];
+            }
+            delete pendingNotesRef.current[update.noteType];
             lastReceivedRef.current[update.noteType] = update.content;
             callbackRef.current(update.noteType, update.content);
           }
