@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { AiTutor } from "@/components/content/AiTutor";
+import { NoteAuthorLegend } from "@/components/content/NoteAuthorLegend";
 import { RichTextArea } from "@/components/ui/RichTextArea";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
@@ -38,7 +39,6 @@ export function StudentNotesPanel({
   const [studentId, setStudentId] = useState("");
   const [studentName, setStudentName] = useState("");
   const [notes, setNotes] = useState<Notes>(emptyNotes);
-  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [panelHost, setPanelHost] = useState<HTMLElement | null>(null);
@@ -57,7 +57,6 @@ export function StudentNotesPanel({
           : { ...current, [noteType]: content },
       );
     },
-    setActiveWriter,
   );
 
   useEffect(() => {
@@ -150,6 +149,16 @@ export function StudentNotesPanel({
     }
   };
 
+  const currentAuthor = session
+    ? {
+        id: session.role === "teacher" ? "teacher" : studentId,
+        name:
+          session.displayName ??
+          (session.role === "teacher" ? "Professor" : studentName),
+        role: session.role,
+      }
+    : undefined;
+
   if (!session || !isOpen || !panelHost) return null;
 
   return createPortal(
@@ -184,19 +193,11 @@ export function StudentNotesPanel({
           {studentId && (
             <>
               <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:flex-none max-[930px]:grid-cols-1">
-                <Card title="Shared notes" className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
-                  <p className="mb-2 text-xs text-slate-500" title={`Signed in as ${session.displayName ?? session.role}`}>
-                    {activeWriter
-                      ? `${activeWriter.name} está escrevendo`
-                      : `Editando como ${session.displayName ?? (session.role === "teacher" ? "Professor" : studentName)}`}
-                  </p>
+                <Card className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
+                  <NoteAuthorLegend value={notes.student} currentAuthor={currentAuthor} />
                   <RichTextArea
                     value={notes.student}
-                    author={session ? {
-                      id: session.role === "teacher" ? "teacher" : studentId,
-                      name: session.displayName ?? (session.role === "teacher" ? "Professor" : studentName),
-                      role: session.role,
-                    } : undefined}
+                    author={currentAuthor}
                     onChange={(content) => {
                       setNotes((current) => ({ ...current, student: content }));
                       sendNote("student", content, true);

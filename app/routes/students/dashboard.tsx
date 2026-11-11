@@ -20,7 +20,6 @@ export default function Dashboard() {
   const { studentId } = useParams();
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
-  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
@@ -40,7 +39,6 @@ export default function Dashboard() {
           : { ...current, [noteType]: content },
       );
     },
-    setActiveWriter,
   );
 
   useEffect(() => {
@@ -181,10 +179,7 @@ export default function Dashboard() {
           <Card title="Notes">
             <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[800px]:grid-cols-1">
               <DashboardNotes
-                title="Shared notes"
                 value={notes.student}
-                identity={student.name ? `${student.name} · Professor` : "Você · Professor"}
-                activeWriter={activeWriter?.name ?? null}
                 author={{ id: studentId, name: student.name, role: "student" }}
                 onChange={(value) => {
                   setNotes((current) => ({ ...current, student: value }));

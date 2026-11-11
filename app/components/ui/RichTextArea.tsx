@@ -3,11 +3,12 @@ import { createPortal } from "react-dom";
 import { GripVertical, Highlighter, Link, Underline, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { getNoteAuthorColors, type NoteAuthor } from "@/utils/note-authors";
 
 type RichTextAreaProps = {
   value: string;
   readOnly?: boolean;
-  author?: { id: string; name: string; role: "teacher" | "student" };
+  author?: NoteAuthor;
   onChange: (value: string) => void;
   onBlur: () => void;
   className?: string;
@@ -46,7 +47,7 @@ const highlightColors = [
 type NoteBlock = {
   id: string;
   html: string;
-  author?: { id: string; name: string; role: "teacher" | "student" };
+  author?: NoteAuthor;
 };
 
 let noteBlockId = 0;
@@ -68,17 +69,10 @@ const decodeAttribute = (value?: string) => {
 
 const authorBlockStyle = (author?: NoteBlock["author"]) => {
   if (!author) return undefined;
-  if (author.role === "teacher") {
-    return { backgroundColor: "#eff6ff", borderLeft: "3px solid #3b82f6" };
-  }
-  const hash = Array.from(author.id).reduce(
-    (total, character) => (total * 31 + character.charCodeAt(0)) >>> 0,
-    0,
-  );
-  const hue = hash % 360;
+  const colors = getNoteAuthorColors(author);
   return {
-    backgroundColor: `hsl(${hue} 85% 96%)`,
-    borderLeft: `3px solid hsl(${hue} 65% 55%)`,
+    backgroundColor: colors.background,
+    borderLeft: `3px solid ${colors.border}`,
   };
 };
 

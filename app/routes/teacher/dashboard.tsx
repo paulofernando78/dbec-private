@@ -58,7 +58,7 @@ export default function TeacherDashboard() {
   const [students, setStudents] = useState<any[]>([]);
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
-  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
+  const [teacherDisplayName, setTeacherDisplayName] = useState("Professor");
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
   const [isLoadingStudent, setIsLoadingStudent] = useState(false);
@@ -71,6 +71,19 @@ export default function TeacherDashboard() {
     setProgress(getCourseProgressSummary());
   }, []);
 
+  useEffect(() => {
+    let active = true;
+    fetch("/api/session", { headers: { Accept: "application/json" } })
+      .then((response) => response.ok ? response.json() : null)
+      .then((session) => {
+        if (active && session?.displayName) setTeacherDisplayName(session.displayName);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const { sendNote } = useNotesRealtime(
     studentId,
     "teacher",
@@ -81,7 +94,6 @@ export default function TeacherDashboard() {
           : { ...current, [noteType]: content },
       );
     },
-    setActiveWriter,
   );
 
   const loadStudents = async () => {
@@ -342,11 +354,8 @@ export default function TeacherDashboard() {
               <Card title="Notes">
                 <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
                   <DashboardNotes
-                    title="Shared notes"
                     value={notes.student}
-                    identity={student?.name ? `${student.name} · Professor` : "Professor"}
-                    activeWriter={activeWriter?.name ?? null}
-                    author={{ id: "teacher", name: "Professor", role: "teacher" }}
+                    author={{ id: "teacher", name: teacherDisplayName, role: "teacher" }}
                     onChange={(value) => {
                       setNotes((current) => ({ ...current, student: value }));
                       sendNote("student", value, true);
