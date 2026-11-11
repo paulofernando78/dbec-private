@@ -65,7 +65,13 @@ export default function Dashboard() {
       })
       .then((result) => {
         setData(result);
-        setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
+        setNotes({
+          teacher: "",
+          student: combineNotes(result.notes ?? {}, {
+            id: studentId,
+            name: result.student?.name,
+          }),
+        });
         setCalendar(
           Object.fromEntries(
             (result.calendar ?? []).map((entry: any) => [
@@ -179,6 +185,7 @@ export default function Dashboard() {
                 value={notes.student}
                 identity={student.name ? `${student.name} · Professor` : "Você · Professor"}
                 activeWriter={activeWriter?.name ?? null}
+                author={{ id: studentId, name: student.name, role: "student" }}
                 onChange={(value) => {
                   setNotes((current) => ({ ...current, student: value }));
                   sendNote("student", value, true);

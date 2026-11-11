@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 type RichTextAreaProps = {
   value: string;
   readOnly?: boolean;
+  author?: { id: string; name: string; role: "teacher" | "student" };
   onChange: (value: string) => void;
   onBlur: () => void;
   className?: string;
@@ -45,20 +46,55 @@ const highlightColors = [
 type NoteBlock = {
   id: string;
   html: string;
+  author?: { id: string; name: string; role: "teacher" | "student" };
 };
 
 let noteBlockId = 0;
 
-const createBlock = (html = ""): NoteBlock => ({
+const createBlock = (html = "", author?: NoteBlock["author"]): NoteBlock => ({
   id: `note-block-${noteBlockId++}`,
   html,
+  author,
 });
+
+const decodeAttribute = (value?: string) => {
+  if (!value) return "";
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+};
+
+const authorBlockStyle = (author?: NoteBlock["author"]) => {
+  if (!author) return undefined;
+  if (author.role === "teacher") {
+    return { backgroundColor: "#eff6ff", borderLeft: "3px solid #3b82f6" };
+  }
+  const hash = Array.from(author.id).reduce(
+    (total, character) => (total * 31 + character.charCodeAt(0)) >>> 0,
+    0,
+  );
+  const hue = hash % 360;
+  return {
+    backgroundColor: `hsl(${hue} 85% 96%)`,
+    borderLeft: `3px solid hsl(${hue} 65% 55%)`,
+  };
+};
 
 const parseBlocks = (value: string): NoteBlock[] => {
   const renderedValue = renderLegacyFormatting(value);
   const savedBlocks = Array.from(
-    renderedValue.matchAll(/<div data-note-block="true">([\s\S]*?)<\/div>/g),
-    (match) => createBlock(match[1] === "<br>" ? "" : match[1]),
+    renderedValue.matchAll(
+      /<div data-note-block="true"(?: data-author-role="(teacher|student)")?(?: data-author-id="([^"]*)")?(?: data-author-name="([^"]*)")?>([\s\S]*?)<\/div>/g,
+    ),
+    (match) => {
+      const role = match[1] as "teacher" | "student" | undefined;
+      const id = decodeAttribute(match[2]);
+      const name = decodeAttribute(match[3]);
+      const blockAuthor = role && id && name ? { role, id, name } : undefined;
+      return createBlock(match[4] === "<br>" ? "" : match[4], blockAuthor);
+    },
   );
 
   if (savedBlocks.length) return savedBlocks;
@@ -72,15 +108,18 @@ const parseBlocks = (value: string): NoteBlock[] => {
 
 const serializeBlocks = (blocks: NoteBlock[]) =>
   blocks
-    .map(
-      (block) =>
-        `<div data-note-block="true">${block.html || "<br>"}</div>`,
-    )
+    .map((block) => {
+      const author = block.author
+        ? ` data-author-role="${block.author.role}" data-author-id="${encodeURIComponent(block.author.id)}" data-author-name="${encodeURIComponent(block.author.name)}"`
+        : "";
+      return `<div data-note-block="true"${author}>${block.html || "<br>"}</div>`;
+    })
     .join("");
 
 export function RichTextArea({
   value,
   readOnly = false,
+  author,
   onChange,
   onBlur,
   className,
@@ -301,7 +340,7 @@ export function RichTextArea({
 
     const normalizedCurrentHtml = currentHtml === "<br>" ? "" : currentHtml;
     const normalizedNextHtml = nextHtml === "<br>" ? "" : nextHtml;
-    const nextBlock = createBlock(normalizedNextHtml);
+    const nextBlock = createBlock(normalizedNextHtml, author);
     const nextBlocks = [...currentBlocks];
     nextBlocks[currentIndex] = {
       ...nextBlocks[currentIndex],
@@ -601,6 +640,8 @@ export function RichTextArea({
             className={`group relative flex min-h-7 items-start rounded px-1 transition-colors ${
               draggedBlockId === block.id ? "opacity-45" : "hover:bg-slate-50"
             }`}
+            title={block.author ? `${block.author.name} · ${block.author.role === "teacher" ? "Professor" : "Aluno"}` : undefined}
+            style={authorBlockStyle(block.author)}
             onDragOver={(event) => {
               event.preventDefault();
               setDropTargetBlockId(block.id);
@@ -651,14 +692,14 @@ export function RichTextArea({
                 setBlocks((current) =>
                   current.map((currentBlock) =>
                     currentBlock.id === block.id
-                      ? { ...currentBlock, html }
+                      ? { ...currentBlock, html, author }
                       : currentBlock,
                   ),
                 );
                 emitBlocks(
                   blocksFromDom().map((currentBlock) =>
                     currentBlock.id === block.id
-                      ? { ...currentBlock, html }
+                      ? { ...currentBlock, html, author }
                       : currentBlock,
                   ),
                 );

@@ -8,6 +8,7 @@ type DashboardNotesProps = {
   onSave: () => void;
   identity?: string;
   activeWriter?: string | null;
+  author?: { id: string; name: string; role: "teacher" | "student" };
 };
 
 export const DashboardNotes = ({
@@ -18,6 +19,7 @@ export const DashboardNotes = ({
   onSave,
   identity,
   activeWriter,
+  author,
 }: DashboardNotesProps) => {
   return (
     <div className="flex h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem] w-full min-w-0 flex-col rounded-xl bg-(--background) p-4">
@@ -36,6 +38,7 @@ export const DashboardNotes = ({
       <RichTextArea
         value={value}
         readOnly={readOnly}
+        author={author}
         onChange={onChange}
         onBlur={onSave}
         className="min-h-0 max-h-none flex-1"

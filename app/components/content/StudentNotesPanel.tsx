@@ -107,7 +107,13 @@ export function StudentNotesPanel({
         throw new Error(result.error ?? "Não foi possível carregar as notas.");
       }
 
-      setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
+      setNotes({
+        teacher: "",
+        student: combineNotes(result.notes ?? {}, {
+          id: studentId,
+          name: result.student?.name ?? studentName,
+        }),
+      });
       setStudentName(result.student?.name ?? "");
     } catch (requestError) {
       setError(
@@ -186,6 +192,11 @@ export function StudentNotesPanel({
                   </p>
                   <RichTextArea
                     value={notes.student}
+                    author={session ? {
+                      id: session.role === "teacher" ? "teacher" : studentId,
+                      name: session.displayName ?? (session.role === "teacher" ? "Professor" : studentName),
+                      role: session.role,
+                    } : undefined}
                     onChange={(content) => {
                       setNotes((current) => ({ ...current, student: content }));
                       sendNote("student", content, true);

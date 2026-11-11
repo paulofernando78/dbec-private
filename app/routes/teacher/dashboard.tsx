@@ -143,7 +143,13 @@ export default function TeacherDashboard() {
           if (cancelled) return;
 
           setData(result);
-          setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
+          setNotes({
+            teacher: "",
+            student: combineNotes(result.notes ?? {}, {
+              id: studentId,
+              name: result.student?.name,
+            }),
+          });
           setCalendar(
             Object.fromEntries(
               (result.calendar ?? []).map((entry: any) => [
@@ -168,7 +174,13 @@ export default function TeacherDashboard() {
             const localData = getLocalStudent(studentId);
             if (localData && !cancelled) {
               setData(localData);
-              setNotes({ teacher: "", student: combineNotes(localData.notes) });
+              setNotes({
+                teacher: "",
+                student: combineNotes(localData.notes, {
+                  id: studentId,
+                  name: localData.student.name,
+                }),
+              });
               setCalendar(
                 Object.fromEntries(
                   localData.calendar.map((entry) => [entry.date, entry.status]),
@@ -334,6 +346,7 @@ export default function TeacherDashboard() {
                     value={notes.student}
                     identity={student?.name ? `${student.name} · Professor` : "Professor"}
                     activeWriter={activeWriter?.name ?? null}
+                    author={{ id: "teacher", name: "Professor", role: "teacher" }}
                     onChange={(value) => {
                       setNotes((current) => ({ ...current, student: value }));
                       sendNote("student", value, true);
