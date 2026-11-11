@@ -8,6 +8,7 @@ type DashboardNotesProps = {
   onChange: (value: string) => void;
   onSave: () => void;
   author?: NoteAuthor;
+  participants?: NoteAuthor[];
 };
 
 export const DashboardNotes = ({
@@ -16,10 +17,11 @@ export const DashboardNotes = ({
   onChange,
   onSave,
   author,
+  participants,
 }: DashboardNotesProps) => {
   return (
     <div className="flex h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem] w-full min-w-0 flex-col rounded-xl bg-(--background) p-4">
-      <NoteAuthorLegend value={value} currentAuthor={author} />
+      <NoteAuthorLegend value={value} currentAuthor={author} participants={participants} />
       <RichTextArea
         value={value}
         readOnly={readOnly}

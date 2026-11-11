@@ -356,6 +356,12 @@ export default function TeacherDashboard() {
                   <DashboardNotes
                     value={notes.student}
                     author={{ id: "teacher", name: teacherDisplayName, role: "teacher" }}
+                    participants={[
+                      { id: "teacher", name: teacherDisplayName, role: "teacher" },
+                      ...(student?.name
+                        ? [{ id: studentId ?? student.name, name: student.name, role: "student" as const }]
+                        : []),
+                    ]}
                     onChange={(value) => {
                       setNotes((current) => ({ ...current, student: value }));
                       sendNote("student", value, true);

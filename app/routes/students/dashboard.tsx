@@ -181,6 +181,10 @@ export default function Dashboard() {
               <DashboardNotes
                 value={notes.student}
                 author={{ id: studentId, name: student.name, role: "student" }}
+                participants={[
+                  { id: "teacher", name: "Professor", role: "teacher" },
+                  { id: studentId, name: student.name, role: "student" },
+                ]}
                 onChange={(value) => {
                   setNotes((current) => ({ ...current, student: value }));
                   sendNote("student", value, true);

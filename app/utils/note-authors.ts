@@ -12,13 +12,14 @@ const decodeAttribute = (value: string) => {
   }
 };
 
-export function getNoteAuthors(value: string, currentAuthor?: NoteAuthor) {
+export function getNoteAuthors(
+  value: string,
+  currentAuthor?: NoteAuthor,
+  participants: NoteAuthor[] = [],
+) {
   const authors = new Map<string, NoteAuthor>();
-  const currentKey = currentAuthor
-    ? `${currentAuthor.role}:${currentAuthor.id}`
-    : null;
-  if (currentAuthor) {
-    authors.set(currentKey!, currentAuthor);
+  for (const author of [...participants, ...(currentAuthor ? [currentAuthor] : [])]) {
+    authors.set(`${author.role}:${author.id}`, author);
   }
 
   for (const match of value.matchAll(
@@ -30,7 +31,7 @@ export function getNoteAuthors(value: string, currentAuthor?: NoteAuthor) {
       name: decodeAttribute(match[3]),
     };
     const key = `${author.role}:${author.id}`;
-    if (key !== currentKey) authors.set(key, author);
+    if (!authors.has(key)) authors.set(key, author);
   }
 
   return [...authors.values()].sort((a, b) => {

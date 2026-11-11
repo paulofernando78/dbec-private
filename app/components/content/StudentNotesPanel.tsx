@@ -158,6 +158,14 @@ export function StudentNotesPanel({
         role: session.role,
       }
     : undefined;
+  const noteParticipants = currentAuthor && session
+    ? [
+        currentAuthor,
+        session.role === "teacher"
+          ? { id: studentId, name: studentName || "Aluno", role: "student" as const }
+          : { id: "teacher", name: "Professor", role: "teacher" as const },
+      ]
+    : [];
 
   if (!session || !isOpen || !panelHost) return null;
 
@@ -194,7 +202,7 @@ export function StudentNotesPanel({
             <>
               <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:flex-none max-[930px]:grid-cols-1">
                 <Card className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
-                  <NoteAuthorLegend value={notes.student} currentAuthor={currentAuthor} />
+                  <NoteAuthorLegend value={notes.student} currentAuthor={currentAuthor} participants={noteParticipants} />
                   <RichTextArea
                     value={notes.student}
                     author={currentAuthor}
