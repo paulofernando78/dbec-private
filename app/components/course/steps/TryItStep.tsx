@@ -1,23 +1,4 @@
 import { useMemo, useRef, useState } from "react";
-import {
-  closestCenter,
-  DndContext,
-  KeyboardSensor,
-  PointerSensor,
-  pointerWithin,
-  useDroppable,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
-  horizontalListSortingStrategy,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  useSortable,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Check, Eye, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
@@ -26,81 +7,81 @@ import type { TryItData } from "@/data/course/lesson-step-types";
 type Token = { id: string; word: string };
 type ContainerName = "bank" | "answer";
 
-function SortableWord({
-  token,
-  container,
-  onClick,
-}: {
-  token: Token;
-  container: ContainerName;
-  onClick: () => void;
-}) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: token.id, data: { container } });
-
-  return (
-    <button
-      ref={setNodeRef}
-      type="button"
-      style={{ transform: CSS.Transform.toString(transform), transition }}
-      className={`touch-none cursor-grab rounded-lg border border-gray-300 bg-[var(--background)] px-3 py-2 select-none active:cursor-grabbing ${
-        isDragging ? "z-10 opacity-40" : ""
-      }`}
-      onClick={onClick}
-      {...attributes}
-      {...listeners}
-    >
-      {token.word}
-    </button>
-  );
-}
-
 function WordContainer({
   id,
   tokens,
   placeholder,
   onTokenClick,
+  onDragBegin,
+  onDragFinish,
+  onDropToken,
 }: {
   id: ContainerName;
   tokens: Token[];
   placeholder?: string;
   onTokenClick: (token: Token) => void;
+  onDragBegin: () => void;
+  onDragFinish: () => void;
+  onDropToken: (tokenId: string, target: ContainerName, index: number) => void;
 }) {
-  const { setNodeRef, isOver } = useDroppable({ id, data: { container: id } });
+  const [isOver, setIsOver] = useState(false);
+
+  const getInsertionIndex = (event: React.DragEvent<HTMLDivElement>) => {
+    const target = (event.target as HTMLElement).closest<HTMLElement>("[data-token-id]");
+    if (!target || !event.currentTarget.contains(target)) return tokens.length;
+
+    const rect = target.getBoundingClientRect();
+    const isAfter = event.clientX > rect.left + rect.width / 2;
+    const index = tokens.findIndex((token) => token.id === target.dataset.tokenId);
+    return index < 0 ? tokens.length : index + Number(isAfter);
+  };
 
   return (
-    <SortableContext
-      id={id}
-      items={tokens.map((token) => token.id)}
-      strategy={horizontalListSortingStrategy}
+    <div
+      data-drop-container={id}
+      onDragOver={(event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
+        setIsOver(true);
+      }}
+      onDragLeave={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsOver(false);
+        }
+      }}
+      onDrop={(event) => {
+        event.preventDefault();
+        setIsOver(false);
+        const tokenId = event.dataTransfer.getData("text/plain");
+        if (tokenId) onDropToken(tokenId, id, getInsertionIndex(event));
+      }}
+      className={`flex min-h-17 flex-wrap items-center gap-2 rounded-xl border border-dashed p-3 transition-colors ${
+        id === "answer" ? "bg-white" : "border-transparent"
+      } ${isOver ? "border-sky-500 bg-sky-50" : "border-gray-300"}`}
     >
-      <div
-        ref={setNodeRef}
-        className={`flex min-h-17 flex-wrap items-center gap-2 rounded-xl border border-dashed p-3 transition-colors ${
-          id === "answer" ? "bg-white" : "border-transparent"
-        } ${isOver ? "border-sky-500 bg-sky-50" : "border-gray-300"}`}
-      >
-        {tokens.length === 0 && placeholder ? (
-          <span className="pointer-events-none text-slate-500">
-            {placeholder}
-          </span>
-        ) : null}
-        {tokens.map((token) => (
-          <SortableWord
-            key={token.id}
-            token={token}
-            container={id}
-            onClick={() => onTokenClick(token)}
-          />
-        ))}
-      </div>
-    </SortableContext>
+      {tokens.length === 0 && placeholder ? (
+        <span className="pointer-events-none text-slate-500">{placeholder}</span>
+      ) : null}
+      {tokens.map((token) => (
+        <button
+          key={token.id}
+          type="button"
+          draggable
+          data-token-id={token.id}
+          onDragStart={(event) => {
+            onDragBegin();
+            event.dataTransfer.effectAllowed = "move";
+            event.dataTransfer.setData("text/plain", token.id);
+            event.dataTransfer.setData("application/x-try-it-source", id);
+          }}
+          onDragEnd={onDragFinish}
+          onClick={() => onTokenClick(token)}
+          className="cursor-grab touch-manipulation rounded-lg border border-gray-300 bg-[var(--background)] px-3 py-2 select-none active:cursor-grabbing"
+        >
+          {token.word}
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -120,85 +101,62 @@ function SentenceBuilder({
   const [bank, setBank] = useState<Token[]>(initialTokens);
   const [answer, setAnswer] = useState<Token[]>([]);
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
-  const didDragRef = useRef(false);
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
+  const suppressClickRef = useRef(false);
 
   const moveToken = (
-    token: Token,
-    from: ContainerName,
+    tokenId: string,
     to: ContainerName,
-    targetIndex?: number,
+    targetIndex: number,
   ) => {
-    if (from === to) return;
-    const nextIndex =
-      targetIndex ?? (to === "answer" ? answer.length : bank.length);
-    if (from === "bank") {
-      setBank((items) => items.filter((item) => item.id !== token.id));
-      setAnswer((items) => {
-        const next = [...items];
-        next.splice(nextIndex, 0, token);
-        return next;
-      });
+    const from: ContainerName = bank.some((token) => token.id === tokenId)
+      ? "bank"
+      : "answer";
+    const source = from === "bank" ? bank : answer;
+    const token = source.find((item) => item.id === tokenId);
+    if (!token) return;
+
+    const destination = to === "bank" ? bank : answer;
+    const fromIndex = source.findIndex((item) => item.id === tokenId);
+    const boundedIndex = Math.max(0, Math.min(targetIndex, destination.length));
+
+    if (from === to) {
+      const adjustedIndex = fromIndex < boundedIndex ? boundedIndex - 1 : boundedIndex;
+      if (adjustedIndex === fromIndex) return;
+      const reordered = [...source];
+      reordered.splice(fromIndex, 1);
+      reordered.splice(adjustedIndex, 0, token);
+      (to === "bank" ? setBank : setAnswer)(reordered);
     } else {
-      setAnswer((items) => items.filter((item) => item.id !== token.id));
-      setBank((items) => {
+      (from === "bank" ? setBank : setAnswer)((items) =>
+        items.filter((item) => item.id !== tokenId),
+      );
+      (to === "bank" ? setBank : setAnswer)((items) => {
         const next = [...items];
-        next.splice(nextIndex, 0, token);
+        next.splice(Math.min(boundedIndex, next.length), 0, token);
         return next;
       });
     }
     setResult(null);
   };
 
-  const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    if (!over) return;
-    const from = active.data.current?.container as ContainerName | undefined;
-    const to = (over.data.current?.container ?? over.id) as ContainerName;
-    if (!from || !["bank", "answer"].includes(to)) return;
-
-    const fromItems = from === "bank" ? bank : answer;
-    const token = fromItems.find((item) => item.id === active.id);
-    if (!token) return;
-
-    if (from === to) {
-      const oldIndex = fromItems.findIndex((item) => item.id === active.id);
-      const newIndex = fromItems.findIndex((item) => item.id === over.id);
-      if (oldIndex !== newIndex && newIndex >= 0) {
-        const setter = from === "bank" ? setBank : setAnswer;
-        setter((items) => arrayMove(items, oldIndex, newIndex));
-        setResult(null);
-      }
+  const handleTokenClick = (token: Token, from: ContainerName, to: ContainerName) => {
+    if (suppressClickRef.current) {
+      suppressClickRef.current = false;
       return;
     }
-
-    const toItems = to === "bank" ? bank : answer;
-    const overIndex = toItems.findIndex((item) => item.id === over.id);
-    moveToken(token, from, to, overIndex >= 0 ? overIndex : undefined);
+    const currentIndex = (to === "answer" ? answer : bank).length;
+    moveToken(token.id, to, currentIndex);
+    void from;
   };
 
-  const handleDragStart = () => {
-    didDragRef.current = true;
+  const handleDragBegin = () => {
+    suppressClickRef.current = true;
   };
 
   const handleDragFinish = () => {
-    requestAnimationFrame(() => {
-      didDragRef.current = false;
-    });
-  };
-
-  const collisionDetection = (args: Parameters<typeof closestCenter>[0]) => {
-    const pointerCollisions = pointerWithin(args);
-    return pointerCollisions.length ? pointerCollisions : closestCenter(args);
-  };
-
-  const handleTokenClick = (token: Token, from: ContainerName, to: ContainerName) => {
-    if (didDragRef.current) return;
-    moveToken(token, from, to);
+    window.setTimeout(() => {
+      suppressClickRef.current = false;
+    }, 100);
   };
 
   const showAnswer = () => {
@@ -227,32 +185,27 @@ function SentenceBuilder({
 
   return (
     <article className="rounded-xl bg-[var(--background)] p-4">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={collisionDetection}
-        onDragStart={handleDragStart}
-        onDragEnd={(event) => {
-          handleDragEnd(event);
-          handleDragFinish();
-        }}
-        onDragCancel={handleDragFinish}
-      >
-        <div className="mb-3 flex items-start gap-2">
-          <b className="pt-3">{number}.</b>
-          <div className="min-w-0 flex-1">
-            <WordContainer
-              id="bank"
-              tokens={bank}
-              onTokenClick={(token) => handleTokenClick(token, "bank", "answer")}
-            />
-          </div>
+      <div className="mb-3 flex items-start gap-2">
+        <b className="pt-3">{number}.</b>
+        <div className="min-w-0 flex-1">
+          <WordContainer
+            id="bank"
+            tokens={bank}
+            onTokenClick={(token) => handleTokenClick(token, "bank", "answer")}
+            onDragBegin={handleDragBegin}
+            onDragFinish={handleDragFinish}
+            onDropToken={(tokenId, target, index) => moveToken(tokenId, target, index)}
+          />
         </div>
-        <WordContainer
-          id="answer"
-          tokens={answer}
-          onTokenClick={(token) => handleTokenClick(token, "answer", "bank")}
-        />
-      </DndContext>
+      </div>
+      <WordContainer
+        id="answer"
+        tokens={answer}
+        onTokenClick={(token) => handleTokenClick(token, "answer", "bank")}
+        onDragBegin={handleDragBegin}
+        onDragFinish={handleDragFinish}
+        onDropToken={(tokenId, target, index) => moveToken(tokenId, target, index)}
+      />
 
       <p
         className={`mt-2 min-h-6 text-sm font-semibold ${
@@ -260,11 +213,7 @@ function SentenceBuilder({
         }`}
         aria-live="polite"
       >
-        {result === "correct"
-          ? "Correct!"
-          : result === "incorrect"
-            ? "Try again."
-            : ""}
+        {result === "correct" ? "Correct!" : result === "incorrect" ? "Try again." : ""}
       </p>
 
       <div className="mt-1 flex gap-3">
