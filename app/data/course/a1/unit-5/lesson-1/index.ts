@@ -1,7 +1,7 @@
 import { a1SkeletonLessons } from "../../skeleton-lessons";
-import { getReady } from "./get-ready";
 import { languageFocus } from "./language-focus";
 import { listen } from "./listen";
+import { getReady } from "./get-ready";
 
 const baseLesson = a1SkeletonLessons["5/1"];
 

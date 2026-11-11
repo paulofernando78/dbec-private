@@ -144,6 +144,9 @@ function ActivityBlock({
 
 export function GetReadyStep({ data }: { data: GetReadyData }) {
   const [currentImage, setCurrentImage] = useState(0);
+  const [visibleDiscussAnswers, setVisibleDiscussAnswers] = useState<Set<string>>(
+    new Set(),
+  );
   const carouselRef = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
 
@@ -278,10 +281,61 @@ export function GetReadyStep({ data }: { data: GetReadyData }) {
             />
           ) : null}
           {data.slides[currentImage].discuss ? (
-            <ActivityBlock
-              title="Discuss"
-              activity={data.slides[currentImage].discuss}
-            />
+            <section className="rounded-xl bg-(--surface) p-4">
+              <div className="mb-4 flex items-center gap-4">
+                <h4 className="font-black uppercase tracking-wide">Discuss</h4>
+                {data.slides[currentImage].discuss.interaction?.length ? (
+                  <div className="flex items-center gap-1.5" aria-label="Interaction">
+                    {data.slides[currentImage].discuss.interaction.map((interaction, index) => {
+                      const interactionDetails = {
+                        pairs: { label: "Pairs or small groups", Icon: Users },
+                        "teacher-class": { label: "Teacher and class", Icon: Presentation },
+                      } as const;
+                      const { label, Icon } = interactionDetails[interaction];
+                      const tooltipId = `get-ready-discuss-${interaction}`;
+                      return (
+                        <div key={interaction} className="flex items-center gap-1.5">
+                          {index > 0 ? <ChevronRight aria-hidden="true" className="size-3.5 text-slate-400" /> : null}
+                          <span className="group relative">
+                            <span tabIndex={0} aria-label={label} aria-describedby={tooltipId} className="grid size-7 place-items-center rounded-full bg-slate-200 text-slate-600 outline-none transition-colors hover:bg-slate-300 focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2">
+                              <Icon aria-hidden="true" className="size-4" />
+                            </span>
+                            <span id={tooltipId} role="tooltip" className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 rounded-md bg-slate-800 px-2 py-1 text-xs font-semibold whitespace-nowrap text-white opacity-0 shadow-md transition-opacity duration-100 group-hover:opacity-100 group-focus-within:opacity-100">{label}</span>
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </div>
+              <ul className="grid gap-3">
+                {data.slides[currentImage].discuss.questions.map((question) => {
+                  const answerVisible = visibleDiscussAnswers.has(question.prompt);
+                  return (
+                    <li key={question.prompt} className="rounded-xl bg-(--background) p-3 text-slate-800">
+                      <div className="grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-3">
+                        <Audio asButton src="" fallbackText={question.prompt} speechLang="en-US" ariaLabel={`Play ${question.prompt}`} />
+                        <p className="font-semibold">{question.prompt}</p>
+                        {question.support?.length ? (
+                          <Button
+                            ariaLabel={answerVisible ? "Hide answer" : "Show answer"}
+                            pressed={answerVisible}
+                            onClick={() => setVisibleDiscussAnswers((current) => {
+                              const next = new Set(current);
+                              if (answerVisible) next.delete(question.prompt);
+                              else next.add(question.prompt);
+                              return next;
+                            })}
+                            icon={answerVisible ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
+                          />
+                        ) : null}
+                        {answerVisible && question.support?.length ? <p>{question.support.join(" / ")}</p> : null}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
           ) : null}
         </div>
       ) : null}

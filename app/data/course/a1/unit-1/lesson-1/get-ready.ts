@@ -11,8 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Hello or hi?", support: ["Hello.", "Hi."] },
-          { prompt: "First meeting or goodbye?", support: ["First meeting.", "Goodbye."] },
+          { prompt: "At work or at home?", support: ["At work."] },
+          { prompt: "A first meeting or old friends?", support: ["A first meeting."] },
         ],
       },
 
