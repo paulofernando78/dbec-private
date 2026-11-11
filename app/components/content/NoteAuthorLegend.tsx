@@ -13,7 +13,7 @@ export function NoteAuthorLegend({
   if (!authors.length) return null;
 
   return (
-    <div className="mb-2 flex min-w-0 items-center justify-end gap-2 overflow-x-auto whitespace-nowrap" aria-label="Note contributors">
+    <div className="mb-2 flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap" aria-label="Note contributors">
       {authors.map((author, index) => {
         const colors = getNoteAuthorColors(author);
         return (
