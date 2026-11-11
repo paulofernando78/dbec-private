@@ -13,7 +13,7 @@ const welcomeMessage: ChatMessage = {
   text: "Hello! Send me a sentence to check, ask about a word, or practice a conversation.",
 };
 
-export function AiTutor() {
+export function AiTutor({ className = "mt-3", fill = false }: { className?: string; fill?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [draft, setDraft] = useState("");
   const [error, setError] = useState("");
@@ -72,7 +72,7 @@ export function AiTutor() {
     <section
       id="ai-tutor"
       aria-labelledby="ai-tutor-title"
-      className="mt-3 flex w-full scroll-mt-4 flex-col overflow-hidden rounded-xl bg-(--background) ring-1 ring-slate-200"
+      className={`${className} flex w-full scroll-mt-4 flex-col overflow-hidden rounded-xl bg-(--background) ring-1 ring-slate-200`}
     >
       <header className="flex items-center gap-3 border-b border-slate-200 px-4 py-3">
         <div className="grid size-9 place-items-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
@@ -86,7 +86,7 @@ export function AiTutor() {
 
       <div
         ref={messagesRef}
-        className="max-h-52 min-h-24 space-y-3 overflow-y-auto px-4 py-3"
+        className={`${fill ? "min-h-24 flex-1" : "max-h-52 min-h-24"} space-y-3 overflow-y-auto px-4 py-3`}
         aria-live="polite"
       >
         {messages.map((message, index) => (

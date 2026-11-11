@@ -55,6 +55,9 @@ export const ScrollToTop = () => {
   const visibilityClasses = visible
     ? "pointer-events-auto translate-y-0 opacity-100"
     : "pointer-events-none translate-y-2 opacity-0";
+  const isDashboard =
+    location.pathname.startsWith("/teacher/dashboard") ||
+    /^\/dashboard\/[^/]+/.test(location.pathname);
 
   const button = (
     <Button
@@ -69,7 +72,7 @@ export const ScrollToTop = () => {
 
   return (
     <div
-      className="absolute right-[calc(0.6vw+0.25rem)] bottom-15 z-50"
+      className={`absolute right-[calc(0.6vw+0.25rem)] z-50 ${isDashboard ? "bottom-1" : "bottom-15"}`}
     >
       {button}
     </div>

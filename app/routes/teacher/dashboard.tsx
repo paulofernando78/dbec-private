@@ -10,6 +10,7 @@ import { StudentForm } from "@/components/content/StudentForm";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
+import { combineNotes } from "@/utils/shared-notes";
 import {
   getCourseProgressSummary,
   type CourseProgressSummary,
@@ -57,6 +58,7 @@ export default function TeacherDashboard() {
   const [students, setStudents] = useState<any[]>([]);
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
+  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
   const [isLoadingStudent, setIsLoadingStudent] = useState(false);
@@ -79,6 +81,7 @@ export default function TeacherDashboard() {
           : { ...current, [noteType]: content },
       );
     },
+    setActiveWriter,
   );
 
   const loadStudents = async () => {
@@ -140,7 +143,7 @@ export default function TeacherDashboard() {
           if (cancelled) return;
 
           setData(result);
-          setNotes(result.notes ?? { teacher: "", student: "" });
+          setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
           setCalendar(
             Object.fromEntries(
               (result.calendar ?? []).map((entry: any) => [
@@ -165,7 +168,7 @@ export default function TeacherDashboard() {
             const localData = getLocalStudent(studentId);
             if (localData && !cancelled) {
               setData(localData);
-              setNotes(localData.notes);
+              setNotes({ teacher: "", student: combineNotes(localData.notes) });
               setCalendar(
                 Object.fromEntries(
                   localData.calendar.map((entry) => [entry.date, entry.status]),
@@ -203,18 +206,7 @@ export default function TeacherDashboard() {
     };
   }, [studentId, reloadKey]);
 
-  const saveTeacherNote = () =>
-    fetch("/api/notes", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        studentId,
-        noteType: "teacher",
-        content: notes.teacher,
-      }),
-    });
-
-  const saveStudentNote = () =>
+  const saveSharedNote = () =>
     fetch("/api/notes", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -222,6 +214,7 @@ export default function TeacherDashboard() {
         studentId,
         noteType: "student",
         content: notes.student,
+        shared: true,
       }),
     });
 
@@ -335,27 +328,20 @@ export default function TeacherDashboard() {
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />
               <Card title="Notes">
-                <div className="flex w-full gap-4 max-[900px]:flex-col">
+                <div className="grid w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
                   <DashboardNotes
-                    title="Teacher's"
-                    value={notes.teacher}
-                    onChange={(value) => {
-                      setNotes((current) => ({ ...current, teacher: value }));
-                      sendNote("teacher", value);
-                    }}
-                    onSave={saveTeacherNote}
-                  />
-                  <DashboardNotes
-                    title="Student's"
+                    title="Shared notes"
                     value={notes.student}
+                    identity={student?.name ? `${student.name} · Professor` : "Professor"}
+                    activeWriter={activeWriter?.name ?? null}
                     onChange={(value) => {
                       setNotes((current) => ({ ...current, student: value }));
-                      sendNote("student", value);
+                      sendNote("student", value, true);
                     }}
-                    onSave={saveStudentNote}
+                    onSave={saveSharedNote}
                   />
+                  <AiTutor className="mt-0 h-full min-h-[36rem]" fill />
                 </div>
-                <AiTutor />
               </Card>
             </div>
           </div>

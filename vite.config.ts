@@ -742,7 +742,7 @@ const localAuth = (): Plugin => ({
         let body = "";
         for await (const chunk of request) body += chunk;
 
-        const { studentId, noteType, content } = JSON.parse(body);
+        const { studentId, noteType, content, shared = false } = JSON.parse(body);
         const allowedStudentId =
           localSession.role === "teacher"
             ? studentId
@@ -767,10 +767,12 @@ const localAuth = (): Plugin => ({
           teacher: "",
           student: "",
         };
-        localNotes.set(allowedStudentId, {
-          ...current,
-          [noteType]: content,
-        });
+        localNotes.set(
+          allowedStudentId,
+          shared && noteType === "student"
+            ? { teacher: "", student: content }
+            : { ...current, [noteType]: content },
+        );
 
         response.statusCode = 200;
         response.end(JSON.stringify({ ok: true }));

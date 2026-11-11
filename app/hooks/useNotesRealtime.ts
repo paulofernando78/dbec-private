@@ -9,6 +9,12 @@ type NoteUpdate = {
   updatedAt?: number;
 };
 
+type WriterUpdate = {
+  type: "writer:update" | "writer:clear";
+  name?: string;
+  role?: NoteType;
+};
+
 type ConnectionState =
   | "connecting"
   | "connected"
@@ -23,6 +29,7 @@ export function useNotesRealtime(
   studentId: string | undefined,
   role: NoteType | undefined,
   onRemoteUpdate: (noteType: NoteType, content: string) => void,
+  onWriterUpdate?: (writer: { name: string; role: NoteType } | null) => void,
 ) {
   const socketRef = useRef<WebSocket | null>(null);
   const callbackRef = useRef(onRemoteUpdate);
@@ -31,6 +38,7 @@ export function useNotesRealtime(
   const pendingNotesRef = useRef<Partial<Record<NoteType, string>>>({});
   const lastReceivedRef = useRef<Partial<Record<NoteType, string>>>({});
   const lastLocalEditRef = useRef<Partial<Record<NoteType, number>>>({});
+  const writerTimerRef = useRef<number | undefined>(undefined);
   const [connectionState, setConnectionState] =
     useState<ConnectionState>("disconnected");
 
@@ -110,7 +118,18 @@ export function useNotesRealtime(
 
       socket.addEventListener("message", (event) => {
         try {
-          const update = JSON.parse(event.data) as NoteUpdate;
+          const update = JSON.parse(event.data) as NoteUpdate | WriterUpdate;
+          if (update.type === "writer:update" && update.name && update.role) {
+            if (writerTimerRef.current) window.clearTimeout(writerTimerRef.current);
+            onWriterUpdate?.({ name: update.name, role: update.role });
+            writerTimerRef.current = window.setTimeout(() => onWriterUpdate?.(null), 4_000);
+            return;
+          }
+          if (update.type === "writer:clear") {
+            if (writerTimerRef.current) window.clearTimeout(writerTimerRef.current);
+            onWriterUpdate?.(null);
+            return;
+          }
           if (
             update.type === "note:update" &&
             (update.noteType === "teacher" || update.noteType === "student") &&
@@ -135,6 +154,8 @@ export function useNotesRealtime(
       });
 
       socket.addEventListener("close", () => {
+        if (writerTimerRef.current) window.clearTimeout(writerTimerRef.current);
+        onWriterUpdate?.(null);
         if (socketRef.current === socket) socketRef.current = null;
         if (disposed) return;
 
@@ -155,11 +176,12 @@ export function useNotesRealtime(
       stopPolling();
       socketRef.current?.close(1000, "Page changed");
       socketRef.current = null;
+      if (writerTimerRef.current) window.clearTimeout(writerTimerRef.current);
     };
   }, [role, studentId]);
 
   const sendNote = useCallback(
-    (noteType: NoteType, content: string) => {
+    (noteType: NoteType, content: string, shared = false) => {
       const canEditNote =
         role === "teacher" || (role === "student" && noteType === "student");
 
@@ -169,6 +191,7 @@ export function useNotesRealtime(
       pendingNotesRef.current[noteType] = content;
 
       if (socketRef.current?.readyState === WebSocket.OPEN) {
+        socketRef.current.send(JSON.stringify({ type: "writer:update" }));
         socketRef.current.send(
           JSON.stringify({
             type: "note:update",
@@ -192,7 +215,7 @@ export function useNotesRealtime(
             const response = await fetch("/api/notes", {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ studentId, noteType, content }),
+              body: JSON.stringify({ studentId, noteType, content, shared }),
             });
 
             if (!response.ok) return;

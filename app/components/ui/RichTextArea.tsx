@@ -9,6 +9,7 @@ type RichTextAreaProps = {
   readOnly?: boolean;
   onChange: (value: string) => void;
   onBlur: () => void;
+  className?: string;
 };
 
 const renderLegacyFormatting = (value: string) =>
@@ -82,6 +83,7 @@ export function RichTextArea({
   readOnly = false,
   onChange,
   onBlur,
+  className,
 }: RichTextAreaProps) {
   const editorAreaRef = useRef<HTMLDivElement>(null);
   const blockRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -591,7 +593,7 @@ export function RichTextArea({
       </div>
       <div
         ref={editorAreaRef}
-        className="w-full min-h-60 max-h-60 overflow-auto rounded-md border border-gray-300 bg-white px-1 py-2 text-(--text-color) focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500"
+        className={`w-full overflow-auto rounded-md border border-gray-300 bg-white px-1 py-2 text-(--text-color) focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 ${className ?? "min-h-60 max-h-60"}`}
       >
         {blocks.map((block) => (
           <div

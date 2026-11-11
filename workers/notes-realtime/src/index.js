@@ -10,6 +10,7 @@ export class NotesRoom {
 
     const role = request.headers.get("X-DBEC-Role");
     const studentId = request.headers.get("X-DBEC-Student-Id");
+    const writerName = request.headers.get("X-DBEC-Writer-Name") || (role === "teacher" ? "Professor" : "Aluno");
 
     if (!studentId || (role !== "teacher" && role !== "student")) {
       return new Response("Unauthorized.", { status: 401 });
@@ -19,7 +20,7 @@ export class NotesRoom {
     const [client, server] = Object.values(pair);
 
     this.state.acceptWebSocket(server);
-    server.serializeAttachment({ role, studentId });
+    server.serializeAttachment({ role, studentId, writerName });
 
     return new Response(null, { status: 101, webSocket: client });
   }
@@ -28,6 +29,17 @@ export class NotesRoom {
     try {
       const message = JSON.parse(rawMessage);
       const attachment = socket.deserializeAttachment();
+      if (message.type === "writer:update") {
+        const update = JSON.stringify({
+          type: "writer:update",
+          name: attachment?.writerName,
+          role: attachment?.role,
+        });
+        for (const connectedSocket of this.state.getWebSockets()) {
+          if (connectedSocket !== socket) connectedSocket.send(update);
+        }
+        return;
+      }
       const canEditNote =
         attachment?.role === "teacher"
           ? message.noteType === "teacher" || message.noteType === "student"
@@ -59,6 +71,11 @@ export class NotesRoom {
   }
 
   async webSocketClose(socket, code, reason) {
+    const attachment = socket.deserializeAttachment();
+    const update = JSON.stringify({ type: "writer:clear", role: attachment?.role });
+    for (const connectedSocket of this.state.getWebSockets()) {
+      if (connectedSocket !== socket) connectedSocket.send(update);
+    }
     socket.close(code, reason);
   }
 }

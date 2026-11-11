@@ -10,6 +10,7 @@ import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
 import Emojis from "@/features/Emojis/Emojis";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
+import { combineNotes } from "@/utils/shared-notes";
 import {
   getCourseProgressSummary,
   type CourseProgressSummary,
@@ -19,6 +20,7 @@ export default function Dashboard() {
   const { studentId } = useParams();
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
+  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
@@ -38,6 +40,7 @@ export default function Dashboard() {
           : { ...current, [noteType]: content },
       );
     },
+    setActiveWriter,
   );
 
   useEffect(() => {
@@ -62,7 +65,7 @@ export default function Dashboard() {
       })
       .then((result) => {
         setData(result);
-        setNotes(result.notes ?? { teacher: "", student: "" });
+        setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
         setCalendar(
           Object.fromEntries(
             (result.calendar ?? []).map((entry: any) => [
@@ -96,6 +99,7 @@ export default function Dashboard() {
         studentId,
         noteType: "student",
         content: notes.student,
+        shared: true,
       }),
     });
 
@@ -169,25 +173,20 @@ export default function Dashboard() {
           <span id="teacher-notes" className="absolute top-0" />
           <span id="student-notes" className="absolute top-0" />
           <Card title="Notes">
-            <div className="flex w-full gap-4 max-[800px]:flex-col">
+            <div className="grid w-full grid-cols-2 items-stretch gap-4 max-[800px]:grid-cols-1">
               <DashboardNotes
-                title="Teacher's"
-                value={notes.teacher}
-                readOnly
-                onChange={() => {}}
-                onSave={() => {}}
-              />
-              <DashboardNotes
-                title="Student's"
+                title="Shared notes"
                 value={notes.student}
+                identity={student.name ? `${student.name} · Professor` : "Você · Professor"}
+                activeWriter={activeWriter?.name ?? null}
                 onChange={(value) => {
                   setNotes((current) => ({ ...current, student: value }));
-                  sendNote("student", value);
+                  sendNote("student", value, true);
                 }}
                 onSave={saveStudentNote}
               />
+              <AiTutor className="mt-0 h-full min-h-[36rem]" fill />
             </div>
-            <AiTutor />
           </Card>
         </div>
       </div>

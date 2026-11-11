@@ -46,6 +46,14 @@ export async function onRequestGet(context) {
   const headers = new Headers(context.request.headers);
   headers.set("X-DBEC-Role", session.role);
   headers.set("X-DBEC-Student-Id", studentId);
+  let writerName = session.username;
+  if (session.role === "student" && context.env.DB) {
+    const student = await context.env.DB.prepare(
+      "SELECT display_name AS name FROM users WHERE role = 'student' AND student_slug = ?",
+    ).bind(studentId).first();
+    writerName = student?.name ?? session.username;
+  }
+  headers.set("X-DBEC-Writer-Name", writerName);
 
   return room.fetch(
     new Request(context.request, {

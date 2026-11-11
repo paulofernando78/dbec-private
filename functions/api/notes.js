@@ -7,7 +7,7 @@ export async function onRequestPut(context) {
   );
   if (!session) return Response.json({ error: "Não autorizado." }, { status: 401 });
 
-  const { studentId, noteType, content } = await context.request.json();
+  const { studentId, noteType, content, shared = false } = await context.request.json();
   const allowedStudentId = session.role === "teacher" ? studentId : session.studentId;
   const canEditNote =
     session.role === "teacher"
@@ -23,12 +23,30 @@ export async function onRequestPut(context) {
   ).bind(allowedStudentId).first();
   if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404 });
 
-  await context.env.DB.prepare(
+  const saveShared = shared === true && noteType === "student";
+  if (saveShared) {
+    await context.env.DB.batch([
+      context.env.DB.prepare(
+        `INSERT INTO notes (student_id, note_type, content, updated_at)
+         VALUES (?, 'student', ?, CURRENT_TIMESTAMP)
+         ON CONFLICT(student_id, note_type)
+         DO UPDATE SET content = excluded.content, updated_at = CURRENT_TIMESTAMP`,
+      ).bind(student.id, content),
+      context.env.DB.prepare(
+        `INSERT INTO notes (student_id, note_type, content, updated_at)
+         VALUES (?, 'teacher', '', CURRENT_TIMESTAMP)
+         ON CONFLICT(student_id, note_type)
+         DO UPDATE SET content = '', updated_at = CURRENT_TIMESTAMP`,
+      ).bind(student.id),
+    ]);
+  } else {
+    await context.env.DB.prepare(
     `INSERT INTO notes (student_id, note_type, content, updated_at)
      VALUES (?, ?, ?, CURRENT_TIMESTAMP)
      ON CONFLICT(student_id, note_type)
      DO UPDATE SET content = excluded.content, updated_at = CURRENT_TIMESTAMP`,
-  ).bind(student.id, noteType, content).run();
+    ).bind(student.id, noteType, content).run();
+  }
 
   return Response.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
 }

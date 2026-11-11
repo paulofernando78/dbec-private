@@ -9,10 +9,12 @@ import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { AiTutor } from "@/components/content/AiTutor";
 import { RichTextArea } from "@/components/ui/RichTextArea";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
+import { combineNotes } from "@/utils/shared-notes";
 
 type Session = {
   role: "teacher" | "student";
   studentId?: string;
+  displayName?: string;
 };
 
 type Notes = {
@@ -36,6 +38,7 @@ export function StudentNotesPanel({
   const [studentId, setStudentId] = useState("");
   const [studentName, setStudentName] = useState("");
   const [notes, setNotes] = useState<Notes>(emptyNotes);
+  const [activeWriter, setActiveWriter] = useState<{ name: string; role: "teacher" | "student" } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [panelHost, setPanelHost] = useState<HTMLElement | null>(null);
@@ -54,6 +57,7 @@ export function StudentNotesPanel({
           : { ...current, [noteType]: content },
       );
     },
+    setActiveWriter,
   );
 
   useEffect(() => {
@@ -103,7 +107,7 @@ export function StudentNotesPanel({
         throw new Error(result.error ?? "Não foi possível carregar as notas.");
       }
 
-      setNotes(result.notes ?? emptyNotes);
+      setNotes({ teacher: "", student: combineNotes(result.notes ?? {}) });
       setStudentName(result.student?.name ?? "");
     } catch (requestError) {
       setError(
@@ -120,20 +124,17 @@ export function StudentNotesPanel({
     if (isOpen) void loadNotes();
   }, [isOpen, loadNotes]);
 
-  const saveNote = async (noteType: "teacher" | "student") => {
-    const canEditNote =
-      session?.role === "teacher" ||
-      (session?.role === "student" && noteType === "student");
-
-    if (!studentId || !canEditNote) return;
+  const saveNote = async () => {
+    if (!studentId || !session) return;
 
     const response = await fetch("/api/notes", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         studentId,
-        noteType,
-        content: notes[noteType],
+        noteType: "student",
+        content: notes.student,
+        shared: true,
       }),
     });
 
@@ -176,34 +177,24 @@ export function StudentNotesPanel({
 
           {studentId && (
             <>
-              <div className="grid grid-cols-2 gap-3 max-[930px]:grid-cols-1">
-                <Card title="Teacher's Notes" className="bg-(--background)">
-                  <RichTextArea
-                    value={notes.teacher}
-                    readOnly={session.role !== "teacher"}
-                    onChange={(content) => {
-                      setNotes((current) => ({ ...current, teacher: content }));
-                      sendNote("teacher", content);
-                    }}
-                    onBlur={() => void saveNote("teacher")}
-                  />
-                </Card>
-
-                <Card title="Student's Notes" className="bg-(--background)">
+              <div className="grid grid-cols-2 items-stretch gap-3 max-[930px]:grid-cols-1">
+                <Card title="Shared notes" className="bg-(--background)">
+                  <p className="mb-2 text-xs text-slate-500" title={`Signed in as ${session.displayName ?? session.role}`}>
+                    {activeWriter
+                      ? `${activeWriter.name} está escrevendo`
+                      : `Editando como ${session.displayName ?? (session.role === "teacher" ? "Professor" : studentName)}`}
+                  </p>
                   <RichTextArea
                     value={notes.student}
-                    readOnly={
-                      session.role !== "teacher" && session.role !== "student"
-                    }
                     onChange={(content) => {
                       setNotes((current) => ({ ...current, student: content }));
-                      sendNote("student", content);
+                      sendNote("student", content, true);
                     }}
-                    onBlur={() => void saveNote("student")}
+                    onBlur={() => void saveNote()}
                   />
                 </Card>
+                <AiTutor className="mt-0 h-full min-h-[36rem]" fill />
               </div>
-              <AiTutor />
             </>
           )}
         </div>,
