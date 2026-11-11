@@ -14,7 +14,18 @@ export default function Layout() {
   const { isNavBarOpen, closeNavBar, isNotesOpen, toggleNotes } =
     useOutletContext<LayoutContext>();
   return (
-    <div className="relative grid h-full min-h-0 flex-1 grid-cols-[max-content_minmax(0,1fr)] gap-4 overflow-hidden max-[700px]:grid-cols-1!">
+    <div
+      className="
+        relative
+        grid
+        grid-cols-[max-content_minmax(0,1fr)]
+        h-full
+        min-h-0
+        flex-1
+        gap-4 overflow-hidden
+        max-[920px]:grid-cols-1!
+      "
+    >
       <NavBar
         isOpen={isNavBarOpen}
         closeNavBar={closeNavBar}
