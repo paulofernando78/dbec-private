@@ -127,7 +127,7 @@ export default function App() {
               ariaLabel="Menu"
               icon={<Menu />}
               onClick={toggleNav}
-              className="size-10! justify-self-start p-0.75! min-[700px]:hidden!"
+              className="size-10! justify-self-start p-0.75! min-[920px]:hidden!"
             />
           )}
           {isPresentationPage && (
