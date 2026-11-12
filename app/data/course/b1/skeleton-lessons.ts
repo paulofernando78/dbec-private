@@ -270,7 +270,12 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
           quote: "",
           discuss: {
             interaction: ["pairs", "teacher-class"],
-            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt) => ({ prompt })),
+            questions: getReadyDiscuss[`${unit}/${lesson}`].map((prompt, index) => ({
+              prompt,
+              support: [index === 0
+                ? "I can see ... / This might suggest ..."
+                : "In my view, ... because ..."],
+            })),
           },
         },
       ],

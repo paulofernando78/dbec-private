@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Who do you think is in this family album?", support: ["It may show ..."] },
-          { prompt: "Which detail could tell you how the people are related?", support: ["They might be ... because ..."] },
+          { prompt: "Are these family photos?", support: ["Yes, they are."] },
+          { prompt: "Who is in one of your family photos? (You can invent one.)", support: ["My dad. / My sister."] },
         ],
       },
 

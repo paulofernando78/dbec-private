@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What weekend activities are the people considering?", support: ["They are thinking about ..."] },
-          { prompt: "Which invitation would you accept, and what would you say?", support: ["I would ...; I would say ..."] },
+          { prompt: "What activity can you see? (Name one.)", support: ["A movie. / A game."] },
+          { prompt: "Do you want to see a movie this weekend?", support: ["Yes, I'd love to. / Sorry, I can't."] },
         ],
       },
 

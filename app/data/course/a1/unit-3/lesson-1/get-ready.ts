@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
-          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
+          { prompt: "What country are you from?", support: ["I'm from Brazil."] },
+          { prompt: "Do you speak English or Portuguese?", support: ["I speak Portuguese."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
-          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
+          { prompt: "Are you from Brazil?", support: ["Yes, I am. / No, I'm not."] },
+          { prompt: "Where are you from?", support: ["I'm from Brazil."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where might the people at this event come from?", support: ["They might be from ... because ..."] },
-          { prompt: "What language could you ask someone about at an international event?", support: ["I could ask, “Do you speak ...?”"] },
+          { prompt: "Where is Pedro from? (Use the Brazil clue if you see it.)", support: ["He's from Brazil."] },
+          { prompt: "Are you from Brazil, too?", support: ["Yes, I am. / No, I'm not."] },
         ],
       },
 

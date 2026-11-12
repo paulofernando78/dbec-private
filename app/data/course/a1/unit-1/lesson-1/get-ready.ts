@@ -11,8 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How do you think these people know each other?", support: ["They may be ... because ..."] },
-          { prompt: "What could one person say to start a friendly conversation?", support: ["They could say ..."] },
+          { prompt: "Hello or goodbye?", support: ["Hello!"] },
+          { prompt: "What's your name?", support: ["I'm Ana. (Use your name.)"] },
         ],
       },
 

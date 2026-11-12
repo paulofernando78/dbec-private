@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
-          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
+          { prompt: "Is this a house or an apartment?", support: ["An apartment."] },
+          { prompt: "Do you live in an apartment?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
-          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
+          { prompt: "Can you see a balcony? (Point.)", support: ["Yes, here."] },
+          { prompt: "Does your home have a balcony?", support: ["Yes, it does. / No, it doesn't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What can you tell about the homes in these pictures?", support: ["This home has ..."] },
-          { prompt: "Which feature would you like in your home, and why?", support: ["I would like ... because ..."] },
+          { prompt: "What room can you see? (Name one.)", support: ["A living room."] },
+          { prompt: "Does your home have a living room?", support: ["Yes, it does. / No, it doesn't."] },
         ],
       },
 

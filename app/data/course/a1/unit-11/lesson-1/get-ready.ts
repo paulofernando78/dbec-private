@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
-          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
+          { prompt: "What is Laura planning, a birthday party or a trip?", support: ["A birthday party."] },
+          { prompt: "What are you going to do this weekend? (Choose an idea.)", support: ["I'm going to see my friends. / I'm going to stay home."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
-          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
+          { prompt: "Pasta or pizza?", support: ["Pasta."] },
+          { prompt: "Are you going to cook this weekend?", support: ["Yes, I am. / No, I'm not."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What plans are the people making?", support: ["They are planning to ..."] },
-          { prompt: "How could you ask about their plans for the weekend?", support: ["You could ask, “Are you ...?”"] },
+          { prompt: "Bus or train?", support: ["Bus."] },
+          { prompt: "Are you going to take the bus this weekend?", support: ["Yes, I am. / No, I'm not."] },
         ],
       },
 

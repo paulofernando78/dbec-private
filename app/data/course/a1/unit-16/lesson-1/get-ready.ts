@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Why might Laura have missed a call?", support: ["She might have been ..."] },
-          { prompt: "What information should she leave in a clear message?", support: ["She should say ..."] },
+          { prompt: "What is Laura looking at?", support: ["Her phone."] },
+          { prompt: "What can you say at the end of a phone message?", support: ["Please call me back."] },
         ],
       },
 

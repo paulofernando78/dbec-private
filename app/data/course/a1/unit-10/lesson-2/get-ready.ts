@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What talent is each person showing?", support: ["They can ..."] },
-          { prompt: "What are you able to do well?", support: ["I can ..."] },
+          { prompt: "Is Laura dancing or singing?", support: ["Dancing."] },
+          { prompt: "Can you dance?", support: ["Yes, I can. / No, I can't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What talent is each person showing?", support: ["They can ..."] },
-          { prompt: "What are you able to do well?", support: ["I can ..."] },
+          { prompt: "What's this, a guitar or a piano?", support: ["A guitar."] },
+          { prompt: "Can you play the guitar?", support: ["Yes, I can. / No, I can't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What talent is each person showing?", support: ["They can ..."] },
-          { prompt: "What are you able to do well?", support: ["I can ..."] },
+          { prompt: "Is Naomi drawing or reading?", support: ["Drawing."] },
+          { prompt: "Can you draw?", support: ["Yes, I can. / No, I can't."] },
         ],
       },
 

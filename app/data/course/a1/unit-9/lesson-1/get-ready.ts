@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
-          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
+          { prompt: "Where is the person looking? (Point.)", support: ["In the fridge."] },
+          { prompt: "What do you drink at breakfast?", support: ["Milk. / Coffee. / Water."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
-          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
+          { prompt: "Can you see milk?", support: ["Yes, I can."] },
+          { prompt: "Do you drink milk?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What food or drinks can you find in the kitchen?", support: ["There is some ... / There are a few ..."] },
-          { prompt: "What could someone make with the ingredients shown?", support: ["They could make ..."] },
+          { prompt: "What are these, tomatoes or apples?", support: ["Tomatoes."] },
+          { prompt: "Do you like tomatoes?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 

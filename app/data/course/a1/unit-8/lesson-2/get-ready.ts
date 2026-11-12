@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
-          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
+          { prompt: "Is Naomi at work?", support: ["Yes, she is."] },
+          { prompt: "Do you like working with people?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
-          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
+          { prompt: "Does Laura look busy?", support: ["Yes, she does. / No, she doesn't."] },
+          { prompt: "Is your day busy today?", support: ["Yes, it is. / No, it isn't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What might each person like or find difficult about their job?", support: ["The job may be ... because ..."] },
-          { prompt: "Which job would you prefer, and why?", support: ["I would prefer ... because ..."] },
+          { prompt: "What does Eric do?", support: ["He's a designer."] },
+          { prompt: "Is his job interesting to you?", support: ["Yes, it is. / No, it isn't."] },
         ],
       },
 

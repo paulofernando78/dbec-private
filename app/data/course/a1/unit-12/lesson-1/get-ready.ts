@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
-          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
+          { prompt: "Does Eric look well or sick?", support: ["Sick."] },
+          { prompt: "Pretend you're Eric. How do you feel?", support: ["I feel sick."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
-          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
+          { prompt: "Does Pedro feel well?", support: ["No, he doesn't."] },
+          { prompt: "Pretend you're Pedro. Are you OK?", support: ["No. I feel sick."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What health problem might each person have?", support: ["They may have ..."] },
-          { prompt: "What could someone say to describe how they feel?", support: ["“I have a ...” / “My ... hurts.”"] },
+          { prompt: "Can you point to your throat?", support: ["Here."] },
+          { prompt: "Pretend you're Naomi. Are you OK?", support: ["No. My throat hurts."] },
         ],
       },
 

@@ -17,8 +17,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where is the phone or another object in the picture?", support: ["The ... is ... the ..."] },
-          { prompt: "How could you help someone find a misplaced item on this desk?", support: ["Look ... the ..."] },
+          { prompt: "Can you find the phone? (Point.)", support: ["Here!"] },
+          { prompt: "Where is it?", support: ["It's on the desk."] },
         ],
       },
 

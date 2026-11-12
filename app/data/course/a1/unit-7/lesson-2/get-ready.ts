@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing at home?", support: ["They are ..."] },
-          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
+          { prompt: "Where is Laura?", support: ["On the sofa."] },
+          { prompt: "Is there a sofa in your home?", support: ["Yes, there is. / No, there isn't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing at home?", support: ["They are ..."] },
-          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
+          { prompt: "How many lamps can you see?", support: ["Two."] },
+          { prompt: "Is there a lamp in your room?", support: ["Yes, there is. / No, there isn't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing at home?", support: ["They are ..."] },
-          { prompt: "Where would you look for a lamp or a clean plate in this home?", support: ["I would look ..."] },
+          { prompt: "Is Pedro in the kitchen?", support: ["Yes, he is."] },
+          { prompt: "What can you see in your kitchen? (Name one thing.)", support: ["A table."] },
         ],
       },
 

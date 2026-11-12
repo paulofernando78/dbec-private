@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What did the people do together last weekend?", support: ["They ..."] },
-          { prompt: "Which detail helps you tell when or where they were?", support: ["I think they were ... because ..."] },
+          { prompt: "Are they at home or at a picnic?", support: ["At a picnic."] },
+          { prompt: "What did you do last weekend? (Choose an example or give your own answer.)", support: ["I watched TV. / I cooked."] },
         ],
       },
 

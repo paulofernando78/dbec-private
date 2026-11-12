@@ -18,8 +18,6 @@ export const languageFocus = {
       [
         bold("Hi"),
         ", my name’s ",
-        bold("Laura"),
-        ". Say Laura as two syllables: Lau-ra.",
       ],
       "greeting + my name’s + name",
       undefined,

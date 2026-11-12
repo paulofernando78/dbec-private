@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Which objects can you identify on the desk?", support: ["There is a laptop, and there are some books."] },
-          { prompt: "What might someone use one of these objects for?", support: ["They might use the ... to ..."] },
+          { prompt: "What's this? (Point to one thing on the desk.)", support: ["It's a book."] },
+          { prompt: "What are these? (Point to two things.)", support: ["They're books."] },
         ],
       },
 

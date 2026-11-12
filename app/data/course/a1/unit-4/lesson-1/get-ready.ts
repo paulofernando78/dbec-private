@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
-          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
+          { prompt: "What color is the jacket?", support: ["Blue."] },
+          { prompt: "Is this your jacket? (Point to a jacket or pretend.)", support: ["Yes, it is. / No, it isn't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
-          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
+          { prompt: "What's this, a jacket or a scarf?", support: ["A scarf."] },
+          { prompt: "Is this your scarf? (Pretend.)", support: ["Yes, it's mine."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Whose jacket, scarf, or gloves are shown?", support: ["I think the ... belongs to ..."] },
-          { prompt: "What could you say to check if an item belongs to someone?", support: ["You could ask, “Is this your ...?”"] },
+          { prompt: "What are these, gloves or shoes?", support: ["Gloves."] },
+          { prompt: "Are these your gloves? (Pretend.)", support: ["No, they aren't mine."] },
         ],
       },
 

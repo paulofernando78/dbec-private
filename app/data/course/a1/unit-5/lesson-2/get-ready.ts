@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
-          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
+          { prompt: "Are they studying or sleeping?", support: ["Studying."] },
+          { prompt: "What are you doing now?", support: ["I'm studying English."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
-          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
+          { prompt: "Is Eva sleeping?", support: ["Yes, she is."] },
+          { prompt: "What are you doing now?", support: ["I'm sitting."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people doing at this moment?", support: ["They are ..."] },
-          { prompt: "Which activity do you usually do in the morning or evening?", support: ["I usually ..."] },
+          { prompt: "Are Mia and Leo watching TV?", support: ["Yes, they are."] },
+          { prompt: "Do you watch TV at night?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 

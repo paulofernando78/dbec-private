@@ -11,8 +11,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
-          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
+          { prompt: "What's your name?", support: ["I'm Ana."] },
+          { prompt: "Phone number or email?", support: ["Phone number."] },
         ],
       },
 
@@ -25,8 +25,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
-          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
+          { prompt: "Phone number or email?", support: ["Phone number."] },
+          { prompt: "What's your phone number? (Use a pretend number.)", support: ["It's 555-0132."] },
         ],
       },
 
@@ -39,8 +39,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Which contact detail would help them stay in touch?", support: ["They could share their ..."] },
-          { prompt: "Would you contact this person by phone call or message? Why?", support: ["I would ... because ..."] },
+          { prompt: "Hello or goodbye?", support: ["Goodbye!"] },
+          { prompt: "Can you say goodbye to your partner?", support: ["Bye! See you!"] },
         ],
       },
 

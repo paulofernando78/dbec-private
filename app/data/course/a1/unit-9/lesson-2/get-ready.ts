@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
-          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
+          { prompt: "What meal is Laura having?", support: ["Breakfast."] },
+          { prompt: "What do you eat for breakfast?", support: ["I eat bread. / I eat fruit."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
-          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
+          { prompt: "Is Pedro cooking at home?", support: ["Yes, he is."] },
+          { prompt: "Do you cook at home every day?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the people eating or drinking?", support: ["They are having ..."] },
-          { prompt: "Which meal or drink would you choose, and when do you have it?", support: ["I would choose ... for ..."] },
+          { prompt: "Is Eric drinking tea or milk?", support: ["Tea."] },
+          { prompt: "When do you drink tea?", support: ["In the morning. / I don't drink tea."] },
         ],
       },
 

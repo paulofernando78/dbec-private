@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
-          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
+          { prompt: "Rain or sun?", support: ["Rain."] },
+          { prompt: "Is Eric wearing a raincoat?", support: ["Yes, he is. / No, he isn't."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
-          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
+          { prompt: "Is it hot or cold?", support: ["Cold."] },
+          { prompt: "What's Eric wearing? (Name one thing.)", support: ["A coat."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is the weather like in this scene?", support: ["It is ... and ..."] },
-          { prompt: "What would you wear to go outside in this weather?", support: ["I would wear ... because ..."] },
+          { prompt: "Is it sunny?", support: ["Yes, it is."] },
+          { prompt: "What are you wearing today? (Name one thing.)", support: ["A T-shirt."] },
         ],
       },
 

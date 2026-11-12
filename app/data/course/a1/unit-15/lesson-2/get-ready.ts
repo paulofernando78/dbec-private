@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What might the people remember from their school days?", support: ["They may remember ..."] },
-          { prompt: "What could you ask someone at a school reunion?", support: ["I could ask, “Did you ...?”"] },
+          { prompt: "Is this a school reunion or a sports game?", support: ["A school reunion."] },
+          { prompt: "What was your favorite subject at school?", support: ["English. / Math."] },
         ],
       },
 

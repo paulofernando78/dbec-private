@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
-          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
+          { prompt: "What can you see where Eric works? (Name one thing.)", support: ["A desk. / A computer."] },
+          { prompt: "Do you work or study?", support: ["I work. / I study."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
-          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
+          { prompt: "Where does Laura work, at a hotel or at a school?", support: ["At a hotel."] },
+          { prompt: "Where do you work or study?", support: ["I work at a hotel. / I study at home."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What jobs do the people do?", support: ["The person is a ..."] },
-          { prompt: "Where does each person work?", support: ["They work at/in ..."] },
+          { prompt: "Is Pedro a student?", support: ["Yes, he is."] },
+          { prompt: "What do you study?", support: ["I study English."] },
         ],
       },
 

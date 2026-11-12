@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
-          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
+          { prompt: "Is Eric resting or working?", support: ["Resting."] },
+          { prompt: "What do you do when you feel sick?", support: ["I rest. / I drink water."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
-          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
+          { prompt: "Is Naomi drinking tea or juice?", support: ["Tea."] },
+          { prompt: "What do you drink when you feel sick?", support: ["I drink tea. / I drink water."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is each person doing to feel better?", support: ["They are ..."] },
-          { prompt: "What healthy habit could help the person in the last picture?", support: ["They could ..."] },
+          { prompt: "Is Pedro exercising now?", support: ["No, he isn't."] },
+          { prompt: "Do you exercise every day?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 

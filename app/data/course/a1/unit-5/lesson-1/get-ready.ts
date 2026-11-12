@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
-          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
+          { prompt: "What number is on the clock?", support: ["Seven."] },
+          { prompt: "What time is it?", support: ["It's seven o'clock."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
-          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
+          { prompt: "Can you find London? (Point.)", support: ["Here!"] },
+          { prompt: "What time is it in London? (Read the clock.)", support: ["It's … in London."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What time can you read on the clock?", support: ["It is ..."] },
-          { prompt: "What might people be doing at this time of day?", support: ["They might be ..."] },
+          { prompt: "Is it breakfast or lunch?", support: ["Lunch."] },
+          { prompt: "What time is it? (Read the clock.)", support: ["It's twelve thirty."] },
         ],
       },
 

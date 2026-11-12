@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How is each person getting around the city?", support: ["The person is going by ..."] },
-          { prompt: "Which way would you choose for this trip, and why?", support: ["I would go by ... because ..."] },
+          { prompt: "Bus or train?", support: ["Train."] },
+          { prompt: "How do you go to work or school?", support: ["I go by bus. / I walk."] },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How is each person getting around the city?", support: ["The person is going by ..."] },
-          { prompt: "Which way would you choose for this trip, and why?", support: ["I would go by ... because ..."] },
+          { prompt: "Is Laura on a bus or a train?", support: ["A bus."] },
+          { prompt: "Do you take the bus?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How is each person getting around the city?", support: ["The person is going by ..."] },
-          { prompt: "Which way would you choose for this trip, and why?", support: ["I would go by ... because ..."] },
+          { prompt: "What is Eric riding?", support: ["A bike."] },
+          { prompt: "Do you ride a bike?", support: ["Yes, I do. / No, I don't."] },
         ],
       },
 
