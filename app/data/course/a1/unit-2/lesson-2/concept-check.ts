@@ -2,7 +2,7 @@ import type { ConceptCheckData } from "../../../lesson-step-types";
 
 export const conceptCheck = {
   type: "concept-check", slug: "check-meaning", label: "Check meaning",
-  instruction: "Use the desk picture and choose the answer.",
+  instruction: "Check the location. Choose the answer that matches the picture and sentence.",
   questions: [
     { context: "The card is in the drawer.", question: "Card location:", options: ["Inside", "Outside"], answer: "Inside" },
     { context: "The keys are on the desk.", question: "Keys location:", options: ["On top", "Below"], answer: "On top" },

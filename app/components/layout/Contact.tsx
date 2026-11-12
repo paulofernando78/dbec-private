@@ -7,7 +7,7 @@ const contacts: ContactItem[] = [
   },
   // whatsapp
   {
-    link: "https://wa.me/5511981672145",
+    link: "https://wa.me/5594477-6901",
     icon: "/media/images/icons/contacts/whatsapp.png",
     alt: "Whatsapp",
   },

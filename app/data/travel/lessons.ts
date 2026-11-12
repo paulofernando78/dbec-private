@@ -502,6 +502,48 @@ const translations: Record<string, string> = {
   "I need a taxi to the airport.": "Preciso de um táxi para o aeroporto.",
 };
 
+const getReadyImages: Record<string, string> = {
+  "1/1": "/media/images/course/travel/unit-1/lesson-1-choosing-a-destination/get-ready/lead-in.avif?v=1",
+  "1/2": "/media/images/course/travel/unit-1/lesson-2-booking-the-trip/get-ready/lead-in.avif?v=1",
+  "2/1": "/media/images/course/travel/unit-2/lesson-1-what-should-i-pack/get-ready/lead-in.avif?v=1",
+  "2/2": "/media/images/course/travel/unit-2/lesson-2-documents-and-travel-essentials/get-ready/lead-in.avif?v=1",
+  "3/1": "/media/images/course/travel/unit-3/lesson-1-checking-in-and-dropping-off-bags/get-ready/lead-in.avif?v=1",
+  "3/2": "/media/images/course/travel/unit-3/lesson-2-security-and-boarding/get-ready/lead-in.avif?v=1",
+  "4/1": "/media/images/course/travel/unit-4/lesson-1-on-the-plane/get-ready/lead-in.avif?v=1",
+  "4/2": "/media/images/course/travel/unit-4/lesson-2-on-the-train/get-ready/lead-in.avif?v=1",
+  "5/1": "/media/images/course/travel/unit-5/lesson-1-immigration-and-passport-control/get-ready/lead-in.avif?v=1",
+  "5/2": "/media/images/course/travel/unit-5/lesson-2-baggage-claim-and-customs/get-ready/lead-in.avif?v=1",
+  "6/1": "/media/images/course/travel/unit-6/lesson-1-checking-into-a-hotel/get-ready/lead-in.avif?v=1",
+  "6/2": "/media/images/course/travel/unit-6/lesson-2-problems-at-the-hotel/get-ready/lead-in.avif?v=1",
+  "7/1": "/media/images/course/travel/unit-7/lesson-1-asking-for-directions/get-ready/lead-in.avif?v=1",
+  "7/2": "/media/images/course/travel/unit-7/lesson-2-public-transport-and-taxis/get-ready/lead-in.avif?v=1",
+  "8/1": "/media/images/course/travel/unit-8/lesson-1-restaurants-and-shopping/get-ready/lead-in.avif?v=1",
+  "8/2": "/media/images/course/travel/unit-8/lesson-2-tours-and-local-activities/get-ready/lead-in.avif?v=1",
+  "9/1": "/media/images/course/travel/unit-9/lesson-1-emergencies-and-unexpected-problems/get-ready/lead-in.avif?v=1",
+  "9/2": "/media/images/course/travel/unit-9/lesson-2-checking-out-and-going-home/get-ready/lead-in.avif?v=1",
+};
+
+const languageFocusImages: Record<string, string> = {
+  "1/1": "/media/images/course/travel/unit-1/lesson-1-choosing-a-destination/language-focus/target-1.avif?v=1",
+  "1/2": "/media/images/course/travel/unit-1/lesson-2-booking-the-trip/language-focus/target-1.avif?v=1",
+  "2/1": "/media/images/course/travel/unit-2/lesson-1-what-should-i-pack/language-focus/target-1.avif?v=1",
+  "2/2": "/media/images/course/travel/unit-2/lesson-2-documents-and-travel-essentials/language-focus/target-1.avif?v=1",
+  "3/1": "/media/images/course/travel/unit-3/lesson-1-checking-in-and-dropping-off-bags/language-focus/target-1.avif?v=1",
+  "3/2": "/media/images/course/travel/unit-3/lesson-2-security-and-boarding/language-focus/target-1.avif?v=1",
+  "4/1": "/media/images/course/travel/unit-4/lesson-1-on-the-plane/language-focus/target-1.avif?v=1",
+  "4/2": "/media/images/course/travel/unit-4/lesson-2-on-the-train/language-focus/target-1.avif?v=1",
+  "5/1": "/media/images/course/travel/unit-5/lesson-1-immigration-and-passport-control/language-focus/target-1.avif?v=1",
+  "5/2": "/media/images/course/travel/unit-5/lesson-2-baggage-claim-and-customs/language-focus/target-1.avif?v=1",
+  "6/1": "/media/images/course/travel/unit-6/lesson-1-checking-into-a-hotel/language-focus/target-1.avif?v=1",
+  "6/2": "/media/images/course/travel/unit-6/lesson-2-problems-at-the-hotel/language-focus/target-1.avif?v=1",
+  "7/1": "/media/images/course/travel/unit-7/lesson-1-asking-for-directions/language-focus/target-1.avif?v=1",
+  "7/2": "/media/images/course/travel/unit-7/lesson-2-public-transport-and-taxis/language-focus/target-1.avif?v=1",
+  "8/1": "/media/images/course/travel/unit-8/lesson-1-restaurants-and-shopping/language-focus/target-1.avif?v=1",
+  "8/2": "/media/images/course/travel/unit-8/lesson-2-tours-and-local-activities/language-focus/target-1.avif?v=1",
+  "9/1": "/media/images/course/travel/unit-9/lesson-1-emergencies-and-unexpected-problems/language-focus/target-1.avif?v=1",
+  "9/2": "/media/images/course/travel/unit-9/lesson-2-checking-out-and-going-home/language-focus/target-1.avif?v=1",
+};
+
 const createLesson = (seed: TravelLessonSeed): LessonContent => {
   const unitData = travel.units[seed.unit - 1];
   const lessonData = unitData.lessons[seed.lesson - 1];
@@ -510,7 +552,13 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       type: "get-ready",
       slug: "get-ready",
       label: "Get ready",
-      slides: seed.targets.slice(0, 3).map((quote) => ({ image: "", audio: "", quote })),
+      slides: [
+        {
+          image: getReadyImages[`${seed.unit}/${seed.lesson}`] ?? "",
+          audio: false,
+          quote: "",
+        },
+      ],
     },
     {
       type: "listen",
@@ -531,13 +579,17 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       slug: "language-focus",
       label: "Language focus",
       instruction: lessonData.description,
-      items: seed.targets.map((phrase) => [
+      items: seed.targets.map((phrase, index) => [
         phrase,
         `Use this expression when you need to ${lessonData.description.toLowerCase()}`,
         "Listen for sentence stress and polite intonation.",
         "Notice the fixed phrase and replace the travel detail when necessary.",
         undefined,
         translations[phrase],
+        undefined,
+        index === 0 && languageFocusImages[`${seed.unit}/${seed.lesson}`]
+          ? [{ image: languageFocusImages[`${seed.unit}/${seed.lesson}`], caption: phrase }]
+          : undefined,
       ] as const),
     },
     {

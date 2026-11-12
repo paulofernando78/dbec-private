@@ -251,10 +251,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
       items: phrases.map((phrase) => [
         phrase,
         `Use this language to ${lessonData.description.charAt(0).toLowerCase()}${lessonData.description.slice(1)}`,
-        "Mark contrastive stress, chunking, weak forms, and linking after adding the audio.",
+        "Use contrastive stress, natural chunking, weak forms, and linking to show relationships between ideas.",
         "Analyze the target pattern, its discourse function, register, and interchangeable elements.",
         undefined,
-        "Portuguese translation to be added.",
+        undefined,
       ] as const),
     },
     {
@@ -305,6 +305,25 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
     level: "b2",
     unit: { number: unitData.number, title: unitData.title },
     lesson: { number: lesson, title: lessonData.title },
+    finalTask: outcomes[`${unit}/${lesson}`],
+    successCriteria: [
+      "supports a position with relevant evidence",
+      "responds to or qualifies another perspective",
+      "records a clear conclusion or decision",
+    ],
+    celtaPlan: {
+      objective: outcomes[`${unit}/${lesson}`],
+      evidence: "The learner defends a position, responds to another view, and records a qualified conclusion.",
+      stages: [
+        { name: "Lead-in", interaction: "pairs, then class", purpose: "Elicit assumptions and establish the issue." },
+        { name: "Input and inference", interaction: "individual, then pairs", purpose: "Interpret stance, evidence, and implications." },
+        { name: "Language analysis", interaction: "teacher-class", purpose: "Analyse discourse function, register, and reformulation." },
+        { name: "Preparation", interaction: "individual or groups", purpose: "Develop a position with evidence and a counterargument." },
+        { name: "Debate or decision task", interaction: "groups", purpose: "Negotiate, evaluate alternatives, and reach a conclusion." },
+        { name: "Feedback and retry", interaction: "groups", purpose: "Refine one argument or language choice and restate the conclusion." },
+      ],
+      feedbackFocus: "Prioritize clarity of reasoning, appropriate register, and effective interaction.",
+    },
     steps,
   };
 };

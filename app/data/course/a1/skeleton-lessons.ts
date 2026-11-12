@@ -11,6 +11,18 @@ export type LessonContent = {
   level: string;
   unit: { number: number; title: string };
   lesson: { number: number; title: string };
+  finalTask?: string;
+  successCriteria?: readonly string[];
+  celtaPlan?: {
+    objective: string;
+    evidence: string;
+    stages: readonly {
+      name: string;
+      interaction: string;
+      purpose: string;
+    }[];
+    feedbackFocus: string;
+  };
   steps: readonly LessonStepData[];
   isCheckpoint?: boolean;
 };
@@ -664,6 +676,40 @@ const ccqs: Record<
 
 const words = (sentence: string) => sentence.split(" ");
 
+const finalTasks: Record<string, string> = {
+  "1/2": "Exchange phone numbers and email addresses, then say goodbye politely.",
+  "2/1": "Ask a partner about three objects and identify each one as singular or plural.",
+  "2/2": "Ask where three objects are and place them correctly in a simple room scene.",
+  "3/1": "Interview a partner about their country, nationality, and language, then report one detail.",
+  "3/2": "Identify two people in a picture and describe their appearance and personality.",
+  "4/1": "Choose clothes for two situations and explain whose items they are.",
+  "4/2": "Look at a weather scene and describe the weather and what two people are wearing.",
+  "5/1": "Ask a partner what time it is in two cities and record the answers.",
+  "5/2": "Ask what two people are doing now and report their activities.",
+  "6/1": "Interview a partner about how they travel and report two regular transportation habits.",
+  "6/2": "Ask a partner about their daily routine and record three times and activities.",
+  "7/1": "Ask and answer questions about a home, then identify two rooms or features.",
+  "7/2": "Describe a dream room using there is/there are and at least four items.",
+  "8/1": "Ask a partner what they do and where they work, then introduce them.",
+  "8/2": "Compare two jobs and state which one sounds more interesting and why.",
+  "9/1": "Plan a simple shopping list and ask what food is available or needed.",
+  "9/2": "Interview a partner about eating habits and report two frequency patterns.",
+  "10/1": "Ask a partner about sports they watch or play and find one shared interest.",
+  "10/2": "Find out which skills two partners have and identify one skill to practise.",
+  "11/1": "Ask a partner about weekend plans and find one plan you could do together.",
+  "11/2": "Plan a small celebration and agree on the event, people, and activity.",
+  "12/1": "Ask about a person's symptoms and identify the main health problem.",
+  "12/2": "Give three simple pieces of advice for a common health problem.",
+  "13/1": "Ask where to buy two items and identify their locations in a town map.",
+  "13/2": "Give directions from one place to another using at least three steps.",
+  "14/1": "Tell a partner about two things you did last weekend.",
+  "14/2": "Ask a partner about a past vacation and report where they went and what they did.",
+  "15/1": "Ask a partner about family history and report two past facts.",
+  "15/2": "Ask about a school memory and report who, where, and what happened.",
+  "16/1": "Make a short phone call and leave a clear message for someone who is unavailable.",
+  "16/2": "Invite a partner to an event, respond to the invitation, and agree on the details.",
+};
+
 const ccqPairs: Record<string, readonly string[]> = {
   End: ["Start", "End"],
   Number: ["Name", "Number"],
@@ -739,6 +785,7 @@ const createLesson = ({
     /^By the end of this lesson, students will be (?:better )?able to /,
     "",
   );
+  const finalTask = finalTasks[`${unit}/${lesson}`] ?? `Complete a short exchange about ${lessonData.title.toLowerCase()} and communicate one clear result.`;
   const steps: readonly LessonStepData[] = [
     {
       type: "get-ready",
@@ -767,10 +814,10 @@ const createLesson = ({
       answer: "True",
       followUpInstruction: "Answer the open questions.",
       followUp: [
-        { question: "What does speaker A say first?", answer: phrases[0] },
-        { question: "How does speaker B respond?", answer: phrases[1] },
-        { question: "What does speaker A say next?", answer: phrases[2] },
-        { question: "What is speaker B's final response?", answer: phrases[3] },
+        { question: `Which expression from the audio helps you start the ${lessonData.title.toLowerCase()} task?`, answer: phrases[0] },
+        { question: `Which response gives useful information for ${lessonData.title.toLowerCase()}?`, answer: phrases[1] },
+        { question: `Which second expression can you reuse in the ${lessonData.title.toLowerCase()} task?`, answer: phrases[2] },
+        { question: `Which final response completes the exchange about ${lessonData.title.toLowerCase()}?`, answer: phrases[3] },
       ],
     },
     {
@@ -783,10 +830,10 @@ const createLesson = ({
           [
             phrase,
             `Use this expression to communicate about ${lessonData.title.toLowerCase()}.`,
-            "Pronunciation to be added.",
-            "Form notes to be added.",
+            "Stress the key content word and say the phrase in one clear chunk.",
+            "Notice the word order and replace the changing detail in the model.",
             undefined,
-            "Portuguese translation to be added.",
+            undefined,
           ] as const,
       ),
     },
@@ -794,7 +841,7 @@ const createLesson = ({
       type: "concept-check",
       slug: "check-meaning",
       label: "Check meaning",
-      instruction: "Choose the answer. Use the examples to help you.",
+      instruction: "Check the meaning. Choose the answer that matches the situation, not only the words.",
       questions: (ccqs[`${unit}/${lesson}`] ?? []).map(
         ({ context, question, answer }) => ({
           context,
@@ -808,7 +855,7 @@ const createLesson = ({
       type: "try-it",
       slug: "try-it",
       label: "Try it",
-      instruction: "Put the words in the correct order.",
+      instruction: "Put the words in order, say the sentence aloud, and change one detail using the model.",
       items: phrases.map((phrase) => {
         const answer = words(phrase);
         return { words: [...answer].reverse(), answer };
@@ -818,13 +865,12 @@ const createLesson = ({
       type: "use-it",
       slug: "use-it",
       label: "Use it",
-      instruction:
-        "Use the model. Change the details. Then speak without the model.",
+      instruction: finalTask,
       prompts: [
-        "Read the model once.",
-        "Change the names, places, objects, or times.",
-        "Change roles.",
-        "Repeat without the model.",
+        "Read the model once and identify the information you need to exchange.",
+        `Complete this task: ${finalTask}`,
+        "Change roles and check that your partner understood the result.",
+        "Repeat without the model and improve one unclear expression.",
       ],
       model: phrases.map(
         (line, index) => [index % 2 === 0 ? "A" : "B", line] as const,
@@ -844,6 +890,25 @@ const createLesson = ({
     level: "a1",
     unit: { number: unitData.number, title: unitData.title },
     lesson: { number: lesson, title: lessonData.title },
+    finalTask,
+    successCriteria: [
+      "uses at least two target expressions",
+      "responds to the partner's meaning",
+      "communicates the intended result clearly",
+    ],
+    celtaPlan: {
+      objective: finalTask,
+      evidence: "The learner completes the task and communicates the result to a partner.",
+      stages: [
+        { name: "Context", interaction: "pairs", purpose: "Activate the situation and essential vocabulary." },
+        { name: "Input", interaction: "individual, then pairs", purpose: "Listen for gist and useful details." },
+        { name: "Language focus", interaction: "teacher-class, then individual", purpose: "Notice meaning, form, and pronunciation." },
+        { name: "Controlled practice", interaction: "individual", purpose: "Build accurate target-language sentences." },
+        { name: "Communicative task", interaction: "pairs", purpose: "Complete the final task with a real information gap." },
+        { name: "Feedback and retry", interaction: "teacher-class, then pairs", purpose: "Address one priority issue and repeat the task." },
+      ],
+      feedbackFocus: "Prioritize intelligibility and the language needed to complete the task.",
+    },
     steps,
   };
 };

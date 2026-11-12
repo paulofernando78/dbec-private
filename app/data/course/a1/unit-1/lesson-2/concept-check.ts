@@ -4,7 +4,7 @@ export const conceptCheck = {
   type: "concept-check",
   slug: "check-meaning",
   label: "Check meaning",
-  instruction: "Choose the answer. Use the examples to help you.",
+  instruction: "Check the meaning. Choose the answer that matches the situation.",
   questions: [
     {
       context: "What’s your phone number?",
@@ -14,9 +14,9 @@ export const conceptCheck = {
     },
     {
       context: "It’s 5510-8246.",
-      question: "Question or answer?",
-      options: ["Asking", "Answering"],
-      answer: "Answering",
+      question: "Is the speaker giving information or asking for it?",
+      options: ["Asking for information", "Giving information"],
+      answer: "Giving information",
     },
     {
       context: "sofia@example.com",

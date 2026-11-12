@@ -307,10 +307,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
       items: phrases.map((phrase) => [
         phrase,
         `Use this language to ${lessonData.description.charAt(0).toLowerCase()}${lessonData.description.slice(1)}`,
-        "Mark prominent stress, weak forms, and connected speech after adding the audio.",
+        "Stress the key information, group the phrase into natural chunks, and practise connected speech.",
         "Identify the target structure, its function, and the elements that can change.",
         undefined,
-        "Portuguese translation to be added.",
+        undefined,
       ] as const),
     },
     {
@@ -361,6 +361,25 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
     level: "b1",
     unit: { number: unitData.number, title: unitData.title },
     lesson: { number: lesson, title: lessonData.title },
+    finalTask: outcomes[`${unit}/${lesson}`],
+    successCriteria: [
+      "selects language appropriate to the situation",
+      "develops at least one idea with a reason or detail",
+      "completes the communicative outcome independently",
+    ],
+    celtaPlan: {
+      objective: outcomes[`${unit}/${lesson}`],
+      evidence: "The learner produces the required outcome with support from relevant details and reasons.",
+      stages: [
+        { name: "Context", interaction: "pairs", purpose: "Elicit the situation and activate relevant experience." },
+        { name: "Comprehension", interaction: "individual, then pairs", purpose: "Identify position, evidence, and relevant detail." },
+        { name: "Language analysis", interaction: "teacher-class", purpose: "Clarify function, form, register, and pronunciation." },
+        { name: "Preparation", interaction: "individual, then pairs", purpose: "Plan content and rehearse the target language." },
+        { name: "Task", interaction: "pairs or groups", purpose: "Complete the outcome and respond to follow-up questions." },
+        { name: "Feedback and retry", interaction: "pairs", purpose: "Improve one language or communication problem and repeat." },
+      ],
+      feedbackFocus: "Balance accuracy with fluency; prioritize issues that block or distort meaning.",
+    },
     steps,
   };
 };

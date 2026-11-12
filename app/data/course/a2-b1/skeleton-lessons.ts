@@ -297,10 +297,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
       answer: lessonData.title,
       followUpInstruction: "Listen again and answer the open questions.",
       followUp: [
-        { question: "What does speaker A say first?", answer: phrases[0] },
-        { question: "How does speaker B respond?", answer: phrases[1] },
-        { question: "What additional point does speaker A make?", answer: phrases[2] },
-        { question: "How does the exchange end?", answer: phrases[3] },
+        { question: `Which idea or expression introduces the ${lessonData.title.toLowerCase()} situation?`, answer: phrases[0] },
+        { question: `Which response develops the information needed for ${lessonData.title.toLowerCase()}?`, answer: phrases[1] },
+        { question: `Which further detail would help you complete the ${lessonData.title.toLowerCase()} task?`, answer: phrases[2] },
+        { question: `What final point or result should you carry into the ${lessonData.title.toLowerCase()} task?`, answer: phrases[3] },
       ],
     },
     {
@@ -311,10 +311,10 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
       items: phrases.map((phrase) => [
         phrase,
         `Use this language to ${lessonData.description.charAt(0).toLowerCase()}${lessonData.description.slice(1)}`,
-        "Mark sentence stress and connected speech after adding the audio.",
+        "Stress the key information and connect familiar words smoothly in the phrase.",
         "Notice the target structure and identify which words can change.",
         undefined,
-        "Portuguese translation to be added.",
+        undefined,
       ] as const),
     },
     {
@@ -365,6 +365,25 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
     level: "a2-b1",
     unit: { number: unitData.number, title: unitData.title },
     lesson: { number: lesson, title: lessonData.title },
+    finalTask: outcomes[`${unit}/${lesson}`],
+    successCriteria: [
+      "uses the target language to communicate a clear message",
+      "adds a relevant detail or follow-up question",
+      "completes the exchange with understandable meaning",
+    ],
+    celtaPlan: {
+      objective: outcomes[`${unit}/${lesson}`],
+      evidence: "The learner completes an exchange that combines familiar A2 language with one step toward B1 independence.",
+      stages: [
+        { name: "Context", interaction: "pairs", purpose: "Activate familiar language and introduce the communicative problem." },
+        { name: "Comprehension", interaction: "individual, then pairs", purpose: "Identify the main message and useful supporting details." },
+        { name: "Language focus", interaction: "teacher-class", purpose: "Clarify meaning, form, pronunciation, and choice of structure." },
+        { name: "Guided preparation", interaction: "individual, then pairs", purpose: "Plan content and rehearse with controlled support." },
+        { name: "Communicative task", interaction: "pairs", purpose: "Exchange information and produce a clear outcome." },
+        { name: "Feedback and retry", interaction: "pairs", purpose: "Apply one correction in a new but comparable situation." },
+      ],
+      feedbackFocus: "Prioritize intelligibility and independence while reinforcing accurate target forms.",
+    },
     steps,
   };
 };

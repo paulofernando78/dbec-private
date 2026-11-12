@@ -6,6 +6,21 @@ export function ReviewStep({ data }: { data: ReviewData }) {
   return (
     <div className="rounded-2xl bg-[var(--surface)] p-4">
       <h3 className="mb-4 text-lg font-bold">{data.instruction}</h3>
+      {data.task && (
+        <div className="mb-4 rounded-xl border border-orange-200 bg-orange-50 p-4">
+          <p className="text-xs font-bold uppercase tracking-wide text-orange-700">
+            Integrated task
+          </p>
+          <p className="mt-1 font-semibold text-slate-800">{data.task}</p>
+          {data.successCriteria?.length ? (
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
+              {data.successCriteria.map((criterion) => (
+                <li key={criterion}>{criterion}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      )}
       <div className="grid gap-4">
         {data.sections.map((section) => (
           <section

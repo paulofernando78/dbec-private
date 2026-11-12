@@ -2,7 +2,7 @@ import type { ConceptCheckData } from "../../../lesson-step-types";
 
 export const conceptCheck = {
   type: "concept-check", slug: "check-meaning", label: "Check meaning",
-  instruction: "Look at the words and choose the answer.",
+  instruction: "Check whether the meaning is one object or more than one.",
   questions: [
     { context: "this laptop", question: "One laptop or two laptops?", options: ["One", "Two"], answer: "One" },
     { context: "these notebooks", question: "One notebook or more than one?", options: ["One", "More than one"], answer: "More than one" },

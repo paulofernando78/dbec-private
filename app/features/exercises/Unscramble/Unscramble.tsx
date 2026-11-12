@@ -12,7 +12,7 @@ type UnscrambleBlock = {
 
 type UnscrambleExercise = {
   description?: string;
-  items?: UnscrambleBlock[];
+  items?: readonly UnscrambleBlock[];
 };
 
 type UnscrambleProps = {

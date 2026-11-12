@@ -128,7 +128,7 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
         "Analyze prominence, intonation, chunking, linking, and how delivery modifies stance.",
         "Examine the target pattern, discourse effect, register, constraints, and viable reformulations.",
         undefined,
-        "Portuguese translation to be added.",
+        undefined,
       ] as const),
     },
     {
@@ -171,6 +171,25 @@ const createLesson = ({ unit, lesson, phrases }: LessonSeed): LessonContent => {
     level: "c1",
     unit: { number: unitData.number, title: unitData.title },
     lesson: { number: lesson, title: lessonData.title },
+    finalTask: `Formulate a nuanced response to ${lessonData.title.toLowerCase()}, integrate another perspective, and reach a qualified conclusion.`,
+    successCriteria: [
+      "uses precise language appropriate to the context",
+      "supports a position with relevant reasoning or evidence",
+      "integrates or responds fairly to another perspective",
+    ],
+    celtaPlan: {
+      objective: `Formulate a nuanced response to ${lessonData.title.toLowerCase()}, integrate another perspective, and reach a qualified conclusion.`,
+      evidence: "The learner sustains a nuanced response, manages interaction, and reformulates or qualifies ideas when needed.",
+      stages: [
+        { name: "Lead-in", interaction: "pairs, then class", purpose: "Elicit assumptions and establish a meaningful question." },
+        { name: "Input and interpretation", interaction: "individual, then pairs", purpose: "Interpret stance, implication, register, and rhetorical purpose." },
+        { name: "Language analysis", interaction: "teacher-class", purpose: "Analyse precision, discourse effect, constraints, and reformulation." },
+        { name: "Preparation", interaction: "individual or groups", purpose: "Develop a position, supporting evidence, and a qualified response." },
+        { name: "Extended task", interaction: "groups or whole class", purpose: "Sustain interaction and reach a defensible conclusion." },
+        { name: "Feedback and retry", interaction: "individual, then pairs", purpose: "Refine precision, register, or interactional effectiveness." },
+      ],
+      feedbackFocus: "Prioritize precision, appropriate register, discourse control, and successful mediation of viewpoints.",
+    },
     steps,
   };
 };

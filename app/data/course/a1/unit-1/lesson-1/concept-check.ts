@@ -4,7 +4,7 @@ export const conceptCheck = {
   type: "concept-check",
   slug: "check-meaning",
   label: "Check meaning",
-  instruction: "Choose the answer. Use the examples to help you.",
+  instruction: "Check the meaning. Choose the answer that matches the situation.",
   questions: [
     {
       context: "Hello. I’m Laura.",
@@ -14,13 +14,13 @@ export const conceptCheck = {
     },
     {
       context: "What’s your name?",
-      question: "Your name or my name?",
-      options: ["Your name", "My name"],
-      answer: "Your name",
+      question: "Who should answer: Laura or the other person?",
+      options: ["Laura", "The other person"],
+      answer: "The other person",
     },
     {
       context: "Eric: My name is Eric.",
-      question: "The name:",
+      question: "Who is saying the name?",
       options: ["Eric’s", "Laura’s"],
       answer: "Eric’s",
     },

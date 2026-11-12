@@ -430,13 +430,25 @@ for (const level of Object.values(levels)) {
       unit: { number: unit.number, title: unit.title },
       lesson: { number: 3, title: checkpointTitle },
       isCheckpoint: true,
+      finalTask: `Complete an integrated ${unit.title.toLowerCase()} task using language from both lessons, then communicate one clear result to a partner.`,
+      successCriteria: [
+        "recovers and uses language from both lessons",
+        "responds to the partner's meaning rather than only reading a model",
+        "completes the task with a clear and understandable result",
+      ],
       steps: [
         {
           type: "review",
           slug: "review",
           label: "Review",
           instruction:
-            "Review both lessons. Check what you remember, then rebuild key sentences.",
+            "Review both lessons, rebuild key sentences, and prepare for the integrated task above.",
+          task: `Complete an integrated ${unit.title.toLowerCase()} task using language from both lessons, then communicate one clear result to a partner.`,
+          successCriteria: [
+            "recovers and uses language from both lessons",
+            "responds to the partner's meaning rather than only reading a model",
+            "completes the task with a clear and understandable result",
+          ],
           sections,
         },
       ],
