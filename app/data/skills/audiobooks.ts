@@ -18,8 +18,8 @@ const withSectionAudioPaths = <
   ...audiobook,
   sections: audiobook.sections.map((section) => ({
     ...section,
-    localAudio: `local-media/audio/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
-    r2Audio: `/media/audio/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
+    localAudio: `local-media/audio/audiobooks/listening/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
+    r2Audio: `/media/audio/audiobooks/listening/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
   })),
 });
 
