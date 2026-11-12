@@ -651,7 +651,7 @@ export function RichTextArea({
       </div>
       <div
         ref={editorAreaRef}
-        className={`w-full overflow-auto rounded-md border border-gray-300 bg-white px-1 py-2 text-(--text-color) focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 ${className ?? "min-h-60 max-h-60"}`}
+        className={`w-full overflow-auto rounded-md border border-gray-300 bg-white px-1 py-1 text-(--text-color) focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 ${className ?? "min-h-60 max-h-60"}`}
       >
         {blocks.map((block) => (
           <div

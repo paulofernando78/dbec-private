@@ -12,6 +12,7 @@ import { Radio } from "@/features/exercises/Radio";
 export function ListenStep({ data }: { data: ListenData }) {
   const [showAnswers, setShowAnswers] = useState(false);
   const [showExtraConversation, setShowExtraConversation] = useState(false);
+  const followUp = data.followUp ?? [];
   const extraDialogueSpeech = data.extraDialogue?.dialogue
     .map(([, line]) =>
       line
@@ -66,32 +67,34 @@ export function ListenStep({ data }: { data: ListenData }) {
         />
       </section>
 
-      <section className="rounded-xl bg-(--background) p-4">
-        <div>
-          {data.followUpInstruction && (
-            <h4 className="mb-2 font-bold">{data.followUpInstruction}</h4>
-          )}
-          {data.followUp.map(({ question, answer: followUpAnswer }, index) => (
-            <p key={question}>
-              <span className="font-black">{index + 1}.</span> {question}
-              {showAnswers && (
-                <>
-                  {" "}
-                  — <b>{followUpAnswer}</b>
-                </>
-              )}
-            </p>
-          ))}
-        </div>
+      {followUp.length > 0 && (
+        <section className="rounded-xl bg-(--background) p-4">
+          <div>
+            {data.followUpInstruction && (
+              <h4 className="mb-2 font-bold">{data.followUpInstruction}</h4>
+            )}
+            {followUp.map(({ question, answer: followUpAnswer }, index) => (
+              <p key={question}>
+                <span className="font-black">{index + 1}.</span> {question}
+                {showAnswers && (
+                  <>
+                    {" "}
+                    — <b>{followUpAnswer}</b>
+                  </>
+                )}
+              </p>
+            ))}
+          </div>
 
-        <div className="mt-3">
-          <Button
-            ariaLabel={showAnswers ? "Hide answers" : "Show answers"}
-            icon={showAnswers ? <EyeClosed /> : <Eye />}
-            onClick={() => setShowAnswers((current) => !current)}
-          />
-        </div>
-      </section>
+          <div className="mt-3">
+            <Button
+              ariaLabel={showAnswers ? "Hide answers" : "Show answers"}
+              icon={showAnswers ? <EyeClosed /> : <Eye />}
+              onClick={() => setShowAnswers((current) => !current)}
+            />
+          </div>
+        </section>
+      )}
 
       {data.extraDialogue && (
         <section className="rounded-xl bg-[var(--background)] p-4">

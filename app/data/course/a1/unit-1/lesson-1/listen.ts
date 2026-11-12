@@ -30,14 +30,14 @@ export const listen = {
   options: ["Laura and Eric", "Tony and Naomi", "Laura and Tony"],
   answer: "Laura and Eric",
   followUpInstruction: "Listen again. Answer with one name.",
-  followUp: [
-    {
-      question: "Man’s name:",
-      answer: "Eric.",
-    },
-    {
-      question: "Woman’s name:",
-      answer: "Laura.",
-    },
-  ],
+  // followUp: [
+  //   {
+  //     question: "Man’s name:",
+  //     answer: "Eric.",
+  //   },
+  //   {
+  //     question: "Woman’s name:",
+  //     answer: "Laura.",
+  //   },
+  // ],
 } satisfies ListenData;

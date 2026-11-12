@@ -3,7 +3,13 @@ import { useState } from "react";
 import { Checkbox } from "@/components/ui/Checkbox";
 import type { CanYouData } from "@/data/course/lesson-step-types";
 
-export function CanYouStep({ data }: { data: CanYouData }) {
+export function CanYouStep({
+  data,
+  onCompletionChange,
+}: {
+  data: CanYouData;
+  onCompletionChange: (complete: boolean) => void;
+}) {
   const [checks, setChecks] = useState(() => data.checks.map(() => false));
 
   return (
@@ -14,13 +20,13 @@ export function CanYouStep({ data }: { data: CanYouData }) {
           <div key={label} className="flex items-start gap-3">
             <Checkbox
               checked={checks[index]}
-              onCheckedChange={(checked) =>
-                setChecks((current) =>
-                  current.map((value, currentIndex) =>
-                    currentIndex === index ? checked : value,
-                  ),
-                )
-              }
+              onCheckedChange={(checked) => {
+                const nextChecks = checks.map((value, currentIndex) =>
+                  currentIndex === index ? checked : value,
+                );
+                setChecks(nextChecks);
+                onCompletionChange(nextChecks.every(Boolean));
+              }}
             />
             <span>{label}</span>
           </div>

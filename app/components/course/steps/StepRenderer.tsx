@@ -8,7 +8,13 @@ import { ReviewStep } from "./ReviewStep";
 import { TryItStep } from "./TryItStep";
 import { UseItStep } from "./UseItStep";
 
-export function StepRenderer({ data }: { data: LessonStepData }) {
+export function StepRenderer({
+  data,
+  onChecklistCompletionChange,
+}: {
+  data: LessonStepData;
+  onChecklistCompletionChange: (complete: boolean) => void;
+}) {
   const Component = data.component;
   let step;
 
@@ -32,7 +38,7 @@ export function StepRenderer({ data }: { data: LessonStepData }) {
       step = <UseItStep data={data} />;
       break;
     case "can-you":
-      step = <CanYouStep data={data} />;
+      step = <CanYouStep data={data} onCompletionChange={onChecklistCompletionChange} />;
       break;
     case "review":
       step = <ReviewStep data={data} />;

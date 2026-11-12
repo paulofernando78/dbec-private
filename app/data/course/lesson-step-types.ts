@@ -46,7 +46,7 @@ export type ListenData = StepExtension & {
   options: readonly string[];
   answer: string;
   followUpInstruction?: string;
-  followUp: readonly {
+  followUp?: readonly {
     question: string;
     answer: string;
   }[];

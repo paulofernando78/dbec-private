@@ -7,6 +7,7 @@ type SequenceNavigationProps = {
   nextLabel: string;
   onPrevious: () => void;
   onNext: () => void;
+  nextDisabled?: boolean;
   ariaLabel?: string;
 };
 
@@ -15,6 +16,7 @@ export function SequenceNavigation({
   nextLabel,
   onPrevious,
   onNext,
+  nextDisabled = false,
   ariaLabel = "Content navigation",
 }: SequenceNavigationProps) {
   return (
@@ -33,6 +35,7 @@ export function SequenceNavigation({
       <Button
         ariaLabel={`Next: ${nextLabel}`}
         onClick={onNext}
+        disabled={nextDisabled}
         icon={<ChevronRight />}
       />
     </nav>

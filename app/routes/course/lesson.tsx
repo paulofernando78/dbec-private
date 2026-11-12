@@ -32,6 +32,7 @@ export default function LessonPage() {
     lessonRegistry[`${level}/${unit}/${lesson}` as keyof typeof lessonRegistry];
   const levelData = isTravel ? travel : levels[level as keyof typeof levels];
   const isFreeLesson = level === "a1" && Number(unit) <= 3;
+  const [completedChecklistKey, setCompletedChecklistKey] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -61,6 +62,10 @@ export default function LessonPage() {
     }
   }, [isAuthenticated, isFreeLesson, navigate, sectionPath]);
 
+  useEffect(() => {
+    setCompletedChecklistKey(null);
+  }, [location.key]);
+
   if (!lessonData || !levelData) return <p>Lesson not found.</p>;
   if (!isFreeLesson && isAuthenticated !== true) return null;
 
@@ -69,6 +74,10 @@ export default function LessonPage() {
     lessonData.steps.findIndex((item) => item.slug === step),
   );
   const current = lessonData.steps[stepIndex];
+  const nextDisabled =
+    current.type === "can-you" &&
+    current.checks.length > 0 &&
+    completedChecklistKey !== location.key;
   const previous = lessonData.steps[stepIndex - 1];
   const next = lessonData.steps[stepIndex + 1];
   const basePath = `${sectionPath}/unit/${unit}/lesson/${lesson}`;
@@ -116,13 +125,24 @@ export default function LessonPage() {
         {stepIndex + 1} of {lessonData.steps.length}
       </p>
 
-      <StepRenderer data={current} />
+      <StepRenderer
+        key={location.key}
+        data={current}
+        onChecklistCompletionChange={(complete) =>
+          setCompletedChecklistKey(complete ? location.key : null)
+        }
+      />
 
       <SequenceNavigation
         previousLabel={previous?.label ?? `${levelData.code} ${levelData.name}`}
         nextLabel={next?.label ?? (isTravel ? "Travel" : "Course")}
         onPrevious={() => (previous ? go(previous.slug) : navigate(sectionPath))}
-        onNext={() => (next ? go(next.slug) : finish())}
+        nextDisabled={nextDisabled}
+        onNext={() => {
+          if (nextDisabled) return;
+          if (next) go(next.slug);
+          else finish();
+        }}
         ariaLabel="Lesson steps"
       />
     </div>
