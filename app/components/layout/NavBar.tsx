@@ -83,7 +83,6 @@ export function NavBar({
       className={`space-y-4 h-full min-h-0 w-max overflow-y-auto rounded-xl bg-(--surface) p-4 text-gray-500 transition-transform duration-500 ease-in-out z-20
       max-[920px]:absolute max-[920px]:-translate-x-100
       max-[420px]:w-full
-      max-[390px]:-translate-x-full
       ${isOpen ? "max-[920px]:translate-x-0" : ""}`}
     >
       {links.map((item) => {
