@@ -13,6 +13,18 @@ const welcomeMessage: ChatMessage = {
   text: "Hello! Send me a sentence to check, ask about a word, or practice a conversation.",
 };
 
+function renderTutorText(text: string) {
+  return text
+    .split(/\*\*([^*\r\n]+)\*\*/)
+    .map((part, index) =>
+      index % 2 === 1 ? (
+        <strong key={index} className="font-bold">{part}</strong>
+      ) : (
+        part
+      ),
+    );
+}
+
 export function AiTutor({ className = "mt-3", fill = false }: { className?: string; fill?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [draft, setDraft] = useState("");
@@ -101,7 +113,7 @@ export function AiTutor({ className = "mt-3", fill = false }: { className?: stri
                   : "rounded-bl-md bg-(--surface)"
               }`}
             >
-              {message.text}
+              {message.role === "model" ? renderTutorText(message.text) : message.text}
             </div>
           </div>
         ))}
