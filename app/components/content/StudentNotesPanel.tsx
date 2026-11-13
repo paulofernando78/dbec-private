@@ -167,10 +167,10 @@ export function StudentNotesPanel({
       ]
     : [];
 
-  if (!session || !isOpen || !panelHost) return null;
+  if (!session || !panelHost) return null;
 
   return createPortal(
-        <div className="pointer-events-auto flex h-full max-h-full w-full translate-y-[0.05rem] touch-pan-y flex-col overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]">
+        <div className={`${isOpen ? "flex" : "hidden"} pointer-events-auto h-full max-h-full w-full translate-y-[0.05rem] touch-pan-y flex-col overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]`}>
           <div className="mb-3 flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-black">Notes</h2>
@@ -214,7 +214,12 @@ export function StudentNotesPanel({
                     className="min-h-0 max-h-none flex-1"
                   />
                 </Card>
-                <AiTutor className="mt-0 h-full min-h-0 max-[930px]:min-h-[24rem]" fill />
+                <AiTutor
+                  key={`${session.role}:${studentId}`}
+                  className="mt-0 h-full min-h-0 max-[930px]:min-h-[24rem]"
+                  fill
+                  visible={isOpen}
+                />
               </div>
             </>
           )}

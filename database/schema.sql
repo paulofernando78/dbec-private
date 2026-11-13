@@ -69,3 +69,12 @@ CREATE TABLE IF NOT EXISTS ai_tutor_requests (
 
 CREATE INDEX IF NOT EXISTS idx_ai_tutor_requests_user_created
   ON ai_tutor_requests (user_key, created_at);
+
+CREATE TABLE IF NOT EXISTS ai_tutor_history (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_key TEXT NOT NULL,
+  messages TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_ai_tutor_history_user
+  ON ai_tutor_history (user_key, id);

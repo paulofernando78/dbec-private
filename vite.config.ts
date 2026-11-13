@@ -11,6 +11,7 @@ import { students as developmentStudents } from "./app/data/students";
 const localLessonCompletion = new Map<string, boolean>();
 const localNotes = new Map<string, { teacher: string; student: string }>();
 const localAiTutorRequests = new Map<string, number[]>();
+const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
 const localDictionaryTtsCache = new Map<
   string,
   { audio: Buffer; model: string; usedFallback: boolean; contentType?: string }
@@ -436,7 +437,7 @@ const localAuth = (): Plugin => ({
     );
 
     server.middlewares.use("/api/ai-chat", async (request, response, next) => {
-      if (request.method !== "POST") return next();
+      if (!["GET", "PUT", "POST"].includes(request.method ?? "")) return next();
 
       response.setHeader("Content-Type", "application/json");
       response.setHeader("Cache-Control", "no-store");
@@ -447,8 +448,39 @@ const localAuth = (): Plugin => ({
         return;
       }
 
+      const userKey = localSession.role === "student"
+        ? `student:${localSession.studentId}`
+        : `teacher:${localSession.username}`;
+      if (request.method === "GET") {
+        response.end(JSON.stringify({ account: userKey, messages: localAiTutorHistory.get(userKey) ?? [] }));
+        return;
+      }
+
       let localReservation: { userKey: string; createdAt: number } | null = null;
       try {
+        request.setEncoding("utf8");
+        let body = "";
+        for await (const chunk of request) body += chunk;
+        const input = JSON.parse(body);
+        if (input.account !== undefined && input.account !== userKey) {
+          response.statusCode = 409;
+          response.end(JSON.stringify({ error: "A sessão mudou." }));
+          return;
+        }
+        if (request.method === "PUT") {
+          if (input.account !== userKey || !Array.isArray(input.messages) ||
+              !input.messages.every((entry: { role?: unknown; text?: unknown }) =>
+                (entry?.role === "user" || entry?.role === "model") &&
+                typeof entry.text === "string" && entry.text.trim(),
+              )) {
+            response.statusCode = 400;
+            response.end(JSON.stringify({ error: "Histórico inválido." }));
+            return;
+          }
+          if (!localAiTutorHistory.has(userKey)) localAiTutorHistory.set(userKey, input.messages);
+          response.end(JSON.stringify({ account: userKey, messages: localAiTutorHistory.get(userKey) }));
+          return;
+        }
         const variables = await readFile(resolve(process.cwd(), ".dev.vars"), "utf8");
         const apiKey = variables
           .match(/^OPENROUTER_API_KEY=(.*)$/m)?.[1]
@@ -482,10 +514,6 @@ const localAuth = (): Plugin => ({
           return;
         }
 
-        request.setEncoding("utf8");
-        let body = "";
-        for await (const chunk of request) body += chunk;
-        const input = JSON.parse(body);
         const messages = Array.isArray(input.messages)
           ? input.messages.slice(-12)
           : [];
@@ -505,10 +533,6 @@ const localAuth = (): Plugin => ({
           return;
         }
 
-        const userKey =
-          localSession.role === "student"
-            ? `student:${localSession.studentId}`
-            : `teacher:${localSession.username}`;
         const now = Date.now();
         const recentRequests = (localAiTutorRequests.get(userKey) ?? []).filter(
           (createdAt) => createdAt > now - 60 * 60 * 1_000,
@@ -663,9 +687,16 @@ const localAuth = (): Plugin => ({
           return;
         }
 
+        const history = [
+          ...(localAiTutorHistory.get(userKey) ?? []),
+          { role: "user", text: messages.at(-1).text },
+          { role: "model", text: message },
+        ];
+        localAiTutorHistory.set(userKey, history);
         response.statusCode = 200;
         response.end(JSON.stringify({
           message,
+          messages: history,
           model: usedModel,
           fallbackNotice:
             rateLimitedModels.length > 0

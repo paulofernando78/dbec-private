@@ -38,6 +38,13 @@ const ensureRateLimitStorage = (db) => {
       )`),
       db.prepare(`CREATE INDEX IF NOT EXISTS idx_ai_tutor_requests_user_created
         ON ai_tutor_requests (user_key, created_at)`),
+      db.prepare(`CREATE TABLE IF NOT EXISTS ai_tutor_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_key TEXT NOT NULL,
+        messages TEXT NOT NULL
+      )`),
+      db.prepare(`CREATE INDEX IF NOT EXISTS idx_ai_tutor_history_user
+        ON ai_tutor_history (user_key, id)`),
     ])
     .catch((error) => {
       rateLimitStorageReady = undefined;
@@ -127,6 +134,44 @@ const releaseRequest = async (db, reservationId) => {
     .run();
 };
 
+async function readHistory(db, userKey) {
+  const { results } = await db.prepare(
+    "SELECT messages FROM ai_tutor_history WHERE user_key = ? ORDER BY id",
+  ).bind(userKey).all();
+  return results.flatMap((row) => JSON.parse(row.messages));
+}
+
+async function serveHistory(context, importHistory) {
+  const session = await verifySession(
+    readCookie(context.request, "dbec_session"),
+    context.env.SESSION_SECRET,
+  );
+  if (!session) return json({ error: "Não autorizado." }, 401);
+  const db = context.env.DB;
+  if (!db) return json({ error: "O histórico do AI Tutor não está configurado." }, 503);
+  const account = userKeyFor(session);
+  await ensureRateLimitStorage(db);
+  if (importHistory) {
+    const input = await context.request.json().catch(() => null);
+    if (input?.account !== account) return json({ error: "A sessão mudou." }, 409);
+    const messages = input?.messages;
+    if (!Array.isArray(messages) || !messages.every((entry) =>
+      (entry?.role === "user" || entry?.role === "model") &&
+      typeof entry.text === "string" && entry.text.trim(),
+    )) return json({ error: "Histórico inválido." }, 400);
+    await db.prepare(
+      `INSERT INTO ai_tutor_history (user_key, messages)
+       SELECT ?, ? WHERE NOT EXISTS (
+         SELECT 1 FROM ai_tutor_history WHERE user_key = ?
+       )`,
+    ).bind(account, JSON.stringify(messages), account).run();
+  }
+  return json({ account, messages: await readHistory(db, account) });
+}
+
+export const onRequestGet = (context) => serveHistory(context, false);
+export const onRequestPut = (context) => serveHistory(context, true);
+
 export async function onRequestPost(context) {
   const session = await verifySession(
     readCookie(context.request, "dbec_session"),
@@ -150,6 +195,9 @@ export async function onRequestPost(context) {
 
   if (!Array.isArray(input.messages)) {
     return json({ error: "Histórico inválido." }, 400);
+  }
+  if (input.account !== undefined && input.account !== userKeyFor(session)) {
+    return json({ error: "A sessão mudou." }, 409);
   }
 
   const messages = input.messages.slice(-MAX_MESSAGES);
@@ -284,6 +332,14 @@ export async function onRequestPost(context) {
     return json({ error: "O tutor não gerou uma resposta." }, 502);
   }
 
+  const account = userKeyFor(session);
+  await context.env.DB.prepare(
+    "INSERT INTO ai_tutor_history (user_key, messages) VALUES (?, ?)",
+  ).bind(account, JSON.stringify([
+    { role: "user", text: messages.at(-1).text },
+    { role: "model", text: message },
+  ])).run();
+
   context.waitUntil(
     context.env.DB.prepare("DELETE FROM ai_tutor_requests WHERE created_at < ?")
       .bind(Date.now() - 24 * RATE_LIMIT_WINDOW_MS)
@@ -291,6 +347,7 @@ export async function onRequestPost(context) {
   );
   return json({
     message,
+    messages: await readHistory(context.env.DB, account),
     model: usedModel,
     fallbackNotice:
       rateLimitedModels.length > 0

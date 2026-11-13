@@ -13,6 +13,22 @@ const welcomeMessage: ChatMessage = {
   text: "Hello! Send me a sentence to check, ask about a word, or practice a conversation.",
 };
 
+function readHistory(key: string): ChatMessage[] {
+  try {
+    const history: unknown = JSON.parse(localStorage.getItem(key) ?? "null");
+    if (Array.isArray(history)) {
+      return history.filter(
+        (message): message is ChatMessage =>
+          (message?.role === "user" || message?.role === "model") &&
+          typeof message.text === "string",
+      );
+    }
+  } catch {
+    // The tutor can still run when browser storage is unavailable.
+  }
+  return [welcomeMessage];
+}
+
 function renderTutorText(text: string) {
   return text
     .split(/\*\*([^*\r\n]+)\*\*/)
@@ -25,27 +41,83 @@ function renderTutorText(text: string) {
     );
 }
 
-export function AiTutor({ className = "mt-3", fill = false }: { className?: string; fill?: boolean }) {
+export function AiTutor({
+  className = "mt-3",
+  fill = false,
+  visible = true,
+}: { className?: string; fill?: boolean; visible?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage]);
   const [draft, setDraft] = useState("");
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [historyKey, setHistoryKey] = useState<string | null>(null);
+  const sendingRef = useRef(false);
   const messagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!visible || sendingRef.current) return;
+
+    setHistoryKey(null);
+    const controller = new AbortController();
+    async function loadHistory() {
+      const response = await fetch("/api/ai-chat", { signal: controller.signal });
+      if (!response.ok) {
+        throw new Error(response.status === 401
+          ? "Log in to use the AI Tutor."
+          : "Could not load your AI Tutor history.");
+      }
+      const history = await response.json() as { account: string; messages: ChatMessage[] };
+      const { account } = history;
+      let savedMessages = history.messages;
+      const key = `dbec_ai_tutor:${account}`;
+      const localMessages = readHistory(key);
+      if (savedMessages.length === 0 && localMessages.some(({ role }) => role === "user")) {
+        const imported = await fetch("/api/ai-chat", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ account, messages: localMessages }),
+          signal: controller.signal,
+        });
+        if (!imported.ok) throw new Error("Could not sync your AI Tutor history.");
+        savedMessages = (await imported.json()).messages;
+      }
+      if (!controller.signal.aborted) {
+        setMessages(savedMessages.length ? savedMessages : [welcomeMessage]);
+        setError("");
+        setHistoryKey(account);
+      }
+    }
+
+    void loadHistory().catch((error: Error) => {
+      if (!controller.signal.aborted) {
+        setHistoryKey(null);
+        setMessages([welcomeMessage]);
+        setError(error.message);
+      }
+    });
+
+    return () => controller.abort();
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+
     messagesRef.current?.scrollTo({
       top: messagesRef.current.scrollHeight,
       behavior: "smooth",
     });
-  }, [messages, isSending]);
+  }, [messages, isSending, visible]);
 
   const sendMessage = async (event?: FormEvent) => {
     event?.preventDefault();
     const text = draft.trim();
-    if (!text || isSending) return;
+    if (!text || sendingRef.current || !historyKey) return;
+    sendingRef.current = true;
 
-    const nextMessages = [...messages, { role: "user" as const, text }];
+    const previousMessages = messages;
+    const question = { role: "user" as const, text };
+    const nextMessages = [...previousMessages, question];
     setMessages(nextMessages);
     setDraft("");
     setError("");
@@ -56,19 +128,22 @@ export function AiTutor({ className = "mt-3", fill = false }: { className?: stri
       const response = await fetch("/api/ai-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({
+          account: historyKey,
+          messages: nextMessages.slice(-12).map(({ role, text }) => ({
+            role,
+            text: text.slice(0, 2_000),
+          })),
+        }),
       });
       const result = await response.json().catch(() => null);
       if (!response.ok) {
         throw new Error(result?.error ?? "The tutor could not answer right now.");
       }
-      setMessages((current) => [
-        ...current,
-        { role: "model", text: result.message },
-      ]);
+      setMessages(result.messages);
       setNotice(result.fallbackNotice ?? "");
     } catch (requestError) {
-      setMessages(messages);
+      setMessages(previousMessages);
       setDraft(text);
       setError(
         requestError instanceof Error
@@ -76,6 +151,7 @@ export function AiTutor({ className = "mt-3", fill = false }: { className?: stri
           : "The tutor could not answer right now.",
       );
     } finally {
+      sendingRef.current = false;
       setIsSending(false);
     }
   };
@@ -159,7 +235,7 @@ export function AiTutor({ className = "mt-3", fill = false }: { className?: stri
             type="submit"
             ariaLabel="Send message"
             icon={<Send />}
-            disabled={!draft.trim() || isSending}
+            disabled={!draft.trim() || isSending || !historyKey}
             className="size-12! p-1!"
           />
         </div>
