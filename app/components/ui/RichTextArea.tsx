@@ -126,7 +126,7 @@ export function RichTextArea({
   const syncExternalValueRef = useRef(false);
   const [blocks, setBlocks] = useState<NoteBlock[]>(() => parseBlocks(value));
   const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null);
-  const [dropTargetBlockId, setDropTargetBlockId] = useState<string | null>(null);
+  const [dropTarget, setDropTarget] = useState<{ id: string; before: boolean } | null>(null);
   const [openPalette, setOpenPalette] = useState<"text" | "highlight" | null>(null);
   const [isLinkDialogOpen, setIsLinkDialogOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState("https://");
@@ -536,7 +536,7 @@ export function RichTextArea({
     requestAnimationFrame(() => blockRefs.current[focusBlock.id]?.focus());
   };
 
-  const moveBlock = (targetBlockId: string) => {
+  const moveBlock = (targetBlockId: string, before: boolean) => {
     if (!draggedBlockId || draggedBlockId === targetBlockId) return;
 
     const currentBlocks = blocksFromDom();
@@ -548,12 +548,15 @@ export function RichTextArea({
     );
     if (fromIndex < 0 || targetIndex < 0) return;
 
+    const insertIndex = targetIndex + (before ? 0 : 1) - (fromIndex < targetIndex ? 1 : 0);
+    if (insertIndex === fromIndex) return;
+
     const nextBlocks = [...currentBlocks];
     const [movedBlock] = nextBlocks.splice(fromIndex, 1);
-    nextBlocks.splice(targetIndex, 0, movedBlock);
+    nextBlocks.splice(insertIndex, 0, movedBlock);
     setBlocks(nextBlocks);
     setDraggedBlockId(null);
-    setDropTargetBlockId(null);
+    setDropTarget(null);
     emitBlocks(nextBlocks);
   };
 
@@ -651,6 +654,14 @@ export function RichTextArea({
       </div>
       <div
         ref={editorAreaRef}
+        onDragLeave={(event) => {
+          if (event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget)) return;
+          const bounds = event.currentTarget.getBoundingClientRect();
+          if (event.clientX < bounds.left || event.clientX >= bounds.right ||
+              event.clientY < bounds.top || event.clientY >= bounds.bottom) {
+            setDropTarget(null);
+          }
+        }}
         className={`w-full overflow-auto rounded-md border border-gray-300 bg-white px-1 py-1 text-(--text-color) focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 ${className ?? "min-h-60 max-h-60"}`}
       >
         {blocks.map((block) => (
@@ -664,15 +675,25 @@ export function RichTextArea({
             title={block.author ? `${block.author.name} · ${block.author.role === "teacher" ? "Professor" : "Aluno"}` : undefined}
             style={authorBlockStyle(block.author)}
             onDragOver={(event) => {
+              if (!draggedBlockId || readOnly) return;
               event.preventDefault();
-              setDropTargetBlockId(block.id);
+              event.dataTransfer.dropEffect = "move";
+              const { top, height } = event.currentTarget.getBoundingClientRect();
+              const before = event.clientY < top + height / 2;
+              setDropTarget((current) =>
+                current?.id === block.id && current.before === before
+                  ? current
+                  : { id: block.id, before },
+              );
             }}
-            onDragLeave={() =>
-              setDropTargetBlockId((current) =>
-                current === block.id ? null : current,
-              )
-            }
-            onDrop={() => moveBlock(block.id)}
+            onDrop={(event) => {
+              if (!draggedBlockId || readOnly) return;
+              event.preventDefault();
+              const { top, height } = event.currentTarget.getBoundingClientRect();
+              moveBlock(block.id, event.clientY < top + height / 2);
+              setDraggedBlockId(null);
+              setDropTarget(null);
+            }}
           >
             {!readOnly && (
               <button
@@ -680,13 +701,14 @@ export function RichTextArea({
                 draggable
                 aria-label="Drag note block"
                 title="Drag to move block"
-                onDragStart={() => {
+                onDragStart={(event) => {
+                  event.dataTransfer.effectAllowed = "move";
                   setDraggedBlockId(block.id);
                   activeBlockRef.current = blockRefs.current[block.id];
                 }}
                 onDragEnd={() => {
                   setDraggedBlockId(null);
-                  setDropTargetBlockId(null);
+                  setDropTarget(null);
                 }}
                 className="mt-0.5 grid size-6 shrink-0 cursor-grab place-items-center rounded text-slate-400 opacity-0 transition-opacity hover:bg-slate-200 hover:text-slate-600 active:cursor-grabbing group-hover:opacity-100 focus:opacity-100"
               >
@@ -797,10 +819,10 @@ export function RichTextArea({
                 <X className="size-3.5" />
               </button>
             )}
-            {draggedBlockId && dropTargetBlockId === block.id && (
+            {draggedBlockId && dropTarget?.id === block.id && (
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-1 -bottom-0.5 h-0.5 rounded-full bg-blue-500"
+                className={`pointer-events-none absolute inset-x-1 z-10 h-0.5 rounded-full bg-blue-500 ${dropTarget.before ? "-top-px" : "-bottom-px"}`}
               />
             )}
           </div>
