@@ -17,8 +17,10 @@ import { completeAudiobook } from "@/utils/audiobook-progress";
 
 function SectionImage({
   section,
+  className = "",
 }: {
   section: Pick<AudiobookSection, "r2" | "imageAlt" | "localMedia" | "mediaPosition">;
+  className?: string;
 }) {
   const [missing, setMissing] = useState(false);
   const isFullWidth =
@@ -26,7 +28,7 @@ function SectionImage({
 
   return (
     <div
-      className={`w-full overflow-hidden rounded-xl ${isFullWidth ? "" : "sm:w-60 sm:shrink-0"}`}
+      className={`w-full overflow-hidden rounded-xl ${isFullWidth ? "" : "sm:w-60 sm:shrink-0"} ${className}`}
     >
       {missing ? (
         <div className="grid min-h-48 place-items-center rounded-xl bg-(--surface) p-4 text-center text-sm text-slate-500">
@@ -46,6 +48,8 @@ function SectionImage({
     </div>
   );
 }
+
+const chapterImageSize = "mx-auto sm:max-w-[calc(35%+16rem)]";
 
 export default function ListeningBookPage() {
   const { book } = useParams();
@@ -118,7 +122,9 @@ export default function ListeningBookPage() {
         className="scroll-mt-28 rounded-xl bg-(--surface) p-3 sm:p-4"
       >
         {openingImage && (
-          <SectionImage section={{ ...openingImage, mediaPosition: "top" }} />
+          <div className="rounded-lg bg-(--background)">
+            <SectionImage section={{ ...openingImage, mediaPosition: "top" }} className={chapterImageSize} />
+          </div>
         )}
         <header className={`mb-3 px-1 py-2 ${openingImage ? "mt-3" : ""}`}>
           <h2 className="text-2xl font-black">{section.title}</h2>
@@ -150,7 +156,7 @@ export default function ListeningBookPage() {
               <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
                 {(openingImage ? blocks.slice(1) : blocks).map((block, index) =>
                   block.r2 ? (
-                    <SectionImage key={index} section={{ ...block, mediaPosition: "top" }} />
+                    <SectionImage key={index} section={{ ...block, mediaPosition: "top" }} className={chapterImageSize} />
                   ) : (
                     <p key={index} className="whitespace-pre-line">{block.text}</p>
                   )
