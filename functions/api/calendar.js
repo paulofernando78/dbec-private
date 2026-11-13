@@ -43,5 +43,17 @@ export async function onRequestPut(context) {
        updated_at = CURRENT_TIMESTAMP`,
   ).bind(student.id, lessonDate, replacementDate?.trim() || null, status).run();
 
+  const realtime = context.env.NOTES_REALTIME;
+  if (realtime) {
+    const room = realtime.get(realtime.idFromName(studentId));
+    context.waitUntil(
+      room.fetch("https://notes-room.internal/calendar-changed", { method: "POST" })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Calendar notification HTTP ${response.status}`);
+        })
+        .catch((error) => console.error("Calendar notification failed", error)),
+    );
+  }
+
   return Response.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
 }

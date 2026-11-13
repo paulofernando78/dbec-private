@@ -4,6 +4,18 @@ export class NotesRoom {
   }
 
   async fetch(request) {
+    if (request.method === "POST" && new URL(request.url).pathname === "/calendar-changed") {
+      for (const socket of this.state.getWebSockets()) {
+        if (socket.deserializeAttachment()?.role !== "student") continue;
+        try {
+          socket.send(JSON.stringify({ type: "calendar:changed" }));
+        } catch {
+          // The student will reconcile with D1 on reconnect.
+        }
+      }
+      return new Response(null, { status: 204 });
+    }
+
     if (request.headers.get("Upgrade") !== "websocket") {
       return new Response("WebSocket upgrade required.", { status: 426 });
     }

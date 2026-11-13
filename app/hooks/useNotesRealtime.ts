@@ -21,7 +21,14 @@ type ConnectionState =
   | "polling"
   | "disconnected";
 
+export type CalendarEntry = {
+  lessonDate: string;
+  status: string;
+  replacementDate?: string | null;
+};
+
 type NotesResponse = {
+  calendar?: CalendarEntry[];
   notes?: Partial<Record<NoteType, string>>;
 };
 
@@ -30,9 +37,14 @@ export function useNotesRealtime(
   role: NoteType | undefined,
   onRemoteUpdate: (noteType: NoteType, content: string) => void,
   onWriterUpdate?: (writer: { name: string; role: NoteType } | null) => void,
+  onCalendarUpdate?: (entries: CalendarEntry[]) => void,
 ) {
   const socketRef = useRef<WebSocket | null>(null);
   const callbackRef = useRef(onRemoteUpdate);
+  const calendarCallbackRef = useRef(onCalendarUpdate);
+  useEffect(() => {
+    calendarCallbackRef.current = onCalendarUpdate;
+  }, [onCalendarUpdate]);
   const saveTimersRef = useRef<Partial<Record<NoteType, number>>>({});
   const saveQueuesRef = useRef<Partial<Record<NoteType, Promise<void>>>>({});
   const pendingNotesRef = useRef<Partial<Record<NoteType, string>>>({});
@@ -55,13 +67,16 @@ export function useNotesRealtime(
     let disposed = false;
     let reconnectTimer: number | undefined;
     let pollingTimer: number | undefined;
+    let calendarRequest = 0;
+    let appliedCalendarRequest = 0;
 
     const stopPolling = () => {
       if (pollingTimer) window.clearInterval(pollingTimer);
       pollingTimer = undefined;
     };
 
-    const pollNotes = async () => {
+    const pollNotes = async (calendarOnly = false) => {
+      const request = ++calendarRequest;
       try {
         const response = await fetch(
           `/api/dashboard?studentId=${encodeURIComponent(studentId)}`,
@@ -70,6 +85,12 @@ export function useNotesRealtime(
         if (!response.ok) return;
 
         const result = (await response.json()) as NotesResponse;
+        if (disposed) return;
+        if (request > appliedCalendarRequest && Array.isArray(result.calendar)) {
+          appliedCalendarRequest = request;
+          calendarCallbackRef.current?.(result.calendar);
+        }
+        if (calendarOnly) return;
         for (const noteType of ["teacher", "student"] as const) {
           const content = result.notes?.[noteType];
           const wasRecentlyEdited =
@@ -118,7 +139,11 @@ export function useNotesRealtime(
 
       socket.addEventListener("message", (event) => {
         try {
-          const update = JSON.parse(event.data) as NoteUpdate | WriterUpdate;
+          const update = JSON.parse(event.data) as NoteUpdate | WriterUpdate | { type: "calendar:changed" };
+          if (update.type === "calendar:changed") {
+            if (!disposed && calendarCallbackRef.current) void pollNotes(true);
+            return;
+          }
           if (update.type === "writer:update" && update.name && update.role) {
             if (writerTimerRef.current) window.clearTimeout(writerTimerRef.current);
             onWriterUpdate?.({ name: update.name, role: update.role });
@@ -173,6 +198,7 @@ export function useNotesRealtime(
       socket.addEventListener("error", () => socket.close());
     };
 
+    if (calendarCallbackRef.current) startPolling();
     connect();
 
     return () => {

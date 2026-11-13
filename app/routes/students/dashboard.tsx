@@ -39,6 +39,17 @@ export default function Dashboard() {
           : { ...current, [noteType]: content },
       );
     },
+    undefined,
+    (entries) => {
+      setCalendar(Object.fromEntries(entries.map((entry) => [entry.lessonDate, entry.status])));
+      setReplacementDates(
+        Object.fromEntries(
+          entries.flatMap(({ lessonDate, replacementDate }) =>
+            replacementDate ? [[lessonDate, replacementDate]] : [],
+          ),
+        ),
+      );
+    },
   );
 
   useEffect(() => {
@@ -70,21 +81,6 @@ export default function Dashboard() {
             name: result.student?.name,
           }),
         });
-        setCalendar(
-          Object.fromEntries(
-            (result.calendar ?? []).map((entry: any) => [
-              entry.lessonDate,
-              entry.status,
-            ]),
-          ),
-        );
-        setReplacementDates(
-          Object.fromEntries(
-            (result.calendar ?? [])
-              .filter((entry: any) => entry.replacementDate)
-              .map((entry: any) => [entry.lessonDate, entry.replacementDate]),
-          ),
-        );
       })
       .catch((requestError: unknown) => {
         setError(
