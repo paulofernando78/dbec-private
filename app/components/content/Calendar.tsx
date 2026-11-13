@@ -188,13 +188,16 @@ export const Calendar = ({
 
   return (
     <>
-      <Card title="Legend" className="w-full">
-        <Card className="bg-(--background)">
+      <Card title="Legend" className="max-[420px]:[contain:inline-size]">
+        <Card className="bg-(--background) max-[420px]:overflow-x-auto">
           <ul
             className="
             grid
-            grid-cols-2
-            min-[810px]:grid-cols-3
+            grid-cols-3
+            max-[1020px]:grid-cols-2
+            max-[920px]:grid-cols-3
+            max-[600px]:grid-cols-2
+            max-[420px]:min-w-80
             gap-2
             "
           >
@@ -207,12 +210,13 @@ export const Calendar = ({
                   flex
                   items-center
                   gap-2
-                  text-[.7rem]
+                  min-w-0 text-[.7rem]
                   "
                 >
                   <span
                     className={`
                     inline-flex
+                    shrink-0
                     items-center
                     justify-center
                     w-9
@@ -223,7 +227,7 @@ export const Calendar = ({
                   >
                     {option.label}
                   </span>
-                  <span>{option.description}</span>
+                  <span className="[@media(max-width:420px)]:whitespace-nowrap">{option.description}</span>
                 </li>
               ))}
           </ul>

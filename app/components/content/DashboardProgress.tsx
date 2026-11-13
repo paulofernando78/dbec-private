@@ -21,13 +21,13 @@ export function DashboardProgress({ progress }: DashboardProgressProps) {
   };
 
   return (
-    <Card title="Progress">
+    <Card title="Progress" className="[contain:inline-size]">
       <section
         aria-label="Course progress"
-        className="grid w-full grid-cols-3 gap-4"
+        className="grid w-full grid-cols-[repeat(3,minmax(11rem,1fr))] gap-4 overflow-x-auto"
       >
         {items.map(({ key, label, Icon, color }) => (
-          <Card key={key} className="bg-(--background) max-[480px]:p-2">
+          <Card key={key} className="bg-(--background)">
             <div className="flex min-w-0 flex-col items-center text-center">
               <Icon aria-hidden="true" className={`mb-4 ${color}`} size={28} />
               <span className="font-bold text-gray-500">{label}</span>

@@ -219,9 +219,9 @@ export const StudentForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-1 gap-4 min-[830px]:grid-cols-[minmax(240px,auto)_minmax(0,1fr)]"
+      className="grid grid-cols-[auto_auto] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[auto_auto] max-[710px]:grid-cols-1"
     >
-      <div className="grid gap-4 rounded-xl bg-(--background) p-4">
+    <div className="grid gap-4 rounded-xl bg-(--background) p-4">
         {/* Name */}
         <label className="grid min-w-0 gap-1">
           <span className="text-sm font-semibold">Name</span>
@@ -239,7 +239,7 @@ export const StudentForm = ({
           />
         </label>
 
-        <div className="grid grid-cols-2 gap-4 max-[950px]:grid-cols-1">
+        <div className="grid grid-cols-2 gap-4 max-[300px]:grid-cols-1">
           <label className="grid min-w-0 gap-1">
             <span className="text-sm font-semibold">Email</span>
             <input
@@ -276,7 +276,7 @@ export const StudentForm = ({
           </label>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 max-[950px]:grid-cols-1">
+        <div className="grid grid-cols-2 gap-4 max-[300px]:grid-cols-1">
           {/* Username */}
           <label className="grid min-w-0 gap-1">
             <span className="text-sm font-semibold">Username</span>
@@ -318,7 +318,7 @@ export const StudentForm = ({
           </label>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 max-[950px]:grid-cols-1">
+        <div className="grid grid-cols-2 gap-4 max-[300px]:grid-cols-1">
           {/* Schedule */}
           <label className="grid min-w-0 gap-1">
             <span className="text-sm font-semibold">Schedule</span>
@@ -391,7 +391,7 @@ export const StudentForm = ({
         {selectedStudent && (
           <div
             role="status"
-            className="flex items-center justify-between gap-4 rounded-lg border border-amber-300 bg-amber-50 p-3 max-[950px]:items-start max-[950px]:flex-col"
+            className="flex flex-col items-stretch gap-4 rounded-lg border border-amber-300 bg-amber-50 p-3"
           >
             <div>
               <p className="text-sm font-bold text-amber-950">
@@ -416,7 +416,7 @@ export const StudentForm = ({
           <Button
             type="submit"
             disabled={isSaving}
-            className="w-full!"
+            className="w-full"
           >
             {isSaving
               ? isEditing
@@ -429,7 +429,7 @@ export const StudentForm = ({
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl bg-(--background) p-4 min-[830px]:order-first">
+      <div className="overflow-x-auto rounded-xl bg-(--background) p-4">
         <div className="space-y-4">
           <span className="block text-sm font-semibold">Students</span>
 

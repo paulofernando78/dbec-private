@@ -40,20 +40,18 @@ export const DateTimeCard = ({
 
   return (
     <Card className={`${compact ? "p-3!" : ""} ${className}`}>
-      <h2 className={compact ? "mb-2 text-lg font-bold" : "mb-4 text-lg font-bold"}>
-        Date & Time
-      </h2>
       <div
-        className={`flex flex-wrap items-center gap-x-8 gap-y-3 ${
+        className={`flex flex-wrap items-center gap-x-4 gap-y-3 ${
           compact ? "" : "rounded-xl bg-(--background) p-4"
         }`}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex gap-3">
           <CalendarDays size={22} className="shrink-0 text-gray-500" />
           <time dateTime={now.toISOString()} className="font-semibold">
             {fullDate}
           </time>
         </div>
+        <span aria-hidden="true" className="text-slate-400 max-[522px]:opacity-0 max-[391px]:hidden" >|</span>
         <div className="flex items-center gap-3 tabular-nums">
           <Clock size={22} className="shrink-0 text-gray-500" />
           <time dateTime={now.toISOString()} className="font-semibold">
