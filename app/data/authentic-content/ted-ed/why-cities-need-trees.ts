@@ -27,8 +27,8 @@ export const whyCitiesNeedTrees = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/why-cities-need-trees/before-watching/lead-in.avif?v=1",
-      imageAlt: "Residents comparing two different kinds of city neighborhood.",
+        "/media/images/authentic-content/ted-ed/why-cities-need-trees/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto shows Maya and Ravi how tree shade cools a city sidewalk.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {

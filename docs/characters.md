@@ -48,6 +48,18 @@ As imagens abaixo são referências internas de produção. Não são assets de 
 - Cabelo preto liso, na altura dos ombros, com risca lateral discreta.
 - É a recepcionista. Blusa teal, calça azul-marinho, tablet e crachá representam o contexto profissional da Lesson 1; adapte roupas e acessórios a outras cenas.
 
+## Trio do TED-Ed
+
+![Augusto ensina no quadro, Maya levanta a mão e Ravi acompanha com um caderno](characters/references/ted-ed-trio.avif)
+
+Use este elenco recorrente nas ilustrações de todas as aulas do TED-Ed. Preserve os rostos, cabelos, tons de pele e silhuetas. As roupas da referência podem variar conforme a cena.
+
+- **Professor Augusto** — cientista mais velho de pele oliva, cabelo prateado penteado para trás, nariz proeminente, óculos redondos âmbar e rosto sem barba. Sempre aparece ensinando ativamente, explicando, apontando para um diagrama ou conduzindo uma demonstração.
+- **Maya** — aluna jovem adulta negra, de pele marrom-escura, maçãs do rosto marcadas e tranças presas num coque alto. Na referência, veste uma jaqueta mostarda e levanta a mão para perguntar.
+- **Ravi** — aluno jovem adulto sul-asiático, de pele marrom média, rosto quadrado, cabelo preto liso com franja reta e rosto sem barba. Na referência, veste uma sobrecamisa verde-sálvia e acompanha a explicação com um caderno.
+
+Mantenha o trio visualmente distinto de Eric e Laura. Use a imagem acima como referência de identidade e as ilustrações de A1 Unit 1, Lesson 1 como referência de estilo.
+
 ## Estilo das ilustrações
 
 - Ilustração digital 2D semirrealista, contornos desenhados limpos, rostos levemente estilizados, cores quentes, sombreamento pictórico suave e ambientes detalhados.

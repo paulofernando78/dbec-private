@@ -39,8 +39,8 @@ export const whatCausesConstipation = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/what-causes-constipation/before-watching/lead-in.avif?v=1",
-      imageAlt: "Friends discussing different meals, routines, and everyday wellness habits.",
+        "/media/images/authentic-content/ted-ed/what-causes-constipation/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto explains a digestive model to Maya and Ravi.",
       instruction: "Discuss the questions below.",
       items: [
         {

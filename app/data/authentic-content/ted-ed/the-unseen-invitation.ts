@@ -26,8 +26,8 @@ export const theUnseenInvitation = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/the-unseen-invitation/before-watching/lead-in.avif?v=1",
-      imageAlt: "Two people having different experiences during the same lakeside picnic.",
+        "/media/images/authentic-content/ted-ed/the-unseen-invitation/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto guides Maya and Ravi in observing a lake with different senses.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         { content: ["Why might two people in the same place experience very different encounters with the natural world?"] },

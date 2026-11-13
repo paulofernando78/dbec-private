@@ -26,8 +26,8 @@ export const theAccidentalMainstay = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/the-accidental-mainstay/before-watching/lead-in.avif?v=1",
-      imageAlt: "Cinema visitors choosing among everyday products at a concession counter.",
+        "/media/images/authentic-content/ted-ed/the-accidental-mainstay/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto shows Maya and Ravi how a vintage popcorn machine works.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         { content: ["Which everyday products have become strongly associated with a particular place or activity?"] },

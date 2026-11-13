@@ -30,8 +30,8 @@ export const howDidAncientCivilizationsBrewBeer = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/how-did-ancient-civilization-brew-beer/before-watching/lead-in.avif?v=1",
-      imageAlt: "Museum visitors examining ancient vessels, grains, and trade objects.",
+        "/media/images/authentic-content/ted-ed/how-did-ancient-civilization-brew-beer/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto shows Maya and Ravi a clay brewing vessel and barley.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {

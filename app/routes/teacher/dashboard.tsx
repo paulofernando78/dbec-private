@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import { DashboardNotes } from "@/components/content/DashboardNotes";
@@ -61,6 +61,7 @@ export default function TeacherDashboard() {
   const [teacherDisplayName, setTeacherDisplayName] = useState("Professor");
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
+  const calendarSaves = useRef(new Map<string, Promise<void>>());
   const [isLoadingStudent, setIsLoadingStudent] = useState(false);
   const [studentError, setStudentError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
@@ -242,18 +243,32 @@ export default function TeacherDashboard() {
       }),
     });
 
+  const persistCalendarEntry = (
+    lessonDate: string,
+    status: string,
+    replacementDate: string | null,
+  ) => {
+    if (!studentId) return;
+    const key = `${studentId}:${lessonDate}`;
+    const previous = calendarSaves.current.get(key) ?? Promise.resolve();
+    const save = previous.then(async () => {
+      const response = await fetch("/api/calendar", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ studentId, lessonDate, status, replacementDate }),
+      });
+      if (!response.ok) throw new Error(`Calendar HTTP ${response.status}`);
+    }).catch((error) => console.error("Calendar save failed", error));
+
+    calendarSaves.current.set(key, save);
+    void save.then(() => {
+      if (calendarSaves.current.get(key) === save) calendarSaves.current.delete(key);
+    });
+  };
+
   const saveCalendar = (lessonDate: string, status: string) => {
     setCalendar((current) => ({ ...current, [lessonDate]: status }));
-    void fetch("/api/calendar", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        studentId,
-        lessonDate,
-        status,
-        replacementDate: replacementDates[lessonDate] ?? null,
-      }),
-    });
+    persistCalendarEntry(lessonDate, status, replacementDates[lessonDate] ?? null);
   };
 
   const saveReplacementDate = (lessonDate: string, replacementDate: string) => {
@@ -261,16 +276,7 @@ export default function TeacherDashboard() {
       ...current,
       [lessonDate]: replacementDate,
     }));
-    void fetch("/api/calendar", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        studentId,
-        lessonDate,
-        status: calendar[lessonDate] ?? "R",
-        replacementDate: replacementDate || null,
-      }),
-    });
+    persistCalendarEntry(lessonDate, calendar[lessonDate] ?? "R", replacementDate || null);
   };
 
   const handleStudentChange = (nextStudentId: string) => {

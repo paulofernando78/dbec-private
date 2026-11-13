@@ -30,8 +30,8 @@ export const theSilentRaceToTheBrain = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/the-silent-race-to-the-brain/before-watching/lead-in.avif?v=1",
-      imageAlt: "Hikers deciding what to do after an unexpected encounter with a wild animal.",
+        "/media/images/authentic-content/ted-ed/the-silent-race-to-the-brain/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto shows Maya and Ravi a diagram tracing a nerve toward the brain.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {

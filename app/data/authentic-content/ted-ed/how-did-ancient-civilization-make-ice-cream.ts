@@ -36,8 +36,8 @@ export const howDidAncientCivilizationsMakeIceCream = {
     beforeWatching: {
       type: "ol" as const,
       image:
-        "/media/images/authentic-content/ted-ed/how-did-ancient-civilization-make-ice-cream/before-watching/lead-in.avif?v=1",
-      imageAlt: "People considering ways to keep food cold in an ancient palace kitchen.",
+        "/media/images/authentic-content/ted-ed/how-did-ancient-civilization-make-ice-cream/before-watching/lead-in-ted-trio.avif?v=1",
+      imageAlt: "Augusto shows Maya and Ravi how to chill a dessert bowl with ice and salt.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
