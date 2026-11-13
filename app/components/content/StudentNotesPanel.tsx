@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { LoaderCircle, X } from "lucide-react";
@@ -11,12 +12,6 @@ import { NoteAuthorLegend } from "@/components/content/NoteAuthorLegend";
 import { RichTextArea } from "@/components/ui/RichTextArea";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
-
-type Session = {
-  role: "teacher" | "student";
-  studentId?: string;
-  displayName?: string;
-};
 
 type Notes = {
   teacher: string;
@@ -35,7 +30,7 @@ export function StudentNotesPanel({
   onClose,
 }: StudentNotesPanelProps) {
   const location = useLocation();
-  const [session, setSession] = useState<Session | null>(null);
+  const session = useSession();
   const [studentId, setStudentId] = useState("");
   const [studentName, setStudentName] = useState("");
   const [notes, setNotes] = useState<Notes>(emptyNotes);
@@ -60,31 +55,14 @@ export function StudentNotesPanel({
   );
 
   useEffect(() => {
-    let cancelled = false;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        return (await response.json()) as Session;
-      })
-      .then((nextSession) => {
-        if (cancelled) return;
-
-        setSession(nextSession);
-        setStudentId(
-          nextSession?.role === "student"
-            ? nextSession.studentId ?? ""
-            : localStorage.getItem("dbec_selected_student_id") ?? "",
-        );
-      })
-      .catch(() => {
-        if (!cancelled) setSession(null);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [location.pathname]);
+    setStudentId(
+      session?.role === "student"
+        ? session.studentId ?? ""
+        : session?.role === "teacher"
+          ? localStorage.getItem("dbec_selected_student_id") ?? ""
+          : "",
+    );
+  }, [location.pathname, session?.role, session?.studentId]);
 
   const loadNotes = useCallback(async () => {
     if (!studentId) {

@@ -85,13 +85,18 @@ export const getUsers = (env) => {
   );
 };
 
+export const SESSION_IDLE_SECONDS = 600;
+
+export const sessionCookie = (token) =>
+  `dbec_session=${encodeURIComponent(token)}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${SESSION_IDLE_SECONDS}`;
+
 export const createSession = async (user, secret) => {
   const payload = toBase64Url(
     JSON.stringify({
       username: user.username,
       role: user.role,
       studentId: user.studentId,
-      expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+      expiresAt: Date.now() + SESSION_IDLE_SECONDS * 1000,
     }),
   );
   return `${payload}.${await sign(payload, secret)}`;
@@ -111,7 +116,8 @@ export const verifySession = async (token, secret) => {
       typeof session.username !== "string" ||
       !["teacher", "student"].includes(session.role) ||
       typeof session.expiresAt !== "number" ||
-      session.expiresAt <= Date.now()
+      session.expiresAt <= Date.now() ||
+      session.expiresAt > Date.now() + SESSION_IDLE_SECONDS * 1000
     ) {
       return null;
     }

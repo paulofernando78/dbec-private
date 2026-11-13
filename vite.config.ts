@@ -5,6 +5,7 @@ import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import { dictionaryOpenRouter } from "./functions/_dictionary-openrouter.mjs";
+import { SESSION_IDLE_SECONDS } from "./functions/_auth.js";
 
 import { students as developmentStudents } from "./app/data/students";
 
@@ -16,7 +17,7 @@ const localDictionaryTtsCache = new Map<
   string,
   { audio: Buffer; model: string; usedFallback: boolean; contentType?: string }
 >();
-let localSession: { username: string; role: string; studentId?: string } | null =
+let localSession: { username: string; role: string; studentId?: string; expiresAt: number } | null =
   null;
 
 const aiTutorSystemInstruction = `You are DBEC's friendly English tutor.
@@ -158,6 +159,10 @@ const localAuth = (): Plugin => ({
   name: "local-auth",
   apply: "serve",
   configureServer(server) {
+    server.middlewares.use("/api", (_request, _response, next) => {
+      if (localSession && localSession.expiresAt <= Date.now()) localSession = null;
+      next();
+    });
     server.middlewares.use("/api/login", async (request, response, next) => {
       if (request.method !== "POST") return next();
 
@@ -201,6 +206,7 @@ const localAuth = (): Plugin => ({
           username,
           role: user.role,
           studentId: user.studentId,
+          expiresAt: Date.now() + SESSION_IDLE_SECONDS * 1000,
         };
 
         response.statusCode = 200;
@@ -226,14 +232,21 @@ const localAuth = (): Plugin => ({
     });
 
     server.middlewares.use("/api/session", (request, response, next) => {
-      if (request.method !== "GET") return next();
+      if (request.method !== "GET" && request.method !== "POST") return next();
 
       response.setHeader("Content-Type", "application/json");
       response.setHeader("Cache-Control", "no-store");
 
-      if (!localSession) {
+      if (!localSession || localSession.expiresAt <= Date.now()) {
+        localSession = null;
         response.statusCode = 401;
         response.end(JSON.stringify({ error: "Não autorizado." }));
+        return;
+      }
+
+      if (request.method === "POST") {
+        localSession.expiresAt = Date.now() + SESSION_IDLE_SECONDS * 1000;
+        response.end(JSON.stringify({ expiresAt: localSession.expiresAt }));
         return;
       }
 

@@ -1,26 +1,11 @@
+import { useSession } from "@/hooks/useSession";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 export function DateTime() {
   const location = useLocation();
   const [now, setNow] = useState(() => new Date());
-  const [hasSession, setHasSession] = useState(false);
-
-  useEffect(() => {
-    let isCurrent = true;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => {
-        if (isCurrent) setHasSession(response.ok);
-      })
-      .catch(() => {
-        if (isCurrent) setHasSession(false);
-      });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, []);
+  const hasSession = Boolean(useSession());
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {

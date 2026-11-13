@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router";
 
@@ -57,20 +58,9 @@ export default function ListeningBookPage() {
     ? audiobooks[book as keyof typeof audiobooks]
     : undefined;
   const completionSentinelRef = useRef<HTMLDivElement>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const session = useSession();
+  const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
-
-  useEffect(() => {
-    let active = true;
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => {
-        if (active) setIsAuthenticated(response.ok);
-      })
-      .catch(() => {
-        if (active) setIsAuthenticated(false);
-      });
-    return () => { active = false; };
-  }, [book]);
 
   useEffect(() => {
     const sentinel = completionSentinelRef.current;

@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
+import { useSession } from "@/hooks/useSession";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { UnitCard } from "@/components/course/UnitCard";
 import { travel } from "@/data/travel";
 
 export default function Travel() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => {
-        if (active) setIsAuthenticated(response.ok);
-      })
-      .catch(() => {
-        if (active) setIsAuthenticated(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
+  const isAuthenticated = Boolean(useSession());
 
   return (
     <div className="mx-auto max-w-4xl">

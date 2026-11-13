@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import type { Route } from "./+types/home";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -48,25 +49,11 @@ export default function Home() {
   const [greetingIndex, setGreetingIndex] = useState(0);
   const [opacity, setOpacity] = useState(1);
 
+  const dashboardPath = useSession()?.dashboardPath;
+
   useEffect(() => {
-    let active = true;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        return (await response.json()) as { dashboardPath?: string };
-      })
-      .then((session) => {
-        if (active && session?.dashboardPath) {
-          navigate(session.dashboardPath, { replace: true });
-        }
-      })
-      .catch(() => undefined);
-
-    return () => {
-      active = false;
-    };
-  }, [navigate]);
+    if (dashboardPath) navigate(dashboardPath, { replace: true });
+  }, [dashboardPath, navigate]);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;

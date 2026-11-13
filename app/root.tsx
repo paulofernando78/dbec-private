@@ -13,6 +13,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { SessionProvider, useSession } from "@/hooks/useSession";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -40,6 +41,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  return <SessionProvider><AppContent /></SessionProvider>;
+}
+
+function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
   const isPresentationPage =
@@ -47,19 +52,15 @@ export default function App() {
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const session = useSession();
+  const isAuthenticated = Boolean(session);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 
-  useEffect(() => {
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => setIsAuthenticated(response.ok))
-      .catch(() => setIsAuthenticated(false));
-  }, [location.pathname]);
-
   const handleAuthentication = async () => {
+    if (session === undefined) return;
     if (!isAuthenticated) {
       window.dispatchEvent(new Event("dbec:open-login"));
       return;
@@ -165,6 +166,7 @@ export default function App() {
               <Button
                 ariaLabel={isAuthenticated ? "Log out" : "Log in"}
                 icon={isAuthenticated ? <LogOut /> : <LogIn />}
+                disabled={session === undefined}
                 onClick={handleAuthentication}
               />
             )}

@@ -1,6 +1,7 @@
+import { useSession } from "@/hooks/useSession";
 import { useLocation, useNavigate } from "react-router";
 import { links } from "@/data/nav-bar-links";
-import { useEffect, useState, type ElementType } from "react";
+import { useEffect, type ElementType } from "react";
 import { NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlobalSearch } from "./GlobalSearch";
@@ -18,25 +19,14 @@ export function NavBar({
   isNotesOpen,
   toggleNotes,
 }: NavBarProps) {
-  const [dashboardPath, setDashboardPath] = useState<string | null>(null);
+  const session = useSession();
+  const dashboardPath = session ? session.dashboardPath ?? "/dashboard" : null;
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("/api/session")
-      .then((response) => {
-        if (!response.ok) throw new Error("Could not load session.");
-        return response.json();
-      })
-      .then((session) => {
-        const nextDashboardPath = session.dashboardPath ?? "/dashboard";
-        setDashboardPath(nextDashboardPath);
-        localStorage.setItem("dbec_dashboard_path", nextDashboardPath);
-      })
-      .catch(() => {
-        setDashboardPath(null);
-        localStorage.removeItem("dbec_dashboard_path");
-      });
-  }, [location.pathname]);
+    if (dashboardPath) localStorage.setItem("dbec_dashboard_path", dashboardPath);
+    else if (session === null) localStorage.removeItem("dbec_dashboard_path");
+  }, [dashboardPath, session]);
 
   const renderNavigationButton = (
     href: string,

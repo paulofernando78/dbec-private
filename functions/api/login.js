@@ -1,4 +1,4 @@
-import { createSession, getUsers } from "../_auth.js";
+import { createSession, getUsers, sessionCookie } from "../_auth.js";
 import { verifyPassword } from "../_password.js";
 
 const invalidCredentials = () =>
@@ -98,7 +98,7 @@ export async function onRequestPost(context) {
       {
         headers: {
           "Cache-Control": "no-store",
-          "Set-Cookie": `dbec_session=${encodeURIComponent(token)}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=604800`,
+          "Set-Cookie": sessionCookie(token),
         },
       },
     );

@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -17,26 +18,11 @@ import {
 
 export default function Audiobooks() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const session = useSession();
+  const isAuthenticated = session === undefined ? null : Boolean(session);
   const [completedAudiobooks, setCompletedAudiobooks] = useState<Set<string>>(
     new Set(),
   );
-
-  useEffect(() => {
-    let active = true;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => {
-        if (active) setIsAuthenticated(response.ok);
-      })
-      .catch(() => {
-        if (active) setIsAuthenticated(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
 
   useEffect(() => {
     setCompletedAudiobooks(

@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import { useEffect, useState, type FormEvent } from "react";
 import { useLocation } from "react-router";
 
@@ -5,17 +6,6 @@ import { Button } from "@/components/ui/Button/Button";
 
 import { X } from "lucide-react";
 import { AccountSummary } from "./AccountSummary";
-
-type Session = {
-  username: string;
-  role: "teacher" | "student";
-  studentId?: string;
-  dashboardPath: string;
-  displayName: string;
-  schedule: string | null;
-  time: string | null;
-  plan: "free" | "plus" | null;
-};
 
 type SelectedStudent = {
   studentId: string;
@@ -28,7 +18,7 @@ export const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [session, setSession] = useState<Session | null>(null);
+  const session = useSession();
   const [selectedStudent, setSelectedStudent] =
     useState<SelectedStudent | null>(null);
 
@@ -51,26 +41,6 @@ export const Header = () => {
     window.addEventListener("dbec:open-login", openLogin);
     return () => window.removeEventListener("dbec:open-login", openLogin);
   }, []);
-
-  useEffect(() => {
-    let isCurrent = true;
-
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        return (await response.json()) as Session;
-      })
-      .then((nextSession) => {
-        if (isCurrent) setSession(nextSession);
-      })
-      .catch(() => {
-        if (isCurrent) setSession(null);
-      });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [location.pathname]);
 
   useEffect(() => {
     let isCurrent = true;

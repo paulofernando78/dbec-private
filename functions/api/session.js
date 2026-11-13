@@ -1,4 +1,15 @@
-import { readCookie, verifySession } from "../_auth.js";
+import { createSession, readCookie, sessionCookie, verifySession } from "../_auth.js";
+
+export async function onRequestPost(context) {
+  const secret = context.env.SESSION_SECRET;
+  const session = await verifySession(readCookie(context.request, "dbec_session"), secret);
+  const headers = { "Cache-Control": "no-store" };
+  if (!session) return Response.json({ error: "Não autorizado." }, { status: 401, headers });
+
+  const token = await createSession(session, secret);
+  headers["Set-Cookie"] = sessionCookie(token);
+  return Response.json({ expiresAt: (await verifySession(token, secret)).expiresAt }, { headers });
+}
 
 export async function onRequestGet(context) {
   const token = readCookie(context.request, "dbec_session");
@@ -44,6 +55,7 @@ export async function onRequestGet(context) {
       username: session.username,
       role: session.role,
       studentId: session.studentId,
+      expiresAt: session.expiresAt,
       dashboardPath,
       ...profile,
     },

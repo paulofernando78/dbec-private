@@ -1,3 +1,4 @@
+import { useSession } from "@/hooks/useSession";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 
@@ -33,27 +34,8 @@ export default function LessonPage() {
   const levelData = isTravel ? travel : levels[level as keyof typeof levels];
   const isFreeLesson = level === "a1" && Number(unit) <= 3;
   const [completedChecklistKey, setCompletedChecklistKey] = useState<string | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    if (isFreeLesson) {
-      setIsAuthenticated(false);
-      return;
-    }
-
-    let active = true;
-    fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => {
-        if (active) setIsAuthenticated(response.ok);
-      })
-      .catch(() => {
-        if (active) setIsAuthenticated(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [isFreeLesson]);
+  const session = useSession();
+  const isAuthenticated = session === undefined ? null : Boolean(session);
 
   useEffect(() => {
     if (!isFreeLesson && isAuthenticated === false) {
