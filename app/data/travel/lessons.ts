@@ -502,6 +502,122 @@ const translations: Record<string, string> = {
   "I need a taxi to the airport.": "Preciso de um táxi para o aeroporto.",
 };
 
+const practicalPhrases: Record<string, readonly [
+  phrase: string,
+  translation: string,
+  situation: string,
+  rolePlay: string,
+]> = {
+  "1/1": [
+    "How much would it cost?",
+    "Quanto custaria?",
+    "Ask for an estimate before choosing a destination.",
+    "One destination is too expensive. Ask about the cost of another and agree on where to go.",
+  ],
+  "1/2": [
+    "Is a checked bag included?",
+    "Uma mala despachada está incluída?",
+    "Ask whether the ticket price covers a bag that goes in the hold.",
+    "The cheapest ticket includes only a carry-on. Ask how much it costs to add a checked bag and decide which ticket to buy.",
+  ],
+  "2/1": [
+    "Will I need a jacket?",
+    "Vou precisar de uma jaqueta?",
+    "Check what to pack when you are unsure about the weather.",
+    "Rain is forecast and you have room for only two more things. Agree on what to pack.",
+  ],
+  "2/2": [
+    "Can I show it on my phone?",
+    "Posso mostrar pelo celular?",
+    "Ask if you can show a ticket or booking confirmation on your phone.",
+    "Your travel partner has the boarding pass on their phone. Ask where it is saved and make sure you can open it offline.",
+  ],
+  "3/1": [
+    "Could I have an aisle seat, please?",
+    "Poderia me dar um assento no corredor, por favor?",
+    "Ask for a seat next to the aisle at the check-in counter.",
+    "The agent says your bag is too heavy and only window seats are left. Deal with the bag and confirm your seat.",
+  ],
+  "3/2": [
+    "Did they say gate fourteen or forty?",
+    "Disseram portão quatorze ou quarenta?",
+    "Check a gate number you did not hear clearly in an announcement.",
+    "You hear a gate change but miss the new number. Ask for it, confirm it, and ask how to get there.",
+  ],
+  "4/1": [
+    "Could I have some water, please?",
+    "Poderia me trazer um pouco de água, por favor?",
+    "Ask a flight attendant for water. You may hear “Still or sparkling?”",
+    "Ask for water. Your partner asks “Still or sparkling?” Choose one and thank them.",
+  ],
+  "4/2": [
+    "Which platform does it leave from?",
+    "De qual plataforma ele sai?",
+    "Ask where to board after you have said which train you need.",
+    "Your train is delayed. Find out the platform and whether you can still make your connection.",
+  ],
+  "5/1": [
+    "I'm here on vacation.",
+    "Estou aqui de férias.",
+    "If you are travelling for a holiday, use this to answer a question about the purpose of your visit.",
+    "The officer asks why you are visiting, how long you are staying, and where you will stay. Answer using your trip details.",
+  ],
+  "5/2": [
+    "My bag didn't arrive.",
+    "Minha mala não chegou.",
+    "Say this at the baggage service desk if your bag is missing.",
+    "Report a missing bag. Describe its size and colour, then ask for a reference number.",
+  ],
+  "6/1": [
+    "Can I leave my bags here?",
+    "Posso deixar minhas malas aqui?",
+    "Ask the front desk to hold your bags if your room is still being prepared.",
+    "You arrive early and your room is not ready. Ask to leave your bags and find out when you can check in.",
+  ],
+  "6/2": [
+    "Could someone come and take a look?",
+    "Alguém poderia vir dar uma olhada?",
+    "Ask the front desk to send someone to check a problem in your room.",
+    "There is no hot water. Report the problem, ask when someone can come, and ask for another room if needed.",
+  ],
+  "7/1": [
+    "Could you show me on the map?",
+    "Você poderia me mostrar no mapa?",
+    "Ask someone to point out the place or route when spoken directions are hard to follow.",
+    "Ask for directions to the station. You miss one turn in the explanation, so ask the person to show you on the map.",
+  ],
+  "7/2": [
+    "Does this bus go to the city centre?",
+    "Este ônibus vai para o centro?",
+    "Check the route before you get on a bus.",
+    "The bus stops near the centre. Ask where to get off and whether you can pay by card.",
+  ],
+  "8/1": [
+    "Do you have this in a larger size?",
+    "Você tem isto em um tamanho maior?",
+    "Ask for a larger size when shopping for clothes.",
+    "First, order a meal and ask whether it contains an ingredient you avoid. Then, at a shop, ask for a different size and check the price.",
+  ],
+  "8/2": [
+    "Where do we meet?",
+    "Onde vamos nos encontrar?",
+    "Confirm the meeting point after booking a tour.",
+    "Book a tour and confirm the meeting point and time. Ask what happens if it rains.",
+  ],
+  "9/1": [
+    "I need help. Where's the nearest police station?",
+    "Preciso de ajuda. Onde fica a delegacia mais próxima?",
+    "Ask where to go when you need to report a theft.",
+    "Your passport is missing. Tell someone what happened, ask where to report it, and ask them to repeat the address.",
+  ],
+  "9/2": [
+    "I'd like to check out, please.",
+    "Gostaria de fazer o check-out, por favor.",
+    "Say this at the front desk when you are ready to leave the hotel.",
+    "Start the check-out, ask about a charge you do not recognise, and request a taxi to the airport.",
+  ],
+};
+
 const getReadyImages: Record<string, string> = {
   "1/1": "/media/images/course/travel/unit-1/lesson-1-choosing-a-destination/get-ready/lead-in.avif?v=1",
   "1/2": "/media/images/course/travel/unit-1/lesson-2-booking-the-trip/get-ready/lead-in.avif?v=1",
@@ -550,6 +666,8 @@ const renameTravelCharacters = (value: string) =>
 const createLesson = (seed: TravelLessonSeed): LessonContent => {
   const unitData = travel.units[seed.unit - 1];
   const lessonData = unitData.lessons[seed.lesson - 1];
+  const lessonKey = `${seed.unit}/${seed.lesson}`;
+  const [practicalPhrase, practicalTranslation, situation, rolePlay] = practicalPhrases[lessonKey];
   const dialogue = seed.dialogue.map(([speaker, line]) => [
     renameTravelCharacters(speaker),
     renameTravelCharacters(line),
@@ -591,25 +709,28 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       slug: "language-focus",
       label: "Language focus",
       instruction: lessonData.description,
-      items: targets.map((phrase, index) => [
-        phrase,
-        `Use this expression when you need to ${lessonData.description.toLowerCase()}`,
-        "Listen for sentence stress and polite intonation.",
-        "Notice the fixed phrase and replace the travel detail when necessary.",
-        undefined,
-        translations[seed.targets[index]] ?? translations[phrase],
-        undefined,
-        index === 0 && languageFocusImages[`${seed.unit}/${seed.lesson}`]
-          ? [{ image: languageFocusImages[`${seed.unit}/${seed.lesson}`], caption: phrase }]
-          : undefined,
-      ] as const),
+      items: [
+        ...targets.map((phrase, index) => [
+          phrase,
+          `Use this expression when you need to ${lessonData.description.toLowerCase()}`,
+          "Listen for sentence stress and polite intonation.",
+          "Notice the fixed phrase and replace the travel detail when necessary.",
+          undefined,
+          translations[seed.targets[index]] ?? translations[phrase],
+          undefined,
+          index === 0 && languageFocusImages[`${seed.unit}/${seed.lesson}`]
+            ? [{ image: languageFocusImages[`${seed.unit}/${seed.lesson}`], caption: phrase }]
+            : undefined,
+        ] as const),
+        [practicalPhrase, situation, undefined, undefined, undefined, practicalTranslation],
+      ],
     },
     {
       type: "try-it",
       slug: "try-it",
       label: "Try it",
       instruction: "Put the travel expressions in the correct order.",
-      items: targets.map(shuffleWords),
+      items: [...targets, practicalPhrase].map(shuffleWords),
     },
     {
       type: "use-it",
@@ -617,9 +738,8 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       label: "Use it",
       instruction: `Role-play the situation: ${lessonData.title}.`,
       prompts: [
-        lessonData.description,
-        "Decide who is the traveller and who is the service provider or travel partner.",
-        "Use at least three target expressions, then change roles and change one problem or detail.",
+        rolePlay,
+        "Take turns playing the traveller. Change one detail and try again.",
       ],
       model: dialogue,
     },
