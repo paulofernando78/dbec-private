@@ -1,7 +1,6 @@
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
-import { SequenceNavigation } from "@/components/content/SequenceNavigation";
 import { PageSections } from "@/components/content/PageSections";
 import { Section } from "@/components/ui/Section";
 import { List } from "@/components/content/List";
@@ -11,7 +10,6 @@ import { gamesLucasArtsCardData } from "@/data/games/lucas-arts/games-lucas-arts
 import { gamesSierraCardData } from "@/data/games/sierra/games-sierra-card-data";
 
 export default function GameBuilder() {
-  const navigate = useNavigate();
   const { developer, slug } = useParams();
   const game = getGameSlug({ developer, slug });
 
@@ -26,8 +24,6 @@ export default function GameBuilder() {
   ];
   const gameCardIndex = gameCards.findIndex((card) => card.href === gameHref);
   const gameCard = gameCards[gameCardIndex];
-  const previousGame = gameCards[gameCardIndex - 1];
-  const nextGame = gameCards[gameCardIndex + 1];
   const displayedHeader = gameCard
     ? {
         ...game.whiteboard,
@@ -53,13 +49,6 @@ export default function GameBuilder() {
           </Section>
         ))}
       </PageSections>
-      <SequenceNavigation
-        previousLabel={previousGame?.label ?? "Games"}
-        nextLabel={nextGame?.label ?? "Games"}
-        onPrevious={() => navigate(previousGame?.href ?? "/games")}
-        onNext={() => navigate(nextGame?.href ?? "/games")}
-        ariaLabel="Games"
-      />
     </>
   );
 }

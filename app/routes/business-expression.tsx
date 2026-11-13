@@ -1,7 +1,6 @@
-import { Navigate, useNavigate, useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
-import { SequenceNavigation } from "@/components/content/SequenceNavigation";
 import { Card } from "@/components/ui/Card";
 import { Dialogue } from "@/features/Dialogue";
 import { Radio } from "@/features/exercises/Radio";
@@ -1568,7 +1567,6 @@ const lessonThirtyLines = [
 ];
 
 export default function BusinessExpression() {
-  const navigate = useNavigate();
   const { lesson } = useParams();
 
   if (!["lesson-1", "lesson-2", "lesson-3", "lesson-4", "lesson-5", "lesson-6", "lesson-7", "lesson-8", "lesson-9", "lesson-10", "lesson-11", "lesson-12", "lesson-13", "lesson-14", "lesson-15", "lesson-16", "lesson-17", "lesson-18", "lesson-19", "lesson-20", "lesson-21", "lesson-22", "lesson-23", "lesson-24", "lesson-25", "lesson-26", "lesson-27", "lesson-28", "lesson-29", "lesson-30"].includes(lesson ?? "")) {
@@ -2064,33 +2062,6 @@ export default function BusinessExpression() {
         <Card className="mt-4"><h2 className="mb-2 text-xl font-black">Practice the Idioms</h2><Radio instruction="Choose the best substitute for the phrase or sentence highlighted." exercise={lessonThirtyExercise} questionClassName="rounded-xl bg-(--background) p-4" /></Card>
       )}
 
-      <SequenceNavigation
-        previousLabel={
-          lessonNumber > 1
-            ? (businessLessonTitles[lessonNumber - 2] ?? "Business 1")
-            : "Business 1"
-        }
-        nextLabel={
-          lessonNumber < businessLessonTitles.length
-            ? (businessLessonTitles[lessonNumber] ?? "Business 1")
-            : "Business 1"
-        }
-        onPrevious={() =>
-          navigate(
-            lessonNumber > 1
-              ? `/expressions/business/lesson-${lessonNumber - 1}`
-              : "/expressions/business",
-          )
-        }
-        onNext={() =>
-          navigate(
-            lessonNumber < businessLessonTitles.length
-              ? `/expressions/business/lesson-${lessonNumber + 1}`
-              : "/expressions/business",
-          )
-        }
-        ariaLabel="Business 1 lessons"
-      />
     </div>
   );
 }

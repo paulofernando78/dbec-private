@@ -91,6 +91,13 @@ const mediaTypes: Record<string, string> = {
 const localMedia = (): Plugin => ({
   name: "local-media",
   apply: "serve",
+  config: () => ({
+    server: {
+      fs: {
+        deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "**/.local-audiobooks/**"],
+      },
+    },
+  }),
   configureServer(server) {
     server.middlewares.use("/media", async (request, response, next) => {
       if (!request.url || !["GET", "HEAD"].includes(request.method ?? "")) {

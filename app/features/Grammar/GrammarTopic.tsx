@@ -7,15 +7,22 @@ import {
   type GrammarTopicId,
 } from "@/data/grammar";
 
-export function GrammarTopic({ topic }: { topic: GrammarTopicData }) {
+export function GrammarTopic({
+  topic,
+  sectionAnchors = false,
+}: {
+  topic: GrammarTopicData;
+  sectionAnchors?: boolean;
+}) {
   return (
     <div className="grid gap-4">
       <p>{topic.introduction}</p>
       <div className="flex flex-col gap-4">
-        {topic.usages.map((usage) => (
+        {topic.usages.map((usage, index) => (
           <section
             key={usage.title}
-            className="rounded-xl bg-(--background) p-4"
+            id={sectionAnchors ? `grammar-usage-${index + 1}` : undefined}
+            className="scroll-mt-4 rounded-xl bg-(--background) p-4"
           >
             <h3 className="text-xl font-black text-(--text-color)">
               {usage.title}
@@ -47,10 +54,11 @@ export function GrammarTopic({ topic }: { topic: GrammarTopicData }) {
           </section>
         ))}
       </div>
-      {topic.warnings?.map((warning) => (
+      {topic.warnings?.map((warning, index) => (
         <aside
           key={warning.title}
-          className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-950 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100"
+          id={sectionAnchors ? `grammar-warning-${index + 1}` : undefined}
+          className="scroll-mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-950 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100"
         >
           <div className="mb-2 flex items-center gap-2">
             <TriangleAlert aria-hidden="true" className="size-5 shrink-0" />
@@ -77,7 +85,10 @@ export function GrammarTopic({ topic }: { topic: GrammarTopicData }) {
           </ul>
         </aside>
       ))}
-      <p className="rounded-xl bg-blue-50 p-3 text-blue-950 dark:bg-blue-950 dark:text-blue-100">
+      <p
+        id={sectionAnchors ? "grammar-quick-rule" : undefined}
+        className="scroll-mt-4 rounded-xl bg-blue-50 p-3 text-blue-950 dark:bg-blue-950 dark:text-blue-100"
+      >
         <strong>Regra rápida:</strong> {topic.quickRule}
       </p>
     </div>

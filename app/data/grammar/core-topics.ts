@@ -286,7 +286,7 @@ export const coreGrammarTopics = [
     title: "Prefixes and Suffixes",
     description: "Forme e compreenda palavras acrescentando elementos antes ou depois de uma palavra-base.",
     introduction:
-      "Um prefixo aparece antes da palavra-base e geralmente altera seu significado. Um sufixo aparece depois da palavra-base e frequentemente altera seu significado ou sua classe gramatical.",
+      "Na morfologia, derivação é a formação de uma palavra a partir de outra. Um prefixo vem antes da base e geralmente altera seu significado. Um sufixo vem depois e pode mudar a classe gramatical, como em dark (adjetivo) → darken (verbo).",
     usages: [
       {
         title: "Prefixos de negação e oposição",
@@ -295,6 +295,10 @@ export const coreGrammarTopics = [
         examples: [
           { english: "This answer is incorrect.", portuguese: "Esta resposta está incorreta." },
           { english: "They disagreed with the decision.", portuguese: "Eles discordaram da decisão." },
+          { english: "The door was unlocked.", portuguese: "A porta estava destrancada." },
+          { english: "Parking here is illegal.", portuguese: "É proibido estacionar aqui." },
+          { english: "It is impossible to open this jar.", portuguese: "É impossível abrir este pote." },
+          { english: "His work schedule is irregular.", portuguese: "O horário de trabalho dele é irregular." },
         ],
       },
       {
@@ -304,24 +308,94 @@ export const coreGrammarTopics = [
         examples: [
           { english: "Please rewrite the sentence.", portuguese: "Por favor, reescreva a frase." },
           { english: "The meat is undercooked.", portuguese: "A carne está malpassada." },
+          { english: "Preheat the oven before baking.", portuguese: "Preaqueça o forno antes de assar." },
+          { english: "Try not to overfill the bottle.", portuguese: "Evite encher demais a garrafa." },
         ],
       },
       {
-        title: "Sufixos de substantivos e adjetivos",
-        meaning: "Sufixos como -ness, -ment e -tion frequentemente formam substantivos; -ful, -less, -able e -ous costumam formar adjetivos.",
-        pattern: "palavra-base + sufixo de substantivo/adjetivo",
+        title: "Substantivos com -ness e -hood",
+        meaning: "-ness indica uma qualidade ou estado. -hood indica uma fase da vida, uma condição ou um vínculo.",
+        pattern: "adjetivo + -ness → substantivo (dark → darkness) · substantivo + -hood → substantivo (child → childhood)",
         examples: [
+          { english: "The room was in complete darkness.", portuguese: "O quarto estava em completa escuridão." },
           { english: "Her kindness made everyone feel welcome.", portuguese: "A gentileza dela fez todos se sentirem bem-vindos." },
-          { english: "This information is useful.", portuguese: "Esta informação é útil." },
+          { english: "She spent her childhood by the sea.", portuguese: "Ela passou a infância à beira-mar." },
+          { english: "Their friendship lasted into adulthood.", portuguese: "A amizade deles durou até a vida adulta." },
+          { english: "The room fell silent, and the sudden quietness surprised us.", portuguese: "O quarto ficou em silêncio, e a tranquilidade repentina nos surpreendeu." },
         ],
       },
       {
-        title: "Sufixos de verbos e advérbios",
-        meaning: "Sufixos como -ize e -ify podem formar verbos, enquanto -ly costuma formar advérbios.",
-        pattern: "palavra-base + -ize/-ify/-ly",
+        title: "Outros sufixos de substantivos",
+        meaning: "-ment e -tion podem formar substantivos que indicam uma ação, um processo ou seu resultado.",
+        pattern: "verbo + -ment/-tion → substantivo (develop → development · educate → education)",
         examples: [
+          { english: "Education opens doors.", portuguese: "A educação abre portas." },
+          { english: "The development of the app took six months.", portuguese: "O desenvolvimento do aplicativo levou seis meses." },
+          { english: "The construction of the bridge began in May.", portuguese: "A construção da ponte começou em maio." },
+        ],
+      },
+      {
+        title: "Adjetivos com -ful, -less, -able e -ous",
+        meaning: "-ful, escrito com um só l, indica presença de uma qualidade; -less indica ausência. -able indica possibilidade e -ous pode indicar uma característica.",
+        pattern: "care → careful/careless · read → readable · danger → dangerous",
+        examples: [
+          { english: "Be careful with that glass.", portuguese: "Tenha cuidado com esse copo." },
+          { english: "This information is useful.", portuguese: "Esta informação é útil." },
+          { english: "It was a careless mistake.", portuguese: "Foi um erro por descuido." },
+          { english: "The handwriting is readable.", portuguese: "A letra é legível." },
+          { english: "The road is dangerous at night.", portuguese: "A estrada é perigosa à noite." },
+        ],
+      },
+      {
+        title: "Verbos com -en, -ize e -ify",
+        meaning: "-en forma verbos a partir de alguns adjetivos e indica tornar ou ficar de determinada maneira. -ize e -ify também podem formar verbos.",
+        pattern: "dark → darken · short → shorten · wide → widen · modern → modernize · simple → simplify",
+        examples: [
+          { english: "The sky darkened before the storm.", portuguese: "O céu escureceu antes da tempestade." },
+          { english: "They widened the road.", portuguese: "Eles alargaram a estrada." },
           { english: "We need to simplify the instructions.", portuguese: "Precisamos simplificar as instruções." },
+          { english: "Can you shorten this paragraph?", portuguese: "Você pode encurtar este parágrafo?" },
+          { english: "They plan to modernize the library.", portuguese: "Eles pretendem modernizar a biblioteca." },
+        ],
+      },
+      {
+        title: "Advérbios com -ly",
+        meaning: "-ly costuma formar advérbios que descrevem como uma ação é realizada.",
+        pattern: "adjetivo + -ly → advérbio (clear → clearly)",
+        examples: [
           { english: "She explained it clearly.", portuguese: "Ela explicou isso claramente." },
+          { english: "He spoke softly.", portuguese: "Ele falou baixinho." },
+          { english: "Read the instructions carefully.", portuguese: "Leia as instruções com atenção." },
+        ],
+      },
+      {
+        title: "Adjetivos em -ing e -ed",
+        meaning: "Em pares como boring/bored, -ing descreve quem ou o que provoca a reação, enquanto -ed descreve quem a sente. Uma pessoa também pode provocar a reação, como em an inspiring teacher.",
+        pattern: "an interesting book → the book is interesting · an interested reader → the reader is interested",
+        examples: [
+          { english: "The lecture was boring, so the students were bored.", portuguese: "A palestra foi entediante, por isso os alunos ficaram entediados." },
+          { english: "We were surprised by the surprising result.", portuguese: "Ficamos surpresos com o resultado surpreendente." },
+          { english: "She is an inspiring teacher. Her students feel inspired.", portuguese: "Ela é uma professora inspiradora. Seus alunos se sentem inspirados." },
+        ],
+      },
+      {
+        title: "-ing para nomear atividades e formar substantivos",
+        meaning: "Uma expressão em -ing pode funcionar como sujeito ou complemento e apresentar uma atividade. Ela ainda pode ter objeto, como em reading books. Algumas palavras em -ing também são substantivos que nomeiam coisas ou eventos, como a painting ou a meeting, e podem ter plural.",
+        pattern: "Reading books is fun (sujeito) · I enjoy reading books (complemento) · a painting / two paintings (substantivo)",
+        examples: [
+          { english: "Swimming helps me relax.", portuguese: "Nadar me ajuda a relaxar." },
+          { english: "I enjoy reading books on the train.", portuguese: "Gosto de ler livros no trem." },
+          { english: "She is good at solving puzzles.", portuguese: "Ela é boa em resolver quebra-cabeças." },
+          { english: "The museum has three paintings by the same artist.", portuguese: "O museu tem três pinturas do mesmo artista." },
+        ],
+      },
+      {
+        title: "-ing em tempos contínuos",
+        meaning: "Depois de uma forma do auxiliar be, o verbo em -ing pode indicar uma ação em andamento. Compare The film is boring, que descreve o filme, com The film is starting, que indica que ele está começando.",
+        pattern: "sujeito + be + verbo em -ing",
+        examples: [
+          { english: "She is reading a book now.", portuguese: "Ela está lendo um livro agora." },
+          { english: "They were swimming when it started to rain.", portuguese: "Eles estavam nadando quando começou a chover." },
         ],
       },
     ],
@@ -333,6 +407,8 @@ export const coreGrammarTopics = [
         examples: [
           { english: "happy → happiness", portuguese: "feliz → felicidade" },
           { english: "possible → possibility", portuguese: "possível → possibilidade" },
+          { english: "wide → widen", portuguese: "largo → alargar" },
+          { english: "simple → simplify", portuguese: "simples → simplificar" },
         ],
       },
     ],
@@ -505,7 +581,7 @@ export const coreGrammarTopics = [
       "A passive voice usa be mais o particípio passado e é útil quando o agente é desconhecido, óbvio ou menos importante.",
     usages: [
       {
-        title: "Passiva no presente",
+        title: "Simple Present",
         meaning: "Use am, is ou are mais o particípio passado para fatos e processos no presente.",
         pattern: "sujeito + am/is/are + particípio passado",
         examples: [
@@ -514,12 +590,92 @@ export const coreGrammarTopics = [
         ],
       },
       {
-        title: "Passiva no passado",
+        title: "Simple Past",
         meaning: "Use was ou were mais o particípio passado para ações concluídas no passado.",
         pattern: "sujeito + was/were + particípio passado",
         examples: [
           { english: "The bridge was built in 1950.", portuguese: "A ponte foi construída em 1950." },
           { english: "The documents were sent yesterday.", portuguese: "Os documentos foram enviados ontem." },
+        ],
+      },
+      {
+        title: "Present Continuous",
+        meaning: "A ação está em andamento no presente.",
+        pattern: "sujeito + am/is/are being + particípio passado",
+        examples: [
+          { english: "The bridge is being repaired.", portuguese: "A ponte está sendo consertada." },
+        ],
+      },
+      {
+        title: "Present Perfect",
+        meaning: "A ação aconteceu antes de agora e tem relevância no presente.",
+        pattern: "sujeito + has/have been + particípio passado",
+        examples: [
+          { english: "The bridge has already been repaired.", portuguese: "A ponte já foi consertada." },
+        ],
+      },
+      {
+        title: "Present Perfect Continuous (uso raro)",
+        meaning: "Enfatiza a duração até o presente. Na prática, prefira reformular na voz ativa quando possível.",
+        pattern: "sujeito + has/have been being + particípio passado",
+        examples: [
+          { english: "The bridge has been being repaired since May.", portuguese: "A ponte vem sendo consertada desde maio." },
+        ],
+      },
+      {
+        title: "Past Continuous",
+        meaning: "A ação estava em andamento em um momento passado.",
+        pattern: "sujeito + was/were being + particípio passado",
+        examples: [
+          { english: "The bridge was being repaired when we arrived.", portuguese: "A ponte estava sendo consertada quando chegamos." },
+        ],
+      },
+      {
+        title: "Past Perfect",
+        meaning: "A ação já havia acontecido antes de outro momento passado.",
+        pattern: "sujeito + had been + particípio passado",
+        examples: [
+          { english: "The bridge had been repaired before the storm.", portuguese: "A ponte tinha sido consertada antes da tempestade." },
+        ],
+      },
+      {
+        title: "Past Perfect Continuous (uso raro)",
+        meaning: "Enfatiza a duração até um momento passado. Na prática, prefira reformular na voz ativa quando possível.",
+        pattern: "sujeito + had been being + particípio passado",
+        examples: [
+          { english: "The bridge had been being repaired for weeks before the storm.", portuguese: "A ponte vinha sendo consertada havia semanas antes da tempestade." },
+        ],
+      },
+      {
+        title: "Future Simple",
+        meaning: "A ação acontecerá no futuro.",
+        pattern: "sujeito + will be + particípio passado",
+        examples: [
+          { english: "The bridge will be repaired next year.", portuguese: "A ponte será consertada no ano que vem." },
+        ],
+      },
+      {
+        title: "Future Continuous (uso raro)",
+        meaning: "A ação estará em andamento em um momento futuro. Na prática, prefira reformular na voz ativa quando possível.",
+        pattern: "sujeito + will be being + particípio passado",
+        examples: [
+          { english: "The bridge will be being repaired this time tomorrow.", portuguese: "A ponte estará sendo consertada a esta hora amanhã." },
+        ],
+      },
+      {
+        title: "Future Perfect",
+        meaning: "A ação estará concluída até um momento futuro.",
+        pattern: "sujeito + will have been + particípio passado",
+        examples: [
+          { english: "The bridge will have been repaired by Friday.", portuguese: "A ponte terá sido consertada até sexta-feira." },
+        ],
+      },
+      {
+        title: "Future Perfect Continuous (uso raro)",
+        meaning: "Enfatiza a duração até um momento futuro. Na prática, prefira reformular na voz ativa quando possível.",
+        pattern: "sujeito + will have been being + particípio passado",
+        examples: [
+          { english: "By Friday, the bridge will have been being repaired for a month.", portuguese: "Na sexta-feira, fará um mês que a ponte vem sendo consertada." },
         ],
       },
       {

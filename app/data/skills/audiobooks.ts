@@ -9,6 +9,7 @@ import { theLeopardAndTheLighthouse } from "./listening/audiobooks/starter/the-l
 import { thePearlGirl } from "./listening/audiobooks/starter/the-pearl-girl";
 import { whoWantsToBeAStar } from "./listening/audiobooks/starter/who-wants-to-be-a-star";
 import type { AudiobookSection } from "./listening/audiobooks/starter/a-new-zealand-adventure";
+import { aliceInWonderland } from "./listening/audiobooks/elementary/alice-in-wonderland";
 
 const withSectionAudioPaths = <
   T extends {
@@ -28,6 +29,7 @@ const withSectionAudioPaths = <
 });
 
 export const audiobooks = {
+  [aliceInWonderland.slug]: aliceInWonderland,
   [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
   [flyingHome.slug]: withSectionAudioPaths(flyingHome),
   [marcelAndTheWhiteStar.slug]: withSectionAudioPaths(marcelAndTheWhiteStar),
@@ -45,6 +47,7 @@ export const audiobooks = {
 export type AudiobookSlug = keyof typeof audiobooks;
 
 export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
+  aliceInWonderland.slug,
   "a-new-zealand-adventure",
   "flying-home",
   "marcel-and-the-white-star",

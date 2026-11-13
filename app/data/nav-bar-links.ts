@@ -142,6 +142,11 @@ export const links: NavItem[] = [
             label: "modal verbs",
             icon: BookMarked,
           },
+          {
+            href: "/grammar/passive-voice",
+            label: "passive voice",
+            icon: BookMarked,
+          },
         ],
       },
       {

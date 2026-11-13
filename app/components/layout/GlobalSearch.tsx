@@ -178,6 +178,13 @@ const pageItems: readonly SearchItem[] = [
     href: "/grammar/modal-verbs",
     keywords: "perhaps might possibility possibilidade",
   },
+  {
+    title: "Passive Voice",
+    category: "Grammar",
+    description: "Be + past participle.",
+    href: "/grammar/passive-voice",
+    keywords: "passive voice voz passiva past participle",
+  },
 ];
 
 const expressionData = [

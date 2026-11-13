@@ -1,12 +1,11 @@
 import { PageHeader } from "@/components/content/PageHeader";
-import { SequenceNavigation } from "@/components/content/SequenceNavigation";
+import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
-import { allGrammarTopics, grammarTopicsById, type GrammarTopicId } from "@/data/grammar";
+import { grammarTopicsById, type GrammarTopicId } from "@/data/grammar";
 import { GrammarExercises, GrammarTopic } from "@/features/Grammar";
-import { Navigate, useNavigate, useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 export default function Grammar() {
-  const navigate = useNavigate();
   const { topic: topicId } = useParams();
 
   if (!topicId) {
@@ -19,25 +18,34 @@ export default function Grammar() {
     return <Navigate to="/grammar/present-perfect" replace />;
   }
 
-  const topicIndex = allGrammarTopics.findIndex((item) => item.id === topic.id);
-  const previousTopic = allGrammarTopics[topicIndex - 1];
-  const nextTopic = allGrammarTopics[topicIndex + 1];
+  const showContents = topic.id === "prefixes-suffixes";
 
   return (
     <div>
       <PageHeader title={topic.title} />
+      {showContents && (
+        <TableOfContents
+          items={[
+            ...topic.usages.map((usage, index) => ({
+              href: `grammar-usage-${index + 1}`,
+              label: usage.title,
+            })),
+            ...topic.warnings.map((warning, index) => ({
+              href: `grammar-warning-${index + 1}`,
+              label: warning.title,
+            })),
+            { href: "grammar-quick-rule", label: "Regra rápida" },
+            { href: "grammar-exercises", label: "Exercícios" },
+          ]}
+        />
+      )}
       <Card title={topic.title}>
         <p className="mb-4 text-slate-500">{topic.description}</p>
-        <GrammarTopic topic={topic} />
+        <GrammarTopic topic={topic} sectionAnchors={showContents} />
       </Card>
-      <GrammarExercises topicId={topic.id} />
-      <SequenceNavigation
-        previousLabel={previousTopic?.title ?? "Grammar"}
-        nextLabel={nextTopic?.title ?? "Grammar"}
-        onPrevious={() => navigate(previousTopic ? `/grammar/${previousTopic.id}` : "/grammar/present-perfect")}
-        onNext={() => navigate(nextTopic ? `/grammar/${nextTopic.id}` : "/grammar/present-perfect")}
-        ariaLabel="Grammar topics"
-      />
+      <div id={showContents ? "grammar-exercises" : undefined} className="scroll-mt-4">
+        <GrammarExercises topicId={topic.id} />
+      </div>
     </div>
   );
 }

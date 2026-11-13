@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 import { MediaWrapper } from "@/components/content/MediaWrapper";
 import { PageHeader } from "@/components/content/PageHeader";
-import { SequenceNavigation } from "@/components/content/SequenceNavigation";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
 import {
@@ -44,7 +43,6 @@ function SectionImage({ section }: { section: AudiobookSection }) {
 }
 
 export default function ListeningBookPage() {
-  const navigate = useNavigate();
   const { book } = useParams();
   const audiobook = book
     ? audiobooks[book as keyof typeof audiobooks]
@@ -76,15 +74,8 @@ export default function ListeningBookPage() {
     return <Navigate to="/audiobooks" replace />;
   }
 
-  const [summary, ...sections] = audiobook.sections;
-  const audiobookList = Object.values(audiobooks).filter((item) =>
-    availableAudiobookSlugs.has(item.slug as AudiobookSlug),
-  );
-  const audiobookIndex = audiobookList.findIndex(
-    (item) => item.slug === audiobook.slug,
-  );
-  const previousAudiobook = audiobookList[audiobookIndex - 1];
-  const nextAudiobook = audiobookList[audiobookIndex + 1];
+  const audiobookSections: readonly AudiobookSection[] = audiobook.sections;
+  const [summary, ...sections] = audiobookSections;
 
   const renderSection = (section: AudiobookSection) => {
     const questions =
@@ -122,7 +113,7 @@ export default function ListeningBookPage() {
                 />
               )}
               <div className="rounded-lg bg-(--background) p-3">
-                <p className="text-lg leading-8">{section.text}</p>
+                <p className="whitespace-pre-line text-lg leading-8">{section.text}</p>
               </div>
               {questions.length > 0 && (
                 <div className="mt-3 rounded-lg bg-(--background) p-3">
@@ -148,7 +139,7 @@ export default function ListeningBookPage() {
       <PageHeader title={audiobook.title} />
 
       <TableOfContents
-        items={audiobook.sections.map((section) => ({
+        items={audiobookSections.map((section) => ({
           href: section.id,
           label: section.title,
         }))}
@@ -160,23 +151,6 @@ export default function ListeningBookPage() {
 
       <div ref={completionSentinelRef} className="h-px" aria-hidden="true" />
 
-      <SequenceNavigation
-        previousLabel={previousAudiobook?.title ?? "Audiobooks"}
-        nextLabel={nextAudiobook?.title ?? "Audiobooks"}
-        onPrevious={() =>
-          navigate(
-            previousAudiobook
-              ? `/audiobooks/${previousAudiobook.slug}`
-              : "/audiobooks",
-          )
-        }
-        onNext={() =>
-          navigate(
-            nextAudiobook ? `/audiobooks/${nextAudiobook.slug}` : "/audiobooks",
-          )
-        }
-        ariaLabel="Audiobooks"
-      />
     </div>
   );
 }

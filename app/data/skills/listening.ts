@@ -32,7 +32,20 @@ export const listeningLevels: readonly ListeningLevel[] = [
     ],
   },
   { slug: "beginner-elementary-a1", title: "Beginner", wordCount: "300 headwords", titles: [] },
-  { slug: "elementary-a2", title: "Elementary", exam: "KET", wordCount: "600 headwords", titles: [] },
+  {
+    slug: "elementary-a2",
+    title: "Elementary",
+    exam: "KET",
+    wordCount: "600 headwords",
+    titles: [
+      {
+        slug: "alice-in-wonderland",
+        title: "Alice in Wonderland",
+        description: "Lewis Carroll’s story retold by Mary Tomalin for Penguin Readers Level 2.",
+        duration: "10 chapters",
+      },
+    ],
+  },
   { slug: "lower-intermediate-a2-b1", title: "Lower-intermediate", exam: "PET", wordCount: "1200 headwords", titles: [] },
   { slug: "intermediate-b1", title: "Intermediate", exam: "PET", wordCount: "1700 headwords", titles: [] },
   { slug: "upper-intermediate-b2", title: "Upper-intermediate", exam: "FCE", wordCount: "2300 headwords", titles: [] },

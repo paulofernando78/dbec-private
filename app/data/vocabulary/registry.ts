@@ -4,6 +4,7 @@ import { poisonousVsVenomous } from "./topics/poisonous-vs-venomous";
 import { quickVsFast } from "./topics/quick-vs-fast";
 import { speakVsSayVsTell } from "./topics/speak-vs-say-vs-tell";
 import { lieVsLay } from "./topics/lie-vs-lay";
+import { stationaryVsStationery } from "./topics/stationary-vs-stationery";
 
 export const vocabularyTopics = [
   hearVsListen,
@@ -12,6 +13,7 @@ export const vocabularyTopics = [
   frozenVsFrostbite,
   poisonousVsVenomous,
   lieVsLay,
+  stationaryVsStationery,
 ] as const;
 
 export type VocabularyTopicId = (typeof vocabularyTopics)[number]["id"];

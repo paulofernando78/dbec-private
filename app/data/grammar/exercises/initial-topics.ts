@@ -257,6 +257,10 @@ export const initialGrammarExercises = {
         { left: "-less", right: "sem ou ausência de" },
         { left: "-ness", right: "estado ou qualidade" },
         { left: "-ly", right: "modo como uma ação acontece" },
+        { left: "-en", right: "tornar ou ficar de certa maneira" },
+        { left: "-hood", right: "fase da vida ou condição" },
+        { left: "-ful", right: "presença de uma qualidade" },
+        { left: "over-", right: "em excesso" },
       ],
     },
     {
@@ -271,6 +275,14 @@ export const initialGrammarExercises = {
         { block: [{ text: "This chair is very " }, { blank: "comfortable", placeholder: "comfort" }, { text: ". (comfort)" }] },
         { block: [{ text: "The instructions were " }, { blank: "unclear", placeholder: "clear" }, { text: ". (clear)" }] },
         { block: [{ text: "She answered the question " }, { blank: "carefully", placeholder: "careful" }, { text: ". (careful)" }] },
+        { block: [{ text: "The sky began to " }, { blank: "darken", placeholder: "dark" }, { text: " as the storm approached. (dark)" }] },
+        { block: [{ text: "He spent most of his " }, { blank: "childhood", placeholder: "child" }, { text: " in a small town. (child)" }] },
+        { block: [{ text: "Can you " }, { blank: "simplify", placeholder: "simple" }, { text: " this explanation? (simple)" }] },
+        { block: [{ text: "The tiny print is barely " }, { blank: "readable", placeholder: "read" }, { text: ". (read)" }] },
+        { block: [{ text: "The team discussed the " }, { blank: "development", placeholder: "develop" }, { text: " of the new app. (develop)" }] },
+        { block: [{ text: "I felt " }, { blank: "bored", placeholder: "bore" }, { text: " during the lecture. (bore)" }] },
+        { block: [{ text: "The lecture was " }, { blank: "boring", placeholder: "bore" }, { text: " enough to make me yawn. (bore)" }] },
+        { block: [{ text: "I enjoy " }, { blank: "swimming", placeholder: "swim" }, { text: " in the morning. (swim)" }] },
       ],
     },
     {
@@ -285,6 +297,54 @@ export const initialGrammarExercises = {
             { option: "happiness", isCorrect: true },
             { option: "happily" },
             { option: "unhappy" },
+          ],
+        },
+        {
+          question: "Which word means ‘to make or become wider’?",
+          options: [
+            { option: "widely" },
+            { option: "widen", isCorrect: true },
+            { option: "width" },
+          ],
+        },
+        {
+          question: "In ‘Reading books helps me relax’, what is the subject?",
+          options: [
+            { option: "Reading books", isCorrect: true },
+            { option: "helps me" },
+            { option: "relax" },
+          ],
+        },
+        {
+          question: "In which sentence does -ing form a countable noun?",
+          options: [
+            { option: "She is painting the wall." },
+            { option: "The painting is on the wall.", isCorrect: true },
+            { option: "The artist enjoys painting walls." },
+          ],
+        },
+        {
+          question: "Which sentence uses -ing as part of a continuous verb form?",
+          options: [
+            { option: "The story is exciting." },
+            { option: "Reading is fun." },
+            { option: "The children are reading.", isCorrect: true },
+          ],
+        },
+        {
+          question: "In the word overcook, what does over- mean?",
+          options: [
+            { option: "before" },
+            { option: "again" },
+            { option: "too much", isCorrect: true },
+          ],
+        },
+        {
+          question: "Which word describes something that causes danger?",
+          options: [
+            { option: "dangerous", isCorrect: true },
+            { option: "dangerously" },
+            { option: "danger" },
           ],
         },
         {
