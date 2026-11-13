@@ -14,6 +14,7 @@ import {
   phoneticSections,
   pronunciationSections,
   accentSections,
+  pronunciationSites,
   type PronunciationItem,
 } from "@/data/pronunciation";
 import { wordAudio, type RichContent } from "@/helpers/content";
@@ -156,25 +157,28 @@ export default function Pronunciation() {
   const isPhonetics = topic === "phonetics";
   const isLinkingSounds = topic === "linking-sounds";
   const isAccents = topic === "accents";
+  const isSites = topic === "sites";
 
-  if (!isPhonetics && !isLinkingSounds && !isAccents) {
+  if (!isPhonetics && !isLinkingSounds && !isAccents && !isSites) {
     return <Navigate to="/pronunciation/phonetics" replace />;
   }
 
   return (
     <div>
       <PageHeader
-        title={isPhonetics ? "Phonetics" : isAccents ? "Accents" : "Linking Sounds"}
+        title={isPhonetics ? "Phonetics" : isAccents ? "Accents" : isSites ? "Sites" : "Linking Sounds"}
         description={
           isPhonetics
             ? "Learn English vowel and consonant sounds"
             : isAccents
               ? "Compare common American and British pronunciation differences"
+              : isSites
+                ? "Useful websites for listening to and practicing pronunciation"
               : "Understand how native speakers connect words"
         }
       />
 
-      <PageSections>
+      <PageSections showTableOfContents={!isSites}>
         {isPhonetics && phoneticSections.map((section) => (
           <Section
             key={section.title}
@@ -257,14 +261,37 @@ export default function Pronunciation() {
             </Card>
           </Section>
         ))}
+        {isSites && (
+          <Section id="sites" label="Sites" heading={2} showHeader={false} className="mb-4">
+            <Card title="Sites" inset>
+              <ul className="grid gap-3">
+                {pronunciationSites.map((site) => (
+                  <li key={site.href}>
+                    <a
+                      href={site.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-(--text-color) underline-offset-2 hover:underline"
+                    >
+                      {site.name}
+                    </a>
+                    <span className="ml-2 text-slate-600">({site.description})</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </Section>
+        )}
       </PageSections>
-      <SequenceNavigation
-        previousLabel={isPhonetics ? "Pronunciation" : "Phonetics"}
-        nextLabel={isPhonetics ? "Linking Sounds" : isLinkingSounds ? "Accents" : "Phonetics"}
-        onPrevious={() => navigate(isAccents ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/phonetics" : "/pronunciation/phonetics")}
-        onNext={() => navigate(isPhonetics ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/accents" : "/pronunciation/phonetics")}
-        ariaLabel="Pronunciation topics"
-      />
+      {!isSites && (
+        <SequenceNavigation
+          previousLabel={isPhonetics ? "Pronunciation" : isLinkingSounds ? "Phonetics" : "Linking Sounds"}
+          nextLabel={isPhonetics ? "Linking Sounds" : isLinkingSounds ? "Accents" : "Sites"}
+          onPrevious={() => navigate(isAccents ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/phonetics" : "/pronunciation/phonetics")}
+          onNext={() => navigate(isPhonetics ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/accents" : "/pronunciation/sites")}
+          ariaLabel="Pronunciation topics"
+        />
+      )}
     </div>
   );
 }

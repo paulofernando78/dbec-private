@@ -34,6 +34,24 @@ export const accentSections: readonly AccentSection[] = [
   { id: "word-differences", title: "Word Differences", note: "Some everyday words are pronounced differently in American and British English.", examples: ["The tomato sauce is in the garage.", "What's your schedule for Tuesday?"] },
 ];
 
+export const pronunciationSites = [
+  {
+    name: "Youglish",
+    description: "Search words directly from YouTube",
+    href: "https://youglish.com/",
+  },
+  {
+    name: "Play Phrase Me",
+    description: "Find words and phrases from movies",
+    href: "https://playphrase.me/",
+  },
+  {
+    name: "Language Reactor",
+    description: "An extension for YouTube and other platforms",
+    href: "https://www.languagereactor.com/",
+  },
+] as const;
+
 const media = (path: string) =>
   `/media/audio/pronunciation/linking-sounds/${path}?v=1`;
 

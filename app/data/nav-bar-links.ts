@@ -162,6 +162,11 @@ export const links: NavItem[] = [
             label: "accents",
             icon: BookMarked,
           },
+          {
+            href: "/pronunciation/sites",
+            label: "sites",
+            icon: BookMarked,
+          },
         ],
       },
 
