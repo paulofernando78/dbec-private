@@ -42,6 +42,8 @@ export function getNoteAuthors(
 
 export const getNoteAuthorKey = (author: NoteAuthor) => `${author.role}:${author.id}`;
 
+const studentHues = [135, 34, 280, 330, 170, 6, 53, 92];
+
 export function getNoteAuthorColors(authors: readonly NoteAuthor[]) {
   const studentIds = authors
     .filter((author) => author.role === "student")
@@ -55,9 +57,9 @@ export function getNoteAuthorColors(authors: readonly NoteAuthor[]) {
       }];
     }
 
-    // Spread students across the color wheel while reserving blue for the teacher.
     const index = studentIds.indexOf(author.id);
-    const hue = (255 + (235 + index * 137.508) % 295) % 360;
+    // Keep the first student green and distribute larger groups outside the blue range.
+    const hue = studentHues[index] ?? (260 + (index * 137.508) % 280) % 360;
     return [getNoteAuthorKey(author), {
       background: `hsl(${hue} 85% 96%)`,
       border: `hsl(${hue} 65% 55%)`,
