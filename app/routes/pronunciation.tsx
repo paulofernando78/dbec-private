@@ -164,6 +164,7 @@ export default function Pronunciation() {
   return (
     <div>
       <PageHeader
+        eyebrow="Language • Pronunciation"
         title={isPhonetics ? "Phonetics" : isAccents ? "Accents" : isSites ? "Sites" : "Linking Sounds"}
         description={
           isPhonetics

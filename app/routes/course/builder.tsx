@@ -31,6 +31,7 @@ export default function LevelBuilder() {
   return (
     <div className="mx-auto max-w-4xl">
       <PageHeader
+        eyebrow="Learn • Course"
         title={`${level.code} ${level.name}`}
         subtitle={level.subtitle}
         description={level.description}

@@ -82,7 +82,7 @@ export default function Levels() {
 
   return (
     <>
-      <PageHeader title="Course" />
+      <PageHeader eyebrow="Learn" title="Course" />
 
       <div className="grid gap-4">
         {levels.map((item) => (

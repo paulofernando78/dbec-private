@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
 import { grammarTopicsById, type GrammarTopicId } from "@/data/grammar";
+import { links } from "@/data/nav-bar-links";
 import { GrammarExercises, GrammarTopic } from "@/features/Grammar";
 import { Navigate, useParams } from "react-router";
 
@@ -18,11 +19,19 @@ export default function Grammar() {
     return <Navigate to="/grammar/present-perfect" replace />;
   }
 
+  const languageGroup = links.find((item) => "group" in item && item.group === "language");
+  const subgroup = languageGroup && "group" in languageGroup
+    ? languageGroup.children.find(
+        (item) => "subgroup" in item && item.children.some(({ href }) => href === `/grammar/${topic.id}`),
+      )
+    : undefined;
+  const section = subgroup && "subgroup" in subgroup ? subgroup.subgroup : "grammar";
+
   const showContents = topic.id === "prefixes-suffixes";
 
   return (
     <div>
-      <PageHeader title={topic.title} />
+      <PageHeader eyebrow={`Language • ${section}`} title={topic.title} />
       {showContents && (
         <TableOfContents
           items={[

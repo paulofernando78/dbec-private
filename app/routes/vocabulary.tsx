@@ -8,7 +8,7 @@ import { VocabularyTopic } from "@/features/Vocabulary";
 export default function Vocabulary() {
   return (
     <div>
-      <PageHeader title="Vocabulary" />
+      <PageHeader eyebrow="Language" title="Vocabulary" />
 
       <PageSections>
         {vocabularyTopics.map((topic) => (

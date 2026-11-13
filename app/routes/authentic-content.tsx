@@ -62,7 +62,7 @@ export default function AuthenticContent() {
 
   return (
     <div>
-      <PageHeader title="TED-Ed" />
+      <PageHeader eyebrow="Learn" title="TED-Ed" />
       <PageSections
         showTableOfContents={false}
         subtitle="TED-Ed"

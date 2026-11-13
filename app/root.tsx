@@ -113,6 +113,10 @@ function AppContent() {
     };
   }, []);
 
+  if (/^\/games\/[^/]+\/[^/]+\/?$/.test(location.pathname)) {
+    return <Outlet />;
+  }
+
   return (
     <div className="app">
       <div className="app-container">

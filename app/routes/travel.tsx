@@ -10,6 +10,7 @@ export default function Travel() {
   return (
     <div className="mx-auto max-w-4xl">
       <PageHeader
+        eyebrow="Learn • Specific Purposes"
         title={`${travel.code} ${travel.name}`}
         subtitle={travel.subtitle}
         description={travel.description}

@@ -51,7 +51,7 @@ export default function Game() {
 
   return (
     <div>
-      <PageHeader title="Games" />
+      <PageHeader eyebrow="Content" title="Games" />
       <PageSections
         showTableOfContents={false}
         subtitle="GAMES"

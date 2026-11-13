@@ -8,7 +8,7 @@ export type Song = {
   title: string;
   album: string;
   year: number;
-  youtubeUrl: string;
+  youtubeUrl?: string;
   lines: SongLine[];
 };
 
@@ -16,5 +16,7 @@ export type Band = {
   slug: string;
   name: string;
   description?: string;
+  artistPhoto?: string;
+  albumCovers?: Record<string, string>;
   songs: Song[];
 };

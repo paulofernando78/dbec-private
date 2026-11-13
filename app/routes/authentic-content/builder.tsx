@@ -192,6 +192,7 @@ export default function AuthenticContents() {
   return (
     <div className="mx-auto max-w-4xl">
       <PageHeader
+        eyebrow="Learn"
         title="TED-Ed"
         description="Learn English with authentic videos and real-world topics."
       />

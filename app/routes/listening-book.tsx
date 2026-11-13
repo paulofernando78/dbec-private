@@ -173,7 +173,7 @@ export default function ListeningBookPage() {
 
   return (
     <div>
-      <PageHeader title={audiobook.title} />
+      <PageHeader eyebrow="Skills • Listening • Audiobooks" title={audiobook.title} />
 
       <TableOfContents
         items={audiobookSections.map((section) => ({

@@ -1785,7 +1785,7 @@ export default function BusinessExpression() {
   return (
     <div>
       <PageHeader
-        eyebrow={`Business 1 · Lesson ${lessonNumber}`}
+        eyebrow={`Language • Expressions • Business 1 • Lesson ${lessonNumber}`}
         title={title}
       />
 

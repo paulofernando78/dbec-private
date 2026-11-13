@@ -77,6 +77,7 @@ export default function LessonPage() {
   return (
     <div className="w-full">
       <PageHeader
+        eyebrow="Learn • Course"
         title={`${levelData.code} ${levelData.name}`}
         subtitle={levelData.subtitle}
         description={levelData.description}

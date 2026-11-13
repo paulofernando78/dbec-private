@@ -11,6 +11,7 @@ export default [
 
   // About
   route("/about", "routes/about.tsx"),
+  route("/games/:developer/:slug", "routes/games/builder.tsx"),
 
   //! Layout
   layout("routes/layout/layout.tsx", [
@@ -61,6 +62,7 @@ export default [
     route("/audiobooks/:book", "routes/listening-book.tsx"),
     route("/songs", "routes/songs.tsx"),
     route("/songs/:band", "routes/songs/band.tsx"),
+    route("/songs/:band/albums/:album", "routes/songs/album.tsx"),
     route("/songs/:band/:song", "routes/songs/song.tsx"),
 
     //! ─────────────────────────────────────────────
@@ -71,6 +73,5 @@ export default [
 
     route("/games/uno", "routes/uno.tsx"),
 
-    route("/games/:developer/:slug", "routes/games/builder.tsx"),
   ]),
 ] satisfies RouteConfig;

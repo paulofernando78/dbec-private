@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { CalendarDays, Clock } from "lucide-react";
 import {
   levelGradientClasses,
@@ -31,6 +32,30 @@ export const PageHeader = ({
 }: PageHeaderProps) => {
   const isLevel = variant === "level";
   const isDashboard = variant === "dashboard";
+  const breadcrumb = useRef<HTMLParagraphElement>(null);
+  const breadcrumbMeasure = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const container = breadcrumb.current;
+    const measure = breadcrumbMeasure.current;
+    if (!container || !measure) return;
+
+    const fitBreadcrumb = () => {
+      const width = measure.getBoundingClientRect().width;
+      if (width > 0) {
+        container.style.setProperty(
+          "--breadcrumb-scale",
+          String(Math.min(1, container.clientWidth / width)),
+        );
+      }
+    };
+
+    const observer = new ResizeObserver(fitBreadcrumb);
+    observer.observe(container);
+    observer.observe(measure);
+    fitBreadcrumb();
+    return () => observer.disconnect();
+  }, [eyebrow, isDashboard]);
   const contentDescriptions = description
     ? [description, ...descriptions]
     : descriptions;
@@ -73,9 +98,23 @@ export const PageHeader = ({
       )}
 
       <div className="relative z-10">
-        {eyebrow && (
+        {eyebrow && (isDashboard ? (
           <p className="mb-1 text-sm font-bold text-slate-500">{eyebrow}</p>
-        )}
+        ) : (
+          <p
+            ref={breadcrumb}
+            className="relative mb-1 w-full truncate text-[clamp(0.5rem,calc(1rem*var(--breadcrumb-scale,1)),1rem)] leading-6 font-black uppercase tracking-wider text-gray-500"
+          >
+            {eyebrow}
+            <span
+              ref={breadcrumbMeasure}
+              aria-hidden="true"
+              className="invisible absolute left-0 top-0 w-max whitespace-nowrap text-base tracking-wider"
+            >
+              {eyebrow}
+            </span>
+          </p>
+        ))}
         {title && (
           <h1
             className={

@@ -1,15 +1,17 @@
-import { Link, useNavigate, useParams } from "react-router";
-import { Disc3 } from "lucide-react";
+import { useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
-import { Button } from "@/components/ui/Button";
+import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
 import { Card } from "@/components/ui/Card";
-import { findBand } from "@/data/songs/index";
+import { albumId, findBand } from "@/data/songs/index";
 
 export default function SongsBand() {
-  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
   const { band: bandSlug } = useParams();
   const band = findBand(bandSlug);
+  const [searchParams] = useSearchParams();
+  const selectedAlbum = searchParams.get("album") ?? undefined;
 
   if (!band) {
     return (
@@ -22,7 +24,7 @@ export default function SongsBand() {
   }
 
   const albums = band.songs.reduce<
-    { title: string; year: number; songs: typeof band.songs }[]
+    { id: string; title: string; year: number; songs: typeof band.songs }[]
   >((groups, song) => {
     const album = groups.find(
       (group) => group.title === song.album && group.year === song.year,
@@ -31,54 +33,85 @@ export default function SongsBand() {
     if (album) {
       album.songs.push(song);
     } else {
-      groups.push({ title: song.album, year: song.year, songs: [song] });
+      groups.push({
+        id: albumId(song.album, song.year),
+        title: song.album,
+        year: song.year,
+        songs: [song],
+      });
     }
 
     return groups;
   }, []);
+  const albumCovers = albums.map(({ id, title, year }) => ({
+    id,
+    title,
+    year,
+    coverUrl: band.albumCovers?.[title],
+    to: `/songs/${band.slug}/albums/${id}`,
+  }));
+
+  const term = query.trim().toLowerCase();
+  const matches = term ? [
+    ...albums.map(({ id, title, year }) => ({
+      title,
+      detail: `Album · ${year}`,
+      to: `/songs/${band.slug}/albums/${id}`,
+    })),
+    ...band.songs.map(({ slug, title, album }) => ({
+      title,
+      detail: `Song · ${album}`,
+      to: `/songs/${band.slug}/${slug}`,
+    })),
+  ].filter(({ title }) => title.toLowerCase().includes(term)) : [];
 
   return (
     <div>
       <PageHeader
-        eyebrow="Songs"
+        eyebrow="Content • Songs"
         title={band.name}
         description={band.description}
       />
 
-      {albums.length > 0 ? (
-        <div className="grid gap-4">
-          {albums.map((album) => (
-            <Card
-              key={`${album.title}-${album.year}`}
-              title={`${album.title} (${album.year})`}
-              inset
-              contentClassName="grid"
-            >
-              {album.songs.map((song) => {
-                const songPath = `/songs/${band.slug}/${song.slug}`;
-
-                return (
-                  <div
-                    key={song.slug}
-                    className="flex items-center gap-3 border-b border-slate-300 py-3 first:pt-0 last:border-b-0 last:pb-0"
-                  >
-                    <Button
-                      ariaLabel={`Open ${song.title}`}
-                      icon={<Disc3 />}
-                      onClick={() => navigate(songPath)}
-                    />
+      {albums.length > 0 && (
+        <div className="mb-4 rounded-xl bg-(--surface) p-4">
+          <input
+            type="search"
+            aria-label="Search albums or songs"
+            placeholder="Search albums or songs"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            className="w-full rounded-lg bg-(--background) px-3 py-2"
+          />
+          {term && (
+            matches.length > 0 ? (
+              <ul className="mt-2 grid max-h-64 gap-1 overflow-y-auto">
+                {matches.map(({ title, detail, to }) => (
+                  <li key={to}>
                     <Link
-                      to={songPath}
-                      className="text-lg font-bold transition-transform hover:translate-x-1"
+                      to={to}
+                      onClick={() => setQuery("")}
+                      className="block rounded-lg px-3 py-2 hover:bg-(--background)"
                     >
-                      {song.title}
+                      <span className="font-semibold">{title}</span>
+                      <span className="ml-2 text-sm">{detail}</span>
                     </Link>
-                  </div>
-                );
-              })}
-            </Card>
-          ))}
+                  </li>
+                ))}
+              </ul>
+            ) : <p role="status" className="mt-2 px-3">No albums or songs found.</p>
+          )}
         </div>
+      )}
+
+      {albumCovers.length > 0 ? (
+        <AlbumCoverCarousel
+          key={`${band.slug}:${selectedAlbum ?? ""}`}
+          albums={albumCovers}
+          initialId={selectedAlbum}
+          title="Albums"
+          kind="album"
+        />
       ) : (
         <Card inset title="Songs">
           <p className="text-slate-500">No songs added yet.</p>

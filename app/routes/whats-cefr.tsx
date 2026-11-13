@@ -562,7 +562,7 @@ type SectionData = {
 export default function WhatsCEFR() {
   return (
     <>
-      <PageHeader title="CEFR" subtitle="Common European Frame Reference" />
+      <PageHeader eyebrow="Learn" title="CEFR" subtitle="Common European Frame Reference" />
       <PageSections>
         {sections.map((section) => (
           <Section

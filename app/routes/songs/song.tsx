@@ -21,20 +21,22 @@ export default function SongsSong() {
       </Card>
     );
   }
-
+  const youtubeUrl = song.youtubeUrl;
+  const youtubeSearchUrl = new URL("https://www.youtube.com/results");
+  youtubeSearchUrl.searchParams.set("search_query", `${band.name} ${song.title} official audio`);
 
   return (
     <div>
       <PageHeader
-        eyebrow={band.name}
+        eyebrow={`Content • Songs • ${band.name}`}
         title={song.title}
         description={`${song.album} (${song.year})`}
       />
 
       <Card className="grid gap-4">
-        <section className="rounded-xl bg-(--background) p-4">
+        {youtubeUrl ? <section className="rounded-xl bg-(--background) p-4">
           <VideoPlayer
-            src={song.youtubeUrl}
+            src={youtubeUrl}
             instruction="Watch and listen."
           />
           <div className="flex items-center gap-2">
@@ -42,14 +44,23 @@ export default function SongsSong() {
               ariaLabel="Open on YouTube"
               icon={<Video />}
               onClick={() =>
-                window.open(song.youtubeUrl, "_blank", "noopener,noreferrer")
+                window.open(youtubeUrl, "_blank", "noopener,noreferrer")
               }
             />
             <span className="font-bold">Open on YouTube</span>
           </div>
-        </section>
+        </section> : (
+          <a
+            href={youtubeSearchUrl.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-(--background) p-4 font-bold underline"
+          >
+            Search on YouTube
+          </a>
+        )}
 
-        <section className="rounded-xl bg-(--background) p-4">
+        {(youtubeUrl || song.lines.length > 0) && <section className="rounded-xl bg-(--background) p-4">
           {song.lines.length > 0 ? (
             <div className="grid gap-4">
               {song.lines.map((line, index) => (
@@ -65,7 +76,7 @@ export default function SongsSong() {
           ) : (
             <p className="text-slate-500">No English or Portuguese content added yet.</p>
           )}
-        </section>
+        </section>}
       </Card>
     </div>
   );

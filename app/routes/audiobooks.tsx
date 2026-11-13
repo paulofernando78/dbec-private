@@ -38,7 +38,7 @@ export default function Audiobooks() {
 
   return (
     <div>
-      <PageHeader title="Audiobooks" />
+      <PageHeader eyebrow="Skills • Listening" title="Audiobooks" />
 
       <div className="grid gap-4">
         {listeningLevels.map((level) => {
