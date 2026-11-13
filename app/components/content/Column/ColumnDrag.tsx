@@ -1,7 +1,7 @@
 import styles from "./Column.module.css";
 
 import { useRef } from "react";
-import { Ribbon } from "@/components/ui/Ribbon";
+import { Card } from "@/components/ui/Card";
 import { Text } from "@/components/content/Text";
 import { Portuguese } from "@/components/content/Portuguese";
 import { useDragScroll } from "@/hooks/useDragScroll";
@@ -32,9 +32,6 @@ const hasPortuguese = (parts: any[] = []) =>
   );
 
 type ColumnData = {
-  borderColor?: string;
-  bgColor?: string;
-  textColor?: string;
   column: string;
   items: ColumnItem[];
 };
@@ -65,15 +62,7 @@ export const ColumnDrag = ({
           }}
         >
           {visibleCols.map((c, cIndex) => (
-            <div key={cIndex}>
-              <Ribbon
-                borderColor={c.borderColor}
-                bgColor={c.bgColor}
-                textColor={c.textColor}
-                label={c.column}
-                className={styles.column}
-              />
-
+            <Card key={cIndex} title={c.column} titleAs="h4" inset>
               {(c.items || []).map((item, index) => {
                 if (isSpacerItem(item)) {
                   return <div key={index} className="h-4" />;
@@ -100,7 +89,7 @@ export const ColumnDrag = ({
                   </div>
                 );
               })}
-            </div>
+            </Card>
           ))}
         </div>
       </div>

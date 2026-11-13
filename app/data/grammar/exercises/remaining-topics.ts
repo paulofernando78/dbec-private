@@ -14,6 +14,62 @@ export const remainingGrammarExercises = {
         { question: "Jessica finds [a phone].", options: [{ option: "What does Jessica find?", isCorrect: true }, { option: "Who finds a phone?" }] },
       ],
     },
+    {
+      id: "who-what-present-word-order",
+      title: "Monte as perguntas no presente",
+      type: "word-order",
+      instruction: "Arraste ou toque nas palavras para perguntar sobre o trecho entre colchetes. Use do ou does quando necessário. Sobram palavras.",
+      items: [
+        {
+          prompt: "[Maya] feeds the cats.",
+          words: ["the", "does", "feeds", "Who", "cats?", "feed"],
+          answer: ["Who", "feeds", "the", "cats?"],
+        },
+        {
+          prompt: "Maya feeds [the cats].",
+          words: ["Maya", "feeds", "does", "What", "feed?"],
+          answer: ["What", "does", "Maya", "feed?"],
+        },
+        {
+          prompt: "[Heavy rain] causes floods.",
+          words: ["floods?", "cause", "What", "does", "causes"],
+          answer: ["What", "causes", "floods?"],
+        },
+        {
+          prompt: "The twins collect [stamps].",
+          words: ["twins", "does", "What", "collect?", "the", "do"],
+          answer: ["What", "do", "the", "twins", "collect?"],
+        },
+      ],
+    },
+    {
+      id: "who-what-past-word-order",
+      title: "Monte as perguntas no passado",
+      type: "word-order",
+      instruction: "Arraste ou toque nas palavras para perguntar sobre o trecho entre colchetes. Use did quando necessário. Sobram palavras.",
+      items: [
+        {
+          prompt: "[Leo] found the keys.",
+          words: ["keys?", "Who", "find", "did", "the", "found"],
+          answer: ["Who", "found", "the", "keys?"],
+        },
+        {
+          prompt: "Leo found [the keys].",
+          words: ["find?", "found", "Leo", "What", "did"],
+          answer: ["What", "did", "Leo", "find?"],
+        },
+        {
+          prompt: "[A storm] damaged the roof.",
+          words: ["roof?", "did", "What", "damage", "damaged", "the"],
+          answer: ["What", "damaged", "the", "roof?"],
+        },
+        {
+          prompt: "Nina invited [Leo].",
+          words: ["invited", "Nina", "did", "invite?", "Who"],
+          answer: ["Who", "did", "Nina", "invite?"],
+        },
+      ],
+    },
   ],
 
   "verb-be-present-past": [

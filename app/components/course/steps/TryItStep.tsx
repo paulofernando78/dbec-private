@@ -85,14 +85,16 @@ function WordContainer({
   );
 }
 
-function SentenceBuilder({
+export function SentenceBuilder({
   words,
   correctAnswer,
   number,
+  prompt,
 }: {
   words: readonly string[];
   correctAnswer: readonly string[];
   number: number;
+  prompt?: string;
 }) {
   const initialTokens = useMemo(
     () => words.map((word, index) => ({ id: `${number}-${index}`, word })),
@@ -185,6 +187,7 @@ function SentenceBuilder({
 
   return (
     <article className="rounded-xl bg-(--background) p-4">
+      {prompt && <p className="mb-3 font-semibold">{prompt}</p>}
       <div className="mb-3 flex items-start gap-2">
         <b className="pt-3">{number}.</b>
         <div className="min-w-0 flex-1">

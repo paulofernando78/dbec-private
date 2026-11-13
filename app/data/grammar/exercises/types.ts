@@ -57,7 +57,20 @@ export type GrammarMatchingExercise = {
   pairs: readonly { left: string; right: string }[];
 };
 
+export type GrammarWordOrderExercise = {
+  id: string;
+  title: string;
+  type: "word-order";
+  instruction: string;
+  items: readonly {
+    prompt: string;
+    words: readonly string[];
+    answer: readonly string[];
+  }[];
+};
+
 export type GrammarExercise =
+  | GrammarWordOrderExercise
   | GrammarRadioExercise
   | GrammarFillExercise
   | GrammarErrorCorrectionExercise

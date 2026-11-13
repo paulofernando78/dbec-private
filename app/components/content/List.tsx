@@ -10,11 +10,16 @@ type ListItem = {
 
 export type ListProps = {
   instruction?: string;
+  checklist?: {
+    checked: boolean[];
+    disabled: boolean;
+    onChange: (index: number, checked: boolean) => void;
+  };
   items?: ListItem[];
   type?: "none" | "ul" | "ol" | "checkbox";
 };
 
-export const List = ({ instruction, items = [], type = "none" }: ListProps) => {
+export const List = ({ instruction, checklist, items = [], type = "none" }: ListProps) => {
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
 
   if (type === "checkbox") {
@@ -27,9 +32,10 @@ export const List = ({ instruction, items = [], type = "none" }: ListProps) => {
             <label className="flex items-start gap-[5px]">
               <Checkbox
                 className="mr-1"
-                checked={checkedItems[index] ?? false}
+                checked={checklist?.checked[index] ?? checkedItems[index] ?? false}
+                disabled={checklist?.disabled}
                 onCheckedChange={(checked) =>
-                  setCheckedItems((current) => ({
+                  checklist ? checklist.onChange(index, checked) : setCheckedItems((current) => ({
                     ...current,
                     [index]: checked,
                   }))

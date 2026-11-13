@@ -80,11 +80,15 @@ export async function onRequestPut(context) {
     return Response.json({ error: "JSON inválido." }, { status: 400, headers });
   }
 
-  const lessonId = typeof body.lessonId === "string" ? body.lessonId : "";
+  const lessonId = typeof body?.lessonId === "string" ? body.lessonId : "";
+  const isGame = /^\/games\/(sierra|lucas-arts)\/[a-z0-9-]+$/.test(lessonId);
+  const checklist = body?.checklist;
   if (
-    !lessonId.startsWith("/authentic-content/ted-ed/") ||
-    !/^\/authentic-content\/ted-ed\/[a-z0-9-]+$/.test(lessonId) ||
-    typeof body.completed !== "boolean"
+    (!isGame && !/^\/authentic-content\/ted-ed\/[a-z0-9-]+$/.test(lessonId)) ||
+    (checklist === undefined
+      ? typeof body?.completed !== "boolean"
+      : !isGame || !Array.isArray(checklist) || checklist.length === 0 ||
+        checklist.length > 500 || !checklist.every((checked) => typeof checked === "boolean"))
   ) {
     return Response.json({ error: "Dados inválidos." }, { status: 400, headers });
   }
@@ -95,15 +99,29 @@ export async function onRequestPut(context) {
     return Response.json({ error: "Usuário não encontrado." }, { status: 404, headers });
   }
 
-  await context.env.DB.prepare(
+  const db = context.env.DB;
+  const completed = checklist ? checklist.every(Boolean) : body.completed;
+  const save = (id, checked) => db.prepare(
     `INSERT INTO lesson_progress (user_id, lesson_id, completed, updated_at)
      VALUES (?, ?, ?, CURRENT_TIMESTAMP)
      ON CONFLICT(user_id, lesson_id) DO UPDATE SET
        completed = excluded.completed,
        updated_at = CURRENT_TIMESTAMP`,
-  )
-    .bind(user.id, lessonId, body.completed ? 1 : 0)
-    .run();
+  ).bind(user.id, id, checked ? 1 : 0);
 
-  return Response.json({ ok: true, lessonId, completed: body.completed }, { headers });
+  if (isGame) {
+    const prefix = `${lessonId}/checklist/`;
+    await db.batch([
+      db.prepare("DELETE FROM lesson_progress WHERE user_id = ? AND substr(lesson_id, 1, ?) = ?")
+        .bind(user.id, prefix.length, prefix),
+      ...(checklist ?? []).flatMap((checked, index) =>
+        checked ? [save(`${prefix}${index}`, true)] : [],
+      ),
+      save(lessonId, completed),
+    ]);
+  } else {
+    await save(lessonId, completed).run();
+  }
+
+  return Response.json({ ok: true, lessonId, completed }, { headers });
 }

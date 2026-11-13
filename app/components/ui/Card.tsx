@@ -2,6 +2,7 @@ import { Children, Fragment, isValidElement, type ReactNode } from "react";
 
 type CardProps = {
   title?: ReactNode;
+  titleAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: ReactNode;
   className?: string;
   contentClassName?: string;
@@ -24,6 +25,7 @@ const getLastChild = (children: ReactNode): ReactNode => {
 
 export const Card = ({
   title,
+  titleAs: Title = "h2",
   children,
   maxContent = false,
   inset = false,
@@ -51,7 +53,7 @@ export const Card = ({
       ${hasCustomBackground ? "" : "bg-(--surface)"}
       ${maxContent ? "w-fit max-w-full" : ""} ${className}`}
     >
-      {title && <h2 className="mb-4 text-lg font-bold">{title}</h2>}
+      {title && <Title className="mb-4 text-lg font-bold">{title}</Title>}
       {inset ? (
         <div
           className={`rounded-xl bg-(--background) p-4 ${contentClassName}`}

@@ -1,3 +1,4 @@
+import { SentenceBuilder } from "@/components/course/steps/TryItStep";
 import { Card } from "@/components/ui/Card";
 import { grammarExercisesByTopicId, type GrammarExercise } from "@/data/grammar/exercises";
 import { ErrorCorrection } from "@/features/exercises/ErrorCorrection";
@@ -8,6 +9,22 @@ import { SentenceTransformation } from "@/features/exercises/SentenceTransformat
 
 function ExerciseRenderer({ exercise }: { exercise: GrammarExercise }) {
   switch (exercise.type) {
+    case "word-order":
+      return (
+        <div className="grid gap-4">
+          <p>{exercise.instruction}</p>
+          {exercise.items.map((item, index) => (
+            <SentenceBuilder
+              key={item.prompt}
+              number={index + 1}
+              prompt={item.prompt}
+              words={item.words}
+              correctAnswer={item.answer}
+            />
+          ))}
+        </div>
+      );
+
     case "radio":
       return (
         <Radio

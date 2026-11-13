@@ -1,6 +1,6 @@
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import { Ribbon } from "@/components/ui/Ribbon";
+import { Card } from "@/components/ui/Card";
 
 import { formatSectionLabel } from "@/utils/formatSectionLabel";
 
@@ -26,19 +26,18 @@ export const Section = ({
   showHeader = true,
   children,
 }: SectionProps) => {
-  const HeadingTag = `h${heading}` as ElementType;
-
   // If no label is passed, build one from the id
   const resolvedLabel = label ?? formatSectionLabel(id);
 
   return (
     <section id={id} className={`scroll-mt-2 ${className}`}>
-      {showHeader && (
-        <Ribbon>
-          <HeadingTag>{resolvedLabel}</HeadingTag>
-        </Ribbon>
+      {showHeader ? (
+        <Card title={resolvedLabel} titleAs={`h${heading}`} className="mb-4" inset>
+          {children}
+        </Card>
+      ) : (
+        <div>{children}</div>
       )}
-      <div>{children}</div>
     </section>
   );
 };

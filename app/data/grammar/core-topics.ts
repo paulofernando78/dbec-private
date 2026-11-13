@@ -6,7 +6,7 @@ export const coreGrammarTopics = [
     title: "Who and What Questions",
     description: "Aprenda a fazer perguntas sobre o sujeito e o objeto com who e what.",
     introduction:
-      "Use who para perguntar sobre uma pessoa e what para perguntar sobre uma coisa ou um acontecimento. Para saber se você precisa de do, does ou did, descubra qual parte da frase a resposta completa.",
+      "Use who para perguntar sobre uma pessoa e what para perguntar sobre uma coisa ou um acontecimento. Nesta prática, observe quando usar do, does ou did no presente e no passado simples. Para saber se você precisa de do, does ou did, descubra qual parte da frase a resposta completa.",
     usages: [
       {
         title: "Perguntas sobre o sujeito",
@@ -28,18 +28,6 @@ export const coreGrammarTopics = [
           { english: "Who did you call? — I called Paola.", portuguese: "Para quem você ligou? — Liguei para a Paola." },
           { english: "What did the ball break? — It broke the window.", portuguese: "O que a bola quebrou? — Quebrou a janela." },
           { english: "What does Jessica find? — She finds a phone.", portuguese: "O que Jessica encontra? — Ela encontra um celular." },
-        ],
-      },
-      {
-        title: "Perguntas com be ou outro auxiliar",
-        meaning:
-          "Se a frase já usa be ou um auxiliar como can, mantenha esse verbo. Quando who ou what é o sujeito, ele vem logo antes do verbo. Quando há outro sujeito, coloque be ou o auxiliar antes desse sujeito.",
-        pattern: "who/what + be/auxiliar + …? · who/what + be/auxiliar + sujeito + …?",
-        examples: [
-          { english: "Who is calling you? — Paola is.", portuguese: "Quem está ligando para você? — A Paola." },
-          { english: "Who are you calling? — I'm calling Paola.", portuguese: "Para quem você está ligando? — Estou ligando para a Paola." },
-          { english: "Who can help you? — Paola can.", portuguese: "Quem pode ajudar você? — A Paola pode." },
-          { english: "Who can you help? — I can help Paola.", portuguese: "Quem você pode ajudar? — Posso ajudar a Paola." },
         ],
       },
     ],

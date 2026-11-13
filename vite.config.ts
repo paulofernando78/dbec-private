@@ -9,7 +9,7 @@ import { SESSION_IDLE_SECONDS } from "./functions/_auth.js";
 
 import { students as developmentStudents } from "./app/data/students";
 
-const localLessonCompletion = new Map<string, boolean>();
+const localLessonCompletionByUser = new Map<string, Map<string, boolean>>();
 const localNotes = new Map<string, { teacher: string; student: string }>();
 const localAiTutorRequests = new Map<string, number[]>();
 const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
@@ -967,6 +967,15 @@ const localAuth = (): Plugin => ({
         response.setHeader("Content-Type", "application/json");
         response.setHeader("Cache-Control", "no-store");
 
+        if (!localSession || localSession.expiresAt <= Date.now()) {
+          response.statusCode = 401;
+          response.end(JSON.stringify({ error: "Não autorizado." }));
+          return;
+        }
+
+        const userKey = localSession.username;
+        const localLessonCompletion = localLessonCompletionByUser.get(userKey) ?? new Map<string, boolean>();
+
         if (request.method === "GET") {
           response.statusCode = 200;
           response.end(
@@ -981,17 +990,34 @@ const localAuth = (): Plugin => ({
             let body = "";
             for await (const chunk of request) body += chunk;
 
-            const { lessonId, completed } = JSON.parse(body);
+            const { lessonId, completed, checklist } = JSON.parse(body);
+            const isGame = typeof lessonId === "string" &&
+              /^\/games\/(sierra|lucas-arts)\/[a-z0-9-]+$/.test(lessonId);
             if (
               typeof lessonId !== "string" ||
-              typeof completed !== "boolean"
+              (!isGame && !/^\/authentic-content\/ted-ed\/[a-z0-9-]+$/.test(lessonId)) ||
+              (checklist === undefined
+                ? typeof completed !== "boolean"
+                : !isGame || !Array.isArray(checklist) || checklist.length === 0 ||
+                  checklist.length > 500 || !checklist.every((checked) => typeof checked === "boolean"))
             ) {
               throw new Error("Invalid lesson progress");
             }
 
-            localLessonCompletion.set(lessonId, completed);
+            const isComplete = checklist ? checklist.every(Boolean) : completed;
+            if (isGame) {
+              const prefix = `${lessonId}/checklist/`;
+              for (const id of localLessonCompletion.keys()) {
+                if (id.startsWith(prefix)) localLessonCompletion.delete(id);
+              }
+              (checklist ?? []).forEach((checked: boolean, index: number) => {
+                if (checked) localLessonCompletion.set(`${prefix}${index}`, true);
+              });
+            }
+            localLessonCompletion.set(lessonId, isComplete);
+            localLessonCompletionByUser.set(userKey, localLessonCompletion);
             response.statusCode = 200;
-            response.end(JSON.stringify({ ok: true, lessonId, completed }));
+            response.end(JSON.stringify({ ok: true, lessonId, completed: isComplete }));
           } catch {
             response.statusCode = 400;
             response.end(JSON.stringify({ error: "Dados inválidos." }));
