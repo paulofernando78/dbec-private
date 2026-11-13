@@ -19,7 +19,7 @@ export const SayingYears = () => (
       {years.map(([year, spoken]) => (
         <li
           key={year}
-          className="flex items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
         >
           <Audio
             asButton

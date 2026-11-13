@@ -4,7 +4,7 @@ import type { ReviewData } from "@/data/course/lesson-step-types";
 
 export function ReviewStep({ data }: { data: ReviewData }) {
   return (
-    <div className="rounded-2xl bg-[var(--surface)] p-4">
+    <div className="rounded-2xl bg-(--surface) p-4">
       <h3 className="mb-4 text-lg font-bold">{data.instruction}</h3>
       {data.task && (
         <div className="mb-4 rounded-xl border border-orange-200 bg-orange-50 p-4">
@@ -25,7 +25,7 @@ export function ReviewStep({ data }: { data: ReviewData }) {
         {data.sections.map((section) => (
           <section
             key={section.lessonTitle}
-            className="rounded-xl bg-[var(--background)] p-4"
+            className="rounded-xl bg-(--background) p-4"
           >
             <h4 className="mb-4 text-lg font-black">{section.lessonTitle}</h4>
             {section.questions.length > 0 && (

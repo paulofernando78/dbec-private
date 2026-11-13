@@ -544,9 +544,21 @@ const languageFocusImages: Record<string, string> = {
   "9/2": "/media/images/course/travel/unit-9/lesson-2-checking-out-and-going-home/language-focus/target-1.avif?v=1",
 };
 
+const renameTravelCharacters = (value: string) =>
+  value.replaceAll("Maya", "Laura").replaceAll("Leo", "Eric");
+
 const createLesson = (seed: TravelLessonSeed): LessonContent => {
   const unitData = travel.units[seed.unit - 1];
   const lessonData = unitData.lessons[seed.lesson - 1];
+  const dialogue = seed.dialogue.map(([speaker, line]) => [
+    renameTravelCharacters(speaker),
+    renameTravelCharacters(line),
+  ] as const);
+  const targets = seed.targets.map(renameTravelCharacters);
+  const detail = seed.detail.map(({ question, answer }) => ({
+    question: renameTravelCharacters(question),
+    answer: renameTravelCharacters(answer),
+  }));
   const steps: readonly LessonStepData[] = [
     {
       type: "get-ready",
@@ -566,26 +578,26 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       label: "Listen",
       instruction: `Listen to the conversation: ${lessonData.title}.`,
       audio: "",
-      dialogue: seed.dialogue.map(([speaker, line]) => [speaker, [line]] as const),
+      dialogue: dialogue.map(([speaker, line]) => [speaker, [line]] as const),
       questionInstruction: "Listen for gist. Choose the correct answer.",
-      question: seed.gist,
+      question: renameTravelCharacters(seed.gist),
       options: ["True", "False"],
       answer: "True",
       followUpInstruction: "Listen again and answer the questions.",
-      followUp: seed.detail,
+      followUp: detail,
     },
     {
       type: "language-focus",
       slug: "language-focus",
       label: "Language focus",
       instruction: lessonData.description,
-      items: seed.targets.map((phrase, index) => [
+      items: targets.map((phrase, index) => [
         phrase,
         `Use this expression when you need to ${lessonData.description.toLowerCase()}`,
         "Listen for sentence stress and polite intonation.",
         "Notice the fixed phrase and replace the travel detail when necessary.",
         undefined,
-        translations[phrase],
+        translations[seed.targets[index]] ?? translations[phrase],
         undefined,
         index === 0 && languageFocusImages[`${seed.unit}/${seed.lesson}`]
           ? [{ image: languageFocusImages[`${seed.unit}/${seed.lesson}`], caption: phrase }]
@@ -597,7 +609,7 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       slug: "try-it",
       label: "Try it",
       instruction: "Put the travel expressions in the correct order.",
-      items: seed.targets.map(shuffleWords),
+      items: targets.map(shuffleWords),
     },
     {
       type: "use-it",
@@ -609,7 +621,7 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
         "Decide who is the traveller and who is the service provider or travel partner.",
         "Use at least three target expressions, then change roles and change one problem or detail.",
       ],
-      model: seed.dialogue.map(([speaker, line]) => [speaker, line] as const),
+      model: dialogue,
     },
     {
       type: "can-you",

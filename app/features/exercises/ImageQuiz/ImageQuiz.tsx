@@ -275,7 +275,7 @@ export const ImageQuiz = ({
                 {selectedIndex !== null && isFeedbackVisible && (
                   <div className="pointer-events-none absolute inset-0 grid place-items-center bg-black/10 p-4 backdrop-blur-[1px]">
                     <div
-                      className={`flex items-center gap-2 rounded-full bg-[var(--surface)] px-5 py-3 text-lg font-black shadow-2xl ring-1 ${
+                      className={`flex items-center gap-2 rounded-full bg-(--surface) px-5 py-3 text-lg font-black shadow-2xl ring-1 ${
                         isCorrect
                           ? "text-green-700 ring-green-300"
                           : "text-red-700 ring-red-300"
@@ -337,7 +337,7 @@ export const ImageQuiz = ({
                           src={option.option}
                           fallbackText={option.option}
                           ariaLabel={`Play ${option.option}`}
-                          wrapperClassName="grid size-8 shrink-0 place-items-center text-[var(--button-icon)]"
+                          wrapperClassName="grid size-8 shrink-0 place-items-center text-(--button-icon)"
                         />
                       }
                       className={[

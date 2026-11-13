@@ -75,7 +75,7 @@ export function WrittenAnswerExercise({
         {items.map((item, index) => (
           <li
             key={`${item.prompt}-${index}`}
-            className="rounded-xl bg-[var(--background)] p-4"
+            className="rounded-xl bg-(--background) p-4"
           >
             <p>
               <span className="mr-1 font-bold">{index + 1}.</span>

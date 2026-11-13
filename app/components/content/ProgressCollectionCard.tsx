@@ -65,7 +65,7 @@ export function ProgressCollectionCard({
   return (
     <>
       <article
-        className={`overflow-hidden rounded-xl bg-gray-50 dark:bg-[var(--surface)] ${className}`}
+        className={`overflow-hidden rounded-xl bg-gray-50 dark:bg-(--surface) ${className}`}
       >
         <header className="flex items-start justify-between gap-4 border-b border-gray-200 bg-gray-200 p-4 dark:border-gray-600 dark:bg-gray-700">
           <div>
@@ -74,7 +74,7 @@ export function ProgressCollectionCard({
                 {eyebrow}
               </p>
             )}
-            <h2 className="text-2xl font-black text-black dark:text-[var(--text-color)]">
+            <h2 className="text-2xl font-black text-black dark:text-(--text-color)">
               {title}
             </h2>
             {headerImage && (
@@ -90,7 +90,7 @@ export function ProgressCollectionCard({
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
-            <span className="rounded-lg border border-gray-300 bg-white px-2 py-1 text-xs text-black dark:bg-[var(--background)] dark:text-[var(--text-color)]">
+            <span className="rounded-lg border border-gray-300 bg-white px-2 py-1 text-xs text-black dark:bg-(--background) dark:text-(--text-color)">
               {completedCount} / {totalCount}
             </span>
             <Button
@@ -151,7 +151,7 @@ export function ProgressCollectionCard({
                       {item.eyebrow}
                     </p>
                   )}
-                  <h3 className="text-xl font-black text-black dark:text-[var(--text-color)]">
+                  <h3 className="text-xl font-black text-black dark:text-(--text-color)">
                     {item.title}
                   </h3>
                   <p className="text-base md:text-lg">{item.description}</p>
@@ -180,7 +180,7 @@ export function ProgressCollectionCard({
           }}
         >
           <div
-            className="w-full max-w-sm rounded-xl bg-[var(--background)] p-4 text-[var(--text-color)] shadow-xl"
+            className="w-full max-w-sm rounded-xl bg-(--background) p-4 text-(--text-color) shadow-xl"
             role="dialog"
             aria-modal="true"
             aria-labelledby="reset-progress-title"

@@ -39,7 +39,7 @@ export const TableOfContents = ({
     Array.isArray(value) ? value : [value];
 
   return (
-    <Card className="mb-4 bg-[var(--surface)] font-oswald text-lg">
+    <Card className="mb-4 bg-(--surface) font-oswald text-lg">
       <div
         className="
         flex
@@ -54,7 +54,7 @@ export const TableOfContents = ({
         )}
         <h2 className="mb-4 text-2xl font-bold">Table of Contents</h2>
       </div>
-      <nav className="rounded-xl bg-[var(--background)] p-4">
+      <nav className="rounded-xl bg-(--background) p-4">
         {subtitle && <div className="mb-2 font-bold">{subtitle}</div>}
         <ul>
           {items.map((item, index) => {

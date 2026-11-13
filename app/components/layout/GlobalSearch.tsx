@@ -565,7 +565,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
         />
         <span className="font-bold uppercase">Search</span>
         {shortcutLabel && (
-          <kbd className="ml-auto rounded bg-[var(--background)] px-1.5 py-0.5 text-xs">
+          <kbd className="ml-auto rounded bg-(--background) px-1.5 py-0.5 text-xs">
             {shortcutLabel}
           </kbd>
         )}
@@ -579,7 +579,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
               role="dialog"
               aria-modal="true"
               aria-label="Global search"
-              className="flex h-[min(70vh,600px)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-[var(--surface)] shadow-2xl ring-1 ring-slate-300"
+              className="flex h-[min(70vh,600px)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-(--surface) shadow-2xl ring-1 ring-slate-300"
               onKeyDown={(event) => {
                 if (event.key === "Escape") {
                   if (query) {
@@ -670,7 +670,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                     variant="list"
                     pressed={index === activeIndex}
                     onClick={() => selectResult(item)}
-                    className={`p-3! ${index === activeIndex ? "bg-[var(--background)]" : ""}`}
+                    className={`p-3! ${index === activeIndex ? "bg-(--background)" : ""}`}
                   >
                     <span
                       onMouseEnter={() => setActiveIndex(index)}
@@ -679,7 +679,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                       <span className="mb-1 block text-xs font-black uppercase tracking-wide text-blue-600 dark:text-blue-400">
                         {item.category}
                       </span>
-                      <span className="block font-black text-[var(--text-color)]">
+                      <span className="block font-black text-(--text-color)">
                         {item.title}
                       </span>
                       <span className="mt-1 block text-sm font-normal whitespace-normal text-slate-500">

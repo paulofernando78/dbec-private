@@ -76,7 +76,7 @@ function WordContainer({
           }}
           onDragEnd={onDragFinish}
           onClick={() => onTokenClick(token)}
-          className="cursor-grab touch-manipulation rounded-lg border border-gray-300 bg-[var(--background)] px-3 py-2 select-none active:cursor-grabbing"
+          className="cursor-grab touch-manipulation rounded-lg border border-gray-300 bg-(--background) px-3 py-2 select-none active:cursor-grabbing"
         >
           {token.word}
         </button>
@@ -184,7 +184,7 @@ function SentenceBuilder({
   };
 
   return (
-    <article className="rounded-xl bg-[var(--background)] p-4">
+    <article className="rounded-xl bg-(--background) p-4">
       <div className="mb-3 flex items-start gap-2">
         <b className="pt-3">{number}.</b>
         <div className="min-w-0 flex-1">
@@ -227,7 +227,7 @@ function SentenceBuilder({
 
 export function TryItStep({ data }: { data: TryItData }) {
   return (
-    <div className="rounded-2xl bg-[var(--surface)] p-4">
+    <div className="rounded-2xl bg-(--surface) p-4">
       <h3 className="mb-4 text-lg font-bold">{data.instruction}</h3>
       <div className="grid gap-6">
         {data.items.map((item, index) => (

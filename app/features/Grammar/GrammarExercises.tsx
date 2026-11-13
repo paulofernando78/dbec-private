@@ -18,7 +18,7 @@ function ExerciseRenderer({ exercise }: { exercise: GrammarExercise }) {
               options: question.options.map((option) => ({ ...option })),
             })),
           }}
-          questionClassName="rounded-xl bg-[var(--background)] p-4"
+          questionClassName="rounded-xl bg-(--background) p-4"
         />
       );
 

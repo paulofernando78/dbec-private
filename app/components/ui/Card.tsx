@@ -46,7 +46,7 @@ export const Card = ({
       p-4
       min-w-0
       max-w-full
-      text-[var(--text-color)]
+      text-(--text-color)
       rounded-xl
       ${hasCustomBackground ? "" : "bg-(--surface)"}
       ${maxContent ? "w-fit max-w-full" : ""} ${className}`}

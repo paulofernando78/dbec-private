@@ -13,6 +13,7 @@ import { Section } from "@/components/ui/Section";
 import {
   phoneticSections,
   pronunciationSections,
+  accentSections,
   type PronunciationItem,
 } from "@/data/pronunciation";
 import { wordAudio, type RichContent } from "@/helpers/content";
@@ -108,7 +109,7 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
                 aria-hidden="true"
                 size={18}
                 strokeWidth={4}
-                className="shrink-0 text-[var(--button-icon)]"
+                className="shrink-0 text-(--button-icon)"
               />
             )}
             <Audio
@@ -154,19 +155,22 @@ export default function Pronunciation() {
 
   const isPhonetics = topic === "phonetics";
   const isLinkingSounds = topic === "linking-sounds";
+  const isAccents = topic === "accents";
 
-  if (!isPhonetics && !isLinkingSounds) {
+  if (!isPhonetics && !isLinkingSounds && !isAccents) {
     return <Navigate to="/pronunciation/phonetics" replace />;
   }
 
   return (
     <div>
       <PageHeader
-        title={isPhonetics ? "Phonetics" : "Linking Sounds"}
+        title={isPhonetics ? "Phonetics" : isAccents ? "Accents" : "Linking Sounds"}
         description={
           isPhonetics
             ? "Learn English vowel and consonant sounds"
-            : "Understand how native speakers connect words"
+            : isAccents
+              ? "Compare common American and British pronunciation differences"
+              : "Understand how native speakers connect words"
         }
       />
 
@@ -219,12 +223,46 @@ export default function Pronunciation() {
             </Card>
           </Section>
         ))}
+        {isAccents && accentSections.map((section) => (
+          <Section key={section.id} id={section.id} label={section.title} heading={2} showHeader={false} className="mb-4">
+            <Card title={section.title} className="grid gap-4">
+              <p className="text-slate-600">{section.note}</p>
+              {section.examples.map((example) => (
+                <div key={example} className="grid gap-2 rounded-xl bg-(--background) p-3 text-base text-slate-700">
+                  <div className="flex items-center gap-2">
+                  <Audio
+                    src={example}
+                    speechLang="en-US"
+                    fallbackText={example}
+                    ariaLabel={`Play American English: ${example}`}
+                    showIcon={false}
+                    wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+                  >
+                    <img src="/media/images/flags/us.png" alt="American English" className="block size-10 translate-y-[-0.1rem] object-contain" />
+                  </Audio>
+                  <Audio
+                    src={example}
+                    speechLang="en-GB"
+                    fallbackText={example}
+                    ariaLabel={`Play British English: ${example}`}
+                    showIcon={false}
+                    wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+                  >
+                    <img src="/media/images/flags/uk.png" alt="British English" className="block size-10 translate-y-[-0.1rem] object-contain" />
+                  </Audio>
+                  </div>
+                  <span className="min-w-0">{example}</span>
+                </div>
+              ))}
+            </Card>
+          </Section>
+        ))}
       </PageSections>
       <SequenceNavigation
         previousLabel={isPhonetics ? "Pronunciation" : "Phonetics"}
-        nextLabel={isPhonetics ? "Linking Sounds" : "Pronunciation"}
-        onPrevious={() => navigate(isPhonetics ? "/pronunciation/phonetics" : "/pronunciation/phonetics")}
-        onNext={() => navigate(isPhonetics ? "/pronunciation/linking-sounds" : "/pronunciation/phonetics")}
+        nextLabel={isPhonetics ? "Linking Sounds" : isLinkingSounds ? "Accents" : "Phonetics"}
+        onPrevious={() => navigate(isAccents ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/phonetics" : "/pronunciation/phonetics")}
+        onNext={() => navigate(isPhonetics ? "/pronunciation/linking-sounds" : isLinkingSounds ? "/pronunciation/accents" : "/pronunciation/phonetics")}
         ariaLabel="Pronunciation topics"
       />
     </div>

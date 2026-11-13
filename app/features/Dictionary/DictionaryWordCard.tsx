@@ -48,7 +48,7 @@ export function DictionaryWordCard({
 
   return (
     <>
-      <article className="rounded-xl bg-[var(--background)] p-4 text-[var(--text-color)] ring-1 ring-slate-200 dark:ring-slate-700">
+      <article className="rounded-xl bg-(--background) p-4 text-(--text-color) ring-1 ring-slate-200 dark:ring-slate-700">
       <header className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <div className="flex items-center gap-2">
           <Audio

@@ -32,7 +32,7 @@ export const Jobs = () => (
       {jobs.map((job) => (
         <li
           key={job}
-          className="flex items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
         >
           <Audio
             asButton

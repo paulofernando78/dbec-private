@@ -14,16 +14,16 @@ const accents: { id: Accent; label: string; image: string }[] = [
   {
     id: "us",
     label: "American English",
-    image: "https://img.icons8.com/stickers/100/usa.png",
+    image: "/media/images/flags/us.png",
   },
   {
     id: "uk",
     label: "British English",
-    image: "https://img.icons8.com/stickers/100/great-britain.png",
+    image: "/media/images/flags/uk.png",
   },
 ];
 
-const brazilFlag = "https://img.icons8.com/stickers/100/brazil.png";
+const brazilFlag = "/media/images/flags/br.png";
 
 const normalizeStressWord = (value: string) =>
   value.replaceAll("’", "'").replaceAll("**", "").toLocaleLowerCase();
@@ -331,7 +331,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
               height="100"
               src={image}
               alt=""
-              className="size-10 object-contain"
+              className="size-10 translate-y-[-0.1rem] object-contain"
             />
           </Button>
         ))}
@@ -349,7 +349,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
             height="100"
             src={brazilFlag}
             alt=""
-            className="size-10 object-contain"
+            className="size-10 translate-y-[-0.1rem] object-contain"
           />
         </Button>
       </div>

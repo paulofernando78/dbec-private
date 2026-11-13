@@ -25,7 +25,7 @@ export function ListenStep({ data }: { data: ListenData }) {
     .join(" ");
 
   return (
-    <div className="space-y-4 rounded-2xl bg-[var(--surface)] p-4">
+    <div className="space-y-4 rounded-2xl bg-(--surface) p-4">
       {data.image ? (
         <Image
           src={data.image}
@@ -41,7 +41,7 @@ export function ListenStep({ data }: { data: ListenData }) {
           Listen image placeholder
         </div>
       )}
-      <section className="rounded-xl bg-[var(--background)] p-4">
+      <section className="rounded-xl bg-(--background) p-4">
         <Dialogue
           instruction={data.instruction}
           audioSrc={data.audio}
@@ -49,7 +49,7 @@ export function ListenStep({ data }: { data: ListenData }) {
         />
       </section>
 
-      <section className="rounded-xl bg-[var(--background)] p-4">
+      <section className="rounded-xl bg-(--background) p-4">
         <Radio
           instruction={data.questionInstruction}
           score={false}
@@ -97,7 +97,7 @@ export function ListenStep({ data }: { data: ListenData }) {
       )}
 
       {data.extraDialogue && (
-        <section className="rounded-xl bg-[var(--background)] p-4">
+        <section className="rounded-xl bg-(--background) p-4">
           <h4 className="mb-4 font-bold">{data.extraDialogue.instruction}</h4>
 
           <AudioPlayer

@@ -15,13 +15,13 @@ export function GrammarTopic({ topic }: { topic: GrammarTopicData }) {
         {topic.usages.map((usage) => (
           <section
             key={usage.title}
-            className="rounded-xl bg-[var(--background)] p-4"
+            className="rounded-xl bg-(--background) p-4"
           >
-            <h3 className="text-xl font-black text-[var(--text-color)]">
+            <h3 className="text-xl font-black text-(--text-color)">
               {usage.title}
             </h3>
             <p className="mb-2 text-slate-500">{usage.meaning}</p>
-            <p className="mb-3 rounded-lg bg-[var(--surface)] px-3 py-2 font-mono text-sm">
+            <p className="mb-3 rounded-lg bg-(--surface) px-3 py-2 font-mono text-sm">
               {usage.pattern}
             </p>
             <ul className="grid gap-2">
@@ -36,7 +36,7 @@ export function GrammarTopic({ topic }: { topic: GrammarTopicData }) {
                     wrapperClassName="shrink-0"
                   />
                   <span>
-                    <span className="font-semibold text-[var(--text-color)]">
+                    <span className="font-semibold text-(--text-color)">
                       {example.english}
                     </span>{" "}
                     <span className="text-slate-500">{example.portuguese}</span>

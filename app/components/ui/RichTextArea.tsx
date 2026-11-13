@@ -819,7 +819,7 @@ export function RichTextArea({
             }}
           >
             <form
-              className="w-full max-w-sm rounded-xl bg-[var(--background)] p-4 text-[var(--text-color)] shadow-xl"
+              className="w-full max-w-sm rounded-xl bg-(--background) p-4 text-(--text-color) shadow-xl"
               role="dialog"
               aria-modal="true"
               aria-labelledby="add-note-link-title"

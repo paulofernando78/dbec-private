@@ -63,7 +63,7 @@ export const MonthsAndDates = () => (
         {months.map((month) => (
           <li
             key={month}
-            className="flex items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+            className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
           >
             <Audio
               asButton
@@ -85,7 +85,7 @@ export const MonthsAndDates = () => (
         {dates.map(([date, word]) => (
           <li
             key={date}
-            className="flex items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+            className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
           >
             <Audio
               asButton

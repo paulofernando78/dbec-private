@@ -157,6 +157,11 @@ export const links: NavItem[] = [
             label: "linking sounds",
             icon: BookMarked,
           },
+          {
+            href: "/pronunciation/accents",
+            label: "accents",
+            icon: BookMarked,
+          },
         ],
       },
 

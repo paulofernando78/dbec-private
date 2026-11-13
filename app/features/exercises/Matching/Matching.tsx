@@ -99,7 +99,7 @@ export function Matching({
                   isSelected && "border-blue-500 bg-blue-50",
                   isCorrect && "border-green-400 bg-green-100",
                   isWrong && "border-red-400 bg-red-100",
-                  !isSelected && !checked && "border-slate-300 bg-[var(--background)]",
+                  !isSelected && !checked && "border-slate-300 bg-(--background)",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -126,7 +126,7 @@ export function Matching({
                   "min-h-14 rounded-xl border p-3 text-left disabled:cursor-not-allowed",
                   showAnswers
                     ? "border-green-300 bg-green-100"
-                    : "border-slate-300 bg-[var(--background)] disabled:opacity-70",
+                    : "border-slate-300 bg-(--background) disabled:opacity-70",
                 ].join(" ")}
               >
                 {!showAnswers && connectedLeft !== undefined && (

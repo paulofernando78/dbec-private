@@ -40,10 +40,10 @@ export const InlineRichContent = ({ value }: InlineRichContentProps) => {
 
   const iconMap = {
     us: () => (
-      <FlagIcon src="/media/images/icons/flags/us.svg" alt="US Flag icon" />
+      <FlagIcon src="/media/images/flags/us.png" alt="US Flag icon" />
     ),
     uk: () => (
-      <FlagIcon src="/media/images/icons/flags/uk.svg" alt="UK Flag icon" />
+      <FlagIcon src="/media/images/flags/uk.png" alt="UK Flag icon" />
     ),
     correct: () => (
       <CircleCheck

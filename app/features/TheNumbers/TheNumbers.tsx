@@ -65,7 +65,7 @@ export const TheNumbers = () => (
       {numbers.map(({ numeral, word, phonetics }) => (
         <li
           key={numeral}
-          className="flex min-w-0 items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+          className="flex min-w-0 items-center gap-3 rounded-xl bg-(--background) p-2"
         >
           <span className="w-8 shrink-0 text-right font-bold">{numeral}</span>
           <Audio
@@ -106,7 +106,7 @@ export const MoreNumbers = () => (
       {moreNumbers.map(([numeral, word]) => (
         <li
           key={numeral}
-          className="flex min-w-0 items-center gap-3 rounded-xl bg-[var(--background)] p-2"
+          className="flex min-w-0 items-center gap-3 rounded-xl bg-(--background) p-2"
         >
           <span className="w-9 shrink-0 text-right font-bold">{numeral}</span>
           <Audio
