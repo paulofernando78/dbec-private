@@ -1,6 +1,5 @@
 import { Image } from "@/components/ui/Image";
-import { LineBreak } from "@/components/content/LineBreak";
-import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
 
 const formation = [
   {
@@ -87,25 +86,29 @@ export default function About() {
         className="rounded-[50%] border-[5px] border-slate-300"
         rounded={false}
       />
-      <p className="text-justify">
-        Fundador do <b>Daily Basis English Course</b>, é apaixonado pelos
-        estudos da língua inglesa desde 96. Começou a lecionar aulas de inglês
-        particulares em meados de 2004. Já morou nos EUA - Califórnia. Estuda
-        web development e programação desde 2022 com o objetivo de criar a sua
-        própria plataforma de ensino.
-      </p>
+      <Card>
+        <p className="text-justify">
+          Fundador do <b>Daily Basis English Course</b>, é apaixonado pelos
+          estudos da língua inglesa desde 96. Começou a lecionar aulas de inglês
+          particulares em meados de 2004. Já morou nos EUA - Califórnia. Estuda
+          web development e programação desde 2022 com o objetivo de criar a sua
+          própria plataforma de ensino.
+        </p>
+      </Card>
       {backgroundSections.map(({ id, label, items }) => (
-        <Section key={id} id={id} label={label} heading={2}>
-          <ul>
-            {items.map((item) => (
-              <li key={`${item.institution}-${item.period}`} className="mb-2">
-                <strong>{item.institution}</strong>
-                <span className="block">{item.period}</span>
-                <span className="block">{item.program}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
+        <section key={id} id={id}>
+          <Card title={label} inset>
+            <ul className="grid gap-3">
+              {items.map((item) => (
+                <li key={`${item.institution}-${item.period}`}>
+                  <strong>{item.institution}</strong>
+                  <span className="block">{item.period}</span>
+                  <span className="block">{item.program}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </section>
       ))}
     </div>
   );
