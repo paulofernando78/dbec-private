@@ -4,15 +4,17 @@ import styles from "./MediaWrapper.module.css";
 
 type MediaWrapperProps = {
   children: ReactNode;
+  className?: string;
   mediaPosition?: "left" | "right" | "top" | "bottom";
 };
 
 export const MediaWrapper = ({
   children,
+  className = "",
   mediaPosition = "left",
 }: MediaWrapperProps) => {
   return (
-    <div className={`${styles.wrapper} ${styles[mediaPosition]}`}>
+    <div className={`${styles.wrapper} ${styles[mediaPosition]} ${className}`}>
       {children}
     </div>
   );

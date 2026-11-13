@@ -120,21 +120,24 @@ export default function ListeningBookPage() {
         {openingImage && (
           <SectionImage section={{ ...openingImage, mediaPosition: "top" }} />
         )}
-        <header className="mb-3 px-1 py-2">
+        <header className={`mb-3 px-1 py-2 ${openingImage ? "mt-3" : ""}`}>
           <h2 className="text-2xl font-black">{section.title}</h2>
           {section.timestamp && (
             <p className="text-sm text-slate-500">{section.timestamp}</p>
           )}
         </header>
 
-        <div>
-          <MediaWrapper mediaPosition={section.mediaPosition ?? "right"}>
+        <div className="@container">
+          <MediaWrapper
+            mediaPosition={section.mediaPosition ?? "right"}
+            className="@max-[34rem]:flex-col!"
+          >
             {section.r2 && (
               <MediaWrapper.Item>
                 <SectionImage section={section} />
               </MediaWrapper.Item>
             )}
-            <MediaWrapper.Content className="flex-1">
+            <MediaWrapper.Content className="min-w-0 flex-1">
               {(section.r2Audio || narration.trim()) && (
                 <AudioPlayer
                   src={section.r2Audio ?? ""}

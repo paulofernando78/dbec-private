@@ -21,7 +21,7 @@ export const AudioPlayer = ({
 }: AudioPlayerProps) => {
   return (
     <div
-      className={`${withBottomMargin ? "mb-4" : ""} ${withBottomPadding ? "p-2.5 sm:p-3" : "px-2.5 pt-2.5 sm:px-3 sm:pt-3"} ${background === "background" ? "bg-(--background)" : "bg-(--surface)"} rounded-xl`}
+      className={`${withBottomMargin ? "mb-4" : ""} ${withBottomPadding ? "p-2.5 sm:p-3" : "px-2.5 pt-2.5 sm:px-3 sm:pt-3"} ${background === "background" ? "bg-(--background)" : "bg-(--surface)"} min-w-[min(100%,18rem)] rounded-xl`}
     >
       <Audio
         key={`${src || "synth"}-${fallbackText ?? ""}`}
