@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import { LoaderCircle, Pause, Play, Rabbit, Turtle } from "lucide-react";
+import { LoaderCircle, Lock, Pause, Play, Rabbit, Turtle } from "lucide-react";
 import { Button } from "@/components/ui/Button/Button";
 
 type AudioSource = string | { src: string; fallbackText?: string };
@@ -20,6 +20,7 @@ type AudioProps = {
   fallbackText?: string;
   allowSpeechFallback?: boolean;
   showPlayerControls?: boolean;
+  locked?: boolean;
 };
 
 let currentGlobalAudio: HTMLAudioElement | null = null;
@@ -101,6 +102,7 @@ export const Audio = ({
   fallbackText,
   allowSpeechFallback = true,
   showPlayerControls = false,
+  locked = false,
 }: AudioProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -576,7 +578,8 @@ export const Audio = ({
   const playerControls = (
     <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
       <Button
-        onClick={togglePlaybackRate}
+        onClick={locked ? undefined : togglePlaybackRate}
+        ariaDisabled={locked || undefined}
         pressed={playbackRate === 0.75}
         ariaLabel={`Playback speed: ${playbackRate === 1 ? "normal" : "slow"}. Click to switch to ${playbackRate === 1 ? "slow" : "normal"}.`}
         icon={playbackRate === 1 ? <Rabbit /> : <Turtle />}
@@ -586,6 +589,7 @@ export const Audio = ({
       </span>
       <input
         type="range"
+        disabled={locked}
         min={0}
         max={Math.max(duration, 1)}
         step={isAudioFile ? 0.1 : 1}
@@ -610,13 +614,14 @@ export const Audio = ({
       <div className={`flex items-center gap-3 ${wrapperClassName ?? ""}`}>
         <Button
           ariaLabel={ariaLabel}
-          icon={icon}
+          icon={locked ? <Lock /> : icon}
+          ariaDisabled={locked || undefined}
           onClick={
-            loading ? handleStop : playing ? handlePauseButton : handlePlay
+            locked ? undefined : loading ? handleStop : playing ? handlePauseButton : handlePlay
           }
         />
         {playerControls}
-        {audioElement}
+        {!locked && audioElement}
       </div>
     );
   }

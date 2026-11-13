@@ -7,6 +7,7 @@ type AudioPlayerProps = {
   withBottomMargin?: boolean;
   withBottomPadding?: boolean;
   background?: "surface" | "background";
+  locked?: boolean;
 };
 
 export const AudioPlayer = ({
@@ -16,6 +17,7 @@ export const AudioPlayer = ({
   withBottomMargin = true,
   withBottomPadding = true,
   background = "surface",
+  locked = false,
 }: AudioPlayerProps) => {
   return (
     <div
@@ -24,8 +26,9 @@ export const AudioPlayer = ({
       <Audio
         key={`${src || "synth"}-${fallbackText ?? ""}`}
         asButton
-        src={src}
-        fallbackText={fallbackText}
+        src={locked ? "" : src}
+        fallbackText={locked ? undefined : fallbackText}
+        locked={locked}
         speechLang="en-US"
         ariaLabel={ariaLabel}
         showPlayerControls

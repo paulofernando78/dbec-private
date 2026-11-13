@@ -1,4 +1,56 @@
 export const audiobookQuestions: Record<string, Record<string, readonly string[]>> = {
+  "alice-in-wonderland": {
+    "chapter-1": [
+      "Why does Alice follow the White Rabbit?",
+      "What does the little key open?",
+      "What happens to Alice after she drinks from the bottle?",
+    ],
+    "chapter-2": [
+      "Why can’t Alice go through the little door when she takes the key again?",
+      "Where does the water come from?",
+      "Why does the Mouse get angry with Alice?",
+    ],
+    "chapter-3": [
+      "How does the Dodo start the race?",
+      "Who wins the race, according to the Dodo?",
+      "What does the Dodo give Alice?",
+    ],
+    "chapter-4": [
+      "Who does the White Rabbit think Alice is?",
+      "Why can’t the Rabbit open the door?",
+      "What happens after Alice eats the little cake?",
+    ],
+    "chapter-5": [
+      "Why does Alice find it difficult to answer ‘Who are you?’",
+      "What does the Caterpillar ask Alice to repeat?",
+      "Which mushroom makes Alice bigger, and which makes her smaller?",
+    ],
+    "chapter-6": [
+      "What happens to the baby after Alice takes it outside?",
+      "Who does the Cheshire Cat tell Alice she can visit?",
+      "What is the last part of the Cat to vanish?",
+    ],
+    "chapter-7": [
+      "Who is sitting at the tea table when Alice arrives?",
+      "What did the March Hare put in the Mad Hatter’s watch?",
+      "How does Alice finally get into the garden?",
+    ],
+    "chapter-8": [
+      "Why are the gardeners painting the roses red?",
+      "Where does Alice hide the gardeners?",
+      "Why does the man with the knife say he can’t cut off the Cat’s head?",
+    ],
+    "chapter-9": [
+      "Who is on trial, and what does the White Rabbit say he took?",
+      "What is the Mad Hatter carrying when he comes into the room?",
+      "Who is called after the Duchess’s cook?",
+    ],
+    "chapter-10": [
+      "Why does the King say Alice has to leave the room?",
+      "What happens after Alice tells the Queen and the others that they are only cards?",
+      "Who wakes Alice, and what do they decide to do?",
+    ],
+  },
   "simon-and-the-spy": {
     "paragraph-1": ["Why are the police at the station?", "Who are they looking for?"],
     "paragraph-2": ["Why does Simon run to the train?", "Who is near him?"],

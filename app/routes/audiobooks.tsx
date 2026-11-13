@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
 import {
   audiobooks,
+  audiobookPreview,
   availableAudiobookSlugs,
   type AudiobookSlug,
 } from "@/data/skills/audiobooks";
@@ -90,7 +91,8 @@ export default function Audiobooks() {
               );
               const isCompleted =
                 isAvailable && completedAudiobooks.has(item.slug);
-              const isLocked = isAuthenticated === false;
+              const isPreview = item.slug === audiobookPreview.slug;
+              const isLocked = isAuthenticated === false && !isPreview;
 
               return {
                 id: item.slug,
@@ -101,7 +103,7 @@ export default function Audiobooks() {
                 isLocked,
                 ariaLabel: `${isLocked ? "Locked" : isCompleted ? "Completed" : "Open"} ${item.title}`,
                 onClick:
-                  isAuthenticated && isAvailable && item.slug in audiobooks
+                  (isAuthenticated || isPreview) && isAvailable && item.slug in audiobooks
                     ? () => navigate(`/audiobooks/${item.slug}`)
                     : undefined,
               };

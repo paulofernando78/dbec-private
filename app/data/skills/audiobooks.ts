@@ -46,6 +46,11 @@ export const audiobooks = {
 
 export type AudiobookSlug = keyof typeof audiobooks;
 
+export const audiobookPreview = {
+  slug: newZealandAdventure.slug,
+  audioSectionId: "summary",
+} as const;
+
 export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   aliceInWonderland.slug,
   "a-new-zealand-adventure",

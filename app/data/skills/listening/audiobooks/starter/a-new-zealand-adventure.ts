@@ -1,12 +1,19 @@
-export type AudiobookSection = {
-  id: string;
-  title: string;
-  timestamp?: string;
-  text: string;
-  questions?: readonly string[];
+type AudiobookImage = {
   localMedia?: string;
   r2?: string;
   imageAlt?: string;
+};
+
+type AudiobookBlock =
+  | { text: string; r2?: never }
+  | (AudiobookImage & { r2: string; text?: never });
+
+export type AudiobookSection = AudiobookImage & {
+  id: string;
+  title: string;
+  timestamp?: string;
+  text: string | readonly AudiobookBlock[];
+  questions?: readonly string[];
   mediaPosition?: "left" | "right" | "top" | "bottom";
   localAudio?: string;
   r2Audio?: string;

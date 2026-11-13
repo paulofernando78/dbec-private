@@ -7,6 +7,7 @@ import { TableOfContents } from "@/components/content/TableOfContents";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
 import {
   audiobooks,
+  audiobookPreview,
   availableAudiobookSlugs,
   type AudiobookSlug,
 } from "@/data/skills/audiobooks";
@@ -14,7 +15,11 @@ import { audiobookQuestions } from "@/data/skills/audiobook-questions";
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
 import { completeAudiobook } from "@/utils/audiobook-progress";
 
-function SectionImage({ section }: { section: AudiobookSection }) {
+function SectionImage({
+  section,
+}: {
+  section: Pick<AudiobookSection, "r2" | "imageAlt" | "localMedia" | "mediaPosition">;
+}) {
   const [missing, setMissing] = useState(false);
   const isFullWidth =
     section.mediaPosition === "top" || section.mediaPosition === "bottom";
@@ -48,10 +53,24 @@ export default function ListeningBookPage() {
     ? audiobooks[book as keyof typeof audiobooks]
     : undefined;
   const completionSentinelRef = useRef<HTMLDivElement>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const isPreview = book === audiobookPreview.slug;
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/session", { headers: { Accept: "application/json" } })
+      .then((response) => {
+        if (active) setIsAuthenticated(response.ok);
+      })
+      .catch(() => {
+        if (active) setIsAuthenticated(false);
+      });
+    return () => { active = false; };
+  }, [book]);
 
   useEffect(() => {
     const sentinel = completionSentinelRef.current;
-    if (!audiobook || !sentinel) return;
+    if (!isAuthenticated || !audiobook || !sentinel) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -65,7 +84,7 @@ export default function ListeningBookPage() {
 
     observer.observe(sentinel);
     return () => observer.disconnect();
-  }, [audiobook]);
+  }, [audiobook, isAuthenticated]);
 
   if (
     !audiobook ||
@@ -74,10 +93,19 @@ export default function ListeningBookPage() {
     return <Navigate to="/audiobooks" replace />;
   }
 
+  if (!isPreview && isAuthenticated !== true) {
+    return isAuthenticated === null ? null : <Navigate to="/audiobooks" replace />;
+  }
+
   const audiobookSections: readonly AudiobookSection[] = audiobook.sections;
   const [summary, ...sections] = audiobookSections;
 
   const renderSection = (section: AudiobookSection) => {
+    const blocks = typeof section.text === "string" ? [{ text: section.text }] : section.text;
+    const narration = blocks.flatMap(({ text }) => text === undefined ? [] : [text]).join("\n");
+    const openingImage = blocks[0]?.r2 ? blocks[0] : undefined;
+    const audioLocked = !isAuthenticated &&
+      !(isPreview && section.id === audiobookPreview.audioSectionId);
     const questions =
       section.questions ??
       audiobookQuestions[audiobook.slug]?.[section.id] ??
@@ -89,6 +117,9 @@ export default function ListeningBookPage() {
         id={section.id}
         className="scroll-mt-28 rounded-xl bg-(--surface) p-3 sm:p-4"
       >
+        {openingImage && (
+          <SectionImage section={{ ...openingImage, mediaPosition: "top" }} />
+        )}
         <header className="mb-3 px-1 py-2">
           <h2 className="text-2xl font-black">{section.title}</h2>
           {section.timestamp && (
@@ -104,16 +135,23 @@ export default function ListeningBookPage() {
               </MediaWrapper.Item>
             )}
             <MediaWrapper.Content className="flex-1">
-              {section.r2Audio && (
+              {(section.r2Audio || narration.trim()) && (
                 <AudioPlayer
-                  src={section.r2Audio}
-                  fallbackText={section.text}
-                  ariaLabel={`Play ${audiobook.title}: ${section.title}`}
+                  src={section.r2Audio ?? ""}
+                  fallbackText={narration}
+                  locked={audioLocked}
+                  ariaLabel={`${audioLocked ? "Log in to play" : "Play"} ${audiobook.title}: ${section.title}`}
                   background="background"
                 />
               )}
-              <div className="rounded-lg bg-(--background) p-3">
-                <p className="whitespace-pre-line text-lg leading-8">{section.text}</p>
+              <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
+                {(openingImage ? blocks.slice(1) : blocks).map((block, index) =>
+                  block.r2 ? (
+                    <SectionImage key={index} section={{ ...block, mediaPosition: "top" }} />
+                  ) : (
+                    <p key={index} className="whitespace-pre-line">{block.text}</p>
+                  )
+                )}
               </div>
               {questions.length > 0 && (
                 <div className="mt-3 rounded-lg bg-(--background) p-3">
