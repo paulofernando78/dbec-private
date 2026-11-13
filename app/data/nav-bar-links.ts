@@ -133,6 +133,11 @@ export const links: NavItem[] = [
         subgroup: "grammar structures",
         children: [
           {
+            href: "/grammar/who-and-what-questions",
+            label: "who and what questions",
+            icon: BookMarked,
+          },
+          {
             href: "/grammar/conditionals",
             label: "conditionals",
             icon: BookMarked,
@@ -178,11 +183,6 @@ export const links: NavItem[] = [
       {
         subgroup: "expressions",
         children: [
-          {
-            href: "/expressions",
-            label: "common",
-            icon: MessageSquareQuote,
-          },
           {
             href: "/expressions/business",
             label: "business 1",

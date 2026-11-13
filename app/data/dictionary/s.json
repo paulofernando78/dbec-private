@@ -2,6 +2,18 @@
   {
     "definitions": [
       {
+        "word": "straight shooter",
+        "partOfSpeech": "noun (informal)",
+        "enDefinition": "a person who speaks honestly and directly",
+        "ptDefinition": "pessoa franca e direta, que fala sem rodeios",
+        "examples": [
+          {
+            "enExample": "Ask Maya what she thinks of your plan. She's a straight shooter.",
+            "ptExample": "Pergunte à Maya o que ela acha do seu plano. Ela fala sem rodeios."
+          }
+        ]
+      },
+      {
         "word": "salmonella",
         "phonetics": "/ˌsæl.məˈnel.ə/",
         "partOfSpeech": "noun",

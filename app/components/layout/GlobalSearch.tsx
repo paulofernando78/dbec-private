@@ -113,12 +113,6 @@ const pageItems: readonly SearchItem[] = [
     href: "/pronunciation/linking-sounds",
   },
   {
-    title: "Expressions",
-    category: "Language",
-    description: "Common English expressions organized by theme.",
-    href: "/expressions",
-  },
-  {
     title: "Songs",
     category: "Content",
     description: "Learn English through songs.",
@@ -179,6 +173,13 @@ const pageItems: readonly SearchItem[] = [
     keywords: "perhaps might possibility possibilidade",
   },
   {
+    title: "Who and What Questions",
+    category: "Grammar",
+    description: "Subject and object questions with who and what.",
+    href: "/grammar/who-and-what-questions",
+    keywords: "who what questions do does did auxiliar sujeito objeto perguntas",
+  },
+  {
     title: "Passive Voice",
     category: "Grammar",
     description: "Be + past participle.",
@@ -186,109 +187,6 @@ const pageItems: readonly SearchItem[] = [
     keywords: "passive voice voz passiva past participle",
   },
 ];
-
-const expressionData = [
-  [
-    "Better late than never",
-    "É melhor fazer algo com atraso do que nunca fazer.",
-    "everyday-conversation",
-    "antes tarde do que nunca",
-  ],
-  [
-    "So far, so good",
-    "Até agora, tudo está indo bem.",
-    "everyday-conversation",
-    "até agora tudo bem",
-  ],
-  [
-    "Speak of the devil",
-    "Usada quando a pessoa de quem você falava aparece.",
-    "everyday-conversation",
-    "falando no diabo falando nele",
-  ],
-  [
-    "If the shoe fits, wear it",
-    "Se uma crítica se aplica a você, aceite-a.",
-    "opinions-and-agreement",
-    "se a carapuça serve",
-  ],
-  [
-    "You can say that again",
-    "Concordo totalmente.",
-    "opinions-and-agreement",
-    "nem me fale com certeza",
-  ],
-  [
-    "To each their own",
-    "Cada pessoa tem seus próprios gostos.",
-    "opinions-and-agreement",
-    "cada um com seu gosto",
-  ],
-  [
-    "Bite the bullet",
-    "Enfrentar uma situação difícil com coragem.",
-    "problems-and-decisions",
-    "encarar enfrentar",
-  ],
-  [
-    "Back to square one",
-    "Voltar ao início após uma tentativa falhar.",
-    "problems-and-decisions",
-    "estaca zero recomeçar",
-  ],
-  [
-    "It's not the end of the world",
-    "O problema não é tão grave quanto parece.",
-    "problems-and-decisions",
-    "não é o fim do mundo",
-  ],
-  [
-    "Get the ball rolling",
-    "Começar uma atividade ou processo.",
-    "work-and-progress",
-    "começar dar início",
-  ],
-  [
-    "Learn the ropes",
-    "Aprender como um trabalho funciona.",
-    "work-and-progress",
-    "aprender pegar o jeito",
-  ],
-  [
-    "Go the extra mile",
-    "Fazer mais do que o esperado.",
-    "work-and-progress",
-    "esforço extra",
-  ],
-  [
-    "Break the ice",
-    "Iniciar uma conversa e deixar as pessoas à vontade.",
-    "feelings-and-relationships",
-    "quebrar o gelo",
-  ],
-  [
-    "On the same wavelength",
-    "Ter pensamentos ou opiniões semelhantes.",
-    "feelings-and-relationships",
-    "estar em sintonia",
-  ],
-  [
-    "Give someone the benefit of the doubt",
-    "Acreditar na pessoa quando não há provas contra ela.",
-    "feelings-and-relationships",
-    "benefício da dúvida",
-  ],
-] as const;
-
-const expressionItems: readonly SearchItem[] = expressionData.map(
-  ([title, description, section, keywords]) => ({
-    title,
-    category: "Expression",
-    description,
-    href: `/expressions#${section}`,
-    keywords,
-  }),
-);
 
 const businessExpressionItems: readonly SearchItem[] = businessOneLessons.map(
   ({ lesson, title, terms }) => ({
@@ -392,7 +290,6 @@ const authenticStepItems: readonly SearchItem[] = Object.entries(
 
 const searchItems = [
   ...pageItems,
-  ...expressionItems,
   ...businessExpressionItems,
   ...authenticContentItems,
   ...authenticStepItems,
@@ -465,7 +362,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
     setIsDictionaryLoading(true);
 
     loadDictionaryLetter(firstLetter)
-      .then((data) => {
+      .then(async (data) => {
         if (cancelled) return;
 
         const definitions = flattenDictionaryDefinitions(data);
@@ -475,7 +372,33 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
         const prefixMatch = definitions.find((entry) =>
           normalize(entry.word).trim().startsWith(searchedWord),
         );
-        setDictionaryEntry(exactMatch ?? prefixMatch ?? null);
+        if (exactMatch || prefixMatch || searchedWord.length < 3) {
+          setDictionaryEntry(exactMatch ?? prefixMatch ?? null);
+          return;
+        }
+
+        const containsPhrase = (entry: DictionaryDefinition) =>
+          (" " + normalize(entry.word).trim().replace(/\s+/g, " ") + " ")
+            .includes(" " + searchedWord + " ");
+        const sameLetterMatch = definitions.find(containsPhrase);
+        if (sameLetterMatch) {
+          setDictionaryEntry(sameLetterMatch);
+          return;
+        }
+
+        const otherLetters = await Promise.allSettled(
+          Array.from("abcdefghijklmnopqrstuvwxyz")
+            .filter((letter) => letter !== firstLetter)
+            .map(loadDictionaryLetter),
+        );
+        if (cancelled) return;
+
+        const phraseMatch = otherLetters
+          .flatMap((result) => result.status === "fulfilled"
+            ? flattenDictionaryDefinitions(result.value)
+            : [])
+          .find(containsPhrase);
+        setDictionaryEntry(phraseMatch ?? null);
       })
       .catch(() => {
         if (!cancelled) setDictionaryEntry(null);

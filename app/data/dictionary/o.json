@@ -2,6 +2,18 @@
   {
     "definitions": [
       {
+        "word": "off the charts",
+        "partOfSpeech": "idiom",
+        "enDefinition": "far above the usual or expected level",
+        "ptDefinition": "fora da escala; muito acima do normal ou do esperado",
+        "examples": [
+          {
+            "enExample": "Demand for tickets was off the charts.",
+            "ptExample": "A procura por ingressos foi muito acima do normal."
+          }
+        ]
+      },
+      {
         "word": "option",
         "phonetics": "/ˈɑːp.ʃən/",
         "partOfSpeech": "noun",

@@ -737,6 +737,25 @@
         "seeAlso": ["tit for tat", "reap what you sow", "cause and effect"]
       },
       {
+        "word": "get out of Dodge",
+        "partOfSpeech": "idiom (US informal)",
+        "enDefinition": "to leave a place quickly, often to avoid trouble",
+        "ptDefinition": "cair fora; dar o fora; sair rápido de um lugar, muitas vezes para evitar problemas",
+        "examples": [
+          {
+            "enExample": "This party is getting out of hand. Let's get out of Dodge.",
+            "ptExample": "Essa festa está saindo do controle. Vamos cair fora."
+          }
+        ],
+        "synonyms": ["get out of here", "make a quick exit"],
+        "notes": [
+          {
+            "enNote": "Dodge refers to Dodge City, Kansas. In this idiom, you can be talking about leaving any place.",
+            "ptNote": "Dodge faz referência a Dodge City, no Kansas. Na expressão, você pode estar falando de sair de qualquer lugar."
+          }
+        ]
+      },
+      {
         "word": "he’ll get his / she’ll get hers",
         "partOfSpeech": "idiom",
         "enDefinition": "used to say that someone will eventually receive the punishment or consequences they deserve for their actions, especially if they have done something wrong or unfair",

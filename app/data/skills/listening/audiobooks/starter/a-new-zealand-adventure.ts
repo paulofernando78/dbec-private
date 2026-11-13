@@ -64,7 +64,7 @@ export const newZealandAdventure = {
     {
       id: "paragraph-5", title: "Paragraph 5", timestamp: "2:22",
       text: `The girls get on a bus. “Can we catch him?” Jessica asks. “I don't know,” Sarah answers. “I can't see his bus now.” Suddenly, they hear a beep. Sarah looks at the mobile. “There's a message for Michael,” she says. She reads the message. “It's important,” she says. “Perhaps we can find him tomorrow at the Sky Tower in Auckland.”`,
-      questions: ["What sound do the girls hear?", "Where might they find Michael tomorrow?"],
+      questions: ["What sound do the girls hear?", "Where does Sarah think they can find Michael tomorrow?"],
       localMedia: `local-media/images/audiobooks/starter-beginner/a-new-zealand-adventure/paragraph-5.avif`, r2: `${imageBase}/paragraph-5.avif`, imageAlt: "Sarah reading Michael's message on a bus.", mediaPosition: "left",
     },
     {
@@ -88,7 +88,7 @@ export const newZealandAdventure = {
     {
       id: "paragraph-9", title: "Paragraph 9", timestamp: "4:42",
       text: `The girls go on a boat into the dark cave. The lights from the glow-worms are very beautiful and it is very quiet. Suddenly, there is a beep from Michael's mobile. The lights go dark. The people in the boat are angry. “No mobiles!” they say. “We're very sorry,” Sarah says. She sees a new message for Michael. “Perhaps we can find him in Rotorua.”`,
-      questions: ["What makes the cave's lights?", "Why are the people angry?", "Where may Michael be?"],
+      questions: ["What makes the cave's lights?", "Why are the people angry?", "Where does Sarah think they can find Michael?"],
       localMedia: `local-media/images/audiobooks/starter-beginner/a-new-zealand-adventure/paragraph-9.avif`, r2: `${imageBase}/paragraph-9.avif`, imageAlt: "Visitors riding a boat through the glow-worm caves.", mediaPosition: "left",
     },
     {

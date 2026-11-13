@@ -1,6 +1,21 @@
 import type { GrammarExercise } from "./types";
 
 export const remainingGrammarExercises = {
+  "who-and-what-questions": [
+    {
+      id: "who-what-subject-object",
+      title: "Perguntas sobre o sujeito e o objeto",
+      type: "radio",
+      instruction: "Escolha a pergunta sobre o trecho entre colchetes.",
+      questions: [
+        { question: "[Paola] called me.", options: [{ option: "Who called you?", isCorrect: true }, { option: "Who did you call?" }] },
+        { question: "I called [Paola].", options: [{ option: "Who called you?" }, { option: "Who did you call?", isCorrect: true }] },
+        { question: "[A ball] broke the window.", options: [{ option: "What did the ball break?" }, { option: "What broke the window?", isCorrect: true }] },
+        { question: "Jessica finds [a phone].", options: [{ option: "What does Jessica find?", isCorrect: true }, { option: "Who finds a phone?" }] },
+      ],
+    },
+  ],
+
   "verb-be-present-past": [
     {
       id: "be-context", title: "1. Presente ou passado?", type: "radio",

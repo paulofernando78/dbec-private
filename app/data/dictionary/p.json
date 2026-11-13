@@ -2,6 +2,36 @@
   {
     "definitions": [
       {
+        "word": "phrasal verb",
+        "partOfSpeech": "noun",
+        "enDefinition": "a combination of a verb and one or more particles, such as up or off, that work together as a unit. The combination can have a meaning of its own.",
+        "ptDefinition": "combinação de um verbo com uma ou mais partículas, como up ou off. Juntos, eles podem ter um sentido próprio. Por exemplo, give up significa desistir.",
+        "examples": [
+          {
+            "enExample": "Don't give up.",
+            "ptExample": "Não desista."
+          },
+          {
+            "enExample": "Please turn off the light.",
+            "ptExample": "Por favor, apague a luz."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Intransitive phrasal verbs have no object. Example: The plane took off.",
+            "ptNote": "Intransitivos funcionam sem objeto. The plane took off significa «O avião decolou»."
+          },
+          {
+            "enNote": "Separable phrasal verbs allow a noun object before or after the particle. A pronoun goes between them. Examples: Turn off the light. Turn the light off. Turn it off.",
+            "ptNote": "Nos separáveis, um substantivo pode vir antes ou depois da partícula. Um pronome como it vai entre o verbo e a partícula, como em Turn it off."
+          },
+          {
+            "enNote": "Inseparable combinations keep the object after the particle or preposition. Examples: She looks after her brother. She looks after him. In three-word combinations like put up with, the object comes after the last word.",
+            "ptNote": "Nos inseparáveis, o objeto vem depois da partícula ou preposição. Look after him significa «cuidar dele». Em combinações de três palavras, como put up with, o objeto vem depois da última palavra."
+          }
+        ]
+      },
+      {
         "word": "patent",
         "phonetics": "/ˈpæt.ənt/",
         "partOfSpeech": "noun, adjective, verb",
