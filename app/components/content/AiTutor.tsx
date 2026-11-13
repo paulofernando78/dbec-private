@@ -31,14 +31,16 @@ function readHistory(key: string): ChatMessage[] {
 
 function renderTutorText(text: string) {
   return text
-    .split(/\*\*([^*\r\n]+)\*\*/)
-    .map((part, index) =>
-      index % 2 === 1 ? (
-        <strong key={index} className="font-bold">{part}</strong>
-      ) : (
-        part
-      ),
-    );
+    .split(/(\*\*[^*\r\n]+\*\*|(?<!\*)\*[^*\r\n]+\*(?!\*))/)
+    .map((part, index) => {
+      if (index % 2 === 0) return part;
+
+      if (part.startsWith("**")) {
+        return <strong key={index} className="font-bold">{part.slice(2, -2)}</strong>;
+      }
+
+      return <em key={index}>{part.slice(1, -1)}</em>;
+    });
 }
 
 export function AiTutor({

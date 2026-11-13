@@ -184,6 +184,7 @@ export function StudentNotesPanel({
                   <RichTextArea
                     value={notes.student}
                     author={currentAuthor}
+                    participants={noteParticipants}
                     onChange={(content) => {
                       setNotes((current) => ({ ...current, student: content }));
                       sendNote("student", content, true);

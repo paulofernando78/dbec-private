@@ -3,12 +3,13 @@ import { createPortal } from "react-dom";
 import { GripVertical, Highlighter, Link, Underline, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
-import { getNoteAuthorColors, type NoteAuthor } from "@/utils/note-authors";
+import { getNoteAuthorColors, getNoteAuthorKey, getNoteAuthors, type NoteAuthor } from "@/utils/note-authors";
 
 type RichTextAreaProps = {
   value: string;
   readOnly?: boolean;
   author?: NoteAuthor;
+  participants?: NoteAuthor[];
   onChange: (value: string) => void;
   onBlur: () => void;
   className?: string;
@@ -67,15 +68,6 @@ const decodeAttribute = (value?: string) => {
   }
 };
 
-const authorBlockStyle = (author?: NoteBlock["author"]) => {
-  if (!author) return undefined;
-  const colors = getNoteAuthorColors(author);
-  return {
-    backgroundColor: colors.background,
-    borderLeft: `3px solid ${colors.border}`,
-  };
-};
-
 const parseBlocks = (value: string): NoteBlock[] => {
   const renderedValue = renderLegacyFormatting(value);
   const savedBlocks = Array.from(
@@ -114,6 +106,7 @@ export function RichTextArea({
   value,
   readOnly = false,
   author,
+  participants,
   onChange,
   onBlur,
   className,
@@ -131,6 +124,15 @@ export function RichTextArea({
   const [isLinkDialogOpen, setIsLinkDialogOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState("https://");
   const [linkError, setLinkError] = useState("");
+
+  const colorsByAuthor = getNoteAuthorColors(getNoteAuthors(value, author, participants));
+  const authorBlockStyle = (blockAuthor?: NoteAuthor) => {
+    const colors = blockAuthor && colorsByAuthor.get(getNoteAuthorKey(blockAuthor));
+    return colors ? {
+      backgroundColor: colors.background,
+      borderLeft: `3px solid ${colors.border}`,
+    } : undefined;
+  };
 
   useEffect(() => {
     if (value === lastEmittedValueRef.current) return;

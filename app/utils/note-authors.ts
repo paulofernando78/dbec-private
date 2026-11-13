@@ -19,7 +19,7 @@ export function getNoteAuthors(
 ) {
   const authors = new Map<string, NoteAuthor>();
   for (const author of [...participants, ...(currentAuthor ? [currentAuthor] : [])]) {
-    authors.set(`${author.role}:${author.id}`, author);
+    authors.set(getNoteAuthorKey(author), author);
   }
 
   for (const match of value.matchAll(
@@ -30,7 +30,7 @@ export function getNoteAuthors(
       id: decodeAttribute(match[2]),
       name: decodeAttribute(match[3]),
     };
-    const key = `${author.role}:${author.id}`;
+    const key = getNoteAuthorKey(author);
     if (!authors.has(key)) authors.set(key, author);
   }
 
@@ -40,19 +40,28 @@ export function getNoteAuthors(
   });
 }
 
-export function getNoteAuthorColors(author: NoteAuthor) {
-  if (author.role === "teacher") {
-    return { background: "#eff6ff", border: "#3b82f6", dot: "#3b82f6" };
-  }
+export const getNoteAuthorKey = (author: NoteAuthor) => `${author.role}:${author.id}`;
 
-  const hash = Array.from(author.id).reduce(
-    (total, character) => (total * 31 + character.charCodeAt(0)) >>> 0,
-    0,
-  );
-  const hue = hash % 360;
-  return {
-    background: `hsl(${hue} 85% 96%)`,
-    border: `hsl(${hue} 65% 55%)`,
-    dot: `hsl(${hue} 65% 48%)`,
-  };
+export function getNoteAuthorColors(authors: readonly NoteAuthor[]) {
+  const studentIds = authors
+    .filter((author) => author.role === "student")
+    .map((author) => author.id)
+    .sort();
+
+  return new Map(authors.map((author) => {
+    if (author.role === "teacher") {
+      return [getNoteAuthorKey(author), {
+        background: "#eff6ff", border: "#3b82f6", dot: "#3b82f6",
+      }];
+    }
+
+    // Spread students across the color wheel while reserving blue for the teacher.
+    const index = studentIds.indexOf(author.id);
+    const hue = (255 + (235 + index * 137.508) % 295) % 360;
+    return [getNoteAuthorKey(author), {
+      background: `hsl(${hue} 85% 96%)`,
+      border: `hsl(${hue} 65% 55%)`,
+      dot: `hsl(${hue} 65% 48%)`,
+    }];
+  }));
 }

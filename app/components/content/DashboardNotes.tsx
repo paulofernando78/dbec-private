@@ -26,6 +26,7 @@ export const DashboardNotes = ({
         value={value}
         readOnly={readOnly}
         author={author}
+        participants={participants}
         onChange={onChange}
         onBlur={onSave}
         className="min-h-0 max-h-none flex-1"
