@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
 import { Card } from "@/components/ui/Card";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
-import { albumId, findBand, findSong } from "@/data/songs/index";
+import { albumId, findBand, findSong } from "@/data/content/songs/index";
 
 const VIDEO_SCROLL_OFFSET = 16;
 

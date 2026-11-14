@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/Button";
 import type {
   GetReadyActivity,
   GetReadyData,
-} from "@/data/course/lesson-step-types";
+} from "@/data/learn/course/lesson-step-types";
 
 function ActivityBlock({
   title,

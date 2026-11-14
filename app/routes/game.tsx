@@ -4,20 +4,7 @@ import { GameStudioCard } from "@/components/games/GameStudioCard";
 import { PageHeader } from "@/components/content/PageHeader";
 import { PageSections } from "@/components/content/PageSections";
 import { Section } from "@/components/ui/Section";
-import { gamesLucasArtsCardData } from "@/data/games/lucas-arts/games-lucas-arts-card-data";
-import { gamesSierraCardData } from "@/data/games/sierra/games-sierra-card-data";
-
-const gameStudios = [
-  {
-    studio: "Sierra",
-    games: Object.values(gamesSierraCardData),
-  },
-  {
-    studio: "LucasArts",
-    image: "/media/images/content/old-pc-games/lucas-arts.png?v=1",
-    games: Object.values(gamesLucasArtsCardData),
-  },
-];
+import { gameStudios } from "@/data/content/games/old-pc-games/studios";
 
 export default function Game() {
   const [gameCompletion, setGameCompletion] = useState<Record<string, boolean>>(

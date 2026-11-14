@@ -19,9 +19,9 @@ export const marcelQuestions: Record<string, readonly string[]> = {
 };
 
 const imageBase =
-  "/media/images/audiobooks/starter-beginner/marcel-and-the-white-star";
+  "/media/images/skills/listening/audiobooks/starter/marcel-and-the-white-star";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/marcel-and-the-white-star";
+  "local-media/images/skills/listening/audiobooks/starter/marcel-and-the-white-star";
 
 export const marcelAndTheWhiteStar = {
   slug: "marcel-and-the-white-star",

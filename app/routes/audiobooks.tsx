@@ -9,8 +9,8 @@ import {
   audiobookPreview,
   availableAudiobookSlugs,
   type AudiobookSlug,
-} from "@/data/skills/audiobooks";
-import { listeningLevels } from "@/data/skills/listening";
+} from "@/data/skills/listening/audiobooks/index";
+import { listeningLevels } from "@/data/skills/listening/audiobooks/levels";
 import {
   isAudiobookCompleted,
   resetAudiobook,

@@ -1,9 +1,9 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
 const imageBase =
-  "/media/images/audiobooks/starter-beginner/the-leopard-and-the-lighthouse";
+  "/media/images/skills/listening/audiobooks/starter/the-leopard-and-the-lighthouse";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/the-leopard-and-the-lighthouse";
+  "local-media/images/skills/listening/audiobooks/starter/the-leopard-and-the-lighthouse";
 
 export const theLeopardAndTheLighthouse = {
   slug: "the-leopard-and-the-lighthouse",

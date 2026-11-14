@@ -6,6 +6,27 @@ const getObjectKey = (path) =>
     .map((part) => decodeURIComponent(part))
     .join("/");
 
+// Preserve existing R2 media while the navbar-based keys are populated.
+const previousMediaPrefixes = [
+  ["images/learn/course/", "images/course/"],
+  ["audio/learn/course/", "audio/course/"],
+  ["audio/language/pronunciation/", "audio/pronunciation/"],
+  ["audio/skills/listening/audiobooks/starter/the-last-photo/the-last-photo.mp3", "audio/audiobooks/the-last-photo.mp3"],
+  ["audio/skills/listening/audiobooks/", "audio/audiobooks/listening/audiobooks/"],
+  ["images/skills/listening/audiobooks/starter/", "images/audiobooks/starter-beginner/"],
+  ["images/learn/specific-purposes/travel/", "images/course/travel/"],
+  ["images/skills/listening/audiobooks/", "images/audiobooks/"],
+  ["images/learn/ted-ed/", "images/authentic-content/ted-ed/"],
+  ["images/content/culture/history/", "images/culture/history/"],
+  ["images/language/grammar-structures/punctuation/", "images/grammar/punctuation/"],
+  ["images/content/games/old-pc-games/", "images/content/old-pc-games/"],
+];
+
+const getPreviousMediaKey = (key) => {
+  const match = previousMediaPrefixes.find(([prefix]) => key.startsWith(prefix));
+  return match ? match[1] + key.slice(match[0].length) : null;
+};
+
 const createHeaders = (object) => {
   const headers = new Headers();
   object.writeHttpMetadata(headers);
@@ -28,10 +49,13 @@ export async function onRequestHead(context) {
   const key = getKeyFromContext(context);
   if (!key) return new Response(null, { status: 400 });
 
-  const object = await context.env.MEDIA.head(key);
+  const current = await context.env.MEDIA.head(key);
+  const previousKey = current ? null : getPreviousMediaKey(key);
+  const object = previousKey ? await context.env.MEDIA.head(previousKey) : current;
   if (!object) return new Response(null, { status: 404 });
 
   const headers = createHeaders(object);
+  if (previousKey) headers.set("Cache-Control", "no-store");
   headers.set("Content-Length", String(object.size));
   return new Response(null, { status: 200, headers });
 }
@@ -55,19 +79,23 @@ export async function onRequestGet(context) {
   }
 
   let object;
+  let objectKey = key;
+  const options = rangeRequested ? { range: context.request.headers } : undefined;
 
   try {
-    object = await context.env.MEDIA.get(
-      key,
-      rangeRequested ? { range: context.request.headers } : undefined,
-    );
+    object = await context.env.MEDIA.get(key, options);
+    const previousKey = object ? null : getPreviousMediaKey(key);
+    if (previousKey) {
+      objectKey = previousKey;
+      object = await context.env.MEDIA.get(objectKey, options);
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     if (!message.includes("InvalidRange") && !message.includes("10039")) {
       throw error;
     }
 
-    const metadata = await context.env.MEDIA.head(key);
+    const metadata = await context.env.MEDIA.head(objectKey);
     const headers = new Headers({ "Accept-Ranges": "bytes" });
     if (metadata) headers.set("Content-Range", `bytes */${metadata.size}`);
     return new Response("Requested range is not satisfiable.", {
@@ -80,6 +108,8 @@ export async function onRequestGet(context) {
 
   const headers = createHeaders(object);
 
+  if (objectKey !== key) headers.set("Cache-Control", "no-store");
+
   if (rangeRequested && object.range) {
     const { offset, length } = object.range;
     const end = offset + length - 1;
@@ -91,7 +121,7 @@ export async function onRequestGet(context) {
 
   headers.set("Content-Length", String(object.size));
   const response = new Response(object.body, { status: 200, headers });
-  context.waitUntil(cache.put(context.request, response.clone()));
+  if (objectKey === key) context.waitUntil(cache.put(context.request, response.clone()));
 
   return response;
 }

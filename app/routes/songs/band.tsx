@@ -5,7 +5,7 @@ import { Disc3 } from "lucide-react";
 import { PageHeader } from "@/components/content/PageHeader";
 import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
 import { Card } from "@/components/ui/Card";
-import { albumId, findBand } from "@/data/songs/index";
+import { albumId, findBand } from "@/data/content/songs/index";
 
 export default function SongsBand() {
   const [query, setQuery] = useState("");

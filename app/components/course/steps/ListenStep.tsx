@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
 import { Image } from "@/components/ui/Image";
-import type { ListenData } from "@/data/course/lesson-step-types";
+import type { ListenData } from "@/data/learn/course/lesson-step-types";
 import { Dialogue } from "@/features/Dialogue";
 import { Radio } from "@/features/exercises/Radio";
 

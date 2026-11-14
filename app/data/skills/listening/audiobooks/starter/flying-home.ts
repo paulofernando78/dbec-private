@@ -20,8 +20,8 @@ export const flyingHomeQuestions: Record<string, readonly string[]> = {
 
 const sectionQuestions = flyingHomeQuestions;
 
-const imageBase = "/media/images/audiobooks/starter-beginner/flying-home";
-const localBase = "local-media/images/audiobooks/starter-beginner/flying-home";
+const imageBase = "/media/images/skills/listening/audiobooks/starter/flying-home";
+const localBase = "local-media/images/skills/listening/audiobooks/starter/flying-home";
 
 export const flyingHome = {
   slug: "flying-home",

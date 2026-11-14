@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
-import type { Unit } from "@/data/course";
+import type { Unit } from "@/data/learn/course";
 import { isLessonCompleted, resetLesson } from "@/utils/course-progress";
 import type { LevelTheme } from "@/utils/level-theme";
 

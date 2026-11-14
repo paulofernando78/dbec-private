@@ -3,7 +3,7 @@ import { Link, useLocation, useSearchParams } from "react-router";
 
 import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
 import { PageHeader } from "@/components/content/PageHeader";
-import { albumId, bands } from "@/data/songs/index";
+import { albumId, bands } from "@/data/content/songs/index";
 import { Card } from "@/components/ui/Card";
 
 export function meta() {

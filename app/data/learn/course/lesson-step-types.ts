@@ -1,0 +1,169 @@
+import type { RichContent } from "@/helpers/content";
+import type { ComponentType } from "react";
+import type { GrammarTopicId } from "@/data/language/grammar";
+import type { VocabularyTopicId } from "@/data/language/vocabulary/which-one";
+
+type StepExtension = {
+  component?: ComponentType;
+};
+
+export type GetReadyQuestion = {
+  prompt: string;
+  support?: readonly string[];
+  supportDisplay?: "inline" | "bullets";
+};
+
+export type GetReadyActivity = {
+  interaction?: readonly ("pairs" | "teacher-class")[];
+  questions: readonly GetReadyQuestion[];
+};
+
+export type GetReadyData = StepExtension & {
+  type: "get-ready";
+  slug: string;
+  label: string;
+  slides: readonly {
+    image?: string;
+    audio?: string | false;
+    quote: string;
+    answer?: GetReadyActivity;
+    discuss?: GetReadyActivity;
+    questions?: readonly GetReadyQuestion[];
+  }[];
+};
+
+export type ListenData = StepExtension & {
+  type: "listen";
+  slug: string;
+  label: string;
+  instruction: string;
+  image?: string;
+  imageAlt?: string;
+  hideImagePlaceholder?: boolean;
+  audio: string;
+  dialogue: readonly (readonly [speaker: string, text: RichContent])[];
+  questionInstruction: string;
+  question: string;
+  options: readonly string[];
+  answer: string;
+  followUpInstruction?: string;
+  followUp?: readonly {
+    question: string;
+    answer: string;
+  }[];
+  extraDialogue?: {
+    instruction: string;
+    audio: string;
+    dialogue: readonly (readonly [speaker: string, text: RichContent])[];
+    questionInstruction: string;
+    questions: readonly string[];
+  };
+};
+
+export type LanguageFocusData = StepExtension & {
+  type: "language-focus";
+  slug: string;
+  label: string;
+  instruction: string;
+  supportLanguage?: "pt-BR";
+  hideVisuals?: boolean;
+  relatedGrammar?: readonly GrammarTopicId[];
+  relatedVocabulary?: readonly VocabularyTopicId[];
+  visuals?: readonly {
+    image: string;
+    caption: string;
+    audio?: string;
+  }[];
+  items: readonly (readonly [
+    title: RichContent | string,
+    meaning: string | undefined,
+    pronunciation: RichContent | string | undefined,
+    form:
+      | undefined
+      | string
+      | readonly {
+          columns: readonly {
+            header: string;
+            example: string;
+          }[];
+        }[],
+    audio?: { us?: string; uk?: string },
+    translationPt?: string,
+    group?: string,
+    visuals?: readonly {
+      image: string;
+      caption: string;
+      audio?: string;
+    }[],
+  ])[];
+};
+
+export type ConceptCheckData = StepExtension & {
+  type: "concept-check";
+  slug: string;
+  label: string;
+  instruction: string;
+  questions: readonly {
+    context?: string;
+    question: string;
+    options: readonly string[];
+    answer: string;
+  }[];
+};
+
+export type TryItData = StepExtension & {
+  type: "try-it";
+  slug: string;
+  label: string;
+  instruction: string;
+  items: readonly {
+    words: readonly string[];
+    answer: readonly string[];
+  }[];
+};
+
+export type UseItData = StepExtension & {
+  type: "use-it";
+  slug: string;
+  label: string;
+  instruction: string;
+  prompts: readonly string[];
+  model: readonly (readonly [string, string])[];
+};
+
+export type CanYouData = StepExtension & {
+  type: "can-you";
+  slug: string;
+  label: string;
+  instruction: string;
+  checks: readonly string[];
+};
+
+export type ReviewData = StepExtension & {
+  type: "review";
+  slug: string;
+  label: string;
+  instruction: string;
+  task?: string;
+  successCriteria?: readonly string[];
+  sections: readonly {
+    lessonTitle: string;
+    questions: readonly {
+      context?: string;
+      question: string;
+      options: readonly string[];
+      answer: string;
+    }[];
+    sentences: readonly { prompt: string; answer: string }[];
+  }[];
+};
+
+export type LessonStepData =
+  | GetReadyData
+  | ListenData
+  | LanguageFocusData
+  | ConceptCheckData
+  | TryItData
+  | UseItData
+  | CanYouData
+  | ReviewData;

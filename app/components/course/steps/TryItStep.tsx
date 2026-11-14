@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from "react";
 import { Check, Eye, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
-import type { TryItData } from "@/data/course/lesson-step-types";
+import type { TryItData } from "@/data/learn/course/lesson-step-types";
 
 type Token = { id: string; word: string };
 type ContainerName = "bank" | "answer";

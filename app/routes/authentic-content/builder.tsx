@@ -5,8 +5,8 @@ import { CalendarDays } from "lucide-react";
 import { template } from "@/data/authentic-content/template";
 
 // Content routes
-import { authenticContentsTedEdRoutes } from "@/data/authentic-content/ted-ed";
-import { authenticContentTedEdLessons } from "@/data/authentic-content/ted-ed/ted-ed-lessons-card-data";
+import { authenticContentsTedEdRoutes } from "@/data/learn/ted-ed";
+import { authenticContentTedEdLessons } from "@/data/learn/ted-ed/ted-ed-lessons-card-data";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { SequenceNavigation } from "@/components/content/SequenceNavigation";

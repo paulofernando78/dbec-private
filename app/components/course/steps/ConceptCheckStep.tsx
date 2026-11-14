@@ -1,5 +1,5 @@
 import { Radio } from "@/features/exercises/Radio";
-import type { ConceptCheckData } from "@/data/course/lesson-step-types";
+import type { ConceptCheckData } from "@/data/learn/course/lesson-step-types";
 
 export function ConceptCheckStep({ data }: { data: ConceptCheckData }) {
   return (

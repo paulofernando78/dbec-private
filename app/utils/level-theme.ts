@@ -1,4 +1,4 @@
-import type { Level } from "@/data/course/types";
+import type { Level } from "@/data/learn/course/types";
 
 export type LevelTheme = Level["theme"];
 

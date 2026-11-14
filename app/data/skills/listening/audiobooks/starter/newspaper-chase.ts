@@ -18,9 +18,9 @@ export const newspaperChaseQuestions: Record<string, readonly string[]> = {
   "paragraph-15": ["What do the police find in the truck?", "Who gets a reward?", "What does Janey want to buy?"],
 };
 
-const imageBase = "/media/images/audiobooks/starter-beginner/newspaper-chase";
+const imageBase = "/media/images/skills/listening/audiobooks/starter/newspaper-chase";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/newspaper-chase";
+  "local-media/images/skills/listening/audiobooks/starter/newspaper-chase";
 
 export const newspaperChase = {
   slug: "newspaper-chase",

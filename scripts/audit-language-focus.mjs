@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import ts from "typescript";
 
-const courseRoot = path.resolve("app/data/course");
+const courseRoot = path.resolve("app/data/learn/course");
 
 const walk = (directory) =>
   fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {

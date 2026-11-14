@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Plus } from "lucide-react";
-import { Navigate, useParams } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { PageSections } from "@/components/content/PageSections";
@@ -9,13 +9,11 @@ import { Phonetics } from "@/components/content/Phonetics";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
-import {
-  phoneticSections,
-  pronunciationSections,
-  accentSections,
-  pronunciationSites,
-  type PronunciationItem,
-} from "@/data/pronunciation";
+import { accentSections } from "@/data/language/pronunciation/accents";
+import { pronunciationSections } from "@/data/language/pronunciation/linking-sounds";
+import { phoneticSections } from "@/data/language/pronunciation/phonetics";
+import { pronunciationSites } from "@/data/language/pronunciation/sites";
+import type { PronunciationItem } from "@/data/language/pronunciation/types";
 import { wordAudio, type RichContent } from "@/helpers/content";
 
 export function meta() {
@@ -177,6 +175,13 @@ export default function Pronunciation() {
         }
       />
 
+      {isAccents && (
+        <p className="mb-4">
+          <Link className="underline underline-offset-4" to="/culture/history/uk-great-britain-and-ireland">
+            The UK, Great Britain &amp; Ireland
+          </Link>
+        </p>
+      )}
       <PageSections showTableOfContents={!isSites}>
         {isPhonetics && phoneticSections.map((section) => (
           <Section

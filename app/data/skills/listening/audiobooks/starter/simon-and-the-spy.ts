@@ -1,8 +1,8 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-const imageBase = "/media/images/audiobooks/starter-beginner/simon-and-the-spy";
+const imageBase = "/media/images/skills/listening/audiobooks/starter/simon-and-the-spy";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/simon-and-the-spy";
+  "local-media/images/skills/listening/audiobooks/starter/simon-and-the-spy";
 
 export const simonAndTheSpy = {
   slug: "simon-and-the-spy",

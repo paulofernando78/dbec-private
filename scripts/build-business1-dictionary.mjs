@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const source = fs.readFileSync(path.join(root, "app/routes/business-expression.tsx"), "utf8");
+const source = fs.readFileSync(path.join(root, "app/data/language/expressions/business-1/lessons.ts"), "utf8");
 const normalize = (value) => value.trim().replace(/^[“”'\"]+|[.!?,:;“”'\"]+$/g, "").replace(/\s+/g, " ").toLowerCase();
 const titles = [
   "Talking About a New Project", "Talking About Financial Issues", "Discussing a New Ad Campaign", "Talking About Manufacturing", "Talking About Company Strategy",
@@ -33,7 +33,7 @@ const extractBlocks = (suffix, finalIndex) => {
 };
 const firstDialogueIndex = source.search(new RegExp(`const lesson${lessonName}Lines\\s*=`));
 const exercises = extractBlocks("Exercise", firstDialogueIndex);
-const dialogues = extractBlocks("Lines", source.indexOf("export default function BusinessExpression"));
+const dialogues = extractBlocks("Lines", source.length);
 const lessons = titles.map((title, index) => {
   const items = [...(exercises[index] ?? []), ...(dialogues[index] ?? [])];
   const unique = new Map(items.map((item) => [item.term, item]));
@@ -183,5 +183,5 @@ if (missingDefinitions.length) {
 }
 generated.sort((a, b) => a.word.localeCompare(b.word));
 fs.writeFileSync(path.join(dictionaryDir, "business-1.generated.json"), `${JSON.stringify([{ definitions: generated }], null, 2)}\n`);
-fs.writeFileSync(path.join(root, "app/data/business-1-search.generated.json"), `${JSON.stringify(lessons, null, 2)}\n`);
+fs.writeFileSync(path.join(root, "app/data/language/expressions/business-1/business-1-search.generated.json"), `${JSON.stringify(lessons, null, 2)}\n`);
 console.log(`Generated ${generated.length} dictionary entries and ${lessons.length} lesson search records.`);

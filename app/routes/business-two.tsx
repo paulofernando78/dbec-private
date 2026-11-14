@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
-import { businessTwoGroups, businessTwoPath } from "@/data/expressions/business-two";
+import { businessTwoGroups, businessTwoPath } from "@/data/language/expressions/business-2/business-two";
 
 export default function BusinessTwo() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { Radio } from "@/features/exercises/Radio";
 import { Unscramble } from "@/features/exercises/Unscramble";
-import type { ReviewData } from "@/data/course/lesson-step-types";
+import type { ReviewData } from "@/data/learn/course/lesson-step-types";
 
 export function ReviewStep({ data }: { data: ReviewData }) {
   return (

@@ -5,7 +5,7 @@ import {
   grammarTopicsById,
   type GrammarTopic as GrammarTopicData,
   type GrammarTopicId,
-} from "@/data/grammar";
+} from "@/data/language/grammar";
 
 export function GrammarTopic({
   topic,
@@ -15,7 +15,7 @@ export function GrammarTopic({
   sectionAnchors?: boolean;
 }) {
   return (
-    <div className="grid gap-4">
+    <div lang="pt-BR" className="grid gap-4">
       <p>{topic.introduction}</p>
       <div className="flex flex-col gap-4">
         {topic.usages.map((usage, index) => (
@@ -45,7 +45,7 @@ export function GrammarTopic({
                     wrapperClassName="shrink-0"
                   />
                   <span>
-                    <span className="font-semibold text-(--text-color)">
+                    <span lang="en" className="font-semibold text-(--text-color)">
                       {example.english}
                     </span>{" "}
                     <span className="text-slate-500">{example.portuguese}</span>
@@ -89,10 +89,10 @@ export function GrammarTopic({
                   {example.incorrect && (
                     <span className="block text-sm">
                       <span className="sr-only">Forma incorreta: </span>
-                      <del>{example.incorrect}</del>
+                      <del lang="en">{example.incorrect}</del>
                     </span>
                   )}
-                  <strong>{example.english}</strong>{" "}
+                  <strong lang="en">{example.english}</strong>{" "}
                   <span className="opacity-75">{example.portuguese}</span>
                 </span>
               </li>

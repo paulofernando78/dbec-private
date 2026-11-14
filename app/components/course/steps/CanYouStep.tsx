@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Checkbox } from "@/components/ui/Checkbox";
-import type { CanYouData } from "@/data/course/lesson-step-types";
+import type { CanYouData } from "@/data/learn/course/lesson-step-types";
 
 export function CanYouStep({
   data,

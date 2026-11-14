@@ -11,8 +11,8 @@ import {
   audiobookPreview,
   availableAudiobookSlugs,
   type AudiobookSlug,
-} from "@/data/skills/audiobooks";
-import { audiobookQuestions } from "@/data/skills/audiobook-questions";
+} from "@/data/skills/listening/audiobooks/index";
+import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
 import { completeAudiobook } from "@/utils/audiobook-progress";
 

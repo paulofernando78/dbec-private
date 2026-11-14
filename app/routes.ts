@@ -51,6 +51,7 @@ export default [
     ),
 
     route("/vocabulary", "routes/vocabulary.tsx"),
+    route("/vocabulary/:topic", "routes/vocabulary-topic.tsx"),
     route(
       "/expressions/business/:lesson",
       "routes/business-expression.tsx",
@@ -62,6 +63,8 @@ export default [
     route("/pronunciation/:topic?", "routes/pronunciation.tsx"),
     route("/audiobooks", "routes/audiobooks.tsx"),
     route("/audiobooks/:book", "routes/listening-book.tsx"),
+    route("/culture/history", "routes/history.tsx"),
+    route("/culture/history/uk-great-britain-and-ireland", "routes/history/uk-great-britain-and-ireland.tsx"),
     route("/songs", "routes/songs.tsx"),
     route("/songs/:band", "routes/songs/band.tsx"),
     route("/songs/:band/albums/:album", "routes/songs/album.tsx"),

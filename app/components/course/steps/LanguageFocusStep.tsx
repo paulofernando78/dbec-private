@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
-import type { LanguageFocusData } from "@/data/course/lesson-step-types";
+import type { LanguageFocusData } from "@/data/learn/course/lesson-step-types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GrammarTopicCards } from "@/features/Grammar";
 import { VocabularyTopicCards } from "@/features/Vocabulary";

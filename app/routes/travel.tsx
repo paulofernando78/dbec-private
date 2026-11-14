@@ -2,7 +2,7 @@ import { useSession } from "@/hooks/useSession";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { UnitCard } from "@/components/course/UnitCard";
-import { travel } from "@/data/travel";
+import { travel } from "@/data/learn/specific-purposes/travel";
 
 export default function Travel() {
   const isAuthenticated = Boolean(useSession());

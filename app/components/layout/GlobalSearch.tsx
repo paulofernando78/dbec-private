@@ -4,18 +4,18 @@ import { useNavigate } from "react-router";
 import { CircleX, Search, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
-import { levels } from "@/data/course";
-import { authenticContentTedEdLessons } from "@/data/authentic-content/ted-ed/ted-ed-lessons-card-data";
-import { authenticContentsTedEdRoutes } from "@/data/authentic-content/ted-ed";
-import { lessonRegistry } from "@/data/course/lesson-registry";
-import businessOneLessons from "@/data/business-1-search.generated.json";
-import { businessTwoGroups, businessTwoPath } from "@/data/expressions/business-two";
-import { gamesLucasArtsCardData } from "@/data/games/lucas-arts/games-lucas-arts-card-data";
-import { gamesSierraCardData } from "@/data/games/sierra/games-sierra-card-data";
+import { levels } from "@/data/learn/course";
+import { authenticContentTedEdLessons } from "@/data/learn/ted-ed/ted-ed-lessons-card-data";
+import { authenticContentsTedEdRoutes } from "@/data/learn/ted-ed";
+import { lessonRegistry } from "@/data/learn/course/lesson-registry";
+import businessOneLessons from "@/data/language/expressions/business-1/business-1-search.generated.json";
+import { businessTwoGroups, businessTwoPath } from "@/data/language/expressions/business-2/business-two";
+import { gamesLucasArtsCardData } from "@/data/content/games/old-pc-games/lucas-arts/games-lucas-arts-card-data";
+import { gamesSierraCardData } from "@/data/content/games/old-pc-games/sierra/games-sierra-card-data";
 import { links } from "@/data/nav-bar-links";
-import { audiobooks } from "@/data/skills/audiobooks";
-import { listeningLevels } from "@/data/skills/listening";
-import { albumId, bands } from "@/data/songs";
+import { audiobooks } from "@/data/skills/listening/audiobooks/index";
+import { listeningLevels } from "@/data/skills/listening/audiobooks/levels";
+import { albumId, bands } from "@/data/content/songs";
 import { DictionaryWordCard } from "@/features/Dictionary/DictionaryWordCard";
 import {
   flattenDictionaryDefinitions,
@@ -138,31 +138,38 @@ const pageItems: readonly SearchItem[] = [
     href: "/cefr",
   },
   {
+    title: "Accept vs. Except",
+    category: "Vocabulary",
+    description: "Aprenda a distinguir “aceitar” de “exceto”.",
+    href: "/vocabulary/accept-vs-except",
+    keywords: "aceitar exceto excluir",
+  },
+  {
     title: "Hear vs. Listen",
     category: "Vocabulary",
     description: "Receiving a sound versus paying attention to it.",
-    href: "/vocabulary#hear-vs-listen",
+    href: "/vocabulary/hear-vs-listen",
     keywords: "ouvir escutar sound",
   },
   {
     title: "Speak vs. Say vs. Tell",
     category: "Vocabulary",
     description: "Speaking and giving information.",
-    href: "/vocabulary#speak-vs-say-vs-tell",
+    href: "/vocabulary/speak-vs-say-vs-tell",
     keywords: "falar dizer contar",
   },
   {
     title: "Quick vs. Fast",
     category: "Vocabulary",
     description: "Short duration versus high speed.",
-    href: "/vocabulary#quick-vs-fast",
+    href: "/vocabulary/quick-vs-fast",
     keywords: "quickly fastly rápido velocidade",
   },
   {
     title: "Frozen vs. Frostbite",
     category: "Vocabulary",
     description: "Being frozen versus an injury caused by extreme cold.",
-    href: "/vocabulary#frozen-vs-frostbite",
+    href: "/vocabulary/frozen-vs-frostbite",
     keywords: "frostbitten congelado frio lesão",
   },
   {

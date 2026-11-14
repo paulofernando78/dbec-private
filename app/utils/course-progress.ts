@@ -1,4 +1,4 @@
-import { levels } from "@/data/course";
+import { levels } from "@/data/learn/course";
 
 export function lessonProgressKey(
   level: string,

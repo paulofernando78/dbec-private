@@ -2,7 +2,18 @@
 
 - Use Tailwind's spacing scale for dimensions and spacing instead of arbitrary pixel values. For example, use `min-h-17` for `68px` and `w-15` for `60px` at the default root font size. When the scale cannot express the intended value, use an equivalent relative unit such as `rem`.
 
+# Which One? illustrations
+
+- Use one illustrated scene per word, arranged in equal panels with the same typography and visual scale. Use the A1 Unit 1 Lesson 1 illustration style and create distinct characters for the vocabulary scenes.
+- Show only the English word in each panel. Keep definitions, translations, example sentences and exercises in the page content.
+
+# Content data
+
+- Organize page-specific data under `app/data/` using the navbar hierarchy. For example, Language → Vocabulary → Which One? → Accept vs. Except belongs in `app/data/language/vocabulary/which-one/accept-except.ts`.
+
 # Project image style
+
+- Organize new page-specific images under `local-media/images/` using the full navigation breadcrumb as lowercase, hyphenated folders. For example, Language → Vocabulary → Which One? maps to `local-media/images/language/vocabulary/which-one/`. Use the same hierarchy for lesson audio under `local-media/audio/`. The shared dictionary uses the same letter folders across data, images, and audio.
 
 - For every generated course illustration, use the images from A1 Unit 1, Lesson 1 as the mandatory visual reference.
 - Preserve their established look: polished 2D semi-realistic digital illustration, clean drawn contours, gently stylized faces, warm colors, soft painterly shading, and detailed environments.
@@ -12,8 +23,8 @@
 - Final course images should be raster assets in AVIF unless the task explicitly requires another format.
 - Convert generated source images to AVIF before wiring them into course data; do not leave PNG, JPEG, or SVG as the final lesson asset.
 - Encode AVIF assets with Sharp (using the bundled workspace runtime when needed) and verify by decoding them with Sharp after writing; do not use macOS `sips` for AVIF because its output may fail in Chrome.
-- Store lesson-specific images only in `local-media/`, inside that lesson's own folder and grouped by the step that consumes them (for example, `local-media/images/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/`). Do not create course assets under `public/media/`.
-- Keep everything after `local-media/` identical to its R2 object key. The `media:upload` command uploads `local-media/` to R2, while application code references the asset through `/media/...` (for example, `local-media/images/course/.../image.avif` maps to `/media/images/course/.../image.avif`).
+- Store lesson-specific images only in `local-media/`, inside that lesson's own folder and grouped by the step that consumes them (for example, `local-media/images/learn/course/a1/unit-1/lesson-2-stay-in-touch/get-ready/`). Do not create course assets under `public/media/`.
+- Keep everything after `local-media/` identical to its R2 object key. The `media:upload` command uploads `local-media/` to R2, while application code references the asset through `/media/...` (for example, `local-media/images/learn/course/.../image.avif` maps to `/media/images/learn/course/.../image.avif`).
 - Before finishing an image task, verify that the file exists under `local-media/` and that its application URL `/media/...` maps to the same relative R2 key.
 - Add a cache-version query to every new course image URL, starting with `?v=1`. When replacing an image while keeping the same filename, increment the version (`?v=2`, `?v=3`, and so on) so browsers and the CDN fetch the updated asset.
 - Store reusable vocabulary images in the dictionary image collection instead of a lesson folder, using the existing first-letter routing: `/media/images/dictionary/{first-letter}/{filename}.avif`.

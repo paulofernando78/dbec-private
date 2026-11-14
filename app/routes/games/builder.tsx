@@ -9,9 +9,9 @@ import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { List } from "@/components/content/List";
 
-import { getGameSlug } from "@/data/games/games-slug";
-import { gamesLucasArtsCardData } from "@/data/games/lucas-arts/games-lucas-arts-card-data";
-import { gamesSierraCardData } from "@/data/games/sierra/games-sierra-card-data";
+import { getGameSlug } from "@/data/content/games/old-pc-games/games-slug";
+import { gamesLucasArtsCardData } from "@/data/content/games/old-pc-games/lucas-arts/games-lucas-arts-card-data";
+import { gamesSierraCardData } from "@/data/content/games/old-pc-games/sierra/games-sierra-card-data";
 
 export default function GameBuilder() {
   const navigate = useNavigate();

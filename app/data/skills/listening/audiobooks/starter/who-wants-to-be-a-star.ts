@@ -1,9 +1,9 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
 const imageBase =
-  "/media/images/audiobooks/starter-beginner/who-wants-to-be-a-star";
+  "/media/images/skills/listening/audiobooks/starter/who-wants-to-be-a-star";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/who-wants-to-be-a-star";
+  "local-media/images/skills/listening/audiobooks/starter/who-wants-to-be-a-star";
 
 export const whoWantsToBeAStar = {
   slug: "who-wants-to-be-a-star",

@@ -7,16 +7,16 @@ Keep the path after the media type identical to the R2 object key:
 
 ```text
 R2 image key:
-images/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
+images/learn/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
 
 Local image:
-local-media/images/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
+local-media/images/learn/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
 
 Local audio:
-local-media/audio/course/a1/unit-1/lesson-1-hello/get-ready/audio-1.mp3
+local-media/audio/learn/course/a1/unit-1/lesson-1-hello/get-ready/audio-1.mp3
 
 Application image URL in both environments:
-/media/images/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
+/media/images/learn/course/a1/unit-1/lesson-1-hello/get-ready/pic-1.avif
 ```
 
 Images and audio are separated by media type. Keep everything after
@@ -27,11 +27,11 @@ The same mapping is used for pronunciation audio:
 
 ```text
 Application URL:
-/media/audio/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
+/media/audio/language/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
 
 Local file:
-local-media/audio/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
+local-media/audio/language/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
 
 R2 key:
-audio/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
+audio/language/pronunciation/linking-sounds/flap-t/i-like-it-a-lot.mp3
 ```

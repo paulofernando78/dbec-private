@@ -10,5 +10,20 @@
 /.wrangler/
 
 # Local R2 mirror used only by the Vite development server.
-/local-media/
+/local-media/*
+!/local-media/images/
+/local-media/images/*
+!/local-media/images/learn/
+/local-media/images/learn/*
+!/local-media/images/learn/course/
+/local-media/images/learn/course/**
+!/local-media/images/learn/course/**/
+!/local-media/images/learn/course/a1/unit-1[0-6]/*/get-ready/*.avif
+!/local-media/images/content/
+/local-media/images/content/*
+!/local-media/images/content/games/
+/local-media/images/content/games/*
+!/local-media/images/content/games/old-pc-games/
+/local-media/images/content/games/old-pc-games/*
+!/local-media/images/content/games/old-pc-games/lucas-arts.png
 /.local-audiobooks/

@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { UnitCard } from "@/components/course/UnitCard";
-import { levels } from "@/data/course";
+import { levels } from "@/data/learn/course";
 
 export default function LevelBuilder() {
   const { level: levelSlug } = useParams();

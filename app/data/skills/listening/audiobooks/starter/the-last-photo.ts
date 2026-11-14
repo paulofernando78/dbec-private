@@ -1,13 +1,13 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-const imageBase = "/media/images/audiobooks/starter-beginner/the-last-photo";
+const imageBase = "/media/images/skills/listening/audiobooks/starter/the-last-photo";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/the-last-photo";
+  "local-media/images/skills/listening/audiobooks/starter/the-last-photo";
 
 export const theLastPhoto = {
   slug: "the-last-photo",
   title: "The Last Photo",
-  audio: "/media/audio/audiobooks/the-last-photo.mp3",
+  audio: "/media/audio/skills/listening/audiobooks/starter/the-last-photo/the-last-photo.mp3",
   sections: [
     {
       id: "summary",

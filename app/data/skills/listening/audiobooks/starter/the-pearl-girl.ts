@@ -1,8 +1,8 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-const imageBase = "/media/images/audiobooks/starter-beginner/the-pearl-girl";
+const imageBase = "/media/images/skills/listening/audiobooks/starter/the-pearl-girl";
 const localBase =
-  "local-media/images/audiobooks/starter-beginner/the-pearl-girl";
+  "local-media/images/skills/listening/audiobooks/starter/the-pearl-girl";
 
 export const thePearlGirl = {
   slug: "the-pearl-girl",

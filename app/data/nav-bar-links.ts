@@ -8,6 +8,7 @@ import {
   MessageSquareQuote,
   Music2,
   Headphones,
+  Landmark,
 } from "lucide-react";
 
 export type NavLinkItem = {
@@ -216,6 +217,10 @@ export const links: NavItem[] = [
     group: "content",
     children: [
       { href: "/songs", label: "songs", icon: Music2 },
+      {
+        subgroup: "culture",
+        children: [{ href: "/culture/history", label: "history", icon: Landmark }],
+      },
       {
         subgroup: "games",
         children: [

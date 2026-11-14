@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const root = join(process.cwd(), "app", "data", "course");
+const root = join(process.cwd(), "app", "data", "learn", "course");
 const levels = new Set(["a1", "a2", "a2-b1", "b1", "b2", "c1"]);
 const issues = [];
 

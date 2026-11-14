@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { PageSections } from "@/components/content/PageSections";
 import { AuthenticDateCard } from "@/components/authentic-content/AuthenticDateCard";
 import { AuthenticContent as AuthenticContentIcon } from "@/components/Icons";
-import { authenticContentTedEdLessons } from "@/data/authentic-content/ted-ed/ted-ed-lessons-card-data";
+import { authenticContentTedEdLessons } from "@/data/learn/ted-ed/ted-ed-lessons-card-data";
 
 const tedEdYearGroups = authenticContentTedEdLessons.reduce<
   Array<{

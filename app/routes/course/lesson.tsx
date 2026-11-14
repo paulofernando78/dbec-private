@@ -5,9 +5,9 @@ import { useLocation, useNavigate, useParams } from "react-router";
 import { PageHeader } from "@/components/content/PageHeader";
 import { SequenceNavigation } from "@/components/content/SequenceNavigation";
 import { StepRenderer } from "@/components/course/steps/StepRenderer";
-import { levels } from "@/data/course";
-import { lessonRegistry } from "@/data/course/lesson-registry";
-import { travel } from "@/data/travel";
+import { levels } from "@/data/learn/course";
+import { lessonRegistry } from "@/data/learn/course/lesson-registry";
+import { travel } from "@/data/learn/specific-purposes/travel";
 import { completeLesson } from "@/utils/course-progress";
 
 export function meta() {

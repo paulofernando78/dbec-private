@@ -1,6 +1,6 @@
 import { SentenceBuilder } from "@/components/course/steps/TryItStep";
 import { Card } from "@/components/ui/Card";
-import { grammarExercisesByTopicId, type GrammarExercise } from "@/data/grammar/exercises";
+import { grammarExercisesByTopicId, type GrammarExercise } from "@/data/language/grammar/exercises";
 import { ErrorCorrection } from "@/features/exercises/ErrorCorrection";
 import { FillInTheBlanks } from "@/features/exercises/FillInTheBlanks";
 import { Matching } from "@/features/exercises/Matching";

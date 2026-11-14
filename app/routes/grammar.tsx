@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/content/PageHeader";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
-import { grammarTopicsById, type GrammarTopicId } from "@/data/grammar";
+import { grammarTopicsById, type GrammarTopicId } from "@/data/language/grammar";
 import { links } from "@/data/nav-bar-links";
 import { GrammarExercises, GrammarTopic } from "@/features/Grammar";
 import { Navigate, useParams } from "react-router";
@@ -30,7 +30,7 @@ export default function Grammar() {
   const showContents = topic.id === "prefixes-suffixes";
   const content = (
     <>
-      <p className="mb-4 text-slate-500">{topic.description}</p>
+      <p lang="pt-BR" className="mb-4 text-slate-500">{topic.description}</p>
       <GrammarTopic topic={topic} sectionAnchors={showContents} />
     </>
   );

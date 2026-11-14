@@ -1,4 +1,4 @@
-import type { UseItData } from "@/data/course/lesson-step-types";
+import type { UseItData } from "@/data/learn/course/lesson-step-types";
 
 export function UseItStep({ data }: { data: UseItData }) {
   return (

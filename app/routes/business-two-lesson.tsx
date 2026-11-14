@@ -2,7 +2,7 @@ import { Link, Navigate, useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { Card } from "@/components/ui/Card";
-import { businessTwoGroups, businessTwoPath, businessTwoReviewElevenToFifteen, businessTwoReviewOneToFive, businessTwoReviewSixteenToTwenty, businessTwoReviewSixToTen, businessTwoReviewTwentyOneToTwentyFive, businessTwoReviewTwentySixToThirty } from "@/data/expressions/business-two";
+import { businessTwoGroups, businessTwoPath, businessTwoReviewElevenToFifteen, businessTwoReviewOneToFive, businessTwoReviewSixteenToTwenty, businessTwoReviewSixToTen, businessTwoReviewTwentyOneToTwentyFive, businessTwoReviewTwentySixToThirty } from "@/data/language/expressions/business-2/business-two";
 import { Dialogue } from "@/features/Dialogue";
 import { Radio } from "@/features/exercises/Radio";
 

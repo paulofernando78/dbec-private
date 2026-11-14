@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
-import type { AuthenticContentTedEdLesson } from "@/data/authentic-content/ted-ed/ted-ed-lessons-card-data";
+import type { AuthenticContentTedEdLesson } from "@/data/learn/ted-ed/ted-ed-lessons-card-data";
 type AuthenticDateCardProps = {
   year: string;
   lessons: AuthenticContentTedEdLesson[];
