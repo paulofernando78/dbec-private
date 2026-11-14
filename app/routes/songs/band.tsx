@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router";
 import { Disc3 } from "lucide-react";
 
@@ -13,6 +13,14 @@ export default function SongsBand() {
   const band = findBand(bandSlug);
   const [searchParams] = useSearchParams();
   const [selectedAlbum, setSelectedAlbum] = useState(searchParams.get("album") ?? undefined);
+  const [coverClick, setCoverClick] = useState(0);
+  const tracksRef = useRef<HTMLOListElement>(null);
+
+  useEffect(() => {
+    if (coverClick > 0) {
+      tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+  }, [coverClick]);
 
   if (!band) {
     return (
@@ -112,7 +120,10 @@ export default function SongsBand() {
           initialId={selectedAlbum}
           title="Albums"
           kind="album"
-          onSelect={setSelectedAlbum}
+          onSelect={(id) => {
+            setSelectedAlbum(id);
+            setCoverClick((count) => count + 1);
+          }}
         />
       ) : (
         <Card inset title="Songs">
@@ -122,7 +133,7 @@ export default function SongsBand() {
 
       {selectedAlbum && (
         <Card inset title="Tracks">
-          <ol className="grid divide-y divide-slate-300">
+          <ol ref={tracksRef} className="grid divide-y divide-slate-300">
             {(albums.find((album) => album.id === selectedAlbum)?.songs ?? []).map((song) => (
               <li key={song.slug}>
                 <Link

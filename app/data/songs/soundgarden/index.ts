@@ -1,4 +1,6 @@
 import type { Band } from "../types";
+import { jesusChristPoseLyrics } from "./jesus-christ-pose";
+import { outshinedLyrics } from "./outshined";
 
 const studioAlbums = [
   {
@@ -111,6 +113,12 @@ const youtubeUrls: Record<string, string> = {
   "Burden in My Hand": "https://www.youtube.com/watch?v=k0JTyheCkAo",
 };
 
+const lyricsByTitle: Record<string, Band["songs"][number]["lines"]> = {
+  "Rusty Cage": rustyCageLyrics,
+  Outshined: outshinedLyrics,
+  "Jesus Christ Pose": jesusChristPoseLyrics,
+};
+
 export const soundgarden: Band = {
   slug: "soundgarden",
   name: "Soundgarden",
@@ -124,7 +132,7 @@ export const soundgarden: Band = {
       album,
       year,
       youtubeUrl: youtubeUrls[title],
-      lines: title === "Rusty Cage" ? rustyCageLyrics : [],
+      lines: lyricsByTitle[title] ?? [],
     })),
   ),
 };

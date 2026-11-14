@@ -97,7 +97,7 @@ function AppContent() {
     document
       .querySelectorAll<HTMLElement>("[data-scroll-container]")
       .forEach((container) => {
-        container.scrollTop = 0;
+        container.scrollTo({ top: 0, behavior: "instant" });
       });
   }, [location.key]);
 

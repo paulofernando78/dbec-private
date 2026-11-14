@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useParams } from "react-router";
 import { Disc3 } from "lucide-react";
 
 import { PageHeader } from "@/components/content/PageHeader";
@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { albumId, findBand } from "@/data/songs/index";
 
 export default function SongsAlbum() {
+  const { key: navigationKey } = useLocation();
   const { band: bandSlug, album } = useParams();
   const band = findBand(bandSlug);
   const bandPath = band ? `/songs/${band.slug}` : "/songs";
@@ -20,9 +21,15 @@ export default function SongsAlbum() {
     },
     [],
   ) ?? [];
-  const [selectedAlbum, setSelectedAlbum] = useState(album);
+  const [selection, setSelection] = useState<{ navigationKey: string; id: string }>();
+  const selectedAlbum = selection?.navigationKey === navigationKey ? selection.id : album;
   const selected = albums.find((item) => item.id === selectedAlbum);
   const firstTrack = selected?.songs[0];
+  const tracksRef = useRef<HTMLOListElement>(null);
+
+  useEffect(() => {
+    tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "instant" });
+  }, [navigationKey, selection]);
 
   if (!band || !firstTrack) {
     return (
@@ -55,10 +62,10 @@ export default function SongsAlbum() {
         initialId={selectedAlbum}
         title="Albums"
         kind="album"
-        onSelect={setSelectedAlbum}
+        onSelect={(id) => setSelection({ navigationKey, id })}
       />
       <Card inset title="Tracks">
-        <ol className="grid divide-y divide-slate-300">
+        <ol ref={tracksRef} className="grid divide-y divide-slate-300">
           {selected.songs.map((song) => (
             <li key={song.slug}>
               <Link

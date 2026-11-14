@@ -1,21 +1,33 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router";
-import { Video } from "lucide-react";
+import { Link, useLocation, useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
-import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 import { albumId, findBand, findSong } from "@/data/songs/index";
 
+const VIDEO_SCROLL_OFFSET = 16;
+
 export default function SongsSong() {
+  const { key: navigationKey } = useLocation();
   const { band: bandSlug, song: songSlug } = useParams();
   const band = findBand(bandSlug);
   const song = band ? findSong(band, songSlug) : undefined;
   const youtubeUrl = song?.youtubeUrl;
   const videoRef = useRef<HTMLElement>(null);
   const [floating, setFloating] = useState<{ right: number; top: number; width: number } | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const scrollArea = video?.closest<HTMLElement>("[data-scroll-container]");
+    if (!video || !scrollArea) return;
+
+    const top = scrollArea.scrollTop + video.getBoundingClientRect().top
+      - scrollArea.getBoundingClientRect().top - scrollArea.clientTop
+      - VIDEO_SCROLL_OFFSET;
+    scrollArea.scrollTo({ top, behavior: "smooth" });
+  }, [navigationKey, youtubeUrl]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -82,22 +94,16 @@ export default function SongsSong() {
 
       <Card className="grid gap-4">
         {youtubeUrl ? <section ref={videoRef} className="rounded-xl bg-(--background) p-4">
-          <div className={floating ? "mb-4 aspect-video" : undefined}>
+          <div className={floating ? "aspect-video" : undefined}>
             <div className={floating ? "fixed z-40" : undefined} style={floating ?? undefined}>
               <Card className={floating ? "shadow-xl" : "bg-transparent p-0!"}>
-                <VideoPlayer src={youtubeUrl} compact={Boolean(floating)} />
+                <VideoPlayer
+                  src={youtubeUrl}
+                  compact={Boolean(floating)}
+                  withBottomMargin={false}
+                />
               </Card>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button
-              ariaLabel="Open on YouTube"
-              icon={<Video />}
-              onClick={() =>
-                window.open(youtubeUrl, "_blank", "noopener,noreferrer")
-              }
-            />
-            <span className="font-bold">Open on YouTube</span>
           </div>
         </section> : (
           <a
@@ -110,7 +116,8 @@ export default function SongsSong() {
           </a>
         )}
 
-        {(youtubeUrl || song.lines.length > 0) && <section className="rounded-xl bg-(--background) p-4">
+        <section className="rounded-xl bg-(--background) p-4">
+          <h2 className="mb-4 text-lg font-bold">{song.title}</h2>
           {song.lines.length > 0 ? (
             <div className="grid gap-4">
               {song.lines.map((line, index) => (
@@ -126,7 +133,7 @@ export default function SongsSong() {
           ) : (
             <p className="text-slate-500">No English or Portuguese content added yet.</p>
           )}
-        </section>}
+        </section>
       </Card>
     </div>
   );
