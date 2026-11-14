@@ -18,7 +18,7 @@ export default function SongsBand() {
 
   useEffect(() => {
     if (coverClick > 0) {
-      tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "instant" });
+      tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }, [coverClick]);
 

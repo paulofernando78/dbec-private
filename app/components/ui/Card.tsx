@@ -1,6 +1,7 @@
 import { Children, Fragment, isValidElement, type ReactNode } from "react";
 
 type CardProps = {
+  id?: string;
   title?: ReactNode;
   titleAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: ReactNode;
@@ -24,6 +25,7 @@ const getLastChild = (children: ReactNode): ReactNode => {
 };
 
 export const Card = ({
+  id,
   title,
   titleAs: Title = "h2",
   children,
@@ -43,6 +45,7 @@ export const Card = ({
 
   return (
     <div
+      id={id}
       className={`
       w-full
       p-4

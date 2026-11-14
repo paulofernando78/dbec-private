@@ -1,7 +1,7 @@
 import type { Band } from "@/data/songs/types";
 import { animalsSongs } from "./animals";
 import { theDarkSideOfTheMoonSongs } from "./the-dark-side-of-the-moon";
-import { theWallSongs } from "./the-wall";
+import { inTheFleshQuestionMark } from "./the-wall/in-the-flesh-question-mark";
 
 export const pinkFloyd: Band = {
   slug: "pink-floyd",
@@ -13,5 +13,5 @@ export const pinkFloyd: Band = {
     "Animals": "https://uk.rarevinyl.com/cdn/shop/files/pink-floyd-animals-1st-ex-uk-vinyl-lp-album-record-shvl815-544467.jpg?v=1736234599",
     "The Wall": "https://vinylpark.ru/upload/iblock/f44/gb0u7uqiqtyk2gdl3161h19ka5gn9dp8.jpg"
   },
-  songs: [...animalsSongs, ...theDarkSideOfTheMoonSongs, ...theWallSongs],
+  songs: [...animalsSongs, ...theDarkSideOfTheMoonSongs, inTheFleshQuestionMark],
 };

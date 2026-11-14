@@ -7,7 +7,6 @@ export const inTheFleshQuestionMark: Song = {
   year: 1979,
   youtubeUrl: "https://www.youtube.com/watch?v=uzsEmI61Xas",
   lines: [
-    ["We came in?", "Nós entramos?"],
     ["So ya thought ya might", "Então você achou que talvez"],
     ["Like to go to the show", "Gostasse de ir ao show"],
     ["To feel the warm thrill of confusion", "Para sentir o caloroso arrepio da confusão"],

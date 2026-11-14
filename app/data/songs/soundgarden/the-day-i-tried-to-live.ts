@@ -1,0 +1,56 @@
+const triedToLive = ["The day I tried to live", "No dia em que tentei viver"];
+const triedToWin = ["The day I tried to win", "No dia em que tentei vencer"];
+const bloodAndMud = ["I wallowed in the blood and mud", "Eu me espojei no sangue e na lama"];
+const doIt = ["One more time around (I might do it)", "Mais uma volta (talvez eu faça isso)"];
+const makeIt = ["One more time around (I might make it)", "Mais uma volta (talvez eu consiga)"];
+const liar = ["I learned that I was a liar (one more time around)", "Descobri que eu era um mentiroso (mais uma volta)"];
+const lastLine = ["One more time around (one more time around)", "Mais uma volta (mais uma volta)"];
+
+export const theDayITriedToLiveLyrics = [
+  ["I woke the same as any other day", "Acordei como em qualquer outro dia"],
+  ["Except a voice was in my head", "Só que havia uma voz na minha cabeça"],
+  ['It said, "Seize the day, pull the trigger, drop the blade', 'Ela disse: "Aproveite o dia, puxe o gatilho, solte a lâmina'],
+  ['And watch the rolling heads"', 'E veja as cabeças rolarem"'],
+  triedToLive,
+  ["I stole a thousand beggar's change", "Roubei os trocados de mil mendigos"],
+  ["And gave it to the rich, yeah", "E dei tudo aos ricos, é"],
+  triedToWin,
+  ["I dangled from the power lines", "Fiquei pendurado nos fios da rede elétrica"],
+  ["And let the martyrs stretch, yeah", "E deixei os mártires se esticarem, é"],
+  ["Singing one more time around (I might do it)", "Cantando: mais uma volta (talvez eu faça isso)"],
+  makeIt,
+  doIt,
+  makeIt,
+  ["The day I tried to live, yeah", "No dia em que tentei viver, é"],
+  ["Words you say never seem to live up to the ones inside your head", "As palavras que você diz nunca parecem estar à altura das que tem na cabeça"],
+  ["The lives we make", "As vidas que construímos"],
+  ["Never seem to ever get us anywhere", "Nunca parecem nos levar a lugar nenhum"],
+  ["But dead", "Só à morte"],
+  triedToLive,
+  bloodAndMud,
+  ["With all the other pigs, hey", "Com todos os outros porcos, ei"],
+  ["Singing one more time around (might do it)", "Cantando: mais uma volta (talvez dê pra fazer)"],
+  ["One more time around (might make it)", "Mais uma volta (talvez dê certo)"],
+  doIt,
+  makeIt,
+  ["The day I tried to live, yeah, I tried", "No dia em que tentei viver, é, eu tentei"],
+  ["I woke the same as any other day you know", "Acordei como em qualquer outro dia, sabe"],
+  ["I should have stayed in bed", "Eu devia ter ficado na cama"],
+  ["Hey, hey", "Ei, ei"],
+  triedToWin,
+  bloodAndMud,
+  ["With all the other pigs", "Com todos os outros porcos"],
+  ["And I learned that I was a liar", "E descobri que eu era um mentiroso"],
+  liar,
+  liar,
+  liar,
+  ["Singing one more time around (might do it)", "Cantando: mais uma volta (talvez dê pra fazer)"],
+  makeIt,
+  ["One more time around (might do it)", "Mais uma volta (talvez dê pra fazer)"],
+  makeIt,
+  ["The day I tried to live, live", "No dia em que tentei viver, viver"],
+  ["Just like you, hm-mm", "Assim como você, hm-mm"],
+  ["Just like you", "Assim como você"],
+  lastLine,
+  lastLine,
+].map(([english, portuguese]) => ({ english, portuguese }));

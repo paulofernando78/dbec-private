@@ -7,7 +7,6 @@ export const inTheFlesh: Song = {
   year: 1979,
   youtubeUrl: "https://www.youtube.com/watch?v=6Z6Je2QM6lE",
   lines: [
-    ["Three, two, fire!", "Três, dois, fogo!"],
     ["So ya thought ya might like to go to the show", "Então você achou que talvez gostasse de ir ao show"],
     ["To feel the warm thrill of confusion, that space cadet glow", "Para sentir o caloroso arrepio da confusão, aquele brilho de cadete espacial"],
     ["I've got some bad news for you sunshine", "Tenho más notícias para você, querida"],
@@ -24,8 +23,5 @@ export const inTheFlesh: Song = {
     ["Who let all of this riff-raff into the room?", "Quem deixou toda essa ralé entrar na sala?"],
     ["There's one smoking a joint and another with spots", "Há um fumando um baseado e outro cheio de manchas"],
     ["If I had my way, I'd have all of you shot!", "Se dependesse de mim, mandaria fuzilar todos vocês!"],
-    ["Pink Floyd! Pink Floyd!", "Pink Floyd! Pink Floyd!"],
-    ["Pink Floyd! Pink Floyd!", "Pink Floyd! Pink Floyd!"],
-    ["Pink Floyd! Pink Floyd!", "Pink Floyd! Pink Floyd!"],
   ].map(([english, portuguese]) => ({ english, portuguese })),
 };

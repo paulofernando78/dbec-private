@@ -1,0 +1,57 @@
+const chorus = [
+  ["Shout, shout, let it all out", "Grite, grite, ponha tudo para fora"],
+  ["These are the things I can do without", "São coisas das quais posso abrir mão"],
+  ["Come on", "Vamos lá"],
+  ["I'm talking to you, come on", "Estou falando com você, vamos lá"],
+];
+
+const chorusWithEcho = [
+  ["Shout, shout, let it all out (let it all out)", "Grite, grite, ponha tudo para fora (ponha tudo para fora)"],
+  ...chorus.slice(1),
+];
+
+const comeOn = ["I'm talking to you, so come on", "Estou falando com você, então vamos lá"];
+
+export const shoutLyrics = [
+  ...chorus,
+  ...chorus,
+  ["In violent times", "Em tempos violentos"],
+  ["You shouldn't have to sell your soul", "Você não deveria ter de vender sua alma"],
+  ["In black and white", "Em preto e branco"],
+  ["They really, really ought to know", "Eles deviam mesmo, mesmo saber"],
+  ["Those one-track minds", "Aquela gente de visão estreita"],
+  ["That took you for a working boy", "Que viu em você só um garoto para trabalhar"],
+  ["Kiss them goodbye", "Dê adeus a essa gente"],
+  ["You shouldn't have to jump for joy", "Você não deveria ter de pular de alegria"],
+  ["You shouldn't have to jump for joy", "Você não deveria ter de pular de alegria"],
+  ...chorus,
+  ["They gave you life", "Eles lhe deram a vida"],
+  ["And in return you gave them hell", "E em troca você fez da vida deles um inferno"],
+  ["As cold as ice", "Frio como gelo"],
+  ["I hope we live to tell the tale", "Espero que a gente viva para contar a história"],
+  ["I hope we live to tell the tale", "Espero que a gente viva para contar a história"],
+  ...chorus,
+  ...chorusWithEcho,
+  ...chorusWithEcho.slice(0, 3),
+  comeOn,
+  ["And when you've taken down your guard", "E quando você baixar a guarda"],
+  ["If I could change your mind", "Se eu pudesse fazer você mudar de ideia"],
+  ["I'd really love to break your heart", "Eu adoraria partir seu coração"],
+  ["I'd really love to break your heart", "Eu adoraria partir seu coração"],
+  chorus[0],
+  ["These are the things I can do without (break your heart)", "São coisas das quais posso abrir mão (partir seu coração)"],
+  ["(I'd really love to break your heart) come on", "(Eu adoraria partir seu coração) vamos lá"],
+  chorus[3],
+  ...chorus.slice(0, 3),
+  comeOn,
+  ...chorus,
+  ["shout, shout, let it all out", "grite, grite, ponha tudo para fora"],
+  ["(They really, really ought to know) these are the things I can do without", "(Eles deviam mesmo, mesmo saber) são coisas das quais posso abrir mão"],
+  ["(They really, really) come on", "(Eles deviam mesmo, mesmo) vamos lá"],
+  ["I'm talking to you, so come on (they really, really ought to know)", "Estou falando com você, então vamos lá (eles deviam mesmo, mesmo saber)"],
+  ["Shout, shout, let it all out (I'd really love to break your heart)", "Grite, grite, ponha tudo para fora (eu adoraria partir seu coração)"],
+  ["These are the things I can do without (I'd really love to break your heart)", "São coisas das quais posso abrir mão (eu adoraria partir seu coração)"],
+  chorus[2],
+  comeOn,
+  ...chorus.slice(0, 3),
+].map(([english, portuguese]) => ({ english, portuguese }));

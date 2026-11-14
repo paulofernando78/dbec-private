@@ -28,7 +28,7 @@ export default function SongsAlbum() {
   const tracksRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
-    tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "instant" });
+    tracksRef.current?.parentElement?.parentElement?.scrollIntoView({ block: "start", behavior: "smooth" });
   }, [navigationKey, selection]);
 
   if (!band || !firstTrack) {

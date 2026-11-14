@@ -1,6 +1,13 @@
 import type { Band } from "../types";
+import { blackHoleSunLyrics } from "./black-hole-sun";
+import { burdenInMyHandLyrics } from "./burden-in-my-hand";
+import { fellOnBlackDaysLyrics } from "./fell-on-black-days";
 import { jesusChristPoseLyrics } from "./jesus-christ-pose";
+import { myWaveLyrics } from "./my-wave";
 import { outshinedLyrics } from "./outshined";
+import { prettyNooseLyrics } from "./pretty-noose";
+import { spoonmanLyrics } from "./spoonman";
+import { theDayITriedToLiveLyrics } from "./the-day-i-tried-to-live";
 
 const studioAlbums = [
   {
@@ -117,6 +124,13 @@ const lyricsByTitle: Record<string, Band["songs"][number]["lines"]> = {
   "Rusty Cage": rustyCageLyrics,
   Outshined: outshinedLyrics,
   "Jesus Christ Pose": jesusChristPoseLyrics,
+  "My Wave": myWaveLyrics,
+  "Fell on Black Days": fellOnBlackDaysLyrics,
+  "Black Hole Sun": blackHoleSunLyrics,
+  Spoonman: spoonmanLyrics,
+  "Pretty Noose": prettyNooseLyrics,
+  "The Day I Tried to Live": theDayITriedToLiveLyrics,
+  "Burden in My Hand": burdenInMyHandLyrics,
 };
 
 export const soundgarden: Band = {

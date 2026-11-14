@@ -9,6 +9,13 @@ import { authenticContentTedEdLessons } from "@/data/authentic-content/ted-ed/te
 import { authenticContentsTedEdRoutes } from "@/data/authentic-content/ted-ed";
 import { lessonRegistry } from "@/data/course/lesson-registry";
 import businessOneLessons from "@/data/business-1-search.generated.json";
+import { businessTwoGroups, businessTwoPath } from "@/data/expressions/business-two";
+import { gamesLucasArtsCardData } from "@/data/games/lucas-arts/games-lucas-arts-card-data";
+import { gamesSierraCardData } from "@/data/games/sierra/games-sierra-card-data";
+import { links } from "@/data/nav-bar-links";
+import { audiobooks } from "@/data/skills/audiobooks";
+import { listeningLevels } from "@/data/skills/listening";
+import { albumId, bands } from "@/data/songs";
 import { DictionaryWordCard } from "@/features/Dictionary/DictionaryWordCard";
 import {
   flattenDictionaryDefinitions,
@@ -198,6 +205,65 @@ const businessExpressionItems: readonly SearchItem[] = businessOneLessons.map(
   }),
 );
 
+const navigationItems: SearchItem[] = links.flatMap((item) =>
+  "group" in item
+    ? item.children.flatMap((child) =>
+        ("subgroup" in child ? child.children : [child])
+          .map(({ label, href }) => ({
+            title: label,
+            category: "subgroup" in child ? `${item.group} · ${child.subgroup}` : item.group,
+            description: "",
+            href,
+          })),
+      )
+    : [],
+).filter(({ href }) => !pageItems.some((page) => page.href === href));
+
+const musicItems: SearchItem[] = bands.flatMap((band) => {
+  const bandPath = `/songs/${band.slug}`;
+  const albums = new Map(band.songs.map(({ album, year }) => [albumId(album, year), { album, year }]));
+
+  return [
+    { title: band.name, category: "Songs · Artist", description: band.description ?? "", href: bandPath },
+    ...Array.from(albums, ([id, { album, year }]) => ({
+      title: album,
+      category: "Songs · Album",
+      description: `${band.name} · ${year}`,
+      href: `${bandPath}/albums/${id}`,
+    })),
+    ...band.songs.map((song) => ({
+      title: song.title,
+      category: "Songs · Track",
+      description: `${band.name} · ${song.album}`,
+      href: `${bandPath}/${song.slug}`,
+    })),
+  ];
+});
+
+const audiobookItems: SearchItem[] = listeningLevels.flatMap((level) =>
+  level.titles.filter(({ slug }) => Object.hasOwn(audiobooks, slug)).map(({ slug, title, description }) => ({
+    title,
+    category: `Audiobooks · ${level.title}`,
+    description,
+    href: `/audiobooks/${slug}`,
+  })),
+);
+
+const gameItems: SearchItem[] = [
+  ...Object.values(gamesSierraCardData),
+  ...Object.values(gamesLucasArtsCardData),
+].map(({ label, description, href }) => ({ title: label, category: "Games", description, href }));
+
+const businessTwoItems: SearchItem[] = businessTwoGroups.flatMap(({ entries }) =>
+  entries.map(({ slug, title, content }) => ({
+    title,
+    category: "Language · Expressions · Business 2",
+    description: content?.context ?? "",
+    keywords: cleanText(extractText(content)),
+    href: `${businessTwoPath}/${slug}`,
+  })),
+);
+
 const authenticContentItems: readonly SearchItem[] =
   authenticContentTedEdLessons.map((lesson) => ({
     title: lesson.label,
@@ -235,7 +301,7 @@ const courseItems: readonly SearchItem[] = Object.values(levels).flatMap(
 );
 
 const courseStepItems: readonly SearchItem[] = Object.entries(lessonRegistry)
-  .filter(([key]) => /^(a1|a2|a2-b1|b1|b2|c1)\//.test(key))
+  .filter(([key]) => /^(a1|a2|a2-b1|b1|b2|c1|travel)\//.test(key))
   .flatMap(([key, lesson]) => {
     const [level, unit, lessonNumber] = key.split("/");
     return lesson.steps.map((step) => {
@@ -251,7 +317,7 @@ const courseStepItems: readonly SearchItem[] = Object.entries(lessonRegistry)
         category: `${level.toUpperCase()} · Unit ${unit} · ${step.label}`,
         description: fullText,
         fullText,
-        href: `/course/${level}/unit/${unit}/lesson/${lessonNumber}/${step.slug}`,
+        href: `${level === "travel" ? "/travel" : `/course/${level}`}/unit/${unit}/lesson/${lessonNumber}/${step.slug}`,
       };
     });
   });
@@ -290,7 +356,12 @@ const authenticStepItems: readonly SearchItem[] = Object.entries(
 
 const searchItems = [
   ...pageItems,
+  ...navigationItems,
+  ...musicItems,
+  ...audiobookItems,
+  ...gameItems,
   ...businessExpressionItems,
+  ...businessTwoItems,
   ...authenticContentItems,
   ...authenticStepItems,
   ...courseItems,
@@ -415,6 +486,13 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
   const results = useMemo<SearchResult[]>(() => {
     const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
     if (!terms.length) return [];
+    const phrase = terms.join(" ");
+    const titleRank = ({ title }: SearchItem) => {
+      const normalizedTitle = normalize(title);
+      if (normalizedTitle === phrase) return 0;
+      if (normalizedTitle.includes(phrase)) return 1;
+      return 2;
+    };
     return searchItems
       .filter((item) => {
         const text = normalize(
@@ -422,14 +500,15 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
         );
         return terms.every((term) => text.includes(term));
       })
+      .sort((first, second) => titleRank(first) - titleRank(second))
+      .slice(0, 12)
       .map((item) => ({
         ...item,
         snippet: createSnippet(
           item.fullText ?? `${item.description} ${item.keywords ?? ""}`,
           terms,
         ),
-      }))
-      .slice(0, 12);
+      }));
   }, [query]);
 
   const close = () => {
@@ -539,7 +618,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                   ref={inputRef}
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search lessons, vocabulary, expressions..."
+                  placeholder="Search the site…"
                   aria-label="Search all content"
                   className="min-w-0 flex-1 bg-transparent py-2 text-lg outline-none placeholder:text-slate-400"
                 />
@@ -590,7 +669,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                   )}
                 {!!results.length && (
                   <h2 className="px-2 pb-1 pt-2 text-xs font-black uppercase tracking-wider text-slate-500">
-                    Pages and lessons
+                    Site results
                   </h2>
                 )}
                 {results.map((item, index) => (
