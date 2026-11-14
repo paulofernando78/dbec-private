@@ -50,7 +50,21 @@ export async function onRequest(context) {
       url.pathname === "/teacher/dashboard" ||
       url.pathname.startsWith("/teacher/dashboard/")
     ) {
-      if (session.role === "teacher") return context.next();
+      if (session.role === "teacher") {
+        const response = await context.next();
+        if (!response.headers.get("Content-Type")?.startsWith("text/html")) {
+          return response;
+        }
+
+        // Keep Cloudflare from injecting scripts into React's initial HTML.
+        const headers = new Headers(response.headers);
+        headers.set("Cache-Control", "private, no-store, no-transform");
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers,
+        });
+      }
 
       url.pathname = `/dashboard/${encodeURIComponent(session.studentId)}`;
       url.search = "";

@@ -25,6 +25,7 @@ export function SequenceNavigation({
     <nav
       className="relative mx-1 mt-4 grid grid-cols-[auto_1fr_1fr_auto] items-center gap-3"
       aria-label={ariaLabel}
+      data-sequence-navigation
     >
       <Button
         ariaLabel={`Previous: ${previousLabel}`}

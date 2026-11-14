@@ -7,11 +7,16 @@ import { Button } from "@/components/ui/Button";
 export const ScrollToTop = () => {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
+  const [hasNavigation, setHasNavigation] = useState(false);
   const [navigationSlot, setNavigationSlot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
+    const navigation = document.querySelector(
+      "[data-scroll-container] [data-sequence-navigation]",
+    );
+    setHasNavigation(navigation !== null);
     setNavigationSlot(
-      document.querySelector<HTMLElement>("[data-scroll-to-top-slot]"),
+      navigation?.querySelector<HTMLElement>("[data-scroll-to-top-slot]") ?? null,
     );
   }, [location.pathname]);
 
@@ -55,10 +60,6 @@ export const ScrollToTop = () => {
   const visibilityClasses = visible
     ? "pointer-events-auto translate-y-0 opacity-100"
     : "pointer-events-none translate-y-2 opacity-0";
-  const isDashboard =
-    location.pathname.startsWith("/teacher/dashboard") ||
-    /^\/dashboard\/[^/]+/.test(location.pathname);
-
   const button = (
     <Button
       onClick={handleClick}
@@ -72,7 +73,7 @@ export const ScrollToTop = () => {
 
   return (
     <div
-      className={`absolute right-[calc(0.6vw+0.25rem)] z-50 ${isDashboard ? "bottom-1" : "bottom-15"}`}
+      className={`absolute right-[calc(0.6vw+0.25rem)] z-50 ${hasNavigation ? "bottom-15" : "bottom-[0.1rem]"}`}
     >
       {button}
     </div>
