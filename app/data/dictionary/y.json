@@ -123,4 +123,10 @@
       }
     ]
   }
+,
+  {
+    "definitions": [
+      { "word": "your all", "partOfSpeech": "noun phrase", "enDefinition": "Your greatest effort.", "ptDefinition": "Todo o seu esforço." }
+    ]
+  }
 ]

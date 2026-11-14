@@ -7,13 +7,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
+  useBlocker, useLocation,
   useNavigate,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { SessionProvider, useSession } from "@/hooks/useSession";
+import { SessionProvider, useSession, useSessionExpired } from "@/hooks/useSession";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -54,6 +54,22 @@ function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const session = useSession();
   const isAuthenticated = Boolean(session);
+
+  const isSessionExpired = useSessionExpired();
+  const expiredNavigation = useBlocker(({ currentLocation, nextLocation }) =>
+    (currentLocation.pathname !== nextLocation.pathname ||
+      currentLocation.search !== nextLocation.search) && isSessionExpired(),
+  );
+
+  useEffect(() => {
+    if (expiredNavigation.state !== "blocked") return;
+    const { pathname, search, hash } = expiredNavigation.location;
+    const params = new URLSearchParams({
+      login: "expired",
+      next: pathname + search + hash,
+    });
+    window.location.assign(`/?${params}`);
+  }, [expiredNavigation]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);

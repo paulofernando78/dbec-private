@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
 type Session = {
   username: string;
@@ -13,8 +13,12 @@ type Session = {
 
 const SessionContext = createContext<Session | null | undefined>(undefined);
 
+const SessionExpiryContext = createContext<() => boolean>(() => false);
+
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>();
+
+  const lastExpiration = useRef(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -27,6 +31,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
     function scheduleExpiration(nextExpiration: number) {
       expiresAt = nextExpiration;
+      lastExpiration.current = nextExpiration;
       window.clearTimeout(expiration);
       expiration = window.setTimeout(refresh, Math.max(0, expiresAt - Date.now()) + 100);
     }
@@ -128,9 +133,20 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <SessionContext.Provider value={session}>{children}</SessionContext.Provider>;
+  return (
+    <SessionExpiryContext.Provider value={() => {
+      const deadline = lastExpiration.current;
+      return deadline > 0 && (session === null || Date.now() >= deadline);
+    }}>
+      <SessionContext.Provider value={session}>{children}</SessionContext.Provider>
+    </SessionExpiryContext.Provider>
+  );
 }
 
 export function useSession() {
   return useContext(SessionContext);
+}
+
+export function useSessionExpired() {
+  return useContext(SessionExpiryContext);
 }

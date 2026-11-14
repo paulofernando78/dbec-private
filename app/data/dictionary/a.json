@@ -1029,5 +1029,35 @@
         "imgs": [{ "src": "axon.avif", "alt": "A neuron with signals traveling along its axon" }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "a thorn in your side",
+        "partOfSpeech": "idiom",
+        "enDefinition": "A person or problem that repeatedly causes trouble or annoyance.",
+        "ptDefinition": "Pessoa ou problema que incomoda repetidamente."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      {
+        "word": "at your wit’s end",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Unable to think of any more solutions to a difficult problem.",
+        "ptDefinition": "Sem saber mais o que fazer diante de um problema difícil."
+      }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "all for it", "partOfSpeech": "idiom", "enDefinition": "Completely in favor of something.", "ptDefinition": "Totalmente a favor de algo." }
+  ] }
+,
+  { "definitions": [
+    { "word": "avoid legal pitfalls", "partOfSpeech": "verb phrase", "enDefinition": "To avoid mistakes or situations that could cause legal problems.", "ptDefinition": "Evitar erros ou situações que possam causar problemas jurídicos." },
+    { "word": "a lot of clout", "partOfSpeech": "noun phrase", "enDefinition": "A lot of influence or power.", "ptDefinition": "Muita influência ou poder." }
+  ] }
 ]

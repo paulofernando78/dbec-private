@@ -1811,5 +1811,42 @@
         "seeAlso": ["take the blame", "shift the blame", "blame game"]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "BBA",
+        "partOfSpeech": "abbreviation",
+        "enDefinition": "Bachelor of Business Administration, an undergraduate business degree.",
+        "ptDefinition": "Bacharelado em Administração de Empresas."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "bark orders",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To give commands in a loud or abrupt way.",
+        "ptDefinition": "Dar ordens de forma ríspida ou agressiva."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "bad call", "partOfSpeech": "noun phrase", "enDefinition": "A poor decision or judgment.", "ptDefinition": "Uma decisão ou avaliação ruim." },
+      { "word": "best buddies", "partOfSpeech": "noun phrase", "enDefinition": "Very close friends.", "ptDefinition": "Grandes amigos." },
+      { "word": "big mouth", "partOfSpeech": "noun phrase", "enDefinition": "Someone who tells secrets or talks too much.", "ptDefinition": "Pessoa que conta segredos ou fala demais." },
+      { "word": "boggle your mind", "partOfSpeech": "idiom", "enDefinition": "To amaze or confuse you completely.", "ptDefinition": "Deixar alguém completamente surpreso ou confuso." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "business model", "partOfSpeech": "noun phrase", "enDefinition": "The way a company creates value and earns money.", "ptDefinition": "A forma como uma empresa cria valor e ganha dinheiro." }
+  ] }
+,
+  { "definitions": [
+    { "word": "branch out", "partOfSpeech": "phrasal verb", "enDefinition": "To expand into a new area or activity.", "ptDefinition": "Expandir para uma nova área ou atividade." }
+  ] }
 ]

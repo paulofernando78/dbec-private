@@ -1073,5 +1073,37 @@
         "imgs": [{ "src": "whimsical.avif", "alt": "A playful cloud-like snack transformation in an imaginative educational scene." }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "weed out",
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To remove people or things that do not meet a requirement.",
+        "ptDefinition": "Eliminar ou filtrar quem ou o que não atende aos requisitos."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "Wharton",
+        "partOfSpeech": "proper noun",
+        "enDefinition": "The business school of the University of Pennsylvania.",
+        "ptDefinition": "Escola de negócios da Universidade da Pensilvânia."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "walk all over someone", "partOfSpeech": "idiom", "enDefinition": "To treat someone badly because they do not resist or assert themselves.", "ptDefinition": "Tratar alguém mal por essa pessoa não resistir ou se impor." }
+  ] }
+,
+  { "definitions": [
+    { "word": "wiggle room", "partOfSpeech": "noun", "enDefinition": "A small amount of freedom to change an arrangement or decision.", "ptDefinition": "Pequena margem para alterar um acordo ou decisão." }
+  ] }
+,
+  { "definitions": [
+    { "word": "wave of the future", "partOfSpeech": "noun phrase", "enDefinition": "A development expected to become common or important in the future.", "ptDefinition": "Uma tendência que deverá se tornar comum ou importante no futuro." }
+  ] }
 ]

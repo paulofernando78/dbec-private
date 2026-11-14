@@ -34,6 +34,10 @@ export const PageHeader = ({
   const isDashboard = variant === "dashboard";
   const breadcrumb = useRef<HTMLParagraphElement>(null);
   const breadcrumbMeasure = useRef<HTMLSpanElement>(null);
+  const breadcrumbParts = eyebrow?.split(" • ") ?? [];
+  const breadcrumbLines = breadcrumbParts.flatMap((part, index) =>
+    index % 2 === 0 ? [breadcrumbParts.slice(index, index + 2).join(" • ")] : [],
+  );
 
   useEffect(() => {
     const container = breadcrumb.current;
@@ -103,15 +107,17 @@ export const PageHeader = ({
         ) : (
           <p
             ref={breadcrumb}
-            className="relative mb-1 w-full truncate text-[clamp(0.5rem,calc(1rem*var(--breadcrumb-scale,1)),1rem)] leading-6 font-black uppercase tracking-wider text-gray-500"
+            className="relative mb-1 w-full overflow-hidden text-[clamp(0.5rem,calc(1rem*var(--breadcrumb-scale,1)),1rem)] leading-6 font-black uppercase tracking-wider text-gray-500"
           >
-            {eyebrow}
+            {breadcrumbLines.map((line, index) => (
+              <span key={index} className="block truncate">{line}</span>
+            ))}
             <span
               ref={breadcrumbMeasure}
               aria-hidden="true"
-              className="invisible absolute left-0 top-0 w-max whitespace-nowrap text-base tracking-wider"
+              className="invisible absolute left-0 top-0 grid w-max whitespace-nowrap text-base tracking-wider"
             >
-              {eyebrow}
+              {breadcrumbLines.map((line, index) => <span key={index}>{line}</span>)}
             </span>
           </p>
         ))}

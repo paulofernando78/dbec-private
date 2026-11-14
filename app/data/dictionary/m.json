@@ -1345,5 +1345,28 @@
         "imgs": [{ "src": "mammal.avif", "alt": "A dog, bat, fox, and raccoon representing mammals" }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "marching orders",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "Instructions about what you must do.",
+        "ptDefinition": "Ordens ou instruções sobre o que você deve fazer."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "make your case", "partOfSpeech": "idiom", "enDefinition": "To present reasons or evidence supporting your position.", "ptDefinition": "Apresentar razões ou provas que apoiem sua posição." }
+  ] }
+,
+  { "definitions": [
+    { "word": "marketing mix", "partOfSpeech": "noun phrase", "enDefinition": "The combination of methods a company uses to market a product.", "ptDefinition": "A combinação de métodos usados por uma empresa para divulgar um produto." }
+  ] }
+,
+  { "definitions": [
+    { "word": "make do with", "partOfSpeech": "idiom", "enDefinition": "To manage with what is available.", "ptDefinition": "Dar um jeito com o que está disponível." },
+    { "word": "move some product", "partOfSpeech": "idiom", "enDefinition": "To sell or distribute some goods.", "ptDefinition": "Vender ou distribuir alguns produtos." }
+  ] }
 ]

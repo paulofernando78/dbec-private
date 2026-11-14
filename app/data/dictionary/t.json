@@ -1880,5 +1880,61 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "transferable skills",
+        "partOfSpeech": "plural noun",
+        "enDefinition": "Abilities that are useful across different jobs or roles.",
+        "ptDefinition": "Habilidades que podem ser aplicadas em diferentes empregos ou funções."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "twentysomething",
+        "partOfSpeech": "noun",
+        "enDefinition": "A person between the ages of 20 and 29.",
+        "ptDefinition": "Pessoa na faixa dos vinte anos."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "there’s a fine line between",
+        "partOfSpeech": "expression",
+        "enDefinition": "Used to say that two things are very similar and hard to distinguish.",
+        "ptDefinition": "Há uma linha tênue entre duas coisas difíceis de distinguir."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "touchy-feely", "partOfSpeech": "adjective", "enDefinition": "Very openly emotional, affectionate, or focused on feelings.", "ptDefinition": "Muito emotivo, afetivo ou focado em sentimentos." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "turf war", "partOfSpeech": "noun phrase", "enDefinition": "A conflict between groups over control of an area or responsibility.", "ptDefinition": "Conflito entre grupos pelo controle de uma área ou responsabilidade." }
+  ] }
+,
+  { "definitions": [
+    { "word": "take the plunge", "partOfSpeech": "idiom", "enDefinition": "To make a difficult or risky decision and begin doing something.", "ptDefinition": "Tomar uma decisão difícil ou arriscada e começar a agir." }
+  ] }
+,
+  { "definitions": [
+    { "word": "tried-and-true", "partOfSpeech": "adjective", "enDefinition": "Proven to work well through repeated use or experience.", "ptDefinition": "Comprovadamente eficaz por uso ou experiência repetida." }
+  ] }
+,
+  { "definitions": [
+    { "word": "tapped out", "partOfSpeech": "adjective", "enDefinition": "Used up or exhausted, with no more available.", "ptDefinition": "Esgotado, sem mais disponibilidade." }
+  ] }
+,
+  { "definitions": [
+    { "word": "trade down", "partOfSpeech": "phrasal verb", "enDefinition": "To choose a cheaper product or service.", "ptDefinition": "Escolher um produto ou serviço mais barato." }
+  ] }
 ]

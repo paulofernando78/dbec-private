@@ -1634,5 +1634,102 @@
         "imgs": [{ "src": "prophylaxis.avif", "alt": "A healthcare professional administering a preventive vaccine" }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "part ways with",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To end a working relationship or association with someone.",
+        "ptDefinition": "Encerrar uma parceria ou deixar de trabalhar com alguém."
+      },
+      {
+        "word": "pink slip",
+        "partOfSpeech": "noun",
+        "enDefinition": "An informal term for a notice that someone has been fired.",
+        "ptDefinition": "Aviso de demissão."
+      },
+      {
+        "word": "put a positive spin on",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To present a difficult situation in a way that emphasizes its positive aspects.",
+        "ptDefinition": "Apresentar uma situação difícil sob uma ótica positiva."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "prove yourself",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To show through your actions that you have the ability to do something well.",
+        "ptDefinition": "Demonstrar sua capacidade na prática."
+      },
+      {
+        "word": "pay your dues",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To gain experience and earn advancement by doing the work expected of you over time.",
+        "ptDefinition": "Passar pelas etapas e adquirir experiência antes de avançar na carreira."
+      },
+      {
+        "word": "par for the course",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Typical of a person or situation and therefore unsurprising.",
+        "ptDefinition": "Algo típico ou esperado naquela situação."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "piss off",
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To make someone angry or very annoyed. This use is vulgar.",
+        "ptDefinition": "Irritar ou deixar alguém muito bravo. Uso vulgar."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "play favorites",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To give some people better treatment because you like them more.",
+        "ptDefinition": "Favorecer algumas pessoas por preferência pessoal."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "plum assignment", "partOfSpeech": "noun phrase", "enDefinition": "A desirable and valuable task or position.", "ptDefinition": "Tarefa ou posição especialmente desejável e valorizada." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "play by the rules", "partOfSpeech": "idiom", "enDefinition": "To follow the rules or accepted standards.", "ptDefinition": "Seguir as regras ou os padrões aceitos." }
+  ] }
+,
+  { "definitions": [
+    { "word": "pass up the opportunity", "partOfSpeech": "verb phrase", "enDefinition": "To fail to take an opportunity.", "ptDefinition": "Deixar passar uma oportunidade." }
+  ] }
+,
+  { "definitions": [
+    { "word": "pitch an idea", "partOfSpeech": "verb phrase", "enDefinition": "To present an idea in order to persuade someone to support it.", "ptDefinition": "Apresentar uma ideia para convencer alguém a apoiá-la." }
+  ] }
+,
+  { "definitions": [
+    { "word": "peddle", "partOfSpeech": "verb", "enDefinition": "To promote or sell something, sometimes aggressively.", "ptDefinition": "Promover ou vender algo, às vezes de forma insistente." }
+  ] }
+,
+  { "definitions": [
+    { "word": "plaintiff", "partOfSpeech": "noun", "enDefinition": "The person who brings a lawsuit to court.", "ptDefinition": "A pessoa que leva uma ação judicial ao tribunal." }
+  ] }
+,
+  { "definitions": [
+    { "word": "pay a premium", "partOfSpeech": "idiom", "enDefinition": "To pay more than the usual price.", "ptDefinition": "Pagar mais do que o preço usual." },
+    { "word": "pinch pennies", "partOfSpeech": "idiom", "enDefinition": "To be very careful about spending money.", "ptDefinition": "Ser muito cuidadoso ao gastar dinheiro." },
+    { "word": "plow money into", "partOfSpeech": "idiom", "enDefinition": "To invest a lot of money in something.", "ptDefinition": "Investir muito dinheiro em algo." },
+    { "word": "put your heads together", "partOfSpeech": "idiom", "enDefinition": "To work together to solve a problem or create an idea.", "ptDefinition": "Trabalhar juntos para resolver um problema ou criar uma ideia." }
+  ] }
 ]

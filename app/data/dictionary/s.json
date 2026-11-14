@@ -3154,5 +3154,118 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "see it coming",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To expect something before it happens.",
+        "ptDefinition": "Prever algo ou já esperar que aconteça."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "streamline operations",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To simplify how a business works so it runs more efficiently.",
+        "ptDefinition": "Simplificar as operações para tornar a empresa mais eficiente."
+      },
+      {
+        "word": "staffer",
+        "partOfSpeech": "noun",
+        "enDefinition": "A member of an organization’s staff.",
+        "ptDefinition": "Funcionário ou integrante da equipe."
+      },
+      {
+        "word": "sell yourself short",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To underestimate or downplay your own abilities.",
+        "ptDefinition": "Subestimar ou minimizar as próprias capacidades."
+      },
+      {
+        "word": "severance package",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "Pay and other benefits offered to an employee when their employment ends.",
+        "ptDefinition": "Indenização e benefícios oferecidos ao funcionário no desligamento."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "spin your wheels",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To put effort into something without making much progress.",
+        "ptDefinition": "Esforçar-se sem sair do lugar."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "step on someone’s toes",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To interfere in an area someone else is responsible for.",
+        "ptDefinition": "Invadir a área de responsabilidade de outra pessoa."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "shape up",
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To improve your behavior or performance.",
+        "ptDefinition": "Melhorar a conduta ou o desempenho."
+      },
+      {
+        "word": "sugarcoat",
+        "partOfSpeech": "verb",
+        "enDefinition": "To make something unpleasant sound better than it is.",
+        "ptDefinition": "Suavizar ou dourar a pílula ao falar de algo desagradável."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "sales territory", "partOfSpeech": "noun phrase", "enDefinition": "The customers assigned to a particular salesperson.", "ptDefinition": "Os clientes atribuídos a um determinado vendedor." },
+    { "word": "straight shooter", "partOfSpeech": "noun", "enDefinition": "A direct and honest person.", "ptDefinition": "Pessoa direta e honesta." }
+  ] }
+,
+  { "definitions": [
+    { "word": "speak up", "partOfSpeech": "phrasal verb", "enDefinition": "To express an opinion or say something that needs to be said.", "ptDefinition": "Expressar uma opinião ou dizer algo que precisa ser dito." },
+    { "word": "show your stuff", "partOfSpeech": "idiom", "enDefinition": "To demonstrate your abilities or what you can do.", "ptDefinition": "Demonstrar suas habilidades ou sua capacidade." },
+    { "word": "skill set", "partOfSpeech": "noun", "enDefinition": "The range of skills a person has.", "ptDefinition": "O conjunto de habilidades que uma pessoa possui." }
+  ] }
+,
+  { "definitions": [
+    { "word": "stealth mode", "partOfSpeech": "noun phrase", "enDefinition": "A period when a new company or product is kept secret while being developed.", "ptDefinition": "Período em que uma empresa ou produto novo é mantido em segredo durante o desenvolvimento." }
+  ] }
+,
+  { "definitions": [
+    { "word": "spread the word", "partOfSpeech": "idiom", "enDefinition": "To tell many people about something.", "ptDefinition": "Contar algo para muitas pessoas." },
+    { "word": "sank money into", "partOfSpeech": "verb phrase", "enDefinition": "Invested a large amount of money in something.", "ptDefinition": "Investiu uma grande quantia de dinheiro em algo." }
+  ] }
+,
+  { "definitions": [
+    { "word": "shoot down an idea", "partOfSpeech": "idiom", "enDefinition": "To reject or criticize an idea.", "ptDefinition": "Rejeitar ou criticar uma ideia." },
+    { "word": "step up your efforts", "partOfSpeech": "verb phrase", "enDefinition": "To increase the amount or intensity of your effort.", "ptDefinition": "Aumentar a quantidade ou intensidade do seu esforço." }
+  ] }
+,
+  { "definitions": [
+    { "word": "suffer a blow", "partOfSpeech": "idiom", "enDefinition": "To experience a serious setback or loss.", "ptDefinition": "Sofrer um revés ou perda significativa." },
+    { "word": "skyrocket", "partOfSpeech": "verb", "enDefinition": "To increase very quickly and dramatically.", "ptDefinition": "Aumentar muito rapidamente e de forma expressiva." }
+  ] }
+,
+  { "definitions": [
+    { "word": "synergy", "partOfSpeech": "noun", "enDefinition": "The extra effectiveness created when people or things work well together.", "ptDefinition": "Eficácia adicional criada quando pessoas ou coisas trabalham bem juntas." }
+  ] }
+,
+  { "definitions": [
+    { "word": "step up your game", "partOfSpeech": "idiom", "enDefinition": "To improve your performance or effort.", "ptDefinition": "Melhorar seu desempenho ou esforço." },
+    { "word": "sluggish", "partOfSpeech": "adjective", "enDefinition": "Slow or lacking energy and activity.", "ptDefinition": "Lento ou com pouca energia e atividade." }
+  ] }
 ]

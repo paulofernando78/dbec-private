@@ -196,5 +196,35 @@
         "antonyms": ["decrease", "diminish", "lower", "reduce"]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "under the gun",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Under pressure to do something quickly.",
+        "ptDefinition": "Sob pressão para fazer algo rapidamente."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "upset the apple cart",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To disrupt an existing arrangement or the usual way things work.",
+        "ptDefinition": "Perturbar a ordem das coisas ou causar transtorno."
+      },
+      {
+        "word": "up-and-comer",
+        "partOfSpeech": "noun",
+        "enDefinition": "Someone who is starting to succeed and shows potential to go further.",
+        "ptDefinition": "Pessoa em ascensão e com potencial para ir mais longe."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "uptick", "partOfSpeech": "noun", "enDefinition": "A small increase in activity, sales, or another measure.", "ptDefinition": "Pequeno aumento na atividade, nas vendas ou em outra medida." }
+  ] }
 ]

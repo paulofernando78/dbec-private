@@ -824,5 +824,75 @@
         "imgs": [{ "src": "hydrophobia.avif", "alt": "A person experiencing difficulty when reaching for a glass of water" }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "have your work cut out for you",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To face a task that will take considerable effort.",
+        "ptDefinition": "Ter pela frente uma tarefa difícil que vai exigir bastante esforço."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "head up",
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To lead or be in charge of a team, department, or project.",
+        "ptDefinition": "Liderar ou chefiar uma equipe, departamento ou projeto."
+      },
+      {
+        "word": "have issues with",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To have problems or difficulties with someone or something.",
+        "ptDefinition": "Ter problemas ou dificuldades com alguém ou algo."
+      },
+      {
+        "word": "have an attitude",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To behave in a disrespectful, defiant, or uncooperative way.",
+        "ptDefinition": "Ter uma postura desrespeitosa, desafiadora ou pouco colaborativa."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "have a word with",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To speak briefly with someone, often in private about a concern.",
+        "ptDefinition": "Ter uma conversa breve com alguém, muitas vezes em particular sobre um problema."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "hot button",
+        "partOfSpeech": "noun",
+        "enDefinition": "A topic or behavior that provokes a strong emotional reaction.",
+        "ptDefinition": "Assunto ou comportamento que provoca uma reação emocional forte."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "have a thick skin", "partOfSpeech": "idiom", "enDefinition": "To be able to accept criticism or unpleasant comments without becoming upset.", "ptDefinition": "Saber lidar com críticas ou comentários desagradáveis sem se abalar." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "hit the glass ceiling", "partOfSpeech": "idiom", "enDefinition": "To reach an invisible barrier that prevents further advancement, especially at work.", "ptDefinition": "Encontrar uma barreira invisível que impede maior avanço, especialmente no trabalho." }
+  ] }
+,
+  { "definitions": [
+    { "word": "higher-ups", "partOfSpeech": "noun", "enDefinition": "People with more authority or a higher position in an organization.", "ptDefinition": "Pessoas com mais autoridade ou posição superior em uma organização." }
+  ] }
+,
+  { "definitions": [
+    { "word": "have legs", "partOfSpeech": "idiom", "enDefinition": "To have the potential to continue or succeed.", "ptDefinition": "Ter potencial para continuar ou ser bem-sucedido." }
+  ] }
 ]

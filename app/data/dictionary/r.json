@@ -1294,5 +1294,51 @@
         "imgs": [{ "src": "roving.avif", "alt": "A traveling street vendor pushing a mobile popcorn machine through a city." }]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "reference",
+        "partOfSpeech": "noun",
+        "enDefinition": "A recommendation about a job applicant, or a person who can give one.",
+        "ptDefinition": "Referência profissional, ou a pessoa que pode recomendar um candidato a emprego."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "ruffle feathers",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To upset or annoy people by what you say or do.",
+        "ptDefinition": "Incomodar ou irritar pessoas com o que se diz ou faz."
+      },
+      {
+        "word": "rein in",
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To limit or bring someone or something under control.",
+        "ptDefinition": "Conter, limitar ou colocar sob controle."
+      },
+      {
+        "word": "rough around the edges",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Somewhat unpolished in appearance, behavior, or manners.",
+        "ptDefinition": "Um pouco rude, sem traquejo ou pouco refinado."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "raise the issue",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To bring up a matter for discussion.",
+        "ptDefinition": "Levantar uma questão para discussão."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "rich media", "partOfSpeech": "noun", "enDefinition": "Online advertising that uses interactive graphics, video, or audio.", "ptDefinition": "Publicidade online que usa gráficos interativos, vídeo ou áudio." }
+  ] }
 ]

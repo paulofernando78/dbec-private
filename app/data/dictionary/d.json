@@ -1073,5 +1073,37 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "downsize",
+        "partOfSpeech": "verb",
+        "enDefinition": "To reduce the size of a business or team, often by cutting jobs.",
+        "ptDefinition": "Reduzir o tamanho de uma empresa ou equipe, muitas vezes cortando postos de trabalho."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "detail-oriented",
+        "partOfSpeech": "adjective",
+        "enDefinition": "Someone who is detail-oriented pays close attention to small details.",
+        "ptDefinition": "Atento aos detalhes."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "dash off", "partOfSpeech": "phrasal verb", "enDefinition": "To write or do something quickly.", "ptDefinition": "Escrever ou fazer algo rapidamente." }
+  ] }
+,
+  { "definitions": [
+    { "word": "downplay", "partOfSpeech": "verb", "enDefinition": "To make something seem less important or serious than it is.", "ptDefinition": "Fazer algo parecer menos importante ou grave do que é." }
+  ] }
+,
+  { "definitions": [
+    { "word": "dip your toes into", "partOfSpeech": "idiom", "enDefinition": "To try something cautiously before becoming fully involved.", "ptDefinition": "Experimentar algo com cautela antes de se envolver completamente." }
+  ] }
 ]

@@ -642,5 +642,21 @@
         "seeAlso": ["arouse", "inspire", "provoke"]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "entry-level position",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "A job intended for someone with little or no experience in the field.",
+        "ptDefinition": "Cargo de nível inicial, destinado a quem tem pouca ou nenhuma experiência na área."
+      },
+      {
+        "word": "earn your stripes",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To earn respect or responsibility by proving yourself over time.",
+        "ptDefinition": "Conquistar respeito ou responsabilidade ao demonstrar competência com o tempo."
+      }
+    ]
   }
 ]

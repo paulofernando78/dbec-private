@@ -188,6 +188,11 @@ export const links: NavItem[] = [
             label: "business 1",
             icon: MessageSquareQuote,
           },
+          {
+            href: "/expressions/business-2",
+            label: "business 2",
+            icon: MessageSquareQuote,
+          },
         ],
       },
     ],

@@ -828,5 +828,41 @@
         "antonyms": ["cut off", "cut short"]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "nest egg",
+        "partOfSpeech": "noun",
+        "enDefinition": "Money saved for future use, especially for retirement.",
+        "ptDefinition": "Reserva financeira para o futuro, especialmente para a aposentadoria."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "nitpicker",
+        "partOfSpeech": "noun",
+        "enDefinition": "Someone who frequently criticizes minor details.",
+        "ptDefinition": "Pessoa que costuma apontar defeitos insignificantes."
+      },
+      {
+        "word": "nitpick",
+        "partOfSpeech": "verb",
+        "enDefinition": "To criticize small details that do not matter much.",
+        "ptDefinition": "Implicar com detalhes sem importância."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "no-nonsense",
+        "partOfSpeech": "adjective",
+        "enDefinition": "Practical and direct, with little patience for distractions.",
+        "ptDefinition": "Prático e direto, com pouca paciência para distrações."
+      }
+    ]
   }
 ]

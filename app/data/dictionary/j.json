@@ -165,5 +165,19 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "jump down someone’s throat",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To react with sudden, harsh criticism.",
+        "ptDefinition": "Repreender alguém de forma brusca e exagerada."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "jump-start sales", "partOfSpeech": "verb phrase", "enDefinition": "To give sales a quick boost or strong beginning.", "ptDefinition": "Dar um impulso rápido ou forte início às vendas." }
+  ] }
 ]

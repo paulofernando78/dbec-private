@@ -55,6 +55,8 @@ export default [
       "/expressions/business/:lesson",
       "routes/business-expression.tsx",
     ),
+    route("/expressions/business-2", "routes/business-two.tsx"),
+    route("/expressions/business-2/:lesson", "routes/business-two-lesson.tsx"),
     route("/expressions/:category?", "routes/expressions.tsx"),
     route("/grammar/:topic?", "routes/grammar.tsx"),
     route("/pronunciation/:topic?", "routes/pronunciation.tsx"),

@@ -109,4 +109,16 @@
       }
     ]
   }
+,
+  { "definitions": [
+    { "word": "venture funding", "partOfSpeech": "noun phrase", "enDefinition": "Money invested in a new business with high growth potential.", "ptDefinition": "Capital investido em um novo negócio com alto potencial de crescimento." }
+  ] }
+,
+  { "definitions": [
+    { "word": "viral marketing", "partOfSpeech": "noun phrase", "enDefinition": "Marketing that encourages people to share information about a product with others.", "ptDefinition": "Marketing que incentiva as pessoas a compartilhar informações sobre um produto." }
+  ] }
+,
+  { "definitions": [
+    { "word": "value proposition", "partOfSpeech": "noun phrase", "enDefinition": "The benefit a product promises to provide to customers.", "ptDefinition": "O benefício que um produto promete oferecer aos clientes." }
+  ] }
 ]

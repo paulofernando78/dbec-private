@@ -820,5 +820,27 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "low man on the totem pole",
+        "partOfSpeech": "idiom",
+        "enDefinition": "The most junior person in an organization or hierarchy.",
+        "ptDefinition": "A pessoa de menor nível na hierarquia."
+      }
+    ]
   }
+,
+  { "definitions": [
+    { "word": "leeway", "partOfSpeech": "noun", "enDefinition": "Freedom to make decisions or change arrangements.", "ptDefinition": "Liberdade para tomar decisões ou alterar acordos." }
+  ] }
+,
+  { "definitions": [
+    { "word": "leverage", "partOfSpeech": "verb", "enDefinition": "To use something to achieve a desired result.", "ptDefinition": "Usar algo para alcançar um resultado desejado." }
+  ] }
+,
+  { "definitions": [
+    { "word": "leg to stand on", "partOfSpeech": "idiom", "enDefinition": "A valid basis or convincing support for an argument or claim.", "ptDefinition": "Base válida ou argumento convincente para uma alegação." }
+  ] }
 ]

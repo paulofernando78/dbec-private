@@ -646,5 +646,49 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "in the black",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Making a profit or having a positive balance.",
+        "ptDefinition": "No azul, com lucro ou saldo positivo."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "interpersonal skills",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "Abilities that help someone communicate and work well with other people.",
+        "ptDefinition": "Habilidades de comunicação e relacionamento com outras pessoas."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "immediate supervisor",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "The person an employee reports to directly.",
+        "ptDefinition": "Chefe direto ou superior imediato."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "issues", "partOfSpeech": "noun", "enDefinition": "Problems or matters that need to be discussed.", "ptDefinition": "Problemas ou assuntos que precisam ser discutidos." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "infighting", "partOfSpeech": "noun", "enDefinition": "Conflict or competition between people in the same group.", "ptDefinition": "Conflito ou competição entre pessoas do mesmo grupo." }
+  ] }
+,
+  { "definitions": [
+    { "word": "iron out", "partOfSpeech": "phrasal verb", "enDefinition": "To resolve problems or details through discussion.", "ptDefinition": "Resolver problemas ou detalhes por meio de discussão." }
+  ] }
 ]

@@ -2196,4 +2196,35 @@
       }
     ]
   }
+,
+  { "definitions": [
+    { "word": "call the shots", "partOfSpeech": "idiom", "enDefinition": "To be the person who makes the decisions.", "ptDefinition": "Ser a pessoa que toma as decisões." },
+    { "word": "caught someone off guard", "partOfSpeech": "idiom", "enDefinition": "Surprised someone when they were not prepared.", "ptDefinition": "Pegou alguém de surpresa quando a pessoa não estava preparada." },
+    { "word": "calling on", "partOfSpeech": "phrasal verb", "enDefinition": "Visiting or contacting customers as part of sales work.", "ptDefinition": "Visitar ou contatar clientes como parte do trabalho de vendas." },
+    { "word": "cherry-pick", "partOfSpeech": "verb", "enDefinition": "To choose only the best or most desirable items.", "ptDefinition": "Escolher apenas os itens melhores ou mais desejáveis." },
+    { "word": "cut-and-dried", "partOfSpeech": "adjective", "enDefinition": "Clear and already decided, with little room for disagreement.", "ptDefinition": "Claro e já definido, com pouca margem para discordância." }
+  ] }
+,
+  { "definitions": [
+    { "word": "catch someone off guard", "partOfSpeech": "idiom", "enDefinition": "To surprise someone when they are not prepared.", "ptDefinition": "Pegar alguém de surpresa quando a pessoa não está preparada." },
+    { "word": "circle back", "partOfSpeech": "phrasal verb", "enDefinition": "To return to a subject or contact someone again later.", "ptDefinition": "Retomar um assunto ou entrar em contato novamente mais tarde." }
+  ] }
+,
+  { "definitions": [
+    { "word": "calculated risk", "partOfSpeech": "noun phrase", "enDefinition": "A risk taken after carefully considering its possible results.", "ptDefinition": "Risco assumido após considerar cuidadosamente seus possíveis resultados." }
+  ] }
+,
+  { "definitions": [
+    { "word": "change tack", "partOfSpeech": "idiom", "enDefinition": "To change your approach or strategy.", "ptDefinition": "Mudar sua abordagem ou estratégia." }
+  ] }
+,
+  { "definitions": [
+    { "word": "class-action lawsuit", "partOfSpeech": "noun phrase", "enDefinition": "A lawsuit brought by one or more people on behalf of a larger group.", "ptDefinition": "Ação judicial movida por uma ou mais pessoas em nome de um grupo maior." },
+    { "word": "come under fire", "partOfSpeech": "idiom", "enDefinition": "To be strongly criticized or attacked.", "ptDefinition": "Ser fortemente criticado ou atacado." },
+    { "word": "conflict of interest", "partOfSpeech": "noun phrase", "enDefinition": "A situation in which personal interests could affect professional judgment.", "ptDefinition": "Situação em que interesses pessoais podem afetar o julgamento profissional." }
+  ] }
+,
+  { "definitions": [
+    { "word": "core competency", "partOfSpeech": "noun phrase", "enDefinition": "A central ability or area of expertise of a person or company.", "ptDefinition": "Habilidade central ou área principal de especialização de uma pessoa ou empresa." }
+  ] }
 ]

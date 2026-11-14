@@ -379,5 +379,59 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "on the line",
+        "partOfSpeech": "idiom",
+        "enDefinition": "At risk of being lost.",
+        "ptDefinition": "Em risco."
+      },
+      {
+        "word": "on the job market",
+        "partOfSpeech": "phrase",
+        "enDefinition": "Available for work and looking for a job.",
+        "ptDefinition": "À procura de emprego, disponível no mercado de trabalho."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "once and for all",
+        "partOfSpeech": "idiom",
+        "enDefinition": "In a final way that settles something permanently.",
+        "ptDefinition": "De uma vez por todas."
+      },
+      {
+        "word": "over the top",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Excessive or more extreme than the situation calls for.",
+        "ptDefinition": "Exagerado ou excessivo."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "open-door policy", "partOfSpeech": "noun phrase", "enDefinition": "A policy of making yourself available for people to discuss problems or questions.", "ptDefinition": "Política de manter-se disponível para ouvir problemas ou perguntas." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "out of pocket", "partOfSpeech": "idiom", "enDefinition": "Temporarily unavailable, especially because one is away from work.", "ptDefinition": "Temporariamente indisponível, especialmente por estar fora do trabalho." }
+  ] }
+,
+  { "definitions": [
+    { "word": "old-boy network", "partOfSpeech": "noun phrase", "enDefinition": "An informal network that helps certain people through shared background or connections.", "ptDefinition": "Rede informal que favorece pessoas por origem ou conexões em comum." }
+  ] }
+,
+  { "definitions": [
+    { "word": "on the fence", "partOfSpeech": "idiom", "enDefinition": "Unable to decide or unwilling to choose a side.", "ptDefinition": "Indeciso ou sem querer escolher um lado." }
+  ] }
+,
+  { "definitions": [
+    { "word": "on top of things", "partOfSpeech": "idiom", "enDefinition": "In control of tasks and aware of what is happening.", "ptDefinition": "No controle das tarefas e ciente do que está acontecendo." }
+  ] }
 ]

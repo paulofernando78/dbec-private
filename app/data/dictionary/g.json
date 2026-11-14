@@ -1447,5 +1447,88 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "golden opportunity",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "An unusually good chance to do something.",
+        "ptDefinition": "Uma excelente oportunidade."
+      },
+      {
+        "word": "go ballistic",
+        "partOfSpeech": "verb phrase",
+        "enDefinition": "To become extremely angry.",
+        "ptDefinition": "Ficar furioso ou perder a cabeça."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "get something off your chest",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To talk about something that has been bothering you so you can feel relieved.",
+        "ptDefinition": "Desabafar sobre algo que estava incomodando."
+      },
+      {
+        "word": "grunt work",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "Routine, low-level work that requires little skill or judgment.",
+        "ptDefinition": "Trabalho braçal ou rotineiro de pouca responsabilidade."
+      },
+      {
+        "word": "GPA",
+        "partOfSpeech": "abbreviation",
+        "enDefinition": "Grade point average, a numerical measure of academic performance.",
+        "ptDefinition": "Média de notas, uma medida numérica do desempenho acadêmico."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "get the go-ahead",
+        "partOfSpeech": "idiom",
+        "enDefinition": "To receive permission to start or proceed.",
+        "ptDefinition": "Receber autorização para começar ou seguir em frente."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "going forward", "partOfSpeech": "adverbial phrase", "enDefinition": "From this point onward.", "ptDefinition": "Daqui para frente." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "good fit", "partOfSpeech": "noun phrase", "enDefinition": "A person or thing that is well suited to a role or situation.", "ptDefinition": "Pessoa ou coisa adequada a uma função ou situação." },
+    { "word": "opportunities for growth", "partOfSpeech": "noun phrase", "enDefinition": "Chances to develop professionally or take on greater responsibility.", "ptDefinition": "Oportunidades de desenvolvimento profissional ou de assumir mais responsabilidades." }
+  ] }
+,
+  { "definitions": [
+    { "word": "give notice", "partOfSpeech": "verb phrase", "enDefinition": "To formally tell an employer that you are leaving your job.", "ptDefinition": "Informar formalmente ao empregador que você vai deixar o emprego." },
+    { "word": "ground floor", "partOfSpeech": "idiom", "enDefinition": "The earliest stage of a project or business, when it is being started.", "ptDefinition": "A fase inicial de um projeto ou negócio." }
+  ] }
+,
+  { "definitions": [
+    { "word": "gaining traction", "partOfSpeech": "idiom", "enDefinition": "Beginning to become successful or accepted.", "ptDefinition": "Começando a alcançar sucesso ou aceitação." },
+    { "word": "generate awareness", "partOfSpeech": "verb phrase", "enDefinition": "To make more people know about a product, issue, or idea.", "ptDefinition": "Fazer mais pessoas conhecerem um produto, assunto ou ideia." }
+  ] }
+,
+  { "definitions": [
+    { "word": "get in on the act", "partOfSpeech": "idiom", "enDefinition": "To become involved in an activity or opportunity.", "ptDefinition": "Participar de uma atividade ou oportunidade." }
+  ] }
+,
+  { "definitions": [
+    { "word": "great lengths", "partOfSpeech": "noun phrase", "enDefinition": "A lot of effort or extreme measures.", "ptDefinition": "Muito esforço ou medidas extremas." },
+    { "word": "grounds that", "partOfSpeech": "noun phrase", "enDefinition": "The reasons or basis for an argument or legal action.", "ptDefinition": "Os motivos ou fundamentos de um argumento ou ação judicial." }
+  ] }
+,
+  { "definitions": [
+    { "word": "go up against", "partOfSpeech": "phrasal verb", "enDefinition": "To compete against someone or something.", "ptDefinition": "Competir contra alguém ou algo." },
+    { "word": "grab a slice of the market", "partOfSpeech": "idiom", "enDefinition": "To gain part of the customers or sales in a market.", "ptDefinition": "Conquistar parte dos clientes ou das vendas de um mercado." }
+  ] }
 ]

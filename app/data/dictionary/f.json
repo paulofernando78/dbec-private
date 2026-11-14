@@ -1007,5 +1007,29 @@
         "seeAlso": ["fossil fuel", "gasoline", "energy"]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "from the get-go",
+        "partOfSpeech": "idiom",
+        "enDefinition": "From the very beginning.",
+        "ptDefinition": "Desde o início."
+      }
+    ]
   }
+,
+  {
+    "definitions": [
+      { "word": "feedback", "partOfSpeech": "noun", "enDefinition": "Comments about how well someone is doing and how they can improve.", "ptDefinition": "Comentários sobre o desempenho de alguém e como melhorar." }
+    ]
+  }
+,
+  { "definitions": [
+    { "word": "far from it", "partOfSpeech": "expression", "enDefinition": "Used to say that something is very different from what was just suggested.", "ptDefinition": "Usado para dizer que algo é muito diferente do que foi sugerido." }
+  ] }
+,
+  { "definitions": [
+    { "word": "fledgling", "partOfSpeech": "adjective", "enDefinition": "New and still developing.", "ptDefinition": "Novo e ainda em desenvolvimento." }
+  ] }
 ]

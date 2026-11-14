@@ -26,11 +26,14 @@ export const Header = () => {
 
   const isPresentationPage =
     location.pathname === "/" || location.pathname === "/about";
+  const loginParams = new URLSearchParams(location.search);
+  const sessionExpired = loginParams.get("login") === "expired";
+
   useEffect(() => {
-    if (new URLSearchParams(location.search).get("login") === "required") {
+    if (sessionExpired || new URLSearchParams(location.search).get("login") === "required") {
       setIsLoginOpen(true);
     }
-  }, [location.search]);
+  }, [location.search, sessionExpired]);
 
   useEffect(() => {
     const openLogin = () => {
@@ -99,7 +102,13 @@ export const Header = () => {
       const result = (await response.json()) as { redirectTo?: string };
       const redirectTo = result.redirectTo ?? "/dashboard";
       localStorage.setItem("dbec_dashboard_path", redirectTo);
-      window.location.assign(redirectTo);
+      const next = loginParams.get("next");
+      const destination = next?.startsWith("/") ? URL.parse(next, window.location.origin) : null;
+      window.location.assign(
+        sessionExpired && destination?.origin === window.location.origin
+          ? destination.href
+          : redirectTo,
+      );
       return;
     }
 
@@ -186,6 +195,12 @@ export const Header = () => {
                   icon={<X />}
                 />
               </div>
+
+              {sessionExpired && (
+                <p className="mb-4 text-sm" role="status">
+                  Sua sessão expirou por inatividade. Faça login novamente para continuar.
+                </p>
+              )}
 
               <label className="mb-3 block">
                 <span className="mb-1 block font-semibold">Usuário</span>
