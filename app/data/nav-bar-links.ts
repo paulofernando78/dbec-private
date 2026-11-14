@@ -148,6 +148,21 @@ export const links: NavItem[] = [
             icon: BookMarked,
           },
           {
+            href: "/grammar/prepositions",
+            label: "prepositions",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/collocations",
+            label: "collocations",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/punctuation",
+            label: "punctuation",
+            icon: BookMarked,
+          },
+          {
             href: "/grammar/passive-voice",
             label: "passive voice",
             icon: BookMarked,

@@ -1,12 +1,14 @@
 export type GrammarExample = {
+  incorrect?: string;
   english: string;
   portuguese: string;
 };
 
 export type GrammarUsage = {
+  image?: { src: string; alt: string; width: number; height: number };
   title: string;
   meaning: string;
-  pattern: string;
+  pattern?: string;
   examples: readonly GrammarExample[];
 };
 

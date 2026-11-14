@@ -232,6 +232,7 @@ export const coreGrammarTopics = [
         examples: [
           { english: "I've visited Argentina.", portuguese: "Eu já visitei a Argentina." },
           { english: "Has she ever tried sushi?", portuguese: "Ela já experimentou sushi?" },
+          { english: "I've lived in London before.", portuguese: "Já morei em Londres." },
         ],
       },
       {
@@ -244,12 +245,34 @@ export const coreGrammarTopics = [
         ],
       },
       {
-        title: "Períodos ainda não encerrados",
-        meaning: "Use since para indicar o ponto inicial e for para indicar a duração.",
+        title: "Situações que continuam até agora",
+        meaning:
+          "Em I've lived here since 2018, a pessoa começou a morar aqui em 2018 e ainda mora aqui. Esse é um uso normal do present perfect. Use since para indicar quando a situação começou e for para dizer quanto tempo ela dura. Em português, normalmente usamos o presente com desde ou há.",
         pattern: "have/has + particípio passado + since/for",
         examples: [
+          { english: "I've lived here since 2018.", portuguese: "Moro aqui desde 2018." },
           { english: "I've lived here for five years.", portuguese: "Moro aqui há cinco anos." },
-          { english: "She's known him since 2022.", portuguese: "Ela o conhece desde 2022." },
+          { english: "I've been here for two hours.", portuguese: "Estou aqui há duas horas." },
+        ],
+      },
+    ],
+    warnings: [
+      {
+        title: "I've been in London × I've been to London",
+        explanation:
+          "Been é o particípio de be. Em I've been in London since Monday, in London indica onde a pessoa está e since Monday mostra que a estadia começou na segunda e continua. Já I've been to London fala de uma visita concluída, sem dizer quando. O mesmo verbo pode ter leituras diferentes: I've lived in London before conta uma experiência anterior e não diz onde a pessoa mora hoje.",
+        examples: [
+          { english: "I've been in London since Monday.", portuguese: "Estou em Londres desde segunda-feira." },
+          { english: "I've been to London.", portuguese: "Já estive em Londres." },
+        ],
+      },
+      {
+        title: "For indica duração",
+        explanation:
+          "For five years significa por cinco anos. Na primeira frase, os cinco anos chegam até o presente; na segunda, correspondem a um período já encerrado.",
+        examples: [
+          { english: "I've lived here for five years.", portuguese: "Moro aqui há cinco anos." },
+          { english: "I lived there for five years.", portuguese: "Morei lá por cinco anos." },
         ],
       },
     ],

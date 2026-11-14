@@ -28,6 +28,12 @@ export default function Grammar() {
   const section = subgroup && "subgroup" in subgroup ? subgroup.subgroup : "grammar";
 
   const showContents = topic.id === "prefixes-suffixes";
+  const content = (
+    <>
+      <p className="mb-4 text-slate-500">{topic.description}</p>
+      <GrammarTopic topic={topic} sectionAnchors={showContents} />
+    </>
+  );
 
   return (
     <div>
@@ -48,10 +54,7 @@ export default function Grammar() {
           ]}
         />
       )}
-      <Card title={topic.title}>
-        <p className="mb-4 text-slate-500">{topic.description}</p>
-        <GrammarTopic topic={topic} sectionAnchors={showContents} />
-      </Card>
+      {topic.id === "punctuation" ? content : <Card title={topic.title}>{content}</Card>}
       <div id={showContents ? "grammar-exercises" : undefined} className="scroll-mt-4">
         <GrammarExercises topicId={topic.id} />
       </div>

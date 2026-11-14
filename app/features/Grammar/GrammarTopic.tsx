@@ -22,15 +22,17 @@ export function GrammarTopic({
           <section
             key={usage.title}
             id={sectionAnchors ? `grammar-usage-${index + 1}` : undefined}
-            className="scroll-mt-4 rounded-xl bg-(--background) p-4"
+            className={usage.image ? "scroll-mt-4" : "scroll-mt-4 rounded-xl bg-(--background) p-4"}
           >
             <h3 className="text-xl font-black text-(--text-color)">
               {usage.title}
             </h3>
             <p className="mb-2 text-slate-500">{usage.meaning}</p>
-            <p className="mb-3 rounded-lg bg-(--surface) px-3 py-2 font-mono text-sm">
-              {usage.pattern}
-            </p>
+            {usage.pattern && (
+              <p className="mb-3 rounded-lg bg-(--surface) px-3 py-2 font-mono text-sm">
+                {usage.pattern}
+              </p>
+            )}
             <ul className="grid gap-2">
               {usage.examples.map((example) => (
                 <li key={example.english} className="flex items-center gap-3">
@@ -51,6 +53,13 @@ export function GrammarTopic({
                 </li>
               ))}
             </ul>
+            {usage.image && (
+              <img
+                {...usage.image}
+                loading="lazy"
+                className="mx-auto mt-4 h-auto max-w-full rounded-lg"
+              />
+            )}
           </section>
         ))}
       </div>
@@ -77,6 +86,12 @@ export function GrammarTopic({
                   wrapperClassName="shrink-0"
                 />
                 <span>
+                  {example.incorrect && (
+                    <span className="block text-sm">
+                      <span className="sr-only">Forma incorreta: </span>
+                      <del>{example.incorrect}</del>
+                    </span>
+                  )}
                   <strong>{example.english}</strong>{" "}
                   <span className="opacity-75">{example.portuguese}</span>
                 </span>

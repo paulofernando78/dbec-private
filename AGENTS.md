@@ -1,3 +1,7 @@
+# Tailwind CSS
+
+- Use Tailwind's spacing scale for dimensions and spacing instead of arbitrary pixel values. For example, use `min-h-17` for `68px` and `w-15` for `60px` at the default root font size. When the scale cannot express the intended value, use an equivalent relative unit such as `rem`.
+
 # Project image style
 
 - For every generated course illustration, use the images from A1 Unit 1, Lesson 1 as the mandatory visual reference.

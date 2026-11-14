@@ -101,7 +101,7 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
 
   if (phonemes.length > 0) {
     return (
-      <li className="flex min-h-[68px] flex-wrap items-center gap-3">
+      <li className="flex min-h-17 flex-wrap items-center gap-3">
         {phonemes.map((phoneme, index) => (
           <Fragment key={`${phoneme}-${index}`}>
             {index > 0 && (
@@ -117,7 +117,7 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
               src={audioSources[index] ?? phoneme}
               fallbackText={phoneme}
               showIcon={false}
-              wrapperClassName="w-[60px]! min-w-[60px]!"
+              wrapperClassName="w-15! min-w-15!"
             >
               <Phonetics>{phoneme}</Phonetics>
             </Audio>
@@ -128,7 +128,7 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
   }
 
   return (
-    <li className="flex min-h-[68px] items-center gap-3">
+    <li className="flex min-h-17 items-center gap-3">
       <Audio
         asButton
         ariaLabel={`Play ${audioLabel}`}

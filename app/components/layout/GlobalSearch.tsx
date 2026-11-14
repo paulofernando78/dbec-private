@@ -187,6 +187,27 @@ const pageItems: readonly SearchItem[] = [
     keywords: "who what questions do does did auxiliar sujeito objeto perguntas",
   },
   {
+    title: "Prepositions",
+    category: "Grammar",
+    description: "In, on, at, since, for and common mistakes.",
+    href: "/grammar/prepositions",
+    keywords: "preposition preposições preposicao tempo lugar duração",
+  },
+  {
+    title: "Collocations",
+    category: "Grammar",
+    description: "Common word combinations like make a decision and heavy rain.",
+    href: "/grammar/collocations",
+    keywords: "collocation colocações colocacoes combinações make do take have",
+  },
+  {
+    title: "Punctuation",
+    category: "Grammar",
+    description: "How commas change the meaning of a sentence.",
+    href: "/grammar/punctuation",
+    keywords: "punctuation pontuação pontuacao comma vírgula virgula",
+  },
+  {
     title: "Passive Voice",
     category: "Grammar",
     description: "Be + past participle.",
