@@ -1060,4 +1060,20 @@
     { "word": "avoid legal pitfalls", "partOfSpeech": "verb phrase", "enDefinition": "To avoid mistakes or situations that could cause legal problems.", "ptDefinition": "Evitar erros ou situações que possam causar problemas jurídicos." },
     { "word": "a lot of clout", "partOfSpeech": "noun phrase", "enDefinition": "A lot of influence or power.", "ptDefinition": "Muita influência ou poder." }
   ] }
+,
+  { "definitions": [
+    {
+      "word": "attaboy",
+      "partOfSpeech": "interjection / informal expression",
+      "enDefinition": "Used to express approval, encouragement, or praise for a job well done.",
+      "ptDefinition": "Usado para expressar aprovação, incentivo ou elogio por um trabalho bem feito; algo como “muito bem!” ou “é isso aí!”.",
+      "examples": [
+        {
+          "enExample": "Attaboy! You finally got the presentation finished.",
+          "ptExample": "Muito bem! Finalmente você terminou a apresentação."
+        }
+      ],
+      "seeAlso": ["good job", "well done", "way to go"]
+    }
+  ] }
 ]

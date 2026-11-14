@@ -34,13 +34,15 @@ type VideoPlayerProps = {
   src?: string;
   videoId?: string;
   title?: string;
-  instruction: string;
+  instruction?: string;
+  compact?: boolean;
 };
 
 export const VideoPlayer = ({
   src,
   videoId,
   instruction,
+  compact = false,
 }: VideoPlayerProps) => {
   const embedUrl = getEmbedUrl(src, videoId);
 
@@ -49,7 +51,7 @@ export const VideoPlayer = ({
   if (src?.endsWith(".mp4")) {
     return (
       <>
-        <p className="mb-4 font-bold">{instruction}</p>
+        {instruction && <p className="mb-4 font-bold">{instruction}</p>}
 
         <video
           className="
@@ -72,23 +74,23 @@ export const VideoPlayer = ({
 
   return (
     <>
-      <p
+      {instruction && <p
         className="
         mb-4
         font-bold
       "
       >
         {instruction}
-      </p>
+      </p>}
       <div
-        className="
+        className={`
           w-full
-          mb-4
           aspect-video
           border
           rounded-lg
           overflow-hidden
-        "
+          ${compact ? "min-h-[202px]" : "mb-4"}
+        `}
       >
         <iframe
           className="

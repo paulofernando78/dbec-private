@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router";
+import { Disc3 } from "lucide-react";
 
 import { PageHeader } from "@/components/content/PageHeader";
 import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
@@ -11,7 +12,7 @@ export default function SongsBand() {
   const { band: bandSlug } = useParams();
   const band = findBand(bandSlug);
   const [searchParams] = useSearchParams();
-  const selectedAlbum = searchParams.get("album") ?? undefined;
+  const [selectedAlbum, setSelectedAlbum] = useState(searchParams.get("album") ?? undefined);
 
   if (!band) {
     return (
@@ -111,10 +112,29 @@ export default function SongsBand() {
           initialId={selectedAlbum}
           title="Albums"
           kind="album"
+          onSelect={setSelectedAlbum}
         />
       ) : (
         <Card inset title="Songs">
           <p className="text-slate-500">No songs added yet.</p>
+        </Card>
+      )}
+
+      {selectedAlbum && (
+        <Card inset title="Tracks">
+          <ol className="grid divide-y divide-slate-300">
+            {(albums.find((album) => album.id === selectedAlbum)?.songs ?? []).map((song) => (
+              <li key={song.slug}>
+                <Link
+                  to={`/songs/${band.slug}/${song.slug}`}
+                  className="flex items-center gap-3 rounded-lg px-2 py-3 font-bold hover:bg-(--background)"
+                >
+                  <Disc3 aria-hidden="true" className="size-5 shrink-0" />
+                  {song.title}
+                </Link>
+              </li>
+            ))}
+          </ol>
         </Card>
       )}
     </div>

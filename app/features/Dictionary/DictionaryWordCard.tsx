@@ -100,10 +100,13 @@ export function DictionaryWordCard({
               )}
               <div className="min-w-0 flex-1">
                 {example.enExample && (
-                  <p>{example.enExample}</p>
+                  <span>{example.enExample}</span>
                 )}
                 {example.ptExample && (
-                  <Portuguese>{example.ptExample}</Portuguese>
+                  <>
+                    <span> — </span>
+                    <Portuguese>{example.ptExample}</Portuguese>
+                  </>
                 )}
               </div>
             </div>

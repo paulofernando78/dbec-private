@@ -67,6 +67,50 @@ const studioAlbums = [
   },
 ];
 
+const rustyCageLyrics = [
+  "Oh, you wired me awake",
+  "And hit me with a hand of broken nails",
+  "Yeah, you tied my lead and pulled my chain",
+  "To watch my blood begin to boil",
+  "But I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+  "Yeah, I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+  "Too cold to start a fire",
+  "I'm burning diesel, burning dinosaur bones",
+  "Yeah, I'll take the river down to still water",
+  "And ride a pack of dogs",
+  "But I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+  "Yeah, I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+  "Hit like a Phillips head into my brain",
+  "It's gonna be too dark to sleep again",
+  "Cutting my teeth on bars and rusty chains",
+  "I'm gonna break my rusty cage and run",
+  "When the forest burns along the road",
+  "Like God's eyes in my headlights",
+  "And when the dogs are looking for their bones",
+  "And it's raining icepicks on your steel shore",
+  "Well, I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+  "Well, I'm gonna break, I'm gonna break my",
+  "I'm gonna break my rusty cage and run",
+].map((english) => ({ english, portuguese: "" }));
+
+const youtubeUrls: Record<string, string> = {
+  "Rusty Cage": "https://www.youtube.com/watch?v=pBZs_Py-1_0",
+  "Black Hole Sun": "https://www.youtube.com/watch?v=3mbBbFH9fAg",
+  "Jesus Christ Pose": "https://www.youtube.com/watch?v=14r7y6rM6zA",
+  "Fell on Black Days": "https://www.youtube.com/watch?v=ySzrJ4GRF7s",
+  "Spoonman": "https://www.youtube.com/watch?v=T0_zzCLLRvE",
+  "Outshined": "https://www.youtube.com/watch?v=sNh-iw7gsuI",
+  "My Wave": "https://www.youtube.com/watch?v=HEbYxEXM2cE",
+  "Pretty Noose": "https://www.youtube.com/watch?v=f8nkHrv_4Mg",
+  "The Day I Tried to Live": "https://www.youtube.com/watch?v=iUhoOQdNAKQ",
+  "Burden in My Hand": "https://www.youtube.com/watch?v=k0JTyheCkAo",
+};
+
 export const soundgarden: Band = {
   slug: "soundgarden",
   name: "Soundgarden",
@@ -74,12 +118,13 @@ export const soundgarden: Band = {
   artistPhoto: "https://c02.purpledshub.com/uploads/sites/16/2023/04/soundgarden_universal_music_2012.jpg",
   albumCovers: Object.fromEntries(studioAlbums.map(({ title, coverUrl }) => [title, coverUrl])),
   songs: studioAlbums.flatMap(({ title: album, year, tracks }) =>
-    tracks.map((title) => ({
+    tracks.filter((title) => youtubeUrls[title]).map((title) => ({
       slug: title.toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-").replace(/-$/, ""),
       title,
       album,
       year,
-      lines: [],
+      youtubeUrl: youtubeUrls[title],
+      lines: title === "Rusty Cage" ? rustyCageLyrics : [],
     })),
   ),
 };

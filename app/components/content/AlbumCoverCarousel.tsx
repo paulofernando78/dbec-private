@@ -16,11 +16,13 @@ export function AlbumCoverCarousel({
   title,
   kind,
   initialId,
+  onSelect,
 }: {
   albums: AlbumCover[];
   title: string;
   kind: "artist" | "album";
   initialId?: string;
+  onSelect?: (id: string) => void;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(
     () => Math.max(0, albums.findIndex((item) => item.id === initialId)),
@@ -106,8 +108,8 @@ export function AlbumCoverCarousel({
                 transform: `translateX(calc(${offset * 62}% + ${dragOffset}px)) rotateY(${offset === 0 ? 0 : -Math.sign(offset) * 48}deg) scale(${offset === 0 ? 1 : 0.83})`,
               },
             };
-            return (
-              <Link key={item.id} to={item.to} draggable={false} {...coverProps}>
+            const cover = (
+              <>
                 <Disc3 aria-hidden="true" className="absolute inset-0 m-auto size-1/3 text-slate-400" />
                 {item.coverUrl && (
                   <img
@@ -118,6 +120,15 @@ export function AlbumCoverCarousel({
                     className="absolute inset-0 size-full object-cover"
                   />
                 )}
+              </>
+            );
+            return onSelect ? (
+              <button key={item.id} type="button" onClick={() => { setSelectedIndex(index); onSelect(item.id); }} draggable={false} {...coverProps}>
+                {cover}
+              </button>
+            ) : (
+              <Link key={item.id} to={item.to} draggable={false} {...coverProps}>
+                {cover}
               </Link>
             );
           })}

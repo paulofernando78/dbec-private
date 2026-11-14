@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { Disc3 } from "lucide-react";
 
 import { PageHeader } from "@/components/content/PageHeader";
+import { AlbumCoverCarousel } from "@/components/content/AlbumCoverCarousel";
 import { Card } from "@/components/ui/Card";
 import { albumId, findBand } from "@/data/songs/index";
 
@@ -9,8 +11,18 @@ export default function SongsAlbum() {
   const { band: bandSlug, album } = useParams();
   const band = findBand(bandSlug);
   const bandPath = band ? `/songs/${band.slug}` : "/songs";
-  const tracks = band?.songs.filter((song) => albumId(song.album, song.year) === album) ?? [];
-  const firstTrack = tracks[0];
+  const albums = band?.songs.reduce<{ id: string; title: string; year: number; songs: typeof band.songs }[]>(
+    (groups, song) => {
+      const existing = groups.find((group) => group.title === song.album && group.year === song.year);
+      if (existing) existing.songs.push(song);
+      else groups.push({ id: albumId(song.album, song.year), title: song.album, year: song.year, songs: [song] });
+      return groups;
+    },
+    [],
+  ) ?? [];
+  const [selectedAlbum, setSelectedAlbum] = useState(album);
+  const selected = albums.find((item) => item.id === selectedAlbum);
+  const firstTrack = selected?.songs[0];
 
   if (!band || !firstTrack) {
     return (
@@ -22,25 +34,32 @@ export default function SongsAlbum() {
     );
   }
 
-  const coverUrl = band.albumCovers?.[firstTrack.album];
+  const albumCovers = albums.map(({ id, title, year }) => ({
+    id,
+    title,
+    year,
+    coverUrl: band.albumCovers?.[title],
+    to: `${bandPath}/albums/${id}`,
+  }));
 
   return (
     <div>
-      <Link className="mb-3 inline-block text-sm font-bold underline" to={bandPath}>
-        Back to {band.name}
-      </Link>
       <PageHeader
         eyebrow={`Content • Songs • ${band.name}`}
         title={firstTrack.album}
         description={String(firstTrack.year)}
       />
 
-      {coverUrl && (
-        <img src={coverUrl} alt="" className="mb-4 aspect-square w-48 rounded-lg object-cover" />
-      )}
+      <AlbumCoverCarousel
+        albums={albumCovers}
+        initialId={selectedAlbum}
+        title="Albums"
+        kind="album"
+        onSelect={setSelectedAlbum}
+      />
       <Card inset title="Tracks">
         <ol className="grid divide-y divide-slate-300">
-          {tracks.map((song) => (
+          {selected.songs.map((song) => (
             <li key={song.slug}>
               <Link
                 to={`${bandPath}/${song.slug}`}
