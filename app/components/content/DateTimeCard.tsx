@@ -12,11 +12,12 @@ export const DateTimeCard = ({
   className = "",
   compact = false,
 }: DateTimeCardProps) => {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
     let intervalId: number | undefined;
     const currentTime = new Date();
+    setNow(currentTime);
     const millisecondsUntilNextMinute =
       (60 - currentTime.getSeconds()) * 1_000 -
       currentTime.getMilliseconds();
@@ -30,6 +31,8 @@ export const DateTimeCard = ({
       if (intervalId) window.clearInterval(intervalId);
     };
   }, []);
+
+  if (!now) return null;
 
   const fullDate = new Intl.DateTimeFormat("en-US", {
     dateStyle: "full",

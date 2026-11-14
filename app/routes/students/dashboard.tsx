@@ -103,8 +103,13 @@ export default function Dashboard() {
       }),
     });
 
-  const now = new Date();
-  const currentHour = now.getHours();
+  const [now, setNow] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setNow(new Date());
+  }, []);
+
+  const currentHour = now?.getHours() ?? 12;
   const greeting =
     currentHour < 12
       ? "Good morning"
@@ -115,7 +120,7 @@ export default function Dashboard() {
     weekday: "long",
     month: "long",
     day: "numeric",
-  }).format(now);
+  }).format(now ?? new Date(2000, 0, 1));
 
   if (!studentId) {
     return (

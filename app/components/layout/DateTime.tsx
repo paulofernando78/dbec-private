@@ -4,16 +4,19 @@ import { useLocation } from "react-router";
 
 export function DateTime() {
   const location = useLocation();
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
   const hasSession = Boolean(useSession());
 
   useEffect(() => {
+    setNow(new Date());
     const intervalId = window.setInterval(() => {
       setNow(new Date());
     }, 1_000);
 
     return () => window.clearInterval(intervalId);
   }, []);
+
+  if (!hasSession || location.pathname === "/" || !now) return null;
 
   const time = now.toLocaleTimeString("pt-BR", {
     hour: "2-digit",
@@ -28,8 +31,6 @@ export function DateTime() {
   const day = now.toLocaleDateString("en-US", { day: "2-digit" });
   const date = `${month}, ${weekday} ${day}`;
   const shortDate = `${shortMonth}, ${shortWeekday} ${day}`;
-
-  if (!hasSession || location.pathname === "/") return null;
 
   return (
     <div className="flex shrink-0 justify-end gap-4 text-center text-gray-500 font-bold leading-tight tabular-nums">
