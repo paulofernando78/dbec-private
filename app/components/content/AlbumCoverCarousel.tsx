@@ -62,7 +62,7 @@ export function AlbumCoverCarousel({
   return (
     <nav
       aria-label={title}
-      className="mb-4 rounded-xl bg-slate-950 p-4 text-white"
+      className="rounded-xl bg-slate-950 p-4 text-white"
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
           event.preventDefault();

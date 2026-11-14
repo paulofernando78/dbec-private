@@ -85,15 +85,17 @@ export default function SongsSong() {
         description={`${song.album} (${song.year})`}
       />
 
-      <AlbumCoverCarousel
-        albums={albumCovers}
-        initialId={albumId(song.album, song.year)}
-        title="Albums"
-        kind="album"
-      />
+      <Card className="mb-4">
+        <AlbumCoverCarousel
+          albums={albumCovers}
+          initialId={albumId(song.album, song.year)}
+          title="Albums"
+          kind="album"
+        />
+      </Card>
 
       <Card className="grid gap-4">
-        {youtubeUrl ? <section ref={videoRef} className="rounded-xl bg-(--background) p-4">
+        {youtubeUrl ? <section ref={videoRef} className="rounded-xl">
           <div className={floating ? "aspect-video" : undefined}>
             <div className={floating ? "fixed z-40" : undefined} style={floating ?? undefined}>
               <Card className={floating ? "shadow-xl" : "bg-transparent p-0!"}>
