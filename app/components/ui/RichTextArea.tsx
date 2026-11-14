@@ -53,8 +53,12 @@ type NoteBlock = {
 
 let noteBlockId = 0;
 
-const createBlock = (html = "", author?: NoteBlock["author"]): NoteBlock => ({
-  id: `note-block-${noteBlockId++}`,
+const createBlock = (
+  html = "",
+  author?: NoteBlock["author"],
+  id = `note-block-${noteBlockId++}`,
+): NoteBlock => ({
+  id,
   html,
   author,
 });
@@ -74,12 +78,16 @@ const parseBlocks = (value: string): NoteBlock[] => {
     renderedValue.matchAll(
       /<div data-note-block="true"(?: data-author-role="(teacher|student)")?(?: data-author-id="([^"]*)")?(?: data-author-name="([^"]*)")?>([\s\S]*?)<\/div>/g,
     ),
-    (match) => {
+    (match, index) => {
       const role = match[1] as "teacher" | "student" | undefined;
       const id = decodeAttribute(match[2]);
       const name = decodeAttribute(match[3]);
       const blockAuthor = role && id && name ? { role, id, name } : undefined;
-      return createBlock(match[4] === "<br>" ? "" : match[4], blockAuthor);
+      return createBlock(
+        match[4] === "<br>" ? "" : match[4],
+        blockAuthor,
+        `note-block-${index}`,
+      );
     },
   );
 
@@ -87,9 +95,9 @@ const parseBlocks = (value: string): NoteBlock[] => {
 
   const legacyBlocks = renderedValue
     .split(/<br\s*\/?\s*>/i)
-    .map((html) => createBlock(html));
+    .map((html, index) => createBlock(html, undefined, `note-block-${index}`));
 
-  return legacyBlocks.length ? legacyBlocks : [createBlock()];
+  return legacyBlocks.length ? legacyBlocks : [createBlock("", undefined, "note-block-0")];
 };
 
 const serializeBlocks = (blocks: NoteBlock[]) =>
