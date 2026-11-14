@@ -1,0 +1,1 @@
+export const SESSION_IDLE_SECONDS = 600;

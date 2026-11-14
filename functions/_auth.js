@@ -1,3 +1,5 @@
+import { SESSION_IDLE_SECONDS } from "../shared/session.mjs";
+
 const encoder = new TextEncoder();
 
 const toBase64Url = (value) =>
@@ -84,8 +86,6 @@ export const getUsers = (env) => {
     }),
   );
 };
-
-export const SESSION_IDLE_SECONDS = 600;
 
 export const sessionCookie = (token) =>
   `dbec_session=${encodeURIComponent(token)}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${SESSION_IDLE_SECONDS}`;

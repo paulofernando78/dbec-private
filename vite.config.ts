@@ -5,7 +5,7 @@ import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import { dictionaryOpenRouter } from "./functions/_dictionary-openrouter.mjs";
-import { SESSION_IDLE_SECONDS } from "./functions/_auth.js";
+import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 
 import { students as developmentStudents } from "./app/data/students";
 
