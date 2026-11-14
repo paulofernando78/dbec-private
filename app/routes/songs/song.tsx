@@ -28,7 +28,7 @@ export default function SongsSong() {
         ? {
             right: window.innerWidth - right + 0,
             top,
-            width: Math.min(360, width - 32),
+            width: Math.min(160, width - 10),
           }
         : null);
     };

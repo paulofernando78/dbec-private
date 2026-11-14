@@ -89,7 +89,7 @@ export const VideoPlayer = ({
           border
           rounded-lg
           overflow-hidden
-          ${compact ? "min-h-[202px]" : "mb-4"}
+          ${compact ? "min-h-25" : "mb-4"}
         `}
       >
         <iframe
