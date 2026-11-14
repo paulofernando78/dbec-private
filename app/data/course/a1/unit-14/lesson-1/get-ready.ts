@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Are they at home or at a picnic?", support: ["At a picnic."] },
-          { prompt: "What did you do last weekend? (Choose an example or give your own answer.)", support: ["I watched TV. / I cooked."] },
+          { prompt: "At home or at a picnic?" },
+          { prompt: "What do you like to eat at a picnic?" },
         ],
       },
 

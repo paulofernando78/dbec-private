@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is this a vacation or a day at work?", support: ["A vacation."] },
-          { prompt: "Did you go on vacation last year?", support: ["Yes, I did. / No, I didn't."] },
+          { prompt: "A vacation or a day at work?" },
+          { prompt: "Do you like to travel?" },
         ],
       },
 

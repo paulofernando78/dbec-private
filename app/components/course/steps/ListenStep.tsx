@@ -32,7 +32,7 @@ export function ListenStep({ data }: { data: ListenData }) {
           alt={data.imageAlt ?? "Listening context"}
           className="aspect-video object-cover"
         />
-      ) : (
+      ) : data.hideImagePlaceholder ? null : (
         <div
           role="img"
           aria-label="Listening image placeholder"

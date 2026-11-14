@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What number is on the clock?", support: ["Seven."] },
-          { prompt: "What time is it?", support: ["It's seven o'clock."] },
+          { prompt: "Point to the clock." },
+          { prompt: "What number can you see?" },
         ],
       },
 
@@ -27,8 +27,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Can you find London? (Point.)", support: ["Here!"] },
-          { prompt: "What time is it in London? (Read the clock.)", support: ["It's … in London."] },
+          { prompt: "Point to London." },
+          { prompt: "Point to the clock." },
         ],
       },
 
@@ -40,8 +40,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is it breakfast or lunch?", support: ["Lunch."] },
-          { prompt: "What time is it? (Read the clock.)", support: ["It's twelve thirty."] },
+          { prompt: "Breakfast or lunch?" },
+          { prompt: "Point to the clock." },
         ],
       },
 

@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Does Eric look well or sick?", support: ["Sick."] },
-          { prompt: "Pretend you're Eric. How do you feel?", support: ["I feel sick."] },
+          { prompt: "Does Eric look well or sick?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Does Pedro feel well?", support: ["No, he doesn't."] },
-          { prompt: "Pretend you're Pedro. Are you OK?", support: ["No. I feel sick."] },
+          { prompt: "Does Pedro look well or sick?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Can you point to your throat?", support: ["Here."] },
-          { prompt: "Pretend you're Naomi. Are you OK?", support: ["No. My throat hurts."] },
+          { prompt: "Point to your throat." },
         ],
       },
 

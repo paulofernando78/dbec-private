@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Pedro playing volleyball or tennis?", support: ["Volleyball."] },
-          { prompt: "What sport do you play?", support: ["I play volleyball. / I don't play sports."] },
+          { prompt: "Volleyball or tennis?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What sport is Naomi playing?", support: ["Tennis."] },
-          { prompt: "Do you play tennis?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "What sport is this?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What sport is Eric watching?", support: ["Soccer."] },
-          { prompt: "What sport do you watch?", support: ["I watch soccer. / I don't watch sports."] },
+          { prompt: "What sport is on TV?" },
         ],
       },
 

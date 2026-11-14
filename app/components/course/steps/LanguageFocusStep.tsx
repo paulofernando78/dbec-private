@@ -393,29 +393,31 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                   <h4 className="text-lg font-black">{group}</h4>
                 )}
                 <article className="space-y-4 rounded-xl bg-(--surface) p-4 shadow-sm">
-                  <div className="overflow-hidden rounded-xl">
-                    {itemVisuals?.[0] ? (
-                      <img
-                        src={itemVisuals[0].image}
-                        alt={itemVisuals[0].caption}
-                        className="aspect-video w-full object-cover"
-                      />
-                    ) : (
-                      <div
-                        className="relative grid aspect-video place-items-center rounded-xl bg-[#d0dbe8] px-16 text-center text-sm font-bold tracking-wide text-[#647b99]"
-                        role="img"
-                        aria-label={`Image placeholder ${index + 1}`}
-                      >
-                        <span>IMAGE PLACEHOLDER {index + 1}</span>
-                        <span className="absolute left-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
-                          <ChevronLeft aria-hidden="true" />
-                        </span>
-                        <span className="absolute right-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
-                          <ChevronRight aria-hidden="true" />
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                  {!data.hideVisuals && (
+                    <div className="overflow-hidden rounded-xl">
+                      {itemVisuals?.[0] ? (
+                        <img
+                          src={itemVisuals[0].image}
+                          alt={itemVisuals[0].caption}
+                          className="aspect-video w-full object-cover"
+                        />
+                      ) : (
+                        <div
+                          className="relative grid aspect-video place-items-center rounded-xl bg-[#d0dbe8] px-16 text-center text-sm font-bold tracking-wide text-[#647b99]"
+                          role="img"
+                          aria-label={`Image placeholder ${index + 1}`}
+                        >
+                          <span>IMAGE PLACEHOLDER {index + 1}</span>
+                          <span className="absolute left-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
+                            <ChevronLeft aria-hidden="true" />
+                          </span>
+                          <span className="absolute right-3 grid size-10 place-items-center rounded-full bg-white/80 text-[#9aabc0] shadow-sm">
+                            <ChevronRight aria-hidden="true" />
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 <div>
                   <h4 className="text-xl font-semibold">
                     <InlineRichContent value={title} />

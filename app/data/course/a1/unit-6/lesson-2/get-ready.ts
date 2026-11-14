@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is it morning or night?", support: ["Morning."] },
-          { prompt: "What time do you get up?", support: ["I get up at seven."] },
+          { prompt: "Morning or night?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Laura having breakfast or dinner?", support: ["Breakfast."] },
-          { prompt: "Do you eat breakfast at home?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Breakfast or dinner?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Eric walking or riding a bike?", support: ["Riding a bike."] },
-          { prompt: "Do you ride a bike every day?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "On foot or by bike?" },
         ],
       },
 

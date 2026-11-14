@@ -68,7 +68,10 @@ export function UnitCard({
           id: `${unit.number}-${index}`,
           eyebrow: `Lesson ${lessonNumber}`,
           title: lesson.title,
-          description: lesson.description,
+          description: lesson.description.replace(
+            /^By the end of this lesson, students will be able to ([a-z])/,
+            (_, initial: string) => initial.toUpperCase(),
+          ),
           isCompleted,
           isLocked,
           ariaLabel: isCheckpoint

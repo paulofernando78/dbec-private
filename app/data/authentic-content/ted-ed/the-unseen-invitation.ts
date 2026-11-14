@@ -30,9 +30,15 @@ export const theUnseenInvitation = {
       imageAlt: "Augusto guides Maya and Ravi in observing a lake with different senses.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
-        { content: ["Why might two people in the same place experience very different encounters with the natural world?"] },
-        { content: ["Which invisible signals can animals use to locate humans or other animals?"] },
-        { content: ["How can understanding animal behavior contribute to public health?"] },
+        {
+          suggestedAnswer: "They might pay attention to different sounds or movements. They can also give off different scents that attract some animals more than others.",
+          content: ["Why might two people in the same place experience very different encounters with the natural world?"] },
+        {
+          suggestedAnswer: "Mosquitoes can detect carbon dioxide from our breath, body heat, and odors from our skin.",
+          content: ["Which invisible signals can animals use to locate humans or other animals?"] },
+        {
+          suggestedAnswer: "Knowing when and where mosquitoes look for hosts can help communities decide where to monitor them and how to reduce bites.",
+          content: ["How can understanding animal behavior contribute to public health?"] },
       ],
     },
     vocabulary: { words },

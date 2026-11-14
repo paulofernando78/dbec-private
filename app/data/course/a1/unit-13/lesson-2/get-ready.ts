@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Laura asking for directions?", support: ["Yes, she is."] },
-          { prompt: "Ask me where the bus stop is.", support: ["Excuse me. Where's the bus stop?"] },
+          { prompt: "Point to Laura." },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Pedro going straight or turning?", support: ["Going straight."] },
-          { prompt: "What can you say to Pedro?", support: ["Go straight."] },
+          { prompt: "Straight or left?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Naomi turning left or right?", support: ["Right."] },
-          { prompt: "What can you say to Naomi?", support: ["Turn right."] },
+          { prompt: "Left or right?" },
         ],
       },
 

@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What country are you from?", support: ["I'm from Brazil."] },
-          { prompt: "Do you speak English or Portuguese?", support: ["I speak Portuguese."] },
+          { prompt: "Point to Brazil on the map." },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Are you from Brazil?", support: ["Yes, I am. / No, I'm not."] },
-          { prompt: "Where are you from?", support: ["I'm from Brazil."] },
+          { prompt: "Point to Eric." },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where is Pedro from? (Use the Brazil clue if you see it.)", support: ["He's from Brazil."] },
-          { prompt: "Are you from Brazil, too?", support: ["Yes, I am. / No, I'm not."] },
+          { prompt: "Point to the Brazil flag." },
         ],
       },
 

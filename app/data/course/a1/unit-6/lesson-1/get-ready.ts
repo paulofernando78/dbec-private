@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Bus or train?", support: ["Train."] },
-          { prompt: "How do you go to work or school?", support: ["I go by bus. / I walk."] },
+          { prompt: "Bus or train?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Laura on a bus or a train?", support: ["A bus."] },
-          { prompt: "Do you take the bus?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Bus or train?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is Eric riding?", support: ["A bike."] },
-          { prompt: "Do you ride a bike?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "A bike or a car?" },
         ],
       },
 

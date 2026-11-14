@@ -35,16 +35,19 @@ export const theBodysHiddenBalance = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "If the body is low on water, someone might feel thirsty or tired and notice that their urine is darker than usual.",
           content: [
             "What signs might indicate that the body is struggling to maintain its internal balance?",
           ],
         },
         {
+          suggestedAnswer: "I don’t think so. Age, activity level, and climate can affect how much fluid a person needs.",
           content: [
             "Do you think the same daily health recommendation is suitable for everyone? Why or why not?",
           ],
         },
         {
+          suggestedAnswer: "Water in food adds to our fluid intake. Sweating during exercise or in hot weather can increase fluid loss.",
           content: [
             "Besides what we drink, what other factors might affect the amount of fluid available to the body?",
           ],

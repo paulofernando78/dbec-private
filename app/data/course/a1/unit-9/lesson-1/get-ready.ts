@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where is the person looking? (Point.)", support: ["In the fridge."] },
-          { prompt: "What do you drink at breakfast?", support: ["Milk. / Coffee. / Water."] },
+          { prompt: "Point to the fridge." },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Can you see milk?", support: ["Yes, I can."] },
-          { prompt: "Do you drink milk?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Point to the milk." },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are these, tomatoes or apples?", support: ["Tomatoes."] },
-          { prompt: "Do you like tomatoes?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Tomatoes or apples?" },
         ],
       },
 

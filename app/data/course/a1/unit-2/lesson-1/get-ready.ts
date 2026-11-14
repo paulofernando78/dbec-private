@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What's this? (Point to one thing on the desk.)", support: ["It's a book."] },
-          { prompt: "What are these? (Point to two things.)", support: ["They're books."] },
+          { prompt: "Point to a book." },
+          { prompt: "Point to another book." },
         ],
       },
 

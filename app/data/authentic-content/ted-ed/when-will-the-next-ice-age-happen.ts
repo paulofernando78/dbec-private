@@ -39,13 +39,17 @@ export const whenWillTheNextIceAgeHappen = {
       imageAlt: "Augusto shows Maya and Ravi an ice core and a model of Earth’s orbit.",
       instruction: "Discuss the questions below.",
       items: [
-        { content: ["What do you know about Ice Ages?"] },
         {
+          suggestedAnswer: "During colder periods, large ice sheets grow and cover more land. In warmer periods, those ice sheets shrink.",
+          content: ["What do you know about Ice Ages?"] },
+        {
+          suggestedAnswer: "Slow changes in Earth’s orbit and tilt can alter how much sunlight reaches different places in different seasons.",
           content: [
             "What factors do you think can change Earth's climate over thousands of years?",
           ],
         },
         {
+          suggestedAnswer: "Yes. Burning fossil fuels adds greenhouse gases to the atmosphere, which trap heat and warm the planet.",
           content: [
             "Do you think humans can influence the planet's climate? Why or why not?",
           ],

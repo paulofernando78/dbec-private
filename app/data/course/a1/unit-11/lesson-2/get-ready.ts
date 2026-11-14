@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Laura getting ready for a party?", support: ["Yes, she is."] },
-          { prompt: "Are you going to have a party on your next birthday?", support: ["Yes, I am. / No, I'm not."] },
+          { prompt: "What can you see in the picture?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How is Naomi getting there, by bus or by taxi?", support: ["By taxi."] },
-          { prompt: "How do you go to a party?", support: ["I go by car. / I walk."] },
+          { prompt: "Bus or taxi?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are the friends watching, fireworks or a movie?", support: ["Fireworks."] },
-          { prompt: "Do you like fireworks?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Fireworks or a movie?" },
         ],
       },
 

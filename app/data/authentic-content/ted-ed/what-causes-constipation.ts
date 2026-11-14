@@ -44,11 +44,13 @@ export const whatCausesConstipation = {
       instruction: "Discuss the questions below.",
       items: [
         {
+          suggestedAnswer: "I associate foods like beans, oats, and fruit with healthy digestion. Drinking water and staying active are habits I’d mention too.",
           content: [
             "What foods or habits do you associate with a healthy digestive system?",
           ],
         },
         {
+          suggestedAnswer: "Yes. After a heavy meal, I felt uncomfortable, so I rested and gave it time to pass.",
           content: [
             "Have you ever experienced stomach pain or digestive discomfort? What did you do to relieve it?",
           ],

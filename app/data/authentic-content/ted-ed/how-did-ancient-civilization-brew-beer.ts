@@ -35,17 +35,21 @@ export const howDidAncientCivilizationsBrewBeer = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "I haven’t visited a brewery, but I’ve seen videos of brewers mixing grains with hot water.",
           content: ["Have you ever visited a brewery or seen beer being made?"],
         },
         {
+          suggestedAnswer: "I’d expect water, malted grain such as barley, yeast, and, in many modern beers, hops.",
           content: ["What ingredients do you think are needed to make beer?"],
         },
         {
+          suggestedAnswer: "People may have noticed that grain mixtures could ferment naturally and then started making the drink on purpose.",
           content: [
             "Why do you think people started brewing beer thousands of years ago?",
           ],
         },
         {
+          suggestedAnswer: "Yes. Brewing brought people together at celebrations and became a trade that supported local businesses.",
           content: [
             "Do you think beer has played an important role in human history? Why or why not?",
           ],

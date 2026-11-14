@@ -32,16 +32,19 @@ export const whyCitiesNeedTrees = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "Streets can get hotter without shade, and rainwater can run off paved surfaces more quickly.",
           content: [
             "What practical problems can a city face if it has too few trees?",
           ],
         },
         {
+          suggestedAnswer: "I see trees as part of urban infrastructure. They shade sidewalks and help manage rainwater.",
           content: [
             "Do you think trees are mainly decorative in cities, or are they part of urban infrastructure? Why?",
           ],
         },
         {
+          suggestedAnswer: "I’d prefer a greener city because shaded streets make walking more comfortable on hot days.",
           content: [
             "Which city do you think is more comfortable to live in: a very green city or a highly built-up one? Explain.",
           ],

@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What color is the jacket?", support: ["Blue."] },
-          { prompt: "Is this your jacket? (Point to a jacket or pretend.)", support: ["Yes, it is. / No, it isn't."] },
+          { prompt: "What color is the jacket?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What's this, a jacket or a scarf?", support: ["A scarf."] },
-          { prompt: "Is this your scarf? (Pretend.)", support: ["Yes, it's mine."] },
+          { prompt: "A jacket or a scarf?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What are these, gloves or shoes?", support: ["Gloves."] },
-          { prompt: "Are these your gloves? (Pretend.)", support: ["No, they aren't mine."] },
+          { prompt: "Gloves or shoes?" },
         ],
       },
 

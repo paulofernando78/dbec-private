@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Rain or sun?", support: ["Rain."] },
-          { prompt: "Is Eric wearing a raincoat?", support: ["Yes, he is. / No, he isn't."] },
+          { prompt: "Rain or sun?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is it hot or cold?", support: ["Cold."] },
-          { prompt: "What's Eric wearing? (Name one thing.)", support: ["A coat."] },
+          { prompt: "Hot or cold?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is it sunny?", support: ["Yes, it is."] },
-          { prompt: "What are you wearing today? (Name one thing.)", support: ["A T-shirt."] },
+          { prompt: "Rain or sun?" },
         ],
       },
 

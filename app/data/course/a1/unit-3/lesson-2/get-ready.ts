@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Who is Pedro pointing to?", support: ["Camila."] },
-          { prompt: "Is her hair long or short?", support: ["Long. / Short."] },
+          { prompt: "Point to Pedro." },
+          { prompt: "A classroom or a party?" },
         ],
       },
 
@@ -27,8 +27,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Camila a child or an adult?", support: ["An adult."] },
-          { prompt: "How old are you? (You can use a pretend age.)", support: ["I'm twenty."] },
+          { prompt: "A child or an adult?" },
         ],
       },
 
@@ -40,8 +39,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Camila smiling?", support: ["Yes, she is. / No, she isn't."] },
-          { prompt: "Are you quiet or talkative?", support: ["I'm quiet. / I'm talkative."] },
+          { prompt: "Point to Camila." },
+          { prompt: "Is she smiling?" },
         ],
       },
 

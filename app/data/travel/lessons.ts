@@ -1,11 +1,12 @@
 import type { LessonStepData } from "@/data/course/lesson-step-types";
 import type { LessonContent } from "@/data/course/a1/skeleton-lessons";
 import { travel } from ".";
+import { travelGetReadyQuestions } from "./get-ready";
 
 type DialogueLine = readonly [speaker: string, line: string];
 
 type TravelLessonSeed = {
-  unit: number;
+  unit: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   lesson: 1 | 2;
   dialogue: readonly DialogueLine[];
   targets: readonly [string, string, string, string];
@@ -639,25 +640,35 @@ const getReadyImages: Record<string, string> = {
   "9/2": "/media/images/course/travel/unit-9/lesson-2-checking-out-and-going-home/get-ready/lead-in.avif?v=1",
 };
 
-const languageFocusImages: Record<string, string> = {
-  "1/1": "/media/images/course/travel/unit-1/lesson-1-choosing-a-destination/language-focus/target-1.avif?v=1",
-  "1/2": "/media/images/course/travel/unit-1/lesson-2-booking-the-trip/language-focus/target-1.avif?v=1",
-  "2/1": "/media/images/course/travel/unit-2/lesson-1-what-should-i-pack/language-focus/target-1.avif?v=1",
-  "2/2": "/media/images/course/travel/unit-2/lesson-2-documents-and-travel-essentials/language-focus/target-1.avif?v=1",
-  "3/1": "/media/images/course/travel/unit-3/lesson-1-checking-in-and-dropping-off-bags/language-focus/target-1.avif?v=1",
-  "3/2": "/media/images/course/travel/unit-3/lesson-2-security-and-boarding/language-focus/target-1.avif?v=1",
-  "4/1": "/media/images/course/travel/unit-4/lesson-1-on-the-plane/language-focus/target-1.avif?v=1",
-  "4/2": "/media/images/course/travel/unit-4/lesson-2-on-the-train/language-focus/target-1.avif?v=1",
-  "5/1": "/media/images/course/travel/unit-5/lesson-1-immigration-and-passport-control/language-focus/target-1.avif?v=1",
-  "5/2": "/media/images/course/travel/unit-5/lesson-2-baggage-claim-and-customs/language-focus/target-1.avif?v=1",
-  "6/1": "/media/images/course/travel/unit-6/lesson-1-checking-into-a-hotel/language-focus/target-1.avif?v=1",
-  "6/2": "/media/images/course/travel/unit-6/lesson-2-problems-at-the-hotel/language-focus/target-1.avif?v=1",
-  "7/1": "/media/images/course/travel/unit-7/lesson-1-asking-for-directions/language-focus/target-1.avif?v=1",
-  "7/2": "/media/images/course/travel/unit-7/lesson-2-public-transport-and-taxis/language-focus/target-1.avif?v=1",
-  "8/1": "/media/images/course/travel/unit-8/lesson-1-restaurants-and-shopping/language-focus/target-1.avif?v=1",
-  "8/2": "/media/images/course/travel/unit-8/lesson-2-tours-and-local-activities/language-focus/target-1.avif?v=1",
-  "9/1": "/media/images/course/travel/unit-9/lesson-1-emergencies-and-unexpected-problems/language-focus/target-1.avif?v=1",
-  "9/2": "/media/images/course/travel/unit-9/lesson-2-checking-out-and-going-home/language-focus/target-1.avif?v=1",
+const listenImages: Partial<Record<string, { image: string; imageAlt: string }>> = {
+  "1/1": {
+    image: "/media/images/course/travel/unit-1/lesson-1-choosing-a-destination/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura and Eric discuss their trip over a map at a café table.",
+  },
+  "1/2": {
+    image: "/media/images/course/travel/unit-2/lesson-2-documents-and-travel-essentials/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura and Eric talk to a travel agent about flights.",
+  },
+  "5/1": {
+    image: "/media/images/course/travel/unit-8/lesson-2-tours-and-local-activities/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura shows her passport and travel documents to an officer.",
+  },
+  "5/2": {
+    image: "/media/images/course/travel/unit-9/lesson-1-emergencies-and-unexpected-problems/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura speaks to an agent at an airport service counter.",
+  },
+  "6/1": {
+    image: "/media/images/course/travel/unit-7/lesson-1-asking-for-directions/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura and Eric talk to the receptionist at the hotel.",
+  },
+  "6/2": {
+    image: "/media/images/course/travel/unit-7/lesson-2-public-transport-and-taxis/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura explains a problem to the hotel receptionist.",
+  },
+  "7/1": {
+    image: "/media/images/course/travel/unit-8/lesson-1-restaurants-and-shopping/language-focus/target-1.avif?v=1",
+    imageAlt: "Laura and Eric ask a man for directions near a tram.",
+  },
 };
 
 const renameTravelCharacters = (value: string) =>
@@ -666,7 +677,9 @@ const renameTravelCharacters = (value: string) =>
 const createLesson = (seed: TravelLessonSeed): LessonContent => {
   const unitData = travel.units[seed.unit - 1];
   const lessonData = unitData.lessons[seed.lesson - 1];
-  const lessonKey = `${seed.unit}/${seed.lesson}`;
+  const lessonKey = `${seed.unit}/${seed.lesson}` as const;
+  const [seeQuestion, actionQuestion, discussionQuestion] =
+    travelGetReadyQuestions[lessonKey];
   const [practicalPhrase, practicalTranslation, situation, rolePlay] = practicalPhrases[lessonKey];
   const dialogue = seed.dialogue.map(([speaker, line]) => [
     renameTravelCharacters(speaker),
@@ -684,9 +697,10 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       label: "Get ready",
       slides: [
         {
-          image: getReadyImages[`${seed.unit}/${seed.lesson}`] ?? "",
+          image: getReadyImages[lessonKey] ?? "",
           audio: false,
           quote: "",
+          discuss: { questions: [seeQuestion, actionQuestion] },
         },
       ],
     },
@@ -694,6 +708,8 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       type: "listen",
       slug: "listen",
       label: "Listen",
+      ...listenImages[lessonKey],
+      hideImagePlaceholder: true,
       instruction: `Listen to the conversation: ${lessonData.title}.`,
       audio: "",
       dialogue: dialogue.map(([speaker, line]) => [speaker, [line]] as const),
@@ -701,13 +717,20 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
       question: renameTravelCharacters(seed.gist),
       options: ["True", "False"],
       answer: "True",
-      followUpInstruction: "Listen again and answer the questions.",
-      followUp: detail,
+      followUpInstruction: "Follow-up questions",
+      followUp: [
+        ...detail,
+        {
+          question: discussionQuestion.prompt,
+          answer: discussionQuestion.support[0],
+        },
+      ],
     },
     {
       type: "language-focus",
       slug: "language-focus",
       label: "Language focus",
+      hideVisuals: true,
       instruction: lessonData.description,
       items: [
         ...targets.map((phrase, index) => [
@@ -717,10 +740,6 @@ const createLesson = (seed: TravelLessonSeed): LessonContent => {
           "Notice the fixed phrase and replace the travel detail when necessary.",
           undefined,
           translations[seed.targets[index]] ?? translations[phrase],
-          undefined,
-          index === 0 && languageFocusImages[`${seed.unit}/${seed.lesson}`]
-            ? [{ image: languageFocusImages[`${seed.unit}/${seed.lesson}`], caption: phrase }]
-            : undefined,
         ] as const),
         [practicalPhrase, situation, undefined, undefined, undefined, practicalTranslation],
       ],

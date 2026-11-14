@@ -36,16 +36,19 @@ export const howToManageEmotions = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "I try to notice what I’m feeling before I react. A short pause helps me decide what to do.",
           content: [
             "Do you usually try to control your emotions, or do you simply let them happen? Why?",
           ],
         },
         {
+          suggestedAnswer: "Anger can alert me when someone crosses a boundary. Once I’ve calmed down, I can explain what bothered me.",
           content: [
             "Can emotions like sadness or anger ever be useful? Give an example.",
           ],
         },
         {
+          suggestedAnswer: "I usually take a walk or talk to a friend. That gives me time to think before I respond.",
           content: [
             "What strategies do you use when you're stressed or disappointed?",
           ],

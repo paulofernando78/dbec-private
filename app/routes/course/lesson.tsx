@@ -101,29 +101,6 @@ export default function LessonPage() {
         </div>
       </header>
 
-      {(lessonData.finalTask || lessonData.successCriteria?.length) && (
-        <section className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-orange-700">
-            Final task
-          </p>
-          {lessonData.finalTask && (
-            <p className="mt-1 font-semibold text-slate-800">
-              {lessonData.finalTask}
-            </p>
-          )}
-          {lessonData.successCriteria?.length ? (
-            <div className="mt-3">
-              <p className="text-sm font-bold text-slate-700">Success criteria</p>
-              <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-slate-700">
-                {lessonData.successCriteria.map((criterion) => (
-                  <li key={criterion}>{criterion}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </section>
-      )}
-
       <p className="mt-4 inline-block rounded-full border border-gray-300 px-3 py-1 text-sm font-bold mb-12">
         {current.slug.charAt(0).toUpperCase() +
           current.slug.slice(1).replaceAll("-", " ")}

@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Laura dancing or singing?", support: ["Dancing."] },
-          { prompt: "Can you dance?", support: ["Yes, I can. / No, I can't."] },
+          { prompt: "Dancing or singing?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What's this, a guitar or a piano?", support: ["A guitar."] },
-          { prompt: "Can you play the guitar?", support: ["Yes, I can. / No, I can't."] },
+          { prompt: "A guitar or a piano?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Naomi drawing or reading?", support: ["Drawing."] },
-          { prompt: "Can you draw?", support: ["Yes, I can. / No, I can't."] },
+          { prompt: "Drawing or reading?" },
         ],
       },
 

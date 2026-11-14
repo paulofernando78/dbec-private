@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is this a house or an apartment?", support: ["An apartment."] },
-          { prompt: "Do you live in an apartment?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "A house or an apartment?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Can you see a balcony? (Point.)", support: ["Yes, here."] },
-          { prompt: "Does your home have a balcony?", support: ["Yes, it does. / No, it doesn't."] },
+          { prompt: "Point to the balcony." },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What room can you see? (Name one.)", support: ["A living room."] },
-          { prompt: "Does your home have a living room?", support: ["Yes, it does. / No, it doesn't."] },
+          { prompt: "What room is this?" },
         ],
       },
 

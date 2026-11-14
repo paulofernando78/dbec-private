@@ -39,6 +39,7 @@ export type ListenData = StepExtension & {
   instruction: string;
   image?: string;
   imageAlt?: string;
+  hideImagePlaceholder?: boolean;
   audio: string;
   dialogue: readonly (readonly [speaker: string, text: RichContent])[];
   questionInstruction: string;
@@ -65,6 +66,7 @@ export type LanguageFocusData = StepExtension & {
   label: string;
   instruction: string;
   supportLanguage?: "pt-BR";
+  hideVisuals?: boolean;
   relatedGrammar?: readonly GrammarTopicId[];
   relatedVocabulary?: readonly VocabularyTopicId[];
   visuals?: readonly {

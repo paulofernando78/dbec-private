@@ -9,6 +9,7 @@ type SequenceNavigationProps = {
   onNext: () => void;
   nextDisabled?: boolean;
   ariaLabel?: string;
+  dockScrollToTop?: boolean;
 };
 
 export function SequenceNavigation({
@@ -18,6 +19,7 @@ export function SequenceNavigation({
   onNext,
   nextDisabled = false,
   ariaLabel = "Content navigation",
+  dockScrollToTop = false,
 }: SequenceNavigationProps) {
   return (
     <nav
@@ -31,7 +33,9 @@ export function SequenceNavigation({
       />
       <b>{previousLabel}</b>
       <b className="text-right">{nextLabel}</b>
-      <div data-scroll-to-top-slot className="absolute right-0 bottom-13 z-10 size-10" />
+      {dockScrollToTop && (
+        <div data-scroll-to-top-slot className="absolute right-0 bottom-13 z-10 size-10" />
+      )}
       <Button
         ariaLabel={`Next: ${nextLabel}`}
         onClick={onNext}

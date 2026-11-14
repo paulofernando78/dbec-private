@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Are these family photos?", support: ["Yes, they are."] },
-          { prompt: "Who is in one of your family photos? (You can invent one.)", support: ["My dad. / My sister."] },
+          { prompt: "Are these family photos?" },
+          { prompt: "Who’s in one of your family photos?" },
         ],
       },
 

@@ -2,10 +2,13 @@ import { Checkbox } from "@/components/ui/Checkbox";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
 import type { RichContent } from "@/helpers/content";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 type ListItem = {
   content: RichContent;
   textarea?: boolean;
+  suggestedAnswer?: string;
 };
 
 export type ListProps = {
@@ -21,6 +24,7 @@ export type ListProps = {
 
 export const List = ({ instruction, checklist, items = [], type = "none" }: ListProps) => {
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
+  const [showAnswers, setShowAnswers] = useState(false);
 
   if (type === "checkbox") {
     return (
@@ -74,9 +78,22 @@ export const List = ({ instruction, checklist, items = [], type = "none" }: List
         {items.map((item, index) => (
           <li key={index}>
             <InlineRichContent value={item.content} />
+            {showAnswers && item.suggestedAnswer && (
+              <p className="mb-3 mt-1 text-sm">
+                <strong>Suggested answer:</strong> {item.suggestedAnswer}
+              </p>
+            )}
           </li>
         ))}
       </Tag>
+      {items.some((item) => item.suggestedAnswer) && (
+        <Button
+          className="mt-3"
+          ariaLabel={showAnswers ? "Hide suggested answers" : "Show suggested answers"}
+          icon={showAnswers ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
+          onClick={() => setShowAnswers((current) => !current)}
+        />
+      )}
     </div>
   );
 };

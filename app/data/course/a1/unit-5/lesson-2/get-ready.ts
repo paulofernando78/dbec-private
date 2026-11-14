@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Are they studying or sleeping?", support: ["Studying."] },
-          { prompt: "What are you doing now?", support: ["I'm studying English."] },
+          { prompt: "Studying or sleeping?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Eva sleeping?", support: ["Yes, she is."] },
-          { prompt: "What are you doing now?", support: ["I'm sitting."] },
+          { prompt: "Studying or sleeping?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Are Mia and Leo watching TV?", support: ["Yes, they are."] },
-          { prompt: "Do you watch TV at night?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "TV or a book?" },
         ],
       },
 

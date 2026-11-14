@@ -130,7 +130,7 @@ export default function AuthenticContents() {
           />
         )}
         <div className="rounded-xl bg-(--background) p-4">
-          <List {...beforeWatching} />
+          <List key={basePath} {...beforeWatching} />
         </div>
       </Card>
     ),
@@ -230,6 +230,7 @@ export default function AuthenticContents() {
         onPrevious={() => previous ? go(previous.slug) : navigate("/authentic-content")}
         onNext={() => next ? go(next.slug) : void finish()}
         ariaLabel="Lesson steps"
+        dockScrollToTop
       />
     </div>
   );

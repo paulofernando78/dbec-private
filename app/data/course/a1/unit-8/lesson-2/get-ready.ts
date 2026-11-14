@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Naomi at work?", support: ["Yes, she is."] },
-          { prompt: "Do you like working with people?", support: ["Yes, I do. / No, I don't."] },
+          { prompt: "Is Naomi at work?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Does Laura look busy?", support: ["Yes, she does. / No, she doesn't."] },
-          { prompt: "Is your day busy today?", support: ["Yes, it is. / No, it isn't."] },
+          { prompt: "Does Laura look busy?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What does Eric do?", support: ["He's a designer."] },
-          { prompt: "Is his job interesting to you?", support: ["Yes, it is. / No, it isn't."] },
+          { prompt: "Name one thing you can see at Eric’s workplace." },
         ],
       },
 

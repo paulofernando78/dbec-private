@@ -41,16 +41,19 @@ export const howDidAncientCivilizationsMakeIceCream = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "People could collect snow or ice in winter and store it in insulated icehouses for warmer months.",
           content: [
             "How do you think ancient civilizations kept drinks and desserts cold before electric refrigerators existed?",
           ],
         },
         {
+          suggestedAnswer: "Ice was hard to collect, transport, and store. Making a frozen dessert also took time and labor, which made it expensive.",
           content: [
             "Why do you think ice cream was historically a luxury dessert reserved only for the elite?",
           ],
         },
         {
+          suggestedAnswer: "I’ve heard of black sesame ice cream. I’d like to try it because I imagine it tastes nutty.",
           content: [
             "What unusual ice cream flavors (like vegetable or spice flavors) have you heard of or tried?",
           ],

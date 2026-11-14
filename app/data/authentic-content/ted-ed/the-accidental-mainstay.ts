@@ -30,9 +30,15 @@ export const theAccidentalMainstay = {
       imageAlt: "Augusto shows Maya and Ravi how a vintage popcorn machine works.",
       instruction: "Discuss the questions below before watching the video.",
       items: [
-        { content: ["Which everyday products have become strongly associated with a particular place or activity?"] },
-        { content: ["How can an economic crisis permanently change consumer habits?"] },
-        { content: ["Why might a business reject a profitable product because of the image it wants to project?"] },
+        {
+          suggestedAnswer: "Popcorn makes me think of movie theaters, and hot dogs remind me of baseball games.",
+          content: ["Which everyday products have become strongly associated with a particular place or activity?"] },
+        {
+          suggestedAnswer: "If people switch to cheaper products during a crisis, they may keep buying them once they get used to them.",
+          content: ["How can an economic crisis permanently change consumer habits?"] },
+        {
+          suggestedAnswer: "A theater might worry that selling a noisy or messy snack would put off customers who expect a formal experience.",
+          content: ["Why might a business reject a profitable product because of the image it wants to project?"] },
       ],
     },
     vocabulary: { words },

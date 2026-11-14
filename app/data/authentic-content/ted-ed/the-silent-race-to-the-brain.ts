@@ -35,16 +35,19 @@ export const theSilentRaceToTheBrain = {
       instruction: "Discuss the questions below before watching the video.",
       items: [
         {
+          suggestedAnswer: "With rabies, treatment after exposure can stop the virus before it reaches the central nervous system. Once symptoms appear, the disease is much harder to treat.",
           content: [
             "Why can the same infectious disease be preventable before symptoms appear but extremely difficult to treat afterward?",
           ],
         },
         {
+          suggestedAnswer: "A bite closer to the brain can shorten the time before symptoms appear. The severity of the exposure also matters.",
           content: [
             "How might the location of an animal bite affect the speed at which an infection develops?",
           ],
         },
         {
+          suggestedAnswer: "If rabies is possible, wash the wound with soap and running water for at least 15 minutes and seek medical care immediately.",
           content: [
             "What should someone do immediately after possible exposure to a dangerous animal-borne disease?",
           ],

@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is Laura looking at?", support: ["Her phone."] },
-          { prompt: "What can you say at the end of a phone message?", support: ["Please call me back."] },
+          { prompt: "What is Laura looking at?" },
         ],
       },
 

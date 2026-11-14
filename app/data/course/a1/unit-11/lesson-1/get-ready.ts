@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What is Laura planning, a birthday party or a trip?", support: ["A birthday party."] },
-          { prompt: "What are you going to do this weekend? (Choose an idea.)", support: ["I'm going to see my friends. / I'm going to stay home."] },
+          { prompt: "A birthday party or a trip?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Pasta or pizza?", support: ["Pasta."] },
-          { prompt: "Are you going to cook this weekend?", support: ["Yes, I am. / No, I'm not."] },
+          { prompt: "Pasta or pizza?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Bus or train?", support: ["Bus."] },
-          { prompt: "Are you going to take the bus this weekend?", support: ["Yes, I am. / No, I'm not."] },
+          { prompt: "Bus or train?" },
         ],
       },
 

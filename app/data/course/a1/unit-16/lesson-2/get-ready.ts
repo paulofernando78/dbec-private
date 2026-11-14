@@ -14,8 +14,8 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What activity can you see? (Name one.)", support: ["A movie. / A game."] },
-          { prompt: "Do you want to see a movie this weekend?", support: ["Yes, I'd love to. / Sorry, I can't."] },
+          { prompt: "Name one activity you can see." },
+          { prompt: "Do you like movies?" },
         ],
       },
 

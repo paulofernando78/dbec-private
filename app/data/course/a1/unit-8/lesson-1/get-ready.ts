@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "What can you see where Eric works? (Name one thing.)", support: ["A desk. / A computer."] },
-          { prompt: "Do you work or study?", support: ["I work. / I study."] },
+          { prompt: "Name one thing you can see." },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where does Laura work, at a hotel or at a school?", support: ["At a hotel."] },
-          { prompt: "Where do you work or study?", support: ["I work at a hotel. / I study at home."] },
+          { prompt: "A hotel or a school?" },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Pedro a student?", support: ["Yes, he is."] },
-          { prompt: "What do you study?", support: ["I study English."] },
+          { prompt: "At home or at school?" },
         ],
       },
 

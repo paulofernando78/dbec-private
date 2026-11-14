@@ -11,7 +11,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Hello or goodbye?", support: ["Hello!"] },
+          { prompt: "Say hello." },
           { prompt: "What's your name?", support: ["I'm Ana. (Use your name.)"] },
         ],
       },

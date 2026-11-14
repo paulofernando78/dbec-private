@@ -14,8 +14,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Where is Laura?", support: ["On the sofa."] },
-          { prompt: "Is there a sofa in your home?", support: ["Yes, there is. / No, there isn't."] },
+          { prompt: "Where is Laura?" },
         ],
       },
 
@@ -27,8 +26,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "How many lamps can you see?", support: ["Two."] },
-          { prompt: "Is there a lamp in your room?", support: ["Yes, there is. / No, there isn't."] },
+          { prompt: "Point to a lamp." },
         ],
       },
 
@@ -40,8 +38,7 @@ export const getReady = {
       discuss: {
         interaction: ["pairs", "teacher-class"],
         questions: [
-          { prompt: "Is Pedro in the kitchen?", support: ["Yes, he is."] },
-          { prompt: "What can you see in your kitchen? (Name one thing.)", support: ["A table."] },
+          { prompt: "What room is this?" },
         ],
       },
 
