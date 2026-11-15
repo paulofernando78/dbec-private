@@ -22,7 +22,7 @@ function GrammarExampleList({ examples }: { examples: readonly GrammarExample[] 
             ariaLabel={`Play ${example.english}`}
             wrapperClassName="shrink-0 self-start"
           />
-          <span>
+          <span className="min-w-0 pt-[0.53rem]">
             <span lang="en" className="font-semibold text-(--text-color)">
               <InlineRichContent value={example.englishContent ?? example.english} />
             </span>{" "}
@@ -106,7 +106,7 @@ export function GrammarTopic({
                   ariaLabel={`Play ${example.english}`}
                   wrapperClassName="shrink-0 self-start"
                 />
-                <span>
+                <span className="min-w-0 pt-[0.53rem]">
                   {example.incorrect && (
                     <span className="block text-sm">
                       <span className="sr-only">Forma incorreta: </span>

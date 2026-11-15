@@ -12,9 +12,6 @@ import {
 export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
   return (
     <div lang="pt-BR" className="grid gap-4 text-black dark:text-white">
-      <p>
-        <InlineRichContent value={topic.introduction} />
-      </p>
       {topic.image && (
         <img {...topic.image} loading="lazy" className="mx-auto h-auto max-w-full rounded-lg" />
       )}
@@ -42,7 +39,7 @@ export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
                     ariaLabel={`Play ${example.english}`}
                     wrapperClassName="shrink-0 self-start"
                   />
-                  <span>
+                  <span className="min-w-0 pt-[0.53rem]">
                     <span lang="en" className="font-semibold">
                       {example.english}
                     </span>
