@@ -34,7 +34,7 @@ export default function BusinessTwoLesson() {
       />
       {!content && !reviewExercise ? (
         <Card>
-          <p className="mb-4">Coming soon.</p>
+          <p className="mb-4 italic">Coming soon.</p>
           <Link to={businessTwoPath} className="font-bold underline">Back to Business 2</Link>
         </Card>
       ) : reviewExercise ? (

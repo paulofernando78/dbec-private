@@ -33,14 +33,14 @@ export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
             </p>
             <ul className="grid gap-2">
               {usage.examples.map((example) => (
-                <li key={example.english} className="flex items-center gap-3">
+                <li key={example.english} className="flex items-start gap-3">
                   <Audio
                     asButton
                     src={example.english}
                     fallbackText={example.english}
                     speechLang="en-US"
                     ariaLabel={`Play ${example.english}`}
-                    wrapperClassName="shrink-0"
+                    wrapperClassName="shrink-0 self-start"
                   />
                   <span>
                     <span lang="en" className="font-semibold">

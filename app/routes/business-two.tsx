@@ -25,6 +25,7 @@ export default function BusinessTwo() {
               eyebrow: label,
               title,
               description: content?.context ?? "Coming soon.",
+              descriptionItalic: !content,
               isCompleted: false,
               ariaLabel: `Open ${title}`,
               onClick: () => navigate(`${businessTwoPath}/${slug}`),

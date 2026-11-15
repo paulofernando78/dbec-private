@@ -13,7 +13,9 @@ export type ProgressCollectionItem = {
   eyebrow?: string;
   title: string;
   description: string;
+  descriptionItalic?: boolean;
   meta?: string;
+  metaItalic?: boolean;
   isCompleted: boolean;
   isLocked?: boolean;
   ariaLabel: string;
@@ -36,6 +38,7 @@ type ProgressCollectionCardProps = {
   disableResetWhenEmpty?: boolean;
   levelTheme?: LevelTheme;
   emptyMessage?: string;
+  emptyMessageItalic?: boolean;
 };
 
 export function ProgressCollectionCard({
@@ -54,6 +57,7 @@ export function ProgressCollectionCard({
   disableResetWhenEmpty = false,
   levelTheme,
   emptyMessage,
+  emptyMessageItalic = false,
 }: ProgressCollectionCardProps) {
   const [isResetConfirmationOpen, setIsResetConfirmationOpen] = useState(false);
 
@@ -154,9 +158,17 @@ export function ProgressCollectionCard({
                   <h3 className="text-xl font-black text-black dark:text-(--text-color)">
                     {item.title}
                   </h3>
-                  <p className="text-base md:text-lg">{item.description}</p>
+                  <p
+                    className={`text-base md:text-lg ${item.descriptionItalic ? "italic" : ""}`}
+                  >
+                    {item.description}
+                  </p>
                   {item.meta && (
-                    <p className="text-lg text-slate-500">{item.meta}</p>
+                    <p
+                      className={`text-lg text-slate-500 ${item.metaItalic ? "italic" : ""}`}
+                    >
+                      {item.meta}
+                    </p>
                   )}
                 </div>
               </li>
@@ -165,7 +177,11 @@ export function ProgressCollectionCard({
         )}
 
         {items.length === 0 && emptyMessage && (
-          <p className="px-4 py-5 text-slate-500">{emptyMessage}</p>
+          <p
+            className={`px-4 py-5 text-slate-500 ${emptyMessageItalic ? "italic" : ""}`}
+          >
+            {emptyMessage}
+          </p>
         )}
       </article>
 

@@ -1,6 +1,9 @@
+import type { RichContent } from "@/helpers/content";
+
 export type GrammarExample = {
   incorrect?: string;
   english: string;
+  englishContent?: RichContent;
   portuguese: string;
 };
 
@@ -10,6 +13,11 @@ export type GrammarUsage = {
   meaning: string;
   pattern?: string;
   examples: readonly GrammarExample[];
+  groups?: readonly {
+    title: string;
+    pattern?: string;
+    examples: readonly GrammarExample[];
+  }[];
 };
 
 export type GrammarWarning = {

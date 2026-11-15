@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { GameStudioCard } from "@/components/games/GameStudioCard";
 import { PageHeader } from "@/components/content/PageHeader";
 import { PageSections } from "@/components/content/PageSections";
-import { Section } from "@/components/ui/Section";
 import { gameStudios } from "@/data/content/games/old-pc-games/studios";
 
 export default function Game() {
@@ -43,18 +42,16 @@ export default function Game() {
         showTableOfContents={false}
         subtitle="GAMES"
       >
-        <Section id="game-studios" label="Studios">
-          {gameStudios.map((group) => (
-            <GameStudioCard
-              key={group.studio}
-              studio={group.studio}
-              image={group.image}
-              games={group.games}
-              gameCompletion={gameCompletion}
-              onGameCompletionChange={saveGameCompletion}
-            />
-          ))}
-        </Section>
+        {gameStudios.map((group) => (
+          <GameStudioCard
+            key={group.studio}
+            studio={group.studio}
+            image={group.image}
+            games={group.games}
+            gameCompletion={gameCompletion}
+            onGameCompletionChange={saveGameCompletion}
+          />
+        ))}
       </PageSections>
     </div>
   );

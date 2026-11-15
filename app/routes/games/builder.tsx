@@ -107,7 +107,7 @@ export default function GameBuilder() {
 
         {game && (
           <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-            <div className="min-w-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-start">
+            <div className="sticky top-4 z-10 min-w-0 self-start lg:col-start-2 lg:row-start-1 lg:row-span-2">
               <Card title="Game player">
                 {game.bundleUrl ? (
                   <JsDosPlayer

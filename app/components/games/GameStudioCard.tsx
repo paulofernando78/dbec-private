@@ -7,6 +7,7 @@ export type StudioGame = {
   label: string;
   description: string;
   date: string;
+  comingSoon?: boolean;
 };
 
 type GameStudioCardProps = {
@@ -53,9 +54,14 @@ export function GameStudioCard({
         eyebrow: game.date,
         title: game.label,
         description: game.description,
+        meta: game.comingSoon ? "Coming soon" : undefined,
+        metaItalic: game.comingSoon,
         isCompleted: gameCompletion[game.href] ?? false,
-        ariaLabel: `Open ${game.label}`,
-        onClick: () => navigate(game.href),
+        isLocked: game.comingSoon,
+        ariaLabel: game.comingSoon
+          ? `${game.label} — Coming soon`
+          : `Open ${game.label}`,
+        onClick: game.comingSoon ? undefined : () => navigate(game.href),
       }))}
     />
   );

@@ -123,6 +123,7 @@ export default function Expressions() {
                                                                   : internalLesson === "30"
                                                                     ? "Donna calls Marina to tell her the good news — she got the job. Marina wisely decides to negotiate for a higher salary."
                   : "Material coming soon.",
+      descriptionItalic: !internalLesson,
       isCompleted: false,
       isLocked: !internalLesson,
       ariaLabel: internalLesson

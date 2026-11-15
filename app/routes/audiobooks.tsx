@@ -71,6 +71,7 @@ export default function Audiobooks() {
             onReset={resetLevel}
             disableResetWhenEmpty
             emptyMessage="Books coming soon."
+            emptyMessageItalic
             items={level.titles.map((item) => {
               const isAvailable = availableAudiobookSlugs.has(
                 item.slug as AudiobookSlug,

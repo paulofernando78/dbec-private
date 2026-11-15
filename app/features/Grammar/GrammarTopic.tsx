@@ -1,11 +1,38 @@
 import { Card } from "@/components/ui/Card";
 import { Audio } from "@/components/ui/Audio";
+import { InlineRichContent } from "@/components/content/InlineRichContent";
 import { TriangleAlert } from "lucide-react";
 import {
   grammarTopicsById,
   type GrammarTopic as GrammarTopicData,
   type GrammarTopicId,
 } from "@/data/language/grammar";
+import type { GrammarExample } from "@/data/language/grammar/types";
+
+function GrammarExampleList({ examples }: { examples: readonly GrammarExample[] }) {
+  return (
+    <ul className="grid gap-2">
+      {examples.map((example) => (
+        <li key={example.english} className="flex items-start gap-3">
+          <Audio
+            asButton
+            src={example.english}
+            fallbackText={example.english}
+            speechLang="en-US"
+            ariaLabel={`Play ${example.english}`}
+            wrapperClassName="shrink-0 self-start"
+          />
+          <span>
+            <span lang="en" className="font-semibold text-(--text-color)">
+              <InlineRichContent value={example.englishContent ?? example.english} />
+            </span>{" "}
+            <span className="text-slate-500">{example.portuguese}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function GrammarTopic({
   topic,
@@ -33,26 +60,20 @@ export function GrammarTopic({
                 {usage.pattern}
               </p>
             )}
-            <ul className="grid gap-2">
-              {usage.examples.map((example) => (
-                <li key={example.english} className="flex items-center gap-3">
-                  <Audio
-                    asButton
-                    src={example.english}
-                    fallbackText={example.english}
-                    speechLang="en-US"
-                    ariaLabel={`Play ${example.english}`}
-                    wrapperClassName="shrink-0"
-                  />
-                  <span>
-                    <span lang="en" className="font-semibold text-(--text-color)">
-                      {example.english}
-                    </span>{" "}
-                    <span className="text-slate-500">{example.portuguese}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <GrammarExampleList examples={usage.examples} />
+            {usage.groups?.map((group) => (
+              <div key={group.title} className="mt-4 first:mt-0">
+                <h4 className="mb-2 text-lg font-black text-(--text-color)">
+                  {group.title}
+                </h4>
+                {group.pattern && (
+                  <p className="mb-3 rounded-lg bg-(--surface) px-3 py-2 font-mono text-sm">
+                    {group.pattern}
+                  </p>
+                )}
+                <GrammarExampleList examples={group.examples} />
+              </div>
+            ))}
             {usage.image && (
               <img
                 {...usage.image}
@@ -76,14 +97,14 @@ export function GrammarTopic({
           <p className="mb-3">{warning.explanation}</p>
           <ul className="grid gap-1">
             {warning.examples.map((example) => (
-              <li key={example.english} className="flex items-center gap-3">
+              <li key={example.english} className="flex items-start gap-3">
                 <Audio
                   asButton
                   src={example.english}
                   fallbackText={example.english}
                   speechLang="en-US"
                   ariaLabel={`Play ${example.english}`}
-                  wrapperClassName="shrink-0"
+                  wrapperClassName="shrink-0 self-start"
                 />
                 <span>
                   {example.incorrect && (
