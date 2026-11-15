@@ -36,5 +36,11 @@ export const quickVsFast = {
   ],
   quickRule:
     "Compare a quick meeting com a fast car. Como advérbios, use quickly ou fast, conforme o sentido.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/quick-vs-fast.avif?v=1",
+    alt: "Uma estudante termina uma tarefa curta enquanto um ciclista pedala em alta velocidade.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;
 

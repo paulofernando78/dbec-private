@@ -51,4 +51,10 @@ export const poisonousVsVenomous = {
   ],
   quickRule:
     "Em português, poisonous geralmente é “venenoso”. Para animais que injetam peçonha, venomous corresponde a “peçonhento”.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/poisonous-vs-venomous.avif?v=1",
+    alt: "Um cogumelo venenoso em uma floresta e uma cobra peçonhenta em seu habitat natural.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;

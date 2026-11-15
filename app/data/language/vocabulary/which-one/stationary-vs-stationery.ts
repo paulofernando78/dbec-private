@@ -39,4 +39,10 @@ export const stationaryVsStationery = {
     },
   ],
   quickRule: "Associe o A de stationary ao A de at rest (em repouso) e o E de stationery ao E de envelope.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/stationary-vs-stationery.avif?v=1",
+    alt: "Uma bicicleta parada na rua e materiais de papelaria coloridos organizados sobre uma mesa.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;

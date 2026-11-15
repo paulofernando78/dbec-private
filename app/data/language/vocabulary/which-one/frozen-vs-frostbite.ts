@@ -45,5 +45,11 @@ export const frozenVsFrostbite = {
   ],
   quickRule:
     "Compare frozen vegetables (vegetais congelados) com frostbitten toes (dedos dos pés lesionados pelo frio).",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/frozen-vs-frostbite.avif?v=1",
+    alt: "Um picolé congelado no freezer e uma mulher agasalhada observando a pele irritada pelo frio na mão.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;
 

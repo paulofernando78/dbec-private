@@ -40,5 +40,11 @@ export const speakVsSayVsTell = {
   ],
   quickRule:
     "Compare speak English, say something e tell someone something. Depois de tell, procure a pessoa que recebe a mensagem.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/speak-vs-say-vs-tell.avif?v=1",
+    alt: "Uma mulher fala a uma plateia, um jovem diz algo a uma amiga e outra mulher conta uma história a um amigo.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;
 

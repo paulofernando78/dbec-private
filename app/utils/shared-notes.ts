@@ -56,6 +56,14 @@ export function combineNotes(
     name: "Professor",
     role: "teacher",
   };
+
+  // The current format stores the complete shared document in the student
+  // note. If it already contains teacher-authored blocks, merging the legacy
+  // teacher row again would duplicate those blocks every time the page loads.
+  if (/data-author-role="teacher"/.test(studentNotes)) {
+    return decorateBlocks(studentNotes, studentAuthor).join("");
+  }
+
   const teacherBlocks = teacher ? decorateBlocks(teacher, teacherAuthor) : [];
   const studentBlocks = studentNotes
     ? decorateBlocks(studentNotes, studentAuthor)

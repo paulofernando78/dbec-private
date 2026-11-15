@@ -45,11 +45,10 @@ export function useNotesRealtime(
   useEffect(() => {
     calendarCallbackRef.current = onCalendarUpdate;
   }, [onCalendarUpdate]);
-  const saveTimersRef = useRef<Partial<Record<NoteType, number>>>({});
-  const saveQueuesRef = useRef<Partial<Record<NoteType, Promise<void>>>>({});
-  const pendingNotesRef = useRef<Partial<Record<NoteType, string>>>({});
-  const lastReceivedRef = useRef<Partial<Record<NoteType, string>>>({});
-  const lastLocalEditRef = useRef<Partial<Record<NoteType, number>>>({});
+  const saveTimersRef = useRef<Record<string, number>>({});
+  const saveQueuesRef = useRef<Record<string, Promise<void>>>({});
+  const pendingNotesRef = useRef<Record<string, string>>({});
+  const lastReceivedRef = useRef<Record<string, string>>({});
   const writerTimerRef = useRef<number | undefined>(undefined);
   const [connectionState, setConnectionState] =
     useState<ConnectionState>("disconnected");
@@ -92,16 +91,14 @@ export function useNotesRealtime(
         }
         if (calendarOnly) return;
         for (const noteType of ["teacher", "student"] as const) {
+          const noteKey = `${studentId}:${noteType}`;
           const content = result.notes?.[noteType];
-          const wasRecentlyEdited =
-            Date.now() - (lastLocalEditRef.current[noteType] ?? 0) < 2_500;
           if (
             typeof content === "string" &&
-            !wasRecentlyEdited &&
-            pendingNotesRef.current[noteType] === undefined &&
-            lastReceivedRef.current[noteType] !== content
+            pendingNotesRef.current[noteKey] === undefined &&
+            lastReceivedRef.current[noteKey] !== content
           ) {
-            lastReceivedRef.current[noteType] = content;
+            lastReceivedRef.current[noteKey] = content;
             callbackRef.current(noteType, content);
           }
         }
@@ -160,22 +157,14 @@ export function useNotesRealtime(
             (update.noteType === "teacher" || update.noteType === "student") &&
             typeof update.content === "string"
           ) {
-            const localEditAt = lastLocalEditRef.current[update.noteType] ?? 0;
-            const remoteEditAt = update.updatedAt ?? Date.now();
+            const noteKey = `${studentId}:${update.noteType}`;
 
-            // The room broadcasts only to the other connected clients, so a
-            // recent local edit is not an echo. Ignore only a remote change
-            // that is actually older than the user's unsaved local edit.
-            if (localEditAt > remoteEditAt + 250) {
+            // Keep an unsaved local document intact. Once its save finishes,
+            // polling reconciles both clients with the persisted D1 value.
+            if (pendingNotesRef.current[noteKey] !== undefined) {
               return;
             }
-
-            if (saveTimersRef.current[update.noteType]) {
-              window.clearTimeout(saveTimersRef.current[update.noteType]);
-              delete saveTimersRef.current[update.noteType];
-            }
-            delete pendingNotesRef.current[update.noteType];
-            lastReceivedRef.current[update.noteType] = update.content;
+            lastReceivedRef.current[noteKey] = update.content;
             callbackRef.current(update.noteType, update.content);
           }
         } catch {
@@ -218,8 +207,8 @@ export function useNotesRealtime(
 
       if (!canEditNote || !studentId) return;
 
-      lastLocalEditRef.current[noteType] = Date.now();
-      pendingNotesRef.current[noteType] = content;
+      const noteKey = `${studentId}:${noteType}`;
+      pendingNotesRef.current[noteKey] = content;
 
       if (socketRef.current?.readyState === WebSocket.OPEN) {
         socketRef.current.send(JSON.stringify({ type: "writer:update" }));
@@ -233,46 +222,69 @@ export function useNotesRealtime(
         );
       }
 
-      const currentTimer = saveTimersRef.current[noteType];
+      const currentTimer = saveTimersRef.current[noteKey];
       if (currentTimer) window.clearTimeout(currentTimer);
 
       // Let this short debounce finish even if the dashboard unmounts while
       // switching from the teacher view to the student's view.
-      saveTimersRef.current[noteType] = window.setTimeout(() => {
-        const previousSave = saveQueuesRef.current[noteType] ?? Promise.resolve();
+      const saveTimer = window.setTimeout(() => {
+        const previousSave = saveQueuesRef.current[noteKey] ?? Promise.resolve();
         const currentSave = previousSave
           .catch(() => undefined)
           .then(async () => {
-            if (pendingNotesRef.current[noteType] !== content) return;
+            const retryDelays = [0, 750, 1_500, 3_000, 6_000];
 
-            const response = await fetch("/api/notes", {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ studentId, noteType, content, shared }),
-            });
+            for (const delay of retryDelays) {
+              if (pendingNotesRef.current[noteKey] !== content) return;
+              if (delay) {
+                await new Promise((resolve) => window.setTimeout(resolve, delay));
+              }
+              if (pendingNotesRef.current[noteKey] !== content) return;
 
-            if (!response.ok) return;
+              try {
+                const response = await fetch("/api/notes", {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ studentId, noteType, content, shared }),
+                });
 
-            if (pendingNotesRef.current[noteType] === content) {
-              lastReceivedRef.current[noteType] = content;
-              delete pendingNotesRef.current[noteType];
+                if (response.ok) {
+                  if (pendingNotesRef.current[noteKey] === content) {
+                    lastReceivedRef.current[noteKey] = content;
+                    delete pendingNotesRef.current[noteKey];
+                  }
+                  return;
+                }
+
+                // Authentication and validation errors will not improve by
+                // retrying the same request.
+                if (response.status < 500 && response.status !== 429) {
+                  console.error(`Note save failed with HTTP ${response.status}.`);
+                  return;
+                }
+              } catch {
+                // Retry transient network failures below.
+              }
             }
+
+            console.error("Note save failed after multiple attempts.");
           });
-        saveQueuesRef.current[noteType] = currentSave;
+        saveQueuesRef.current[noteKey] = currentSave;
 
         void currentSave
           .catch(() => {
             // A later queued save can retry after transient network failures.
           })
           .finally(() => {
-            if (saveQueuesRef.current[noteType] === currentSave) {
-              delete saveQueuesRef.current[noteType];
+            if (saveQueuesRef.current[noteKey] === currentSave) {
+              delete saveQueuesRef.current[noteKey];
             }
-            if (saveTimersRef.current[noteType]) {
-              delete saveTimersRef.current[noteType];
+            if (saveTimersRef.current[noteKey] === saveTimer) {
+              delete saveTimersRef.current[noteKey];
             }
           });
       }, 400);
+      saveTimersRef.current[noteKey] = saveTimer;
     },
     [role, studentId],
   );

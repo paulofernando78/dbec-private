@@ -35,5 +35,11 @@ export const hearVsListen = {
   ],
   quickRule:
     "Use hear quando você ouve um som e listen to quando presta atenção a ele.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/hear-vs-listen.avif?v=1",
+    alt: "Uma pessoa percebe a campainha tocar e outra presta atenção ao que uma amiga diz em uma cafeteria.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;
 

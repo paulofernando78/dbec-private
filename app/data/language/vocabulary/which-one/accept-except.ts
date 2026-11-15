@@ -28,7 +28,7 @@ export const acceptVsExcept = {
   ],
   quickRule: "Associe accept a “aceitar” e except a “excluir”.",
   image: {
-    src: "/media/images/language/vocabulary/which-one/accept-vs-except.avif?v=1",
+    src: "/media/images/language/vocabulary/which-one/accept-vs-except.avif?v=2",
     alt: "Uma aluna aceita um presente. Em outra cena, um garoto fica triste do lado de fora enquanto os colegas entram na sala.",
     width: 1440,
     height: 720,

@@ -28,4 +28,10 @@ export const lieVsLay = {
   ],
   quickRule:
     "Em questões de prova, confira o tempo verbal e procure o objeto direto. Yesterday I lay down significa “Ontem me deitei”. Yesterday I laid the book on the table significa “Ontem coloquei o livro sobre a mesa”. Lie no sentido de “mentir” tem outras formas: lie, lied, lied.",
+  image: {
+    src: "/media/images/language/vocabulary/which-one/lie-vs-lay.avif?v=1",
+    alt: "Uma pessoa repousa deitada na cama enquanto outra coloca uma manta dobrada sobre a cama.",
+    width: 1774,
+    height: 887,
+  },
 } satisfies VocabularyTopic;

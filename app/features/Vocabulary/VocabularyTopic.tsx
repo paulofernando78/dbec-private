@@ -1,4 +1,5 @@
 import { Portuguese } from "@/components/content/Portuguese";
+import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { Radio } from "@/features/exercises/Radio";
 import {
@@ -29,12 +30,22 @@ export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
             </p>
             <ul className="grid gap-2">
               {usage.examples.map((example) => (
-                <li key={example.english}>
-                  <span lang="en" className="font-semibold">
-                    {example.english}
+                <li key={example.english} className="flex items-center gap-3">
+                  <Audio
+                    asButton
+                    src={example.english}
+                    fallbackText={example.english}
+                    speechLang="en-US"
+                    ariaLabel={`Play ${example.english}`}
+                    wrapperClassName="shrink-0"
+                  />
+                  <span>
+                    <span lang="en" className="font-semibold">
+                      {example.english}
+                    </span>
+                    {" — "}
+                    <Portuguese>{example.portuguese}</Portuguese>
                   </span>
-                  {" — "}
-                  <Portuguese>{example.portuguese}</Portuguese>
                 </li>
               ))}
             </ul>

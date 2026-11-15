@@ -48,7 +48,12 @@ export class NotesRoom {
           role: attachment?.role,
         });
         for (const connectedSocket of this.state.getWebSockets()) {
-          if (connectedSocket !== socket) connectedSocket.send(update);
+          if (connectedSocket === socket) continue;
+          try {
+            connectedSocket.send(update);
+          } catch {
+            // A closing socket must not prevent delivery to the others.
+          }
         }
         return;
       }
@@ -75,10 +80,19 @@ export class NotesRoom {
       });
 
       for (const connectedSocket of this.state.getWebSockets()) {
-        if (connectedSocket !== socket) connectedSocket.send(update);
+        if (connectedSocket === socket) continue;
+        try {
+          connectedSocket.send(update);
+        } catch {
+          // A closing socket must not prevent delivery to the others.
+        }
       }
     } catch {
-      socket.send(JSON.stringify({ type: "error", error: "Invalid JSON." }));
+      try {
+        socket.send(JSON.stringify({ type: "error", error: "Invalid JSON." }));
+      } catch {
+        // The sender disconnected before the error response was delivered.
+      }
     }
   }
 
@@ -86,9 +100,18 @@ export class NotesRoom {
     const attachment = socket.deserializeAttachment();
     const update = JSON.stringify({ type: "writer:clear", role: attachment?.role });
     for (const connectedSocket of this.state.getWebSockets()) {
-      if (connectedSocket !== socket) connectedSocket.send(update);
+      if (connectedSocket === socket) continue;
+      try {
+        connectedSocket.send(update);
+      } catch {
+        // The remaining clients will clear stale writer state on timeout.
+      }
     }
-    socket.close(code, reason);
+    try {
+      socket.close(code, reason);
+    } catch {
+      // The socket may already be closed by the runtime.
+    }
   }
 }
 

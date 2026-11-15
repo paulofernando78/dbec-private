@@ -6,6 +6,7 @@ import { quickVsFast } from "./quick-vs-fast";
 import { speakVsSayVsTell } from "./speak-vs-say-vs-tell";
 import { lieVsLay } from "./lie-vs-lay";
 import { stationaryVsStationery } from "./stationary-vs-stationery";
+import { robVsSteal } from "./rob-steal";
 
 export const vocabularyTopics = [
   hearVsListen,
@@ -16,6 +17,7 @@ export const vocabularyTopics = [
   lieVsLay,
   stationaryVsStationery,
   acceptVsExcept,
+  robVsSteal,
 ] as const;
 
 export type VocabularyTopicId = (typeof vocabularyTopics)[number]["id"];
