@@ -1,4 +1,5 @@
 import { Portuguese } from "@/components/content/Portuguese";
+import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { Radio } from "@/features/exercises/Radio";
@@ -11,7 +12,9 @@ import {
 export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
   return (
     <div lang="pt-BR" className="grid gap-4 text-black dark:text-white">
-      <p>{topic.introduction}</p>
+      <p>
+        <InlineRichContent value={topic.introduction} />
+      </p>
       {topic.image && (
         <img {...topic.image} loading="lazy" className="mx-auto h-auto max-w-full rounded-lg" />
       )}
@@ -86,7 +89,9 @@ export function VocabularyTopicCards({
 
         return (
           <Card key={topic.id} title={topic.title}>
-            <p lang="pt-BR" className="mb-4 text-black dark:text-white">{topic.description}</p>
+            <p lang="pt-BR" className="mb-4 text-black dark:text-white">
+              <InlineRichContent value={topic.description} />
+            </p>
             <VocabularyTopic topic={topic} />
           </Card>
         );

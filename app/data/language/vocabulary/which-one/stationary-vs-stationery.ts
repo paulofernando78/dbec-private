@@ -1,11 +1,16 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const stationaryVsStationery = {
   id: "stationary-vs-stationery",
   title: "Stationary vs. Stationery",
-  description: "Distinga “parado” de “material de papelaria”.",
-  introduction:
-    "As palavras têm a mesma pronúncia, mas a grafia e a função na frase são diferentes.",
+  description: ["Distinga ", bold("stationary"), " de ", bold("stationery"), "."],
+  introduction: [
+    bold("Stationary"),
+    " e ",
+    bold("stationery"),
+    " têm a mesma pronúncia, mas a grafia e a função na frase são diferentes.",
+  ],
   usages: [
     {
       word: "Stationary",
@@ -40,7 +45,7 @@ export const stationaryVsStationery = {
   ],
   quickRule: "Associe o A de stationary ao A de at rest (em repouso) e o E de stationery ao E de envelope.",
   image: {
-    src: "/media/images/language/vocabulary/which-one/stationary-vs-stationery.avif?v=1",
+    src: "/media/images/language/vocabulary/which-one/stationary-vs-stationery.avif?v=3",
     alt: "Uma bicicleta parada na rua e materiais de papelaria coloridos organizados sobre uma mesa.",
     width: 1774,
     height: 887,

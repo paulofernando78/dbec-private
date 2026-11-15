@@ -1,12 +1,16 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const quickVsFast = {
   id: "quick-vs-fast",
   title: "Quick vs. Fast",
-  description:
-    "Compare dois usos de “rápido” em inglês.",
-  introduction:
-    "Quick costuma destacar o pouco tempo que algo leva. Fast costuma destacar a velocidade.",
+  description: ["Compare os usos de ", bold("quick"), " e ", bold("fast"), "."],
+  introduction: [
+    bold("Quick"),
+    " costuma destacar o pouco tempo que algo leva. ",
+    bold("Fast"),
+    " costuma destacar a velocidade.",
+  ],
   usages: [
     {
       word: "Quick",

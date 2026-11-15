@@ -1,11 +1,16 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const acceptVsExcept = {
   id: "accept-vs-except",
   title: "Accept vs. Except",
-  description: "Aprenda a distinguir “aceitar” de “exceto”.",
-  introduction:
-    "As duas palavras têm grafias parecidas. Em uma questão de prova, observe se alguém está aceitando algo ou se a frase está deixando alguém ou algo de fora.",
+  description: ["Aprenda a distinguir ", bold("accept"), " de ", bold("except"), "."],
+  introduction: [
+    bold("Accept"),
+    " e ",
+    bold("except"),
+    " têm grafias parecidas. Observe se alguém está aceitando algo ou se a frase está deixando alguém ou algo de fora.",
+  ],
   usages: [
     {
       word: "Accept",

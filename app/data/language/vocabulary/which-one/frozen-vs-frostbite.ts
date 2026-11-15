@@ -1,12 +1,16 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const frozenVsFrostbite = {
   id: "frozen-vs-frostbite",
   title: "Frozen vs. Frostbite",
-  description:
-    "Aprenda a distinguir um estado de uma lesão causada pelo frio.",
-  introduction:
-    "Frozen descreve um estado. Frostbite é o nome de uma lesão.",
+  description: ["Aprenda a distinguir ", bold("frozen"), " de ", bold("frostbite"), "."],
+  introduction: [
+    bold("Frozen"),
+    " descreve um estado. ",
+    bold("Frostbite"),
+    " é o nome de uma lesão causada pelo frio.",
+  ],
   usages: [
     {
       word: "Frozen",

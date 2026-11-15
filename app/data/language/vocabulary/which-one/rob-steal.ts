@@ -1,11 +1,20 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const robVsSteal = {
   id: "rob-vs-steal",
   title: "Rob vs. Steal",
-  description: "Aprenda a escolher o verbo de acordo com o foco: a vítima, o lugar ou o objeto levado.",
-  introduction:
-    "Rob e steal podem ser traduzidos como “roubar”, mas não recebem o mesmo complemento. Use rob antes da pessoa ou do lugar que sofreu o roubo. Use steal antes do objeto que foi levado.",
+  description: ["Aprenda a escolher entre ", bold("rob"), " e ", bold("steal"), " de acordo com o foco."],
+  introduction: [
+    bold("Rob"),
+    " e ",
+    bold("steal"),
+    " podem ser traduzidos como “roubar”, mas não recebem o mesmo complemento. Use ",
+    bold("rob"),
+    " antes da pessoa ou do lugar que sofreu o roubo. Use ",
+    bold("steal"),
+    " antes do objeto que foi levado.",
+  ],
   usages: [
     {
       word: "Rob",

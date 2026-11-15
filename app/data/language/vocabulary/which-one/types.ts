@@ -13,11 +13,13 @@ export type WordUsage = {
 export type VocabularyTopic = {
   id: string;
   title: string;
-  description: string;
-  introduction: string;
+  description: RichContent | string;
+  introduction: RichContent | string;
   usages: readonly WordUsage[];
   quickRule: string;
   image?: { src: string; alt: string; width: number; height: number };
   practice?: readonly { question: string; choices: readonly string[]; answer: string }[];
 };
+
+import type { RichContent } from "@/helpers/content";
 

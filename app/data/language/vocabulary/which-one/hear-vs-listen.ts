@@ -1,11 +1,16 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const hearVsListen = {
   id: "hear-vs-listen",
   title: "Hear vs. Listen",
-  description: "Quando usar hear e listen no dia a dia.",
-  introduction:
-    "Os dois verbos se referem a sons. A diferença está na atenção que você dá ao som.",
+  description: ["Quando usar ", bold("hear"), " e ", bold("listen"), " no dia a dia."],
+  introduction: [
+    bold("Hear"),
+    " e ",
+    bold("listen"),
+    " se referem a sons. A diferença está na atenção que você dá ao som.",
+  ],
   usages: [
     {
       word: "Hear",

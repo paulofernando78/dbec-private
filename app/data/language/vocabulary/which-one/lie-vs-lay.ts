@@ -1,11 +1,17 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const lieVsLay = {
   id: "lie-vs-lay",
   title: "Lie vs. Lay",
-  description: "Aprenda a distinguir “deitar-se” de “colocar algo ou alguém”.",
-  introduction:
-    "As formas se sobrepõem. Lay é a forma base de “colocar” e também o passado de lie no sentido de “deitar-se”.",
+  description: ["Aprenda a distinguir ", bold("lie"), " de ", bold("lay"), "."],
+  introduction: [
+    "As formas se sobrepõem. ",
+    bold("Lay"),
+    " é a forma base de “colocar” e também o passado de ",
+    bold("lie"),
+    " no sentido de “deitar-se”.",
+  ],
   usages: [
     {
       word: "Lie",

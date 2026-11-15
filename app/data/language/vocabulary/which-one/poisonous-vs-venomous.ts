@@ -1,12 +1,17 @@
 import type { VocabularyTopic } from "./types";
+import { bold } from "@/helpers/content";
 
 export const poisonousVsVenomous = {
   id: "poisonous-vs-venomous",
   title: "Poisonous vs. Venomous",
-  description:
-    "Compare duas formas de descrever seres ou substâncias tóxicas.",
-  introduction:
-    "Para interpretar a palavra, observe como a toxina entra em contato com o organismo.",
+  description: ["Compare ", bold("poisonous"), " e ", bold("venomous"), "."],
+  introduction: [
+    "Para escolher entre ",
+    bold("poisonous"),
+    " e ",
+    bold("venomous"),
+    ", observe como a toxina entra em contato com o organismo.",
+  ],
   usages: [
     {
       word: "Poisonous",
