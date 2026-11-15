@@ -6,6 +6,7 @@ import { quickVsFast } from "./quick-vs-fast";
 import { raiseVsRise } from "./raise-vs-rise";
 import { speakVsSayVsTell } from "./speak-vs-say-vs-tell";
 import { lieVsLay } from "./lie-vs-lay";
+import { mostVsMostOf } from "./most-vs-most-of";
 import { lendVsBorrow } from "./lend-vs-borrow";
 import { pretendVsIntend } from "./pretend-vs-intend";
 import { stationaryVsStationery } from "./stationary-vs-stationery";
@@ -28,6 +29,7 @@ export const vocabularyTopics = [
   sinkVsDrown,
   raiseVsRise,
   seeVsWatch,
+  mostVsMostOf,
 ] as const;
 
 export type VocabularyTopicId = (typeof vocabularyTopics)[number]["id"];

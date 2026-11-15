@@ -33,6 +33,7 @@ type GameSection = {
 };
 
 export type GameData = {
+  bundleUrl?: string;
   whiteboard: {
     title: string;
     subtitle?: string;

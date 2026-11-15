@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { List } from "@/components/content/List";
+import { JsDosPlayer } from "@/components/games/JsDosPlayer";
 
 import { getGameSlug } from "@/data/content/games/old-pc-games/games-slug";
 import { gamesLucasArtsCardData } from "@/data/content/games/old-pc-games/lucas-arts/games-lucas-arts-card-data";
@@ -108,21 +109,16 @@ export default function GameBuilder() {
           <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div className="min-w-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-start">
               <Card title="Game player">
-                <div
-                  id="js-dos-player"
-                  className="mb-4 grid aspect-video place-items-center rounded-lg bg-slate-950 px-4 text-center text-sm text-slate-200"
-                >
-                  Player not configured
-                </div>
-                <label className="grid gap-1 text-sm font-semibold">
-                  Game bundle
-                  <input
-                    type="url"
-                    disabled
-                    placeholder="Game bundle URL"
-                    className="w-full rounded-lg bg-(--background) px-3 py-2"
+                {game.bundleUrl ? (
+                  <JsDosPlayer
+                    bundleUrl={game.bundleUrl}
+                    title={gameCard?.label ?? game.whiteboard.title}
                   />
-                </label>
+                ) : (
+                  <div className="grid aspect-4/3 place-items-center rounded-lg bg-slate-950 px-4 text-center text-sm text-slate-200">
+                    Player not configured
+                  </div>
+                )}
               </Card>
             </div>
 
