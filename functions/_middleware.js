@@ -51,7 +51,11 @@ export async function onRequest(context) {
       url.pathname.startsWith("/teacher/dashboard/")
     ) {
       if (session.role === "teacher") {
-        const response = await context.next();
+        // The default Pages fallback is the prerendered home page.
+        const fallbackUrl = new URL("/__spa-fallback", url);
+        const response = await context.env.ASSETS.fetch(
+          new Request(fallbackUrl, { method: context.request.method }),
+        );
         if (!response.headers.get("Content-Type")?.startsWith("text/html")) {
           return response;
         }
