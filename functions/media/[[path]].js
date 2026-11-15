@@ -38,7 +38,7 @@ const createHeaders = (object) => {
 
 const getKeyFromContext = (context) => {
   const key = getObjectKey(context.params.path);
-  return key && !key.includes("..") ? key : null;
+  return key && !key.includes("..") && !key.startsWith("game-saves/") ? key : null;
 };
 
 export async function onRequestHead(context) {
