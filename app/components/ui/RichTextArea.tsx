@@ -51,12 +51,17 @@ type NoteBlock = {
   author?: NoteAuthor;
 };
 
-let noteBlockId = 0;
+let newNoteBlockId = 0;
+
+const createNewNoteBlockId = () =>
+  typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? `note-block-new-${crypto.randomUUID()}`
+    : `note-block-new-${Date.now()}-${newNoteBlockId++}`;
 
 const createBlock = (
   html = "",
   author?: NoteBlock["author"],
-  id = `note-block-${noteBlockId++}`,
+  id = createNewNoteBlockId(),
 ): NoteBlock => ({
   id,
   html,
