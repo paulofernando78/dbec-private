@@ -15,6 +15,8 @@ import {
 import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
 import { completeAudiobook } from "@/utils/audiobook-progress";
+import { Eye, EyeClosed } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 function SectionImage({
   section,
@@ -93,6 +95,7 @@ export default function ListeningBookPage() {
 
   const audiobookSections: readonly AudiobookSection[] = audiobook.sections;
   const [summary, ...sections] = audiobookSections;
+  const [showAnswers, setShowAnswers] = useState(false);
 
   const renderSection = (section: AudiobookSection) => {
     const blocks = typeof section.text === "string" ? [{ text: section.text }] : section.text;
@@ -104,6 +107,7 @@ export default function ListeningBookPage() {
       section.questions ??
       audiobookQuestions[audiobook.slug]?.[section.id] ??
       [];
+    const answers = section.answers ?? [];
 
     return (
       <article
@@ -154,14 +158,27 @@ export default function ListeningBookPage() {
               </div>
               {questions.length > 0 && (
                 <div className="mt-3 rounded-lg bg-(--background) p-3">
-                  <h3 className="mb-2 text-lg font-black">Ask and answer.</h3>
+                  <h3 className="mb-2 text-lg font-black">Answer</h3>
                   <ul className="space-y-1">
                     {questions.map((question, index) => (
                       <li key={question}>
                         {index + 1}. {question}
+                        {showAnswers && answers[index] && (
+                          <span className="text-slate-600"> — {answers[index]}</span>
+                        )}
                       </li>
                     ))}
                   </ul>
+                  {answers.length > 0 && (
+                    <div className="mt-3">
+                      <Button
+                        ariaLabel={showAnswers ? "Hide answers" : "Show answers"}
+                        pressed={showAnswers}
+                        icon={showAnswers ? <EyeClosed /> : <Eye />}
+                        onClick={() => setShowAnswers((current) => !current)}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </MediaWrapper.Content>

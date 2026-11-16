@@ -20,6 +20,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-1",
+      "answers": ["Because she is curious and wants to see where the Rabbit goes.", "It opens the little door to the garden.", "She becomes smaller and smaller."],
       "title": "Chapter 1 · Down the Rabbit-hole",
       "text": [
         {
@@ -66,6 +67,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-2",
+      "answers": ["Because she is too big to go through the door.", "It comes from Alice’s tears.", "Because Alice talks about cats and dogs."],
       "title": "Chapter 2 · Alice's Tears",
       "text": [
         { text: "‘Oh! What’s happening?’ cried Alice. ‘I’m getting taller and taller!’ She looked down. ‘Goodbye, feet! Who will put your shoes on for you now? I can’t do it! I’ll give you some new shoes for Christmas. I’ll have to send them to you!’" },
@@ -105,6 +107,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-3",
+      "answers": ["He says, ‘One, two, three, go!’ and everybody runs.", "Everybody wins, according to the Dodo.", "He gives Alice a box of chocolates."],
       "title": "Chapter 3 · A Race",
       "text": [
         { text: "Alice and the birds and animals felt cold and wet. The largest bird spoke to Alice." },
@@ -147,6 +150,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-4",
+      "answers": ["He thinks she is Mary Ann, his housemaid.", "Alice is blocking the door with her arm.", "She gets smaller and runs away."],
       "title": "Chapter 4 · The White Rabbit's House",
       "text": [
         { text: "It was not the Mouse. It was the White Rabbit. He came slowly into the room." },
@@ -190,6 +194,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-5",
+      "answers": ["Because she changes size and does not know who she is anymore.", "He asks her to repeat ‘You are old, Father William.’", "The white mushroom makes her bigger; the brown mushroom makes her smaller."],
       "title": "Chapter 5 · The Caterpillar",
       "text": [
         { text: "The Caterpillar looked at Alice for some time before it spoke. Then it said slowly, ‘Who are you?’" },
@@ -239,6 +244,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-6",
+      "answers": ["It changes into a pig.", "The March Hare and the Mad Hatter.", "Its smile is the last part to vanish."],
       "title": "Chapter 6 · The Duchess and the Cheshire Cat",
       "text": [
         { text: "Inside, a large, ugly woman sat with a baby in her arms. There was a cook by the fire and there was food on the table. Near the fire, there was a large cat with a big smile. This smile went from ear to ear on its face." },
@@ -297,6 +303,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-7",
+      "answers": ["The March Hare, the Mad Hatter and the sleeping Dormouse.", "He put some butter in it.", "She eats some white mushroom and grows bigger."],
       "title": "Chapter 7 · A Tea Party",
       "text": [
         { text: "There was a tree in front of the house. Under the tree was a big table with a lot of chairs round it. But there were only three at the table: the Mad Hatter, the March Hare and a large brown mouse. The Mouse sat between the Mad Hatter and the March Hare. It was asleep, so they talked over its head." },
@@ -351,6 +358,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-8",
+      "answers": ["They planted white roses by mistake.", "She hides them behind some trees.", "The Cat has no body, so there is nothing to cut off."],
       "title": "Chapter 8 · Inside the Garden",
       "text": [
         { text: "Near Alice was a small tree with flowers on it. There were three gardeners by the tree." },
@@ -442,6 +450,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-9",
+      "answers": ["The Knave of Hearts is on trial for taking the Queen’s tarts.", "He is carrying a cup of tea.", "The White Rabbit calls the Cheshire Cat."],
       "title": "Chapter 9 · Who Took the Tarts?",
       "text": [
         { text: "Alice and the Duchess followed everybody into a house with one very large room. The King and Queen were there. They sat on big chairs above all the animals and birds. All the cards were there too. Near the King was the White Rabbit. He had a paper in his hand and looked very important. The Knave of Hearts stood in front of the King and Queen. He stood between two men and his head was down. It was his trial. In the middle of the room was a table with a large plate of tarts on it." },
@@ -502,6 +511,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-10",
+      "answers": ["Because she is getting bigger and bigger.", "The cards fly up into the air and fall on her.", "Her sister wakes her, and they go home for tea."],
       "title": "Chapter 10 · The End of the Trial",
       "text": [
         { text: "‘Here!’ cried Alice and stood up quickly. But she was tall now, and chairs, tables and people fell here, there and everywhere." },
