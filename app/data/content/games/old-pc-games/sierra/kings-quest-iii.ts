@@ -1,4 +1,5 @@
 export const kingsQuestIII = {
+  bundleUrl: "/media/games/sierra/kings-quest-iii/kq3.jsdos?v=1",
   whiteboard: {
     title: "Advanced",
     descriptions: [

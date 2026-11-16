@@ -29,33 +29,34 @@ export const List = ({ instruction, checklist, items = [], type = "none" }: List
   if (type === "checkbox") {
     return (
       <div className="mb-4">
-        <p className="font-bold mb-4">{instruction}</p>
+        {instruction && <p className="mb-4 font-bold">{instruction}</p>}
 
-        {items.map((item, index) => (
-          <div key={index}>
-            <label className="flex items-start gap-[5px]">
-              <Checkbox
-                className="mr-1"
-                checked={checklist?.checked[index] ?? checkedItems[index] ?? false}
-                disabled={checklist?.disabled}
-                onCheckedChange={(checked) =>
-                  checklist ? checklist.onChange(index, checked) : setCheckedItems((current) => ({
-                    ...current,
-                    [index]: checked,
-                  }))
-                }
-              />
-              <InlineRichContent value={item.content} />
-            </label>
-            {item.textarea && (
-              <textarea
-                name=""
-                id=""
-                className="w-full mt-1 p-2 bg-white border border-gray-300 rounded-lg"
-              ></textarea>
-            )}
-          </div>
-        ))}
+        <div className="space-y-4">
+          {items.map((item, index) => (
+            <div key={index} className="rounded-xl bg-(--background) p-4">
+              <label className="flex items-start gap-2">
+                <Checkbox
+                  checked={checklist?.checked[index] ?? checkedItems[index] ?? false}
+                  disabled={checklist?.disabled}
+                  onCheckedChange={(checked) =>
+                    checklist ? checklist.onChange(index, checked) : setCheckedItems((current) => ({
+                      ...current,
+                      [index]: checked,
+                    }))
+                  }
+                />
+                <InlineRichContent value={item.content} />
+              </label>
+              {item.textarea && (
+                <textarea
+                  name=""
+                  id=""
+                  className="mt-2 w-full rounded-lg border border-gray-300 bg-white p-2"
+                ></textarea>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

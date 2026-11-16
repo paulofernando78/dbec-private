@@ -84,6 +84,7 @@ const mediaTypes: Record<string, string> = {
   ".m4a": "audio/mp4",
   ".mp3": "audio/mpeg",
   ".ogg": "audio/ogg",
+  ".pdf": "application/pdf",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".wav": "audio/wav",

@@ -15,6 +15,7 @@ type SectionProps = {
   showInTableOfContents?: boolean;
   heading?: 1 | 2 | 3 | 4 | 5 | 6;
   showHeader?: boolean;
+  inset?: boolean;
   children: ReactNode;
 };
 
@@ -24,6 +25,7 @@ export const Section = ({
   className = "",
   heading = 2,
   showHeader = true,
+  inset = true,
   children,
 }: SectionProps) => {
   // If no label is passed, build one from the id
@@ -32,7 +34,7 @@ export const Section = ({
   return (
     <section id={id} className={`scroll-mt-2 ${className}`}>
       {showHeader ? (
-        <Card title={resolvedLabel} titleAs={`h${heading}`} className="mb-4" inset>
+        <Card title={resolvedLabel} titleAs={`h${heading}`} className="mb-4" inset={inset}>
           {children}
         </Card>
       ) : (

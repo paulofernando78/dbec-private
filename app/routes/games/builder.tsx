@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { List } from "@/components/content/List";
 import { JsDosPlayer } from "@/components/games/JsDosPlayer";
+import { GameManualDetails } from "@/components/games/GameManualDetails";
 
 import { getGameSlug } from "@/data/content/games/old-pc-games/games-slug";
 import { gamesLucasArtsCardData } from "@/data/content/games/old-pc-games/lucas-arts/games-lucas-arts-card-data";
@@ -108,7 +109,7 @@ export default function GameBuilder() {
         {game && (
           <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div className="sticky top-4 z-10 min-w-0 self-start lg:col-start-2 lg:row-start-1 lg:row-span-2">
-              <Card title="Game player">
+              <Card className="bg-transparent p-0!">
                 {game.bundleUrl ? (
                   <JsDosPlayer
                     bundleUrl={game.bundleUrl}
@@ -127,6 +128,15 @@ export default function GameBuilder() {
               <TableOfContents
                 items={game.sections.map(({ id, title }) => ({ href: id, label: title }))}
               />
+              {game.manualUrl && (
+                <GameManualDetails
+                  manualUrl={game.manualUrl}
+                  pageCount={game.manualPageCount}
+                  pageOffset={game.manualPageOffset}
+                  searchPages={game.manualSearchPages}
+                  title={gameCard?.label ?? game.whiteboard.title}
+                />
+              )}
             </div>
 
             <div className="min-w-0 lg:col-start-1 lg:row-start-2">
@@ -136,7 +146,7 @@ export default function GameBuilder() {
                 sectionOffset += section.items.length;
 
                 return (
-                  <Section key={section.id} id={section.id} label={section.title} heading={3}>
+                  <Section key={section.id} id={section.id} label={section.title} heading={3} inset={false}>
                     <List
                       type="checkbox"
                       items={section.items}

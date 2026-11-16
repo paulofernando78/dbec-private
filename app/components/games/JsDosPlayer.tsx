@@ -78,13 +78,40 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
 
 export function JsDosPlayer({ bundleUrl, gameId, title }: JsDosPlayerProps) {
   return (
-    <iframe
-      allow="autoplay; fullscreen; gamepad"
-      allowFullScreen
-      className="aspect-4/3 w-full rounded-lg bg-slate-950"
-      sandbox="allow-downloads allow-pointer-lock allow-same-origin allow-scripts"
-      srcDoc={createPlayerDocument(bundleUrl, gameId, title)}
-      title={`${title} game player`}
-    />
+    <div className="mx-auto w-full max-w-4xl" aria-label={`${title} CRT game player`}>
+      <div className="relative rounded-2xl bg-linear-to-br from-[#eee9d7] via-[#d8d2bd] to-[#b8b19d] p-3 pb-0 shadow-[inset_0_0.125rem_0_rgba(255,255,255,0.8),inset_0_-0.25rem_0.5rem_rgba(83,75,58,0.2),0_0.75rem_1.5rem_rgba(15,23,42,0.2)] sm:p-5 sm:pb-0">
+        <div className="rounded-xl bg-[#3f3d37] p-1.5 shadow-[inset_0_0_0.5rem_rgba(0,0,0,0.7),0_0.25rem_0.75rem_rgba(48,43,32,0.55)] sm:p-3">
+          <div className="relative overflow-hidden rounded-xl bg-slate-950 shadow-[inset_0_0_1rem_rgba(0,0,0,0.95)]">
+            <iframe
+              allow="autoplay; fullscreen; gamepad"
+              allowFullScreen
+              className="block aspect-4/3 w-full bg-slate-950"
+              sandbox="allow-downloads allow-pointer-lock allow-same-origin allow-scripts"
+              srcDoc={createPlayerDocument(bundleUrl, gameId, title)}
+              title={`${title} game player`}
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 rounded-xl bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(0,0,0,0.16)_100%)] shadow-[inset_0_0_0.75rem_rgba(255,255,255,0.05)]"
+            />
+          </div>
+        </div>
+
+        <div aria-hidden="true" className="relative flex h-9 items-center justify-center sm:h-14">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <span
+                key={index}
+                className="size-2 rounded-full border border-[#77715f] bg-linear-to-br from-[#f5f0df] to-[#aaa38f] shadow-[inset_0_0.0625rem_0_rgba(255,255,255,0.8),0_0.0625rem_0.125rem_rgba(0,0,0,0.35)] sm:size-2.5"
+              />
+            ))}
+          </div>
+          <span className="absolute right-8 size-1 rounded-full bg-emerald-700 shadow-[0_0_0.25rem_rgba(21,128,61,0.65)] sm:right-12" />
+          <span className="absolute right-3 size-3 rounded-full border border-[#77715f] bg-linear-to-br from-[#eee8d5] to-[#aaa38f] shadow-[inset_0_0.0625rem_0_rgba(255,255,255,0.8),0_0.0625rem_0.125rem_rgba(0,0,0,0.35)] sm:right-5 sm:size-4" />
+        </div>
+      </div>
+
+      <div aria-hidden="true" className="mx-auto h-2 w-4/5 rounded-b-xl bg-linear-to-b from-[#aaa38f] to-[#77715f] shadow-md sm:h-3" />
+    </div>
   );
 }

@@ -1,6 +1,8 @@
 import { walkthrough } from "../walkthrough-factory";
+import kq4ManualSearch from "./kq4-manual-search.json";
 
-export const kingsQuestIV = walkthrough(
+export const kingsQuestIV = {
+  ...walkthrough(
   "Guide Princess Rosella through Tamir, complete Lolotte's three dangerous assignments, recover Genesta's talisman, and find the magic fruit that can save King Graham.",
   "1988",
   [
@@ -32,10 +34,17 @@ export const kingsQuestIV = walkthrough(
       "Reach the cave containing the magic fruit, use the scarab against the undead guardian, and take the fruit.",
       "Return to Daventry before the twenty-four-hour limit and give the fruit to King Graham.",
     ]],
-  ],
-);
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/kings-quest-iv/kq4.jsdos?v=2",
+  manualUrl: "/media/games/sierra/kings-quest-iv/kq-manual.pdf?v=2",
+  manualPageCount: 20,
+  manualPageOffset: 2,
+  manualSearchPages: kq4ManualSearch,
+};
 
-export const kingsQuestV = walkthrough(
+export const kingsQuestV = {
+  ...walkthrough(
   "Help King Graham pursue Mordack across Serenia, rescue helpful creatures, survive the mountains and sea, and infiltrate the wizard's castle without creating an unwinnable state.",
   "1990",
   [
@@ -69,7 +78,9 @@ export const kingsQuestV = walkthrough(
       "Defeat Mordack, restore Castle Daventry, and reunite Graham with his family.",
     ]],
   ],
-);
+  ),
+  bundleUrl: "/media/games/sierra/kings-quest-v/kq5.jsdos?v=2",
+};
 
 export const policeQuestI = walkthrough(
   "Follow correct police procedure as Sonny Bonds progresses from routine patrol work to the undercover operation that exposes Jessie Bains, the Death Angel. This guide follows the VGA remake.",

@@ -12,7 +12,6 @@ export const gamesSierraCardData = {
     description:
       "Help King Graham explore the land of Kolyma and unlock three magical doors in his search for a queen.",
     date: "1985",
-    comingSoon: true,
   },
   kingsQuestIII: {
     href: "/games/sierra/kings-quest-iii",
@@ -20,21 +19,18 @@ export const gamesSierraCardData = {
     description:
       "Follow Gwydion as he escapes an evil wizard and uncovers the truth about his past and the kingdom of Daventry.",
     date: "1986",
-    comingSoon: true,
   },
   kingsQuestIV: {
     href: "/games/sierra/kings-quest-iv",
     label: "King's Quest IV",
     description: "Guide Princess Rosella through Tamir to recover Genesta's talisman and find the magic fruit that can save King Graham.",
     date: "1988",
-    comingSoon: true,
   },
   kingsQuestV: {
     href: "/games/sierra/kings-quest-v",
     label: "King's Quest V",
     description: "Help King Graham cross Serenia and infiltrate Mordack's castle to rescue his family and Daventry.",
     date: "1990",
-    comingSoon: true,
   },
   policeQuestI: {
     href: "/games/sierra/police-quest-i",

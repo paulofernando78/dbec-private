@@ -34,6 +34,10 @@ type GameSection = {
 
 export type GameData = {
   bundleUrl?: string;
+  manualUrl?: string;
+  manualPageCount?: number;
+  manualPageOffset?: number;
+  manualSearchPages?: string[];
   whiteboard: {
     title: string;
     subtitle?: string;
