@@ -46,7 +46,7 @@ export default function BusinessTwoLesson() {
           <Card>
             <Dialogue
               instruction="Listen to the dialogue."
-              audioSrc=""
+              audioSrc={`/media/audio/language/expressions/business-2/${entry.slug}.mp3`}
               context={content!.context}
               lines={content!.lines}
               segmented

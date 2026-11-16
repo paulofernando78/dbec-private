@@ -7,6 +7,7 @@ import { PageSections } from "@/components/content/PageSections";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
 import { Phonetics } from "@/components/content/Phonetics";
 import { Audio } from "@/components/ui/Audio";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { accentSections } from "@/data/language/pronunciation/accents";
@@ -126,20 +127,22 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
   }
 
   return (
-    <li className="flex min-h-17 items-center gap-3">
-      <Audio
+    <ActionTextRow
+      className="min-h-17 text-sm leading-6 md:text-base"
+      action={<Audio
         asButton
         ariaLabel={`Play ${audioLabel}`}
         src={audioSource}
         fallbackText={audioLabel}
-      />
-      <p className="min-w-0 text-sm leading-6 md:text-base">
+      />}
+    >
+      <p>
         <span className="text-black">
           <InlineRichContent value={item.english ?? ""} />
         </span>{" "}
         <span className="text-slate-500">{item.translation}</span>
       </p>
-    </li>
+    </ActionTextRow>
   );
 }
 

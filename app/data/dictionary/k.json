@@ -460,5 +460,21 @@
         ]
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "knock oneself out",
+        "enDefinition": "To work very hard at something."
+      },
+      {
+        "word": "keep posted",
+        "enDefinition": "To provide up-to-date information."
+      },
+      {
+        "word": "know one's stuff",
+        "enDefinition": "To have an expertise in a field."
+      }
+    ]
   }
 ]

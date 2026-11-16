@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Audio } from "@/components/ui/Audio";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Button } from "@/components/ui/Button";
 import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
 import type { LanguageFocusData } from "@/data/learn/course/lesson-step-types";
@@ -448,8 +449,10 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                     >
                       {usesPortugueseSupport ? "Pronúncia" : "Pronunciation"}
                     </h5>
-                    <div className="flex items-center gap-3">
-                      <Audio
+                    <ActionTextRow
+                      as="div"
+                      className="min-h-0 gap-3 pb-0"
+                      action={<Audio
                         asButton
                         ariaLabel={`Play ${titleText}`}
                         key={`${accent}-${audioSource}`}
@@ -458,7 +461,8 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                         speechLang={speechLang}
                         className="stroke-0!"
                         wrapperClassName="shrink-0"
-                      />
+                      />}
+                    >
                       <p className="text-xl leading-7 text-(--text-color)">
                         {Array.isArray(pronunciation) ? (
                           <InlineRichContent value={pronunciation} />
@@ -466,7 +470,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                           renderPronunciationModel(titleText, pronunciation)
                         )}
                       </p>
-                    </div>
+                    </ActionTextRow>
                   </section>
                 ) : null}
                 {formBlocks.length ? (

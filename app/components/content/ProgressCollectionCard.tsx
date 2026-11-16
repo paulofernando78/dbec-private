@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BookOpen, Check, LockKeyhole, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import {
   levelButtonClasses,
   levelGradientClasses,
@@ -69,7 +70,7 @@ export function ProgressCollectionCard({
   return (
     <>
       <article
-        className={`overflow-hidden rounded-xl bg-gray-50 dark:bg-(--surface) ${className}`}
+        className={`overflow-hidden rounded-xl bg-(--surface) ${className}`}
       >
         <header className="flex items-start justify-between gap-4 border-b border-gray-200 bg-gray-200 p-4 dark:border-gray-600 dark:bg-gray-700">
           <div>
@@ -109,11 +110,15 @@ export function ProgressCollectionCard({
         {items.length > 0 && (
           <ol className="px-4 py-4">
             {items.map((item, index) => (
-              <li
+              <ActionTextRow
                 key={item.id}
-                className="relative grid min-h-36 grid-cols-[60px_minmax(0,1fr)] gap-4 pb-5 last:min-h-15 last:pb-0"
-              >
-                {index < items.length - 1 && (
+                className="relative min-h-36 pb-5 last:min-h-15 last:pb-0"
+                actionSize="size-15"
+                textAtTop
+                gap="gap-4"
+                action={
+                  <>
+                    {index < items.length - 1 && (
                   <span
                     aria-hidden="true"
                     className={`absolute -bottom-5 left-6.5 top-13 z-0 w-2
@@ -124,10 +129,9 @@ export function ProgressCollectionCard({
                             : "bg-slate-400 dark:bg-slate-500"
                           : "bg-slate-300 dark:bg-slate-600"
                       }`}
-                  />
-                )}
-
-                <Button
+                      />
+                    )}
+                    <Button
                   ariaLabel={item.ariaLabel}
                   ariaDisabled={item.isLocked}
                   icon={
@@ -147,13 +151,15 @@ export function ProgressCollectionCard({
                         : "brightness-90"
                       : ""
                   }`}
-                />
-
-                <div className="min-w-0 pt-1">
+                    />
+                  </>
+                }
+              >
+                <div>
                   {item.eyebrow && (
-                    <p className="text-xs font-bold uppercase text-orange-700!">
+                    <span className="block text-xs font-bold uppercase text-orange-700!">
                       {item.eyebrow}
-                    </p>
+                    </span>
                   )}
                   <h3 className="text-xl font-black text-black dark:text-(--text-color)">
                     {item.title}
@@ -171,7 +177,7 @@ export function ProgressCollectionCard({
                     </p>
                   )}
                 </div>
-              </li>
+              </ActionTextRow>
             ))}
           </ol>
         )}

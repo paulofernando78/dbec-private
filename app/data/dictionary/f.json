@@ -1031,5 +1031,53 @@
 ,
   { "definitions": [
     { "word": "fledgling", "partOfSpeech": "adjective", "enDefinition": "New and still developing.", "ptDefinition": "Novo e ainda em desenvolvimento." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "face it",
+        "enDefinition": "Accept a difficult reality."
+      },
+      {
+        "word": "fool around",
+        "enDefinition": "To waste time, or spend it in a silly way."
+      },
+      {
+        "word": "fair and square",
+        "enDefinition": "Honestly."
+      },
+      {
+        "word": "foot the bill",
+        "enDefinition": "To pay."
+      },
+      {
+        "word": "fat chance",
+        "enDefinition": "Definitely not."
+      },
+      {
+        "word": "for heaven's sake",
+        "enDefinition": "A way of expressing emotions such as surprise, outrage, or impatience."
+      },
+      {
+        "word": "feel free",
+        "enDefinition": "Go ahead and do something; don't hesitate (to do something)."
+      },
+      {
+        "word": "for sure",
+        "enDefinition": "Definitely."
+      },
+      {
+        "word": "freak out",
+        "enDefinition": "To respond to something irrationally."
+      },
+      {
+        "word": "find out",
+        "enDefinition": "To learn; to discover."
+      },
+      {
+        "word": "first things first",
+        "enDefinition": "Deal with the most important thing first."
+      }
+    ]
+  }
 ]

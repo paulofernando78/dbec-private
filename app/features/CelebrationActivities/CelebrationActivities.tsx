@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -22,19 +23,21 @@ export const CelebrationActivities = () => (
 
     <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {activities.map((activity) => (
-        <li
+        <ActionTextRow
           key={activity}
-          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+          className="rounded-xl bg-(--background) p-2"
+          action={
+            <Audio
+              asButton
+              ariaLabel={`Play ${activity}`}
+              src={audioFile(activity)}
+              fallbackText={activity}
+              wrapperClassName="shrink-0"
+            />
+          }
         >
-          <Audio
-            asButton
-            ariaLabel={`Play ${activity}`}
-            src={audioFile(activity)}
-            fallbackText={activity}
-            wrapperClassName="shrink-0"
-          />
           <span className="font-bold">{activity}</span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   </Card>

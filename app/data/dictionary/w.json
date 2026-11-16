@@ -1105,5 +1105,41 @@
 ,
   { "definitions": [
     { "word": "wave of the future", "partOfSpeech": "noun phrase", "enDefinition": "A development expected to become common or important in the future.", "ptDefinition": "Uma tendência que deverá se tornar comum ou importante no futuro." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "way to go!",
+        "enDefinition": "Good work!"
+      },
+      {
+        "word": "well off",
+        "enDefinition": "Wealthy; financially secure."
+      },
+      {
+        "word": "work like a dog",
+        "enDefinition": "To work very hard."
+      },
+      {
+        "word": "work out",
+        "enDefinition": "To find a solution; to resolve."
+      },
+      {
+        "word": "worth one's while",
+        "enDefinition": "Worthy of one’s effort or time."
+      },
+      {
+        "word": "wine and dine",
+        "enDefinition": "To take someone out for an evening or an expensive meal."
+      },
+      {
+        "word": "wrap up",
+        "enDefinition": "To finish."
+      },
+      {
+        "word": "winning streak",
+        "enDefinition": "A series of wins."
+      }
+    ]
+  }
 ]

@@ -690,5 +690,65 @@
 ,
   { "definitions": [
     { "word": "iron out", "partOfSpeech": "phrasal verb", "enDefinition": "To resolve problems or details through discussion.", "ptDefinition": "Resolver problemas ou detalhes por meio de discussão." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "if worst comes to worst",
+        "enDefinition": "In the worst case; if absolutely necessary."
+      },
+      {
+        "word": "in person",
+        "enDefinition": "Personally; in one’s physical presence."
+      },
+      {
+        "word": "in progress",
+        "enDefinition": "Happening; under way; going on now."
+      },
+      {
+        "word": "in a bad mood",
+        "enDefinition": "Unhappy; depressed; irritable."
+      },
+      {
+        "word": "in reality",
+        "enDefinition": "In fact; actually."
+      },
+      {
+        "word": "in any case",
+        "enDefinition": "Whatever the fact is; certainly."
+      },
+      {
+        "word": "in that case",
+        "enDefinition": "Under that circumstance."
+      },
+      {
+        "word": "in charge of",
+        "enDefinition": "Having responsibility for."
+      },
+      {
+        "word": "in touch with",
+        "enDefinition": "To be or to get in contact with (someone)."
+      },
+      {
+        "word": "in good hands",
+        "enDefinition": "In good, competent care."
+      },
+      {
+        "word": "it looks like",
+        "enDefinition": "It’s likely that."
+      },
+      {
+        "word": "in good spirits",
+        "enDefinition": "Happy; in a good mood."
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "I'll say",
+        "enDefinition": "Yes, definitely!"
+      }
+    ]
+  }
 ]

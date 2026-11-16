@@ -3267,5 +3267,73 @@
   { "definitions": [
     { "word": "step up your game", "partOfSpeech": "idiom", "enDefinition": "To improve your performance or effort.", "ptDefinition": "Melhorar seu desempenho ou esforço." },
     { "word": "sluggish", "partOfSpeech": "adjective", "enDefinition": "Slow or lacking energy and activity.", "ptDefinition": "Lento ou com pouca energia e atividade." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "small fortune",
+        "enDefinition": "A good amount of money."
+      },
+      {
+        "word": "second nature",
+        "enDefinition": "A skill or habit that feels automatic after repeated practice."
+      },
+      {
+        "word": "sold out",
+        "enDefinition": "Completely sold."
+      },
+      {
+        "word": "sell like hotcakes",
+        "enDefinition": "To sell fast; to be a popular item."
+      },
+      {
+        "word": "spending money",
+        "enDefinition": "Money for minor expenses."
+      },
+      {
+        "word": "set eyes on",
+        "enDefinition": "To look at; to see for the first time."
+      },
+      {
+        "word": "set the record straight",
+        "enDefinition": "To correct an inaccurate account."
+      },
+      {
+        "word": "shake in one's shoes",
+        "enDefinition": "To tremble with fear; to be afraid."
+      },
+      {
+        "word": "stay up",
+        "enDefinition": "Not to go to bed; to stay awake."
+      },
+      {
+        "word": "stop by",
+        "enDefinition": "To pay a quick visit."
+      },
+      {
+        "word": "shut up",
+        "enDefinition": "An informal, often rude way to tell someone to stop talking."
+      },
+      {
+        "word": "sure thing",
+        "enDefinition": "An outcome that is assured."
+      },
+      {
+        "word": "sweep something under the rug",
+        "enDefinition": "To hide or ignore a problem instead of addressing it."
+      },
+      {
+        "word": "sitting pretty",
+        "enDefinition": "In a good position (often financially)."
+      },
+      {
+        "word": "sweet tooth",
+        "enDefinition": "An enjoyment of sugary foods."
+      },
+      {
+        "word": "sweeten the deal",
+        "enDefinition": "To make an offer more attractive."
+      }
+    ]
+  }
 ]

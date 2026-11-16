@@ -1340,5 +1340,37 @@
 ,
   { "definitions": [
     { "word": "rich media", "partOfSpeech": "noun", "enDefinition": "Online advertising that uses interactive graphics, video, or audio.", "ptDefinition": "Publicidade online que usa gráficos interativos, vídeo ou áudio." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "rant and rave",
+        "enDefinition": "To talk loudly, often in anger."
+      },
+      {
+        "word": "rolling in dough",
+        "enDefinition": "Very rich."
+      },
+      {
+        "word": "rest assured",
+        "enDefinition": "Be sure."
+      },
+      {
+        "word": "round up",
+        "enDefinition": "To gather people together."
+      },
+      {
+        "word": "right away",
+        "enDefinition": "Immediately."
+      },
+      {
+        "word": "rule of thumb",
+        "enDefinition": "A useful principle."
+      },
+      {
+        "word": "run around",
+        "enDefinition": "To move about quickly."
+      }
+    ]
+  }
 ]

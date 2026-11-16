@@ -98,11 +98,51 @@ export default function Home() {
           fundamentais: Fala (com ênfase em conversação), Escuta (compreensão
           auditiva), Leitura e Escrita.
         </p>
-        <div className="mx-auto">
-          <Button onClick={() => navigate("/dashboard")} className="uppercase">
-            Start for free
-          </Button>
-        </div>
+        <section className="mx-auto grid w-[min(100%-2rem,56rem)] gap-5 md:grid-cols-2" aria-label="Course options">
+          <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white/80 p-6 text-left shadow-[0_8px_24px_rgba(15,23,42,0.08)]">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Included</p>
+            <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">Start for free</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Comece a estudar com materiais selecionados para desenvolver as quatro habilidades do inglês.
+            </p>
+            <ul className="mt-5 grid gap-2 text-sm text-slate-700">
+              <li className="flex gap-2"><span className="text-emerald-600" aria-hidden="true">✓</span> Conversação e prática de fala</li>
+              <li className="flex gap-2"><span className="text-emerald-600" aria-hidden="true">✓</span> Exercícios de escuta, leitura e escrita</li>
+              <li className="flex gap-2"><span className="text-emerald-600" aria-hidden="true">✓</span> Acesso a aulas e atividades gratuitas</li>
+            </ul>
+            <div className="mt-auto flex justify-center pt-6">
+              <Button onClick={() => navigate("/dashboard")} className="uppercase">
+                Start for free
+              </Button>
+            </div>
+          </article>
+
+          <article className="flex h-full flex-col rounded-2xl border border-amber-200 bg-amber-50/70 p-6 text-left shadow-[0_8px_24px_rgba(120,53,15,0.08)]">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">Personalized support</p>
+            <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">Extras</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Quer acompanhamento mais próximo? Conheça as opções extras e encontre o formato ideal para seus objetivos.
+            </p>
+            <ul className="mt-5 grid gap-2 text-sm text-slate-700">
+              <li className="flex gap-2"><span className="text-amber-700" aria-hidden="true">✓</span> Aulas particulares e conversação</li>
+              <li className="flex gap-2"><span className="text-amber-700" aria-hidden="true">✓</span> Orientação personalizada de estudos</li>
+              <li className="flex gap-2"><span className="text-amber-700" aria-hidden="true">✓</span> Planos para necessidades específicas</li>
+            </ul>
+            <div className="mt-auto flex justify-center pt-6">
+              <a
+                href="https://wa.me/55944776901"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fale comigo pelo WhatsApp"
+                className="group relative grid h-15 w-15 shrink-0 cursor-pointer place-items-center rounded-[12px] border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-[3px] text-(--button-text) shadow-[0_1px_1px_rgba(0,0,0,0.3)] transition-[transform,box-shadow] duration-80 hover:-translate-y-0.5 active:scale-[0.995] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)]"
+              >
+                <span className="grid size-full place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
+                  <img src="/media/images/icons/contacts/whatsapp.png" alt="WhatsApp" width={35} height={35} />
+                </span>
+              </a>
+            </div>
+          </article>
+        </section>
         <div className="w-max mx-auto">
           <Contact />
         </div>

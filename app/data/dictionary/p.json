@@ -1731,5 +1731,45 @@
     { "word": "pinch pennies", "partOfSpeech": "idiom", "enDefinition": "To be very careful about spending money.", "ptDefinition": "Ser muito cuidadoso ao gastar dinheiro." },
     { "word": "plow money into", "partOfSpeech": "idiom", "enDefinition": "To invest a lot of money in something.", "ptDefinition": "Investir muito dinheiro em algo." },
     { "word": "put your heads together", "partOfSpeech": "idiom", "enDefinition": "To work together to solve a problem or create an idea.", "ptDefinition": "Trabalhar juntos para resolver um problema ou criar uma ideia." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "pain in the neck",
+        "enDefinition": "An annoyance."
+      },
+      {
+        "word": "pay someone back",
+        "enDefinition": "To repay a loan or debt."
+      },
+      {
+        "word": "pay someone a compliment",
+        "enDefinition": "To give someone a compliment; to offer someone an admiring comment."
+      },
+      {
+        "word": "plug away",
+        "enDefinition": "To proceed with a boring or routine task; to keep trying."
+      },
+      {
+        "word": "pick up",
+        "enDefinition": "To acquire; to learn."
+      },
+      {
+        "word": "pull an all-nighter",
+        "enDefinition": "To stay up all night to do work."
+      },
+      {
+        "word": "piece of cake",
+        "enDefinition": "Very easy."
+      },
+      {
+        "word": "put the blame on someone",
+        "enDefinition": "To name somebody else as responsible for a misdeed or misfortune."
+      },
+      {
+        "word": "pig out",
+        "enDefinition": "To eat greedily; to stuff oneself."
+      }
+    ]
+  }
 ]

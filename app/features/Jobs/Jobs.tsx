@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -30,19 +31,21 @@ export const Jobs = () => (
 
     <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {jobs.map((job) => (
-        <li
+        <ActionTextRow
           key={job}
-          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+          className="rounded-xl bg-(--background) p-2"
+          action={
+            <Audio
+              asButton
+              ariaLabel={`Play ${job}`}
+              src={audioFile(job)}
+              fallbackText={job}
+              wrapperClassName="shrink-0"
+            />
+          }
         >
-          <Audio
-            asButton
-            ariaLabel={`Play ${job}`}
-            src={audioFile(job)}
-            fallbackText={job}
-            wrapperClassName="shrink-0"
-          />
           <span className="font-bold capitalize">{job}</span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   </Card>

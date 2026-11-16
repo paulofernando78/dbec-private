@@ -1,0 +1,30 @@
+export const everydayThreeLessons = [
+  [1, "Going Shopping"],
+  [2, "Returning an Item to the Store"],
+  [3, "Negotiating a Purchase"],
+  [4, "Buying a Service Plan"],
+  [5, "Ordering at a Restaurant"],
+  [6, "Complaining at a Restaurant"],
+  [7, "Picking Up the Tab at a Restaurant"],
+  [8, "Ordering Lunch to Go"],
+  [9, "Making a Doctor's Appointment"],
+  [10, "Visiting the Doctor"],
+  [11, "Visiting the Pharmacy"],
+  [12, "Visiting the Dentist"],
+  [13, "At a Dinner Party"],
+  [14, "Making Introductions"],
+  [15, "Complimenting a Meal"],
+  [16, "Handling a Delay at the Airport"],
+  [17, "Dealing With Lost Luggage"],
+  [18, "Renting a Car"],
+  [19, "Checking In to a Hotel"],
+  [20, "Traveling by Car"],
+  [21, "Taking a Taxi"],
+  [22, "Making Excuses"],
+  [23, "Running Late"],
+  [24, "Down on One's Luck"],
+  [25, "Reacting to Bad News"],
+] as const;
+
+export const everydayThreeAudioUrl = (lessonNumber: number) =>
+  `/media/audio/language/expressions/everyday-3/lesson-${lessonNumber}.mp3`;

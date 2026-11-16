@@ -864,5 +864,73 @@
         "ptDefinition": "Prático e direto, com pouca paciência para distrações."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "needless to say",
+        "enDefinition": "Obviously."
+      },
+      {
+        "word": "not sleep a wink",
+        "enDefinition": "To be awake all night."
+      },
+      {
+        "word": "nervous wreck",
+        "enDefinition": "A person feeling very worried."
+      },
+      {
+        "word": "never mind",
+        "enDefinition": "Don’t worry about something; forget it; it doesn’t matter."
+      },
+      {
+        "word": "no use crying over spilt milk",
+        "enDefinition": "There’s no point in regretting something that’s too late to change."
+      },
+      {
+        "word": "night owl",
+        "enDefinition": "A person who enjoys being active late at night."
+      },
+      {
+        "word": "not on your life!",
+        "enDefinition": "Definitely not."
+      },
+      {
+        "word": "nothing doing!",
+        "enDefinition": "Not a chance!"
+      },
+      {
+        "word": "no laughing matter",
+        "enDefinition": "Nothing to joke about; something serious."
+      },
+      {
+        "word": "nothing to do with",
+        "enDefinition": "To have no connection with something."
+      },
+      {
+        "word": "no point in",
+        "enDefinition": "No reason to; it’s not worth (doing something)."
+      },
+      {
+        "word": "now you're talking",
+        "enDefinition": "You're saying the right thing."
+      },
+      {
+        "word": "nuts about",
+        "enDefinition": "To like very much."
+      },
+      {
+        "word": "not give someone the time of day",
+        "enDefinition": "To ignore someone; to refuse to pay any attention to someone."
+      },
+      {
+        "word": "nuts and bolts",
+        "enDefinition": "Details; basic components of something."
+      },
+      {
+        "word": "not have a clue",
+        "enDefinition": "To know nothing about."
+      }
+    ]
   }
 ]

@@ -894,5 +894,61 @@
 ,
   { "definitions": [
     { "word": "have legs", "partOfSpeech": "idiom", "enDefinition": "To have the potential to continue or succeed.", "ptDefinition": "Ter potencial para continuar ou ser bem-sucedido." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "hang around",
+        "enDefinition": "To spend time idly; to linger."
+      },
+      {
+        "word": "head and shoulders above",
+        "enDefinition": "Far superior to."
+      },
+      {
+        "word": "head over heels in love",
+        "enDefinition": "Very much in love."
+      },
+      {
+        "word": "hang out",
+        "enDefinition": "To spend time (often doing nothing)."
+      },
+      {
+        "word": "have a heart of gold",
+        "enDefinition": "To be very kind and giving."
+      },
+      {
+        "word": "happy camper",
+        "enDefinition": "A happy person; a satisfied participant."
+      },
+      {
+        "word": "help out",
+        "enDefinition": "To give assistance; to help."
+      },
+      {
+        "word": "help yourself",
+        "enDefinition": "Serve yourself."
+      },
+      {
+        "word": "have a blast",
+        "enDefinition": "To enjoy oneself very much."
+      },
+      {
+        "word": "have a good time",
+        "enDefinition": "To enjoy oneself."
+      },
+      {
+        "word": "hit the nail on the head",
+        "enDefinition": "To be right."
+      },
+      {
+        "word": "hold a grudge against someone",
+        "enDefinition": "To stay angry with someone about a past offense."
+      },
+      {
+        "word": "how's it going?",
+        "enDefinition": "How are you?"
+      }
+    ]
+  }
 ]

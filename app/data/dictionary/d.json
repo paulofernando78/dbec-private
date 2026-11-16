@@ -1105,5 +1105,41 @@
 ,
   { "definitions": [
     { "word": "dip your toes into", "partOfSpeech": "idiom", "enDefinition": "To try something cautiously before becoming fully involved.", "ptDefinition": "Experimentar algo com cautela antes de se envolver completamente." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "down in the dumps",
+        "enDefinition": "To feel sad; to be depressed."
+      },
+      {
+        "word": "deliver the goods",
+        "enDefinition": "To meet expectations; to do what’s required."
+      },
+      {
+        "word": "dragon lady",
+        "enDefinition": "A nasty woman who misuses her power."
+      },
+      {
+        "word": "dime a dozen",
+        "enDefinition": "So plentiful as to be nothing special; common."
+      },
+      {
+        "word": "do one's best",
+        "enDefinition": "To try as hard as possible."
+      },
+      {
+        "word": "drive one crazy",
+        "enDefinition": "To annoy someone very much."
+      },
+      {
+        "word": "do the trick",
+        "enDefinition": "To achieve the desired results."
+      },
+      {
+        "word": "drop by",
+        "enDefinition": "To pay a short, often unannounced visit."
+      }
+    ]
+  }
 ]

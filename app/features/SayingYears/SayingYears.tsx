@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -17,20 +18,22 @@ export const SayingYears = () => (
 
     <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {years.map(([year, spoken]) => (
-        <li
+        <ActionTextRow
           key={year}
-          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+          className="rounded-xl bg-(--background) p-2"
+          action={
+            <Audio
+              asButton
+              ariaLabel={`Play ${year}`}
+              src={wordAudio(`${year}.mp3`)}
+              fallbackText={spoken}
+              wrapperClassName="shrink-0"
+            />
+          }
         >
-          <Audio
-            asButton
-            ariaLabel={`Play ${year}`}
-            src={wordAudio(`${year}.mp3`)}
-            fallbackText={spoken}
-            wrapperClassName="shrink-0"
-          />
           <span className="w-14 font-bold">{year}</span>
           <span className="font-bold">{spoken}</span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   </Card>

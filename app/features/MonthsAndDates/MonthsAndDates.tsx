@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -61,19 +62,21 @@ export const MonthsAndDates = () => (
       <p className="mb-4">Listen to the months of the year.</p>
       <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
         {months.map((month) => (
-          <li
+          <ActionTextRow
             key={month}
-            className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+            className="rounded-xl bg-(--background) p-2"
+            action={
+              <Audio
+                asButton
+                ariaLabel={`Play ${month}`}
+                src={audioFile(month)}
+                fallbackText={month}
+                wrapperClassName="shrink-0"
+              />
+            }
           >
-            <Audio
-              asButton
-              ariaLabel={`Play ${month}`}
-              src={audioFile(month)}
-              fallbackText={month}
-              wrapperClassName="shrink-0"
-            />
             <span className="font-bold">{month}</span>
-          </li>
+          </ActionTextRow>
         ))}
       </ul>
     </section>
@@ -83,20 +86,22 @@ export const MonthsAndDates = () => (
       <p className="mb-4">Listen to ordinal numbers for dates.</p>
       <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
         {dates.map(([date, word]) => (
-          <li
+          <ActionTextRow
             key={date}
-            className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+            className="rounded-xl bg-(--background) p-2"
+            action={
+              <Audio
+                asButton
+                ariaLabel={`Play ${word}`}
+                src={audioFile(word)}
+                fallbackText={word}
+                wrapperClassName="shrink-0"
+              />
+            }
           >
-            <Audio
-              asButton
-              ariaLabel={`Play ${word}`}
-              src={audioFile(word)}
-              fallbackText={word}
-              wrapperClassName="shrink-0"
-            />
             <span className="w-12 font-bold">{date}</span>
             <span className="font-bold capitalize">{word}</span>
-          </li>
+          </ActionTextRow>
         ))}
       </ul>
     </section>

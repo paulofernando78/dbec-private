@@ -1936,5 +1936,101 @@
 ,
   { "definitions": [
     { "word": "trade down", "partOfSpeech": "phrasal verb", "enDefinition": "To choose a cheaper product or service.", "ptDefinition": "Escolher um produto ou serviço mais barato." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "take a break",
+        "enDefinition": "To stop and rest from an activity."
+      },
+      {
+        "word": "those are the breaks",
+        "enDefinition": "When something bad happens and you can’t do anything about it."
+      },
+      {
+        "word": "there's no accounting for taste",
+        "enDefinition": "It’s impossible to explain individual likes and dislikes."
+      },
+      {
+        "word": "take it or leave it",
+        "enDefinition": "Accept or reject an offer, usually a final one."
+      },
+      {
+        "word": "things are looking up",
+        "enDefinition": "Things are improving."
+      },
+      {
+        "word": "take off",
+        "enDefinition": "To become popular; to grow suddenly."
+      },
+      {
+        "word": "think big",
+        "enDefinition": "To set high goals."
+      },
+      {
+        "word": "take over",
+        "enDefinition": "To assume control."
+      },
+      {
+        "word": "three sheets to the wind",
+        "enDefinition": "Drunk."
+      },
+      {
+        "word": "throw the book at someone",
+        "enDefinition": "To punish or chide severely."
+      },
+      {
+        "word": "take something the wrong way",
+        "enDefinition": "To take offense."
+      },
+      {
+        "word": "to tell you the truth",
+        "enDefinition": "To speak openly; to admit."
+      },
+      {
+        "word": "taken aback",
+        "enDefinition": "Surprised (almost always in a negative sense)."
+      },
+      {
+        "word": "too many cooks spoil the broth",
+        "enDefinition": "Too many people involved in an activity can ruin it."
+      },
+      {
+        "word": "talk into",
+        "enDefinition": "To persuade; to convince."
+      },
+      {
+        "word": "tall order",
+        "enDefinition": "A task or goal that is difficult to achieve."
+      },
+      {
+        "word": "treat someone like dirt",
+        "enDefinition": "To behave in a nasty way towards someone; to treat someone poorly."
+      },
+      {
+        "word": "tell off",
+        "enDefinition": "To scold; to tell someone in strong words what one really thinks."
+      },
+      {
+        "word": "tricks of the trade",
+        "enDefinition": "Clever shortcuts gained by experience."
+      },
+      {
+        "word": "thank goodness",
+        "enDefinition": "I'm grateful; I'm relieved."
+      },
+      {
+        "word": "turn off",
+        "enDefinition": "To cause to feel dislike or revulsion."
+      },
+      {
+        "word": "that's the way the cookie crumbles",
+        "enDefinition": "That’s the way things go sometimes and there’s nothing you can do about it."
+      },
+      {
+        "word": "twist someone's arm",
+        "enDefinition": "To persuade someone; to convince someone."
+      }
+    ]
+  }
 ]

@@ -1848,5 +1848,69 @@
 ,
   { "definitions": [
     { "word": "branch out", "partOfSpeech": "phrasal verb", "enDefinition": "To expand into a new area or activity.", "ptDefinition": "Expandir para uma nova área ou atividade." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "basket case",
+        "enDefinition": "Someone or something in a useless or hopeless condition."
+      },
+      {
+        "word": "break up with someone",
+        "enDefinition": "To end a relationship with a romantic partner."
+      },
+      {
+        "word": "beside the point",
+        "enDefinition": "Not relevant; not important."
+      },
+      {
+        "word": "bright and early",
+        "enDefinition": "Early in the morning."
+      },
+      {
+        "word": "better off",
+        "enDefinition": "In a more fortunate position."
+      },
+      {
+        "word": "big deal!",
+        "enDefinition": "So what? That doesn’t really matter."
+      },
+      {
+        "word": "burn someone up",
+        "enDefinition": "To make someone angry."
+      },
+      {
+        "word": "big head",
+        "enDefinition": "An exaggerated sense of one's own importance."
+      },
+      {
+        "word": "big shot",
+        "enDefinition": "A powerful or important person."
+      },
+      {
+        "word": "butt in",
+        "enDefinition": "To interrupt; to interfere."
+      },
+      {
+        "word": "bite off more than one can chew",
+        "enDefinition": "To take on more than one is capable of; to take on too much."
+      },
+      {
+        "word": "blow it",
+        "enDefinition": "To spoil an opportunity."
+      },
+      {
+        "word": "buy time",
+        "enDefinition": "To make more time available (in order to achieve a certain purpose)."
+      },
+      {
+        "word": "by a hair",
+        "enDefinition": "Just barely; very narrowly; by a small amount."
+      },
+      {
+        "word": "break into",
+        "enDefinition": "To enter or be let into a profession."
+      }
+    ]
+  }
 ]

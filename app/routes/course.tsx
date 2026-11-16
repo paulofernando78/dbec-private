@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { BookOpen } from "lucide-react";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Button } from "@/components/ui/Button";
 
@@ -108,17 +109,18 @@ export default function Levels() {
                 </h2>
                 <p className="text-xl md:text-2xl">{item.subtitle}</p>
                 <p className="mb-5 text-base md:text-lg">{item.description}</p>
-                <div className="flex items-center gap-3">
+                <ActionTextRow as="div" action={
                   <Button
                     ariaLabel={`Access ${item.level} ${item.name}`}
                     disabled={!item.href}
                     onClick={() => item.href && navigate(item.href)}
                     icon={<BookOpen />}
                   />
-                  <p className="font-semibold">
+                }>
+                  <span className="font-semibold">
                     {item.unitCount ?? 16} units
-                  </p>
-                </div>
+                  </span>
+                </ActionTextRow>
               </div>
             </div>
           </article>

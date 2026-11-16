@@ -15,6 +15,7 @@ export type NavLinkItem = {
   href: string;
   label: string;
   icon?: ElementType;
+  locked?: boolean;
 };
 
 export type NavGroup = {
@@ -207,6 +208,21 @@ export const links: NavItem[] = [
           {
             href: "/expressions/business-2",
             label: "business 2",
+            icon: MessageSquareQuote,
+          },
+          {
+            href: "/expressions/everyday-1",
+            label: "everyday 1",
+            icon: MessageSquareQuote,
+          },
+          {
+            href: "/expressions/everyday-2",
+            label: "everyday 2",
+            icon: MessageSquareQuote,
+          },
+          {
+            href: "/expressions/everyday-3",
+            label: "everyday 3",
             icon: MessageSquareQuote,
           },
         ],

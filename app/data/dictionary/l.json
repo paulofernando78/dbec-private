@@ -842,5 +842,69 @@
 ,
   { "definitions": [
     { "word": "leg to stand on", "partOfSpeech": "idiom", "enDefinition": "A valid basis or convincing support for an argument or claim.", "ptDefinition": "Base válida ou argumento convincente para uma alegação." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "live with it",
+        "enDefinition": "To accept a difficult reality."
+      },
+      {
+        "word": "load off one's mind",
+        "enDefinition": "A relief."
+      },
+      {
+        "word": "lend a hand",
+        "enDefinition": "To help."
+      },
+      {
+        "word": "look forward to",
+        "enDefinition": "To anticipate eagerly."
+      },
+      {
+        "word": "let someone go",
+        "enDefinition": "To fire; dismiss employees."
+      },
+      {
+        "word": "look like",
+        "enDefinition": "Have the appearance of."
+      },
+      {
+        "word": "level with someone",
+        "enDefinition": "To speak openly and honestly with someone."
+      },
+      {
+        "word": "lighten up",
+        "enDefinition": "To stop taking things so seriously."
+      },
+      {
+        "word": "lose one's head",
+        "enDefinition": "To lose control of one’s behavior; to not know what one is doing."
+      },
+      {
+        "word": "like a chicken with its head cut off",
+        "enDefinition": "In a hysterical manner; in a frenzy; in a very nervous way."
+      },
+      {
+        "word": "like crazy",
+        "enDefinition": "With great speed or enthusiasm."
+      },
+      {
+        "word": "lose one's touch",
+        "enDefinition": "To no longer be able to do something well."
+      },
+      {
+        "word": "like pulling teeth",
+        "enDefinition": "Very difficult."
+      },
+      {
+        "word": "live from hand to mouth",
+        "enDefinition": "To barely have enough money to survive."
+      },
+      {
+        "word": "love at first sight",
+        "enDefinition": "An immediate attraction."
+      }
+    ]
+  }
 ]

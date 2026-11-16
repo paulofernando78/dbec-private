@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -72,19 +73,21 @@ const audioFile = (word: string) =>
 const WordList = ({ words }: { words: readonly string[] }) => (
   <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
     {words.map((word) => (
-      <li
+      <ActionTextRow
         key={word}
-        className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+        className="rounded-xl bg-(--background) p-2"
+        action={
+          <Audio
+            asButton
+            ariaLabel={`Play ${word}`}
+            src={audioFile(word)}
+            fallbackText={word}
+            wrapperClassName="shrink-0"
+          />
+        }
       >
-        <Audio
-          asButton
-          ariaLabel={`Play ${word}`}
-          src={audioFile(word)}
-          fallbackText={word}
-          wrapperClassName="shrink-0"
-        />
         <span className="font-bold capitalize">{word}</span>
-      </li>
+      </ActionTextRow>
     ))}
   </ul>
 );

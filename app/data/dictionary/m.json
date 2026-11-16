@@ -1368,5 +1368,45 @@
   { "definitions": [
     { "word": "make do with", "partOfSpeech": "idiom", "enDefinition": "To manage with what is available.", "ptDefinition": "Dar um jeito com o que está disponível." },
     { "word": "move some product", "partOfSpeech": "idiom", "enDefinition": "To sell or distribute some goods.", "ptDefinition": "Vender ou distribuir alguns produtos." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "make ends meet",
+        "enDefinition": "To manage one’s money so as to have enough to live on; to be okay financially."
+      },
+      {
+        "word": "make a bundle",
+        "enDefinition": "To make a lot of money."
+      },
+      {
+        "word": "make one's day",
+        "enDefinition": "To give one great satisfaction."
+      },
+      {
+        "word": "make a fool of oneself",
+        "enDefinition": "To cause oneself to look stupid."
+      },
+      {
+        "word": "make out",
+        "enDefinition": "To kiss with much passion."
+      },
+      {
+        "word": "make a fortune",
+        "enDefinition": "To make a lot of money."
+      },
+      {
+        "word": "make a living",
+        "enDefinition": "To earn enough money to support oneself."
+      },
+      {
+        "word": "mess up",
+        "enDefinition": "To make a mistake; to spoil an opportunity."
+      },
+      {
+        "word": "mixed feelings",
+        "enDefinition": "To feel positive about one aspect of something and negative about another."
+      }
+    ]
+  }
 ]

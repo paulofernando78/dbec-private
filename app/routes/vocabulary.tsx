@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { vocabularyTopics, vocabularyTopicsById } from "@/data/language/vocabulary/which-one";
@@ -25,15 +26,18 @@ export default function Vocabulary() {
           {alphabeticalTopics.map((topic) => (
             <li key={topic.id}>
               <Link
-                className="group flex min-h-10 items-center gap-3 rounded-xl font-semibold hover:bg-(--surface) focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="group block rounded-xl font-semibold hover:bg-(--surface) focus-visible:outline-2 focus-visible:outline-offset-2"
                 to={`/vocabulary/${topic.id}`}
               >
+                <ActionTextRow as="div" action={
                 <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-xl border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-1 shadow-sm">
                   <span className="grid size-full place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
                     <BookOpen className="size-4.5 text-(--button-icon)" />
                   </span>
                 </span>
+                }>
                 <span className="group-hover:underline group-focus-visible:underline">{topic.title}</span>
+                </ActionTextRow>
               </Link>
             </li>
           ))}

@@ -128,5 +128,13 @@
     "definitions": [
       { "word": "your all", "partOfSpeech": "noun phrase", "enDefinition": "Your greatest effort.", "ptDefinition": "Todo o seu esforço." }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "your guess is as good as mine",
+        "enDefinition": "I don't know any more about it than you do."
+      }
+    ]
   }
 ]

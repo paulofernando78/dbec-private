@@ -1530,5 +1530,125 @@
   { "definitions": [
     { "word": "go up against", "partOfSpeech": "phrasal verb", "enDefinition": "To compete against someone or something.", "ptDefinition": "Competir contra alguém ou algo." },
     { "word": "grab a slice of the market", "partOfSpeech": "idiom", "enDefinition": "To gain part of the customers or sales in a market.", "ptDefinition": "Conquistar parte dos clientes ou das vendas de um mercado." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "get a handle on",
+        "enDefinition": "To gain an understanding of."
+      },
+      {
+        "word": "give me a break",
+        "enDefinition": "That’s ridiculous; that’s outrageous."
+      },
+      {
+        "word": "get canned",
+        "enDefinition": "To lose one’s job; to get fired."
+      },
+      {
+        "word": "give one the creeps",
+        "enDefinition": "To create a feeling of disgust or horror."
+      },
+      {
+        "word": "give someone a ring",
+        "enDefinition": "To telephone someone."
+      },
+      {
+        "word": "get going",
+        "enDefinition": "To get started on something; to set off for a destination; to leave."
+      },
+      {
+        "word": "give someone a run for his money",
+        "enDefinition": "To be strong competition."
+      },
+      {
+        "word": "get it",
+        "enDefinition": "To understand."
+      },
+      {
+        "word": "get on one's nerves",
+        "enDefinition": "To annoy or irritate someone."
+      },
+      {
+        "word": "get one's act together",
+        "enDefinition": "To get organized and start acting effectively."
+      },
+      {
+        "word": "get out of the way",
+        "enDefinition": "To move out of the way; to stop interfering with someone’s plans or activities."
+      },
+      {
+        "word": "give up",
+        "enDefinition": "To admit defeat; to surrender."
+      },
+      {
+        "word": "get plastered",
+        "enDefinition": "To get drunk."
+      },
+      {
+        "word": "go ahead",
+        "enDefinition": "To continue; to proceed without hesitation."
+      },
+      {
+        "word": "get rid of",
+        "enDefinition": "To free oneself of; to throw out."
+      },
+      {
+        "word": "get something straight",
+        "enDefinition": "To clarify; to understand."
+      },
+      {
+        "word": "go into",
+        "enDefinition": "To enter a profession."
+      },
+      {
+        "word": "go into business",
+        "enDefinition": "To start a business."
+      },
+      {
+        "word": "get the hang of something",
+        "enDefinition": "To learn how to do something; to acquire an effective technique."
+      },
+      {
+        "word": "get the show on the road",
+        "enDefinition": "To start working; to begin an undertaking."
+      },
+      {
+        "word": "go wrong",
+        "enDefinition": "To make a mistake; to go astray; to malfunction; to work incorrectly."
+      },
+      {
+        "word": "get under one's belt",
+        "enDefinition": "To have or to get experience."
+      },
+      {
+        "word": "good for you",
+        "enDefinition": "Good job! Well done!"
+      },
+      {
+        "word": "give someone credit",
+        "enDefinition": "To acknowledge someone’s contribution; to recognize a positive trait in someone."
+      },
+      {
+        "word": "good thinking",
+        "enDefinition": "Good idea; smart planning."
+      },
+      {
+        "word": "give credit where credit is due",
+        "enDefinition": "To give thanks or acknowledgement to the person who deserves it."
+      },
+      {
+        "word": "give it a shot",
+        "enDefinition": "To try something."
+      },
+      {
+        "word": "green with envy",
+        "enDefinition": "Desiring another’s advantages or things."
+      },
+      {
+        "word": "gung ho",
+        "enDefinition": "Very enthusiastic; very excited (about something)."
+      }
+    ]
+  }
 ]

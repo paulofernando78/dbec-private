@@ -433,5 +433,45 @@
 ,
   { "definitions": [
     { "word": "on top of things", "partOfSpeech": "idiom", "enDefinition": "In control of tasks and aware of what is happening.", "ptDefinition": "No controle das tarefas e ciente do que está acontecendo." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "on a shoestring",
+        "enDefinition": "On a very low budget."
+      },
+      {
+        "word": "out of it",
+        "enDefinition": "Not aware or knowledgeable about trends or modern habits."
+      },
+      {
+        "word": "on edge",
+        "enDefinition": "Nervous; irritable."
+      },
+      {
+        "word": "out of practice",
+        "enDefinition": "Less skilled at something because you have not done it recently."
+      },
+      {
+        "word": "on the job",
+        "enDefinition": "At work."
+      },
+      {
+        "word": "on thin ice with someone",
+        "enDefinition": "To be in a dangerous position; to be temporarily on somebody’s bad side."
+      },
+      {
+        "word": "one's heart goes out to someone",
+        "enDefinition": "To feel sorry for someone."
+      },
+      {
+        "word": "out of work",
+        "enDefinition": "Unemployed; not working."
+      },
+      {
+        "word": "one-track mind",
+        "enDefinition": "Having all thoughts directed to just one thing or activity; focused on just one thing."
+      }
+    ]
+  }
 ]

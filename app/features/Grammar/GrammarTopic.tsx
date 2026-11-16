@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/Card";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
 import { TriangleAlert } from "lucide-react";
@@ -13,7 +14,7 @@ function GrammarExampleList({ examples }: { examples: readonly GrammarExample[] 
   return (
     <ul className="grid gap-2">
       {examples.map((example) => (
-        <li key={example.english} className="flex items-start gap-3">
+        <ActionTextRow key={example.english} action={
           <Audio
             asButton
             src={example.english}
@@ -22,13 +23,12 @@ function GrammarExampleList({ examples }: { examples: readonly GrammarExample[] 
             ariaLabel={`Play ${example.english}`}
             wrapperClassName="shrink-0 self-start"
           />
-          <span className="min-w-0 pt-[0.53rem]">
+        }>
             <span lang="en" className="font-semibold text-(--text-color)">
               <InlineRichContent value={example.englishContent ?? example.english} />
             </span>{" "}
             <span className="text-slate-500">{example.portuguese}</span>
-          </span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   );
@@ -97,7 +97,7 @@ export function GrammarTopic({
           <p className="mb-3">{warning.explanation}</p>
           <ul className="grid gap-1">
             {warning.examples.map((example) => (
-              <li key={example.english} className="flex items-start gap-3">
+              <ActionTextRow key={example.english} action={
                 <Audio
                   asButton
                   src={example.english}
@@ -106,7 +106,7 @@ export function GrammarTopic({
                   ariaLabel={`Play ${example.english}`}
                   wrapperClassName="shrink-0 self-start"
                 />
-                <span className="min-w-0 pt-[0.53rem]">
+              }>
                   {example.incorrect && (
                     <span className="block text-sm">
                       <span className="sr-only">Forma incorreta: </span>
@@ -115,8 +115,7 @@ export function GrammarTopic({
                   )}
                   <strong lang="en">{example.english}</strong>{" "}
                   <span className="opacity-75">{example.portuguese}</span>
-                </span>
-              </li>
+              </ActionTextRow>
             ))}
           </ul>
         </aside>

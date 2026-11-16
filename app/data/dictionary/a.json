@@ -1075,5 +1075,33 @@
       ],
       "seeAlso": ["good job", "well done", "way to go"]
     }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "all the rage",
+        "enDefinition": "The latest fashion; popular right now."
+      },
+      {
+        "word": "as a matter of fact",
+        "enDefinition": "In fact; actually."
+      },
+      {
+        "word": "all along",
+        "enDefinition": "Throughout; from beginning to end."
+      },
+      {
+        "word": "at first",
+        "enDefinition": "In the beginning."
+      },
+      {
+        "word": "all better",
+        "enDefinition": "Completely cured."
+      },
+      {
+        "word": "all over",
+        "enDefinition": "Throughout; everywhere."
+      }
+    ]
+  }
 ]

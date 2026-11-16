@@ -2,9 +2,10 @@ import { useSession } from "@/hooks/useSession";
 import { useLocation, useNavigate } from "react-router";
 import { links } from "@/data/nav-bar-links";
 import { useEffect, type ElementType } from "react";
-import { NotebookPen, User } from "lucide-react";
+import { LockKeyhole, NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlobalSearch } from "./GlobalSearch";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 
 type NavBarProps = {
   isOpen: boolean;
@@ -33,6 +34,7 @@ export function NavBar({
     label: string,
     Icon: ElementType,
     className = "",
+    locked = false,
   ) => {
     const [hrefPath, hrefHash = ""] = href.split("#");
     const isCurrentDestination =
@@ -40,27 +42,37 @@ export function NavBar({
       (!hrefHash || location.hash === `#${hrefHash}`);
 
     return (
-      <div className={`flex items-center gap-2 ${className}`}>
-        <Button
+      <ActionTextRow
+        as="div"
+        gap="gap-2"
+        textAtTop={locked}
+        className={className}
+        action={
+          <Button
           ariaLabel={label}
           pressed={
             href === dashboardPath
               ? location.pathname.startsWith(hrefPath)
               : isCurrentDestination
           }
-          icon={<Icon />}
+          icon={locked ? <LockKeyhole /> : <Icon />}
           onClick={() => {
+            if (locked) return;
             navigate(href);
             closeNavBar();
           }}
+          disabled={locked}
+          ariaDisabled={locked}
           className="size-10! p-0.75!"
-        />
+          />
+        }
+      >
         <span
           className={`font-bold ${label === "TED-Ed" ? "normal-case" : "uppercase"}`}
         >
           {label}
         </span>
-      </div>
+      </ActionTextRow>
     );
   };
   const navbarBlockStyle = `
@@ -91,10 +103,10 @@ export function NavBar({
                           {child.subgroup}
                         </p>
                         <div className="space-y-2">
-                          {child.children.map(({ href, label, icon: Icon }) =>
+                          {child.children.map(({ href, label, icon: Icon, locked }) =>
                             Icon ? (
                               <div key={href}>
-                                {renderNavigationButton(href, label, Icon)}
+                                {renderNavigationButton(href, label, Icon, "", locked)}
                               </div>
                             ) : null,
                           )}
@@ -103,10 +115,10 @@ export function NavBar({
                     );
                   }
 
-                  const { href, label, icon: Icon } = child;
+                  const { href, label, icon: Icon, locked } = child;
                   return Icon ? (
                     <div key={href}>
-                      {renderNavigationButton(href, label, Icon)}
+                      {renderNavigationButton(href, label, Icon, "", locked)}
                     </div>
                   ) : null;
                 })}
@@ -124,16 +136,21 @@ export function NavBar({
             <div key={href} className={navbarBlockStyle}>
               <GlobalSearch closeNavBar={closeNavBar} />
               {renderNavigationButton(dashboardPath, "Dashboard", User, "mb-2")}
-              <div className="flex items-center gap-2">
-                <Button
+              <ActionTextRow
+                as="div"
+                gap="gap-2"
+                action={
+                  <Button
                   ariaLabel={isNotesOpen ? "Close notes" : "Open notes"}
                   pressed={isNotesOpen}
                   icon={<NotebookPen />}
                   onClick={toggleNotes}
                   className="size-10! p-0.75!"
-                />
+                  />
+                }
+              >
                 <span className="font-bold uppercase">notes shortcut</span>
-              </div>
+              </ActionTextRow>
             </div>
           ) : null;
         }

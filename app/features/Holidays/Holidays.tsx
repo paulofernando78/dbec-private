@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -22,19 +23,21 @@ export const Holidays = () => (
 
     <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {holidays.map((holiday) => (
-        <li
+        <ActionTextRow
           key={holiday}
-          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+          className="rounded-xl bg-(--background) p-2"
+          action={
+            <Audio
+              asButton
+              ariaLabel={`Play ${holiday}`}
+              src={audioFile(holiday)}
+              fallbackText={holiday}
+              wrapperClassName="shrink-0"
+            />
+          }
         >
-          <Audio
-            asButton
-            ariaLabel={`Play ${holiday}`}
-            src={audioFile(holiday)}
-            fallbackText={holiday}
-            wrapperClassName="shrink-0"
-          />
           <span className="font-bold">{holiday}</span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   </Card>

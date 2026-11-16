@@ -1,6 +1,7 @@
 import { Text } from "./Text";
 import { Card } from "@/components/ui/Card";
 import { Audio } from "@/components/ui/Audio";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 
 import type { RichContent } from "@/helpers/content";
 
@@ -32,8 +33,11 @@ export const Notes = ({ value = [] }: NotesProps) => {
             .join("");
 
           return (
-            <div key={index} className="flex items-center gap-3">
-              {audioSource && (
+            <ActionTextRow
+              key={index}
+              as="div"
+              className="min-h-0 gap-3 pb-0"
+              action={audioSource ? (
                 <Audio
                   asButton
                   ariaLabel={`Play note ${index + 1}`}
@@ -41,13 +45,14 @@ export const Notes = ({ value = [] }: NotesProps) => {
                   fallbackText={fallbackText}
                   wrapperClassName="shrink-0"
                 />
-              )}
+              ) : null}
+            >
               <Text
                 display={note.display ?? "block"}
                 as={note.as}
                 value={text}
               />
-            </div>
+            </ActionTextRow>
           );
         })}
       </div>

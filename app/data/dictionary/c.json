@@ -2226,5 +2226,65 @@
 ,
   { "definitions": [
     { "word": "core competency", "partOfSpeech": "noun phrase", "enDefinition": "A central ability or area of expertise of a person or company.", "ptDefinition": "Habilidade central ou área principal de especialização de uma pessoa ou empresa." }
-  ] }
+  ] },
+  {
+    "definitions": [
+      {
+        "word": "call it a night",
+        "enDefinition": "To stop an activity for the rest of the night."
+      },
+      {
+        "word": "can't complain",
+        "enDefinition": "Things are going well; I'm fine."
+      },
+      {
+        "word": "crank out",
+        "enDefinition": "To produce rapidly or in a routine manner."
+      },
+      {
+        "word": "crash course",
+        "enDefinition": "Short and intensive instruction."
+      },
+      {
+        "word": "cheer someone up",
+        "enDefinition": "To make someone happy."
+      },
+      {
+        "word": "crazy about",
+        "enDefinition": "To like very much."
+      },
+      {
+        "word": "cream of the crop",
+        "enDefinition": "The best of a group."
+      },
+      {
+        "word": "chitchat",
+        "enDefinition": "Casual conversation; gossip."
+      },
+      {
+        "word": "crunch numbers",
+        "enDefinition": "To perform calculations (especially financial calculations)."
+      },
+      {
+        "word": "come on in",
+        "enDefinition": "Enter."
+      },
+      {
+        "word": "cup of tea",
+        "enDefinition": "The type of person or thing that one generally likes."
+      },
+      {
+        "word": "come to an agreement",
+        "enDefinition": "To reach an agreement."
+      },
+      {
+        "word": "conventional wisdom",
+        "enDefinition": "A widely held belief."
+      },
+      {
+        "word": "cut it out",
+        "enDefinition": "Stop it; stop the annoying behavior."
+      }
+    ]
+  }
 ]

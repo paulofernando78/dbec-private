@@ -1,3 +1,4 @@
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Card } from "@/components/ui/Card";
 import { wordAudio } from "@/helpers/content";
@@ -24,19 +25,21 @@ export const HealthProblems = () => (
 
     <ul className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {healthProblems.map((problem) => (
-        <li
+        <ActionTextRow
           key={problem}
-          className="flex items-center gap-3 rounded-xl bg-(--background) p-2"
+          className="rounded-xl bg-(--background) p-2"
+          action={
+            <Audio
+              asButton
+              ariaLabel={`Play ${problem}`}
+              src={audioFile(problem)}
+              fallbackText={problem}
+              wrapperClassName="shrink-0"
+            />
+          }
         >
-          <Audio
-            asButton
-            ariaLabel={`Play ${problem}`}
-            src={audioFile(problem)}
-            fallbackText={problem}
-            wrapperClassName="shrink-0"
-          />
           <span className="font-bold">{problem}</span>
-        </li>
+        </ActionTextRow>
       ))}
     </ul>
   </Card>

@@ -1,18 +1,3 @@
-const contacts: ContactItem[] = [
-  // linkedin
-  {
-    link: "https://www.linkedin.com/in/paulo-fernando-70930725/",
-    icon: "/media/images/icons/contacts/linkedin.png",
-    alt: "LinkedIn",
-  },
-  // whatsapp
-  {
-    link: "https://wa.me/5594477-6901",
-    icon: "/media/images/icons/contacts/whatsapp.png",
-    alt: "Whatsapp",
-  },
-];
-
 const patron: ContactItem[] = [
   // buy me a coffee
   {
@@ -42,33 +27,6 @@ type ContactItem = {
 export const Contact = ({ className }: ContactProps) => {
   return (
     <div className="flex gap-4">
-      <ul className={`flex gap-2 p-2.5 ${className ?? ""}`}>
-        {contacts.map((contact, index) => (
-          <li key={index}>
-            <a
-              href={contact.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-block
-                transition-transform
-                duration-300
-                ease-[cubic-bezier(0.54,3,0.57,0.96)]
-                hover:-translate-y-2.5
-                hover:scale-[1.3]
-              "
-            >
-              <img
-                src={contact.icon}
-                alt={contact.alt}
-                className={contact.className}
-                width={35}
-                height={35}
-              />
-            </a>
-          </li>
-        ))}
-      </ul>
       <ul className={`flex gap-2 p-2.5 ${className ?? ""}`}>
         {patron.map((contact, index) => (
           <li key={contact.link} className="group relative">
