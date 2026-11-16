@@ -61,6 +61,7 @@ export default function ListeningBookPage() {
     : undefined;
   const completionSentinelRef = useRef<HTMLDivElement>(null);
   const session = useSession();
+  const [showAnswers, setShowAnswers] = useState(false);
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
 
@@ -95,7 +96,6 @@ export default function ListeningBookPage() {
 
   const audiobookSections: readonly AudiobookSection[] = audiobook.sections;
   const [summary, ...sections] = audiobookSections;
-  const [showAnswers, setShowAnswers] = useState(false);
 
   const renderSection = (section: AudiobookSection) => {
     const blocks = typeof section.text === "string" ? [{ text: section.text }] : section.text;
