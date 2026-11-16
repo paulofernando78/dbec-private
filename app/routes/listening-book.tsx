@@ -15,6 +15,8 @@ import {
 import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
 import { completeAudiobook } from "@/utils/audiobook-progress";
+import { getAudiobookSectionProgress, setAudiobookSectionCompleted } from "@/utils/audiobook-progress";
+import { Checkbox } from "@/components/ui/Checkbox";
 import { Eye, EyeClosed } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -62,8 +64,13 @@ export default function ListeningBookPage() {
   const completionSentinelRef = useRef<HTMLDivElement>(null);
   const session = useSession();
   const [showAnswers, setShowAnswers] = useState(false);
+  const [completedSections, setCompletedSections] = useState<Record<string, boolean>>({});
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
+
+  useEffect(() => {
+    if (audiobook) setCompletedSections(getAudiobookSectionProgress(audiobook.slug));
+  }, [audiobook]);
 
   useEffect(() => {
     const sentinel = completionSentinelRef.current;
@@ -179,6 +186,16 @@ export default function ListeningBookPage() {
                       />
                     </div>
                   )}
+                  <label className="mt-4 flex items-center justify-end gap-2 text-sm font-bold text-slate-600">
+                    <span>{section.title} done</span>
+                    <Checkbox
+                      checked={Boolean(completedSections[section.id])}
+                      onCheckedChange={(completed) => {
+                        setCompletedSections((current) => ({ ...current, [section.id]: completed }));
+                        setAudiobookSectionCompleted(audiobook.slug, section.id, completed);
+                      }}
+                    />
+                  </label>
                 </div>
               )}
             </MediaWrapper.Content>
