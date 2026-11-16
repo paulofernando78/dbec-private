@@ -29,7 +29,11 @@ export default function Audiobooks() {
       new Set(
         listeningLevels.flatMap((level) =>
           level.titles
-            .filter((item) => isAudiobookCompleted(item.slug))
+            .filter((item) => {
+              const slug = item.slug as AudiobookSlug;
+              return availableAudiobookSlugs.has(slug) &&
+                isAudiobookCompleted(item.slug, audiobooks[slug].sections.slice(1));
+            })
             .map((item) => item.slug),
         ),
       ),

@@ -1,5 +1,5 @@
 import { useSession } from "@/hooks/useSession";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router";
 
 import { MediaWrapper } from "@/components/content/MediaWrapper";
@@ -14,7 +14,6 @@ import {
 } from "@/data/skills/listening/audiobooks/index";
 import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
-import { completeAudiobook } from "@/utils/audiobook-progress";
 import { getAudiobookSectionProgress, setAudiobookSectionCompleted } from "@/utils/audiobook-progress";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Eye, EyeClosed } from "lucide-react";
@@ -61,7 +60,6 @@ export default function ListeningBookPage() {
   const audiobook = book
     ? audiobooks[book as keyof typeof audiobooks]
     : undefined;
-  const completionSentinelRef = useRef<HTMLDivElement>(null);
   const session = useSession();
   const [showAnswers, setShowAnswers] = useState(false);
   const [completedSections, setCompletedSections] = useState<Record<string, boolean>>({});
@@ -71,24 +69,6 @@ export default function ListeningBookPage() {
   useEffect(() => {
     if (audiobook) setCompletedSections(getAudiobookSectionProgress(audiobook.slug));
   }, [audiobook]);
-
-  useEffect(() => {
-    const sentinel = completionSentinelRef.current;
-    if (!isAuthenticated || !audiobook || !sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          completeAudiobook(audiobook.slug);
-          observer.disconnect();
-        }
-      },
-      { threshold: 1 },
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [audiobook, isAuthenticated]);
 
   if (
     !audiobook ||
@@ -223,7 +203,6 @@ export default function ListeningBookPage() {
 
       <div className="grid gap-4">{sections.map(renderSection)}</div>
 
-      <div ref={completionSentinelRef} className="h-px" aria-hidden="true" />
 
     </div>
   );

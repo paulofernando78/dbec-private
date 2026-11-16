@@ -3,12 +3,9 @@ const audiobookProgressKey = (slug: string) =>
 const audiobookSectionProgressKey = (slug: string) =>
   `dbec_audiobook_${slug}_sections`;
 
-export function isAudiobookCompleted(slug: string) {
-  return localStorage.getItem(audiobookProgressKey(slug)) === "1";
-}
-
-export function completeAudiobook(slug: string) {
-  localStorage.setItem(audiobookProgressKey(slug), "1");
+export function isAudiobookCompleted(slug: string, sections: readonly { id: string }[]) {
+  const progress = getAudiobookSectionProgress(slug);
+  return sections.length > 0 && sections.every(({ id }) => progress[id] === true);
 }
 
 export function resetAudiobook(slug: string) {
