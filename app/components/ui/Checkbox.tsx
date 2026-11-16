@@ -2,20 +2,22 @@ import { Check } from "lucide-react";
 
 type CheckboxProps = {
   checked: boolean;
+  ariaLabel?: string;
   disabled?: boolean;
   onCheckedChange: (checked: boolean) => void;
   className?: string;
 };
 
-export const Checkbox = ({ checked, disabled, onCheckedChange, className }: CheckboxProps) => {
+export const Checkbox = ({ checked, ariaLabel, disabled, onCheckedChange, className }: CheckboxProps) => {
   return (
-    <label className="group cursor-pointer">
+    <label className="group relative inline-flex cursor-pointer">
       <input
         type="checkbox"
+        aria-label={ariaLabel}
         checked={checked}
         disabled={disabled}
         onChange={(e) => onCheckedChange(e.target.checked)}
-        className="peer sr-only"
+        className="peer absolute inset-0 z-10 size-full cursor-inherit opacity-0"
       />
 
       <span

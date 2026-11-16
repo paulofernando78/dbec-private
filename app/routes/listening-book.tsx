@@ -186,16 +186,17 @@ export default function ListeningBookPage() {
                       />
                     </div>
                   )}
-                  <label className="mt-4 flex items-center justify-end gap-2 text-sm font-bold text-slate-600">
+                  <div className="mt-4 flex items-center justify-end gap-2 text-sm font-bold text-slate-600">
                     <span>{section.title} done</span>
                     <Checkbox
+                      ariaLabel={`${section.title} done`}
                       checked={Boolean(completedSections[section.id])}
                       onCheckedChange={(completed) => {
                         setCompletedSections((current) => ({ ...current, [section.id]: completed }));
                         setAudiobookSectionCompleted(audiobook.slug, section.id, completed);
                       }}
                     />
-                  </label>
+                  </div>
                 </div>
               )}
             </MediaWrapper.Content>
