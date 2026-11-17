@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/Card";
-import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { useDraggableScroll } from "@/utils/useDraggableScroll";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/Checkbox";
@@ -240,7 +239,6 @@ export const Calendar = ({
         </Card>
       </Card>
 
-      <DateTimeCard className="mt-4" />
 
       <Card
         title="Calendar"

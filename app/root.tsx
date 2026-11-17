@@ -16,6 +16,7 @@ import "./app.css";
 import { SessionProvider, useSession, useSessionExpired } from "@/hooks/useSession";
 
 import { Header } from "@/components/layout/Header";
+import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button/Button";
 import { House, Info, LogIn, LogOut, Menu, MoonStar, Sun } from "lucide-react";
@@ -136,6 +137,9 @@ function AppContent() {
   return (
     <div className="app">
       <div className="app-container">
+        {!isPresentationPage && (
+          <DateTimeCard compact className="shrink-0 bg-(--surface) p-2! text-xs [&_svg]:size-4 [&_time]:font-normal" />
+        )}
         <Card
           className={`grid items-center gap-2 min-[700px]:flex min-[700px]:justify-between min-[700px]:gap-4 ${
             isPresentationPage
