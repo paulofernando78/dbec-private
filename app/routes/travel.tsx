@@ -1,3 +1,4 @@
+import { PageContainer } from "@/components/layout/PageContainer";
 import { useSession } from "@/hooks/useSession";
 
 import { PageHeader } from "@/components/content/PageHeader";
@@ -8,7 +9,7 @@ export default function Travel() {
   const isAuthenticated = Boolean(useSession());
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <PageContainer>
       <PageHeader
         eyebrow="Learn • Specific Purposes"
         title={`${travel.code} ${travel.name}`}
@@ -27,6 +28,6 @@ export default function Travel() {
           />
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

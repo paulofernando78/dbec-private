@@ -32,6 +32,10 @@ export const PageHeader = ({
 }: PageHeaderProps) => {
   const isLevel = variant === "level";
   const isDashboard = variant === "dashboard";
+  const isCourseLevel = isLevel && eyebrow === "Learn • Course";
+  const breadcrumbColor = isCourseLevel
+    ? levelTheme === "amber" ? "text-gray-400" : "text-gray-300"
+    : "text-gray-500";
   const breadcrumb = useRef<HTMLParagraphElement>(null);
   const breadcrumbMeasure = useRef<HTMLSpanElement>(null);
   const breadcrumbParts = eyebrow?.split(" • ") ?? [];
@@ -107,7 +111,7 @@ export const PageHeader = ({
         ) : (
           <p
             ref={breadcrumb}
-            className="relative mb-1 w-full overflow-hidden text-[clamp(0.5rem,calc(1rem*var(--breadcrumb-scale,1)),1rem)] leading-6 font-black uppercase tracking-wider text-gray-500"
+            className={`relative mb-1 w-full overflow-hidden text-[clamp(0.5rem,calc(1rem*var(--breadcrumb-scale,1)),1rem)] leading-6 font-black uppercase tracking-wider ${breadcrumbColor}`}
           >
             {breadcrumbLines.map((line, index) => (
               <span key={index} className="block truncate">{line}</span>

@@ -45,7 +45,9 @@ export default function Layout() {
           className="h-full min-h-0 overflow-x-hidden overflow-y-auto pb-1"
           data-scroll-container
         >
-          <Outlet />
+          <div className="mr-2">
+            <Outlet />
+          </div>
         </div>
         <ScrollToTop />
         <StudentNotesPanel isOpen={isNotesOpen} onClose={toggleNotes} />

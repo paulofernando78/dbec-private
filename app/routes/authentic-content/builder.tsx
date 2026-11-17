@@ -1,3 +1,4 @@
+import { PageContainer } from "@/components/layout/PageContainer";
 import { Navigate, useNavigate, useParams } from "react-router";
 import type { ComponentProps } from "react";
 import { CalendarDays } from "lucide-react";
@@ -190,7 +191,7 @@ export default function AuthenticContents() {
   }[current.slug];
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <PageContainer>
       <PageHeader
         eyebrow="Learn"
         title="TED-Ed"
@@ -232,6 +233,6 @@ export default function AuthenticContents() {
         ariaLabel="Lesson steps"
         dockScrollToTop
       />
-    </div>
+    </PageContainer>
   );
 }

@@ -1,3 +1,4 @@
+import { PageContainer } from "@/components/layout/PageContainer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
@@ -29,7 +30,7 @@ export default function LevelBuilder() {
   if (!level) return <p>Level not found.</p>;
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <PageContainer>
       <PageHeader
         eyebrow="Learn • Course"
         title={`${level.code} ${level.name}`}
@@ -50,6 +51,6 @@ export default function LevelBuilder() {
           />
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

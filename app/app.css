@@ -78,6 +78,7 @@ body {
 
 .app-scrollArea--document {
   overflow-y: auto;
+  @apply px-4;
   
 }
 

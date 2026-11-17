@@ -1,3 +1,4 @@
+import { PageContainer } from "@/components/layout/PageContainer";
 import {
   BookOpenCheck,
   Check,
@@ -31,7 +32,7 @@ function GuideTitle({ icon, children }: { icon: ReactNode; children: ReactNode }
 
 export default function Guide() {
   return (
-    <div className="mx-auto max-w-4xl">
+    <PageContainer>
       <header className="mb-4">
         <h1 className="text-4xl font-black text-black">How it works</h1>
         <p className="text-slate-500">Learn how progress, XP, streaks, and lessons work.</p>
@@ -80,6 +81,6 @@ export default function Guide() {
           </div>
         </Card>
       </div>
-    </div>
+    </PageContainer>
   );
 }
