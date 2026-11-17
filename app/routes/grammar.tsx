@@ -37,7 +37,7 @@ export default function Grammar() {
 
   return (
     <div>
-      <PageHeader eyebrow={`Language • ${section}`} title={topic.title} />
+      <PageHeader eyebrow={`Language • ${section}`} title={topic.title} subtitle={"englishTitle" in topic ? topic.englishTitle : undefined} />
       {showContents && (
         <TableOfContents
           items={[

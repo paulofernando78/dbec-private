@@ -1,5 +1,6 @@
 export const falseCognates = {
-  title: "False Cognates",
+  title: "Falsos cognatos",
+  englishTitle: "False Cognates",
   introduction: "Falsos cognatos são palavras parecidas em inglês e português que podem ter significados diferentes. Compare o sentido de cada palavra antes de traduzir.",
   sections: [
     {

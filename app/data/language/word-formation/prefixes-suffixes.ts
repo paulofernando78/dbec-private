@@ -4,7 +4,8 @@ import { bold, mark } from "@/helpers/content";
 
 export const prefixesSuffixes = {
   id: "prefixes-suffixes",
-  title: "Prefixes and Suffixes",
+  title: "Prefixos e sufixos",
+  englishTitle: "Prefixes and Suffixes",
   description: "Forme e compreenda palavras acrescentando elementos antes ou depois de uma palavra-base.",
   introduction:
     "Na morfologia, derivação é a formação de uma palavra a partir de outra. Um prefixo vem antes da base e geralmente altera seu significado. Um sufixo vem depois e pode mudar a classe gramatical, como em dark (adjetivo) → darken (verbo).",

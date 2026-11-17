@@ -3,7 +3,8 @@ import type { GrammarTopic } from "../grammar/types";
 
 export const latinPlurals = {
   id: "latin-plurals",
-  title: "Latin Plurals",
+  title: "Plurais latinos",
+  englishTitle: "Latin Plurals",
   description:
     "Aprenda quando palavras terminadas em -us formam o plural em -i e quando seguem o plural regular do inglês.",
   introduction:

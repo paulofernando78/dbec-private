@@ -19,7 +19,7 @@ export default function VocabularyReference() {
   return (
     <PageContainer>
       <div className="grid gap-4">
-        <PageHeader eyebrow="Language • Vocabulary" title={data.title} />
+        <PageHeader eyebrow="Language • Vocabulary" title={data.title} subtitle={"englishTitle" in data && typeof data.englishTitle === "string" ? data.englishTitle : undefined} />
         <p>{data.introduction}</p>
         {data.sections.map((section) => (
           <Card key={section.title} title={section.title}>

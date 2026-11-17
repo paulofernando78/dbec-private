@@ -29,6 +29,7 @@ export type GrammarWarning = {
 export type GrammarTopic = {
   id: string;
   title: string;
+  englishTitle?: string;
   description: string;
   introduction: string;
   usages: readonly GrammarUsage[];

@@ -117,28 +117,28 @@ export const links: NavItem[] = [
           },
           {
             href: "/vocabulary/reference/false-cognates",
-            label: "false cognates",
+            label: "falsos cognatos",
             icon: BookMarked,
           },
           {
             href: "/vocabulary/reference/homophones-homographs-homonyms",
-            label: "homophones, homographs & homonyms",
+            label: "homófonos, homógrafos e homônimos",
             icon: BookMarked,
           },
         ],
       },
       // WORD FORMATION
       {
-        subgroup: "word formation",
+        subgroup: "formação de palavras",
         children: [
           {
             href: "/grammar/prefixes-suffixes",
-            label: "prefixes & suffixes",
+            label: "prefixos e sufixos",
             icon: BookMarked,
           },
           {
             href: "/grammar/latin-plurals",
-            label: "latin plurals",
+            label: "plurais latinos",
             icon: BookMarked,
           },
         ],

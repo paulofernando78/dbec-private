@@ -136,7 +136,11 @@ export const PageHeader = ({
             {title}
           </h1>
         )}
-        {subtitle && <p className="mb-1 text-2xl">{subtitle}</p>}
+        {subtitle && (
+          <p className={`${contentDescriptions.length > 0 || footer || date || time ? "mb-1" : "mb-0"} text-xl`}>
+            {subtitle}
+          </p>
+        )}
         {contentDescriptions.map((item, index) => (
           <p key={`${item}-${index}`} className="text-base md:text-lg">
             {item}
