@@ -183,7 +183,9 @@ export const Calendar = ({
 }: CalendarProps) => {
   const { ref: scrollRef, isDragging, events } = useDraggableScroll();
   const [showAllDates, setShowAllDates] = useState(false);
-  const scheduledWeekdays = new Set(schedule?.split("/").map((day) => day.trim()) ?? []);
+  const scheduledWeekdays = new Set(
+    schedule?.split("/").map((day) => day.trim()) ?? [],
+  );
 
   return (
     <>
@@ -226,7 +228,9 @@ export const Calendar = ({
                   >
                     {option.label}
                   </span>
-                  <span className="[@media(max-width:420px)]:whitespace-nowrap">{option.description}</span>
+                  <span className="[@media(max-width:420px)]:whitespace-nowrap">
+                    {option.description}
+                  </span>
                 </li>
               ))}
           </ul>
@@ -239,6 +243,19 @@ export const Calendar = ({
         title="Calendar"
         className="mt-4 mb-4 w-full min-w-0 overflow-hidden [contain:inline-size]"
       >
+        {!showAllDates && scheduledWeekdays.size === 0 && (
+            <p className="mt-3 text-sm text-gray-500">
+              Selecione os dias no Schedule para exibir as datas das aulas.
+            </p>
+          )}
+          <div className="mb-4 flex items-center gap-2">
+            <Checkbox
+              checked={showAllDates}
+              onCheckedChange={setShowAllDates}
+              ariaLabel="Mostrar todas as datas"
+            />
+            <span>Mostrar todas as datas</span>
+          </div>
         <div
           ref={scrollRef}
           {...events} // Isso injeta automaticamente o onMouseDown, onMouseUp, etc.
@@ -251,17 +268,6 @@ export const Calendar = ({
             ${isDragging ? "cursor-grabbing select-none" : "cursor-grab"}
           `}
         >
-          {!showAllDates && scheduledWeekdays.size === 0 && (
-          <p className="mt-3 text-sm text-gray-500">Selecione os dias no Schedule para exibir as datas das aulas.</p>
-        )}
-        <div className="mb-4 flex items-center gap-2">
-          <Checkbox
-            checked={showAllDates}
-            onCheckedChange={setShowAllDates}
-            ariaLabel="Mostrar todas as datas"
-          />
-          <span>Mostrar todas as datas</span>
-        </div>
           <div
             className="
             flex
@@ -293,55 +299,60 @@ export const Calendar = ({
                   </p>
 
                   <ol className="space-y-1">
-                    {dates.filter(({ weekday }) => showAllDates || scheduledWeekdays.has(weekday)).map(({ day, weekday, status }, index) => {
-                      const lessonDate = getDateKey(
-                        2026,
-                        months.indexOf(month),
-                        day,
-                      );
-                      const currentStatus = statuses[lessonDate] ?? status;
+                    {dates
+                      .filter(
+                        ({ weekday }) =>
+                          showAllDates || scheduledWeekdays.has(weekday),
+                      )
+                      .map(({ day, weekday, status }, index) => {
+                        const lessonDate = getDateKey(
+                          2026,
+                          months.indexOf(month),
+                          day,
+                        );
+                        const currentStatus = statuses[lessonDate] ?? status;
 
-                      return (
-                        <li
-                          key={`${month}-${day}`}
-                          className="flex items-center gap-1"
-                        >
-                          <span className="w-[1.35rem] shrink-0">
-                            {index + 1}.
-                          </span>
-                          <div className="w-14 shrink-0">
-                            <StatusSelect
-                              status={currentStatus}
-                              disabled={readOnly}
-                              onStatusChange={(nextStatus) =>
-                                onStatusChange?.(lessonDate, nextStatus)
-                              }
-                            />
-                          </div>
-                          <span className="shrink-0 whitespace-nowrap">
-                            &bull; {weekday} {day}
-                          </span>
-                          {(currentStatus === "R" ||
-                            currentStatus === "ROK") && (
-                            <input
-                              type="text"
-                              aria-label={`Replacement date for ${month} ${day}`}
-                              maxLength={30}
-                              value={replacementDates[lessonDate] ?? ""}
-                              disabled={readOnly}
-                              onMouseDown={(event) => event.stopPropagation()}
-                              onChange={(event) =>
-                                onReplacementDateChange?.(
-                                  lessonDate,
-                                  event.target.value,
-                                )
-                              }
-                              className="ml-1 px-[.4rem] w-[3.8rem] min-w-0 h-6 text-xs rounded-lg border border-gray-300 bg-(--surface) disabled:opacity-100"
-                            />
-                          )}
-                        </li>
-                      );
-                    })}
+                        return (
+                          <li
+                            key={`${month}-${day}`}
+                            className="flex items-center gap-1"
+                          >
+                            <span className="w-[1.35rem] shrink-0">
+                              {index + 1}.
+                            </span>
+                            <div className="w-14 shrink-0">
+                              <StatusSelect
+                                status={currentStatus}
+                                disabled={readOnly}
+                                onStatusChange={(nextStatus) =>
+                                  onStatusChange?.(lessonDate, nextStatus)
+                                }
+                              />
+                            </div>
+                            <span className="shrink-0 whitespace-nowrap">
+                              &bull; {weekday} {day}
+                            </span>
+                            {(currentStatus === "R" ||
+                              currentStatus === "ROK") && (
+                              <input
+                                type="text"
+                                aria-label={`Replacement date for ${month} ${day}`}
+                                maxLength={30}
+                                value={replacementDates[lessonDate] ?? ""}
+                                disabled={readOnly}
+                                onMouseDown={(event) => event.stopPropagation()}
+                                onChange={(event) =>
+                                  onReplacementDateChange?.(
+                                    lessonDate,
+                                    event.target.value,
+                                  )
+                                }
+                                className="ml-1 px-[.4rem] w-[3.8rem] min-w-0 h-6 text-xs rounded-lg border border-gray-300 bg-(--surface) disabled:opacity-100"
+                              />
+                            )}
+                          </li>
+                        );
+                      })}
                   </ol>
                 </Card>
               );
