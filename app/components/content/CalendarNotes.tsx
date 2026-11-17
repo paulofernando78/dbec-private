@@ -19,7 +19,7 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
     setError("");
     fetch(`/api/calendar-notes?studentId=${encodeURIComponent(studentId)}`, { signal: controller.signal, cache: "no-store" })
       .then(async (response) => {
-        if (!response.ok) throw new Error("Não foi possível carregar as observações.");
+        if (!response.ok) throw new Error("Loading error");
         return response.json() as Promise<{ content: string }>;
       })
       .then(({ content: text }) => {
@@ -29,7 +29,7 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
         setLoaded(true);
       })
       .catch(() => {
-        if (!controller.signal.aborted) setError("Não foi possível carregar as observações.");
+        if (!controller.signal.aborted) setError("Unable to load notes.");
       })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
@@ -49,7 +49,7 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
       if (!response.ok) throw new Error("Save failed");
       setSavedContent(text);
     } catch {
-      setError("Não foi possível salvar. Seu texto foi mantido; tente novamente.");
+      setError("Unable to save notes. Your text has been kept.");
     } finally { setSaving(false); }
   }
 
@@ -65,17 +65,28 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
           disabled={loading || !loaded}
           maxLength={10000}
           rows={3}
-          placeholder={loading ? "Carregando…" : readOnly ? "Nenhuma observação." : "Observações importantes para este aluno…"}
+          placeholder={loading ? "Loading…" : readOnly ? "No notes yet." : "..."}
           className="block min-h-24 w-full resize-y rounded-lg border border-gray-300 bg-(--background) p-3 text-(--text-color) focus-visible:outline-2 disabled:opacity-60"
         />
         <div className="mt-2 flex items-center gap-2">
-          {!readOnly && loaded && <Button icon={<Save />} ariaLabel="Salvar observações" onClick={save} disabled={saving || content === savedContent} />}
+          {!readOnly && loaded && <Button icon={<Save />} ariaLabel="Save notes" onClick={save} disabled={saving || content === savedContent} />}
           <span role="status" className="text-sm text-gray-500">
-            {loading ? "Carregando…" : saving ? "Salvando…" : loaded && !readOnly ? content === savedContent ? "Salvo" : "Alterações não salvas" : ""}
+            {loading ? "Loading…" : saving ? "Saving…" : loaded && !readOnly ? content === savedContent ? "Saved" : "Unsaved changes" : ""}
           </span>
-          {!loading && !loaded && <button type="button" onClick={() => setReload((value) => value + 1)}>Tentar novamente</button>}
         </div>
-        {error && <p role="alert" className="mt-2 text-sm text-red-600">{error}</p>}
+        {error && (
+          <p role="alert" className="mt-2 text-sm text-red-600">
+            {error}{" "}
+            <button
+              type="button"
+              className="cursor-pointer font-semibold text-inherit focus-visible:outline-2"
+              disabled={loading || saving}
+              onClick={() => loaded ? void save() : setReload((value) => value + 1)}
+            >
+              Try again
+            </button>
+          </p>
+        )}
       </Card>
     </>
   );
