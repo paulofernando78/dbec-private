@@ -11,6 +11,7 @@ import { students as developmentStudents } from "./app/data/students";
 
 const localLessonCompletionByUser = new Map<string, Map<string, boolean>>();
 const localNotes = new Map<string, { teacher: string; student: string }>();
+const localCalendarNotes = new Map<string, string>();
 const localAiTutorRequests = new Map<string, number[]>();
 const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
 const localDictionaryTtsCache = new Map<
@@ -775,6 +776,49 @@ const localAuth = (): Plugin => ({
           calendar: [],
         }),
       );
+    });
+
+    server.middlewares.use("/api/calendar-notes", async (request, response, next) => {
+      if (request.method !== "GET" && request.method !== "PUT") return next();
+      response.setHeader("Content-Type", "application/json");
+      response.setHeader("Cache-Control", "no-store");
+      const session = localSession;
+      if (!session) {
+        response.statusCode = 401;
+        response.end(JSON.stringify({ error: "Não autorizado." }));
+        return;
+      }
+      if (request.method === "PUT" && session.role !== "teacher") {
+        response.statusCode = 403;
+        response.end(JSON.stringify({ error: "Somente o professor pode editar estas observações." }));
+        return;
+      }
+      try {
+        let body: { studentId?: string; content?: string } = {};
+        if (request.method === "PUT") {
+          request.setEncoding("utf8");
+          let raw = "";
+          for await (const chunk of request) raw += chunk;
+          body = JSON.parse(raw);
+          if (typeof body?.content !== "string" || body.content.length > 10000) {
+            response.statusCode = 400;
+            response.end(JSON.stringify({ error: "As observações devem ter até 10.000 caracteres." }));
+            return;
+          }
+        }
+        const requestedId = body.studentId ?? new URL(request.url ?? "", "http://localhost").searchParams.get("studentId");
+        const studentId = session.role === "teacher" ? requestedId : session.studentId;
+        if (!studentId || !localStudents.has(studentId)) {
+          response.statusCode = 404;
+          response.end(JSON.stringify({ error: "Aluno não encontrado." }));
+          return;
+        }
+        if (request.method === "PUT") localCalendarNotes.set(studentId, body.content!);
+        response.end(JSON.stringify(request.method === "GET" ? { content: localCalendarNotes.get(studentId) ?? "" } : { ok: true }));
+      } catch {
+        response.statusCode = 400;
+        response.end(JSON.stringify({ error: "Dados inválidos." }));
+      }
     });
 
     server.middlewares.use("/api/notes", async (request, response, next) => {

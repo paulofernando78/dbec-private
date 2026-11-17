@@ -163,6 +163,7 @@ export default function Dashboard() {
       <div className="grid gap-4">
         <div id="calendar" className="scroll-mt-4">
           <Calendar
+            studentId={student.studentId ?? studentId}
             schedule={student.schedule}
             statuses={calendar}
             replacementDates={replacementDates}

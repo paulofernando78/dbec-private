@@ -3,6 +3,7 @@ import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { useDraggableScroll } from "@/utils/useDraggableScroll";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { CalendarNotes } from "@/components/content/CalendarNotes";
 
 const statusOptions = [
   {
@@ -162,6 +163,7 @@ const StatusSelect = ({
 };
 
 type CalendarProps = {
+  studentId?: string;
   schedule?: string | null;
   statuses?: CalendarStatusMap;
   replacementDates?: Record<string, string>;
@@ -174,6 +176,7 @@ type CalendarProps = {
 };
 
 export const Calendar = ({
+  studentId,
   schedule,
   statuses = {},
   replacementDates = {},
@@ -241,21 +244,22 @@ export const Calendar = ({
 
       <Card
         title="Calendar"
-        className="mt-4 mb-4 w-full min-w-0 overflow-hidden [contain:inline-size]"
+        className="mt-4 w-full min-w-0 overflow-hidden [contain:inline-size]"
       >
+        {studentId && <CalendarNotes key={studentId} studentId={studentId} readOnly={readOnly} />}
         {!showAllDates && scheduledWeekdays.size === 0 && (
-            <p className="mt-3 text-sm text-gray-500">
-              Selecione os dias no Schedule para exibir as datas das aulas.
-            </p>
-          )}
-          <div className="mb-4 flex items-center gap-2">
-            <Checkbox
-              checked={showAllDates}
-              onCheckedChange={setShowAllDates}
-              ariaLabel="Mostrar todas as datas"
-            />
-            <span>Mostrar todas as datas</span>
-          </div>
+          <p className="text-sm text-gray-500">
+            Selecione os dias no Schedule para exibir as datas das aulas.
+          </p>
+        )}
+        <div className="mb-4 flex items-center gap-2">
+          <Checkbox
+            checked={showAllDates}
+            onCheckedChange={setShowAllDates}
+            ariaLabel="Mostrar todas as datas"
+          />
+          <span>Show all dates</span>
+        </div>
         <div
           ref={scrollRef}
           {...events} // Isso injeta automaticamente o onMouseDown, onMouseUp, etc.

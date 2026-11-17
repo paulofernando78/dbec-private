@@ -341,6 +341,7 @@ export default function TeacherDashboard() {
             <div id="calendar" className="scroll-mt-4">
               <Calendar
                 key={studentId}
+                studentId={studentId}
                 schedule={student.schedule}
                 statuses={calendar}
                 replacementDates={replacementDates}
