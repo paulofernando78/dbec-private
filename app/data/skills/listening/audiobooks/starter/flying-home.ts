@@ -39,6 +39,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-1",
+      answers: ["Brazil.", "The Baxter family in New York.", "He wants to go home to Brazil."],
       title: "Paragraph 1",
       text: `Felix is a blue and yellow bird from Brazil. He lives with the Baxter family in New York. His home is a big cage. It is on the fortieth floor of a tall building. Felix likes the Baxters, and the Baxters like him, they give him food. They talk to him and show him to all their friends. But Felix isn't happy. He wants to go home to Brazil.`,
       localMedia: `${localBase}/paragraph-1.avif`,
@@ -48,6 +49,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-2",
+      answers: ["The big yellow moon and his last day in the jungle.", "By plane."],
       title: "Paragraph 2",
       timestamp: "0:36",
       text: `Every night Felix looks up at the sky. He can see the whole city. It is big and exciting. It is home for the Baxters, but not for Felix. He remembers the big, yellow moon in Brazil. Then he remembers his last day in the jungle. The two men with white hats. The big box. The long plane journey. The shop — “Beautiful Birds” — in New York.`,
@@ -58,6 +60,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-3",
+      answers: ["His family.", "Home to the jungle in Brazil."],
       title: "Paragraph 3",
       timestamp: "1:10",
       text: `Felix closes his eyes. Now he can't see the city and the snow. He can see other things. He can see the life he loves. “I want to be with my family again,” he thinks. “I want to fly home to the jungle. It's warm there and the trees are always green.” He puts his head under one wing. “One day,” he says. “One day.”`,
@@ -68,6 +71,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-4",
+      answers: ["He goes to answer the telephone and forgets to close it.", "An open window."],
       title: "Paragraph 4",
       timestamp: "1:54",
       text: `“One day” comes two weeks later. Mr Baxter opens Felix's cage to give him some food. Then he hears the telephone. “Can you answer that, George?” asks Mrs Baxter, “I'm in the bath.” “OK,” says Mr Baxter. He goes to the phone, but forgets to shut Felix's cage. Felix can see an open window. “This is it!” he thinks.`,
@@ -78,6 +82,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-5",
+      answers: ["Out of the cage and window, through the city.", "A girl with her mother."],
       title: "Paragraph 5",
       timestamp: "2:30",
       text: `He flies out of his cage and out of the window. The air under his wings is very cold. Behind him, he hears, “Hey! Felix!” But he doesn't go back. He looks down at the streets and buildings and flies through the city. A girl in a café with her mother sees him. “Look!” she says. Her mother does not hear. She is reading her newspaper.`,
@@ -88,6 +93,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-6",
+      answers: ["On the head of the Statue of Liberty.", "Home to Brazil."],
       title: "Paragraph 6",
       timestamp: "3:08",
       text: `After an hour Felix stops. He stands on the head of the Statue of Liberty. “Where are you from?” asks a small, grey and white bird beside him. “I'm from Brazil,” answers Felix. “And where are you going?” asks the bird. Felix flies up into the cold, blue sky again. “I'm going home,” he says. “Goodbye.”`,
@@ -98,6 +104,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-7",
+      answers: ["South.", "He is free for the first time in two years."],
       title: "Paragraph 7",
       timestamp: "3:50",
       text: `Felix flies south. Soon he can't see New York. All he can see is the Atlantic Ocean. In the evening the sun starts to go down. Then the sky is red, yellow and blue. It is very beautiful. Felix is hungry, but he is happy, too. For the first time in two years, he is free. He wants to fly all night.`,
@@ -108,6 +115,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-8",
+      answers: ["It starts to rain and the sky becomes black.", "A ship.", "No. He wonders if he is doing the right thing."],
       title: "Paragraph 8",
       timestamp: "4:26",
       text: `Two hours later it starts to rain. Now the sky is black. Soon, Felix can't see the moon or the stars. “Where am I?” he thinks. He remembers his warm cage. “Am I doing the right thing?” He looks down at the cold sea. Then he sees something. Is it a star in the black water? No, it can't be a star. He looks again. It is a ship!`,
@@ -118,6 +126,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-9",
+      answers: ["On a ship.", "Fish.", "The man only wants to photograph him."],
       title: "Paragraph 9",
       timestamp: "5:16",
       text: `Felix flies down to the ship. There are hundreds of fish on it. He eats twenty in five minutes, then he sleeps. In the morning a man on the ship sees him. “Oh no!” thinks Felix, but it is all right. The man only wants to take a photograph of him. Felix flies into the sky again. “Good,” he thinks. “It's not raining now, and I'm not hungry.”`,
@@ -128,6 +137,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-10",
+      answers: ["Peru.", "Machu Picchu.", "A big bird with black and white feathers; the text does not name its species."],
       title: "Paragraph 10",
       timestamp: "5:56",
       text: `Two days later Felix flies across Peru. He looks down and sees the Inca city of Machu Picchu. “Those old stone buildings look interesting,” he thinks. “I know — I can stop there tonight.” Felix starts to fly down to the buildings. Then he sees a big bird with beautiful black and white feathers. It is sitting on a stone.`,
@@ -138,6 +148,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-11",
+      answers: ["His story about living in a cage and going home.", "Aca."],
       title: "Paragraph 11",
       timestamp: "6:30",
       text: `“Hello, you're not from Peru, are you?” says the bird. Felix tells his story. “Two years in a cage in New York?!” says the bird. “Yes,” answers Felix, “but now I'm going home. Can you tell me how to get there?” “I have a friend — Aca — in Rio,” says the bird. “He knows the jungle. Go there and ask him.”`,
@@ -148,6 +159,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-12",
+      answers: ["Aca.", "He wants to have Felix as a pet."],
       title: "Paragraph 12",
       timestamp: "7:08",
       text: `Felix flies from Peru to Rio. There he sees a lot of people in the street. He can hear music and see some birds in a tree. Is one of them Aca? “Aca! Aca!” he says. “Yes, that's me,” answers one of the birds. Felix can't see him. Then a boy sees Felix. “Look at the bird,” he says to his father. “Can I have him? Can I? Please?”`,
@@ -158,6 +170,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-13",
+      answers: ["The boy's father.", "Aca.", "He tells Aca his story."],
       title: "Paragraph 13",
       timestamp: "7:50",
       text: `At first, Felix doesn't see the boy or his father. He is looking at all the birds in the trees. “Aca! Aca!” says Felix. Then there is a warm hand on his neck. He fights with his wings and his feet. “Help! Help!” Aca helps him. “Aiiieee!!!” says the man. The two birds fly into the sky. “Thank you,” says Felix. Then he tells Aca his story.`,
@@ -168,6 +181,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-14",
+      answers: ["A new road.", "He cannot see his home or his family."],
       title: "Paragraph 14",
       timestamp: "8:34",
       text: `Felix and Aca fly from Rio to the jungle. In the evening Felix says, “Yes, I remember that village. My home's very near here. It's only...” Then he stops. In front of them, there are a lot of men and machines. “Oh no, they're making a new road!” says Aca. “But... where's my home?” asks Felix. “And where's my family?”`,
@@ -178,6 +192,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-15",
+      answers: ["Four birds: his family.", "Yes, he does.", "Happy to be home."],
       title: "Paragraph 15",
       timestamp: "9:10",
       text: `The two birds fly over the new road, then they stop in a tree near the village. Felix is tired and sad. “I'm sorry,” says Aca. Then Felix sees a small blue and yellow feather in the air. He looks up. There, above the trees, are four birds. “It's them, Aca!” he says. “It's my family!” Then he flies into the sky. The birds see him. “Felix, is it you?” they ask. “Yes,” answers Felix. “I'm home!!!”`,

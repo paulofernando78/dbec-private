@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router";
 
 import { MediaWrapper } from "@/components/content/MediaWrapper";
+import { AudiobookQuestions } from "@/components/content/AudiobookQuestions";
 import { PageHeader } from "@/components/content/PageHeader";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
@@ -16,8 +17,6 @@ import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook
 import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
 import { getAudiobookSectionProgress, setAudiobookSectionCompleted } from "@/utils/audiobook-progress";
 import { Checkbox } from "@/components/ui/Checkbox";
-import { Eye, EyeClosed } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 
 function SectionImage({
   section,
@@ -61,7 +60,6 @@ export default function ListeningBookPage() {
     ? audiobooks[book as keyof typeof audiobooks]
     : undefined;
   const session = useSession();
-  const [showAnswers, setShowAnswers] = useState(false);
   const [completedSections, setCompletedSections] = useState<Record<string, boolean>>({});
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
@@ -143,31 +141,7 @@ export default function ListeningBookPage() {
                   )
                 )}
               </div>
-              {questions.length > 0 && (
-                <div className="mt-3 rounded-lg bg-(--background) p-3">
-                  <h3 className="mb-2 text-lg font-black">Answer</h3>
-                  <ul className="space-y-1">
-                    {questions.map((question, index) => (
-                      <li key={question}>
-                        {index + 1}. {question}
-                        {showAnswers && answers[index] && (
-                          <span className="text-slate-600"> — {answers[index]}</span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                  {answers.length > 0 && (
-                    <div className="mt-3">
-                      <Button
-                        ariaLabel={showAnswers ? "Hide answers" : "Show answers"}
-                        pressed={showAnswers}
-                        icon={showAnswers ? <EyeClosed /> : <Eye />}
-                        onClick={() => setShowAnswers((current) => !current)}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
+              <AudiobookQuestions key={`${audiobook.slug}/${section.id}`} questions={questions} answers={answers} />
               {section.id !== summary?.id && (
                 <div className="mt-3 flex items-center gap-2 rounded-lg bg-(--background) p-3 text-left text-sm font-bold">
                   <Checkbox

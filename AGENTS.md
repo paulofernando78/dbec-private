@@ -1,5 +1,11 @@
 # Tailwind CSS
 
+- Links accompanied by a button-style icon must not underline their labels, including on hover or keyboard focus. Preserve a visible keyboard focus outline. Apply this pattern consistently throughout the project.
+
+# Audiobook questions
+
+- Every audiobook section with comprehension questions must include a complete answer key and the shared `AudiobookQuestions` component with its show/hide answers button. Keep answers hidden initially and reveal them independently per section. Apply this to every audiobook, including future additions.
+
 - Use Tailwind's spacing scale for dimensions and spacing instead of arbitrary pixel values. For example, use `min-h-17` for `68px` and `w-15` for `60px` at the default root font size. When the scale cannot express the intended value, use an equivalent relative unit such as `rem`.
 
 # Which One? illustrations

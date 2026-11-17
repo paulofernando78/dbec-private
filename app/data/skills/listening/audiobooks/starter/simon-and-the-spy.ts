@@ -20,6 +20,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-1",
+      answers: ["They are looking for a spy.", "A spy shown in the newspaper."],
       title: "Paragraph 1",
       text: `Simon Simple is at the station. He is going on a train. There are policemen at the station. There are policemen on the trains. They are all working very hard. “Why are the police here?” Simon asks a man. “Look,” the man says. Simon looks at the man's newspaper. “Do you know this man?” he reads. “He's a spy! Find him! Stop him! Catch him!”`,
       localMedia: `${localBase}/paragraph-1.avif`,
@@ -29,6 +30,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-2",
+      answers: ["His train leaves in three minutes.", "An old woman with an umbrella."],
       title: "Paragraph 2",
       timestamp: "0:48",
       text: `Simon looks at the people in the station. He can see students in jeans, and men in suits. He can see families and children. He can't see any spies. Simon's train goes at 11.00, and it is 10.57 now. Simon runs to the train. There is an old woman with an umbrella near Simon. She is walking very fast. Simon doesn't see her. He doesn't see her bag.`,
@@ -39,6 +41,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-3",
+      answers: ["The old woman's bag hits his foot.", "It falls among his things, and he puts it in his bag without noticing."],
       title: "Paragraph 3",
       timestamp: "1:32",
       text: `The old woman's bag hits Simon's foot. Simon falls. His bag opens. His things fall to the ground. The old woman's bag is open, too. A letter falls out. Simon puts his things into his bag. The old woman's letter is with Simon's things. Simon does not see it. He puts the old woman's letter in his bag. He closes his bag and runs to the train.`,
@@ -49,6 +52,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-4",
+      answers: ["A beautiful girl.", "She sees the policemen."],
       title: "Paragraph 4",
       timestamp: "2:20",
       text: `Simon sits down in the train. There is a beautiful girl beside him. “Hello,” Simon says. “Hello,” the girl says. The old woman is on the train, too. She is looking at Simon's bag. She wants her letter. There are policemen on the train. They can't find the spy. The old woman sees the policemen. She turns and walks quickly down the train.`,
@@ -59,6 +63,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-5",
+      answers: ["Coffee.", "The old woman."],
       title: "Paragraph 5",
       timestamp: "3:02",
       text: `Simon likes the girl. She likes him. “There's a restaurant on the train,” Simon says. “Do you want a cup of coffee?” “Yes, please,” the girl says. “OK, wait here,” Simon says. Simon takes his bag and goes to the restaurant. The old woman is waiting for him. Simon doesn't see her. He doesn't see her foot.`,
@@ -69,6 +74,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-6",
+      answers: ["They are not women's shoes."],
       title: "Paragraph 6",
       timestamp: "3:47",
       text: `The train is going fast. Simon falls. The old woman falls, too. She sits down on the floor. “Oh, I'm sorry,” Simon says. He helps the old woman. Simon sees the old woman's shoes. He looks at her shoes, and he looks at her face. “They're not women's shoes,” Simon thinks. Simon buys the coffee and goes back to the girl.`,
@@ -79,6 +85,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-7",
+      answers: ["On a boat.", "No, he cannot identify the spy."],
       title: "Paragraph 7",
       timestamp: "4:29",
       text: `The train stops. Simon and the girl are going on a boat now. They walk from the train to the boat. There are policemen here, too. “What do they want?” the girl asks. “There's a spy,” Simon says. “A spy?” the girl says. “I can't see any spies.” Simon looks, too. He sees families and students. He sees the old woman. “No,” Simon says. “I can't see any spies.”`,
@@ -89,6 +96,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-8",
+      answers: ["Samantha.", "They are talking."],
       title: "Paragraph 8",
       timestamp: "5:21",
       text: `It is a beautiful day. The sun is shining and the water is blue. Simon and the girl sit near the water and wait. The boat is coming. “What's your name?” Simon asks. “Samantha,” the girl says. “Oh,” Simon says. “My name's Simon. Simon and Samantha. That's nice.” Simon and Samantha are talking. They don't see the old woman. They don't see her umbrella.`,
@@ -99,6 +107,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-9",
+      answers: ["A lorry.", "Her trousers are not women's trousers."],
       title: "Paragraph 9",
       timestamp: "6:09",
       text: `“Look out!” a man shouts. “There's a lorry!” Simon and Samantha look. A lorry is coming down the road very fast. They jump back. The old woman jumps back, too. Simon sees her trousers. “They're not women's trousers,” Simon thinks. “Come on, Simon, the boat's here,” Samantha says. Simon and Samantha get on the boat.`,
@@ -109,6 +118,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-10",
+      answers: ["Simon offers a sandwich and Samantha offers an apple.", "The old woman."],
       title: "Paragraph 10",
       timestamp: "6:58",
       text: `Simon opens his bag and takes his lunch out. He takes the old woman's letter out, too, but he doesn't see it. “Do you want a sandwich?” Simon asks Samantha. “Yes, please,” Samantha says. She takes her lunch out of her bag. “Do you want an apple?” she says. The old woman is behind them. Simon and Samantha don't see her. They don't see her hand.`,
@@ -120,6 +130,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-11",
+      answers: ["The wind.", "Simon thinks it is his ticket; the old woman wants her letter."],
       title: "Paragraph 11",
       timestamp: "7:41",
       text: `The boat is going fast now. The wind is strong. Samantha's hair goes in her eyes. The wind takes the old woman's letter. The letter flies along the boat. “What's that paper?” Samantha says. “Is it your boat ticket?” “I don't know,” Simon says. Simon runs. He wants his ticket. The old woman runs, too. She wants her letter.`,
@@ -130,6 +141,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-12",
+      answers: ["A dog.", "Simon shouts about his ticket, and the old woman shouts about her letter; both ask people to catch the dog."],
       title: "Paragraph 12",
       timestamp: "8:24",
       text: `Simon and the old woman run fast. They are near the paper now. “Woof!” “What is that? It's a dog!” He's running very fast. He runs to the paper and catches it in his mouth. “My ticket!” Simon says. “My letter!” the old woman says. The dog runs along the boat. “Catch the dog!” Simon says. “Stop him!” says the old woman.`,
@@ -140,6 +152,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-13",
+      answers: ["Samantha.", "The old woman's letter."],
       title: "Paragraph 13",
       timestamp: "9:07",
       text: `The dog is happy. He can run fast. He's playing a game with Simon and the old woman. He doesn't see Samantha. Samantha jumps up and catches him. “I've got him, Simon,” Samantha says. Simon and the old woman run to Samantha. The paper's in the dog's mouth. Simon looks at it. “That's not my ticket,” he says. “No,” the old woman says. “It's my letter.”`,
@@ -150,6 +163,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-14",
+      answers: ["It pulls off the coat, and the wind takes the hat and hair.", "A man: the spy."],
       title: "Paragraph 14",
       timestamp: "9:48",
       text: `The dog likes Simon and Samantha, but he doesn't like the old woman. He takes her coat in his mouth and pulls it. The coat falls to the ground. The wind takes the old woman's hat. It falls into the water. Her hair falls with the hat. Simon and Samantha look at the old woman. It's not an old woman! It's a man! “The spy!” Simon says. “Police! Come here!”`,
@@ -160,6 +174,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-15",
+      answers: ["Names and addresses.", "Inside the dog; it has swallowed it."],
       title: "Paragraph 15",
       timestamp: "10:32",
       text: `The police are very happy. “Thank you, Simon,” they say. “Now we have the spy. But the spy has a letter. The letter has names and addresses on it. We want the letter but we can't find it. Where is it? Do you know?” Simon looks at the dog. The dog looks at Simon. “There's the letter,” Simon says. “Where?” says the policeman. “It's in the dog,” Simon says.`,

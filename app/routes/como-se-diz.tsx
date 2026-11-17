@@ -1,6 +1,9 @@
 import { Link, Navigate, useParams } from "react-router";
+import { BookOpen } from "lucide-react";
 
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { PageHeader } from "@/components/content/PageHeader";
+import { VocabularyExample } from "@/components/content/VocabularyExample";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Card } from "@/components/ui/Card";
 import { acabar } from "@/data/language/vocabulary/como-se-diz/acabar";
@@ -28,10 +31,7 @@ export default function ComoSeDiz() {
                 <p>{meaning}</p>
                 <ul className="mt-3 grid gap-2">
                   {examples.map(([english, portuguese]) => (
-                    <li key={english}>
-                      <strong lang="en">{english}</strong>
-                      <p>{portuguese}</p>
-                    </li>
+                    <VocabularyExample key={english} english={english} portuguese={portuguese} />
                   ))}
                 </ul>
               </Card>
@@ -45,9 +45,17 @@ export default function ComoSeDiz() {
             <ul className="grid gap-2">
               {entries.map(({ id, title, summary }) => (
                 <li key={id}>
-                  <Link to={`${sectionPath}/${id}`} className="block rounded-lg bg-(--background) p-3 hover:underline">
-                    <strong>{title}</strong>
-                    <span className="mt-1 block text-sm">{summary}</span>
+                  <Link to={`${sectionPath}/${id}`} className="group block rounded-xl hover:bg-(--surface) focus-visible:outline-2 focus-visible:outline-offset-2">
+                    <ActionTextRow as="div" action={
+                      <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-xl border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-1 shadow-sm">
+                        <span className="grid size-full place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
+                          <BookOpen className="size-4.5 text-(--button-icon)" />
+                        </span>
+                      </span>
+                    }>
+                      <strong>{title}</strong>
+                      <span className="mt-1 block text-sm">{summary}</span>
+                    </ActionTextRow>
                   </Link>
                 </li>
               ))}

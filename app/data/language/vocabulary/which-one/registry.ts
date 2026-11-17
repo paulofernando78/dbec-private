@@ -13,6 +13,7 @@ import { stationaryVsStationery } from "./stationary-vs-stationery";
 import { robVsSteal } from "./rob-steal";
 import { sinkVsDrown } from "./sink-vs-drown";
 import { seeVsWatch } from "./see-vs-watch";
+import { storyVsHistory } from "./story-vs-history";
 
 export const vocabularyTopics = [
   hearVsListen,
@@ -30,6 +31,7 @@ export const vocabularyTopics = [
   raiseVsRise,
   seeVsWatch,
   mostVsMostOf,
+  storyVsHistory,
 ] as const;
 
 export type VocabularyTopicId = (typeof vocabularyTopics)[number]["id"];

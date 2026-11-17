@@ -36,7 +36,7 @@ export default function Vocabulary() {
                   </span>
                 </span>
                 }>
-                <span className="group-hover:underline group-focus-visible:underline">{topic.title}</span>
+                <span>{topic.title}</span>
                 </ActionTextRow>
               </Link>
             </li>

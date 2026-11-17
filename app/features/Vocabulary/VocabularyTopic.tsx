@@ -1,7 +1,5 @@
-import { Portuguese } from "@/components/content/Portuguese";
 import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
-import { ActionTextRow } from "@/components/content/ActionTextRow";
-import { Audio } from "@/components/ui/Audio";
+import { VocabularyExample } from "@/components/content/VocabularyExample";
 import { Card } from "@/components/ui/Card";
 import { Radio } from "@/features/exercises/Radio";
 import {
@@ -31,22 +29,7 @@ export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
             </p>
             <ul className="grid gap-2">
               {usage.examples.map((example) => (
-                <ActionTextRow key={example.english} action={
-                  <Audio
-                    asButton
-                    src={example.english}
-                    fallbackText={example.english}
-                    speechLang="en-US"
-                    ariaLabel={`Play ${example.english}`}
-                    wrapperClassName="shrink-0 self-start"
-                  />
-                }>
-                    <span lang="en" className="font-semibold">
-                      {example.english}
-                    </span>
-                    {" — "}
-                    <Portuguese>{example.portuguese}</Portuguese>
-                </ActionTextRow>
+                <VocabularyExample key={example.english} {...example} />
               ))}
             </ul>
           </section>

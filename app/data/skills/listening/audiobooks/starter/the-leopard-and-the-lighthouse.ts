@@ -21,6 +21,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-1",
+      answers: ["On an island in East Africa.", "An old lighthouse.", "Children from the village."],
       title: "Paragraph 1",
       text: `Sindi is an island in East Africa. It has beautiful beaches with white sand. The sea is clear and blue. There are lovely trees and flowers in Sindi. There is also a small village with white houses. An old lighthouse stands near the village on the rocks by the sea. This lighthouse is empty now. Sometimes children from the village play in the lighthouse.`,
       localMedia: `${localBase}/paragraph-1.avif`,
@@ -30,6 +31,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-2",
+      answers: ["The African mainland.", "He is hungry and looking for food."],
       title: "Paragraph 2",
       timestamp: "0:54",
       text: `Sindi lies about five hundred metres from the mainland of Africa. A lot of animals live on the mainland—monkeys, elephants, and leopards. One day a leopard swims across the sea to Sindi. The leopard is very hungry and he is looking for food. He swims quickly. He comes to the beach and gets out of the water. Then he walks along the road to the village.`,
@@ -40,6 +42,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-3",
+      answers: ["Into the marketplace.", "Children cry and men throw stones."],
       title: "Paragraph 3",
       timestamp: "1:34",
       text: `There is a marketplace in the village. Many people with small children are shopping in the market. They are buying meat, vegetables, and fruit. Suddenly, the hungry leopard runs into the marketplace. The people see him. Children cry and men throw stones. Some of the stones hit the leopard. He runs out of the market.`,
@@ -50,6 +53,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-4",
+      answers: ["They do not want him in their village.", "Along a small road between two high walls."],
       title: "Paragraph 4",
       timestamp: "2:10",
       text: `The leopard runs through the streets of the village. Behind him, the people are following and throwing stones. They are very angry. They do not want a leopard in their village. The leopard is very tired now. But where can he run? He sees a small road between two high walls. He turns and runs along this road. The people follow him.`,
@@ -60,6 +64,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-5",
+      answers: ["The old lighthouse.", "Up the stairs."],
       title: "Paragraph 5",
       timestamp: "2:46",
       text: `The leopard runs quickly along the road. He cannot see over the walls. He cannot go back and there is no way out. Suddenly, he sees a tall building. The door of this building is open. He runs through the door. Then he stops. What now? The people are coming. He sees some stairs. He runs up the stairs—up into the building. The building is the old lighthouse.`,
@@ -70,6 +75,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-6",
+      answers: ["High up on the wall at the top of the lighthouse."],
       title: "Paragraph 6",
       timestamp: "3:30",
       text: `Then the people stop running. “What's happening?” they ask. “Where is the leopard?” Then one man looks up at the lighthouse. “Look!” he says. “The leopard is in the lighthouse!” The people look up. They can see the leopard high up on the wall at the top of the lighthouse. The leopard looks down at the people. The people look up at the leopard.`,
@@ -81,6 +87,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-7",
+      answers: ["Three days and nights.", "No, they do not."],
       title: "Paragraph 7",
       timestamp: "4:05",
       text: `The leopard stays in the lighthouse for three days and nights. He has no food or water, but he does not come down the stairs. “What now?” ask the people. “How can we get the leopard out of the lighthouse?” They talk and talk. But they do not go into the lighthouse. The people watch the leopard. The leopard watches the people. The people wait and the leopard waits.`,
@@ -91,6 +98,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-8",
+      answers: ["The Head Man of Sindi.", "A competition to kill the leopard.", "He can marry Tanza."],
       title: "Paragraph 8",
       timestamp: "4:44",
       text: `The Head Man of Sindi is called Mohammed. Mohammed has a beautiful daughter, Tanza. “What can we do?” the people ask Mohammed. “The leopard is very hungry and can kill our children. We must catch him. But how?” Mohammed thinks. Then he says, “Let the men of Sindi have a competition. The competition is to kill the leopard. The winner can marry Tanza.”`,
@@ -101,6 +109,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-9",
+      answers: ["He is old.", "No, it does not."],
       title: "Paragraph 9",
       timestamp: "5:37",
       text: `Many men in Sindi are in love with Tanza. One man is called Ahmed. Ahmed has a big house and lots of animals, but he is old and Tanza does not like him. Ahmed has a gun. He brings the gun to the lighthouse. The leopard is high up on the walls of the lighthouse. Ahmed fires the gun. Bang! But the leopard does not fall off the wall. Tanza is very happy.`,
@@ -111,6 +120,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-10",
+      answers: ["He plans to kill it with his knife.", "To bring the leopard down the stairs."],
       title: "Paragraph 10",
       timestamp: "6:23",
       text: `There is a young man called Jamal. Jamal is big and strong. But he talks a lot and Tanza does not like him. Now Jamal says, “I can kill the leopard. I can kill him with my knife.” He brings a goat and some rope to the lighthouse. The leopard is at the top of the lighthouse. Jamal ties the goat to the bottom of the stairs. Then he waits.`,
@@ -121,6 +131,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-11",
+      answers: ["He is hungry and smells the goat.", "It pulls until the rope breaks."],
       title: "Paragraph 11",
       timestamp: "7:02",
       text: `The leopard is very hungry. He can smell the goat. It smells good. At last, the leopard comes down the stairs. He sees the goat but he does not see Jamal. Now the goat can see the leopard. He pulls and pulls at the rope. The rope breaks and the goat runs away. The leopard turns and runs back up the stairs. Jamal is very angry but Tanza is happy.`,
@@ -131,6 +142,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-12",
+      answers: ["A dart.", "To shoot the dart into the leopard."],
       title: "Paragraph 12",
       timestamp: "7:45",
       text: `“What now?” asks Mohammed. “Perhaps I can help,” says a quiet young man. He has a gun but it is not like Ahmed's gun. He also has something in his hand. “What's that?” asks Mohammed. “It's a dart,” says the young man. “I can shoot the dart into the leopard with the gun.” “And then what happens?” asks Mohammed. “Watch,” says the young man. He puts the dart into the gun.`,
@@ -141,6 +153,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-13",
+      answers: ["Saied.", "The leopard does not fall immediately.", "To wait."],
       title: "Paragraph 13",
       timestamp: "8:30",
       text: `Tanza looks at the young man. He has nice eyes and a kind face. “What's your name?” she asks. “Saied,” says the young man. He smiles at her. Tanza smiles, too. She likes him. The leopard is on the lighthouse wall. Saied holds his gun and fires. Pop! But nothing happens. The leopard does not fall off the wall. Ahmed and Jamal are laughing. “Wait,” says Saied. Fifteen minutes pass.`,
@@ -151,6 +164,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-14",
+      answers: ["No, he is sleeping.", "He thinks the leopard is beautiful and wants to save him."],
       title: "Paragraph 14",
       timestamp: "9:26",
       text: `“Look!” says Saied. “The leopard is falling. Come on!” He runs up the stairs and the people follow. “Is the leopard dead?” asks Tanza. “No,” says Saied. “My dart doesn't kill animals. He is only sleeping.” “Let's kill him now,” shout the people. “No,” says Saied. “The leopard is beautiful. Please give him to me.” “All right,” says Mohammed. “The leopard is yours, Saied.”`,
@@ -161,6 +175,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-15",
+      answers: ["The Animal Park in Nairobi.", "Tanza.", "Their children."],
       title: "Paragraph 15",
       timestamp: "10:11",
       text: `Saied takes the leopard to the Animal Park in Nairobi. Then he comes back to Sindi. Later, Tanza and Saied get married. Five years pass. They have children now—two boys and a girl. They are very happy. They often visit the Animal Park and sometimes the children see the leopard. “Tell us the story of the leopard and the lighthouse,” say the children. And Saied tells them the story.`,
