@@ -98,33 +98,31 @@ export default function Home() {
           aria-label="Course options"
         >
           <article className="flex h-full flex-col rounded-2xl border border-amber-200 bg-amber-50/70 p-6 text-left shadow-[0_8px_24px_rgba(15,23,42,0.08)]">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
-              Included
-            </p>
             <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">
-              Start for free
+              start for free
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              Comece a estudar com materiais selecionados para desenvolver as
-              quatro habilidades do inglês.
+              Conheça a plataforma
             </p>
             <ul className="mt-5 grid gap-2 text-sm text-slate-700">
-              <CheckText text="Acesso a aulas e atividades gratuitas" />
+              <li>
+                <CheckText text="Prévia do curso" />
+              </li>
+              <li>
+                <CheckText text="Conteúdos gratuitas" />
+              </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">
               <Button
                 onClick={() => navigate("/dashboard")}
                 className="uppercase"
               >
-                Start for free
+                start for free
               </Button>
             </div>
           </article>
 
           <article className="flex h-full flex-col rounded-2xl border border-violet-200 bg-violet-50/70 p-6 text-left shadow-[0_8px_24px_rgba(120,53,15,0.08)]">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-violet-700">
-              Suporte personalizado
-            </p>
             <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">
               Extras
             </h2>
