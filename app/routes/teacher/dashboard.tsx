@@ -312,10 +312,9 @@ export default function TeacherDashboard() {
         {student && studentId && (
           <TableOfContents
             items={[
-              { href: "progress", label: "Progress" },
               { href: "calendar", label: "Calendar" },
-              { href: "notes", label: "Notes" },
-              { href: "ai-tutor", label: "AI Tutor" },
+              { href: "notes", label: "Notes / AI Tutor" },
+              { href: "progress", label: "Progress" },
             ]}
           />
         )}
@@ -339,12 +338,6 @@ export default function TeacherDashboard() {
   
         {student && studentId ? (
           <div className="grid gap-4">
-            {progress && (
-              <div id="progress" className="scroll-mt-4">
-                <DashboardProgress progress={progress} />
-              </div>
-            )}
-
             <div id="calendar" className="scroll-mt-4">
               <Calendar
                 statuses={calendar}
@@ -378,6 +371,11 @@ export default function TeacherDashboard() {
                 </div>
               </Card>
             </div>
+            {progress && (
+              <div id="progress" className="scroll-mt-4">
+                <DashboardProgress progress={progress} />
+              </div>
+            )}
           </div>
         ) : null}
       </div>

@@ -155,17 +155,11 @@ export default function Dashboard() {
       <TableOfContents
         items={[
           { to: "/guide", label: "Guide" },
-          { href: "progress", label: "Progress" },
           { href: "calendar", label: "Calendar" },
-          { href: "notes", label: "Notes" },
-          { href: "ai-tutor", label: "AI Tutor" },
+          { href: "notes", label: "Notes / AI Tutor" },
+          { href: "progress", label: "Progress" },
         ]}
       />
-      {progress && (
-        <div id="progress" className="scroll-mt-4">
-          <DashboardProgress progress={progress} />
-        </div>
-      )}
       <div className="grid gap-4">
         <div id="calendar" className="scroll-mt-4">
           <Calendar
@@ -196,6 +190,11 @@ export default function Dashboard() {
             </div>
           </Card>
         </div>
+        {progress && (
+          <div id="progress" className="scroll-mt-4">
+            <DashboardProgress progress={progress} />
+          </div>
+        )}
       </div>
     </>
   );
