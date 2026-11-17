@@ -2,43 +2,38 @@ import type { UnitListeningContent } from "../extra-listening";
 
 export const unitListening: Readonly<Record<number, UnitListeningContent>> = {
   "1": {
-    "title": "A New Classmate",
+    "title": "At the Office",
     "dialogues": [
       {
         "lines": [
           {
-            "speaker": "Nina",
-            "text": "Hi, I'm Nina. What's your name?"
-          },
-          {
             "speaker": "Luis",
-            "text": "I'm Luis. Nice to meet you."
+            "text": "Hi, I'm Luis. What's your name?"
           },
           {
             "speaker": "Nina",
-            "text": "Nice to meet you, too. Are you in this class?"
+            "text": "I'm Nina. I'm the receptionist. Nice to meet you."
           },
           {
             "speaker": "Luis",
-            "text": "Yes, I am."
+            "text": "Nice to meet you, too."
           }
         ],
         "questions": [
           {
-            "question": "Are you in this class?",
-            "choices": [
-              "Yes, I am.",
-              "No, I'm not.",
-              "I don't know."
-            ],
-            "correct": 0
-          },
-          {
-            "question": "Complete: Hi, I'm ___.",
+            "question": "Hi, I'm ___.",
             "choices": [
               "Rosa",
-              "Nina",
+              "Luis",
               "Mia"
+            ],
+            "correct": 1
+          },
+          {
+            "question": "Nice to meet you, Luis. I'm Nina. I'm the ___.",
+            "choices": [
+              "manager",
+              "receptionist"
             ],
             "correct": 1
           }
@@ -52,7 +47,7 @@ export const unitListening: Readonly<Record<number, UnitListeningContent>> = {
           },
           {
             "speaker": "Nina",
-            "text": "It's 555-0142. What's your email, Luis?"
+            "text": "It's 555-0142. What's your email address, Luis?"
           },
           {
             "speaker": "Luis",
@@ -65,7 +60,7 @@ export const unitListening: Readonly<Record<number, UnitListeningContent>> = {
         ],
         "questions": [
           {
-            "question": "What is Nina's phone number?",
+            "question": "Phone number",
             "choices": [
               "555-0132",
               "555-0124",
@@ -74,7 +69,7 @@ export const unitListening: Readonly<Record<number, UnitListeningContent>> = {
             "correct": 2
           },
           {
-            "question": "What's Luis's email address?",
+            "question": "Email address",
             "choices": [
               "leo@example.com",
               "nina@example.com",
