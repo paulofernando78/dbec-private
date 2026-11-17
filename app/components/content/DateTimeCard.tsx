@@ -46,7 +46,7 @@ export const DateTimeCard = ({
   return (
     <Card className={`${compact ? "p-3!" : ""} ${className}`}>
       <div
-        className={`flex items-center ${
+        className={`flex items-center justify-end ${
           compact ? "flex-nowrap gap-3 whitespace-nowrap" : "flex-wrap gap-x-4 gap-y-3 rounded-xl bg-(--background) p-4"
         }`}
       >
