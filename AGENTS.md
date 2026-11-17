@@ -1,3 +1,7 @@
+# Content punctuation
+
+- Use straight single quotation marks (`'`) when quoting words, phrases, or examples in content. Never use guillemets (Unicode U+00AB and U+00BB).
+
 # Tailwind CSS
 
 - Links accompanied by a button-style icon must not underline their labels, including on hover or keyboard focus. Preserve a visible keyboard focus outline. Apply this pattern consistently throughout the project.

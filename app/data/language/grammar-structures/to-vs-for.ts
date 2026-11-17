@@ -4,7 +4,7 @@ export const toVsFor = {
   id: "to-vs-for",
   title: "To vs. For",
   description: "Aprenda a distinguir destino, destinatário, benefício e finalidade em inglês.",
-  introduction: "To e for podem ser traduzidos como «para». Em inglês, a escolha depende da relação entre as palavras na frase.",
+  introduction: "To e for podem ser traduzidos como 'para'. Em inglês, a escolha depende da relação entre as palavras na frase.",
   usages: [
     {
       title: "To · destino ou destinatário",

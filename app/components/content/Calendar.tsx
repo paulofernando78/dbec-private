@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/Card";
 import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { useDraggableScroll } from "@/utils/useDraggableScroll";
+import { useState } from "react";
+import { Checkbox } from "@/components/ui/Checkbox";
 
 const statusOptions = [
   {
@@ -103,7 +105,7 @@ const getDateKey = (year: number, monthIndex: number, day: number) =>
     "0",
   )}`;
 
-const getWeekdaysInMonth = (year: number, monthIndex: number) => {
+const getDatesInMonth = (year: number, monthIndex: number) => {
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
 
   return Array.from({ length: daysInMonth }, (_, index) => {
@@ -111,24 +113,17 @@ const getWeekdaysInMonth = (year: number, monthIndex: number) => {
     const date = new Date(year, monthIndex, day);
     const weekday = date.getDay();
 
-    if (weekday === 0 || weekday === 6) {
-      return null;
-    }
-
     return {
       day,
       weekday: weekdays[weekday],
       status: holidayDates.has(getDateKey(year, monthIndex, day)) ? "H" : "...",
     };
-  }).filter(
-    (date): date is { day: number; weekday: string; status: string } =>
-      date !== null,
-  );
+  });
 };
 
 const calendarMonths = months.map((month, index) => ({
   month,
-  dates: getWeekdaysInMonth(2026, index),
+  dates: getDatesInMonth(2026, index),
 }));
 
 type CalendarStatusMap = Record<string, string>;
@@ -167,6 +162,7 @@ const StatusSelect = ({
 };
 
 type CalendarProps = {
+  schedule?: string | null;
   statuses?: CalendarStatusMap;
   replacementDates?: Record<string, string>;
   readOnly?: boolean;
@@ -178,6 +174,7 @@ type CalendarProps = {
 };
 
 export const Calendar = ({
+  schedule,
   statuses = {},
   replacementDates = {},
   readOnly = false,
@@ -185,6 +182,8 @@ export const Calendar = ({
   onReplacementDateChange,
 }: CalendarProps) => {
   const { ref: scrollRef, isDragging, events } = useDraggableScroll();
+  const [showAllDates, setShowAllDates] = useState(false);
+  const scheduledWeekdays = new Set(schedule?.split("/").map((day) => day.trim()) ?? []);
 
   return (
     <>
@@ -252,6 +251,17 @@ export const Calendar = ({
             ${isDragging ? "cursor-grabbing select-none" : "cursor-grab"}
           `}
         >
+          {!showAllDates && scheduledWeekdays.size === 0 && (
+          <p className="mt-3 text-sm text-gray-500">Selecione os dias no Schedule para exibir as datas das aulas.</p>
+        )}
+        <div className="mb-4 flex items-center gap-2">
+          <Checkbox
+            checked={showAllDates}
+            onCheckedChange={setShowAllDates}
+            ariaLabel="Mostrar todas as datas"
+          />
+          <span>Mostrar todas as datas</span>
+        </div>
           <div
             className="
             flex
@@ -283,7 +293,7 @@ export const Calendar = ({
                   </p>
 
                   <ol className="space-y-1">
-                    {dates.map(({ day, weekday, status }, index) => {
+                    {dates.filter(({ weekday }) => showAllDates || scheduledWeekdays.has(weekday)).map(({ day, weekday, status }, index) => {
                       const lessonDate = getDateKey(
                         2026,
                         months.indexOf(month),
@@ -338,6 +348,17 @@ export const Calendar = ({
             })}
           </div>
         </div>
+        {/* {!showAllDates && scheduledWeekdays.size === 0 && (
+          <p className="mt-3 text-sm text-gray-500">Selecione os dias no Schedule para exibir as datas das aulas.</p>
+        )}
+        <div className="mt-4 flex items-center gap-2">
+          <Checkbox
+            checked={showAllDates}
+            onCheckedChange={setShowAllDates}
+            ariaLabel="Mostrar todas as datas"
+          />
+          <span>Mostrar todas as datas</span>
+        </div> */}
       </Card>
     </>
   );

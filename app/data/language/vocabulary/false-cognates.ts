@@ -5,17 +5,17 @@ export const falseCognates = {
   sections: [
     {
       title: "Actually × atualmente",
-      explanation: "Actually significa «na verdade». Atualmente pode ser currently.",
+      explanation: "Actually significa 'na verdade'. Atualmente pode ser currently.",
       examples: ["Actually, I work from home. — Na verdade, eu trabalho de casa.", "I currently work from home. — Atualmente, eu trabalho de casa."],
     },
     {
       title: "Pretend × pretender",
-      explanation: "Pretend significa «fingir». Pretender, no sentido de ter a intenção de fazer algo, pode ser intend ou plan.",
+      explanation: "Pretend significa 'fingir'. Pretender, no sentido de ter a intenção de fazer algo, pode ser intend ou plan.",
       examples: ["He pretended to be asleep. — Ele fingiu estar dormindo.", "I plan to study tonight. — Pretendo estudar hoje à noite."],
     },
     {
       title: "Parents × parentes",
-      explanation: "Parents significa «pais». Para parentes em geral, use relatives.",
+      explanation: "Parents significa 'pais'. Para parentes em geral, use relatives.",
       examples: ["My parents live here. — Meus pais moram aqui.", "I have relatives in Recife. — Tenho parentes em Recife."],
     },
     {
@@ -25,7 +25,7 @@ export const falseCognates = {
     },
   ],
   practice: [
-    { question: "Como dizer «Atualmente, estudo inglês»?", answer: "I currently study English." },
+    { question: "Como dizer 'Atualmente, estudo inglês'?", answer: "I currently study English." },
     { question: "Você quer comprar um livro. Você vai a uma library ou a uma bookstore?", answer: "A bookstore." },
   ],
 };

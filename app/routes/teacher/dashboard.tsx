@@ -340,6 +340,8 @@ export default function TeacherDashboard() {
           <div className="grid gap-4">
             <div id="calendar" className="scroll-mt-4">
               <Calendar
+                key={studentId}
+                schedule={student.schedule}
                 statuses={calendar}
                 replacementDates={replacementDates}
                 onStatusChange={saveCalendar}

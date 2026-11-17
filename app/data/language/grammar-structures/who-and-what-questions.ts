@@ -32,7 +32,7 @@ export const whoAndWhatQuestions = {
     },
   ],
   quickRule:
-    "Complete a resposta primeiro. Em «___ called you», falta o sujeito: Who called you? Em «You called ___», falta o objeto: Who did you call?",
+    "Complete a resposta primeiro. Em '___ called you', falta o sujeito: Who called you? Em 'You called ___', falta o objeto: Who did you call?",
 } as const satisfies GrammarTopic;
 
 export const whoAndWhatQuestionsExercises = [

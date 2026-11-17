@@ -122,7 +122,7 @@ export const links: NavItem[] = [
           },
           {
             href: "/vocabulary/reference/homophones-homographs-homonyms",
-            label: "homófonos, homógrafos e homônimos",
+            label: "homó (-fonos/-grafos/-nimos)",
             icon: BookMarked,
           },
         ],
