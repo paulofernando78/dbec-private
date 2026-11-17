@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Search, X } from "lucide-react";
 
 import { Portuguese } from "@/components/content/Portuguese";
+import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 import { Image } from "@/components/ui/Image";
@@ -48,14 +49,13 @@ export function DictionaryWordCard({
 
   return (
     <>
-      <article className="rounded-xl bg-(--background) p-4 text-(--text-color) ring-1 ring-slate-200 dark:ring-slate-700">
+      <article className="rounded-xl bg-(--background) p-4 text-(--text-color)">
       <header className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <div className="flex items-center gap-2">
           <Audio
             asButton
             src={dictionaryTts(entry.word)}
             fallbackText={entry.word}
-            allowSpeechFallback={false}
             speechLang="en-US"
             ariaLabel={`Play ${entry.word}`}
             wrapperClassName="shrink-0"
@@ -86,19 +86,22 @@ export function DictionaryWordCard({
       {entry.examples?.length ? (
         <div className="mt-3 grid gap-2">
           {entry.examples.slice(0, compact ? 2 : undefined).map((example, index) => (
-            <div key={index} className="flex items-start gap-2 text-sm">
-              {example.enExample && (
+            <ActionTextRow
+              key={index}
+              as="div"
+              gap="gap-2"
+              className="text-sm"
+              action={example.enExample ? (
                 <Audio
                   asButton
                   src={dictionaryTts(example.enExample)}
                   fallbackText={example.enExample}
-                  allowSpeechFallback={false}
                   speechLang="en-US"
                   ariaLabel={`Play example: ${example.enExample}`}
                   wrapperClassName="shrink-0"
                 />
-              )}
-              <div className="min-w-0 flex-1">
+              ) : null}
+            >
                 {example.enExample && (
                   <span>{example.enExample}</span>
                 )}
@@ -108,8 +111,7 @@ export function DictionaryWordCard({
                     <Portuguese>{example.ptExample}</Portuguese>
                   </>
                 )}
-              </div>
-            </div>
+            </ActionTextRow>
           ))}
         </div>
       ) : null}

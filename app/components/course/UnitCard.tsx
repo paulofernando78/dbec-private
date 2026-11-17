@@ -30,7 +30,6 @@ export function UnitCard({
     setCompletedLessons(
       new Set(
         unit.lessons
-          .slice(0, 2)
           .map((_, index) => index + 1)
           .filter((lessonNumber) =>
             isLessonCompleted(levelSlug, unit.number, lessonNumber),
@@ -40,7 +39,7 @@ export function UnitCard({
   }, [levelSlug, unit.number, unit.lessons]);
 
   const resetUnit = () => {
-    unit.lessons.slice(0, 2).forEach((_, index) =>
+    unit.lessons.forEach((_, index) =>
       resetLesson(levelSlug, unit.number, index + 1),
     );
     setCompletedLessons(new Set());
@@ -52,7 +51,7 @@ export function UnitCard({
       title={unit.title}
       description={unit.description}
       completedCount={completedLessons.size}
-      totalCount={Math.min(unit.lessons.length, 2)}
+      totalCount={unit.lessons.length}
       resetAriaLabel={`Reset unit ${unit.number}`}
       resetConfirmationMessage={`Are you sure you want to reset all lesson progress for Unit ${unit.number}?`}
       onReset={resetUnit}
@@ -75,7 +74,7 @@ export function UnitCard({
           isCompleted,
           isLocked,
           ariaLabel: isCheckpoint
-            ? `${isLocked ? "Locked" : "Open"} checkpoint review ${unit.number}`
+            ? `${isLocked ? "Locked" : isCompleted ? "Completed" : "Open"} checkpoint review ${unit.number}`
             : `${isLocked ? "Locked" : isCompleted ? "Completed" : "Open"} lesson ${lessonNumber}`,
           onClick: () => {
             if (isAuthenticated === false && !isFreeLesson) {

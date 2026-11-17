@@ -2,6 +2,22 @@
   {
     "definitions": [
       {
+        "word": "it's not rocket science",
+        "partOfSpeech": "idiom",
+        "enDefinition": "Used to say that something is fairly simple to understand or do.",
+        "ptDefinition": "Não é complicado. Não é um bicho de sete cabeças.",
+        "examples": [
+          {
+            "enExample": "Just follow the instructions. It's not rocket science.",
+            "ptExample": "É só seguir as instruções. Não é nenhum bicho de sete cabeças."
+          }
+        ],
+        "seeAlso": [
+          "rocket science",
+          "rocket scientist"
+        ]
+      },
+      {
         "word": "impairment",
         "phonetics": "/ɪmˈper.mənt/",
         "partOfSpeech": "noun",
@@ -624,6 +640,19 @@
             "ptExample": "um jornal israelense"
           }
         ]
+      },
+      {
+        "word": "if the cap fits, wear it",
+        "partOfSpeech": "idiom (British English)",
+        "enDefinition": "Used to suggest that someone should accept a criticism if it applies to them.",
+        "ptDefinition": "Se a carapuça serviu, vista-a. Usa-se quando uma crítica parece se aplicar à pessoa que a ouviu.",
+        "examples": [
+          {
+            "enExample": "‘Are you saying I always turn up late?’ ‘Well, if the cap fits, wear it.’",
+            "ptExample": "«Você está dizendo que eu sempre chego atrasado?» «Bom, se a carapuça serviu, vista-a.»"
+          }
+        ],
+        "seeAlso": ["if the shoe fits, wear it"]
       },
       {
         "word": "if the shoe fits, wear it",

@@ -2,6 +2,18 @@
   {
     "definitions": [
       {
+        "word": "gym rat",
+        "partOfSpeech": "noun (informal)",
+        "enDefinition": "Someone who spends a lot of time working out at the gym.",
+        "ptDefinition": "Rato ou rata de academia. Pessoa que frequenta muito a academia.",
+        "examples": [
+          {
+            "enExample": "My brother is a gym rat. He works out almost every day.",
+            "ptExample": "Meu irmão é rato de academia. Ele treina quase todo dia."
+          }
+        ]
+      },
+      {
         "word": "grain",
         "phonetics": "/ɡreɪn/",
         "partOfSpeech": "noun",
@@ -1367,8 +1379,8 @@
       {
         "word": "go all out",
         "partOfSpeech": "idiom",
-        "enDefinition": "this phrase means to put in maximum effort or to go to extremes in doing something",
-        "ptDefinition": "esta expressão significa colocar o máximo de esforço ou ir ao extremo em algo",
+        "enDefinition": "To make the greatest possible effort or spare no expense.",
+        "ptDefinition": "Dar tudo de si, fazer o máximo ou não poupar gastos.",
         "examples": [
           {
             "enExample": "They decided to go all out with their wedding, hiring a famous band and booking an expensive venue.",
@@ -1492,7 +1504,14 @@
         "word": "get the go-ahead",
         "partOfSpeech": "idiom",
         "enDefinition": "To receive permission to start or proceed.",
-        "ptDefinition": "Receber autorização para começar ou seguir em frente."
+        "ptDefinition": "Receber autorização para começar ou seguir em frente.",
+        "examples": [
+          {
+            "enExample": "We got the go-ahead to start the project on Monday.",
+            "ptExample": "Recebemos autorização para começar o projeto na segunda-feira."
+          }
+        ],
+        "seeAlso": ["go ahead"]
       }
     ]
   }
@@ -1587,7 +1606,20 @@
       },
       {
         "word": "go ahead",
-        "enDefinition": "To continue; to proceed without hesitation."
+        "partOfSpeech": "phrasal verb",
+        "enDefinition": "To proceed with an action or plan. Go ahead can also be used to give someone permission to do something.",
+        "ptDefinition": "Prosseguir ou ir em frente. Como resposta a um pedido de permissão, pode significar «pode sim» ou «fique à vontade».",
+        "examples": [
+          {
+            "enExample": "The team decided to go ahead with the event.",
+            "ptExample": "A equipe decidiu seguir em frente com o evento."
+          },
+          {
+            "enExample": "Can I open the window? Sure, go ahead.",
+            "ptExample": "Posso abrir a janela? Claro, pode abrir."
+          }
+        ],
+        "seeAlso": ["get the go-ahead"]
       },
       {
         "word": "get rid of",

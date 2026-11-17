@@ -68,7 +68,7 @@ export function NavBar({
         }
       >
         <span
-          className={`font-bold ${label === "TED-Ed" ? "normal-case" : "uppercase"}`}
+          className={`font-bold ${href === "/authentic-content" ? "normal-case" : "uppercase"}`}
         >
           {label}
         </span>
@@ -83,9 +83,9 @@ export function NavBar({
   return (
     <nav
       className={`space-y-4 h-full min-h-0 w-max overflow-y-auto rounded-xl bg-(--surface) p-4 text-gray-500 transition-transform duration-500 ease-in-out z-20
-      max-[920px]:absolute max-[920px]:-translate-x-100
+      max-[920px]:absolute max-[920px]:left-0 max-[920px]:top-0 max-[920px]:max-w-full
       max-[420px]:w-full
-      ${isOpen ? "max-[920px]:translate-x-0" : ""}`}
+      ${isOpen ? "max-[920px]:translate-x-0" : "max-[920px]:-translate-x-full max-[920px]:invisible"}`}
     >
       {links.map((item) => {
         if ("group" in item) {

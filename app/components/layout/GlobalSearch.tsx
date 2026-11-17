@@ -401,12 +401,37 @@ const normalize = (value: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 
-const createSnippet = (text: string, terms: readonly string[]) => {
-  const normalizedText = normalize(text);
-  const positions = terms
-    .map((term) => normalizedText.indexOf(term))
-    .filter((position) => position >= 0);
-  const matchAt = positions.length ? Math.min(...positions) : 0;
+const normalizeDictionaryTerm = (value: string) =>
+  normalize(value)
+    .replace(/[’‘]/g, "'")
+    .replace(/[^a-z0-9']+/g, " ")
+    .trim();
+
+const wordForms = (word: string) => {
+  const forms = new Set([word]);
+  if (!/^[a-z]{3,}$/.test(word)) return forms;
+  const consonantY = /[^aeiou]y$/.test(word);
+  forms.add(consonantY ? `${word.slice(0, -1)}ies` : /(?:s|x|z|ch|sh)$/.test(word) ? `${word}es` : `${word}s`);
+  forms.add(consonantY ? `${word.slice(0, -1)}ied` : word.endsWith("e") ? `${word}d` : `${word}ed`);
+  const ingBase = /[^eoy]e$/.test(word) ? word.slice(0, -1) : word;
+  forms.add(`${ingBase}ing`);
+  if (/[aeiou][^aeiouwxy]$/.test(word) && /[^aeiou][aeiou][^aeiouwxy]$/.test(word)) {
+    forms.add(`${word}${word.at(-1)}ing`);
+    forms.add(`${word}${word.at(-1)}ed`);
+  }
+  return forms;
+};
+
+const searchWords = (text: string) =>
+  [...text.matchAll(/[\p{L}\p{M}\p{N}]+(?:['’‘][\p{L}\p{M}\p{N}]+)*/gu)]
+    .map((match) => ({
+      index: match.index,
+      text: match[0],
+      word: normalizeDictionaryTerm(match[0]).replace(/'s$/, ""),
+    }));
+
+const createSnippet = (text: string, forms: ReadonlySet<string>) => {
+  const matchAt = searchWords(text).find(({ word }) => forms.has(word))?.index ?? 0;
   const start = Math.max(0, matchAt - 70);
   const end = Math.min(text.length, matchAt + 150);
   const prefix = start > 0 ? "…" : "";
@@ -415,13 +440,8 @@ const createSnippet = (text: string, terms: readonly string[]) => {
 };
 
 function HighlightedSnippet({ text, query }: { text: string; query: string }) {
-  const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
-  const normalizedText = normalize(text);
-  const matches = terms
-    .map((term) => ({ term, index: normalizedText.indexOf(term) }))
-    .filter((match) => match.index >= 0)
-    .sort((first, second) => first.index - second.index);
-  const match = matches[0];
+  const forms = new Set(searchWords(query).flatMap(({ word }) => [...wordForms(word)]));
+  const match = searchWords(text).find(({ word }) => forms.has(word));
 
   if (!match) return text;
 
@@ -429,9 +449,9 @@ function HighlightedSnippet({ text, query }: { text: string; query: string }) {
     <>
       {text.slice(0, match.index)}
       <mark className="rounded bg-yellow-200 px-0.5 text-inherit dark:bg-yellow-700">
-        {text.slice(match.index, match.index + match.term.length)}
+        {match.text}
       </mark>
-      {text.slice(match.index + match.term.length)}
+      {text.slice(match.index + match.text.length)}
     </>
   );
 }
@@ -441,18 +461,17 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [shortcutLabel, setShortcutLabel] = useState<string | null>(null);
-  const [dictionaryEntry, setDictionaryEntry] =
-    useState<DictionaryDefinition | null>(null);
+  const [dictionaryEntries, setDictionaryEntries] = useState<DictionaryDefinition[]>([]);
   const [isDictionaryLoading, setIsDictionaryLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const searchedWord = normalize(query).trim();
+    const searchedWord = normalizeDictionaryTerm(query);
     const firstLetter = searchedWord[0];
 
     if (!searchedWord || !firstLetter || !/[a-z]/.test(firstLetter)) {
-      setDictionaryEntry(null);
+      setDictionaryEntries([]);
       setIsDictionaryLoading(false);
       return;
     }
@@ -465,42 +484,48 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
         if (cancelled) return;
 
         const definitions = flattenDictionaryDefinitions(data);
-        const exactMatch = definitions.find(
-          (entry) => normalize(entry.word).trim() === searchedWord,
-        );
-        const prefixMatch = definitions.find((entry) =>
-          normalize(entry.word).trim().startsWith(searchedWord),
-        );
-        if (exactMatch || prefixMatch || searchedWord.length < 3) {
-          setDictionaryEntry(exactMatch ?? prefixMatch ?? null);
-          return;
+        if (searchedWord.length >= 3) {
+          const otherLetters = await Promise.allSettled(
+            [..."abcdefghijklmnopqrstuvwxyz"]
+              .filter((letter) => letter !== firstLetter)
+              .map(loadDictionaryLetter),
+          );
+          if (cancelled) return;
+          for (const result of otherLetters) {
+            if (result.status === "fulfilled") {
+              definitions.push(...flattenDictionaryDefinitions(result.value));
+            }
+          }
         }
 
-        const containsPhrase = (entry: DictionaryDefinition) =>
-          (" " + normalize(entry.word).trim().replace(/\s+/g, " ") + " ")
-            .includes(" " + searchedWord + " ");
-        const sameLetterMatch = definitions.find(containsPhrase);
-        if (sameLetterMatch) {
-          setDictionaryEntry(sameLetterMatch);
-          return;
-        }
+        const terms = searchWords(query).map(({ word }) => word);
+        const forms = terms.map(wordForms);
 
-        const otherLetters = await Promise.allSettled(
-          Array.from("abcdefghijklmnopqrstuvwxyz")
-            .filter((letter) => letter !== firstLetter)
-            .map(loadDictionaryLetter),
+        const matches = definitions.flatMap((entry) => {
+          const word = normalizeDictionaryTerm(entry.word);
+          const paddedWord = ` ${word} `;
+          if (word === searchedWord) return [{ entry, rank: 0 }];
+          if (paddedWord.includes(` ${searchedWord} `)) return [{ entry, rank: 1 }];
+          const words = searchWords(entry.word);
+          if (forms.length > 0 && words.some((_, index) =>
+            forms.every((termForms, offset) => termForms.has(words[index + offset]?.word ?? "")),
+          )) {
+            return [{ entry, rank: 2 }];
+          }
+          return [];
+        });
+        matches.sort((a, b) =>
+          a.rank - b.rank || a.entry.word.localeCompare(b.entry.word, "en"),
         );
-        if (cancelled) return;
-
-        const phraseMatch = otherLetters
-          .flatMap((result) => result.status === "fulfilled"
-            ? flattenDictionaryDefinitions(result.value)
-            : [])
-          .find(containsPhrase);
-        setDictionaryEntry(phraseMatch ?? null);
+        const unique = new Map<string, DictionaryDefinition>();
+        for (const { entry } of matches) {
+          const key = normalize(entry.word);
+          if (!unique.has(key)) unique.set(key, entry);
+        }
+        setDictionaryEntries([...unique.values()].slice(0, 6));
       })
       .catch(() => {
-        if (!cancelled) setDictionaryEntry(null);
+        if (!cancelled) setDictionaryEntries([]);
       })
       .finally(() => {
         if (!cancelled) setIsDictionaryLoading(false);
@@ -512,21 +537,23 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
   }, [query]);
 
   const results = useMemo<SearchResult[]>(() => {
-    const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
+    const terms = searchWords(query).map(({ word }) => word);
     if (!terms.length) return [];
     const phrase = terms.join(" ");
+    const forms = terms.map(wordForms);
+    const highlightForms = new Set(forms.flatMap((termForms) => [...termForms]));
     const titleRank = ({ title }: SearchItem) => {
-      const normalizedTitle = normalize(title);
+      const normalizedTitle = searchWords(title).map(({ word }) => word).join(" ");
       if (normalizedTitle === phrase) return 0;
-      if (normalizedTitle.includes(phrase)) return 1;
+      if (` ${normalizedTitle} `.includes(` ${phrase} `)) return 1;
       return 2;
     };
     return searchItems
       .filter((item) => {
-        const text = normalize(
+        const words = new Set(searchWords(
           `${item.title} ${item.category} ${item.fullText ?? item.description} ${item.keywords ?? ""}`,
-        );
-        return terms.every((term) => text.includes(term));
+        ).map(({ word }) => word));
+        return forms.every((termForms) => [...termForms].some((form) => words.has(form)));
       })
       .sort((first, second) => titleRank(first) - titleRank(second))
       .slice(0, 12)
@@ -534,7 +561,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
         ...item,
         snippet: createSnippet(
           item.fullText ?? `${item.description} ${item.keywords ?? ""}`,
-          terms,
+          highlightForms,
         ),
       }));
   }, [query]);
@@ -543,7 +570,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
     setIsOpen(false);
     setQuery("");
     setActiveIndex(0);
-    setDictionaryEntry(null);
+    setDictionaryEntries([]);
   };
 
   const selectResult = (item: SearchItem) => {
@@ -679,17 +706,21 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                     Checking Dictionary…
                   </p>
                 )}
-                {dictionaryEntry && (
+                {dictionaryEntries.length > 0 && (
                   <section className="mb-3">
                     <h2 className="px-2 pb-2 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">
                       Dictionary
                     </h2>
-                    <DictionaryWordCard entry={dictionaryEntry} />
+                    <div className="grid gap-2">
+                      {dictionaryEntries.map((entry) => (
+                        <DictionaryWordCard key={entry.word} entry={entry} />
+                      ))}
+                    </div>
                   </section>
                 )}
                 {query.trim() &&
                   !isDictionaryLoading &&
-                  !dictionaryEntry &&
+                  !dictionaryEntries.length &&
                   !results.length && (
                     <p className="p-6 text-center text-slate-500">
                       No results found.
@@ -700,6 +731,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                     Site results
                   </h2>
                 )}
+                <div className="grid gap-2">
                 {results.map((item, index) => (
                   <Button
                     key={`${item.href}-${item.category}-${item.title}-${index}`}
@@ -707,7 +739,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                     variant="list"
                     pressed={index === activeIndex}
                     onClick={() => selectResult(item)}
-                    className={`p-3! ${index === activeIndex ? "bg-(--background)" : ""}`}
+                    className="bg-(--background) p-3!"
                   >
                     <span
                       onMouseEnter={() => setActiveIndex(index)}
@@ -725,6 +757,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
                     </span>
                   </Button>
                 ))}
+                </div>
               </div>
             </section>
           </div>,

@@ -1033,6 +1033,11 @@ const localAuth = (): Plugin => ({
 });
 
 export default defineConfig({
+  server: {
+    watch: {
+      ignored: ["**/local-media/**"],
+    },
+  },
   plugins: [
     localMedia(),
     localAuth(),

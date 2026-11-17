@@ -2,6 +2,38 @@
   {
     "definitions": [
       {
+        "word": "rocket science",
+        "partOfSpeech": "noun (informal)",
+        "enDefinition": "A subject or task that is very hard to understand or do.",
+        "ptDefinition": "Algo muito difícil de entender ou fazer.",
+        "examples": [
+          {
+            "enExample": "Some people make budgeting sound like rocket science.",
+            "ptExample": "Tem gente que faz o planejamento do orçamento parecer um bicho de sete cabeças."
+          }
+        ],
+        "seeAlso": [
+          "it's not rocket science",
+          "rocket scientist"
+        ]
+      },
+      {
+        "word": "rocket scientist",
+        "partOfSpeech": "noun",
+        "enDefinition": "A scientist who works on rockets. In informal expressions, the term can also refer to a very intelligent person.",
+        "ptDefinition": "Cientista especializado em foguetes. Em expressões informais, pode se referir a alguém muito inteligente.",
+        "examples": [
+          {
+            "enExample": "You don't have to be a rocket scientist to figure this out.",
+            "ptExample": "Não precisa ser um gênio para entender isso."
+          }
+        ],
+        "seeAlso": [
+          "rocket science",
+          "it's not rocket science"
+        ]
+      },
+      {
         "word": "replenish",
         "phonetics": "/rɪˈplen.ɪʃ/",
         "partOfSpeech": "verb",

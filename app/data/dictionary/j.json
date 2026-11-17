@@ -2,6 +2,35 @@
   {
     "definitions": [
       {
+        "word": "jam",
+        "phonetics": "/dʒæm/",
+        "partOfSpeech": "noun, verb",
+        "enDefinition": "1. Noun: A sweet spread made from fruit. 2. Noun: A situation in which traffic cannot move freely. 3. Verb: To get stuck or cause something to get stuck. 4. Verb: To play music informally, often improvising. 5. Noun (informal): Something you particularly enjoy or do well, such as a favorite song or activity.",
+        "ptDefinition": "1. Geleia. 2. Congestionamento ou engarrafamento. 3. Emperrar, travar ou atolar. 4. Tocar de improviso. 5. Algo que você adora ou que é a sua praia.",
+        "examples": [
+          {
+            "enExample": "Turn it up! That's my jam.",
+            "ptExample": "Aumenta o volume! Adoro essa música."
+          },
+          {
+            "enExample": "I put strawberry jam on my toast.",
+            "ptExample": "Passei geleia de morango na torrada."
+          },
+          {
+            "enExample": "We got stuck in a traffic jam.",
+            "ptExample": "Ficamos presos em um engarrafamento."
+          },
+          {
+            "enExample": "The printer jammed again.",
+            "ptExample": "O papel atolou na impressora de novo."
+          },
+          {
+            "enExample": "We jammed together for an hour.",
+            "ptExample": "Tocamos juntos de improviso por uma hora."
+          }
+        ]
+      },
+      {
         "word": "jungle",
         "phonetics": "/ˈdʒʌŋɡəl/",
         "partOfSpeech": "noun",

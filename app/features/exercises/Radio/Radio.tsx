@@ -29,6 +29,7 @@ type RadioProps = {
   instruction?: string;
   exercise?: RadioExercise;
   score?: boolean;
+  onCompletionChange?: (complete: boolean) => void;
   className?: string;
   questionClassName?: string;
 };
@@ -37,6 +38,7 @@ const RadioComponent = ({
   instruction,
   exercise = {},
   score = true,
+  onCompletionChange,
   className,
   questionClassName,
 }: RadioProps) => {
@@ -62,12 +64,14 @@ const RadioComponent = ({
 
     setTotalScore(score);
     setChecked(true);
+    onCompletionChange?.(questions.length > 0 && score === questions.length);
   };
 
   const handleReset = () => {
     setSelected({});
     setChecked(false);
     setTotalScore(0);
+    onCompletionChange?.(false);
   };
 
   return (

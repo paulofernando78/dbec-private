@@ -438,7 +438,26 @@
     "definitions": [
       {
         "word": "on a shoestring",
-        "enDefinition": "On a very low budget."
+        "partOfSpeech": "idiom",
+        "enDefinition": "With very little money available to spend.",
+        "ptDefinition": "Com pouquíssimo dinheiro ou com um orçamento muito apertado.",
+        "examples": [
+          {
+            "enExample": "We traveled around Portugal on a shoestring.",
+            "ptExample": "Viajamos por Portugal gastando muito pouco."
+          },
+          {
+            "enExample": "They started their business on a shoestring.",
+            "ptExample": "Eles começaram o negócio com pouquíssimo dinheiro."
+          }
+        ],
+        "seeAlso": ["on a tight budget"],
+        "notes": [
+          {
+            "enNote": "You can also say 'on a shoestring budget'.",
+            "ptNote": "A expressão também aparece como 'on a shoestring budget'."
+          }
+        ]
       },
       {
         "word": "out of it",

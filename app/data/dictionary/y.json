@@ -2,6 +2,18 @@
   {
     "definitions": [
       {
+        "word": "you can catch more flies with honey than vinegar",
+        "partOfSpeech": "proverb",
+        "enDefinition": "You are more likely to get people to help or agree if you are kind and polite.",
+        "ptDefinition": "É mais fácil conseguir a colaboração das pessoas com gentileza.",
+        "examples": [
+          {
+            "enExample": "Ask them politely. You can catch more flies with honey than vinegar.",
+            "ptExample": "Peça com educação. É mais fácil conseguir ajuda com gentileza."
+          }
+        ]
+      },
+      {
         "word": "yeast",
         "phonetics": "/jiːst/",
         "partOfSpeech": "noun",

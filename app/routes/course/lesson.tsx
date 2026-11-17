@@ -111,6 +111,9 @@ export default function LessonPage() {
       <StepRenderer
         key={location.key}
         data={current}
+        onReviewComplete={() => {
+          if (lessonData.isCheckpoint) completeLesson(level, unit, lesson);
+        }}
         onChecklistCompletionChange={(complete) =>
           setCompletedChecklistKey(complete ? location.key : null)
         }

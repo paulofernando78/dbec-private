@@ -19,6 +19,7 @@ const levels = [
   ["B1", "b1", "bg-green-600"],
   ["B2", "b2", "bg-purple-600"],
   ["C1", "c1", "bg-indigo-700"],
+  ["Travel", "travel", "bg-blue-600"],
 ] as const;
 
 function GuideTitle({ icon, children }: { icon: ReactNode; children: ReactNode }) {
@@ -42,7 +43,7 @@ export default function Guide() {
         <Card>
           <GuideTitle icon={<Star className="text-orange-500" />}>XP by level</GuideTitle>
           <p className="mb-3 text-slate-500">
-            Each Course lesson counts when its padlock opens. Opening it for the first time also earns the XP shown for its level.
+            Each completed Course or Travel lesson earns the XP shown below. Checkpoints do not earn XP.
           </p>
           <div className="overflow-hidden rounded-xl border border-gray-300 bg-white">
             {levels.map(([label, slug, color], index) => (

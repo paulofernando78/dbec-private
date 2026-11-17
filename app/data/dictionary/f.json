@@ -805,7 +805,7 @@
         ]
       },
       {
-        "word": "(just) for the record",
+        "word": "for the record",
         "partOfSpeech": "idiom",
         "enDefinition": "used to clarify or emphasize a fact, often to ensure there is no misunderstanding",
         "ptDefinition": "usado para esclarecer ou enfatizar um fato, geralmente para evitar mal-entendidos",
@@ -823,10 +823,8 @@
         "antonyms": ["ambiguous", "unclear", "uncertain"],
         "notes": [
           {
-            "enNote": "Often used in conversations or formal statements to ensure accurate understanding of a point."
-          },
-          {
-            "ptnote": "Frequentemente usado em conversas ou declarações formais para garantir a compreensão precisa de um ponto."
+            "enNote": "Also used as 'just for the record'.",
+            "ptNote": "Também aparece na forma 'just for the record'."
           }
         ]
       },

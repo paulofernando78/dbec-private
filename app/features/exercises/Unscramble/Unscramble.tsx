@@ -20,6 +20,7 @@ type UnscrambleProps = {
   instruction: string;
   numbered?: boolean;
   exercise?: UnscrambleExercise;
+  onCompletionChange?: (complete: boolean) => void;
 };
 
 export const Unscramble = ({
@@ -27,6 +28,7 @@ export const Unscramble = ({
   instruction,
   numbered = true,
   exercise,
+  onCompletionChange,
 }: UnscrambleProps) => {
   const descriptionText = exercise?.description;
   const rawItems = exercise?.items;
@@ -90,6 +92,7 @@ export const Unscramble = ({
     setResults(newResults);
     setTotalScore(score);
     setChecked(true);
+    onCompletionChange?.(items.length > 0 && score === items.length);
   };
 
   const handleShowAnswers = () => {
@@ -97,6 +100,7 @@ export const Unscramble = ({
   };
 
   const handleReset = () => {
+    onCompletionChange?.(false);
     setAnswers({});
     setResults({});
     setChecked(false);
@@ -126,12 +130,13 @@ export const Unscramble = ({
                 <input
                   type="text"
                   value={answers[key] || ""}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    onCompletionChange?.(false);
                     setAnswers((prev) => ({
                       ...prev,
                       [key]: e.target.value,
-                    }))
-                  }
+                    }));
+                  }}
                   className={[
                     "font-mono text-gray-900 w-full py-1 border rounded-lg", checked && results[key] ? "pl-7" : "pl-2",
                     "focus:outline-none focus:border-slate-400",

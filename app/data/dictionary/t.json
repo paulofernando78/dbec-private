@@ -661,6 +661,24 @@
         ]
       },
       {
+        "word": "The shoemaker's son always goes barefoot",
+        "partOfSpeech": "proverb",
+        "enDefinition": "A saying about people who use their skills to help others but neglect the same needs in their own family or home.",
+        "ptDefinition": "Em casa de ferreiro, o espeto é de pau. Diz-se de quem usa suas habilidades para ajudar os outros, mas deixa de aplicá-las em casa ou na própria família.",
+        "examples": [
+          {
+            "enExample": "My dad is a plumber, but our kitchen tap has been leaking for weeks. The shoemaker's son always goes barefoot.",
+            "ptExample": "Meu pai é encanador, mas a torneira da nossa cozinha está pingando há semanas. Em casa de ferreiro, o espeto é de pau."
+          }
+        ],
+        "imgs": [
+          {
+            "src": "the-shoemakers-son-always-goes-barefoot.avif?v=1",
+            "alt": "An illustration of a shoemaker working on a shoe beside a boy."
+          }
+        ]
+      },
+      {
         "word": "Tell me about it!",
         "partOfSpeech": "idiom",
         "enDefinition": "used to show strong agreement or empathy with what someone else has said",

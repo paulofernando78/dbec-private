@@ -52,6 +52,7 @@ export default [
 
     route("/vocabulary", "routes/vocabulary.tsx"),
     route("/vocabulary/:topic", "routes/vocabulary-topic.tsx"),
+    route("/vocabulary/reference/:topic", "routes/vocabulary-reference.tsx"),
     route(
       "/expressions/business/:lesson",
       "routes/business-expression.tsx",

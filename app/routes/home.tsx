@@ -109,7 +109,7 @@ export default function Home() {
                 <CheckText text="Prévia do curso" />
               </li>
               <li>
-                <CheckText text="Conteúdos gratuitas" />
+                <CheckText text="Conteúdo gratuitas" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">
@@ -117,7 +117,7 @@ export default function Home() {
                 onClick={() => navigate("/dashboard")}
                 className="uppercase"
               >
-                start for free
+                entrar
               </Button>
             </div>
           </article>

@@ -145,6 +145,8 @@ export type ReviewData = StepExtension & {
   label: string;
   instruction: string;
   task?: string;
+  taskSteps?: readonly string[];
+  taskExample?: string;
   successCriteria?: readonly string[];
   sections: readonly {
     lessonTitle: string;

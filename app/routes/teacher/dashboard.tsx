@@ -313,8 +313,8 @@ export default function TeacherDashboard() {
           <TableOfContents
             items={[
               { href: "calendar", label: "Calendar" },
-              { href: "notes", label: "Notes / AI Tutor" },
               { href: "progress", label: "Progress" },
+              { href: "notes", label: "Notes / AI Tutor" },
             ]}
           />
         )}
@@ -347,6 +347,11 @@ export default function TeacherDashboard() {
               />
             </div>
 
+            {progress && (
+              <div id="progress" className="scroll-mt-4">
+                <DashboardProgress progress={progress} />
+              </div>
+            )}
             <div id="notes" className="relative scroll-mt-4">
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />
@@ -371,11 +376,6 @@ export default function TeacherDashboard() {
                 </div>
               </Card>
             </div>
-            {progress && (
-              <div id="progress" className="scroll-mt-4">
-                <DashboardProgress progress={progress} />
-              </div>
-            )}
           </div>
         ) : null}
       </div>

@@ -41,12 +41,7 @@ export const links: NavItem[] = [
     children: [
       {
         href: "/course",
-        label: "course (A1-C1)",
-        icon: BookOpenCheck,
-      },
-      {
-        href: "/authentic-content",
-        label: "TED-Ed",
+        label: "course (A1–C1)",
         icon: BookOpenCheck,
       },
       {
@@ -54,8 +49,18 @@ export const links: NavItem[] = [
         children: [
           {
             href: "/travel",
-            label: "travel",
+            label: "travel english (A2+)",
             icon: Plane,
+          },
+        ],
+      },
+      {
+        subgroup: "authentic content",
+        children: [
+          {
+            href: "/authentic-content",
+            label: "TED-Ed (B2+)",
+            icon: BookOpenCheck,
           },
         ],
       },
@@ -79,6 +84,12 @@ export const links: NavItem[] = [
         subgroup: "vocabulary",
         children: [
           { href: "/vocabulary", label: "which one?", icon: BookMarked },
+          { href: "/vocabulary/reference/false-cognates", label: "false cognates", icon: BookMarked },
+          {
+            href: "/vocabulary/reference/homophones-homographs-homonyms",
+            label: "homophones, homographs & homonyms",
+            icon: BookMarked,
+          },
         ],
       },
       {
@@ -154,6 +165,7 @@ export const links: NavItem[] = [
             label: "prepositions",
             icon: BookMarked,
           },
+          { href: "/grammar/to-vs-for", label: "to vs. for", icon: BookMarked },
           {
             href: "/grammar/collocations",
             label: "collocations",

@@ -15,6 +15,7 @@ export const XP_BY_LEVEL = {
   b1: 35,
   b2: 40,
   c1: 45,
+  travel: 30,
 } as const;
 
 const courseLevels = Object.values(levels);

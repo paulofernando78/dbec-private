@@ -3328,7 +3328,15 @@
       },
       {
         "word": "sweet tooth",
-        "enDefinition": "An enjoyment of sugary foods."
+        "partOfSpeech": "noun",
+        "enDefinition": "A strong liking for sweet foods.",
+        "ptDefinition": "Gosto acentuado por doces. A expressão have a sweet tooth significa gostar muito de doces.",
+        "examples": [
+          {
+            "enExample": "I have a sweet tooth, so I always save room for dessert.",
+            "ptExample": "Adoro doces, por isso sempre deixo espaço para a sobremesa."
+          }
+        ]
       },
       {
         "word": "sweeten the deal",

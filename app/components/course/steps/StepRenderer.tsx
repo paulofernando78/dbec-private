@@ -11,9 +11,11 @@ import { UseItStep } from "./UseItStep";
 export function StepRenderer({
   data,
   onChecklistCompletionChange,
+  onReviewComplete,
 }: {
   data: LessonStepData;
   onChecklistCompletionChange: (complete: boolean) => void;
+  onReviewComplete: () => void;
 }) {
   const Component = data.component;
   let step;
@@ -41,7 +43,7 @@ export function StepRenderer({
       step = <CanYouStep data={data} onCompletionChange={onChecklistCompletionChange} />;
       break;
     case "review":
-      step = <ReviewStep data={data} />;
+      step = <ReviewStep data={data} onComplete={onReviewComplete} />;
       break;
   }
 

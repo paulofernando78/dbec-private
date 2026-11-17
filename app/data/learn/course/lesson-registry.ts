@@ -443,6 +443,19 @@ for (const level of Object.values(levels)) {
             "responds to the partner's meaning rather than only reading a model",
             "completes the task with a clear and understandable result",
           ],
+          ...(level.slug === "a1" && unit.number === 3 ? {
+            task: "Interview a partner and introduce them to the class.",
+            taskSteps: [
+              "Ask where your partner is from and what language they speak.",
+              "Ask how old they are and what they are like. Write down their answers.",
+              "Switch roles. Then introduce your partner in two or three sentences.",
+            ],
+            taskExample: "Where are you from? Are you from Brazil? How old are you? What are you like?",
+            successCriteria: [
+              "Say where your partner is from and what language they speak.",
+              "Include their age and one word that describes them.",
+            ],
+          } : {}),
           sections,
         },
       ],
