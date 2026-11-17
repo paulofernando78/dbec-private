@@ -31,19 +31,23 @@ export type NavSubgroup = {
 export type NavItem = NavLinkItem | NavGroup;
 
 export const links: NavItem[] = [
+  // DASHBOARD
   {
     href: "/dashboard",
     label: "dashboard",
     icon: CircleUserRound,
   },
+  // LEARN
   {
     group: "learn",
     children: [
+      // COURSES
       {
         href: "/course",
         label: "course (A1–C1)",
         icon: BookOpenCheck,
       },
+      // SPECIFIC PURPOSES
       {
         subgroup: "specific purposes",
         children: [
@@ -54,6 +58,7 @@ export const links: NavItem[] = [
           },
         ],
       },
+      // AUTHENTIC CONTENT
       {
         subgroup: "authentic content",
         children: [
@@ -66,26 +71,55 @@ export const links: NavItem[] = [
       },
     ],
   },
+  // SKILLS
   {
     group: "Skills",
     children: [
+      // LISTENING
       {
         subgroup: "listening",
         children: [
-          { href: "/audiobooks", label: "audiobooks", icon: Headphones },
+          // AUDIOBOOKS
+          {
+            href: "/audiobooks",
+            label: "audiobooks",
+            icon: Headphones
+          },
+          // KPPC Radio (CA - PA)
+          {
+            href: "https://www.kpcc.org/listen",
+            label: "kpcc radio (pasadena – ca)",
+            icon: Headphones
+          },
+          // BBC WORLD SERVICE
+          {
+            href: "https://www.bbc.co.uk/sounds/play/live:bbc_world_service",
+            label: "bbc world service",
+            icon: Headphones
+          },
         ],
       },
     ],
   },
+  // LANGUAGE
   {
     group: "language",
     children: [
+      // VOCABULARY
       {
         subgroup: "vocabulary",
         children: [
           { href: "/vocabulary", label: "qual usar?", icon: BookMarked },
-          { href: "/vocabulary/como-se-diz", label: "como se diz?", icon: BookMarked },
-          { href: "/vocabulary/reference/false-cognates", label: "false cognates", icon: BookMarked },
+          {
+            href: "/vocabulary/como-se-diz",
+            label: "como se diz?",
+            icon: BookMarked,
+          },
+          {
+            href: "/vocabulary/reference/false-cognates",
+            label: "false cognates",
+            icon: BookMarked,
+          },
           {
             href: "/vocabulary/reference/homophones-homographs-homonyms",
             label: "homophones, homographs & homonyms",
@@ -93,6 +127,7 @@ export const links: NavItem[] = [
           },
         ],
       },
+      // WORD FORMATION
       {
         subgroup: "word formation",
         children: [
@@ -108,6 +143,7 @@ export const links: NavItem[] = [
           },
         ],
       },
+      // VERN TENSES
       {
         subgroup: "verb tenses",
         children: [
@@ -143,6 +179,7 @@ export const links: NavItem[] = [
           },
         ],
       },
+      // GRAMMAR STRUCTURES
       {
         subgroup: "grammar structures",
         children: [
@@ -184,6 +221,7 @@ export const links: NavItem[] = [
           },
         ],
       },
+      // PRONUCIATION
       {
         subgroup: "pronunciation",
         children: [
@@ -209,7 +247,7 @@ export const links: NavItem[] = [
           },
         ],
       },
-
+      // EXPRESSIONS
       {
         subgroup: "expressions",
         children: [
@@ -242,14 +280,23 @@ export const links: NavItem[] = [
       },
     ],
   },
+  // CONTET
   {
     group: "content",
     children: [
-      { href: "/songs", label: "songs", icon: Music2 },
+      // SONGS
+      { href: "/songs",
+        label: "songs",
+        icon: Music2
+      },
+      // CULTURE
       {
         subgroup: "culture",
-        children: [{ href: "/culture/history", label: "history", icon: Landmark }],
+        children: [
+          { href: "/culture/history", label: "history", icon: Landmark },
+        ],
       },
+      // GAMES
       {
         subgroup: "games",
         children: [

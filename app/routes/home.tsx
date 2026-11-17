@@ -111,9 +111,6 @@ export default function Home() {
               <li>
                 <CheckText text="Conteúdos gratuitos" />
               </li>
-              <li>
-                <CheckText text="Voz do navegador sem login" />
-              </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">
               <Button
@@ -144,7 +141,7 @@ export default function Home() {
                 <CheckText text="Planos para necessidades específicas" />
               </li>
               <li>
-                <CheckText text="Vozes mais naturais com login" />
+                <CheckText text="Audio com vozes mais naturais" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">

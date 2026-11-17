@@ -36,6 +36,28 @@ export function NavBar({
     className = "",
     locked = false,
   ) => {
+    const isExternal = /^https?:\/\//i.test(href);
+    if (isExternal && !locked) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={closeNavBar}
+          className={`block rounded-xl no-underline focus-visible:outline-2 focus-visible:outline-offset-2 ${className}`}
+        >
+          <ActionTextRow as="div" gap="gap-2" action={
+            <span aria-hidden="true" className="relative grid size-10 shrink-0 place-items-center rounded-xl border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-0.75 text-(--button-text) shadow-sm">
+              <span className="absolute inset-1 grid place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
+                <Icon className="size-4.5 stroke-(--button-icon)" />
+              </span>
+            </span>
+          }>
+            <span className="font-bold uppercase">{label}</span>
+          </ActionTextRow>
+        </a>
+      );
+    }
     const [hrefPath, hrefHash = ""] = href.split("#");
     const isCurrentDestination =
       location.pathname === hrefPath &&

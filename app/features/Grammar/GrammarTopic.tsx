@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/Card";
+import { QuickRule } from "@/components/content/QuickRule";
 import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Audio } from "@/components/ui/Audio";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
@@ -120,12 +121,11 @@ export function GrammarTopic({
           </ul>
         </aside>
       ))}
-      <p
+      <QuickRule
         id={sectionAnchors ? "grammar-quick-rule" : undefined}
-        className="scroll-mt-4 rounded-xl bg-blue-50 p-3 text-blue-950 dark:bg-blue-950 dark:text-blue-100"
       >
-        <strong>Regra rápida:</strong> {topic.quickRule}
-      </p>
+        {topic.quickRule}
+      </QuickRule>
     </div>
   );
 }

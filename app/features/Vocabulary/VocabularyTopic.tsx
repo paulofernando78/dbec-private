@@ -1,5 +1,6 @@
 import { InlineRichContent } from "@/components/content/InlineRichContent/InlineRichContent";
 import { VocabularyExample } from "@/components/content/VocabularyExample";
+import { QuickRule } from "@/components/content/QuickRule";
 import { Card } from "@/components/ui/Card";
 import { Radio } from "@/features/exercises/Radio";
 import {
@@ -35,9 +36,7 @@ export function VocabularyTopic({ topic }: { topic: VocabularyTopicData }) {
           </section>
         ))}
       </div>
-      <p className="rounded-xl bg-blue-50 p-3 dark:bg-blue-950">
-        <strong>Regra rápida:</strong> {topic.quickRule}
-      </p>
+      <QuickRule>{topic.quickRule}</QuickRule>
       {topic.practice?.length ? (
         <section className="space-y-3">
           <h3 className="text-xl font-black">Exercícios</h3>
