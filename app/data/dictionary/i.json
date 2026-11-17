@@ -642,17 +642,17 @@
         ]
       },
       {
-        "word": "if the cap fits, wear it",
-        "partOfSpeech": "idiom (British English)",
+        "word": "if the shoe fits, wear it",
+        "partOfSpeech": "idiom",
         "enDefinition": "Used to suggest that someone should accept a criticism if it applies to them.",
         "ptDefinition": "Se a carapuça serviu, vista-a. Usa-se quando uma crítica parece se aplicar à pessoa que a ouviu.",
         "examples": [
           {
-            "enExample": "‘Are you saying I always turn up late?’ ‘Well, if the cap fits, wear it.’",
+            "enExample": "‘Are you saying I always turn up late?’ ‘Well, if the showe fits, wear it.’",
             "ptExample": "«Você está dizendo que eu sempre chego atrasado?» «Bom, se a carapuça serviu, vista-a.»"
           }
         ],
-        "seeAlso": ["if the shoe fits, wear it"]
+        "seeAlso": ["if the cap fits, wear it (British English)"]
       },
       {
         "word": "if the shoe fits, wear it",
