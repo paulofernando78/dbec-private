@@ -83,7 +83,8 @@ export const links: NavItem[] = [
       {
         subgroup: "vocabulary",
         children: [
-          { href: "/vocabulary", label: "which one?", icon: BookMarked },
+          { href: "/vocabulary", label: "qual usar?", icon: BookMarked },
+          { href: "/vocabulary/como-se-diz", label: "como se diz?", icon: BookMarked },
           { href: "/vocabulary/reference/false-cognates", label: "false cognates", icon: BookMarked },
           {
             href: "/vocabulary/reference/homophones-homographs-homonyms",

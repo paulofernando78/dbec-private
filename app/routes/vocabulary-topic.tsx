@@ -15,7 +15,7 @@ export default function VocabularyTopicPage() {
 
   return (
     <article className="space-y-4">
-      <PageHeader eyebrow="Vocabulary • Which One?" title={topic.title} />
+      <PageHeader eyebrow="Vocabulary • Qual usar?" title={topic.title} />
       <Card>
         <p lang="pt-BR" className="mb-4 text-black dark:text-white">
           <InlineRichContent value={topic.description} />

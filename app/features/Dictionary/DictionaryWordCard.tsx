@@ -8,7 +8,9 @@ import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 import { Image } from "@/components/ui/Image";
 import { dictionary } from "@/helpers/content";
+import { useSession } from "@/hooks/useSession";
 import type { DictionaryDefinition } from "@/utils/loadDictionaryWord";
+import { ttsAudioUrl } from "@/utils/tts-audio-url";
 
 type DictionaryWordCardProps = {
   entry: DictionaryDefinition;
@@ -18,13 +20,11 @@ type DictionaryWordCardProps = {
 const list = (value?: string[] | string) =>
   Array.isArray(value) ? value.filter(Boolean).join(", ") : value;
 
-const dictionaryTts = (text: string) =>
-  `/api/dictionary-tts.wav?v=2&text=${encodeURIComponent(text)}`;
-
 export function DictionaryWordCard({
   entry,
   compact = false,
 }: DictionaryWordCardProps) {
+  const session = useSession();
   const [expandedImage, setExpandedImage] = useState<{
     src: string;
     alt: string;
@@ -54,7 +54,7 @@ export function DictionaryWordCard({
         <div className="flex items-center gap-2">
           <Audio
             asButton
-            src={dictionaryTts(entry.word)}
+            src={session ? ttsAudioUrl(entry.word) : ""}
             fallbackText={entry.word}
             speechLang="en-US"
             ariaLabel={`Play ${entry.word}`}
@@ -94,7 +94,7 @@ export function DictionaryWordCard({
               action={example.enExample ? (
                 <Audio
                   asButton
-                  src={dictionaryTts(example.enExample)}
+                  src={session ? ttsAudioUrl(example.enExample) : ""}
                   fallbackText={example.enExample}
                   speechLang="en-US"
                   ariaLabel={`Play example: ${example.enExample}`}

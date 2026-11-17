@@ -98,8 +98,8 @@ export default function Home() {
           aria-label="Course options"
         >
           <article className="flex h-full flex-col rounded-2xl border border-amber-200 bg-amber-50/70 p-6 text-left shadow-[0_8px_24px_rgba(15,23,42,0.08)]">
-            <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">
-              start for free
+            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700">
+              Acesso gratuito
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600">
               Conheça a plataforma
@@ -109,7 +109,10 @@ export default function Home() {
                 <CheckText text="Prévia do curso" />
               </li>
               <li>
-                <CheckText text="Conteúdo gratuitas" />
+                <CheckText text="Conteúdos gratuitos" />
+              </li>
+              <li>
+                <CheckText text="Voz do navegador sem login" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">
@@ -123,8 +126,8 @@ export default function Home() {
           </article>
 
           <article className="flex h-full flex-col rounded-2xl border border-violet-200 bg-violet-50/70 p-6 text-left shadow-[0_8px_24px_rgba(120,53,15,0.08)]">
-            <h2 className="text-xl font-extrabold uppercase tracking-tight text-slate-700">
-              Extras
+            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700">
+              Acompanhamento personalizado
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600">
               Quer acompanhamento mais próximo? Conheça as opções extras e
@@ -139,6 +142,9 @@ export default function Home() {
               </li>
               <li>
                 <CheckText text="Planos para necessidades específicas" />
+              </li>
+              <li>
+                <CheckText text="Vozes mais naturais com login" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
 import type { Unit } from "@/data/learn/course";
+import { extraListeningByUnit } from "@/data/learn/course/extra-listening";
 import { isLessonCompleted, resetLesson } from "@/utils/course-progress";
 import type { LevelTheme } from "@/utils/level-theme";
 
@@ -22,6 +23,9 @@ export function UnitCard({
   basePath = `/course/${levelSlug}`,
 }: UnitCardProps) {
   const navigate = useNavigate();
+  const extraListening = extraListeningByUnit[`${levelSlug}/${unit.number}`];
+  const isFreeLesson = levelSlug === "a1" && unit.number <= 3;
+  const isLocked = isAuthenticated === false && !isFreeLesson;
   const [completedLessons, setCompletedLessons] = useState<Set<number>>(
     new Set(),
   );
@@ -56,12 +60,10 @@ export function UnitCard({
       resetConfirmationMessage={`Are you sure you want to reset all lesson progress for Unit ${unit.number}?`}
       onReset={resetUnit}
       levelTheme={levelTheme}
-      items={unit.lessons.map((lesson, index) => {
+      items={[...unit.lessons.map((lesson, index) => {
         const lessonNumber = index + 1;
         const isCheckpoint = index >= 2;
         const isCompleted = completedLessons.has(lessonNumber);
-        const isFreeLesson = levelSlug === "a1" && unit.number <= 3;
-        const isLocked = isAuthenticated === false && !isFreeLesson;
 
         return {
           id: `${unit.number}-${index}`,
@@ -89,7 +91,20 @@ export function UnitCard({
             );
           },
         };
-      })}
+      }), ...(extraListening ? [{
+        id: `${unit.number}-extra-listening`,
+        eyebrow: "Extra Listening",
+        title: extraListening.title,
+        description: "Listen to two short conversations and check your understanding.",
+        isCompleted: false,
+        isLocked,
+        listening: true,
+        ariaLabel: `${isLocked ? "Locked" : "Open"} extra listening for Unit ${unit.number}`,
+        onClick: () => {
+          if (isLocked) window.dispatchEvent(new Event("dbec:open-login"));
+          else navigate(`${basePath}/unit/${unit.number}/extra-listening`);
+        },
+      }] : [])]}
     />
   );
 }

@@ -94,11 +94,23 @@ const pageItems: readonly SearchItem[] = [
     keywords: "audio books listening",
   },
   {
-    title: "Which one?",
+    title: "Qual usar?",
     category: "Language · Vocabulary",
     description: "Commonly confused English words.",
     href: "/vocabulary",
-    keywords: "vocabulary",
+    keywords: "vocabulary which one palavras parecidas",
+  },
+  {
+    title: "Como se diz?",
+    category: "Language · Vocabulary",
+    description: "Como dizer em inglês expressões e palavras do português.",
+    href: "/vocabulary/como-se-diz",
+  },
+  {
+    title: "Como se diz “acabar” em inglês?",
+    category: "Language · Vocabulary · Como se diz?",
+    description: "Entenda quando usar finish, end ou run out of.",
+    href: "/vocabulary/como-se-diz/acabar",
   },
   {
     title: "Grammar",

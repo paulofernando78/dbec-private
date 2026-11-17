@@ -19,7 +19,7 @@ export default function Vocabulary() {
 
   return (
     <div>
-      <PageHeader eyebrow="Language • Vocabulary" title="Which One?" />
+      <PageHeader eyebrow="Language • Vocabulary" title="Qual usar?" />
 
       <Card>
         <ul role="list" className="grid gap-2">

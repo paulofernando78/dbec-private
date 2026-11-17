@@ -26,6 +26,7 @@ export default [
     route("/teacher/dashboard/:studentId?", "routes/teacher/dashboard.tsx"),
     route("/course", "routes/course.tsx"),
     route("/course/:level", "routes/course/builder.tsx"),
+    route("/course/:level/unit/:unit/extra-listening", "routes/course/extra-listening.tsx"),
     route(
       "/course/:level/unit/:unit/lesson/:lesson/:step?",
       "routes/course/lesson.tsx",
@@ -51,6 +52,7 @@ export default [
     ),
 
     route("/vocabulary", "routes/vocabulary.tsx"),
+    route("/vocabulary/como-se-diz/:entry?", "routes/como-se-diz.tsx"),
     route("/vocabulary/:topic", "routes/vocabulary-topic.tsx"),
     route("/vocabulary/reference/:topic", "routes/vocabulary-reference.tsx"),
     route(

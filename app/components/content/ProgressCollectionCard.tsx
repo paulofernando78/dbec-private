@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookOpen, Check, LockKeyhole, RotateCcw } from "lucide-react";
+import { BookOpen, Check, Headphones, LockKeyhole, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { ActionTextRow } from "@/components/content/ActionTextRow";
@@ -19,6 +19,7 @@ export type ProgressCollectionItem = {
   metaItalic?: boolean;
   isCompleted: boolean;
   isLocked?: boolean;
+  listening?: boolean;
   ariaLabel: string;
   onClick?: () => void;
 };
@@ -137,6 +138,8 @@ export function ProgressCollectionCard({
                   icon={
                     item.isLocked ? (
                       <LockKeyhole aria-hidden="true" />
+                    ) : item.listening ? (
+                      <Headphones aria-hidden="true" />
                     ) : item.isCompleted ? (
                       <Check aria-hidden="true" />
                     ) : (
