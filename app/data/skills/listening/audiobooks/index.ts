@@ -20,18 +20,20 @@ const withSectionAudioPaths = <
   },
 >(
   audiobook: T,
+  level: "starter" | "elementary" = "starter"
 ) => ({
   ...audiobook,
   sections: audiobook.sections.map((section) => ({
     ...section,
-    localAudio: `local-media/audio/skills/listening/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
-    r2Audio: `/media/audio/skills/listening/audiobooks/starter/${audiobook.slug}/${section.id}.mp3`,
+    localAudio: `local-media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3`,
+    r2Audio: `/media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3`,
   })),
 });
 
 export const audiobooks = {
   [treasureIsland.slug]: treasureIsland,
-  [aliceInWonderland.slug]: aliceInWonderland,
+  [aliceInWonderland.slug]: withSectionAudioPaths(aliceInWonderland, "elementary"),
+
   [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
   [flyingHome.slug]: withSectionAudioPaths(flyingHome),
   [marcelAndTheWhiteStar.slug]: withSectionAudioPaths(marcelAndTheWhiteStar),
