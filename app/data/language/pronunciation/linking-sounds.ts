@@ -387,6 +387,12 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // I work in an office.
           {
+            english: ["Al", underline("l it t"), "akes ", "i", underline("s an u"), "pload."],
+            translation: "",
+            audio: media("multiple-linking/.mp3"),
+          },
+          // I work in an office.
+          {
             english: ["I wor", underline("k in an o"), "ffic(e)."],
             translation: "Trabalho em um escritório.",
             audio: media("multiple-linking/i-work-in-an-office.mp3"),
