@@ -172,7 +172,7 @@ export function StudentNotesPanel({
             />
           </div>
 
-          <DateTimeCard className="mb-3 bg-(--background)" compact />
+          {/* <DateTimeCard className="mb-3 bg-(--background)" compact /> */}
 
           {error && <p className="mb-3 text-sm font-semibold text-red-600">{error}</p>}
 
