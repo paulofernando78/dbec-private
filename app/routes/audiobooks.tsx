@@ -83,7 +83,8 @@ export default function Audiobooks() {
               const isCompleted =
                 isAvailable && completedAudiobooks.has(item.slug);
               const isPreview = item.slug === audiobookPreview.slug;
-              const isLocked = isAuthenticated === false && !isPreview;
+              const isLocalDraft = import.meta.env.DEV && item.slug === "treasure-island";
+              const isLocked = isAuthenticated === false && !isPreview && !isLocalDraft;
 
               return {
                 id: item.slug,
@@ -94,7 +95,7 @@ export default function Audiobooks() {
                 isLocked,
                 ariaLabel: `${isLocked ? "Locked" : isCompleted ? "Completed" : "Open"} ${item.title}`,
                 onClick:
-                  (isAuthenticated || isPreview) && isAvailable && item.slug in audiobooks
+                  (isAuthenticated || isPreview || isLocalDraft) && isAvailable && item.slug in audiobooks
                     ? () => navigate(`/audiobooks/${item.slug}`)
                     : undefined,
               };

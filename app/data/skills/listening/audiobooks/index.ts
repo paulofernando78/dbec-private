@@ -10,6 +10,7 @@ import { thePearlGirl } from "./starter/the-pearl-girl";
 import { whoWantsToBeAStar } from "./starter/who-wants-to-be-a-star";
 import type { AudiobookSection } from "./starter/a-new-zealand-adventure";
 import { aliceInWonderland } from "./elementary/alice-in-wonderland";
+import { treasureIsland } from "./elementary/treasure-island";
 
 const withSectionAudioPaths = <
   T extends {
@@ -29,6 +30,7 @@ const withSectionAudioPaths = <
 });
 
 export const audiobooks = {
+  [treasureIsland.slug]: treasureIsland,
   [aliceInWonderland.slug]: aliceInWonderland,
   [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
   [flyingHome.slug]: withSectionAudioPaths(flyingHome),
@@ -52,6 +54,7 @@ export const audiobookPreview = {
 } as const;
 
 export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
+  treasureIsland.slug,
   aliceInWonderland.slug,
   "a-new-zealand-adventure",
   "flying-home",

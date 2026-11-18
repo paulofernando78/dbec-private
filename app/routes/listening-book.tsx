@@ -63,6 +63,7 @@ export default function ListeningBookPage() {
   const [completedSections, setCompletedSections] = useState<Record<string, boolean>>({});
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
+  const isLocalDraft = import.meta.env.DEV && book === "treasure-island";
 
   useEffect(() => {
     if (audiobook) setCompletedSections(getAudiobookSectionProgress(audiobook.slug));
@@ -75,7 +76,7 @@ export default function ListeningBookPage() {
     return <Navigate to="/audiobooks" replace />;
   }
 
-  if (!isPreview && isAuthenticated !== true) {
+  if (!isPreview && !isLocalDraft && isAuthenticated !== true) {
     return isAuthenticated === null ? null : <Navigate to="/audiobooks" replace />;
   }
 

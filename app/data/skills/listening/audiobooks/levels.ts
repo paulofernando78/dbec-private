@@ -44,6 +44,12 @@ export const listeningLevels: readonly ListeningLevel[] = [
         description: "Lewis Carroll’s story retold by Mary Tomalin for Penguin Readers Level 2.",
         duration: "10 chapters",
       },
+      {
+        slug: "treasure-island",
+        title: "Treasure Island",
+        description: "Robert Louis Stevenson · Penguin Readers",
+        duration: "3 chapters",
+      },
     ],
   },
   { slug: "lower-intermediate-a2-b1", title: "Lower-intermediate", exam: "PET", wordCount: "1200 headwords", titles: [] },
