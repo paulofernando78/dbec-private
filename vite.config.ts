@@ -1,10 +1,11 @@
 import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
-import { createReadStream } from "node:fs";
+import { createReadStream, existsSync, watch } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import { dictionaryOpenRouter } from "./functions/_dictionary-openrouter.mjs";
+import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
 import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 
 import { students as developmentStudents } from "./app/data/students";
@@ -1076,6 +1077,47 @@ const localAuth = (): Plugin => ({
   },
 });
 
+const audiobookDurationWatcher = (): Plugin => ({
+  name: "audiobook-duration-watcher",
+  apply: "serve",
+  configureServer() {
+    const audiobooksDir = resolve(
+      process.cwd(),
+      "local-media/audio/skills/listening/audiobooks",
+    );
+    if (!existsSync(audiobooksDir)) return;
+
+    let debounceTimer: NodeJS.Timeout | null = null;
+    const triggerSync = (filename?: string) => {
+      if (filename && !filename.toLowerCase().endsWith(".mp3")) return;
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        try {
+          syncAudiobookDurations({ silent: true });
+        } catch (error) {
+          console.error("Failed to auto-sync audiobook durations:", error);
+        }
+      }, 400);
+    };
+
+    // Run once on server startup
+    triggerSync();
+
+    try {
+      const watcher = watch(
+        audiobooksDir,
+        { recursive: true },
+        (_event, filename) => {
+          triggerSync(typeof filename === "string" ? filename : undefined);
+        },
+      );
+      process.on("exit", () => watcher.close());
+    } catch (error) {
+      console.warn("Could not start audiobook watcher:", error);
+    }
+  },
+});
+
 export default defineConfig({
   server: {
     watch: {
@@ -1083,6 +1125,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    audiobookDurationWatcher(),
     localMedia(),
     localAuth(),
     tailwindcss(),
