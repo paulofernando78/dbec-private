@@ -73,6 +73,15 @@ export function syncAudiobookDurations({ silent = false } = {}) {
     return [];
   }
 
+  // Safety check: On Cloudflare Pages or CI, local-media is not cloned (.gitignore).
+  // If local-media directory does not exist, do not overwrite levels.ts with fallback "--"!
+  if (!existsSync(audiobooksMediaDir)) {
+    if (!silent) {
+      console.log(`[audiobooks:sync] local-media directory not found (${audiobooksMediaDir}). Preserving existing levels.ts durations.`);
+    }
+    return [];
+  }
+
   let source = readFileSync(levelsPath, "utf8");
   const slugMatches = [...source.matchAll(/slug:\s*["\x27]([a-z0-9-]+)["\x27]/g)];
   const knownSlugs = [...new Set(slugMatches.map((m) => m[1]))].filter(
