@@ -48,7 +48,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "treasure-island",
         title: "Treasure Island",
         description: "Robert Louis Stevenson · Penguin Readers",
-        duration: "--",
+        duration: "50:19",
       },
     ],
   },

@@ -31,7 +31,7 @@ const withSectionAudioPaths = <
 });
 
 export const audiobooks = {
-  [treasureIsland.slug]: treasureIsland,
+  [treasureIsland.slug]: withSectionAudioPaths(treasureIsland, "elementary"),
   [aliceInWonderland.slug]: withSectionAudioPaths(aliceInWonderland, "elementary"),
 
   [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
