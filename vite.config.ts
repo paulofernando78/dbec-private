@@ -4,7 +4,7 @@ import { createReadStream, existsSync, watch } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
-import { dictionaryOpenRouter } from "./functions/_dictionary-openrouter.mjs";
+import { synthesizeDictionaryTts } from "./functions/_dictionary-tts.mjs";
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
 import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 
@@ -25,25 +25,6 @@ let localSession: { username: string; role: string; studentId?: string; expiresA
 const aiTutorSystemInstruction = `You are DBEC's friendly English tutor.
 Help teachers and English learners explain words and expressions, check grammar and spelling, explain corrections politely, give short examples, and practice age-appropriate conversation.
 Reply in Portuguese unless the user asks for English. Keep answers concise and encouraging. Do not complete tests or graded assignments; teach the reasoning instead.`;
-
-const pcmToWav = (pcm: Buffer, sampleRate = 24_000) => {
-  const wav = Buffer.alloc(44 + pcm.length);
-  wav.write("RIFF", 0);
-  wav.writeUInt32LE(36 + pcm.length, 4);
-  wav.write("WAVE", 8);
-  wav.write("fmt ", 12);
-  wav.writeUInt32LE(16, 16);
-  wav.writeUInt16LE(1, 20);
-  wav.writeUInt16LE(1, 22);
-  wav.writeUInt32LE(sampleRate, 24);
-  wav.writeUInt32LE(sampleRate * 2, 28);
-  wav.writeUInt16LE(2, 32);
-  wav.writeUInt16LE(16, 34);
-  wav.write("data", 36);
-  wav.writeUInt32LE(pcm.length, 40);
-  pcm.copy(wav, 44);
-  return wav;
-};
 
 type LocalStudent = {
   studentId: string;
@@ -299,11 +280,7 @@ const localAuth = (): Plugin => ({
           if (cached) {
             response.setHeader("Content-Type", cached.contentType ?? "audio/wav");
             response.setHeader("Content-Length", String(cached.audio.length));
-            response.setHeader(cached.contentType ? "X-OpenRouter-Model" : "X-Gemini-Model", cached.model);
-            response.setHeader(
-              "X-Gemini-Fallback",
-              cached.usedFallback ? "true" : "false",
-            );
+            response.setHeader("X-TTS-Provider", cached.model);
             response.end(cached.audio);
             return;
           }
@@ -312,21 +289,25 @@ const localAuth = (): Plugin => ({
             resolve(process.cwd(), ".dev.vars"),
             "utf8",
           );
-          const apiKey = variables.match(/^GEMINI_API_KEY=(.*)$/m)?.[1]?.trim();
-          const configuredModels = variables
-            .match(/^GEMINI_TTS_MODELS=(.*)$/m)?.[1]
-            ?.trim();
-          const models = (
-            configuredModels ||
-            "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-3.1-flash-tts-preview,gemini-2.5-flash-preview-tts"
-          )
-            .split(",")
-            .map((model) => model.trim())
-            .filter(Boolean);
-          const openRouterKey = variables.match(/^OPENROUTER_API_KEY=(.*)$/m)?.[1]?.trim();
-          const openRouterModels = variables.match(/^OPENROUTER_TTS_MODELS=(.*)$/m)?.[1]?.trim();
-          const openRouterVoice = variables.match(/^OPENROUTER_TTS_VOICE=(.*)$/m)?.[1]?.trim();
-          if (!apiKey && !openRouterKey) {
+          const readVariable = (name: string) =>
+            variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
+
+          const env = {
+            ELEVENLABS_API_KEY: readVariable("ELEVENLABS_API_KEY"),
+            ELEVENLABS_VOICE_ID: readVariable("ELEVENLABS_VOICE_ID"),
+            ELEVENLABS_MODEL_ID: readVariable("ELEVENLABS_MODEL_ID"),
+            OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
+            OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
+            OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
+            GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
+            GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
+          };
+
+          if (
+            !env.ELEVENLABS_API_KEY &&
+            !env.OPENROUTER_API_KEY &&
+            !env.GEMINI_API_KEY
+          ) {
             response.statusCode = 503;
             response.end(
               JSON.stringify({ error: "Dictionary TTS is not configured." }),
@@ -334,116 +315,38 @@ const localAuth = (): Plugin => ({
             return;
           }
 
-          let skippedModels = 0;
-          for (const model of apiKey ? models : []) {
-            let geminiResponse;
-            try {
-              geminiResponse = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    "x-goog-api-key": apiKey ?? "",
-                  },
-                  body: JSON.stringify({
-                    contents: [{
-                      parts: [{
-                        text,
-                      }],
-                    }],
-                    generationConfig: {
-                      responseModalities: ["AUDIO"],
-                      speechConfig: {
-                        voiceConfig: {
-                          prebuiltVoiceConfig: { voiceName: "Kore" },
-                        },
-                      },
-                    },
-                  }),
-                },
-              );
-            } catch (error) {
-              console.error("Local Dictionary TTS request failed", model, error);
-              skippedModels += 1;
-              continue;
-            }
-
-            const result = (await geminiResponse.json().catch(() => null)) as {
-              error?: { message?: string };
-              candidates?: Array<{
-                finishReason?: string;
-                content?: {
-                  parts?: Array<{
-                    inlineData?: { data?: string; mimeType?: string };
-                  }>;
-                };
-              }>;
-            } | null;
-            if (!geminiResponse.ok) {
-              console.error(
-                "Local Dictionary TTS error",
-                model,
-                geminiResponse.status,
-                result?.error?.message,
-              );
-              if (geminiResponse.status === 429 || geminiResponse.status >= 500) {
-                skippedModels += 1;
-                continue;
-              }
-              break;
-            }
-
-            const candidate = result?.candidates?.[0];
-            if (candidate?.finishReason === "SAFETY") break;
-            const inlineData = candidate?.content?.parts?.find(
-              (part) => part.inlineData?.data,
-            )?.inlineData;
-            if (!inlineData?.data) {
-              skippedModels += 1;
-              continue;
-            }
-
-            const decoded = Buffer.from(inlineData.data, "base64");
-            const audio = inlineData.mimeType?.toLowerCase().startsWith("audio/wav")
-              ? decoded
-              : pcmToWav(decoded);
-            localDictionaryTtsCache.set(text, {
-              audio,
-              model,
-              usedFallback: skippedModels > 0,
-            });
-            response.statusCode = 200;
-            response.setHeader("Content-Type", "audio/wav");
-            response.setHeader("Content-Length", String(audio.length));
-            response.setHeader("X-Gemini-Model", model);
-            response.setHeader(
-              "X-Gemini-Fallback",
-              skippedModels > 0 ? "true" : "false",
+          const result = await synthesizeDictionaryTts(text, env);
+          if (!result) {
+            response.statusCode = 503;
+            response.end(
+              JSON.stringify({
+                error: "Dictionary TTS is temporarily unavailable.",
+              }),
             );
-            response.end(audio);
             return;
           }
 
-          const fallback = await dictionaryOpenRouter(text, openRouterKey, openRouterModels, openRouterVoice);
-          if (fallback) {
-            const audio = Buffer.from(fallback.audio);
-            const contentType = "audio/mpeg";
-            localDictionaryTtsCache.set(text, {
-              audio, model: fallback.model, usedFallback: true, contentType,
-            });
-            response.setHeader("Content-Type", contentType);
-            response.setHeader("Content-Length", String(audio.length));
-            response.setHeader("X-OpenRouter-Model", fallback.model);
-            response.end(audio);
-            return;
-          }
-          response.statusCode = 503;
-          response.end(
-            JSON.stringify({
-              error: "Dictionary TTS is temporarily unavailable.",
-            }),
-          );
+          const bytes =
+            result.audio instanceof Uint8Array
+              ? result.audio
+              : new Uint8Array(result.audio);
+          const audio = Buffer.from(bytes);
+          const provider = result.model
+            ? `${result.provider}:${result.model}`
+            : result.provider;
+
+          localDictionaryTtsCache.set(text, {
+            audio,
+            model: provider,
+            usedFallback: provider !== "elevenlabs",
+            contentType: result.contentType,
+          });
+
+          response.statusCode = 200;
+          response.setHeader("Content-Type", result.contentType);
+          response.setHeader("Content-Length", String(audio.length));
+          response.setHeader("X-TTS-Provider", provider);
+          response.end(audio);
         } catch (error) {
           console.error("Local Dictionary TTS error", error);
           response.statusCode = 500;

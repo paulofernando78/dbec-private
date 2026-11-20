@@ -36,9 +36,12 @@ const createHeaders = (object) => {
   return headers;
 };
 
+const privatePrefixes = ["game-saves/", "tts-cache/"];
+
 const getKeyFromContext = (context) => {
   const key = getObjectKey(context.params.path);
-  return key && !key.includes("..") && !key.startsWith("game-saves/") ? key : null;
+  const isPrivate = privatePrefixes.some((prefix) => key.startsWith(prefix));
+  return key && !key.includes("..") && !isPrivate ? key : null;
 };
 
 export async function onRequestHead(context) {

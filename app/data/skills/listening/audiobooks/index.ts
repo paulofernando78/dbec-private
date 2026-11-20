@@ -1,5 +1,6 @@
 import { newZealandAdventure } from "./starter/a-new-zealand-adventure";
 import { flyingHome } from "./starter/flying-home";
+import { marcelAndTheMonaLisa } from "./starter/marcel-and-the-mona-lisa";
 import { marcelAndTheWhiteStar } from "./starter/marcel-and-the-white-star";
 import { newspaperChase } from "./starter/newspaper-chase";
 import { simonAndTheSpy } from "./starter/simon-and-the-spy";
@@ -36,6 +37,7 @@ export const audiobooks = {
 
   [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
   [flyingHome.slug]: withSectionAudioPaths(flyingHome),
+  [marcelAndTheMonaLisa.slug]: withSectionAudioPaths(marcelAndTheMonaLisa),
   [marcelAndTheWhiteStar.slug]: withSectionAudioPaths(marcelAndTheWhiteStar),
   [newspaperChase.slug]: withSectionAudioPaths(newspaperChase),
   [simonAndTheSpy.slug]: withSectionAudioPaths(simonAndTheSpy),
@@ -60,6 +62,7 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   aliceInWonderland.slug,
   "a-new-zealand-adventure",
   "flying-home",
+  "marcel-and-the-mona-lisa",
   "marcel-and-the-white-star",
   "newspaper-chase",
   "simon-and-the-spy",

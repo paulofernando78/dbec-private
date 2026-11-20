@@ -21,6 +21,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
     titles: [
       { slug: "a-new-zealand-adventure", title: "A New Zealand Adventure", description: "Two friends search New Zealand for the owner of a lost phone.", duration: "05:29" },
       { slug: "flying-home", title: "Flying Home", description: "A bird escapes from New York and flies home to Brazil.", duration: "--" },
+      { slug: "marcel-and-the-mona-lisa", title: "Marcel and the Mona Lisa", description: "A French mouse detective follows the thief who stole the Mona Lisa.", duration: "--" },
       { slug: "marcel-and-the-white-star", title: "Marcel and the White Star", description: "A detective mouse follows two thieves across Paris.", duration: "--" },
       { slug: "newspaper-chase", title: "Newspaper Chase", description: "A thief hides a painting inside the wrong newspaper.", duration: "--" },
       { slug: "simon-and-the-spy", title: "Simon and the Spy", description: "Simon accidentally takes a spy's secret letter.", duration: "--" },
@@ -48,7 +49,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "treasure-island",
         title: "Treasure Island",
         description: "Robert Louis Stevenson · Penguin Readers",
-        duration: "50:19",
+        duration: "52:03",
       },
     ],
   },

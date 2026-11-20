@@ -1,48 +1,43 @@
 import { readCookie, verifySession } from "../_auth.js";
-import { dictionaryOpenRouter } from "../_dictionary-openrouter.mjs";
+import { synthesizeDictionaryTts } from "../_dictionary-tts.mjs";
 
-const defaultModels = [
-  "gemini-3.8-flash-tts",
-  "gemini-3.8-flash-lite-tts",
-  "gemini-3.1-flash-tts-preview",
-  "gemini-2.5-flash-preview-tts",
-];
 const maxTextLength = 500;
-const cacheControl = "public, max-age=2592000, immutable";
+const cacheControl = "public, max-age=31536000, immutable";
+const cachePrefix = "tts-cache/v2";
 
-const decodeBase64 = (value) => {
-  const binary = atob(value);
-  const bytes = new Uint8Array(binary.length);
-  for (let index = 0; index < binary.length; index += 1) {
-    bytes[index] = binary.charCodeAt(index);
-  }
-  return bytes;
+const encoder = new TextEncoder();
+
+const hashText = async (value) => {
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
+  return Array.from(new Uint8Array(digest), (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
 };
 
-const writeAscii = (view, offset, value) => {
-  for (let index = 0; index < value.length; index += 1) {
-    view.setUint8(offset + index, value.charCodeAt(index));
+const normalizeText = (value) => value.replace(/\s+/g, " ").trim();
+
+const cooldownRequest = (provider) =>
+  new Request(`https://tts-cooldown.internal/${provider}`);
+
+const isCoolingDown = async (provider) => {
+  try {
+    return Boolean(await caches.default.match(cooldownRequest(provider)));
+  } catch {
+    return false;
   }
 };
 
-const pcmToWav = (pcm, sampleRate = 24_000) => {
-  const wav = new Uint8Array(44 + pcm.length);
-  const view = new DataView(wav.buffer);
-  writeAscii(view, 0, "RIFF");
-  view.setUint32(4, 36 + pcm.length, true);
-  writeAscii(view, 8, "WAVE");
-  writeAscii(view, 12, "fmt ");
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true);
-  view.setUint16(22, 1, true);
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, sampleRate * 2, true);
-  view.setUint16(32, 2, true);
-  view.setUint16(34, 16, true);
-  writeAscii(view, 36, "data");
-  view.setUint32(40, pcm.length, true);
-  wav.set(pcm, 44);
-  return wav;
+const markCooldown = async (provider, seconds) => {
+  try {
+    await caches.default.put(
+      cooldownRequest(provider),
+      new Response("cooldown", {
+        headers: { "Cache-Control": `max-age=${Math.max(seconds, 60)}` },
+      }),
+    );
+  } catch {
+    // The cooldown is best-effort: never fail a request because of it.
+  }
 };
 
 export async function onRequestGet(context) {
@@ -53,132 +48,93 @@ export async function onRequestGet(context) {
   if (!session) {
     return Response.json({ error: "Unauthorized." }, { status: 401 });
   }
-  if (!context.env.GEMINI_API_KEY && !context.env.OPENROUTER_API_KEY) {
-    return Response.json({ error: "Dictionary TTS is not configured." }, { status: 503 });
+
+  const rawText = new URL(context.request.url).searchParams.get("text")?.trim();
+  if (!rawText || rawText.length > maxTextLength) {
+    return Response.json({ error: "Invalid text." }, { status: 400 });
   }
 
-  const text = new URL(context.request.url).searchParams.get("text")?.trim();
-  if (!text || text.length > maxTextLength) {
+  const text = normalizeText(rawText);
+  if (!text) {
     return Response.json({ error: "Invalid text." }, { status: 400 });
+  }
+
+  const hasProvider = Boolean(
+    context.env.ELEVENLABS_API_KEY ||
+      context.env.OPENROUTER_API_KEY ||
+      context.env.GEMINI_API_KEY,
+  );
+  if (!hasProvider) {
+    return Response.json(
+      { error: "Dictionary TTS is not configured." },
+      { status: 503 },
+    );
   }
 
   const cache = caches.default;
   const cached = await cache.match(context.request);
   if (cached) return cached;
 
-  const models = (context.env.GEMINI_TTS_MODELS || defaultModels.join(","))
-    .split(",")
-    .map((model) => model.trim())
-    .filter(Boolean);
-  const skippedModels = [];
-  const body = JSON.stringify({
-    contents: [
-      {
-        parts: [
-          {
-            text,
-          },
-        ],
-      },
-    ],
-    generationConfig: {
-      responseModalities: ["AUDIO"],
-      speechConfig: {
-        voiceConfig: {
-          prebuiltVoiceConfig: { voiceName: "Kore" },
+  const hash = await hashText(text);
+  const key = `${cachePrefix}/${hash.slice(0, 2)}/${hash}`;
+
+  if (context.env.MEDIA) {
+    const object = await context.env.MEDIA.get(key);
+    if (object) {
+      const response = new Response(object.body, {
+        headers: {
+          "Content-Type": object.httpMetadata?.contentType || "audio/mpeg",
+          "Cache-Control": cacheControl,
+          "Content-Length": String(object.size),
+          "X-TTS-Provider": object.customMetadata?.provider || "cache",
+          "X-TTS-Cache": "hit",
         },
-      },
+      });
+      context.waitUntil(cache.put(context.request, response.clone()));
+      return response;
+    }
+  }
+
+  const result = await synthesizeDictionaryTts(text, context.env, {
+    isCoolingDown,
+    markCooldown,
+  });
+
+  if (!result) {
+    return Response.json(
+      { error: "Dictionary TTS is temporarily unavailable." },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
+
+  if (context.env.MEDIA) {
+    context.waitUntil(
+      context.env.MEDIA.put(key, result.audio, {
+        httpMetadata: {
+          contentType: result.contentType,
+          cacheControl,
+        },
+        customMetadata: {
+          provider: result.model
+            ? `${result.provider}:${result.model}`
+            : result.provider,
+        },
+      }),
+    );
+  }
+
+  const response = new Response(result.audio, {
+    headers: {
+      "Content-Type": result.contentType,
+      "Cache-Control": cacheControl,
+      "Content-Length": String(result.audio.byteLength),
+      "X-TTS-Provider": result.model
+        ? `${result.provider}:${result.model}`
+        : result.provider,
+      "X-TTS-Cache": "miss",
     },
   });
 
-  for (const model of context.env.GEMINI_API_KEY ? models : []) {
-    let geminiResponse;
-    try {
-      geminiResponse = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-goog-api-key": context.env.GEMINI_API_KEY,
-          },
-          body,
-        },
-      );
-    } catch (error) {
-      console.error("Gemini Dictionary TTS request failed", model, error);
-      skippedModels.push(model);
-      continue;
-    }
-
-    const result = await geminiResponse.json().catch(() => null);
-    if (!geminiResponse.ok) {
-      console.error(
-        "Gemini Dictionary TTS error",
-        model,
-        geminiResponse.status,
-        result?.error?.message,
-      );
-      if (geminiResponse.status === 429 || geminiResponse.status >= 500) {
-        skippedModels.push(model);
-        continue;
-      }
-      break;
-    }
-
-    const candidate = result?.candidates?.[0];
-    if (candidate?.finishReason === "SAFETY") {
-      return Response.json(
-        { error: "Dictionary TTS could not generate this audio." },
-        { status: 422 },
-      );
-    }
-    const inlineData = candidate?.content?.parts?.find(
-      (part) => part.inlineData?.data,
-    )?.inlineData;
-    if (!inlineData?.data) {
-      skippedModels.push(model);
-      continue;
-    }
-
-    const decoded = decodeBase64(inlineData.data);
-    const audio = inlineData.mimeType?.toLowerCase().startsWith("audio/wav")
-      ? decoded
-      : pcmToWav(decoded);
-    const response = new Response(audio, {
-      headers: {
-        "Content-Type": "audio/wav",
-        "Cache-Control": cacheControl,
-        "Content-Length": String(audio.byteLength),
-        "X-Gemini-Model": model,
-        "X-Gemini-Fallback": skippedModels.length > 0 ? "true" : "false",
-      },
-    });
-    context.waitUntil(cache.put(context.request, response.clone()));
-    return response;
-  }
-
-  const fallback = await dictionaryOpenRouter(
-    text,
-    context.env.OPENROUTER_API_KEY,
-    context.env.OPENROUTER_TTS_MODELS,
-    context.env.OPENROUTER_TTS_VOICE,
-  );
-  if (fallback) {
-    const response = new Response(fallback.audio, {
-      headers: {
-        "Content-Type": "audio/mpeg",
-        "Cache-Control": cacheControl,
-        "Content-Length": String(fallback.audio.byteLength),
-        "X-OpenRouter-Model": fallback.model,
-      },
-    });
-    context.waitUntil(cache.put(context.request, response.clone()));
-    return response;
-  }
-
-  return Response.json(
-    { error: "Dictionary TTS is temporarily unavailable." },
-    { status: 503, headers: { "Cache-Control": "no-store" } },
-  );
+  context.waitUntil(cache.put(context.request, response.clone()));
+  return response;
 }
