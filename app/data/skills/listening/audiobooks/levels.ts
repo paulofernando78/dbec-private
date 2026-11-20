@@ -29,6 +29,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
       { slug: "the-last-photo", title: "The Last Photo", description: "An accidental photo helps the police find a wanted man.", duration: "--" },
       { slug: "the-leopard-and-the-lighthouse", title: "The Leopard and the Lighthouse", description: "The people of Sindi try to rescue a leopard from a lighthouse.", duration: "--" },
       { slug: "the-pearl-girl", title: "The Pearl Girl", description: "A young visitor witnesses the theft of a famous painting.", duration: "--" },
+      { slug: "the-troy-stone", title: "The Troy Stone", description: "A boy on holiday in Turkey touches a yellow stone and travels back to ancient Troy.", duration: "--" },
       { slug: "who-wants-to-be-a-star", title: "Who Wants to Be a Star?", description: "A young star runs away to find a quieter, happier life.", duration: "--" },
     ],
   },

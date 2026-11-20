@@ -8,6 +8,7 @@ import { theFireboy } from "./starter/the-fireboy";
 import { theLastPhoto } from "./starter/the-last-photo";
 import { theLeopardAndTheLighthouse } from "./starter/the-leopard-and-the-lighthouse";
 import { thePearlGirl } from "./starter/the-pearl-girl";
+import { theTroyStone } from "./starter/the-troy-stone";
 import { whoWantsToBeAStar } from "./starter/who-wants-to-be-a-star";
 import type { AudiobookSection } from "./starter/a-new-zealand-adventure";
 import { aliceInWonderland } from "./elementary/alice-in-wonderland";
@@ -47,6 +48,7 @@ export const audiobooks = {
     theLeopardAndTheLighthouse,
   ),
   [thePearlGirl.slug]: withSectionAudioPaths(thePearlGirl),
+  [theTroyStone.slug]: withSectionAudioPaths(theTroyStone),
   [whoWantsToBeAStar.slug]: withSectionAudioPaths(whoWantsToBeAStar),
 };
 
@@ -70,5 +72,6 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   "the-last-photo",
   "the-leopard-and-the-lighthouse",
   "the-pearl-girl",
+  "the-troy-stone",
   "who-wants-to-be-a-star",
 ]);
