@@ -4,7 +4,12 @@ export function dictionaryElevenLabs(
   voiceId: string | undefined,
   modelId: string | undefined,
 ): Promise<
-  | { audio: ArrayBuffer | Uint8Array; contentType: string; provider: string }
+  | {
+      audio: ArrayBuffer | Uint8Array;
+      contentType: string;
+      provider: string;
+      model: string;
+    }
   | { cooldown: true; seconds: number }
   | null
 >;

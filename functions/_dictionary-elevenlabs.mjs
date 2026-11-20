@@ -1,4 +1,6 @@
 const defaultModel = "eleven_multilingual_v2";
+// Voice used when ELEVENLABS_VOICE_ID is not set in the environment.
+const defaultVoiceId = "JBFqnCBsd6RMkjVDRZzb";
 
 /**
  * @param {string} input
@@ -7,12 +9,14 @@ const defaultModel = "eleven_multilingual_v2";
  * @param {string | undefined} modelId
  */
 export async function dictionaryElevenLabs(input, apiKey, voiceId, modelId) {
-  if (!apiKey || !voiceId) return null;
+  if (!apiKey) return null;
+
+  const voice = voiceId || defaultVoiceId;
 
   let response;
   try {
     response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}?output_format=mp3_44100_128`,
+      `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voice)}?output_format=mp3_44100_128`,
       {
         method: "POST",
         headers: {
@@ -64,5 +68,10 @@ export async function dictionaryElevenLabs(input, apiKey, voiceId, modelId) {
   const audio = await response.arrayBuffer();
   if (!audio.byteLength) return null;
 
-  return { audio, contentType: "audio/mpeg", provider: "elevenlabs" };
+  return {
+    audio,
+    contentType: "audio/mpeg",
+    provider: "elevenlabs",
+    model: modelId || defaultModel,
+  };
 }

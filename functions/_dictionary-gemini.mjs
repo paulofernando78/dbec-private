@@ -5,6 +5,8 @@ const defaultModels = [
   "gemini-2.5-flash-preview-tts",
 ];
 
+const defaultVoice = "Kore";
+
 const decodeBase64 = (value) => {
   const binary = atob(value);
   const bytes = new Uint8Array(binary.length);
@@ -53,33 +55,33 @@ export async function dictionaryGemini(input, apiKey, models) {
     .map((value) => value.trim())
     .filter(Boolean);
 
-  const body = JSON.stringify({
-    contents: [{ parts: [{ text: input }] }],
-    generationConfig: {
-      responseModalities: ["AUDIO"],
-      speechConfig: {
-        voiceConfig: {
-          prebuiltVoiceConfig: { voiceName: "Kore" },
-        },
-      },
-    },
-  });
-
   let sawRetryableError = false;
 
   for (const model of modelList) {
     let response;
     try {
       response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+        "https://generativelanguage.googleapis.com/v1beta/interactions",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "x-goog-api-key": apiKey,
           },
-          body,
-          signal: AbortSignal.timeout(15_000),
+          body: JSON.stringify({
+            model,
+            input: [
+              {
+                type: "user_input",
+                content: [{ type: "text", text: input }],
+              },
+            ],
+            response_format: { type: "audio" },
+            generation_config: {
+              speech_config: [{ voice: defaultVoice }],
+            },
+          }),
+          signal: AbortSignal.timeout(20_000),
         },
       );
     } catch (error) {
@@ -100,26 +102,33 @@ export async function dictionaryGemini(input, apiKey, models) {
         sawRetryableError = true;
         continue;
       }
+      if (response.status === 404) continue;
       return null;
     }
 
-    const candidate = result?.candidates?.[0];
-    if (candidate?.finishReason === "SAFETY") {
-      return null;
-    }
-
-    const inlineData = candidate?.content?.parts?.find(
-      (part) => part.inlineData?.data,
-    )?.inlineData;
-    if (!inlineData?.data) {
+    if (result?.status === "failed") {
       sawRetryableError = true;
       continue;
     }
 
-    const decoded = decodeBase64(inlineData.data);
-    const audio = inlineData.mimeType?.toLowerCase().startsWith("audio/wav")
-      ? decoded
-      : pcmToWav(decoded);
+    const audioPart = (result?.steps || [])
+      .filter((step) => step?.type === "model_output")
+      .flatMap((step) => step?.content || [])
+      .filter((part) => part?.type === "audio" && part?.data)
+      .at(-1);
+
+    if (!audioPart?.data) {
+      sawRetryableError = true;
+      continue;
+    }
+
+    const decoded = decodeBase64(audioPart.data);
+    const mimeType = (
+      audioPart.mime_type ||
+      audioPart.mimeType ||
+      "audio/wav"
+    ).toLowerCase();
+    const audio = mimeType.startsWith("audio/wav") ? decoded : pcmToWav(decoded);
 
     return { audio, contentType: "audio/wav", provider: "gemini", model };
   }

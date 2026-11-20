@@ -37,7 +37,8 @@ export async function synthesizeDictionaryTts(text, env, hooks = {}) {
       result = await dictionaryOpenRouter(
         text,
         env.OPENROUTER_API_KEY,
-        env.OPENROUTER_TTS_MODELS,
+        // OPENROUTER_MODELS is the legacy name still set in some environments.
+        env.OPENROUTER_TTS_MODELS || env.OPENROUTER_MODELS,
         env.OPENROUTER_TTS_VOICE,
       );
     } else {
