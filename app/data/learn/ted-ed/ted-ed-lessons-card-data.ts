@@ -202,6 +202,26 @@ export const authenticContentTedEdLessonsCardData = {
     publishedAt: "2026-05-19",
     duration: "06:11",
   },
+  // Nov 12, 2026
+  howDidPepperEndUpOnEveryDinnerTable: {
+    href: "/authentic-content/ted-ed/how-did-pepper-end-up-on-every-dinner-table",
+    label: "The Spice That Conquered the World",
+    description:
+      "How black pepper travelled from Indian vines to every dinner table—and why chilies took its name.",
+    objective:
+      "Trace how black pepper moved from a medicinal plant to a global commodity and explain why it became an everyday tabletop staple.",
+    usefulLanguage:
+      "It was prized as…; This led to…; Production spread once…; By the mid-17th century…",
+    vocabulary:
+      "Peppercorn, spice, piperine, capsaicin, ransom, garnish, shaker, trade",
+    skills:
+      "Prediction, authentic listening for chronology and detail, cause-and-effect explanation, and critical discussion",
+    finalTask:
+      "Explain how a luxury spice became an everyday condiment, using evidence from the video.",
+    date: "Nov 12, 2026",
+    publishedAt: "2026-11-12",
+    duration: "04:56",
+  },
 };
 
 export const authenticContentTedEdLessons = Object.values(

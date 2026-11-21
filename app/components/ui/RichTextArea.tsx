@@ -632,7 +632,7 @@ export function RichTextArea({
               saveSelection();
             }}
             onClick={() => setOpenPalette((current) => current === "text" ? null : "text")}
-            className="size-8! p-[3px]! text-gray-500! [&_svg]:stroke-gray-500!"
+            className="size-8! p-0.75! text-gray-500! [&_svg]:stroke-gray-500!"
           />
           {openPalette === "text" && colorPalette("text", textColors)}
         </div>

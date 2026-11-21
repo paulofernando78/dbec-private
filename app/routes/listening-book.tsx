@@ -1,5 +1,8 @@
+import { type AudiobookSection } from "@/data/skills/listening/audiobooks/index";
+
 import { useSession } from "@/hooks/useSession";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+
 import { Navigate, useParams } from "react-router";
 
 import { MediaWrapper } from "@/components/content/MediaWrapper";
@@ -14,15 +17,70 @@ import {
   type AudiobookSlug,
 } from "@/data/skills/listening/audiobooks/index";
 import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
-import { type AudiobookSection } from "@/data/skills/listening/audiobooks/starter/a-new-zealand-adventure";
-import { getAudiobookSectionProgress, setAudiobookSectionCompleted } from "@/utils/audiobook-progress";
+import {
+  getAudiobookSectionProgress,
+  setAudiobookSectionCompleted,
+} from "@/utils/audiobook-progress";
 import { Checkbox } from "@/components/ui/Checkbox";
+
+import { type ContentToken } from "@/helpers/content";
+
+const TOKEN_TAG: Partial<
+  Record<NonNullable<ContentToken["type"]>, "em" | "strong" | "mark">
+> = {
+  italic: "em",
+  bold: "strong",
+  strong: "strong",
+  mark: "mark",
+  "bold-mark": "mark",
+  attentionMark: "mark",
+};
+
+const extractPlainText = (value: unknown): string => {
+  if (typeof value === "string" || typeof value === "number") {
+    return String(value);
+  }
+  if (Array.isArray(value)) {
+    return value.map(extractPlainText).join("");
+  }
+  if (value && typeof value === "object") {
+    return (value as ContentToken).part ?? "";
+  }
+  return "";
+};
+
+const renderContentPart = (
+  value: unknown,
+  key?: string | number,
+): ReactNode => {
+  if (typeof value === "string" || typeof value === "number") {
+    return <span key={key}>{value}</span>;
+  }
+  if (Array.isArray(value)) {
+    return value.map((item, idx) =>
+      renderContentPart(item, `${key ?? "p"}-${idx}`),
+    );
+  }
+  if (value && typeof value === "object") {
+    const token = value as ContentToken;
+    const Tag = token.type ? TOKEN_TAG[token.type] : undefined;
+    return Tag ? (
+      <Tag key={key}>{token.part}</Tag>
+    ) : (
+      <span key={key}>{token.part}</span>
+    );
+  }
+  return null;
+};
 
 function SectionImage({
   section,
   className = "",
 }: {
-  section: Pick<AudiobookSection, "r2" | "imageAlt" | "localMedia" | "mediaPosition">;
+  section: Pick<
+    AudiobookSection,
+    "r2" | "imageAlt" | "localMedia" | "mediaPosition"
+  >;
   className?: string;
 }) {
   const [missing, setMissing] = useState(false);
@@ -60,13 +118,16 @@ export default function ListeningBookPage() {
     ? audiobooks[book as keyof typeof audiobooks]
     : undefined;
   const session = useSession();
-  const [completedSections, setCompletedSections] = useState<Record<string, boolean>>({});
+  const [completedSections, setCompletedSections] = useState<
+    Record<string, boolean>
+  >({});
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
   const isLocalDraft = import.meta.env.DEV && book === "treasure-island";
 
   useEffect(() => {
-    if (audiobook) setCompletedSections(getAudiobookSectionProgress(audiobook.slug));
+    if (audiobook)
+      setCompletedSections(getAudiobookSectionProgress(audiobook.slug));
   }, [audiobook]);
 
   if (
@@ -77,17 +138,30 @@ export default function ListeningBookPage() {
   }
 
   if (!isPreview && !isLocalDraft && isAuthenticated !== true) {
-    return isAuthenticated === null ? null : <Navigate to="/audiobooks" replace />;
+    return isAuthenticated === null ? null : (
+      <Navigate to="/audiobooks" replace />
+    );
   }
 
   const audiobookSections: readonly AudiobookSection[] = audiobook.sections;
   const [summary, ...sections] = audiobookSections;
 
   const renderSection = (section: AudiobookSection) => {
-    const blocks = typeof section.text === "string" ? [{ text: section.text }] : section.text;
-    const narration = blocks.flatMap(({ text }) => text === undefined ? [] : [text]).join("\n");
+    const blocks =
+      typeof section.text === "string"
+        ? [{ text: section.text }]
+        : section.text;
+
+    const narration = blocks
+      .flatMap((block) => {
+        if (!("text" in block) || block.text === undefined) return [];
+        return [extractPlainText(block.text)];
+      })
+      .join("\n");
+
     const openingImage = blocks[0]?.r2 ? blocks[0] : undefined;
-    const audioLocked = !isAuthenticated &&
+    const audioLocked =
+      !isAuthenticated &&
       !(isPreview && section.id === audiobookPreview.audioSectionId);
     const questions =
       section.questions ??
@@ -103,7 +177,10 @@ export default function ListeningBookPage() {
       >
         {openingImage && (
           <div className="rounded-lg bg-(--background)">
-            <SectionImage section={{ ...openingImage, mediaPosition: "top" }} className={chapterImageSize} />
+            <SectionImage
+              section={{ ...openingImage, mediaPosition: "top" }}
+              className={chapterImageSize}
+            />
           </div>
         )}
         <header className={`mb-3 px-1 py-2 ${openingImage ? "mt-3" : ""}`}>
@@ -134,23 +211,48 @@ export default function ListeningBookPage() {
                 />
               )}
               <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
-                {(openingImage ? blocks.slice(1) : blocks).map((block, index) =>
-                  block.r2 ? (
-                    <SectionImage key={index} section={{ ...block, mediaPosition: "top" }} className={chapterImageSize} />
-                  ) : (
-                    <p key={index} className="whitespace-pre-line">{block.text}</p>
-                  )
+                {(openingImage ? blocks.slice(1) : blocks).map(
+                  (block, index) => {
+                    if (block.r2) {
+                      return (
+                        <SectionImage
+                          key={index}
+                          section={{ ...block, mediaPosition: "top" }}
+                          className={chapterImageSize}
+                        />
+                      );
+                    }
+
+                    const blockText = "text" in block ? block.text : undefined;
+
+                    return (
+                      <p key={index} className="whitespace-pre-line">
+                        {renderContentPart(blockText, index)}
+                      </p>
+                    );
+                  },
                 )}
               </div>
-              <AudiobookQuestions key={`${audiobook.slug}/${section.id}`} questions={questions} answers={answers} />
+              <AudiobookQuestions
+                key={`${audiobook.slug}/${section.id}`}
+                questions={questions}
+                answers={answers}
+              />
               {section.id !== summary?.id && (
                 <div className="mt-3 flex items-center gap-2 rounded-lg bg-(--background) p-3 text-left text-sm font-bold">
                   <Checkbox
                     ariaLabel={`${section.title} done`}
                     checked={Boolean(completedSections[section.id])}
                     onCheckedChange={(completed) => {
-                      setCompletedSections((current) => ({ ...current, [section.id]: completed }));
-                      setAudiobookSectionCompleted(audiobook.slug, section.id, completed);
+                      setCompletedSections((current) => ({
+                        ...current,
+                        [section.id]: completed,
+                      }));
+                      setAudiobookSectionCompleted(
+                        audiobook.slug,
+                        section.id,
+                        completed,
+                      );
                     }}
                   />
                   <span>{section.title} done</span>
@@ -165,7 +267,10 @@ export default function ListeningBookPage() {
 
   return (
     <div>
-      <PageHeader eyebrow="Skills • Listening • Audiobooks" title={audiobook.title} />
+      <PageHeader
+        eyebrow="Skills • Listening • Audiobooks"
+        title={audiobook.title}
+      />
 
       <TableOfContents
         items={audiobookSections.map((section) => ({
@@ -177,8 +282,6 @@ export default function ListeningBookPage() {
       {summary && <div className="mb-4">{renderSection(summary)}</div>}
 
       <div className="grid gap-4">{sections.map(renderSection)}</div>
-
-
     </div>
   );
 }

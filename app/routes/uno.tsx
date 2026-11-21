@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { AccountSummary } from "@/components/layout/AccountSummary";
+import { notifySessionActivity } from "@/hooks/useSession";
 
 type Color = "red" | "yellow" | "green" | "blue" | "wild";
 type UnoCard = { id: string; color: Color; value: string };
@@ -166,6 +167,14 @@ export default function Uno() {
     return () => socketRef.current?.close();
   }, []);
 
+  useEffect(() => {
+    if (connection !== "connected") return;
+    const heartbeat = window.setInterval(() => {
+      if (document.visibilityState === "visible") notifySessionActivity();
+    }, 180_000);
+    return () => window.clearInterval(heartbeat);
+  }, [connection]);
+
   const myId = session?.role === "teacher" ? `teacher:${session.username}` : `student:${session?.studentId}`;
   const isHost = room?.hostId === myId;
   const hostName = room?.players.find((player) => player.id === room.hostId)?.name ?? "The room creator";
@@ -191,6 +200,7 @@ export default function Uno() {
     socketRef.current = socket;
     socket.addEventListener("open", () => setConnection("connected"));
     socket.addEventListener("message", (event) => {
+      notifySessionActivity();
       const message = JSON.parse(event.data);
       if (message.type === "room:state") setRoom(message);
       if (message.type === "error") setError(message.error);

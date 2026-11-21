@@ -15,6 +15,15 @@ const SessionContext = createContext<Session | null | undefined>(undefined);
 
 const SessionExpiryContext = createContext<() => boolean>(() => false);
 
+const SESSION_ACTIVITY_EVENT = "dbec:session-activity";
+
+// Lets pages that own their own interactive surface (games in iframes, WebSocket
+// rooms, canvases) renew the session without producing DOM events on this document.
+export const notifySessionActivity = () => {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(SESSION_ACTIVITY_EVENT));
+};
+
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>();
 
@@ -106,6 +115,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     window.addEventListener("pageshow", refresh);
     window.addEventListener("focus", refresh);
     window.addEventListener("online", refresh);
+    window.addEventListener(SESSION_ACTIVITY_EVENT, renewOnActivity);
     document.addEventListener("visibilitychange", onVisibilityChange);
     const activityEvents = ["pointerdown", "keydown", "scroll", "play"] as const;
     for (const event of activityEvents) {
@@ -129,6 +139,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("pageshow", refresh);
       window.removeEventListener("focus", refresh);
       window.removeEventListener("online", refresh);
+      window.removeEventListener(SESSION_ACTIVITY_EVENT, renewOnActivity);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);

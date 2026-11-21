@@ -1404,5 +1404,48 @@
         "enDefinition": "To move about quickly."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "ransom",
+        "phonetics": "/ˈræn.səm/",
+        "partOfSpeech": "noun",
+        "enDefinition": "Money or goods demanded in exchange for freeing a captured person or place.",
+        "ptDefinition": "Resgate; dinheiro ou bens exigidos em troca da libertação de uma pessoa ou lugar capturado.",
+        "examples": [
+          {
+            "enExample": "The Visigoths demanded over 3,000 pounds of pepper as part of Rome's ransom.",
+            "ptExample": "Os visigodos exigiram mais de 3 mil libras de pimenta como parte do resgate de Roma."
+          },
+          {
+            "enExample": "The family paid a ransom for the safe return of the child.",
+            "ptExample": "A família pagou um resgate pelo retorno seguro da criança."
+          }
+        ],
+        "synonyms": [
+          "payment",
+          "redemption"
+        ],
+        "antonyms": [],
+        "seeAlso": [
+          "capture",
+          "demand",
+          "tribute"
+        ],
+        "imgs": [
+          {
+            "src": "ransom.avif",
+            "alt": "A painting of a child being handed over as part of a ransom."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Image: \"The Ransom\" by John Everett Millais (1860-62), public domain.",
+            "ptNote": "Imagem: \"The Ransom\", de John Everett Millais (1860-62), domínio público."
+          }
+        ]
+      }
+    ]
   }
 ]

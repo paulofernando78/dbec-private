@@ -2286,5 +2286,45 @@
         "enDefinition": "Stop it; stop the annoying behavior."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "capsaicin",
+        "phonetics": "/kæpˈseɪ.ɪ.sɪn/",
+        "partOfSpeech": "noun",
+        "enDefinition": "The compound in chili peppers that makes them hot, by stimulating the same heat and pain receptors as black pepper, but far more strongly.",
+        "ptDefinition": "Capsaicina; o composto das pimentas malaguetas que as torna ardidas, estimulando os mesmos receptores de calor e dor da pimenta-do-reino, mas com muito mais intensidade.",
+        "examples": [
+          {
+            "enExample": "Chilies owe their heat to capsaicin.",
+            "ptExample": "As malaguetas devem o seu ardor à capsaicina."
+          },
+          {
+            "enExample": "Capsaicin is much more potent than piperine.",
+            "ptExample": "A capsaicina é muito mais potente que a piperina."
+          }
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "seeAlso": [
+          "chili",
+          "piperine",
+          "spice"
+        ],
+        "imgs": [
+          {
+            "src": "capsaicin.avif",
+            "alt": "Two-dimensional chemical structure of capsaicin."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Structure image from PubChem (public domain).",
+            "ptNote": "Imagem da estrutura: PubChem (domínio público)."
+          }
+        ]
+      }
+    ]
   }
 ]

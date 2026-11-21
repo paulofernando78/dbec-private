@@ -1,8 +1,33 @@
+import { useEffect, useRef } from "react";
+
+import { notifySessionActivity } from "@/hooks/useSession";
+
 type JsDosPlayerProps = {
   bundleUrl: string;
   gameId: string;
   title: string;
 };
+
+const sessionBridgeScript = `
+      (function () {
+        var lastSent = 0;
+        var notifyParent = function () {
+          var now = Date.now();
+          if (now - lastSent < 20000) return;
+          lastSent = now;
+          try {
+            window.parent.postMessage({ type: "dbec:activity" }, "*");
+          } catch (error) {}
+        };
+        ["pointerdown", "keydown", "wheel"].forEach(function (type) {
+          document.addEventListener(type, notifyParent, { capture: true, passive: true });
+        });
+        window.setInterval(function () {
+          if (document.visibilityState === "visible") notifyParent();
+        }, 180000);
+        notifyParent();
+      })();
+`;
 
 const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) => `<!doctype html>
 <html lang="en">
@@ -73,16 +98,29 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
         theme: "dark"
       });
     </script>
+    <script>${sessionBridgeScript}</script>
   </body>
 </html>`;
 
 export function JsDosPlayer({ bundleUrl, gameId, title }: JsDosPlayerProps) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      if (event.source !== iframeRef.current?.contentWindow) return;
+      if (event.data?.type === "dbec:activity") notifySessionActivity();
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   return (
     <div className="mx-auto w-full max-w-4xl" aria-label={`${title} CRT game player`}>
       <div className="relative rounded-2xl bg-linear-to-br from-[#eee9d7] via-[#d8d2bd] to-[#b8b19d] p-3 pb-0 shadow-[inset_0_0.125rem_0_rgba(255,255,255,0.8),inset_0_-0.25rem_0.5rem_rgba(83,75,58,0.2),0_0.75rem_1.5rem_rgba(15,23,42,0.2)] sm:p-5 sm:pb-0">
         <div className="rounded-xl bg-[#3f3d37] p-1.5 shadow-[inset_0_0_0.5rem_rgba(0,0,0,0.7),0_0.25rem_0.75rem_rgba(48,43,32,0.55)] sm:p-3">
           <div className="relative overflow-hidden rounded-xl bg-slate-950 shadow-[inset_0_0_1rem_rgba(0,0,0,0.95)]">
             <iframe
+              ref={iframeRef}
               allow="autoplay; fullscreen; gamepad"
               allowFullScreen
               className="block aspect-4/3 w-full bg-slate-950"

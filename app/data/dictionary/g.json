@@ -1682,5 +1682,48 @@
         "enDefinition": "Very enthusiastic; very excited (about something)."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "garnish",
+        "phonetics": "/ˈɡɑːr.nɪʃ/",
+        "partOfSpeech": "noun",
+        "enDefinition": "A small amount of food, such as herbs, placed on top of a dish to decorate it and add flavour.",
+        "ptDefinition": "Guarnição; pequena quantidade de alimento, como ervas, colocada sobre um prato para decorá-lo e dar sabor.",
+        "examples": [
+          {
+            "enExample": "In India, chilies became a standard ingredient and garnish.",
+            "ptExample": "Na Índia, as malaguetas se tornaram ingrediente e guarnição padrão."
+          },
+          {
+            "enExample": "The chef added a mint garnish before serving the dish.",
+            "ptExample": "O chef acrescentou uma guarnição de menta antes de servir o prato."
+          }
+        ],
+        "synonyms": [
+          "decoration",
+          "topping"
+        ],
+        "antonyms": [],
+        "seeAlso": [
+          "herb",
+          "plate",
+          "cuisine"
+        ],
+        "imgs": [
+          {
+            "src": "garnish.avif",
+            "alt": "A dish topped with a fresh mint garnish."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Image: \"Gyro sandwich\" by jeffreyw, Wikimedia Commons, CC BY 2.0.",
+            "ptNote": "Imagem: \"Gyro sandwich\", de jeffreyw, Wikimedia Commons, CC BY 2.0."
+          }
+        ]
+      }
+    ]
   }
 ]

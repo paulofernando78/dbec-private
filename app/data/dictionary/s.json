@@ -3343,5 +3343,90 @@
         "enDefinition": "To make an offer more attractive."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "spice",
+        "phonetics": "/spaɪs/",
+        "partOfSpeech": "noun",
+        "enDefinition": "A dried seed, fruit, root or bark used to flavour food, especially one with a strong smell or taste.",
+        "ptDefinition": "Especiaria; semente, fruto, raiz ou casca seca usada para temperar alimentos, especialmente com cheiro ou sabor forte.",
+        "examples": [
+          {
+            "enExample": "Pepper was prized both as a culinary spice and as a medicine.",
+            "ptExample": "A pimenta era valorizada tanto como especiaria culinária quanto como remédio."
+          },
+          {
+            "enExample": "The market sells spices from all over the world.",
+            "ptExample": "O mercado vende especiarias do mundo inteiro."
+          }
+        ],
+        "synonyms": [
+          "seasoning",
+          "flavouring"
+        ],
+        "antonyms": [],
+        "seeAlso": [
+          "pepper",
+          "cinnamon",
+          "peppercorn"
+        ],
+        "imgs": [
+          {
+            "src": "spice.avif",
+            "alt": "Small bowls of colourful spices arranged in a grid."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Image: \"Indian Spices\" by Joe mon bkk, Wikimedia Commons, CC BY-SA 4.0.",
+            "ptNote": "Imagem: \"Indian Spices\", de Joe mon bkk, Wikimedia Commons, CC BY-SA 4.0."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "shaker",
+        "phonetics": "/ˈʃeɪ.kɚ/",
+        "partOfSpeech": "noun",
+        "enDefinition": "A container with small holes in the top, used for sprinkling salt, pepper or sugar onto food.",
+        "ptDefinition": "Pimenteiro; recipiente com pequenos furos na tampa, usado para salpicar sal, pimenta ou açúcar sobre a comida.",
+        "examples": [
+          {
+            "enExample": "He reached for the pepper shaker.",
+            "ptExample": "Ele pegou o pimenteiro."
+          },
+          {
+            "enExample": "The salt and pepper shakers stood in the middle of the table.",
+            "ptExample": "Os saleiros e pimenteiros ficavam no meio da mesa."
+          }
+        ],
+        "synonyms": [
+          "dispenser"
+        ],
+        "antonyms": [],
+        "seeAlso": [
+          "salt",
+          "pepper",
+          "table"
+        ],
+        "imgs": [
+          {
+            "src": "shaker.avif",
+            "alt": "Glass salt and pepper shakers on a restaurant table."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Image: \"Salt, sugar and pepper shakers\" by Paul Goyette, Wikimedia Commons, CC BY-SA 2.0.",
+            "ptNote": "Imagem: \"Salt, sugar and pepper shakers\", de Paul Goyette, Wikimedia Commons, CC BY-SA 2.0."
+          }
+        ]
+      }
+    ]
   }
 ]

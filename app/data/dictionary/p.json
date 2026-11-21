@@ -1771,5 +1771,82 @@
         "enDefinition": "To eat greedily; to stuff oneself."
       }
     ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "peppercorn",
+        "phonetics": "/ˈpep.ɚ.kɔːrn/",
+        "partOfSpeech": "noun",
+        "enDefinition": "The whole dried fruit of a pepper plant, used as a spice; black peppercorns are picked before they ripen and left to dry in the sun.",
+        "ptDefinition": "Grão de pimenta; o fruto inteiro e seco da pimenteira, usado como especiaria. Os grãos pretos são colhidos antes de amadurecer e secos ao sol.",
+        "examples": [
+          {
+            "enExample": "Black peppercorns were once so valuable that they were used as money.",
+            "ptExample": "Os grãos de pimenta-do-reino já foram tão valiosos que serviam como dinheiro."
+          },
+          {
+            "enExample": "She crushed a few peppercorns over the pasta.",
+            "ptExample": "Ela esmagou alguns grãos de pimenta por cima do macarrão."
+          }
+        ],
+        "synonyms": [
+          "pepper",
+          "pepper grain"
+        ],
+        "antonyms": [],
+        "seeAlso": [
+          "pepper",
+          "spice",
+          "piperine"
+        ],
+        "imgs": [
+          {
+            "src": "peppercorn.avif",
+            "alt": "A brass bowl filled with dried black peppercorns."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "definitions": [
+      {
+        "word": "piperine",
+        "phonetics": "/ˈpɪp.ə.riːn/",
+        "partOfSpeech": "noun",
+        "enDefinition": "The chemical compound in black pepper that creates its pungent, spicy sensation by activating heat and pain receptors on the tongue.",
+        "ptDefinition": "Piperina; o composto químico da pimenta-do-reino que produz a sensação picante ao ativar receptores de calor e dor na língua.",
+        "examples": [
+          {
+            "enExample": "Piperine gives black pepper its sharp, warming kick.",
+            "ptExample": "A piperina dá à pimenta-do-reino o seu ardor forte e quente."
+          },
+          {
+            "enExample": "Chemists isolate piperine from peppercorns.",
+            "ptExample": "Os químicos isolam a piperina dos grãos de pimenta."
+          }
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "seeAlso": [
+          "pepper",
+          "capsaicin",
+          "compound"
+        ],
+        "imgs": [
+          {
+            "src": "piperine.avif",
+            "alt": "Two-dimensional chemical structure of piperine."
+          }
+        ],
+        "notes": [
+          {
+            "enNote": "Structure image from PubChem (public domain).",
+            "ptNote": "Imagem da estrutura: PubChem (domínio público)."
+          }
+        ]
+      }
+    ]
   }
 ]

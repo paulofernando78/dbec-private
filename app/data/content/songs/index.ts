@@ -1,4 +1,5 @@
 import { aliceInChains } from "./alice-in-chains";
+import { blackSabbath } from "./black-sabbath";
 import { davidBowie } from "./david-bowie";
 import { nirvana } from "./nirvana";
 import { pearlJam } from "./pearl-jam";
@@ -16,6 +17,7 @@ export type { Band, Song, SongLine } from "./types";
 export const bands: Band[] = [
   pinkFloyd,
   davidBowie,
+  blackSabbath,
   soundgarden,
   redHotChiliPeppers,
   pearlJam,
