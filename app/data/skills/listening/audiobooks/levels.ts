@@ -151,6 +151,12 @@ export const listeningLevels: readonly ListeningLevel[] = [
         duration: "--",
       },
       {
+        slug: "project-omega",
+        title: "Project Omega",
+        description: "Eight-chapter audiobook.",
+        duration: "--",
+      },
+      {
         slug: "treasure-island",
         title: "Treasure Island",
         description: "Robert Louis Stevenson · Penguin Readers",
@@ -159,7 +165,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
       {
         slug: "moby-dick",
         title: "Moby Dick",
-        description: "",
+        description: "Herman Melville · complete 13-chapter Elementary reader.",
         duration: "--",
       },
     ],
@@ -194,6 +200,13 @@ export const listeningLevels: readonly ListeningLevel[] = [
     title: "Advanced",
     exam: "CAE",
     wordCount: "3000 words",
-    titles: [],
+    titles: [
+      {
+        slug: "brave-new-world",
+        title: "Brave New World",
+        description: "Aldous Huxley · complete 17-chapter Advanced reader.",
+        duration: "--",
+      },
+    ],
   },
 ];

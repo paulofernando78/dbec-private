@@ -19,6 +19,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-1",
+      questions: ["Where does Hapu live?", "What work does he do?", "Why must he and his father work hard?"],
       answers: ["In Ancient Egypt.", "He is a fireboy in his father's factory.", "They are poor and need money."],
       title: "Paragraph 1",
       text: `This is the story of Hapu. He lives in Ancient Egypt at the time of Queen Cleopatra. His father, Bak, has a small factory. He makes gold tables and chairs. Hapu helps him. He is a “fireboy”. Every day he pushes a long handle up and down. The work is hot and very hard. But what can he and his father do? They are poor people. They need to make money.`,
@@ -29,6 +30,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-2",
+      questions: ["Where do Hapu and Bak sit every evening?", "What does Bak say about their future?"],
       answers: ["Beside the Nile.", "One day they will be rich."],
       title: "Paragraph 2",
       timestamp: "0:52",
@@ -40,6 +42,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-3",
+      questions: ["What happens to Bak while he is working?", "How does Hapu help him?"],
       answers: ["He feels ill and falls to the ground.", "He runs to him and puts a hand under his head."],
       title: "Paragraph 3",
       timestamp: "1:44",
@@ -51,6 +54,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why is Bak in bed?", "What idea does Hapu have?"],
       answers: ["He is ill.", "To make something for someone rich, like the Queen."],
       title: "Paragraph 4",
       timestamp: "2:40",
@@ -62,6 +66,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-5",
+      questions: ["What does Hapu make?", "Who is it for?", "What does he hope to receive for it?"],
       answers: ["A gold necklace.", "Queen Cleopatra.", "A lot of money."],
       title: "Paragraph 5",
       timestamp: "3:30",
@@ -73,6 +78,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-6",
+      questions: ["Why does Hapu go to the palace?", "Do the guards let him see the Queen?"],
       answers: ["To give Cleopatra the necklace.", "No, they do not."],
       title: "Paragraph 6",
       timestamp: "4:15",
@@ -84,6 +90,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-7",
+      questions: ["What does Hapu hear in the market?", "Why is it good news for him?"],
       answers: ["Cleopatra's women will visit the market the next morning.", "He can give them the necklace for the Queen."],
       title: "Paragraph 7",
       timestamp: "4:56",
@@ -95,6 +102,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-8",
+      questions: ["What does Hapu make for Bak?", "What is Hapu waiting for in the market?"],
       answers: ["A cup of sweet tea.", "Cleopatra's women."],
       title: "Paragraph 8",
       timestamp: "5:39",
@@ -102,6 +110,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-9",
+      questions: ["Who arrives at the market?", "How does Hapu stop her?"],
       answers: ["Queen Cleopatra.", "He runs in front of her chair and asks her to stop."],
       title: "Paragraph 9",
       timestamp: "6:36",
@@ -114,6 +123,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-10",
+      questions: ["What does Hapu give Cleopatra?", "How does she reward him?"],
       answers: ["His gold necklace.", "She tells the guards to give him money."],
       title: "Paragraph 10",
       timestamp: "7:30",
@@ -125,6 +135,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-11",
+      questions: ["What does Hapu show Bak?", "What does Bak say to his son?"],
       answers: ["The money from Cleopatra.", "He says Hapu is a good son and thanks him."],
       title: "Paragraph 11",
       timestamp: "8:18",
@@ -136,6 +147,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-12",
+      questions: ["What does Hapu want to use the money for?", "Who comes to find him?"],
       answers: ["To pay for a doctor for his father.", "One of Cleopatra's guards."],
       title: "Paragraph 12",
       timestamp: "9:15",
@@ -147,6 +159,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-13",
+      questions: ["What job does Cleopatra offer Hapu?", "Why doesn't he want to leave his current job?"],
       answers: ["A job at the palace; the exact job is not stated yet.", "He cannot leave his father."],
       title: "Paragraph 13",
       timestamp: "10:06",
@@ -158,6 +171,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-14",
+      questions: ["Where does Cleopatra want Hapu to live?", "Why does he say he cannot live there?"],
       answers: ["At the palace, making beautiful things for her.", "His father is very ill."],
       title: "Paragraph 14",
       timestamp: "10:58",
@@ -169,6 +183,7 @@ export const theFireboy = {
     },
     {
       id: "paragraph-15",
+      questions: ["What solution does Cleopatra offer?", "How does Hapu feel?"],
       answers: ["Hapu can go home, and both he and his father will work only for her.", "Very happy."],
       title: "Paragraph 15",
       timestamp: "11:42",

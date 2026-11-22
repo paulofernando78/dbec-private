@@ -6,10 +6,11 @@
 
 # Content punctuation
 
-- Use straight single quotation marks (`'`) when quoting words, phrases, or examples in content. Never use guillemets (Unicode U+00AB and U+00BB).
+- Use typographic double quotation marks (`“...”`) for dialogue and quoted words, phrases, or examples in content. Use the typographic apostrophe (`’`) in contractions and possessives. Never use guillemets (Unicode U+00AB and U+00BB).
 
 # Tailwind CSS
 
+- When the user asks for a button, use the shared `Button` component with its standard `default` variant and appearance. Do not substitute a styled link, a plain icon, or the `list` variant for the requested button. If the button navigates to a URL or page anchor, use the `Button` component's `href` support so it remains a semantic link.
 - Links accompanied by a button-style icon must not underline their labels, including on hover or keyboard focus. Preserve a visible keyboard focus outline. Apply this pattern consistently throughout the project.
 
 # Audiobook questions

@@ -33,6 +33,8 @@ export const theAdventuresOfTomSawyer = {
     {
       id: "introduction",
       title: "Introduction",
+      questions: ["What was Mark Twain's real name?", "In which town did he grow up?"],
+      answers: ["Samuel Clemens.", "Hannibal, Missouri."],
       text: [
         {
           text: italic(
@@ -68,7 +70,7 @@ export const theAdventuresOfTomSawyer = {
         "What work did Aunt Polly give Tom to do on Saturday?",
         "What did Tom get from Ben and the other boys so they could paint the fence?",
       ],
-      answers: ["a1.", "a2."],
+      answers: ["He skipped school and went to the river.", "She told him to paint the fence.", "Food, including fruit."],
       text: [
         {
           text: "Tom Sawyer lived with his aunt because his mother and father were dead. Tom didn’t like going to school, and he didn’t like working. He liked playing and having adventures. One Friday, he didn’t go to school—he went to the river.",
@@ -137,6 +139,7 @@ export const theAdventuresOfTomSawyer = {
         "Who did Tom sit near at school, and what was her name?",
         "What did Tom and Huck see Injun Joe do in the graveyard?",
       ],
+      answers: ["They planned to go to the graveyard at midnight.", "Becky Thatcher.", "He killed the doctor."],
       text: [
         {
           text: "One morning before school, Tom’s friend Huck Finn waited for him in the street. Huck didn’t have a home, and he never went to school. People in the town didn’t like him. But Tom liked Huck.",
@@ -220,6 +223,7 @@ export const theAdventuresOfTomSawyer = {
         "Who got Tom’s medicine instead of Tom?",
         "What did Tom and Joe Harper decide to do together?",
       ],
+      answers: ["Becky was sick and absent from school.", "Peter the cat.", "They decided to run away together."],
       text: [
         {
           text: "Becky was sick and didn’t go to school for many days. Tom was very sad. One morning, he said to Aunt Polly, “I’m very sick, and I want to stay home from school.”",
@@ -270,6 +274,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Tom do quietly at night when the men on the big boat talked about them?",
         "When did the three boys walk into the church together?",
       ],
+      answers: ["They went across the river to an island.", "He went home quietly to see Aunt Polly.", "On Sunday morning, while people were mourning them."],
       text: [
         {
           text: "Tom, Joe, and Huck went to the river. There was a small boat there. The boys went across the river in the small boat. They said, “This is a good place because we can play all day. There’s no school here.”",
@@ -326,6 +331,7 @@ export const theAdventuresOfTomSawyer = {
         "What happened to the teacher’s new book?",
         "Why did Tom say, 'I did it. I tore your book'?",
       ],
+      answers: ["Tom spoke to Amy and ignored Becky.", "Becky tore it.", "He wanted to protect Becky from punishment."],
       text: [
         {
           text: "Monday morning, Tom went to school. The children wanted to hear about his adventure, and Tom liked talking about it. Becky wanted to talk to Tom, but he didn’t look at her.",
@@ -382,6 +388,7 @@ export const theAdventuresOfTomSawyer = {
         "Why was Tom afraid after he talked on day three of the trial?",
         "What did Injun Joe do when people at the trial were surprised?",
       ],
+      answers: ["They said Muff Potter killed the doctor.", "He was afraid Injun Joe might kill him.", "He escaped through a window."],
       text: [
         {
           text: "Summer vacation started, and Becky went away with her family. Tom was unhappy.",
@@ -450,6 +457,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Injun Joe find under the floor of the old house?",
         "Where did Injun Joe say he was going to take the money?",
       ],
+      answers: ["An old house near Mrs. Douglas's house.", "A box full of money.", "Under the cross."],
       text: [
         {
           text: "One Saturday afternoon, Tom wanted to have an adventure because he didn’t want to think about Injun Joe. He went to Huck and said, “I’m going to look for treasure. Do you want to come with me?”",
@@ -506,6 +514,7 @@ export const theAdventuresOfTomSawyer = {
         "Why did Aunt Polly and Becky’s mother talk to Mrs. Harper at church on Sunday?",
         "How many men looked for Tom and Becky in the cave, and for how many days?",
       ],
+      answers: ["They went into a cave.", "They could not find Tom and Becky after the trip.", "Two hundred men searched for three days."],
       text: [
         {
           text: "In August Becky’s family came back from their vacation. Tom was very happy and he didn’t think about Injun Joe’s treasure.",
@@ -556,6 +565,7 @@ export const theAdventuresOfTomSawyer = {
         "Who did Huck run to for help so he could save Mrs. Douglas?",
         "Why did Huck ask Mr. Jones not to say his name to Mrs. Douglas?",
       ],
+      answers: ["To Mrs. Douglas's house.", "Mr. Jones.", "He was afraid Injun Joe would find out he had warned them."],
       text: [
         {
           text: "Huck didn’t go on Becky’s adventure. He stayed home and watched Injun Joe’s house that night. At eleven o’clock Injun Joe and his friend came out and walked down the street. There was a box in his friend’s hands.",
@@ -624,6 +634,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Tom find that led them out of the cave?",
         "How did Tom and Becky get home after coming out of the cave?",
       ],
+      answers: ["Three days.", "Light coming through a small cave opening.", "Men took them home in a boat."],
       text: [
         {
           text: "Saturday, Tom and Becky walked and played in the cave. Then they stopped near some water.",
@@ -677,6 +688,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Tom and Huck find in the cave under the cross?",
         "Why did Tom use small bags to take the money instead of the box?",
       ],
+      answers: ["A new large door had been put on the cave.", "Injun Joe's treasure box.", "The box was too heavy to carry."],
       text: [
         {
           text: "Tom and Becky stayed home for many days. Then, two weeks after their adventure, Tom visited Becky and talked to her father.",
@@ -739,6 +751,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Mrs. Douglas want to give Huck?",
         "How much money was in the bags from the cave?",
       ],
+      answers: ["New shirts and jeans.", "A home with her.", "$12,000."],
       text: [
         {
           text: "Tom said, “Let’s take the money to the old house near Mrs. Douglas’s house. That’s a good place for it.”",
@@ -789,6 +802,7 @@ export const theAdventuresOfTomSawyer = {
         "What did Tom ask Huck to do so the boys at school could play with him?",
         "When were the boys meeting at the end of the chapter?",
       ],
+      answers: ["He disliked washing every day and going to school and church.", "To live with Mrs. Douglas and attend school.", "At midnight."],
       text: [
         {
           text: "Huck lived in the big house with Mrs. Douglas. He was a new person. He washed every day, and he went to school and church. But he wasn’t happy. He stayed there for three weeks, and then he ran away.",

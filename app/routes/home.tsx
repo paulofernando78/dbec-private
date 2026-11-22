@@ -6,9 +6,7 @@ import { useNavigate } from "react-router";
 import { Contact } from "@/components/layout/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { BrandLogo } from "@/components/layout/BrandLogo";
-import { Image } from "@/components/ui/Image";
 import { Button } from "@/components/ui/Button/Button";
-import { Check } from "lucide-react";
 import { CheckText } from "@/components/ui/CheckText";
 
 export function meta({}: Route.MetaArgs) {
@@ -106,10 +104,10 @@ export default function Home() {
             </p>
             <ul className="mt-5 grid gap-2 text-sm text-slate-700">
               <li>
-                <CheckText text="Prévia do curso" />
+                <CheckText plan="free" text="Prévia do curso" />
               </li>
               <li>
-                <CheckText text="Conteúdos gratuitos" />
+                <CheckText  plan="free" text="Conteúdos gratuitos" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">
@@ -132,16 +130,16 @@ export default function Home() {
             </p>
             <ul className="mt-5 grid gap-2 text-sm text-slate-700">
               <li>
-                <CheckText text="Aulas particulares e conversação" />
+                <CheckText plan="plus" text="Aulas particulares e conversação" />
               </li>
               <li>
-                <CheckText text="Orientação personalizada de estudos" />
+                <CheckText plan="plus" text="Orientação personalizada de estudos" />
               </li>
               <li>
-                <CheckText text="Planos para necessidades específicas" />
+                <CheckText plan="plus" text="Planos para necessidades específicas" />
               </li>
               <li>
-                <CheckText text="Audio com vozes mais naturais" />
+                <CheckText plan="plus" text="Audio com vozes mais naturais" />
               </li>
             </ul>
             <div className="mt-auto flex justify-center pt-6">

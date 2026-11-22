@@ -20,6 +20,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-1",
+      questions: ["Why are Pam and Martin in Cambridge?", "What does Pam like doing?"],
       answers: ["They are visiting the city for the day.", "Taking photos."],
       title: "Paragraph 1",
       text: `It is Saturday afternoon. Martin and his sister Pam are in Cambridge for the day. They are looking at the beautiful old buildings of this university city. Pam has a camera with her. She likes taking photos and sometimes they are very good. But sometimes they are not very good and Martin laughs at them.`,
@@ -30,6 +31,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-2",
+      questions: ["Why does Pam want to take one last photo?"],
       answers: ["She wants to finish the film in her camera."],
       title: "Paragraph 2",
       timestamp: "0:37",
@@ -41,6 +43,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-3",
+      questions: ["Who walks between Pam and Martin?", "Who appears in Pam's photo?"],
       answers: ["A man with a big rucksack.", "The man, instead of Martin."],
       title: "Paragraph 3",
       timestamp: "1:15",
@@ -52,6 +55,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-4",
+      questions: ["How does the man react to Pam?", "What is he wearing?"],
       answers: ["He looks angry and says nothing.", "Sunglasses and a blue hat, with a rucksack on his back."],
       title: "Paragraph 4",
       timestamp: "1:53",
@@ -63,6 +67,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-5",
+      questions: ["Where is the man going?", "How does Pam feel about him?"],
       answers: ["Aberdeen in Scotland.", "She is angry with him."],
       title: "Paragraph 5",
       timestamp: "2:30",
@@ -74,6 +79,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-6",
+      questions: ["When does Pam get the photos?", "Why doesn't she like the last one?"],
       answers: ["On Tuesday, three days later.", "It shows the man with the rucksack instead of Martin."],
       title: "Paragraph 6",
       timestamp: "3:12",
@@ -85,6 +91,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-7",
+      questions: ["Where has Martin seen the man's face before?", "What does he ask Pam to find?"],
       answers: ["In the newspaper.", "That day's newspaper."],
       title: "Paragraph 7",
       timestamp: "3:43",
@@ -96,6 +103,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-8",
+      questions: ["What is the man's name?", "Why are the police looking for him?"],
       answers: ["Alan Rook.", "He has disappeared with £100,000 from the bank."],
       title: "Paragraph 8",
       timestamp: "4:27",
@@ -107,6 +115,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-9",
+      questions: ["Why isn't Pam sure it is the same man?", "Which parts of his face does Martin compare?"],
       answers: ["He has no beard or hair in the newspaper photo.", "His ears and nose."],
       title: "Paragraph 9",
       timestamp: "5:05",
@@ -118,6 +127,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-10",
+      questions: ["What disguise does Martin draw on the newspaper photo?", "What do Pam and Martin decide to do?"],
       answers: ["Dark glasses, a short beard and a hat.", "To take the pictures to the police."],
       title: "Paragraph 10",
       timestamp: "5:43",
@@ -129,6 +139,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-11",
+      questions: ["What evidence do Pam and Martin show the policeman?", "What question does the policeman ask?"],
       answers: ["Pam's photo and the newspaper.", "Where Alan is now."],
       title: "Paragraph 11",
       timestamp: "6:19",
@@ -140,6 +151,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-12",
+      questions: ["Why do they think Alan is near Aberdeen?", "Why does the policeman think Alan is camping?"],
       answers: ["They saw him getting on a bus to Aberdeen.", "He has a rucksack and a tent."],
       title: "Paragraph 12",
       timestamp: "6:47",
@@ -151,6 +163,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-13",
+      questions: ["Where do the police find Alan?", "Where is the bank's money?"],
       answers: ["In a tent in the mountains near Aberdeen.", "In his rucksack."],
       title: "Paragraph 13",
       timestamp: "7:27",
@@ -162,6 +175,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-14",
+      questions: ["Where does Pam and Martin's story appear?", "What does the headline say?"],
       answers: ["In all the newspapers.", "Camera girl gets photo of Rook. Police in Aberdeen find bank money."],
       title: "Paragraph 14",
       timestamp: "8:00",
@@ -173,6 +187,7 @@ export const theLastPhoto = {
     },
     {
       id: "paragraph-15",
+      questions: ["How much reward do Pam and Martin receive?", "What will Pam buy?"],
       answers: ["£1,000.", "A very good new camera."],
       title: "Paragraph 15",
       timestamp: "8:28",

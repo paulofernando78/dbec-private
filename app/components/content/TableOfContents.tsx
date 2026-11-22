@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { InlineRichContent } from "@/components/content/InlineRichContent";
 import type { RichContent } from "@/helpers/content";
+import { ArrowUpRight, Link2 } from "lucide-react";
 
 type TableOfContentsItem = {
   title?: RichContent | string;
@@ -75,38 +76,45 @@ export const TableOfContents = ({
                 )}
 
                 {item.href && (
-                  <li className={`flex items-start gap-2 ${item.className ?? ""}`}>
-                    {ItemIcon ? (
-                      <ItemIcon
-                        aria-hidden="true"
-                        className={`size-4 shrink-0 ${item.iconClassName ?? itemIconClassName}`}
-                      />
-                    ) : (
-                      <span className="font-bold">•</span>
-                    )}
-                    <a href={`#${item.href}`}>
-                      {item.label && (
-                        <InlineRichContent value={toValue(item.label)} />
+                  <li className={`flex items-center gap-2 py-1 ${item.className ?? ""}`}>
+                    <Button
+                      href={`#${item.href}`}
+                      ariaLabel={`Go to ${typeof item.label === "string" ? item.label : "section"}`}
+                      icon={ItemIcon ? (
+                        <ItemIcon aria-hidden="true" className={item.iconClassName ?? itemIconClassName} />
+                      ) : (
+                        <Link2 aria-hidden="true" className={item.iconClassName ?? itemIconClassName} />
                       )}
-                    </a>
+                      className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
+                    />
+                    {item.label && (
+                      <a
+                        href={`#${item.href}`}
+                        className="rounded text-(--text-color) no-underline hover:no-underline focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
+                      >
+                        <InlineRichContent value={toValue(item.label)} />
+                      </a>
+                    )}
                   </li>
                 )}
 
                 {item.to && (
-                  <li className={`flex items-start gap-2 ${item.className ?? ""}`}>
-                    {ItemIcon ? (
-                      <ItemIcon
-                        aria-hidden="true"
-                        className={`size-4 shrink-0 ${item.iconClassName ?? itemIconClassName}`}
-                      />
-                    ) : (
-                      <span className="font-bold">•</span>
-                    )}
+                  <li className={`flex items-center gap-2 py-1 ${item.className ?? ""}`}>
+                    <Button
+                      ariaLabel={`Open ${typeof item.label === "string" ? item.label : "page"}`}
+                      icon={ItemIcon ? (
+                        <ItemIcon aria-hidden="true" className={item.iconClassName ?? itemIconClassName} />
+                      ) : (
+                        <ArrowUpRight aria-hidden="true" className={item.iconClassName ?? itemIconClassName} />
+                      )}
+                      className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
+                      onClick={() => navigate(item.to!)}
+                    />
                     <div>
                       <Button
                         variant="list"
                         ariaLabel={typeof item.label === "string" ? item.label : "Open page"}
-                        className="w-auto! rounded-none! hover:bg-transparent!"
+                        className="w-auto! no-underline hover:no-underline focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
                         onClick={() => navigate(item.to!)}
                       >
                         {item.label && (

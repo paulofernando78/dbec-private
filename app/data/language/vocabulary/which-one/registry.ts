@@ -14,6 +14,7 @@ import { robVsSteal } from "./rob-steal";
 import { sinkVsDrown } from "./sink-vs-drown";
 import { seeVsWatch } from "./see-vs-watch";
 import { storyVsHistory } from "./story-vs-history";
+import { whoVsWhom } from "./who-vs-whom";
 
 export const vocabularyTopics = [
   hearVsListen,
@@ -32,6 +33,7 @@ export const vocabularyTopics = [
   seeVsWatch,
   mostVsMostOf,
   storyVsHistory,
+  whoVsWhom,
 ] as const;
 
 export type VocabularyTopicId = (typeof vocabularyTopics)[number]["id"];

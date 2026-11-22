@@ -1,23 +1,5 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-export const newspaperChaseQuestions: Record<string, readonly string[]> = {
-  "paragraph-1": ["Where is Harry Black?", "What does he see?", "Why is he there?"],
-  "paragraph-2": ["What does Harry use to remove the painting from its frame?"],
-  "paragraph-3": ["What does Harry break?", "Does he stop after breaking it?"],
-  "paragraph-4": ["Where does Harry live?", "Where does he hide the painting?"],
-  "paragraph-5": ["What is Janey recycling?", "What is the TV reporter talking about?"],
-  "paragraph-6": ["What happened to the blue vase?", "Why does Janey remember that it is Friday?"],
-  "paragraph-7": ["Who is Harry talking to?", "Why isn't he happy with the man's offer?"],
-  "paragraph-8": ["What is Janey looking for?", "What does she find under Harry's bed?"],
-  "paragraph-9": ["Who does Janey give the recycling box to?", "Why does Harry say, ‘Oh, no’?"],
-  "paragraph-10": ["Why does Harry jump into the recycling truck?", "Is it easy to find his newspaper there?"],
-  "paragraph-11": ["What does Janey ask Harry?", "What is Harry thinking about?", "Where is Janey looking?"],
-  "paragraph-12": ["What does Janey see in Harry's shoe?", "Why does it make her suspect Harry?"],
-  "paragraph-13": ["Who does Janey call?", "What is Harry still looking for?"],
-  "paragraph-14": ["What do the policemen take from Harry's shoe?", "Where did it come from?"],
-  "paragraph-15": ["What do the police find in the truck?", "Who gets a reward?", "What does Janey want to buy?"],
-};
-
 const imageBase = "/media/images/skills/listening/audiobooks/starter/newspaper-chase";
 const localBase =
   "local-media/images/skills/listening/audiobooks/starter/newspaper-chase";
@@ -26,7 +8,7 @@ export const newspaperChase = {
   slug: "newspaper-chase",
   title: "Newspaper Chase",
   audio: "",
-  sections: ([
+  sections: [
     {
       id: "summary",
       title: "Summary",
@@ -38,6 +20,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-1",
+      questions: ["Where is Harry Black?", "What does he see?", "Why is he there?"],
       answers: ["At the Ritesville town art gallery.", "A painting.", "To steal the painting."],
       title: "Paragraph 1",
       text: `The time is one o'clock in the morning. The place is the Ritesville town art gallery. A window opens and a man comes in. His name is Harry Black, and he is a thief. It is dark in the art gallery, but Harry has a light. He looks across the room at a painting. “There it is!” he says.`,
@@ -48,6 +31,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-2",
+      questions: ["What does Harry use to remove the painting from its frame?"],
       answers: ["A knife."],
       title: "Paragraph 2",
       timestamp: "0:35",
@@ -59,6 +43,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-3",
+      questions: ["What does Harry break?", "Does he stop after breaking it?"],
       answers: ["A blue glass vase.", "No. He runs to the window."],
       title: "Paragraph 3",
       timestamp: "1:01",
@@ -70,6 +55,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-4",
+      questions: ["Where does Harry live?", "Where does he hide the painting?"],
       answers: ["In Mrs. Allen's rooming house.", "In a newspaper under his bed."],
       title: "Paragraph 4",
       timestamp: "1:33",
@@ -81,6 +67,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-5",
+      questions: ["What is Janey recycling?", "What is the TV reporter talking about?"],
       answers: ["Old bottles.", "The stolen million-dollar painting."],
       title: "Paragraph 5",
       timestamp: "2:04",
@@ -92,6 +79,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-6",
+      questions: ["What happened to the blue vase?", "Why does Janey remember that it is Friday?"],
       answers: ["Harry broke it into a hundred pieces.", "The newspaper recycling truck comes on Fridays."],
       title: "Paragraph 6",
       timestamp: "2:33",
@@ -103,6 +91,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-7",
+      questions: ["Who is Harry talking to?", "Why isn't he happy with the man's offer?"],
       answers: ["A man in Seattle.", "The man offers $5,000, but Harry wants $50,000."],
       title: "Paragraph 7",
       timestamp: "3:10",
@@ -114,6 +103,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-8",
+      questions: ["What is Janey looking for?", "What does she find under Harry's bed?"],
       answers: ["Old newspapers.", "A newspaper with the painting inside."],
       title: "Paragraph 8",
       timestamp: "3:54",
@@ -125,6 +115,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-9",
+      questions: ["Who does Janey give the recycling box to?", "Why does Harry say, 'Oh, no'?"],
       answers: ["A worker on the recycling truck.", "The newspaper hiding his painting has gone into the truck."],
       title: "Paragraph 9",
       timestamp: "4:28",
@@ -136,6 +127,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-10",
+      questions: ["Why does Harry jump into the recycling truck?", "Is it easy to find his newspaper there?"],
       answers: ["To find the newspaper hiding his painting.", "No. There are thousands of newspapers."],
       title: "Paragraph 10",
       timestamp: "5:03",
@@ -147,6 +139,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-11",
+      questions: ["What does Janey ask Harry?", "What is Harry thinking about?", "Where is Janey looking?"],
       answers: ["Why his newspaper is important.", "His million-dollar painting.", "At Harry's shoe."],
       title: "Paragraph 11",
       timestamp: "5:35",
@@ -158,6 +151,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-12",
+      questions: ["What does Janey see in Harry's shoe?", "Why does it make her suspect Harry?"],
       answers: ["A piece of blue glass.", "It may come from the broken vase in the art gallery."],
       title: "Paragraph 12",
       timestamp: "6:06",
@@ -169,6 +163,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-13",
+      questions: ["Who does Janey call?", "What is Harry still looking for?"],
       answers: ["The police.", "His newspaper."],
       title: "Paragraph 13",
       timestamp: "6:37",
@@ -181,6 +176,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-14",
+      questions: ["What do the policemen take from Harry's shoe?", "Where did it come from?"],
       answers: ["A piece of blue glass.", "The expensive vase in the art gallery."],
       title: "Paragraph 14",
       timestamp: "7:10",
@@ -192,6 +188,7 @@ export const newspaperChase = {
     },
     {
       id: "paragraph-15",
+      questions: ["What do the police find in the truck?", "Who gets a reward?", "What does Janey want to buy?"],
       answers: ["The stolen painting.", "Janey.", "A painting."],
       title: "Paragraph 15",
       timestamp: "7:46",
@@ -201,8 +198,5 @@ export const newspaperChase = {
       imageAlt: "Janey speaking with a policeman after Harry is arrested.",
       mediaPosition: "left",
     },
-  ] as const).map((section) => ({
-    ...section,
-    questions: newspaperChaseQuestions[section.id],
-  })) satisfies AudiobookSection[],
+  ] satisfies AudiobookSection[],
 };

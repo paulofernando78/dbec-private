@@ -16,7 +16,6 @@ import {
   availableAudiobookSlugs,
   type AudiobookSlug,
 } from "@/data/skills/listening/audiobooks/index";
-import { audiobookQuestions } from "@/data/skills/listening/audiobooks/audiobook-questions";
 import {
   getAudiobookSectionProgress,
   setAudiobookSectionCompleted,
@@ -163,10 +162,7 @@ export default function ListeningBookPage() {
     const audioLocked =
       !isAuthenticated &&
       !(isPreview && section.id === audiobookPreview.audioSectionId);
-    const questions =
-      section.questions ??
-      audiobookQuestions[audiobook.slug]?.[section.id] ??
-      [];
+    const questions = section.questions ?? [];
     const answers = section.answers ?? [];
 
     return (

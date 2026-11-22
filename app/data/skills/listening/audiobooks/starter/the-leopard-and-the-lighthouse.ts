@@ -21,6 +21,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-1",
+      questions: ["Where is Sindi?", "What stands near the village?", "Who sometimes plays there?"],
       answers: ["On an island in East Africa.", "An old lighthouse.", "Children from the village."],
       title: "Paragraph 1",
       text: `Sindi is an island in East Africa. It has beautiful beaches with white sand. The sea is clear and blue. There are lovely trees and flowers in Sindi. There is also a small village with white houses. An old lighthouse stands near the village on the rocks by the sea. This lighthouse is empty now. Sometimes children from the village play in the lighthouse.`,
@@ -31,6 +32,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-2",
+      questions: ["Where does the leopard come from?", "Why does he swim to Sindi?"],
       answers: ["The African mainland.", "He is hungry and looking for food."],
       title: "Paragraph 2",
       timestamp: "0:54",
@@ -42,6 +44,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-3",
+      questions: ["Where does the leopard run?", "How do the people react?"],
       answers: ["Into the marketplace.", "Children cry and men throw stones."],
       title: "Paragraph 3",
       timestamp: "1:34",
@@ -53,6 +56,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why are the villagers chasing the leopard?", "Where does he turn?"],
       answers: ["They do not want him in their village.", "Along a small road between two high walls."],
       title: "Paragraph 4",
       timestamp: "2:10",
@@ -64,6 +68,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-5",
+      questions: ["Which building does the leopard enter?", "Where does he run inside it?"],
       answers: ["The old lighthouse.", "Up the stairs."],
       title: "Paragraph 5",
       timestamp: "2:46",
@@ -75,6 +80,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-6",
+      questions: ["Where do the people find the leopard?"],
       answers: ["High up on the wall at the top of the lighthouse."],
       title: "Paragraph 6",
       timestamp: "3:30",
@@ -87,6 +93,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-7",
+      questions: ["How long does the leopard stay in the lighthouse?", "Do the people go inside?"],
       answers: ["Three days and nights.", "No, they do not."],
       title: "Paragraph 7",
       timestamp: "4:05",
@@ -98,6 +105,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-8",
+      questions: ["Who is Mohammed?", "What competition does he announce?", "What will the winner receive?"],
       answers: ["The Head Man of Sindi.", "A competition to kill the leopard.", "He can marry Tanza."],
       title: "Paragraph 8",
       timestamp: "4:44",
@@ -109,6 +117,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-9",
+      questions: ["Why doesn't Tanza like Ahmed?", "Does Ahmed's gun stop the leopard?"],
       answers: ["He is old.", "No, it does not."],
       title: "Paragraph 9",
       timestamp: "5:37",
@@ -120,6 +129,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-10",
+      questions: ["How does Jamal plan to catch the leopard?", "Why does he bring a goat?"],
       answers: ["He plans to kill it with his knife.", "To bring the leopard down the stairs."],
       title: "Paragraph 10",
       timestamp: "6:23",
@@ -131,6 +141,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-11",
+      questions: ["Why does the leopard come downstairs?", "How does the goat escape?"],
       answers: ["He is hungry and smells the goat.", "It pulls until the rope breaks."],
       title: "Paragraph 11",
       timestamp: "7:02",
@@ -142,6 +153,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-12",
+      questions: ["What does the quiet young man put in his gun?", "What does he plan to do?"],
       answers: ["A dart.", "To shoot the dart into the leopard."],
       title: "Paragraph 12",
       timestamp: "7:45",
@@ -153,6 +165,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-13",
+      questions: ["What is the young man's name?", "Why do Ahmed and Jamal laugh?", "What does Saied tell them to do?"],
       answers: ["Saied.", "The leopard does not fall immediately.", "To wait."],
       title: "Paragraph 13",
       timestamp: "8:30",
@@ -164,6 +177,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-14",
+      questions: ["Is the leopard dead?", "Why does Saied ask for the leopard?"],
       answers: ["No, he is sleeping.", "He thinks the leopard is beautiful and wants to save him."],
       title: "Paragraph 14",
       timestamp: "9:26",
@@ -175,6 +189,7 @@ export const theLeopardAndTheLighthouse = {
     },
     {
       id: "paragraph-15",
+      questions: ["Where does Saied take the leopard?", "Who does he marry?", "Who hears the story five years later?"],
       answers: ["The Animal Park in Nairobi.", "Tanza.", "Their children."],
       title: "Paragraph 15",
       timestamp: "10:11",

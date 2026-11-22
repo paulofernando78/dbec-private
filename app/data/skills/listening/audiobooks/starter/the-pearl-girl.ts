@@ -20,6 +20,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-1",
+      questions: ["Where is Kate visiting?", "Who is with her?", "What time is it?"],
       answers: ["A museum in The Hague, in the Netherlands.", "Her mother and father.", "4:45."],
       title: "Paragraph 1",
       text: `Kate Grant is fifteen and comes from Canada. She is visiting the Netherlands with her mother and father. On June 8th, the Grants are at a museum in The Hague. “This is very good,” Mr. Grant says. He is looking at a picture of an old man. “Yes,” Mrs. Grant says. “What do you think, Kate?” “It's OK,” Kate says. She looks at her watch. It is 4:45.`,
@@ -30,6 +31,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-2",
+      questions: ["Which painting does Kate see?", "Why does she like it?"],
       answers: ["Girl with a Pearl Earring.", "She loves earrings and thinks the picture is beautiful."],
       title: "Paragraph 2",
       timestamp: "0:50",
@@ -41,6 +43,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-3",
+      questions: ["Where is Mr. Grant's passport?", "Who goes back to find it?"],
       answers: ["In his guidebook, on a chair near the painting.", "Kate."],
       title: "Paragraph 3",
       timestamp: "1:33",
@@ -52,6 +55,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why does Kate ask to enter the museum?", "Who lets her inside?"],
       answers: ["To find her father's passport.", "The guard, Paul Van Dyck."],
       title: "Paragraph 4",
       timestamp: "2:26",
@@ -63,6 +67,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-5",
+      questions: ["Where does Kate say the passport is?", "What does Paul hear?"],
       answers: ["On a chair near the picture of the girl with an earring.", "Voices."],
       title: "Paragraph 5",
       timestamp: "3:14",
@@ -74,6 +79,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-6",
+      questions: ["What is the tall man carrying?", "Who has a gun?"],
       answers: ["A big black bag.", "The short man."],
       title: "Paragraph 6",
       timestamp: "3:56",
@@ -85,6 +91,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-7",
+      questions: ["What happens to Paul?", "How does Kate feel?"],
       answers: ["He is shot in the leg.", "Very scared."],
       title: "Paragraph 7",
       timestamp: "4:45",
@@ -96,6 +103,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-8",
+      questions: ["What is inside the black bag?", "Which city are the thieves driving toward?"],
       answers: ["Girl with a Pearl Earring.", "Amsterdam."],
       title: "Paragraph 8",
       timestamp: "5:32",
@@ -107,6 +115,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-9",
+      questions: ["What is the boat called?", "Why does Kate smile even though she is scared?"],
       answers: ["The Black Dog.", "The thief orders her to smile and has a gun against her back."],
       title: "Paragraph 9",
       timestamp: "6:27",
@@ -118,6 +127,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-10",
+      questions: ["Where do the thieves lock Kate?", "Why do they want to contact her family?"],
       answers: ["In the boat's kitchen.", "They want money in return for Kate."],
       title: "Paragraph 10",
       timestamp: "7:18",
@@ -129,6 +139,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-11",
+      questions: ["What does Kate write?", "How does she send her message?"],
       answers: ["A note asking someone to call the police.", "She puts it in a bottle and throws it into the canal."],
       title: "Paragraph 11",
       timestamp: "8:11",
@@ -140,6 +151,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-12",
+      questions: ["Who finds the bottle?", "Who does he call?"],
       answers: ["An old man.", "The police."],
       title: "Paragraph 12",
       timestamp: "9:04",
@@ -151,6 +163,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-13",
+      questions: ["Who arrives on the Black Dog?", "What happens to Kate?"],
       answers: ["Three policemen and two policewomen.", "The police rescue her."],
       title: "Paragraph 13",
       timestamp: "10:04",
@@ -162,6 +175,7 @@ export const thePearlGirl = {
     },
     {
       id: "paragraph-14",
+      questions: ["Who thanks Kate?", "What gift does she receive?"],
       answers: ["The museum's director.", "Two pearl earrings."],
       title: "Paragraph 14",
       timestamp: "10:58",

@@ -20,6 +20,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-1",
+      questions: ["Why does Alice follow the White Rabbit?", "What does the little key open?", "What happens to Alice after she drinks from the bottle?"],
       "answers": ["Because she is curious and wants to see where the Rabbit goes.", "It opens the little door to the garden.", "She becomes smaller and smaller."],
       "title": "Chapter 1 · Down the Rabbit-hole",
       "text": [
@@ -67,6 +68,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-2",
+      questions: ["Why can't Alice go through the little door when she takes the key again?", "Where does the water come from?", "Why does the Mouse get angry with Alice?"],
       "answers": ["Because she is too big to go through the door.", "It comes from Alice’s tears.", "Because Alice talks about cats and dogs."],
       "title": "Chapter 2 · Alice's Tears",
       "text": [
@@ -107,6 +109,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-3",
+      questions: ["How does the Dodo start the race?", "Who wins the race, according to the Dodo?", "What does the Dodo give Alice?"],
       "answers": ["He says, ‘One, two, three, go!’ and everybody runs.", "Everybody wins, according to the Dodo.", "He gives Alice a box of chocolates."],
       "title": "Chapter 3 · A Race",
       "text": [
@@ -150,6 +153,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-4",
+      questions: ["Who does the White Rabbit think Alice is?", "Why can't the Rabbit open the door?", "What happens after Alice eats the little cake?"],
       "answers": ["He thinks she is Mary Ann, his housemaid.", "Alice is blocking the door with her arm.", "She gets smaller and runs away."],
       "title": "Chapter 4 · The White Rabbit's House",
       "text": [
@@ -194,6 +198,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-5",
+      questions: ["Why does Alice find it difficult to answer 'Who are you?'", "What does the Caterpillar ask Alice to repeat?", "Which mushroom makes Alice bigger, and which makes her smaller?"],
       "answers": ["Because she changes size and does not know who she is anymore.", "He asks her to repeat ‘You are old, Father William.’", "The white mushroom makes her bigger; the brown mushroom makes her smaller."],
       "title": "Chapter 5 · The Caterpillar",
       "text": [
@@ -244,6 +249,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-6",
+      questions: ["What happens to the baby after Alice takes it outside?", "Who does the Cheshire Cat tell Alice she can visit?", "What is the last part of the Cat to vanish?"],
       "answers": ["It changes into a pig.", "The March Hare and the Mad Hatter.", "Its smile is the last part to vanish."],
       "title": "Chapter 6 · The Duchess and the Cheshire Cat",
       "text": [
@@ -303,6 +309,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-7",
+      questions: ["Who is sitting at the tea table when Alice arrives?", "What did the March Hare put in the Mad Hatter's watch?", "How does Alice finally get into the garden?"],
       "answers": ["The March Hare, the Mad Hatter and the sleeping Dormouse.", "He put some butter in it.", "She eats some white mushroom and grows bigger."],
       "title": "Chapter 7 · A Tea Party",
       "text": [
@@ -358,6 +365,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-8",
+      questions: ["Why are the gardeners painting the roses red?", "Where does Alice hide the gardeners?", "Why does the man with the knife say he can't cut off the Cat's head?"],
       "answers": ["They planted white roses by mistake.", "She hides them behind some trees.", "The Cat has no body, so there is nothing to cut off."],
       "title": "Chapter 8 · Inside the Garden",
       "text": [
@@ -450,6 +458,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-9",
+      questions: ["Who is on trial, and what does the White Rabbit say he took?", "What is the Mad Hatter carrying when he comes into the room?", "Who is called after the Duchess's cook?"],
       "answers": ["The Knave of Hearts is on trial for taking the Queen’s tarts.", "He is carrying a cup of tea.", "The White Rabbit calls the Cheshire Cat."],
       "title": "Chapter 9 · Who Took the Tarts?",
       "text": [
@@ -511,6 +520,7 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-10",
+      questions: ["Why does the King say Alice has to leave the room?", "What happens after Alice tells the Queen and the others that they are only cards?", "Who wakes Alice, and what do they decide to do?"],
       "answers": ["Because she is getting bigger and bigger.", "The cards fly up into the air and fall on her.", "Her sister wakes her, and they go home for tea."],
       "title": "Chapter 10 · The End of the Trial",
       "text": [

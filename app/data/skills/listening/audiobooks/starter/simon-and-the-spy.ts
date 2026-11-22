@@ -20,6 +20,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-1",
+      questions: ["Why are the police at the station?", "Who are they looking for?"],
       answers: ["They are looking for a spy.", "A spy shown in the newspaper."],
       title: "Paragraph 1",
       text: `Simon Simple is at the station. He is going on a train. There are policemen at the station. There are policemen on the trains. They are all working very hard. “Why are the police here?” Simon asks a man. “Look,” the man says. Simon looks at the man's newspaper. “Do you know this man?” he reads. “He's a spy! Find him! Stop him! Catch him!”`,
@@ -30,6 +31,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-2",
+      questions: ["Why does Simon run to the train?", "Who is near him?"],
       answers: ["His train leaves in three minutes.", "An old woman with an umbrella."],
       title: "Paragraph 2",
       timestamp: "0:48",
@@ -41,6 +43,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-3",
+      questions: ["Why does Simon fall?", "How does the old woman's letter get into his bag?"],
       answers: ["The old woman's bag hits his foot.", "It falls among his things, and he puts it in his bag without noticing."],
       title: "Paragraph 3",
       timestamp: "1:32",
@@ -52,6 +55,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-4",
+      questions: ["Who sits beside Simon?", "Why does the old woman walk away?"],
       answers: ["A beautiful girl.", "She sees the policemen."],
       title: "Paragraph 4",
       timestamp: "2:20",
@@ -63,6 +67,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-5",
+      questions: ["What does Simon go to buy?", "Who is waiting for him?"],
       answers: ["Coffee.", "The old woman."],
       title: "Paragraph 5",
       timestamp: "3:02",
@@ -74,6 +79,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-6",
+      questions: ["What does Simon notice about the old woman's shoes?"],
       answers: ["They are not women's shoes."],
       title: "Paragraph 6",
       timestamp: "3:47",
@@ -85,6 +91,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-7",
+      questions: ["Where are Simon and the girl going next?", "Can Simon see the spy?"],
       answers: ["On a boat.", "No, he cannot identify the spy."],
       title: "Paragraph 7",
       timestamp: "4:29",
@@ -96,6 +103,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-8",
+      questions: ["What is the girl's name?", "What are Simon and Samantha doing while they wait?"],
       answers: ["Samantha.", "They are talking."],
       title: "Paragraph 8",
       timestamp: "5:21",
@@ -107,6 +115,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-9",
+      questions: ["What is coming down the road?", "What does Simon notice about the old woman's clothes?"],
       answers: ["A lorry.", "Her trousers are not women's trousers."],
       title: "Paragraph 9",
       timestamp: "6:09",
@@ -118,6 +127,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-10",
+      questions: ["What food do Simon and Samantha offer each other?", "Who is behind them?"],
       answers: ["Simon offers a sandwich and Samantha offers an apple.", "The old woman."],
       title: "Paragraph 10",
       timestamp: "6:58",
@@ -130,6 +140,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-11",
+      questions: ["What takes the letter?", "Why do Simon and the old woman both run after it?"],
       answers: ["The wind.", "Simon thinks it is his ticket; the old woman wants her letter."],
       title: "Paragraph 11",
       timestamp: "7:41",
@@ -141,6 +152,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-12",
+      questions: ["Who catches the paper?", "What do Simon and the old woman shout?"],
       answers: ["A dog.", "Simon shouts about his ticket, and the old woman shouts about her letter; both ask people to catch the dog."],
       title: "Paragraph 12",
       timestamp: "8:24",
@@ -152,6 +164,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-13",
+      questions: ["Who catches the dog?", "Whose letter is in its mouth?"],
       answers: ["Samantha.", "The old woman's letter."],
       title: "Paragraph 13",
       timestamp: "9:07",
@@ -163,6 +176,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-14",
+      questions: ["How does the dog reveal the old woman's disguise?", "Who is the old woman really?"],
       answers: ["It pulls off the coat, and the wind takes the hat and hair.", "A man: the spy."],
       title: "Paragraph 14",
       timestamp: "9:48",
@@ -174,6 +188,7 @@ export const simonAndTheSpy = {
     },
     {
       id: "paragraph-15",
+      questions: ["What information is in the letter?", "Where is the letter?"],
       answers: ["Names and addresses.", "Inside the dog; it has swallowed it."],
       title: "Paragraph 15",
       timestamp: "10:32",

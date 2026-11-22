@@ -47,6 +47,8 @@ import { theAdventuresOfTomSawyer } from "./beginner/the-adventures-of-tom-sawye
 // Elementary
 import { aliceInWonderland } from "./elementary/alice-in-wonderland";
 import { donQuixote } from "./elementary/don-quixote";
+import { mobyDick } from "./elementary/moby-dick";
+import { projectOmega } from "./elementary/project-omega";
 import { treasureIsland } from "./elementary/treasure-island";
 
 // Lower-intermediate
@@ -56,6 +58,7 @@ import { treasureIsland } from "./elementary/treasure-island";
 // Upper-intermediate
 
 // Advanced
+import { braveNewWorld } from "./advanced/brave-new-world";
 
 const withSectionAudioPaths = <
   T extends {
@@ -117,6 +120,9 @@ export const audiobooks = {
     "elementary",
   ),
   [donQuixote.slug]: withSectionAudioPaths(donQuixote, "elementary", 2),
+  [mobyDick.slug]: withSectionAudioPaths(mobyDick, "elementary"),
+  [projectOmega.slug]: withSectionAudioPaths(projectOmega, "elementary"),
+  [braveNewWorld.slug]: withSectionAudioPaths(braveNewWorld, "advanced"),
 };
 
 export type AudiobookSlug = keyof typeof audiobooks;
@@ -150,6 +156,8 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   treasureIsland.slug,
   aliceInWonderland.slug,
   donQuixote.slug,
+  mobyDick.slug,
+  projectOmega.slug,
 
   // Lower-Intermediate
 
@@ -158,4 +166,5 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   // Upper-Intermediate
 
   // Advanced
+  braveNewWorld.slug,
 ]);

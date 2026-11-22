@@ -71,9 +71,14 @@ export const treasureIsland = {
           text: "Then winter came, and it was very cold. My father was ill, and my mother and I worked very hard.",
         },
         {
-          text: "Early one January morning, the captain went to the beach. I helped my mother to make the captain's breakfast. The door opened and a man came in. His face was very white and he had only three ringers on his left hand. I could see that he was a sailor.",
+          text: "Early one January morning, the captain went to the beach. I helped my mother to make the captain’s breakfast. The door opened and a man came in. His face was very white and he had only three fingers on his left hand. I could see that he was a sailor.",
         },
-        { text: "'Can I help you?' I asked." },
+        { text: "“Can I help you?” I asked." },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/three-fingered-sailor.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/three-fingered-sailor.avif?v=3",
+          imageAlt: "A pale sailor with only three fingers on his left hand enters the inn while young Jim Hawkins prepares breakfast.",
+        },
         { text: "The man looked at the captain's breakfast table." },
         { text: "'Is this table for my friend Bill?' he asked." },
         {
@@ -156,7 +161,12 @@ export const treasureIsland = {
         },
         { text: "He took my hand. He was very strong." },
         {
-          text: "'Now my young friend,' he said, 'take me to the captain. Quickly! I can break your arm.'",
+          text: "“Now my young friend,” he said, “take me to the captain. Quickly! I can break your arm.”",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/blind-sailor-grabs-jim.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/blind-sailor-grabs-jim.avif?v=2",
+          imageAlt: "A blind sailor in a tall, broad-brimmed hat grips Jim Hawkins by the arm outside the inn.",
         },
         {
           text: "When the captain saw the man, he did not move. The man put something into the captain's hand and then left the inn.",
@@ -214,7 +224,15 @@ export const treasureIsland = {
         },
         { text: "'No, find the boy! He's near here somewhere, I know.'" },
         {
-          text: "Then I heard a gun. The pirates heard it too, and began to run away. We waited for a minute or two and then we went back to the inn.",
+          text: "Then I heard a gun. The pirates heard it too, and began to run away.",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/jim-and-mother-watch-pirates.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/jim-and-mother-watch-pirates.avif?v=4",
+          imageAlt: "Jim and his mother hide behind a tree while pirates run away from their inn at night.",
+        },
+        {
+          text: "We waited for a minute or two and then we went back to the inn.",
         },
         {
           text: "'What did the pirates want?' a man from the village asked me. 'Did they find the captain's money?'",
@@ -249,6 +267,11 @@ export const treasureIsland = {
         },
         {
           text: "Mr Trelawney and the doctor were excited. 'Livesey!' said Mr Trelawney. 'Tomorrow I'm going to Bristol. I'm going to buy a ship and find sailors. Jim, you and Dr Livesey are going to come with me to look for the treasure!'",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/treasure-map.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/treasure-map.avif?v=1",
+          imageAlt: "An illustrated map of Treasure Island with North Inlet, Spy Glass Hill, a compass rose, and an X marking the treasure.",
         },
         {
           text: "The next day Mr Trelawney left for Bristol. I stayed at home and waited. At last, weeks later, Dr Livesey got a letter from Bristol.",
@@ -302,6 +325,11 @@ export const treasureIsland = {
         },
         {
           text: "'Well, sir,' said the captain, 'it is, but I'm not happy about it. I don't like the sailors.'",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/captain-smollett-warns.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/captain-smollett-warns.avif?v=1",
+          imageAlt: "Captain Smollett warns Mr Trelawney, Dr Livesey, and Jim Hawkins about the sailors aboard the Hispaniola.",
         },
         {
           text: "'Oh?' said Mr Trelawney. He was very angry with the captain.",
@@ -394,6 +422,11 @@ export const treasureIsland = {
           text: "The next morning we arrived at the island. I remembered Billy Bones's map. 'I know there's a house on the island,' I thought. 'But I can't see it from here.'",
         },
         {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/jim-sees-island-from-ship.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/jim-sees-island-from-ship.avif?v=1",
+          imageAlt: "Jim Hawkins leans on the Hispaniola’s rail and looks toward Treasure Island.",
+        },
+        {
           text: "The sailors wanted to leave the ship, but Captain Smollett said, 'Tell the men they can go to the island this afternoon.'",
         },
         {
@@ -455,6 +488,11 @@ export const treasureIsland = {
           text: "'I've got a little boat,' he said. 'You can use it tonight.'",
         },
         {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/ben-gunn-and-jim.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-1/ben-gunn-and-jim.avif?v=1",
+          imageAlt: "Barefoot Ben Gunn speaks with Jim Hawkins on Treasure Island, with the Hispaniola anchored offshore.",
+        },
+        {
           text: "Suddenly we heard the sound of guns. 'Listen! They're fighting!' I said.",
         },
         {
@@ -505,6 +543,11 @@ export const treasureIsland = {
           text: "Then the pirates on the island ran out of the trees. They began to run along the beach.",
         },
         {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-2/escape-from-hispaniola.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-2/escape-from-hispaniola.avif?v=3",
+          imageAlt: "Unarmed Jim Hawkins and five men row away from the Hispaniola in a small boat while pirates remain aboard the ship.",
+        },
+        {
           text: "'Quickly!' said the captain. 'They're going to catch us. Leave the boat.'",
         },
         {
@@ -515,6 +558,11 @@ export const treasureIsland = {
         },
         {
           text: "We hit one of the pirates, and the other men ran away. Then one of the pirates turned and shot Redruth through the head.",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-2/redruth-falls.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-2/redruth-falls.avif?v=1",
+          imageAlt: "Captain Smollett and three companions stand sadly over Redruth outside the island house.",
         },
         {
           text: "Captain Smollett said sadly: 'Now there are only five of us and we have food for ten days. What are we going to do?'",
@@ -572,6 +620,11 @@ export const treasureIsland = {
         },
         { text: "The captain said nothing." },
         {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/silver-under-white-flag.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/silver-under-white-flag.avif?v=5",
+          imageAlt: "A pirate raises his hand beneath a white flag while a man in a white shirt, seen from behind with two legs, holds a musket by the stockade.",
+        },
+        {
           text: "'We didn't kill that man,' I thought. 'Ben Gunn killed him. Now there are only fourteen pirates.'",
         },
         {
@@ -616,6 +669,11 @@ export const treasureIsland = {
           text: "'I can cut the ship's rope with my knife,' I thought. 'And then the wind can push the ship away from the beach.'",
         },
         {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/jim-cuts-hispaniola-rope.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/jim-cuts-hispaniola-rope.avif?v=1",
+          imageAlt: "Jim cuts the Hispaniola's rope from Ben Gunn's small boat while two pirates argue on the ship above him.",
+        },
+        {
           text: "I listened. There were two men on the ship. The other pirates were all on the beach. The men on the ship were talking loudly and angrily. 'They're going to have a fight,' I thought. One of the men was Israel Hands.",
         },
         {
@@ -650,10 +708,18 @@ export const treasureIsland = {
           text: "I did not like his smile. I went away, but I came back very quietly and watched him. He moved slowly and took a knife from behind some rope. Then he put the knife under his jacket and he went back to his old place.",
         },
         {
-          text: "'Ah,' I thought. 'He can move and he's got a knife. He wants to kill me. I must be careful.'v",
+          text: "'Ah,' I thought. 'He can move and he's got a knife. He wants to kill me. I must be careful.'",
         },
         {
-          text: "I went back to him and gave him the bottle. We sailed on and came to the North Inlet. Hands told me what to do and I brought the ship near the beach. I watched the sails and the sea, but I did not watch Hands. Suddenly I turned and saw him behind me with his knife in his hand. I jumped away and took out my gun. I tried to shoot at Hands but nothing happened. The gun was wet with sea water.",
+          text: "I went back to him and gave him the bottle.",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/jim-at-wheel-with-israel-hands.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/jim-at-wheel-with-israel-hands.avif?v=1",
+          imageAlt: "Jim steers the Hispaniola while the wounded Israel Hands watches him from the deck.",
+        },
+        {
+          text: "We sailed on and came to the North Inlet. Hands told me what to do and I brought the ship near the beach. I watched the sails and the sea, but I did not watch Hands. Suddenly I turned and saw him behind me with his knife in his hand. I jumped away and took out my gun. I tried to shoot at Hands but nothing happened. The gun was wet with sea water.",
         },
         {
           text: "I moved away quickly, but Hands followed me. I climbed up among the sails and tried to shoot again. Hands looked up, then he threw his knife at me. It went into my arm. Then I shot him and he dropped into the sea.",
@@ -698,6 +764,11 @@ export const treasureIsland = {
         },
         {
           text: "'You aren't our captain now, John Silver,' one of the pirates said. 'We don't want you. And we don't want that boy.'",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/silver-defends-jim.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/silver-defends-jim.avif?v=4",
+          imageAlt: "Jim stands to the right of Long John Silver, whose left leg is wooden below the knee, with another pirate on the left and three more behind them.",
         },
         {
           text: "'Well,' said Silver. 'I have something you want. Look!' And he showed them Mr Trelawney's treasure map. 'The doctor gave me this!' he said.",
@@ -789,6 +860,11 @@ export const treasureIsland = {
         { text: "'Ah,' said the captain." },
         {
           text: "I had a good dinner that night with all my friends. We were all happy. Silver ate and drank and smiled and laughed too.",
+        },
+        {
+          localMedia: "local-media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/dinner-after-the-treasure.avif",
+          r2: "/media/images/skills/listening/audiobooks/elementary/treasure-island/chapter-3/dinner-after-the-treasure.avif?v=1",
+          imageAlt: "Jim, Silver and their companions share a cheerful dinner around a table on the island.",
         },
         {
           text: "The next morning we started to carry the treasure to the ship. We did not see the three pirates on the island. Three days later, we finished our work. We heard the pirates singing loudly, but we did not see them.",

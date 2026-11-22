@@ -21,6 +21,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-1",
+      questions: ["Why do people call Tina 'Curls'?", "Is she happy being a star?"],
       answers: ["She has beautiful curly hair.", "No; the following paragraphs show that she wants a different life."],
       title: "Paragraph 1",
       text: `Tina Daniels is thirteen years old and she is a star. She can sing and dance. Everyone knows her. Everyone loves her. They call her “Curls” because she has beautiful curly hair. They all want her photo. She can have anything she wants. But is she happy? Does she want to be a star?`,
@@ -31,6 +32,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-2",
+      questions: ["Why does Mrs. Daniels tell Tina not to eat chocolates?", "Why does Tina cry?"],
       answers: ["She says Tina is getting fat and will earn less money.", "She is unhappy and angry with her mother."],
       title: "Paragraph 2",
       timestamp: "0:44",
@@ -42,6 +44,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-3",
+      questions: ["What kind of life does Tina want?", "Where does she decide to go?"],
       answers: ["A quiet life.", "Mrs. White's house in Stonechurch."],
       title: "Paragraph 3",
       timestamp: "1:23",
@@ -53,6 +56,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why don't people recognize Tina?", "When does her train leave?"],
       answers: ["She is wearing jeans and an old jumper.", "At two o'clock."],
       title: "Paragraph 4",
       timestamp: "2:06",
@@ -64,6 +68,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-5",
+      questions: ["How does Tina recognize Mrs. White's house?", "Who opens the door?"],
       answers: ["She has seen it in a photo of Mary.", "Mrs. White."],
       title: "Paragraph 5",
       timestamp: "2:46",
@@ -75,6 +80,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-6",
+      questions: ["How does Tina know Mrs. White?", "Why did Tina leave the city?"],
       answers: ["She is a school friend of Mrs. White's granddaughter, Mary.", "She hates city life."],
       title: "Paragraph 6",
       timestamp: "3:23",
@@ -86,6 +92,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-7",
+      questions: ["Why doesn't Mrs. White recognize Tina?", "What lie does Tina tell her?"],
       answers: ["She has no television or radio.", "She says her mother has agreed to let her stay."],
       title: "Paragraph 7",
       timestamp: "4:05",
@@ -97,6 +104,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-8",
+      questions: ["Why does Tina want to be like a lamb?", "What does Mrs. White tell her to do?"],
       answers: ["Lambs can jump, run and be happy.", "To run."],
       title: "Paragraph 8",
       timestamp: "4:47",
@@ -108,6 +116,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-9",
+      questions: ["Which animals visit the garden at night?", "Why does Mrs. White put out food?"],
       answers: ["Hedgehogs.", "To feed them."],
       title: "Paragraph 9",
       timestamp: "5:25",
@@ -119,6 +128,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-10",
+      questions: ["Why is Tina first happy to see the fox?", "What is the fox carrying?"],
       answers: ["She does not see foxes in city gardens.", "Mrs. White's chicken."],
       title: "Paragraph 10",
       timestamp: "6:10",
@@ -130,6 +140,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-11",
+      questions: ["Why can't they have eggs for breakfast?"],
       answers: ["The chickens are unhappy and cannot give them eggs."],
       title: "Paragraph 11",
       timestamp: "6:45",
@@ -141,6 +152,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-12",
+      questions: ["Who recognizes Tina?", "How does he know everyone is looking for her?"],
       answers: ["The postman.", "He has read about her in the newspapers."],
       title: "Paragraph 12",
       timestamp: "7:24",
@@ -152,6 +164,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-13",
+      questions: ["What does Mrs. White learn from the newspaper?", "Does Tina want to go home?"],
       answers: ["Tina is the lost TV star, Curls.", "No, she wants to stay with Mrs. White."],
       title: "Paragraph 13",
       timestamp: "8:06",
@@ -163,6 +176,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-14",
+      questions: ["Where does Mrs. White suggest Tina should study?", "What does Mrs. White say Tina really wants?"],
       answers: ["At her friend's school on Guernsey.", "To be happy."],
       title: "Paragraph 14",
       timestamp: "8:48",
@@ -174,6 +188,7 @@ export const whoWantsToBeAStar = {
     },
     {
       id: "paragraph-15",
+      questions: ["What is Tina's new life like?", "Does she still want to be a star?"],
       answers: ["She has new friends and new interests at school in Guernsey.", "No, she does not."],
       title: "Paragraph 15",
       timestamp: "9:26",

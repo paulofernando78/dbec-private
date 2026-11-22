@@ -1,25 +1,5 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-export const flyingHomeQuestions: Record<string, readonly string[]> = {
-  "paragraph-1": ["Where does Felix come from?", "Who does he live with?", "Why isn't he happy?"],
-  "paragraph-2": ["What does Felix remember about Brazil?", "How did he travel to New York?"],
-  "paragraph-3": ["Who does Felix want to be with?", "Where does he want to fly?"],
-  "paragraph-4": ["Why does Mr Baxter leave the cage open?", "What does Felix see?"],
-  "paragraph-5": ["Where does Felix fly?", "Who sees him from a café?"],
-  "paragraph-6": ["Where does Felix stop?", "Where does he say he is going?"],
-  "paragraph-7": ["Which direction does Felix fly?", "Why is he happy?"],
-  "paragraph-8": ["How does the weather change?", "What does Felix see in the water?", "Is he sure about continuing his journey?"],
-  "paragraph-9": ["Where does Felix land?", "What does he eat?", "Why doesn't he need to be afraid of the man?"],
-  "paragraph-10": ["Which country is Felix flying across?", "What city does he see?", "What big bird does he meet?"],
-  "paragraph-11": ["What does Felix tell the bird?", "Who can help him in Rio?"],
-  "paragraph-12": ["Who is Felix looking for in Rio?", "Why does the boy want Felix?"],
-  "paragraph-13": ["Who catches Felix?", "Who helps him escape?", "What does Felix do after he escapes?"],
-  "paragraph-14": ["What are the men building?", "Why is Felix worried?"],
-  "paragraph-15": ["What does Felix see above the trees?", "Does he find his family?", "How does he feel at the end?"],
-};
-
-const sectionQuestions = flyingHomeQuestions;
-
 const imageBase = "/media/images/skills/listening/audiobooks/starter/flying-home";
 const localBase = "local-media/images/skills/listening/audiobooks/starter/flying-home";
 
@@ -27,7 +7,7 @@ export const flyingHome = {
   slug: "flying-home",
   title: "Flying Home",
   audio: "",
-  sections: ([
+  sections: [
     {
       id: "summary",
       title: "Summary",
@@ -39,6 +19,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-1",
+      questions: ["Where does Felix come from?", "Who does he live with?", "Why isn't he happy?"],
       answers: ["Brazil.", "The Baxter family in New York.", "He wants to go home to Brazil."],
       title: "Paragraph 1",
       text: `Felix is a blue and yellow bird from Brazil. He lives with the Baxter family in New York. His home is a big cage. It is on the fortieth floor of a tall building. Felix likes the Baxters, and the Baxters like him, they give him food. They talk to him and show him to all their friends. But Felix isn't happy. He wants to go home to Brazil.`,
@@ -49,6 +30,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-2",
+      questions: ["What does Felix remember about Brazil?", "How did he travel to New York?"],
       answers: ["The big yellow moon and his last day in the jungle.", "By plane."],
       title: "Paragraph 2",
       timestamp: "0:36",
@@ -60,6 +42,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-3",
+      questions: ["Who does Felix want to be with?", "Where does he want to fly?"],
       answers: ["His family.", "Home to the jungle in Brazil."],
       title: "Paragraph 3",
       timestamp: "1:10",
@@ -71,6 +54,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why does Mr Baxter leave the cage open?", "What does Felix see?"],
       answers: ["He goes to answer the telephone and forgets to close it.", "An open window."],
       title: "Paragraph 4",
       timestamp: "1:54",
@@ -82,6 +66,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-5",
+      questions: ["Where does Felix fly?", "Who sees him from a café?"],
       answers: ["Out of the cage and window, through the city.", "A girl with her mother."],
       title: "Paragraph 5",
       timestamp: "2:30",
@@ -93,6 +78,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-6",
+      questions: ["Where does Felix stop?", "Where does he say he is going?"],
       answers: ["On the head of the Statue of Liberty.", "Home to Brazil."],
       title: "Paragraph 6",
       timestamp: "3:08",
@@ -104,6 +90,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-7",
+      questions: ["Which direction does Felix fly?", "Why is he happy?"],
       answers: ["South.", "He is free for the first time in two years."],
       title: "Paragraph 7",
       timestamp: "3:50",
@@ -115,6 +102,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-8",
+      questions: ["How does the weather change?", "What does Felix see in the water?", "Is he sure about continuing his journey?"],
       answers: ["It starts to rain and the sky becomes black.", "A ship.", "No. He wonders if he is doing the right thing."],
       title: "Paragraph 8",
       timestamp: "4:26",
@@ -126,6 +114,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-9",
+      questions: ["Where does Felix land?", "What does he eat?", "Why doesn't he need to be afraid of the man?"],
       answers: ["On a ship.", "Fish.", "The man only wants to photograph him."],
       title: "Paragraph 9",
       timestamp: "5:16",
@@ -137,6 +126,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-10",
+      questions: ["Which country is Felix flying across?", "What city does he see?", "What big bird does he meet?"],
       answers: ["Peru.", "Machu Picchu.", "A big bird with black and white feathers; the text does not name its species."],
       title: "Paragraph 10",
       timestamp: "5:56",
@@ -148,6 +138,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-11",
+      questions: ["What does Felix tell the bird?", "Who can help him in Rio?"],
       answers: ["His story about living in a cage and going home.", "Aca."],
       title: "Paragraph 11",
       timestamp: "6:30",
@@ -159,6 +150,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-12",
+      questions: ["Who is Felix looking for in Rio?", "Why does the boy want Felix?"],
       answers: ["Aca.", "He wants to have Felix as a pet."],
       title: "Paragraph 12",
       timestamp: "7:08",
@@ -170,6 +162,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-13",
+      questions: ["Who catches Felix?", "Who helps him escape?", "What does Felix do after he escapes?"],
       answers: ["The boy's father.", "Aca.", "He tells Aca his story."],
       title: "Paragraph 13",
       timestamp: "7:50",
@@ -181,6 +174,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-14",
+      questions: ["What are the men building?", "Why is Felix worried?"],
       answers: ["A new road.", "He cannot see his home or his family."],
       title: "Paragraph 14",
       timestamp: "8:34",
@@ -192,6 +186,7 @@ export const flyingHome = {
     },
     {
       id: "paragraph-15",
+      questions: ["What does Felix see above the trees?", "Does he find his family?", "How does he feel at the end?"],
       answers: ["Four birds: his family.", "Yes, he does.", "Happy to be home."],
       title: "Paragraph 15",
       timestamp: "9:10",
@@ -201,8 +196,5 @@ export const flyingHome = {
       imageAlt: "Felix reuniting with his family in the jungle.",
       mediaPosition: "left",
     },
-  ] as const).map((section) => ({
-    ...section,
-    questions: sectionQuestions[section.id],
-  })) satisfies AudiobookSection[],
+  ] satisfies AudiobookSection[],
 };

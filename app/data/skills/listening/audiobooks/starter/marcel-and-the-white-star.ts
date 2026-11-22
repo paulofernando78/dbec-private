@@ -1,23 +1,5 @@
 import type { AudiobookSection } from "./a-new-zealand-adventure";
 
-export const marcelQuestions: Record<string, readonly string[]> = {
-  "paragraph-1": ["What kind of animal is Marcel?", "Where does he live?", "What does he enjoy doing?"],
-  "paragraph-2": ["Where is Marcel waiting?", "What is the White Star?"],
-  "paragraph-3": ["What do the men want to steal?", "Why does Marcel follow them?"],
-  "paragraph-4": ["Why does Marcel lose the men?", "What does Zaza tell the police?"],
-  "paragraph-5": ["What are the thieves stealing?", "How does Marcel follow their car?"],
-  "paragraph-6": ["Where is Marcel sitting?", "Where does the car stop?"],
-  "paragraph-7": ["Where are the thieves sitting?", "Who is with them?", "What is inside the box?"],
-  "paragraph-8": ["How does Marcel make the man drop the White Star?", "What does Marcel do with the ring?"],
-  "paragraph-9": ["Who follows Marcel?", "Does he escape from the café?"],
-  "paragraph-10": ["What church does Marcel see?", "Where does he go next?"],
-  "paragraph-11": ["What does Marcel try to remove?", "Why does he have a problem?"],
-  "paragraph-12": ["What does Marcel use to remove the ring?", "Does it work?"],
-  "paragraph-13": ["Where does Zaza find the White Star?", "Why does she call the police?"],
-  "paragraph-14": ["What do the newspapers say?", "How does Zaza look in the photos?"],
-  "paragraph-15": ["What is on Marcel's neck?", "What does he wonder about?"],
-};
-
 const imageBase =
   "/media/images/skills/listening/audiobooks/starter/marcel-and-the-white-star";
 const localBase =
@@ -27,7 +9,7 @@ export const marcelAndTheWhiteStar = {
   slug: "marcel-and-the-white-star",
   title: "Marcel and the White Star",
   audio: "",
-  sections: ([
+  sections: [
     {
       id: "summary",
       title: "Summary",
@@ -39,6 +21,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-1",
+      questions: ["What kind of animal is Marcel?", "Where does he live?", "What does he enjoy doing?"],
       answers: ["A mouse.", "On an old boat in Paris, under the kitchen floor.", "Reading, restaurants, old films and the opera."],
       title: "Paragraph 1",
       text: `Marcel is a French mouse. He lives on a beautiful old boat in Paris. (His home is under the kitchen floor.) He likes books, restaurants and old films. He likes the opera, too. One evening in June, Marcel finishes a detective story. Then he goes to have dinner with some friends. They live in the metro station at the Louvre.`,
@@ -49,6 +32,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-2",
+      questions: ["Where is Marcel waiting?", "What is the White Star?"],
       answers: ["At the metro station.", "Zaza Dupont's diamond ring, worth one million pounds."],
       title: "Paragraph 2",
       timestamp: "0:34",
@@ -60,6 +44,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-3",
+      questions: ["What do the men want to steal?", "Why does Marcel follow them?"],
       answers: ["Zaza Dupont's diamond ring.", "He wants to stop them stealing it."],
       title: "Paragraph 3",
       timestamp: "1:16",
@@ -71,6 +56,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-4",
+      questions: ["Why does Marcel lose the men?", "What does Zaza tell the police?"],
       answers: ["There are hundreds of people at the station.", "Two men have stolen the White Star."],
       title: "Paragraph 4",
       timestamp: "1:56",
@@ -83,6 +69,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-5",
+      questions: ["What are the thieves stealing?", "How does Marcel follow their car?"],
       answers: ["A car.", "He jumps onto its number-plate."],
       title: "Paragraph 5",
       timestamp: "2:32",
@@ -94,6 +81,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-6",
+      questions: ["Where is Marcel sitting?", "Where does the car stop?"],
       answers: ["On the car's number-plate.", "Next to a café."],
       title: "Paragraph 6",
       timestamp: "3:11",
@@ -105,6 +93,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-7",
+      questions: ["Where are the thieves sitting?", "Who is with them?", "What is inside the box?"],
       answers: ["At a table in a corner of the café.", "A woman.", "The White Star."],
       title: "Paragraph 7",
       timestamp: "3:48",
@@ -116,6 +105,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-8",
+      questions: ["How does Marcel make the man drop the White Star?", "What does Marcel do with the ring?"],
       answers: ["He bites the tall man's leg.", "He puts it around his neck and runs to the door."],
       title: "Paragraph 8",
       timestamp: "4:30",
@@ -123,6 +113,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-9",
+      questions: ["Who follows Marcel?", "Does he escape from the café?"],
       answers: ["The thieves.", "Yes, he does."],
       title: "Paragraph 9",
       timestamp: "5:15",
@@ -134,6 +125,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-10",
+      questions: ["What church does Marcel see?", "Where does he go next?"],
       answers: ["The Sacré Coeur.", "Zaza's house."],
       title: "Paragraph 10",
       timestamp: "5:58",
@@ -145,6 +137,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-11",
+      questions: ["What does Marcel try to remove?", "Why does he have a problem?"],
       answers: ["The White Star from his neck.", "The ring will not come off."],
       title: "Paragraph 11",
       timestamp: "6:39",
@@ -156,6 +149,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-12",
+      questions: ["What does Marcel use to remove the ring?", "Does it work?"],
       answers: ["Soap.", "Yes, it does."],
       title: "Paragraph 12",
       timestamp: "7:20",
@@ -167,6 +161,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-13",
+      questions: ["Where does Zaza find the White Star?", "Why does she call the police?"],
       answers: ["On her bedroom table, between two perfume bottles.", "She wants to report that her ring is back and has soap on it."],
       title: "Paragraph 13",
       timestamp: "8:02",
@@ -178,6 +173,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-14",
+      questions: ["What do the newspapers say?", "How does Zaza look in the photos?"],
       answers: ["The ring is safe and the thieves have brought it back.", "Very happy."],
       title: "Paragraph 14",
       timestamp: "8:38",
@@ -185,6 +181,7 @@ export const marcelAndTheWhiteStar = {
     },
     {
       id: "paragraph-15",
+      questions: ["What is on Marcel's neck?", "What does he wonder about?"],
       answers: ["A thin red line.", "What is going to happen that day."],
       title: "Paragraph 15",
       timestamp: "9:13",
@@ -194,8 +191,5 @@ export const marcelAndTheWhiteStar = {
       imageAlt: "Marcel relaxing on his boat after returning the White Star.",
       mediaPosition: "bottom",
     },
-  ] as const).map((section) => ({
-    ...section,
-    questions: marcelQuestions[section.id],
-  })) satisfies AudiobookSection[],
+  ] satisfies AudiobookSection[],
 };

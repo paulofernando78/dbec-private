@@ -9,6 +9,7 @@ type ButtonProps = {
   pressed?: boolean;
   onClick?: () => void;
   onMouseDown?: MouseEventHandler<HTMLButtonElement>;
+  href?: string;
   className?: string;
   style?: CSSProperties;
   variant?: "default" | "check" | "answer" | "reset" | "list";
@@ -25,6 +26,7 @@ export const Button = ({
   pressed,
   onClick,
   onMouseDown,
+  href,
   className = "",
   style,
   variant = "default",
@@ -42,6 +44,30 @@ export const Button = ({
       : "!inline-flex !h-[60px] !w-fit !min-w-[60px] items-center justify-center whitespace-nowrap font-bold"
     : "";
 
+  const content = (
+      <span className={isList ? "block h-full w-full" : `${hasText ? "h-full w-full px-4 py-2" : hasChildren ? "h-full w-full p-2" : "absolute inset-1"} grid place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)`}>
+        <span className="flex items-center gap-2 [&_svg]:size-4.5 [&_svg]:stroke-(--button-icon)">
+          {icon}
+          {children}
+        </span>
+      </span>
+  );
+  const classes = `${baseClasses} ${textClasses} ${className} shrink-0`;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        aria-label={ariaLabel}
+        style={style}
+        className={classes}
+        onClick={onClick}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
       type={type}
@@ -49,17 +75,12 @@ export const Button = ({
       aria-disabled={ariaDisabled}
       aria-pressed={pressed}
       style={style}
-      className={`${baseClasses} ${textClasses} ${className} shrink-0`}
+      className={classes}
       onClick={onClick}
       onMouseDown={onMouseDown}
       disabled={disabled}
     >
-      <span className={isList ? "block h-full w-full" : `${hasText ? "h-full w-full px-4 py-2" : hasChildren ? "h-full w-full p-2" : "absolute inset-1"} grid place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)`}>
-        <span className="flex items-center gap-2 [&_svg]:size-4.5 [&_svg]:stroke-(--button-icon)">
-          {icon}
-          {children}
-        </span>
-      </span>
+      {content}
     </button>
   );
 };

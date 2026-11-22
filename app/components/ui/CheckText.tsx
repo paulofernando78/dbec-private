@@ -2,12 +2,18 @@ import { Check } from "lucide-react";
 
 interface CheckTextProps {
   text: string;
+  plan?: "free" | "plus";
 }
 
-export const CheckText = ({ text }: CheckTextProps) => {
+const planColors = {
+  free: `text-amber-500`,
+  plus: `text-violet-500`,
+} as const;
+
+export const CheckText = ({ text, plan = "free" }: CheckTextProps) => {
   return (
     <div className="flex gap-2">
-      <Check className="size-5 text-emerald-500" aria-hidden="true"/>
+      <Check className={`size-5 shrink-0 ${planColors[plan]}`} aria-hidden="true" />
       <span>{text}</span>
     </div>
   );
