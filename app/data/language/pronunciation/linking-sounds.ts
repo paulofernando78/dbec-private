@@ -280,25 +280,25 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // Did you like i(t)?
           {
-            english: "Did you like i(t)?",
+            english: ["Di", underline("d y"), "ou like i(t)?"],
             translation: "Você gostou?",
             audio: media("d+y/did-you-like-it.mp3"),
           },
           // Did you eat?
           {
-            english: "Did you ea(t)?",
+            english: ["Di", underline("d y"), "ou ea(t)?"],
             translation: "Você comeu?",
             audio: media("d+y/did-you-eat.mp3"),
           },
           // Do you know what I mean?
           {
-            english: "D(o) you know what I mean?",
+            english: [underline("D(o) y"), "ou know what I mean?"],
             translation: "Você me entende?",
             audio: media("d+y/do-you-know-what-I-mean.mp3"),
           },
           // Would you like i(t)?
           {
-            english: "Would you like i(t)?",
+            english: ["Woul", underline("d y"), "ou like i(t)?"],
             translation: "Você gostaria?",
             audio: media("d+y/would-you-like-it.mp3"),
           },
@@ -316,25 +316,25 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // What’s your name?
           {
-            english: "What’(s) your name?",
+            english: ["Wha", underline("t’(s) y"), "our name?"],
             translation: "Qual é o seu nome?",
             audio: media("t+y/whats-your-name.mp3"),
           },
           // Dont’t you like it?
           {
-            english: "Don’t you like it?",
+            english: ["Don’", underline("t y"), "ou like it?"],
             translation: "Você não gosta?",
             audio: media("t+y/dont-you-like-it.mp3"),
           },
           // Dont’t you want it?
           {
-            english: "Don’t you want it?",
+            english: ["Don’", underline("t y"), "ou want it?"],
             translation: "Você não quer?",
             audio: media("t+y/dont-you-want-it.mp3"),
           },
           // Didn’t you like it?
           {
-            english: "Didn’t you like it?",
+            english: ["Didn’", underline("t y"), "ou like it?"],
             translation: "Você não gostou?",
             audio: media("t+y/didnt-you-like-it.mp3"),
           },
@@ -352,7 +352,7 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // This year I wanna learn Spanish.
           {
-            english: "This year I wanna learn Spanish.",
+            english: ["Thi", underline("s y"), "ear I wanna learn Spanish."],
             translation: "Este ano eu quero aprender espanhol.",
             audio: media("s+y/ʃ/this-year-i-wanna-learn-spanish.mp3"),
           },
@@ -365,13 +365,13 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // How’s your family?
           {
-            english: "How’s your family?",
+            english: ["How’", underline("s y"), "our family?"],
             translation: "Como está a sua família?",
             audio: media("s+y/ʒ/hows-your-family.mp3"),
           },
           // Where’s your phone?
           {
-            english: "Where’s your phone?",
+            english: ["Where’", underline("s y"), "our phone?"],
             translation: "Cadê o seu telefone?",
             audio: media("s+y/ʒ/wheres-your-phone.mp3"),
           },
@@ -387,8 +387,8 @@ export const pronunciationSections: PronunciationSection[] = [
         group: [
           // I work in an office.
           {
-            english: ["Al", underline("l it t"), "akes ", "i", underline("s an u"), "pload."],
-            translation: "",
+            english: ["Al", underline("l it t"), "ak(e)s ", "i", underline("s an u"), "pload."],
+            translation: "Basta fazer um upload.",
             audio: media("multiple-linking/.mp3"),
           },
           // I work in an office.
