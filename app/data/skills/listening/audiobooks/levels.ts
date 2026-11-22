@@ -117,7 +117,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         title: "Marcel and the Shakespeare Letters",
         description:
           "Marcel, a French detective mouse, teams up with his friend Henry in London to rescue stolen Shakespeare letters before a flight to New York.",
-        duration: "",
+        duration: "--",
       },
 
       {
@@ -147,7 +147,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "don-quixote",
         title: "Don Quixote",
         description:
-          "",
+          "The complete six-chapter reader about Don Quixote and Sancho Panza.",
         duration: "--",
       },
       {

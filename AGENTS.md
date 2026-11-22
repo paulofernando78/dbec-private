@@ -1,3 +1,9 @@
+# Workflow & Token Efficiency
+
+- Before creating a new lesson or data file, inspect only one existing sibling file as a structural reference instead of scanning the entire directory.
+- Do not run broad searches across `local-media/` unless verifying a specific target path.
+- Read only the relevant character sections from [docs/characters.md](docs/characters.md) for the characters actually appearing in the requested scene.
+
 # Content punctuation
 
 - Use straight single quotation marks (`'`) when quoting words, phrases, or examples in content. Never use guillemets (Unicode U+00AB and U+00BB).
@@ -45,7 +51,7 @@
 - Use [docs/characters.md](docs/characters.md) as the per-character reference guide, including the generated portrait references. Keep those documentation images in `docs/characters/references/`; they are not lesson assets and must not be uploaded to R2.
 - Treat the following descriptions as the canonical character designs for all future course illustrations. When an existing course image is supplied as an identity reference, preserve these traits even if that reference is imperfect.
 - Pedro always has naturally black, curly hair, dark-brown eyes, warm medium-tan skin, and a rounded friendly face. He is always clean-shaven: do not give him a mustache, goatee, beard, chin hair, or visible beard shadow. His expressions and posture are open, energetic, and relaxed. A green cap is appropriate in casual outdoor scenes, but it is not mandatory in every context.
-- Eric must remain immediately distinguishable from Pedro. Eric has light-brown, slightly wavy hair—never black—blue-green eyes, fair skin with a subtle cool undertone, a longer and narrower face, finer cheekbones, a straighter and narrower nose, and a neat close-trimmed medium-brown beard that is less full than Pedro's.
+- Eric must remain immediately distinguishable from Pedro. Eric has light-brown, slightly wavy hair—never black—blue-green eyes, fair skin with a subtle cool undertone, a longer and narrower face, finer cheekbones, a straighter and narrower nose, and a neat, close-trimmed medium-brown beard (unlike Pedro, who is always clean-shaven).
 - Give Eric a contemporary British visual character without caricature. Prefer restrained, polished clothing in navy, dark green, burgundy, charcoal, or other muted colors; suitable pieces include a neat overshirt, sweater, waxed jacket, or overcoat.
 - Do not make Pedro and Eric share the same hair color, face shape, skin tone, or overall silhouette. Pedro must remain clean-shaven and should read as warmer, rounder, and more expressive; Eric keeps his close-trimmed beard and should read as cooler, narrower, and slightly more reserved or polished.
 - Match each recurring character's clothing to the scene instead of defaulting to office or work attire. In leisure, travel, neighborhood, or outdoor scenes, use varied casual outfits and avoid repeating clothing from earlier lessons unless continuity explicitly requires it. Do not add work accessories such as ID badges, lanyards, tablets, or formal uniforms outside a professional context.

@@ -73,12 +73,13 @@ const withSectionAudioPaths = <
     | "intermediate"
     | "upper-intermediate"
     | "advanced" = "starter",
+  audioVersion?: number,
 ) => ({
   ...audiobook,
   sections: audiobook.sections.map((section) => ({
     ...section,
     localAudio: `local-media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3`,
-    r2Audio: `/media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3`,
+    r2Audio: `/media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3${audioVersion ? `?v=${audioVersion}` : ""}`,
   })),
 });
 
@@ -115,7 +116,7 @@ export const audiobooks = {
     aliceInWonderland,
     "elementary",
   ),
-  [donQuixote.slug]: withSectionAudioPaths(donQuixote, "elementary"),
+  [donQuixote.slug]: withSectionAudioPaths(donQuixote, "elementary", 2),
 };
 
 export type AudiobookSlug = keyof typeof audiobooks;

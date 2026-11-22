@@ -19,7 +19,7 @@ const sessionBridgeScript = `
             window.parent.postMessage({ type: "dbec:activity" }, "*");
           } catch (error) {}
         };
-        ["pointerdown", "keydown", "wheel"].forEach(function (type) {
+        ["pointerdown", "pointermove", "keydown", "wheel"].forEach(function (type) {
           document.addEventListener(type, notifyParent, { capture: true, passive: true });
         });
         window.setInterval(function () {

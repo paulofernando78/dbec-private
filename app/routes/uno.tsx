@@ -305,6 +305,7 @@ export default function Uno() {
       role="dialog"
       aria-modal="true"
       aria-label="UNO online game"
+      onPointerMove={notifySessionActivity}
     >
       <div className="mx-auto min-h-full w-full max-w-7xl p-4 sm:p-6">
         <Card className="mb-4 shadow-sm">

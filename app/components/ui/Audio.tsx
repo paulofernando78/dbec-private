@@ -244,69 +244,93 @@ export const Audio = ({
 
     const requestId = speechRequestId;
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = speechLang;
-    utterance.rate = playbackRateRef.current === 1 ? 0.92 : 0.72;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-
     speechFullTextRef.current = fullText;
     speechCompleteRef.current = onComplete;
     setProgress(startOffset);
     setDuration(Math.max(fullText.length, 1));
-    utterance.onboundary = (event) => {
-      if (event.name === "word" || event.charIndex > 0) {
-        setProgress(startOffset + event.charIndex);
-      }
-    };
 
     const voices = await waitForVoices();
 
     if (requestId !== speechRequestId) return;
 
     const voice = selectBestVoice(voices, speechLang);
+    const speakChunk = (chunkStart: number) => {
+      if (requestId !== speechRequestId) return;
 
-    if (voice) {
-      utterance.voice = voice;
-    }
+      const limit = Math.min(chunkStart + 240, text.length);
+      const candidate = text.slice(chunkStart, limit);
+      const sentenceEnd = Math.max(
+        candidate.lastIndexOf(". "),
+        candidate.lastIndexOf("? "),
+        candidate.lastIndexOf("! "),
+      );
+      const spaceEnd = candidate.lastIndexOf(" ");
+      const chunkEnd =
+        limit === text.length
+          ? limit
+          : chunkStart +
+            (sentenceEnd > 100
+              ? sentenceEnd + 1
+              : spaceEnd > 100
+                ? spaceEnd + 1
+                : candidate.length);
+      const utterance = new SpeechSynthesisUtterance(
+        text.slice(chunkStart, chunkEnd),
+      );
+      utterance.lang = speechLang;
+      utterance.rate = playbackRateRef.current === 1 ? 0.92 : 0.72;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      if (voice) utterance.voice = voice;
 
-    utterance.onend = () => {
-      if (currentUtterance !== utterance) return;
-
-      currentUtterance = null;
-      currentUtteranceReset = null;
-      utteranceRef.current = null;
-      setLoading(false);
-      setPlaying(false);
-      setProgress(fullText.length);
-      onComplete?.();
-    };
-    utterance.onerror = (event) => {
-      if (event.error !== "canceled" && event.error !== "interrupted") {
-        console.error("Speech synthesis failed:", event.error, text);
-      }
-
-      if (currentUtterance === utterance) {
+      utterance.onboundary = (event) => {
+        if (event.name === "word" || event.charIndex > 0) {
+          setProgress(startOffset + chunkStart + event.charIndex);
+        }
+      };
+      utterance.onend = () => {
+        if (currentUtterance !== utterance) return;
+        setProgress(startOffset + chunkEnd);
+        if (chunkEnd < text.length) {
+          speakChunk(chunkEnd);
+          return;
+        }
         currentUtterance = null;
         currentUtteranceReset = null;
         utteranceRef.current = null;
         setLoading(false);
         setPlaying(false);
+        setProgress(fullText.length);
         onComplete?.();
-      }
+      };
+      utterance.onerror = (event) => {
+        if (event.error !== "canceled" && event.error !== "interrupted") {
+          console.error("Speech synthesis failed:", event.error);
+        }
+        if (currentUtterance === utterance) {
+          currentUtterance = null;
+          currentUtteranceReset = null;
+          utteranceRef.current = null;
+          setLoading(false);
+          setPlaying(false);
+          onComplete?.();
+        }
+      };
+
+      currentUtterance = utterance;
+      utteranceRef.current = utterance;
+      currentUtteranceReset = () => {
+        utteranceRef.current = null;
+        setLoading(false);
+        setPlaying(false);
+      };
+      setLoading(false);
+      setPlaying(true);
+      window.speechSynthesis.resume();
+      window.speechSynthesis.speak(utterance);
     };
 
-    currentUtterance = utterance;
-    utteranceRef.current = utterance;
-    currentUtteranceReset = () => {
-      utteranceRef.current = null;
-      setLoading(false);
-      setPlaying(false);
-    };
-    setLoading(false);
-    setPlaying(true);
-    window.speechSynthesis.resume();
-    window.speechSynthesis.speak(utterance);
+    speakChunk(0);
   };
 
   const playCurrentSourceFallback = () => {
