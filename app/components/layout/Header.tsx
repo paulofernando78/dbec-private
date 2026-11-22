@@ -198,7 +198,7 @@ export const Header = () => {
 
               {sessionExpired && (
                 <p className="mb-4 text-sm" role="status">
-                  Sua sessão expirou por inatividade. Faça login novamente para continuar.
+                  Você foi desconectado após 10 minutos de inatividade. Faça login novamente para continuar.
                 </p>
               )}
 

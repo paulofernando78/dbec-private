@@ -45,6 +45,11 @@ export default function App() {
   return <SessionProvider><AppContent /></SessionProvider>;
 }
 
+function showExpiredLogin(next: string) {
+  const params = new URLSearchParams({ login: "expired", next });
+  window.location.replace(`/?${params}`);
+}
+
 function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -65,12 +70,13 @@ function AppContent() {
   useEffect(() => {
     if (expiredNavigation.state !== "blocked") return;
     const { pathname, search, hash } = expiredNavigation.location;
-    const params = new URLSearchParams({
-      login: "expired",
-      next: pathname + search + hash,
-    });
-    window.location.assign(`/?${params}`);
+    showExpiredLogin(pathname + search + hash);
   }, [expiredNavigation]);
+
+  useEffect(() => {
+    if (session !== null || !isSessionExpired()) return;
+    showExpiredLogin(location.pathname + location.search + location.hash);
+  }, [session, isSessionExpired, location.pathname, location.search, location.hash]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);

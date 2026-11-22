@@ -154,7 +154,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "project-omega",
         title: "Project Omega",
         description: "Eight-chapter audiobook.",
-        duration: "--",
+        duration: "38:11",
       },
       {
         slug: "treasure-island",
@@ -205,7 +205,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "brave-new-world",
         title: "Brave New World",
         description: "Aldous Huxley · complete 17-chapter Advanced reader.",
-        duration: "--",
+        duration: "8:59:09",
       },
     ],
   },
