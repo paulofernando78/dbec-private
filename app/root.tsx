@@ -165,7 +165,7 @@ function AppContent() {
       <div className="app-container">
         <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
           {location.pathname !== "/" && (
-            <div className="min-w-0 flex-1 [container-type:inline-size]">
+            <div className="min-w-0 flex-1">
               <BrandLogo
                 compact
                 layout="responsive"

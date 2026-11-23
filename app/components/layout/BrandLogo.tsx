@@ -16,8 +16,8 @@ export function BrandLogo({
   const isResponsive = layout === "responsive";
   const textSize = compact
     ? isResponsive
-      ? "text-sm min-[520px]:text-[clamp(0.875rem,calc((100cqw-0.5rem)/14),1.75rem)]"
-      : "text-[clamp(0.875rem,calc(100cqw/10),1.75rem)]"
+      ? "text-sm min-[520px]:text-2xl"
+      : "text-2xl"
     : "text-[3rem]";
   const logoStyle = {
     fontFamily: "var(--font-luckiest-guy)",
