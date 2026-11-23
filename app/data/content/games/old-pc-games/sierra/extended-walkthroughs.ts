@@ -285,7 +285,7 @@ export const spaceQuestIV = {
       ]],
     ],
   ),
-  bundleUrl: "/media/games/sierra/space-quest-iv/sq4.jsdos?v=1",
+  bundleUrl: "/media/games/sierra/space-quest-iv/sq4.jsdos?v=2",
 };
 
 export const spaceQuestV = walkthrough(
