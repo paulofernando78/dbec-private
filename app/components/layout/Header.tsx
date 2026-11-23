@@ -12,6 +12,7 @@ type SelectedStudent = {
   name: string;
   schedule: string;
   time: string;
+  lastSeenMs?: number;
 };
 
 export const Header = () => {
@@ -21,6 +22,7 @@ export const Header = () => {
   const session = useSession();
   const [selectedStudent, setSelectedStudent] =
     useState<SelectedStudent | null>(null);
+  const [connectedStudentCount, setConnectedStudentCount] = useState(0);
 
   const location = useLocation();
 
@@ -50,36 +52,42 @@ export const Header = () => {
 
     if (session?.role !== "teacher") {
       setSelectedStudent(null);
+      setConnectedStudentCount(0);
       return;
     }
 
     const selectedStudentId = localStorage.getItem("dbec_selected_student_id");
-    if (!selectedStudentId) {
-      setSelectedStudent(null);
-      return;
-    }
+    if (!selectedStudentId) setSelectedStudent(null);
 
-    fetch("/api/students", { headers: { Accept: "application/json" } })
+    const loadStudents = () => fetch("/api/students", { headers: { Accept: "application/json" } })
       .then(async (response) => {
         if (!response.ok) return null;
         const result = (await response.json()) as {
           students?: SelectedStudent[];
         };
-        return (
-          result.students?.find(
-            (student) => student.studentId === selectedStudentId,
-          ) ?? null
-        );
+        return result.students ?? [];
       })
-      .then((student) => {
-        if (isCurrent) setSelectedStudent(student);
+      .then((students) => {
+        if (!isCurrent || !students) return;
+        const now = Date.now();
+        setConnectedStudentCount(students.filter((student) =>
+          student.lastSeenMs && now - student.lastSeenMs < 90_000,
+        ).length);
+        setSelectedStudent(students.find((student) => student.studentId === selectedStudentId) ?? null);
       })
-      .catch(() => {
-        if (isCurrent) setSelectedStudent(null);
-      });
+      .catch(() => {});
+
+    void loadStudents();
+    const intervalId = window.setInterval(() => void loadStudents(), 30_000);
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") void loadStudents();
+    };
+    document.addEventListener("visibilitychange", refreshWhenVisible);
 
     return () => {
       isCurrent = false;
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
     };
   }, [session?.role, location.pathname]);
 
@@ -122,7 +130,7 @@ export const Header = () => {
   return (
     <>
       {(!isPresentationPage || session) && (
-      <div className="w-full shrink-0 rounded-xl bg-(--surface) p-4 [container-type:inline-size]">
+      <div className="w-full shrink-0 overflow-hidden rounded-xl bg-(--surface) p-4">
         <div
           className={`grid min-h-10 items-center ${
             isPresentationPage
@@ -130,7 +138,7 @@ export const Header = () => {
               : "grid-cols-1"
           }`}
         >
-          <div className="flex min-w-0 items-center gap-4 justify-self-start">
+          <div className={`flex min-w-0 items-center gap-4 justify-self-start ${isPresentationPage ? "" : "w-full overflow-x-auto overflow-y-hidden"}`}>
             {!isPresentationPage && session && (
               <>
                 <AccountSummary
@@ -145,6 +153,15 @@ export const Header = () => {
                       : ""
                   }
                 />
+                {session.role === "teacher" && (
+                  <span
+                    className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedStudentCount > 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
+                    aria-label={`${connectedStudentCount} alunos conectados`}
+                    title={`${connectedStudentCount} alunos conectados`}
+                  >
+                    {connectedStudentCount}
+                  </span>
+                )}
                 {selectedStudent && (
                   <AccountSummary
                     name={selectedStudent.name}

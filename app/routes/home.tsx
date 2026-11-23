@@ -95,14 +95,14 @@ export default function Home() {
           className="mx-auto grid w-[min(100%-2rem,56rem)] gap-5 md:grid-cols-2"
           aria-label="Course options"
         >
-          <article className="flex h-full flex-col rounded-2xl border border-amber-200 bg-amber-50/70 p-6 text-left shadow-[0_8px_24px_rgba(15,23,42,0.08)]">
-            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700">
+          <article className="flex h-full flex-col rounded-2xl border border-amber-200 bg-amber-50/70 p-6 text-left shadow-[0_8px_24px_rgba(15,23,42,0.08)] dark:border-amber-800 dark:bg-amber-950/40">
+            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700 dark:text-amber-100">
               Acesso gratuito
             </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
+            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-200">
               Conheça a plataforma
             </p>
-            <ul className="mt-5 grid gap-2 text-sm text-slate-700">
+            <ul className="mt-5 grid gap-2 text-sm text-slate-700 dark:text-slate-100">
               <li>
                 <CheckText plan="free" text="Prévia do curso" />
               </li>
@@ -120,15 +120,15 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="flex h-full flex-col rounded-2xl border border-violet-200 bg-violet-50/70 p-6 text-left shadow-[0_8px_24px_rgba(120,53,15,0.08)]">
-            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700">
+          <article className="flex h-full flex-col rounded-2xl border border-violet-200 bg-violet-50/70 p-6 text-left shadow-[0_8px_24px_rgba(120,53,15,0.08)] dark:border-violet-800 dark:bg-violet-950/40">
+            <h2 className="text-xl font-black uppercase tracking-tight text-slate-700 dark:text-violet-100">
               Acompanhamento personalizado
             </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
+            <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-200">
               Quer acompanhamento mais próximo? Conheça as opções extras e
               encontre o formato ideal para seus objetivos.
             </p>
-            <ul className="mt-5 grid gap-2 text-sm text-slate-700">
+            <ul className="mt-5 grid gap-2 text-sm text-slate-700 dark:text-slate-100">
               <li>
                 <CheckText plan="plus" text="Aulas particulares e conversação" />
               </li>

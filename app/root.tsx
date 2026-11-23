@@ -163,22 +163,19 @@ function AppContent() {
   return (
     <div className="app">
       <div className="app-container">
-        <Card className="flex items-center justify-between p-0! h-10.25">
-          <Contact />
-          {!isPresentationPage && (
-            <DateTimeCard
-              compact
-              className="shrink-0 p-2! text-xs [&_svg]:size-4 [&_time]:font-normal"
-            />
+        <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
+          {location.pathname !== "/" && (
+            <div className="min-w-0 flex-1 [container-type:inline-size]">
+              <BrandLogo
+                compact
+                layout="responsive"
+                className="pl-0.5 max-w-full translate-y-[0.1rem] dark:invert"
+              />
+            </div>
           )}
+          <div className="ml-auto shrink-0"><Contact /></div>
         </Card>
-        <Card
-          className={`grid items-center gap-2 min-[700px]:flex min-[700px]:justify-between min-[700px]:gap-4 ${
-            isPresentationPage
-              ? "grid-cols-[auto_minmax(0,1fr)_auto]"
-              : "grid-cols-[auto_minmax(0,1fr)_auto]"
-          }`}
-        >
+        <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
           {!isPresentationPage && (
             <Button
               ariaLabel="Menu"
@@ -205,14 +202,10 @@ function AppContent() {
               />
             </div>
           )}
-          {location.pathname !== "/" && (
-            <BrandLogo
-              compact
-              layout="responsive"
-              className="dark:invert translate-y-[0.1rem] max-[699px]:col-start-2 max-[699px]:justify-self-center"
-            />
-          )}
-          <div className="col-start-3 flex items-center gap-2 justify-self-end">
+          <div className="min-w-0 flex-1 [container-type:inline-size]">
+            <DateTimeCard />
+          </div>
+          <div className="ml-auto flex shrink-0 items-center justify-end gap-2">
             <Button
               ariaLabel={isDarkMode ? "Light mode" : "Dark mode"}
               icon={isDarkMode ? <Sun /> : <MoonStar />}

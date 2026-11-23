@@ -9,7 +9,7 @@ type AccountSummaryProps = {
 };
 
 export const AccountSummary = ({ name, subtitle, role, className }: AccountSummaryProps) => (
-  <div className={`flex min-w-0 items-center gap-3 ${className}`}>
+  <div className={`flex min-w-max shrink-0 items-center gap-3 ${className}`}>
     <span
       className="flex size-10 shrink-0 items-center justify-center rounded-full"
       style={{ backgroundColor: avatarColors[role].background, color: avatarColors[role].dot }}
@@ -18,11 +18,11 @@ export const AccountSummary = ({ name, subtitle, role, className }: AccountSumma
       {role === "teacher" ? <Presentation className="size-5" /> : <GraduationCap className="size-5" />}
     </span>
 
-    <div className="min-w-0 leading-tight">
-      <p className="truncate text-[clamp(0.55rem,3.5cqw,0.875rem)] font-semibold text-gray-800">
+    <div className="leading-tight whitespace-nowrap">
+      <p className="text-sm font-semibold text-gray-800">
         {name}
       </p>
-      <p className="truncate text-[clamp(0.45rem,3cqw,0.75rem)] text-gray-500">
+      <p className="text-xs text-gray-500">
         {subtitle}
       </p>
     </div>
