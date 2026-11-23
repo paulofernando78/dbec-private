@@ -197,31 +197,34 @@ export const spaceQuestI = walkthrough(
   ],
 );
 
-export const spaceQuestII = walkthrough(
-  "Escape Vohaul's asteroid, survive Labion's swamp and hunters, infiltrate the orbital fortress, sabotage the cloning plan, and flee in an escape pod.",
-  "1987",
-  [
-    ["Captured on Labion", [
-      "Answer the wristwatch call, retrieve Roger's uniform and locker items, report to the shuttle, then search the crashed transport for the keycard after Vohaul's forces abandon you.",
-      "Avoid the hovercraft patrol by hiding behind the large tree, free the trapped alien, and collect the mail-order whistle.",
-      "Take a spore without letting it burst, enter the vine maze, collect the berries, and retrace the path before the maze closes around Roger.",
-    ]],
-    ["Swamp and Hunter", [
-      "Rub the berries over Roger to repel the swamp creature, enter the deepest water, hold your breath, dive, and collect the glowing gem from the underwater cave.",
-      "Cross the chasm using the dead tree, evade the beast, and use a rock and sling to disable the guard while staying behind cover.",
-      "Use the keycard at the landing craft and launch by following the console sequence: power, attitude, thrusters, lever, then adjust attitude again.",
-    ]],
-    ["Vohaul's Asteroid", [
-      "Search the utility closets for the plunger, glass cutter, toilet paper, wastebasket, lighter, overalls, and other tools while avoiding the floor waxer.",
-      "Survive the retracting floor by attaching the plunger to the wall; create a wastebasket fire to bypass the obstacle near Vohaul's chamber.",
-      "Cut the glass, crawl through the console vent, stop the life-support pump, use the enlarge command, and enter the jar before the effect activates.",
-    ]],
-    ["Escape", [
-      "Search Vohaul, use the monitor and SHSR code, take and wear the oxygen mask before entering the contaminated tube.",
-      "Lure the security robot away from the escape-pod bay, circle back, launch the left pod, and enter suspended animation.",
-    ]],
-  ],
-);
+export const spaceQuestII = {
+  ...walkthrough(
+    "Escape Vohaul's asteroid, survive Labion's swamp and hunters, infiltrate the orbital fortress, sabotage the cloning plan, and flee in an escape pod.",
+    "1987",
+    [
+      ["Captured on Labion", [
+        "Answer the wristwatch call, retrieve Roger's uniform and locker items, report to the shuttle, then search the crashed transport for the keycard after Vohaul's forces abandon you.",
+        "Avoid the hovercraft patrol by hiding behind the large tree, free the trapped alien, and collect the mail-order whistle.",
+        "Take a spore without letting it burst, enter the vine maze, collect the berries, and retrace the path before the maze closes around Roger.",
+      ]],
+      ["Swamp and Hunter", [
+        "Rub the berries over Roger to repel the swamp creature, enter the deepest water, hold your breath, dive, and collect the glowing gem from the underwater cave.",
+        "Cross the chasm using the dead tree, evade the beast, and use a rock and sling to disable the guard while staying behind cover.",
+        "Use the keycard at the landing craft and launch by following the console sequence: power, attitude, thrusters, lever, then adjust attitude again.",
+      ]],
+      ["Vohaul's Asteroid", [
+        "Search the utility closets for the plunger, glass cutter, toilet paper, wastebasket, lighter, overalls, and other tools while avoiding the floor waxer.",
+        "Survive the retracting floor by attaching the plunger to the wall; create a wastebasket fire to bypass the obstacle near Vohaul's chamber.",
+        "Cut the glass, crawl through the console vent, stop the life-support pump, use the enlarge command, and enter the jar before the effect activates.",
+      ]],
+      ["Escape", [
+        "Search Vohaul, use the monitor and SHSR code, take and wear the oxygen mask before entering the contaminated tube.",
+        "Lure the security robot away from the escape-pod bay, circle back, launch the left pod, and enter suspended animation.",
+      ]],
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/space-quest-ii/sq2.jsdos?v=1",
+};
 
 export const spaceQuestIII = walkthrough(
   "Repair the Aluminum Mallard inside a garbage freighter, evade Arnoid, decode the Two Guys' distress message, and rescue them from ScumSoft on Pestulon.",
