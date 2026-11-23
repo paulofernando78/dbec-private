@@ -66,7 +66,7 @@ export const fateOfAtlantis = {
     ]],
   ],
   ),
-  bundleUrl: "/media/games/lucasarts/indiana-jones-and-the-fate-of-atlantis/atlantis.jsdos?v=1",
+  bundleUrl: "/media/games/lucasarts/indiana-jones-and-the-fate-of-atlantis/atlantis.jsdos?v=2",
 };
 
 export const monkeyIsland2 = walkthrough(
