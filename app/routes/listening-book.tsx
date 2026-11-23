@@ -197,38 +197,52 @@ export default function ListeningBookPage() {
               </MediaWrapper.Item>
             )}
             <MediaWrapper.Content className="min-w-0 flex-1">
-              {(section.r2Audio || narration.trim()) && (
-                <AudioPlayer
-                  src={section.r2Audio ?? ""}
-                  fallbackText={narration}
-                  locked={audioLocked}
-                  ariaLabel={`${audioLocked ? "Log in to play" : "Play"} ${audiobook.title}: ${section.title}`}
-                  background="background"
-                />
-              )}
-              <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
-                {(openingImage ? blocks.slice(1) : blocks).map(
-                  (block, index) => {
-                    if (block.r2) {
-                      return (
-                        <SectionImage
-                          key={index}
-                          section={{ ...block, mediaPosition: "top" }}
-                          className={chapterImageSize}
-                        />
-                      );
-                    }
-
-                    const blockText = "text" in block ? block.text : undefined;
-
-                    return (
-                      <p key={index} className="whitespace-pre-line">
-                        {renderContentPart(blockText, index)}
-                      </p>
-                    );
-                  },
+              <div>
+                {(section.r2Audio || narration.trim()) && (
+                  <div className="sticky top-0 z-10">
+                    <AudioPlayer
+                      src={section.r2Audio ?? ""}
+                      fallbackText={narration}
+                      locked={audioLocked}
+                      ariaLabel={`${audioLocked ? "Log in to play" : "Play"} ${audiobook.title}: ${section.title}`}
+                      background="background"
+                    />
+                  </div>
                 )}
+                <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
+                  {(openingImage ? blocks.slice(1) : blocks).map(
+                    (block, index) => {
+                      if (block.r2) {
+                        return (
+                          <SectionImage
+                            key={index}
+                            section={{ ...block, mediaPosition: "top" }}
+                            className={chapterImageSize}
+                          />
+                        );
+                      }
+
+                      const blockText = "text" in block ? block.text : undefined;
+
+                      return (
+                        <p key={index} className="whitespace-pre-line">
+                          {renderContentPart(blockText, index)}
+                        </p>
+                      );
+                    },
+                  )}
+                </div>
               </div>
+              {section.footnotes && section.footnotes.length > 0 && (
+                <aside className="mt-3 rounded-lg bg-(--background) p-3" aria-label="Footnotes">
+                  <h3 className="mb-2 text-lg font-black">Footnotes</h3>
+                  <ol className="list-inside list-decimal space-y-2 text-sm leading-6">
+                    {section.footnotes.map((note, index) => (
+                      <li key={index}>{note}</li>
+                    ))}
+                  </ol>
+                </aside>
+              )}
               <AudiobookQuestions
                 key={`${audiobook.slug}/${section.id}`}
                 questions={questions}

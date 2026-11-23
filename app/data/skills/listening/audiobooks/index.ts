@@ -20,6 +20,7 @@ export type AudiobookSection = AudiobookImage & {
   text: string | readonly AudiobookBlock[];
   questions?: readonly string[];
   answers?: readonly string[];
+  footnotes?: readonly string[];
   mediaPosition?: "left" | "right" | "top" | "bottom";
   localAudio?: string;
   r2Audio?: string;
