@@ -465,7 +465,7 @@ export const StudentForm = ({
 
             return (
               <div key={student.studentId} className="min-w-0">
-                <div className={`flex w-full min-w-0 items-center gap-1 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
+                <div className={`flex w-full min-w-0 px-2 items-center gap-1 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
                   <button
                     type="button"
                     onClick={() => handleStudentSelection(student.studentId)}
