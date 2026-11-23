@@ -161,7 +161,7 @@ function AppContent() {
   return (
     <div className="app">
       <div className="app-container">
-        <Card className="flex items-center justify-between p-0!">
+        <Card className="flex items-center justify-between p-0! h-10.25">
           <Contact />
           {!isPresentationPage && (
             <DateTimeCard

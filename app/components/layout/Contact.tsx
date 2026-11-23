@@ -2,10 +2,9 @@ const patron: ContactItem[] = [
   // buy me a coffee
   {
     link: "https://www.buymeacoffee.com/paulofernando78",
-    icon: "/media/images/icons/contacts/coffee.png",
-    alt: "By me a coffee",
-    className:
-      "w-30 pl-1 rounded-xl",
+    icon: "/media/images/icons/contacts/coffee.png?v=2",
+    alt: "Buy me a coffee",
+    className: "h-auto w-30 pl-1 rounded-xl",
   },
 ];
 
@@ -38,8 +37,8 @@ export const Contact = ({ className }: ContactProps) => {
                 src={contact.icon}
                 alt={contact.alt}
                 className={`block ${contact.className ?? ""}`}
-                width={35}
-                height={35}
+                width={1090}
+                height={306}
               />
             </a>
           </li>
