@@ -2,11 +2,10 @@ const patron: ContactItem[] = [
   // buy me a coffee
   {
     link: "https://www.buymeacoffee.com/paulofernando78",
-    icon: "/media/images/icons/contacts/coffee.gif",
+    icon: "/media/images/icons/contacts/coffee.png",
     alt: "By me a coffee",
-    tooltip: "Buy me a coffee",
     className:
-      "mx-auto !w-[27.5px] !h-[27.5px] ml-[0.1rem] mr-[0.27rem] rounded-full border-[1.5px] shadow-[0_0_0_2px_#F2F2F2,2px_2px_0_#9B9FA3,0_3px_1px_#9B9FA3,2px_2px_1px_#9B9FA3] translate-y-[3.5px]",
+      "w-30 pl-1 rounded-xl",
   },
 ];
 
@@ -21,63 +20,28 @@ type ContactItem = {
   className?: string;
   width?: number;
   height?: number;
-  tooltip?: string;
 };
 
 export const Contact = ({ className }: ContactProps) => {
   return (
     <div className="flex gap-4">
-      <ul className={`flex gap-2 p-2.5 ${className ?? ""}`}>
-        {patron.map((contact, index) => (
-          <li key={contact.link} className="group relative">
+      <ul>
+        {patron.map((contact) => (
+          <li key={contact.link}>
             <a
               href={contact.link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-describedby={`patron-tooltip-${index}`}
-              className="
-                inline-block
-                transition-transform
-                duration-300
-                ease-[cubic-bezier(0.54,3,0.57,0.96)]
-                hover:-translate-y-2.5
-                hover:scale-[1.3]
-              "
+              className="block"
             >
               <img
                 src={contact.icon}
                 alt={contact.alt}
-                className={contact.className}
+                className={`block ${contact.className ?? ""}`}
                 width={35}
                 height={35}
               />
             </a>
-            <span
-              id={`patron-tooltip-${index}`}
-              role="tooltip"
-              className="
-                absolute
-                mb-4
-                px-2
-                py-1
-                text-xs
-                font-medium
-                bottom-full
-                left-1/2
-                -translate-x-1/2
-                whitespace-nowrap
-                bg-gray-800
-                text-white
-                rounded
-                opacity-0
-                shadow-sm
-                transition-opacity
-                group-hover:opacity-100 group-focus-within:opacity-100
-                z-10
-                pointer-events-none"
-            >
-              {contact.tooltip}
-            </span>
           </li>
         ))}
       </ul>

@@ -151,6 +151,7 @@ export default function Home() {
                 className="group relative grid h-15 w-15 shrink-0 cursor-pointer place-items-center rounded-[12px] border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-[3px] text-(--button-text) shadow-[0_1px_1px_rgba(0,0,0,0.3)] transition-[transform,box-shadow] duration-80 hover:-translate-y-0.5 active:scale-[0.995] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)]"
               >
                 <span className="grid size-full place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
+                  {/* Whataspp */}
                   <img
                     src="/media/images/icons/contacts/whatsapp.png"
                     alt="WhatsApp"
@@ -163,7 +164,7 @@ export default function Home() {
           </article>
         </section>
         <div className="w-max mx-auto">
-          <Contact />
+          {/* <Contact /> */}
         </div>
       </div>
 

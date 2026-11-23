@@ -7,13 +7,18 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useBlocker, useLocation,
+  useBlocker,
+  useLocation,
   useNavigate,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { SessionProvider, useSession, useSessionExpired } from "@/hooks/useSession";
+import {
+  SessionProvider,
+  useSession,
+  useSessionExpired,
+} from "@/hooks/useSession";
 
 import { Header } from "@/components/layout/Header";
 import { DateTimeCard } from "@/components/content/DateTimeCard";
@@ -22,6 +27,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { House, Info, LogIn, LogOut, Menu, MoonStar, Sun } from "lucide-react";
 import { BrandLogo } from "./components/layout/BrandLogo";
 import { Card } from "./components/ui/Card";
+import { Contact } from "./components/layout/Contact";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -42,7 +48,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <SessionProvider><AppContent /></SessionProvider>;
+  return (
+    <SessionProvider>
+      <AppContent />
+    </SessionProvider>
+  );
 }
 
 function showExpiredLogin(next: string) {
@@ -62,9 +72,11 @@ function AppContent() {
   const isAuthenticated = Boolean(session);
 
   const isSessionExpired = useSessionExpired();
-  const expiredNavigation = useBlocker(({ currentLocation, nextLocation }) =>
-    (currentLocation.pathname !== nextLocation.pathname ||
-      currentLocation.search !== nextLocation.search) && isSessionExpired(),
+  const expiredNavigation = useBlocker(
+    ({ currentLocation, nextLocation }) =>
+      (currentLocation.pathname !== nextLocation.pathname ||
+        currentLocation.search !== nextLocation.search) &&
+      isSessionExpired(),
   );
 
   useEffect(() => {
@@ -76,7 +88,13 @@ function AppContent() {
   useEffect(() => {
     if (session !== null || !isSessionExpired()) return;
     showExpiredLogin(location.pathname + location.search + location.hash);
-  }, [session, isSessionExpired, location.pathname, location.search, location.hash]);
+  }, [
+    session,
+    isSessionExpired,
+    location.pathname,
+    location.search,
+    location.hash,
+  ]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
@@ -143,9 +161,15 @@ function AppContent() {
   return (
     <div className="app">
       <div className="app-container">
-        {!isPresentationPage && (
-          <DateTimeCard compact className="shrink-0 bg-(--surface) p-2! text-xs [&_svg]:size-4 [&_time]:font-normal" />
-        )}
+        <Card className="flex items-center justify-between p-0!">
+          <Contact />
+          {!isPresentationPage && (
+            <DateTimeCard
+              compact
+              className="shrink-0 p-2! text-xs [&_svg]:size-4 [&_time]:font-normal"
+            />
+          )}
+        </Card>
         <Card
           className={`grid items-center gap-2 min-[700px]:flex min-[700px]:justify-between min-[700px]:gap-4 ${
             isPresentationPage

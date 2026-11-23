@@ -385,7 +385,7 @@ export const pronunciationSections: PronunciationSection[] = [
     items: [
       {
         group: [
-          // I work in an office.
+          // All it takes is an upload.
           {
             english: ["Al", underline("l it t"), "ak(e)s ", "i", underline("s an u"), "pload."],
             translation: "Basta fazer um upload.",
