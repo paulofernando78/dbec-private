@@ -1,8 +1,9 @@
 import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
+import { createHash } from "node:crypto";
 import { createReadStream, existsSync, watch } from "node:fs";
-import { readFile, stat } from "node:fs/promises";
-import { extname, resolve, sep } from "node:path";
+import { mkdir, readFile, stat, unlink, writeFile } from "node:fs/promises";
+import { dirname, extname, resolve, sep } from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import { synthesizeDictionaryTts } from "./functions/_dictionary-tts.mjs";
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
@@ -11,6 +12,8 @@ import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 import { students as developmentStudents } from "./app/data/students";
 
 const localLessonCompletionByUser = new Map<string, Map<string, boolean>>();
+const maxGameSaveSize = 10 * 1024 * 1024;
+const gameSaveIdPattern = /^\/games\/(sierra|lucas-arts)\/([a-z0-9-]+)$/;
 const localNotes = new Map<string, { teacher: string; student: string }>();
 const localCalendarNotes = new Map<string, string>();
 const localAiTutorRequests = new Map<string, number[]>();
@@ -906,6 +909,91 @@ const localAuth = (): Plugin => ({
         } catch {
           response.statusCode = 400;
           response.end(JSON.stringify({ error: "JSON inválido." }));
+        }
+      },
+    );
+
+    server.middlewares.use(
+      "/api/game-save",
+      async (request, response) => {
+        response.setHeader("Cache-Control", "no-store");
+        if (!localSession || localSession.expiresAt <= Date.now()) {
+          response.statusCode = 401;
+          response.end("Não autorizado.");
+          return;
+        }
+
+        const gameId = new URL(request.url ?? "", "http://localhost").searchParams.get("gameId") ?? "";
+        const match = gameId.match(gameSaveIdPattern);
+        if (!match) {
+          response.statusCode = 400;
+          response.end("Jogo inválido.");
+          return;
+        }
+
+        const userKey = localSession.role === "student"
+          ? `student:${localSession.studentId ?? localSession.username}`
+          : `teacher:${localSession.username}`;
+        const userFolder = createHash("sha256").update(userKey).digest("hex");
+        const filePath = resolve(process.cwd(), ".local-game-saves", userFolder, match[1], `${match[2]}.changes`);
+
+        try {
+          if (request.method === "GET") {
+            try {
+              const data = await readFile(filePath);
+              response.setHeader("Content-Type", "application/octet-stream");
+              response.statusCode = 200;
+              response.end(data);
+            } catch (error) {
+              if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+              response.statusCode = 204;
+              response.end();
+            }
+            return;
+          }
+
+          if (request.method === "PUT") {
+            const chunks: Buffer[] = [];
+            let size = 0;
+            for await (const chunk of request) {
+              const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+              size += bytes.length;
+              if (size > maxGameSaveSize) {
+                response.statusCode = 413;
+                response.end("Save muito grande.");
+                return;
+              }
+              chunks.push(bytes);
+            }
+            if (size === 0) {
+              response.statusCode = 400;
+              response.end("Save inválido.");
+              return;
+            }
+            await mkdir(dirname(filePath), { recursive: true });
+            await writeFile(filePath, Buffer.concat(chunks));
+            response.setHeader("Content-Type", "application/json");
+            response.end(JSON.stringify({ ok: true, size }));
+            return;
+          }
+
+          if (request.method === "DELETE") {
+            try {
+              await unlink(filePath);
+            } catch (error) {
+              if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+            }
+            response.setHeader("Content-Type", "application/json");
+            response.end(JSON.stringify({ ok: true }));
+            return;
+          }
+
+          response.statusCode = 405;
+          response.end("Método não permitido.");
+        } catch (error) {
+          console.error("Could not process local game save:", error);
+          response.statusCode = 500;
+          response.end("Não foi possível salvar o jogo.");
         }
       },
     );

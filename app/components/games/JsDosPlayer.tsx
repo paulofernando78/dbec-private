@@ -52,21 +52,27 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
     <script>
       const gameId = ${JSON.stringify(gameId)};
       const saveUrl = "/api/game-save?gameId=" + encodeURIComponent(gameId);
-      const storageUnavailable = (status) => [401, 404, 503].includes(status);
+      const start = async () => {
+        const sessionResponse = await fetch("/api/session", { credentials: "same-origin" });
+        if (!sessionResponse.ok) throw new Error("Sign in to save and load this game.");
+        const session = await sessionResponse.json();
+        const account = session.role === "student"
+          ? "student:" + (session.studentId || session.username)
+          : "teacher:" + session.username;
 
-      Dos(document.getElementById("dos"), {
+        Dos(document.getElementById("dos"), {
         url: ${JSON.stringify(bundleUrl)},
         autoStart: true,
         autoSave: true,
         fsChanges: {
           local: true,
-          urlToKey: async () => gameId,
+          urlToKey: async () => account + ":" + gameId,
           pull: async () => {
             const response = await fetch(saveUrl, {
               credentials: "same-origin",
               headers: { Accept: "application/octet-stream" }
             });
-            if (response.status === 204 || storageUnavailable(response.status)) return null;
+            if (response.status === 204) return null;
             if (!response.ok) throw new Error("Could not load the game save.");
             return new Uint8Array(await response.arrayBuffer());
           },
@@ -77,7 +83,7 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
               headers: { "Content-Type": "application/octet-stream" },
               body: data
             });
-            if (!response.ok && !storageUnavailable(response.status)) {
+            if (!response.ok) {
               throw new Error("Could not store the game save.");
             }
           },
@@ -86,7 +92,7 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
               method: "DELETE",
               credentials: "same-origin"
             });
-            if (!response.ok && !storageUnavailable(response.status)) {
+            if (!response.ok) {
               throw new Error("Could not delete the game save.");
             }
           }
@@ -96,6 +102,14 @@ const createPlayerDocument = (bundleUrl: string, gameId: string, title: string) 
         mouseCapture: false,
         renderAspect: "4/3",
         theme: "dark"
+        });
+      };
+      start().catch((error) => {
+        const player = document.getElementById("dos");
+        player.textContent = error.message || "Could not start the game.";
+        player.style.color = "white";
+        player.style.display = "grid";
+        player.style.placeItems = "center";
       });
     </script>
     <script>${sessionBridgeScript}</script>
