@@ -2,6 +2,43 @@
   {
     "definitions": [
       {
+        "word": "nag",
+        "partOfSpeech": "verb",
+        "enDefinition": "to repeatedly complain to or remind someone about something, often in an annoying way",
+        "ptDefinition": "importunar; pegar no pé; insistir repetidamente com reclamações ou lembretes",
+        "examples": [
+          {
+            "enExample": "I don't want to nag you, but the bill is past due.",
+            "ptExample": "Não quero ficar pegando no seu pé, mas a conta está vencida."
+          },
+          {
+            "enExample": "He kept nagging his brother to clean the room.",
+            "ptExample": "Ele continuou insistindo para que o irmão limpasse o quarto."
+          }
+        ],
+        "synonyms": ["pester", "bother", "keep reminding"],
+        "seeAlso": ["past due", "pester", "remind"]
+      },
+      {
+        "word": "nag",
+        "partOfSpeech": "noun",
+        "enDefinition": "an old or weak horse; informally, a person who repeatedly complains or reminds others about things",
+        "ptDefinition": "cavalo velho ou fraco; informalmente, pessoa que vive reclamando ou cobrando os outros",
+        "examples": [
+          {
+            "enExample": "The cartoon shows a nag beside a past-due notice.",
+            "ptExample": "O desenho mostra um cavalo ao lado de um aviso de cobrança vencida."
+          }
+        ],
+        "seeAlso": ["horse", "past due"],
+        "notes": [
+          {
+            "enNote": "The past-due illustration plays on the two meanings: a horse and the verb meaning to keep reminding someone.",
+            "ptNote": "A imagem de past due brinca com os dois sentidos: cavalo e o verbo de insistir com lembretes."
+          }
+        ]
+      },
+      {
         "word": "nourish",
         "phonetics": "/ˈnɜːr.ɪʃ/",
         "partOfSpeech": "verb",
@@ -909,7 +946,8 @@
       },
       {
         "word": "no point in",
-        "enDefinition": "No reason to; it’s not worth (doing something)."
+        "enDefinition": "No reason to; it’s not worth (doing something).",
+        "ptDefinition": "não adianta; não vale a pena fazer algo"
       },
       {
         "word": "now you're talking",

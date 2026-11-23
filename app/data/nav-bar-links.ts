@@ -148,6 +148,11 @@ export const links: NavItem[] = [
         subgroup: "verb tenses",
         children: [
           {
+            href: "/grammar/simple-present",
+            label: "simple present",
+            icon: BookMarked,
+          },
+          {
             href: "/grammar/future-forms",
             label: "will & going to",
             icon: BookMarked,
@@ -183,6 +188,31 @@ export const links: NavItem[] = [
       {
         subgroup: "grammar structures",
         children: [
+          {
+            href: "/grammar/relative-pronouns",
+            label: "relative pronouns",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/comparatives",
+            label: "comparatives",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/superlatives",
+            label: "superlatives",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/so-too",
+            label: "so / too",
+            icon: BookMarked,
+          },
+          {
+            href: "/grammar/there-is-there-are",
+            label: "there is / there are",
+            icon: BookMarked,
+          },
           {
             href: "/grammar/who-and-what-questions",
             label: "who and what questions",

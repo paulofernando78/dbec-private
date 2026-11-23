@@ -46,18 +46,8 @@
       {
         "word": "a run for their money",
         "partOfSpeech": "idiom",
-        "enDefinition": "to challenge someone, providing strong competition or resistance; to make it difficult for someone to succeed or achieve something easily",
+        "enDefinition": "To be strong competition.",
         "ptDefinition": "desafiar alguém, proporcionando forte competição ou resistência; dificultar para que alguém alcance algo facilmente",
-        "examples": [
-          {
-            "enExample": "The underdog team gave the reigning champions a run for their money in the finals.",
-            "ptExample": "O time azarão deu trabalho para os campeões na final."
-          },
-          {
-            "enExample": "If you hire her, she'll give all the other employees a run for their money.",
-            "ptExample": "Se você contratá-la, ela vai dar trabalho para todos os outros funcionários."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 6."
@@ -89,6 +79,7 @@
         "word": "ad campaign",
         "partOfSpeech": "business term",
         "enDefinition": "a coordinated series of advertisements for a product or brand",
+        "ptDefinition": "campanha publicitária",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -141,6 +132,7 @@
         "word": "associate our brand with",
         "partOfSpeech": "business term",
         "enDefinition": "connect our brand mentally with a quality, image, or idea",
+        "ptDefinition": "associar nossa marca a",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -382,6 +374,7 @@
         "word": "bought out",
         "partOfSpeech": "idiom",
         "enDefinition": "purchased and taken over by another company",
+        "ptDefinition": "foi comprada por outra empresa",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 28."
@@ -392,6 +385,7 @@
         "word": "brainstorming",
         "partOfSpeech": "idiom",
         "enDefinition": "generating many possible ideas",
+        "ptDefinition": "levantamento de ideias em grupo",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -402,6 +396,7 @@
         "word": "brand equity",
         "partOfSpeech": "business term",
         "enDefinition": "the commercial value created by customers' perception of a brand",
+        "ptDefinition": "valor comercial da marca",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -710,6 +705,7 @@
         "word": "comparing the two is like comparing apples to oranges",
         "partOfSpeech": "idiom",
         "enDefinition": "the two things are too different to compare fairly",
+        "ptDefinition": "comparar coisas muito diferentes",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 23."
@@ -741,6 +737,7 @@
         "word": "cover yourself",
         "partOfSpeech": "idiom",
         "enDefinition": "protect yourself from blame or risk",
+        "ptDefinition": "proteger-se de críticas ou culpa",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 15."
@@ -852,6 +849,7 @@
         "word": "cutting back",
         "partOfSpeech": "idiom",
         "enDefinition": "reducing spending, activity, or use",
+        "ptDefinition": "reduzindo gastos ou atividades",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 16."
@@ -883,6 +881,7 @@
         "word": "did a 180",
         "partOfSpeech": "idiom",
         "enDefinition": "changed completely in the opposite direction",
+        "ptDefinition": "mudou completamente de posição",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 25."
@@ -977,6 +976,7 @@
         "word": "done a 180",
         "partOfSpeech": "idiom",
         "enDefinition": "changed completely to the opposite position or behavior",
+        "ptDefinition": "mudou completamente de posição",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 25."
@@ -987,6 +987,7 @@
         "word": "double-check",
         "partOfSpeech": "business term",
         "enDefinition": "check something again to make sure it is correct",
+        "ptDefinition": "conferir novamente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -1081,6 +1082,7 @@
         "word": "dropped the ball",
         "partOfSpeech": "idiom",
         "enDefinition": "made a mistake or failed a responsibility",
+        "ptDefinition": "cometeu um erro; falhou com a responsabilidade",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 13."
@@ -1091,6 +1093,7 @@
         "word": "drove a hard bargain",
         "partOfSpeech": "idiom",
         "enDefinition": "negotiated very firmly to obtain favorable terms",
+        "ptDefinition": "negociou com firmeza",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 30."
@@ -1206,6 +1209,7 @@
         "word": "endorsement",
         "partOfSpeech": "business term",
         "enDefinition": "public approval or support for a product, person, or organization",
+        "ptDefinition": "apoio ou recomendação pública",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -1254,6 +1258,7 @@
         "word": "first thing in the morning",
         "partOfSpeech": "idiom",
         "enDefinition": "at the very beginning of the morning",
+        "ptDefinition": "logo no começo da manhã",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 30."
@@ -1295,30 +1300,10 @@
         ]
       },
       {
-        "word": "for the record",
-        "partOfSpeech": "idiom",
-        "enDefinition": "used to clarify or emphasize a fact, often to ensure there is no misunderstanding",
-        "ptDefinition": "usado para esclarecer ou enfatizar um fato, geralmente para evitar mal-entendidos",
-        "examples": [
-          {
-            "enExample": "Just for the record, I never agreed to those terms.",
-            "ptExample": "Só para deixar claro, eu nunca concordei com esses termos."
-          },
-          {
-            "enExample": "Just for the record, the project deadline is next Friday, not this Friday.",
-            "ptExample": "Só para constar, o prazo do projeto é na próxima sexta, não nesta."
-          }
-        ],
-        "notes": [
-          {
-            "enNote": "Used in Business 1, Lesson 6, Lesson 15."
-          }
-        ]
-      },
-      {
         "word": "forecasts",
         "partOfSpeech": "business term",
         "enDefinition": "predictions about future business conditions or results",
+        "ptDefinition": "previsões de resultados futuros",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -1350,6 +1335,7 @@
         "word": "gave it my best shot",
         "partOfSpeech": "idiom",
         "enDefinition": "made the greatest effort I could",
+        "ptDefinition": "fiz o melhor que pude",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 10."
@@ -1360,6 +1346,7 @@
         "word": "gave me an earful",
         "partOfSpeech": "idiom",
         "enDefinition": "criticized or complained to me at length",
+        "ptDefinition": "me criticou longamente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -1408,6 +1395,7 @@
         "word": "get nailed",
         "partOfSpeech": "idiom",
         "enDefinition": "be caught and punished",
+        "ptDefinition": "ser pego e punido",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 18."
@@ -1460,6 +1448,7 @@
         "word": "get some experience under his belt",
         "partOfSpeech": "idiom",
         "enDefinition": "gain some useful experience",
+        "ptDefinition": "adquirir experiência prática",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 23."
@@ -1617,6 +1606,7 @@
         "word": "getting this project off the ground",
         "partOfSpeech": "idiom",
         "enDefinition": "successfully starting and developing this project",
+        "ptDefinition": "iniciar o projeto com sucesso",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 1."
@@ -1626,22 +1616,8 @@
       {
         "word": "give it our best shot",
         "partOfSpeech": "idiom",
-        "enDefinition": "to try one's hardest or put forth maximum effort in an attempt to succeed",
+        "enDefinition": "To try something.",
         "ptDefinition": "tentar o máximo possível ou dar o melhor de si para ter sucesso",
-        "examples": [
-          {
-            "enExample": "Even though it was a tough challenge, he gave it his best shot and passed the exam.",
-            "ptExample": "Embora fosse um desafio difícil, ele deu o melhor de si e passou na prova."
-          },
-          {
-            "enExample": "She gave it her best shot, but the performance still didn't go as planned.",
-            "ptExample": "Ela deu o melhor de si, mas a apresentação ainda não saiu como o planejado."
-          },
-          {
-            "enExample": "I'm not sure if I can do it, but I'll give it my best shot.",
-            "ptExample": "Não tenho certeza se consigo fazer, mas vou dar o meu melhor."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 10."
@@ -1673,6 +1649,7 @@
         "word": "give the green light",
         "partOfSpeech": "idiom",
         "enDefinition": "officially approve a plan or project",
+        "ptDefinition": "aprovar oficialmente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -1683,6 +1660,7 @@
         "word": "give this project the green light",
         "partOfSpeech": "idiom",
         "enDefinition": "officially approve this project",
+        "ptDefinition": "aprovar oficialmente este projeto",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -1693,6 +1671,7 @@
         "word": "given his walking papers",
         "partOfSpeech": "idiom",
         "enDefinition": "officially dismissed from his job",
+        "ptDefinition": "foi demitido",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 26."
@@ -1808,6 +1787,7 @@
         "word": "got nailed",
         "partOfSpeech": "idiom",
         "enDefinition": "was caught and punished",
+        "ptDefinition": "foi pego e punido",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 18."
@@ -1818,6 +1798,7 @@
         "word": "got that out of my system",
         "partOfSpeech": "idiom",
         "enDefinition": "satisfied an urge and no longer want to do it",
+        "ptDefinition": "satisfez uma vontade e agora não sente mais necessidade",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -1828,6 +1809,7 @@
         "word": "got wind of",
         "partOfSpeech": "idiom",
         "enDefinition": "learned or heard about something, often indirectly",
+        "ptDefinition": "ficou sabendo por vias indiretas",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 1."
@@ -1916,8 +1898,9 @@
       },
       {
         "word": "has issues with",
-        "partOfSpeech": "idiom",
+        "partOfSpeech": "verb phrase",
         "enDefinition": "has problems or difficulty with",
+        "ptDefinition": "tem problemas com",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -1947,8 +1930,9 @@
       },
       {
         "word": "he does have issues",
-        "partOfSpeech": "idiom",
+        "partOfSpeech": "noun",
         "enDefinition": "he has personal or behavioral problems",
+        "ptDefinition": "ele tem problemas de comportamento",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -2102,6 +2086,7 @@
         "word": "i don't know how she can keep her head above water",
         "partOfSpeech": "idiom",
         "enDefinition": "I do not know how she manages all her responsibilities",
+        "ptDefinition": "não sei como ela dá conta de tantas responsabilidades",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 21."
@@ -2133,6 +2118,7 @@
         "word": "i hear what you're saying",
         "partOfSpeech": "idiom",
         "enDefinition": "I understand your point",
+        "ptDefinition": "entendo seu ponto de vista",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -2264,16 +2250,12 @@
       {
         "word": "just for the record",
         "partOfSpeech": "idiom",
-        "enDefinition": "used to clarify or emphasize a fact, often to ensure there is no misunderstanding",
+        "enDefinition": "let me make my opinion clear",
         "ptDefinition": "usado para esclarecer ou enfatizar um fato, geralmente para evitar mal-entendidos",
         "examples": [
           {
-            "enExample": "Just for the record, I never agreed to those terms.",
-            "ptExample": "Só para deixar claro, eu nunca concordei com esses termos."
-          },
-          {
-            "enExample": "Just for the record, the project deadline is next Friday, not this Friday.",
-            "ptExample": "Só para constar, o prazo do projeto é na próxima sexta, não nesta."
+            "enExample": "I know that everybody else likes the idea of using a bear for a mascot, but, just for the record, I think it's a lousy idea.",
+            "ptExample": "Eu sei que todo mundo gosta da ideia de usar um urso como mascote, mas, só para constar, acho que é uma péssima ideia."
           }
         ],
         "notes": [
@@ -2492,6 +2474,7 @@
         "word": "kissing up",
         "partOfSpeech": "idiom",
         "enDefinition": "flattering someone powerful for personal advantage",
+        "ptDefinition": "bajulando alguém influente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 20."
@@ -2586,6 +2569,7 @@
         "word": "launch",
         "partOfSpeech": "business term",
         "enDefinition": "the introduction of a new product, service, or project",
+        "ptDefinition": "lançamento de produto ou projeto",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -2613,6 +2597,7 @@
         "word": "leaving us",
         "partOfSpeech": "idiom",
         "enDefinition": "departing from the company",
+        "ptDefinition": "saindo da empresa",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 26."
@@ -2824,6 +2809,7 @@
         "word": "losing his shirt",
         "partOfSpeech": "idiom",
         "enDefinition": "losing a great deal of money",
+        "ptDefinition": "perdendo muito dinheiro",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -2834,6 +2820,7 @@
         "word": "made a killing",
         "partOfSpeech": "idiom",
         "enDefinition": "made a very large profit",
+        "ptDefinition": "lucrou muito",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 1."
@@ -2865,6 +2852,7 @@
         "word": "made a splash",
         "partOfSpeech": "idiom",
         "enDefinition": "attracted a lot of attention or made a strong impression",
+        "ptDefinition": "chamou bastante atenção",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 24."
@@ -2875,6 +2863,7 @@
         "word": "made the grade",
         "partOfSpeech": "idiom",
         "enDefinition": "met the required standard",
+        "ptDefinition": "atingiu o nível exigido",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 26."
@@ -2948,6 +2937,7 @@
         "word": "market demand",
         "partOfSpeech": "business term",
         "enDefinition": "the amount of a product or service that customers want to buy",
+        "ptDefinition": "demanda de clientes no mercado",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -2958,6 +2948,7 @@
         "word": "mascot",
         "partOfSpeech": "business term",
         "enDefinition": "a person, animal, or character used to represent an organization or brand",
+        "ptDefinition": "mascote de marca ou organização",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -2968,6 +2959,7 @@
         "word": "messed around",
         "partOfSpeech": "idiom",
         "enDefinition": "wasted time instead of working seriously",
+        "ptDefinition": "perdeu tempo em vez de trabalhar",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 9."
@@ -2978,6 +2970,7 @@
         "word": "messing around",
         "partOfSpeech": "idiom",
         "enDefinition": "wasting time instead of working seriously",
+        "ptDefinition": "perdendo tempo em vez de trabalhar",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 9."
@@ -2988,6 +2981,7 @@
         "word": "micro-managed",
         "partOfSpeech": "idiom",
         "enDefinition": "controlled in excessive detail",
+        "ptDefinition": "controlou cada detalhe em excesso",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 28."
@@ -2998,6 +2992,7 @@
         "word": "missing the point",
         "partOfSpeech": "idiom",
         "enDefinition": "failing to understand the main idea",
+        "ptDefinition": "não entendeu o ponto principal",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 23."
@@ -3088,6 +3083,7 @@
         "word": "nothing is set in stone",
         "partOfSpeech": "idiom",
         "enDefinition": "nothing has been finally decided",
+        "ptDefinition": "nada foi decidido definitivamente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -3098,6 +3094,7 @@
         "word": "nothing is set in stone yet",
         "partOfSpeech": "idiom",
         "enDefinition": "nothing has been finally decided yet",
+        "ptDefinition": "nada foi decidido definitivamente ainda",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -3129,6 +3126,7 @@
         "word": "on her high horse",
         "partOfSpeech": "idiom",
         "enDefinition": "acting as though she is morally superior to others",
+        "ptDefinition": "agindo com superioridade",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -3139,6 +3137,7 @@
         "word": "on his high horse",
         "partOfSpeech": "idiom",
         "enDefinition": "acting morally superior or arrogant",
+        "ptDefinition": "agindo com superioridade",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -3254,6 +3253,7 @@
         "word": "panned out",
         "partOfSpeech": "idiom",
         "enDefinition": "developed successfully",
+        "ptDefinition": "teve um bom resultado",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 6."
@@ -3327,6 +3327,7 @@
         "word": "plugging products",
         "partOfSpeech": "idiom",
         "enDefinition": "advertising or promoting products",
+        "ptDefinition": "promovendo produtos",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 3."
@@ -3400,6 +3401,7 @@
         "word": "prides herself on being a good baker",
         "partOfSpeech": "idiom",
         "enDefinition": "takes satisfaction in her ability as a baker",
+        "ptDefinition": "orgulha-se de ser uma boa confeiteira",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 25."
@@ -3410,6 +3412,7 @@
         "word": "product line",
         "partOfSpeech": "business term",
         "enDefinition": "a related group of products sold by the same company",
+        "ptDefinition": "linha de produtos relacionados",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 2."
@@ -3765,6 +3768,7 @@
         "word": "ripped it off from an inventor",
         "partOfSpeech": "idiom",
         "enDefinition": "stole or copied the idea from an inventor",
+        "ptDefinition": "roubou ou copiou a ideia de um inventor",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 1."
@@ -3818,16 +3822,6 @@
         "partOfSpeech": "idiom",
         "enDefinition": "strong competition",
         "ptDefinition": "desafiar alguém, proporcionando forte competição ou resistência; dificultar para que alguém alcance algo facilmente",
-        "examples": [
-          {
-            "enExample": "The underdog team gave the reigning champions a run for their money in the finals.",
-            "ptExample": "O time azarão deu trabalho para os campeões na final."
-          },
-          {
-            "enExample": "If you hire her, she'll give all the other employees a run for their money.",
-            "ptExample": "Se você contratá-la, ela vai dar trabalho para todos os outros funcionários."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 6."
@@ -3939,6 +3933,7 @@
         "word": "running your own show",
         "partOfSpeech": "idiom",
         "enDefinition": "managing your own business or activity",
+        "ptDefinition": "gerenciando o próprio negócio",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -3991,6 +3986,7 @@
         "word": "sharing the credit",
         "partOfSpeech": "idiom",
         "enDefinition": "recognizing another person's contribution",
+        "ptDefinition": "reconhecendo a contribuição dos outros",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 6."
@@ -4043,6 +4039,7 @@
         "word": "she's got a knack for graphic design",
         "partOfSpeech": "idiom",
         "enDefinition": "she has a natural talent for graphic design",
+        "ptDefinition": "ela tem talento natural para design gráfico",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 25."
@@ -4137,6 +4134,7 @@
         "word": "slipped",
         "partOfSpeech": "idiom",
         "enDefinition": "declined in quality or performance",
+        "ptDefinition": "piorou em qualidade ou desempenho",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 27."
@@ -4147,6 +4145,7 @@
         "word": "slipped my mind",
         "partOfSpeech": "idiom",
         "enDefinition": "I forgot it",
+        "ptDefinition": "me esqueci disso",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 21."
@@ -4157,6 +4156,7 @@
         "word": "snapped up",
         "partOfSpeech": "idiom",
         "enDefinition": "bought or obtained quickly",
+        "ptDefinition": "comprou ou conseguiu rapidamente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -4228,19 +4228,9 @@
       },
       {
         "word": "stand my ground",
-        "partOfSpeech": "idiom",
+        "partOfSpeech": "noun phrase",
         "enDefinition": "refuse to change my position",
         "ptDefinition": "recusar-se a mudar de posição, opinião ou decisão mesmo diante de oposição",
-        "examples": [
-          {
-            "enExample": "She stood her ground during the heated debate.",
-            "ptExample": "Ela manteve sua posição durante o debate acalorado."
-          },
-          {
-            "enExample": "Even when criticized, he stood his ground.",
-            "ptExample": "Mesmo sendo criticado, ele não cedeu."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 30."
@@ -4249,19 +4239,9 @@
       },
       {
         "word": "stand your ground",
-        "partOfSpeech": "idiom",
-        "enDefinition": "to refuse to change your position, opinion, or decision even when others oppose you",
+        "partOfSpeech": "noun phrase",
+        "enDefinition": "The reasons or basis for an argument or legal action.",
         "ptDefinition": "recusar-se a mudar de posição, opinião ou decisão mesmo diante de oposição",
-        "examples": [
-          {
-            "enExample": "She stood her ground during the heated debate.",
-            "ptExample": "Ela manteve sua posição durante o debate acalorado."
-          },
-          {
-            "enExample": "Even when criticized, he stood his ground.",
-            "ptExample": "Mesmo sendo criticado, ele não cedeu."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 30."
@@ -4335,6 +4315,7 @@
         "word": "steer clear of him",
         "partOfSpeech": "idiom",
         "enDefinition": "avoid him",
+        "ptDefinition": "evite-o",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 19."
@@ -4366,6 +4347,7 @@
         "word": "stood firm",
         "partOfSpeech": "idiom",
         "enDefinition": "refused to change a position or decision",
+        "ptDefinition": "manteve sua posição; não cedeu",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 24."
@@ -4376,6 +4358,7 @@
         "word": "struck gold",
         "partOfSpeech": "idiom",
         "enDefinition": "found something very valuable or successful",
+        "ptDefinition": "encontrou algo de grande valor ou sucesso",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 15."
@@ -4386,6 +4369,7 @@
         "word": "struck it rich",
         "partOfSpeech": "idiom",
         "enDefinition": "suddenly became very wealthy",
+        "ptDefinition": "ficou rico de repente",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 29."
@@ -4438,6 +4422,7 @@
         "word": "take it easy",
         "partOfSpeech": "idiom",
         "enDefinition": "rest and avoid too much effort",
+        "ptDefinition": "descanse; vá com calma",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 22."
@@ -4490,6 +4475,7 @@
         "word": "talk about trying to butter up the boss",
         "partOfSpeech": "idiom",
         "enDefinition": "an obvious attempt to flatter the boss",
+        "ptDefinition": "tentativa evidente de bajular o chefe",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 20."
@@ -4501,16 +4487,6 @@
         "partOfSpeech": "idiom",
         "enDefinition": "persuade me to do something",
         "ptDefinition": "persuadir alguém a fazer algo, geralmente usando argumentos ou raciocínio",
-        "examples": [
-          {
-            "enExample": "He talked her into going to the party even though she didn't feel like it.",
-            "ptExample": "Ele a convenceu a ir à festa, mesmo que ela não estivesse com vontade."
-          },
-          {
-            "enExample": "They talked him into joining the team despite his initial reluctance.",
-            "ptExample": "Eles o convenceram a entrar para o time, apesar de sua relutância inicial."
-          }
-        ],
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 15."
@@ -4559,6 +4535,7 @@
         "word": "that's putting it lightly",
         "partOfSpeech": "idiom",
         "enDefinition": "the reality is more extreme than that description",
+        "ptDefinition": "isso é um eufemismo; a realidade é mais intensa",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 12."
@@ -4628,6 +4605,7 @@
         "word": "the latest dirt",
         "partOfSpeech": "idiom",
         "enDefinition": "the newest gossip or scandal",
+        "ptDefinition": "as fofocas mais recentes",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 18."
@@ -5038,6 +5016,7 @@
         "word": "we've been down before, but we always come back fighting",
         "partOfSpeech": "idiom",
         "enDefinition": "we have faced setbacks before and recovered strongly",
+        "ptDefinition": "já enfrentamos dificuldades e voltamos mais fortes",
         "notes": [
           {
             "enNote": "Used in Business 1, Lesson 11."

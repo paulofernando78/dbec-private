@@ -2,6 +2,53 @@
   {
     "definitions": [
       {
+        "word": "dislodge",
+        "partOfSpeech": "verb",
+        "enDefinition": "to force or move something out of a fixed position or place",
+        "ptDefinition": "desalojar; soltar ou retirar algo de uma posição em que estava preso",
+        "examples": [
+          {
+            "enExample": "The dentist dislodged a piece of food stuck between my teeth.",
+            "ptExample": "O dentista removeu um pedaço de comida preso entre meus dentes."
+          },
+          {
+            "enExample": "The strong wind dislodged several roof tiles.",
+            "ptExample": "O vento forte soltou várias telhas do telhado."
+          }
+        ],
+        "synonyms": ["remove", "loosen", "displace"],
+        "antonyms": ["fix", "secure"],
+        "seeAlso": ["lodge", "loose", "remove"]
+      },
+      {
+        "word": "detour",
+        "partOfSpeech": "noun",
+        "enDefinition": "a different, usually longer route taken because the usual road is closed or to avoid a place",
+        "ptDefinition": "desvio; caminho alternativo, geralmente mais longo, usado para evitar uma via fechada ou outro lugar",
+        "examples": [
+          {
+            "enExample": "The bridge was closed, so we took a detour through the town.",
+            "ptExample": "A ponte estava fechada, então fizemos um desvio pela cidade."
+          }
+        ],
+        "synonyms": ["alternative route", "diversion"],
+        "seeAlso": ["route", "road", "diversion"]
+      },
+      {
+        "word": "detour",
+        "partOfSpeech": "verb",
+        "enDefinition": "to travel by a different route, especially to avoid a closed road or an obstacle",
+        "ptDefinition": "fazer um desvio; seguir por um caminho alternativo",
+        "examples": [
+          {
+            "enExample": "We had to detour around the construction site.",
+            "ptExample": "Tivemos que desviar do local da obra."
+          }
+        ],
+        "synonyms": ["reroute", "go around"],
+        "seeAlso": ["route", "diversion"]
+      },
+      {
         "word": "devastate",
         "phonetics": "/ˈdev.ə.steɪt/",
         "partOfSpeech": "verb",

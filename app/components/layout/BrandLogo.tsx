@@ -38,7 +38,7 @@ export function BrandLogo({
             isRow
               ? "flex items-baseline gap-2 whitespace-nowrap"
               : isResponsive
-                ? "min-[520px]:flex min-[520px]:items-baseline min-[520px]:gap-2 min-[520px]:whitespace-nowrap"
+                ? "min-[520px]:flex min-[520px]:items-baseline min-[520px]:gap-1.25 min-[520px]:whitespace-nowrap pl-0.5"
                 : ""
           }`}
         >

@@ -2,6 +2,24 @@
   {
     "definitions": [
       {
+        "word": "tit-for-tat",
+        "partOfSpeech": "noun, adjective",
+        "enDefinition": "an action taken in response to a similar action by someone else, especially an unfriendly one",
+        "ptDefinition": "troca de ações equivalentes, especialmente provocações ou retaliações; 'na mesma moeda'",
+        "examples": [
+          {
+            "enExample": "The argument became a series of tit-for-tat insults.",
+            "ptExample": "A discussão virou uma troca de insultos na mesma moeda."
+          },
+          {
+            "enExample": "The two companies engaged in a tit-for-tat dispute over prices.",
+            "ptExample": "As duas empresas entraram em uma disputa de retaliações sobre preços."
+          }
+        ],
+        "synonyms": ["retaliation", "payback", "reprisal"],
+        "seeAlso": ["retaliate", "revenge", "payback"]
+      },
+      {
         "word": "trade",
         "phonetics": "/ˈtreɪd/",
         "partOfSpeech": "noun, verb",
@@ -2035,7 +2053,8 @@
       },
       {
         "word": "thank goodness",
-        "enDefinition": "I'm grateful; I'm relieved."
+        "enDefinition": "I’m grateful; I’m relieved.",
+        "ptDefinition": "ainda bem; graças a Deus, usado para expressar alívio"
       },
       {
         "word": "turn off",

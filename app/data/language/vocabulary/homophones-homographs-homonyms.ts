@@ -6,12 +6,24 @@ export const homophonesHomographsHomonyms = {
     {
       title: "Homophones · mesmo som",
       explanation: "São palavras com a mesma pronúncia e significados diferentes. A escrita pode ser diferente.",
-      examples: ["I can hear you. — Consigo ouvir você.", "Come here, please. — Venha aqui, por favor."],
+      examples: [
+        "I can hear you. — Consigo ouvir você.",
+        "Come here, please. — Venha aqui, por favor.",
+        "I can see the sea. — Consigo ver o mar.",
+        "Write the right answer. — Escreva a resposta certa.",
+        "The hare has brown hair. — A lebre tem pelos marrons.",
+      ],
     },
     {
       title: "Homographs · mesma escrita",
       explanation: "São palavras com a mesma escrita e significados diferentes. A pronúncia pode mudar, como em bow. Além de “reverência” e “laço”, bow significa “arco”, usado para lançar flechas. “Arco e flecha” é bow and arrow. Nos sentidos de “laço” e “arco”, bow tem a mesma pronúncia.",
-      examples: ["Take a bow (/baʊ/). — Faça uma reverência.", "She has a bow (/boʊ/) in her hair. — Ela tem um laço no cabelo.", "Robin Hood has a bow (/boʊ/) and arrow. — Robin Hood tem um arco e flecha."],
+      examples: [
+        "Take a bow (/baʊ/). — Faça uma reverência.",
+        "She has a bow (/boʊ/) in her hair. — Ela tem um laço no cabelo.",
+        "Robin Hood has a bow (/boʊ/) and arrow. — Robin Hood tem um arco e flecha.",
+        "The letter A is a vowel. — A letra A é uma vogal.",
+        "I received a letter in the mail. — Recebi uma carta pelo correio.",
+      ],
     },
     {
       title: "Homonyms · mesma escrita e mesmo som",

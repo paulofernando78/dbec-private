@@ -3,6 +3,11 @@ import { willGoingToExercises } from "../../verb-tenses/will-going-to";
 import { prefixesSuffixesExercises } from "../../word-formation/prefixes-suffixes";
 import { latinPluralsExercises } from "../../word-formation/latin-plurals";
 import { whoAndWhatQuestionsExercises } from "../../grammar-structures/who-and-what-questions";
+import { soTooExercises } from "../../grammar-structures/so-too";
+import { thereIsThereAreExercises } from "../../grammar-structures/there-is-there-are";
+import { comparativesExercises } from "../../grammar-structures/comparatives";
+import { superlativesExercises } from "../../grammar-structures/superlatives";
+import { relativePronounsExercises } from "../../grammar-structures/relative-pronouns";
 import { verbBePresentPastExercises } from "../../verb-tenses/verb-be-present-past";
 import { simplePresentExercises } from "../../verb-tenses/simple-present";
 import { simplePastExercises } from "../../verb-tenses/simple-past";
@@ -21,6 +26,11 @@ export const grammarExercisesByTopicId = {
   "prefixes-suffixes": prefixesSuffixesExercises,
   "latin-plurals": latinPluralsExercises,
   "who-and-what-questions": whoAndWhatQuestionsExercises,
+  "so-too": soTooExercises,
+  "there-is-there-are": thereIsThereAreExercises,
+  comparatives: comparativesExercises,
+  superlatives: superlativesExercises,
+  "relative-pronouns": relativePronounsExercises,
   "verb-be-present-past": verbBePresentPastExercises,
   "simple-present": simplePresentExercises,
   "simple-past": simplePastExercises,

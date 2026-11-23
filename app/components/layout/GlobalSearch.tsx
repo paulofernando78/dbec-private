@@ -20,6 +20,7 @@ import { DictionaryWordCard } from "@/features/Dictionary/DictionaryWordCard";
 import {
   flattenDictionaryDefinitions,
   loadDictionaryLetter,
+  nonAlphabeticDictionaryDefinitions,
   type DictionaryDefinition,
 } from "@/utils/loadDictionaryWord";
 
@@ -482,7 +483,7 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
     const searchedWord = normalizeDictionaryTerm(query);
     const firstLetter = searchedWord[0];
 
-    if (!searchedWord || !firstLetter || !/[a-z]/.test(firstLetter)) {
+    if (!searchedWord || !firstLetter) {
       setDictionaryEntries([]);
       setIsDictionaryLoading(false);
       return;
@@ -491,15 +492,16 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
     let cancelled = false;
     setIsDictionaryLoading(true);
 
-    loadDictionaryLetter(firstLetter)
+    const initialLetter = /[a-z]/.test(firstLetter) ? firstLetter : "a";
+    loadDictionaryLetter(initialLetter)
       .then(async (data) => {
         if (cancelled) return;
 
         const definitions = flattenDictionaryDefinitions(data);
-        if (searchedWord.length >= 3) {
+        if (searchedWord.length >= 3 || initialLetter !== firstLetter) {
           const otherLetters = await Promise.allSettled(
             [..."abcdefghijklmnopqrstuvwxyz"]
-              .filter((letter) => letter !== firstLetter)
+              .filter((letter) => letter !== initialLetter)
               .map(loadDictionaryLetter),
           );
           if (cancelled) return;
@@ -508,6 +510,9 @@ export function GlobalSearch({ closeNavBar }: { closeNavBar: () => void }) {
               definitions.push(...flattenDictionaryDefinitions(result.value));
             }
           }
+        }
+        if (initialLetter !== firstLetter) {
+          definitions.push(...nonAlphabeticDictionaryDefinitions());
         }
 
         const terms = searchWords(query).map(({ word }) => word);

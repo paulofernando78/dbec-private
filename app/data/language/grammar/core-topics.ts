@@ -1,5 +1,10 @@
 import type { GrammarTopic } from "./types";
 import { whoAndWhatQuestions } from "../grammar-structures/who-and-what-questions";
+import { soToo } from "../grammar-structures/so-too";
+import { thereIsThereAre } from "../grammar-structures/there-is-there-are";
+import { comparatives } from "../grammar-structures/comparatives";
+import { superlatives } from "../grammar-structures/superlatives";
+import { relativePronouns } from "../grammar-structures/relative-pronouns";
 import { verbBePresentPast } from "../verb-tenses/verb-be-present-past";
 import { presentProgressive } from "../verb-tenses/present-progressive";
 import { simplePresent } from "../verb-tenses/simple-present";
@@ -18,6 +23,11 @@ import { pastPerfectProgressive } from "../verb-tenses/past-perfect-progressive"
 
 export const coreGrammarTopics = [
   whoAndWhatQuestions,
+  soToo,
+  thereIsThereAre,
+  comparatives,
+  superlatives,
+  relativePronouns,
   verbBePresentPast,
   presentProgressive,
   simplePresent,

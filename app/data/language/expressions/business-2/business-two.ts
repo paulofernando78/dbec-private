@@ -756,7 +756,7 @@ export const businessTwoLessons: BusinessTwoLesson[] = [
       { speaker: "Brad", line: ["Right. But we’re going to ", mark("great lengths"), " to prove that there was ", mark("no conflict of interest"), ". We’ve got four of our top lawyers working on the case."] },
       { speaker: "Rich", line: ["Okay, it sounds like we’re ", mark("on top of things"), "."] },
       { speaker: "", line: [italic("* side effect — a health problem caused by a drug; an effect of a drug other than the one intended") ] },
-      { speaker: "", line: [italic("* contents — to argue; to assert") ] },
+      { speaker: "", line: [italic("* contends — argues; asserts") ] },
       { speaker: "", line: [italic("* regulations — rules; laws") ] },
       { speaker: "", line: [italic("* plaintiff — the person who brings a lawsuit to court") ] },
       { speaker: "", line: [italic("* FDA — Food and Drug Administration") ] },

@@ -72,6 +72,7 @@ export default [
     route("/audiobooks", "routes/audiobooks.tsx"),
     route("/audiobooks/:book", "routes/listening-book.tsx"),
     route("/culture/history", "routes/history.tsx"),
+    route("/culture/history/bluetooth", "routes/history/bluetooth.tsx"),
     route("/culture/history/uk-great-britain-and-ireland", "routes/history/uk-great-britain-and-ireland.tsx"),
     route("/songs", "routes/songs.tsx"),
     route("/songs/:band", "routes/songs/band.tsx"),

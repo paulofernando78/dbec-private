@@ -9,6 +9,22 @@ export const simplePresent = {
     "O simple present expressa o que acontece habitualmente ou o que é verdadeiro de modo geral.",
   usages: [
     {
+      title: "Flies fly, but a fly flies",
+      meaning:
+        "Na primeira parte, flies é o plural do substantivo fly (mosca). Como o sujeito está no plural, o verbo fica na forma base: fly. Na segunda, a fly é singular (it), então o verbo recebe -ies: flies.",
+      pattern: "flies (plural) + fly (verbo base) · a fly (singular) + flies (verbo com -ies)",
+      examples: [
+        { english: "Flies fly.", portuguese: "Moscas voam." },
+        { english: "A fly flies.", portuguese: "Uma mosca voa." },
+      ],
+      image: {
+        src: "/media/images/language/verb-tenses/simple-present/flies-fly.avif?v=3",
+        alt: "Ilustração com a frase 'Flies fly but a fly flies.' e dois camaleões tentando pegar uma mosca.",
+        width: 1642,
+        height: 958,
+      },
+    },
+    {
       title: "Hábitos e rotinas",
       meaning: "Use com expressões de frequência para ações repetidas.",
       pattern: "sujeito + verbo base · he/she/it + verbo-s",

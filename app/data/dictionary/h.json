@@ -2,6 +2,30 @@
   {
     "definitions": [
       {
+        "word": "hindsight",
+        "partOfSpeech": "noun",
+        "enDefinition": "the ability to understand a situation or decision more clearly after it has happened",
+        "ptDefinition": "visão retrospectiva; compreensão mais clara de uma situação depois que ela aconteceu",
+        "examples": [
+          {
+            "enExample": "In hindsight, I should have asked for help sooner.",
+            "ptExample": "Olhando para trás, eu deveria ter pedido ajuda antes."
+          },
+          {
+            "enExample": "With hindsight, the warning signs were obvious.",
+            "ptExample": "Em retrospecto, os sinais de alerta eram óbvios."
+          }
+        ],
+        "synonyms": ["retrospection", "looking back"],
+        "seeAlso": ["retrospect", "foresight"],
+        "notes": [
+          {
+            "enNote": "The expression 'hindsight is 20/20' means that past events are easier to judge after you know what happened.",
+            "ptNote": "A expressão 'hindsight is 20/20' indica que é mais fácil avaliar os fatos depois de saber o que aconteceu."
+          }
+        ]
+      },
+      {
         "word": "hops",
         "phonetics": "/hɒps/ (UK), /hɑːps/ (US)",
         "partOfSpeech": "noun",

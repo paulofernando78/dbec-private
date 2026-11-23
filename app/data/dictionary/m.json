@@ -2,6 +2,30 @@
   {
     "definitions": [
       {
+        "word": "missive",
+        "partOfSpeech": "noun",
+        "enDefinition": "a written message or letter, especially a long or formal one",
+        "ptDefinition": "carta ou mensagem escrita, especialmente longa ou formal",
+        "examples": [
+          {
+            "enExample": "She received a long missive from her old friend.",
+            "ptExample": "Ela recebeu uma longa carta de um velho amigo."
+          },
+          {
+            "enExample": "The manager sent a formal missive to the staff.",
+            "ptExample": "O gerente enviou uma mensagem formal à equipe."
+          }
+        ],
+        "synonyms": ["letter", "message", "communication"],
+        "seeAlso": ["letter", "correspondence", "message"],
+        "notes": [
+          {
+            "enNote": "Missive is more formal or literary than letter or message.",
+            "ptNote": "Missive é mais formal ou literário do que letter ou message."
+          }
+        ]
+      },
+      {
         "word": "moisture",
         "phonetics": "/ˈmɔɪs.tʃɚ/",
         "partOfSpeech": "noun",
@@ -1373,7 +1397,8 @@
     "definitions": [
       {
         "word": "make ends meet",
-        "enDefinition": "To manage one’s money so as to have enough to live on; to be okay financially."
+        "enDefinition": "To manage one’s money so as to have enough to live on; to be okay financially.",
+        "ptDefinition": "conseguir pagar as despesas; fazer o dinheiro chegar até o fim do mês"
       },
       {
         "word": "make a bundle",

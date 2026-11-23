@@ -44,6 +44,13 @@ const termKinds = new Map(
 );
 
 const dictionaryDir = path.join(root, "app/data/dictionary");
+const generatedPath = path.join(dictionaryDir, "business-1.generated.json");
+const previousGenerated = fs.existsSync(generatedPath)
+  ? JSON.parse(fs.readFileSync(generatedPath, "utf8"))
+  : [];
+const previousByWord = new Map(
+  previousGenerated.flatMap((entry) => entry.definitions ?? []).map((entry) => [normalize(entry.word), entry]),
+);
 const existing = [];
 for (const file of fs.readdirSync(dictionaryDir).filter((name) => /^[a-z]\.json$/.test(name))) {
   const data = JSON.parse(fs.readFileSync(path.join(dictionaryDir, file), "utf8"));
@@ -173,7 +180,9 @@ for (const [term, lessonNumbers] of termLessons) {
     word: term,
     partOfSpeech: base?.partOfSpeech ?? termKinds.get(term) ?? "idiom",
     enDefinition,
-    ...(base?.ptDefinition ? { ptDefinition: base.ptDefinition } : {}),
+    ...((previousByWord.get(term)?.ptDefinition ?? base?.ptDefinition)
+      ? { ptDefinition: previousByWord.get(term)?.ptDefinition ?? base?.ptDefinition }
+      : {}),
     ...(base?.examples ? { examples: base.examples } : {}),
     notes: [{ enNote: `Used in Business 1, ${lessonNumbers.map((number) => `Lesson ${number}`).join(", ")}.` }],
   });
@@ -182,6 +191,6 @@ if (missingDefinitions.length) {
   throw new Error(`Missing definitions for:\n${missingDefinitions.join("\n")}`);
 }
 generated.sort((a, b) => a.word.localeCompare(b.word));
-fs.writeFileSync(path.join(dictionaryDir, "business-1.generated.json"), `${JSON.stringify([{ definitions: generated }], null, 2)}\n`);
+fs.writeFileSync(generatedPath, `${JSON.stringify([{ definitions: generated }], null, 2)}\n`);
 fs.writeFileSync(path.join(root, "app/data/language/expressions/business-1/business-1-search.generated.json"), `${JSON.stringify(lessons, null, 2)}\n`);
 console.log(`Generated ${generated.length} dictionary entries and ${lessons.length} lesson search records.`);

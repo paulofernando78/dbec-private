@@ -2,6 +2,41 @@
   {
     "definitions": [
       {
+        "word": "past due",
+        "partOfSpeech": "adjective",
+        "enDefinition": "not paid or completed by the date when it was due; overdue",
+        "ptDefinition": "vencido; em atraso; não pago ou concluído até a data prevista",
+        "examples": [
+          {
+            "enExample": "Your electricity bill is past due.",
+            "ptExample": "Sua conta de luz está vencida."
+          },
+          {
+            "enExample": "The payment is two weeks past due.",
+            "ptExample": "O pagamento está atrasado há duas semanas."
+          }
+        ],
+        "synonyms": ["overdue", "late", "unpaid"],
+        "antonyms": ["current", "paid", "on time"],
+        "seeAlso": ["due date", "overdue", "payment"],
+        "notes": [
+          {
+            "enNote": "Past due is common on bills and payment notices. The illustrations play on 'nag' (a horse or repeated reminders) and 'bugging' (bothering someone or an insect).",
+            "ptNote": "Past due é comum em contas e avisos de cobrança. As imagens brincam com nag (cavalo ou insistir com lembretes) e bugging (incomodar alguém ou remeter a um inseto)."
+          }
+        ],
+        "imgs": [
+          {
+            "src": "past-due-nag.avif?v=1",
+            "alt": "Aviso ilustrado de conta vencida com um cavalo e o trocadilho 'We hate to nag'."
+          },
+          {
+            "src": "past-due-bugging.avif?v=2",
+            "alt": "Aviso ilustrado de conta vencida com um inseto e o trocadilho 'bugging you'."
+          }
+        ]
+      },
+      {
         "word": "phrasal verb",
         "partOfSpeech": "noun",
         "enDefinition": "a combination of a verb and one or more particles, such as up or off, that work together as a unit. The combination can have a meaning of its own.",
@@ -1752,7 +1787,8 @@
       },
       {
         "word": "pick up",
-        "enDefinition": "To acquire; to learn."
+        "enDefinition": "To acquire or learn something; also, to increase or improve, as with sales or orders.",
+        "ptDefinition": "pegar; adquirir; aprender informalmente. Para vendas ou pedidos, aumentar ou melhorar"
       },
       {
         "word": "pull an all-nighter",

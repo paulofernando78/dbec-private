@@ -1,0 +1,7523 @@
+[
+  {
+    "definitions": [
+      {
+        "word": "$64,000 question",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pergunta decisiva ou difícil",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "800-pound gorillas",
+        "partOfSpeech": "expression",
+        "ptDefinition": "grandes concorrentes dominantes",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "a",
+        "partOfSpeech": "expression",
+        "ptDefinition": "um; uma",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "a feather in Rita’s cap",
+        "partOfSpeech": "expression",
+        "ptDefinition": "uma conquista da qual Rita pode se orgulhar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "a plain Jane",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mulher considerada sem graça ou comum",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "a real flop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "um verdadeiro fracasso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "a touchy subject",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assunto delicado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "about to go belly-up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "prestes a falir",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "affordable luxury",
+        "partOfSpeech": "expression",
+        "ptDefinition": "luxo acessível",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "air our dirty laundry in public",
+        "partOfSpeech": "expression",
+        "ptDefinition": "expor nossos problemas particulares em público",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "All kidding aside",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falando sério agora",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "allegation",
+        "partOfSpeech": "term",
+        "enDefinition": "a charge; a statement of what has happened that then must be proved true",
+        "ptDefinition": "alegação ou acusação ainda não comprovada",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "an offer you can’t refuse",
+        "partOfSpeech": "expression",
+        "ptDefinition": "uma proposta irresistível",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ancient history",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assunto antigo e encerrado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "any minute now",
+        "partOfSpeech": "expression",
+        "ptDefinition": "a qualquer momento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "aren’t on the same wavelength",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não estão em sintonia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "as a rule",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em geral",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "at my wit’s end",
+        "partOfSpeech": "expression",
+        "ptDefinition": "no limite da paciência",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "at stake",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em risco",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "at the drop of a hat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem hesitar; imediatamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "at the eleventh hour",
+        "partOfSpeech": "expression",
+        "ptDefinition": "na última hora",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "auditor",
+        "partOfSpeech": "term",
+        "enDefinition": "one who inspects accounting records",
+        "ptDefinition": "profissional que examina registros contábeis",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "auditors",
+        "partOfSpeech": "expression",
+        "ptDefinition": "auditores",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "back out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desistir de um compromisso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "bad rap",
+        "partOfSpeech": "expression",
+        "ptDefinition": "má reputação injusta",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bad-mouth",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falar mal de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "bad-mouthing",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falando mal de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "bank on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "contar com; esperar que aconteça",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "banking on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "contando com; esperando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "banner ads",
+        "partOfSpeech": "term",
+        "enDefinition": "an advertisement placed on a web page containing graphics",
+        "ptDefinition": "anúncios gráficos exibidos em páginas da internet",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bargain hunters",
+        "partOfSpeech": "expression",
+        "ptDefinition": "caçadores de ofertas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "batten down the hatches",
+        "partOfSpeech": "expression",
+        "ptDefinition": "preparar-se para tempos difíceis",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "be just the ticket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ser exatamente o que precisamos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "beat me to the punch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "você agiu antes de mim",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "beat them to the punch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "agir antes deles",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "bed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cama",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "been around the block a few times",
+        "partOfSpeech": "expression",
+        "ptDefinition": "já tem bastante experiência de vida",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "behind projections",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abaixo das projeções",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "behind the eight ball",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em posição desfavorável",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bent over backwards",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fez um esforço enorme",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "big bucks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "muito dinheiro",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "big spender",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa que gasta muito",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "big-ticket items at brick-and-mortar stores",
+        "partOfSpeech": "expression",
+        "ptDefinition": "produtos caros em lojas físicas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "blessing in disguise",
+        "partOfSpeech": "expression",
+        "ptDefinition": "algo ruim que trouxe um benefício inesperado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "blow Botox out of the water",
+        "partOfSpeech": "expression",
+        "ptDefinition": "superar o Botox de longe",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "blows over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "passa; é esquecido",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "board of directors",
+        "partOfSpeech": "term",
+        "enDefinition": "a group of people (board members) who oversee the activities of a company",
+        "ptDefinition": "conselho de administração de uma empresa",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "boggles my mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me deixa perplexo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bogus",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falso; fraudulento",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "boning up on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "estudando intensamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "booked solid",
+        "partOfSpeech": "expression",
+        "ptDefinition": "com a agenda lotada",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "books",
+        "partOfSpeech": "term",
+        "enDefinition": "accounting records",
+        "ptDefinition": "registros contábeis de uma empresa",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Botox",
+        "partOfSpeech": "term",
+        "enDefinition": "a popular treatment for wrinkles that is taken by injection",
+        "ptDefinition": "tratamento injetável usado para reduzir rugas",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bottomed out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chegou ao ponto mais baixo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "brainchild",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ideia original de alguém",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "brand-loyal",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fiel à marca",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "bread and",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pão e",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "break my date",
+        "partOfSpeech": "expression",
+        "ptDefinition": "faltar ao encontro marcado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "break the bank",
+        "partOfSpeech": "expression",
+        "ptDefinition": "custar uma fortuna",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "breaking up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "terminando o relacionamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "breakneck speed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "velocidade muito alta",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "breathing down my neck",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me pressionando sem parar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "bridge",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não movem moinhos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "broke my date",
+        "partOfSpeech": "expression",
+        "ptDefinition": "faltou ao encontro combinado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "broke up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "terminaram o relacionamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "brought it up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mencionou o assunto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "burn through",
+        "partOfSpeech": "expression",
+        "ptDefinition": "gastar rapidamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "business before pleasure",
+        "partOfSpeech": "expression",
+        "ptDefinition": "primeiro os negócios, depois o prazer",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "busybody",
+        "partOfSpeech": "expression",
+        "ptDefinition": "intrometido",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "butter",
+        "partOfSpeech": "expression",
+        "ptDefinition": "manteiga",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "buzz out there",
+        "partOfSpeech": "expression",
+        "ptDefinition": "interesse e comentários em circulação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "by a long shot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nem de longe",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "by crook",
+        "partOfSpeech": "expression",
+        "ptDefinition": "por outro; até por meios desonestos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "by hook or",
+        "partOfSpeech": "expression",
+        "ptDefinition": "por um meio ou",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "by hook or by crook",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de qualquer jeito; por bem ou por mal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "call it a day",
+        "partOfSpeech": "expression",
+        "ptDefinition": "encerrar o trabalho por hoje",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "calling the shots",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tomar as decisões",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "can’t keep his eyes off her",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não consegue tirar os olhos dela",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cards",
+        "partOfSpeech": "expression",
+        "ptDefinition": "planos; possibilidades",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "careless",
+        "partOfSpeech": "term",
+        "enDefinition": "sloppy; done without care or attention",
+        "ptDefinition": "descuidado; feito sem atenção",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "carries clout",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tem influência",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cash in",
+        "partOfSpeech": "expression",
+        "ptDefinition": "lucrar com; aproveitar financeiramente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cash reserves",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reservas de dinheiro",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "catch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "problema escondido; ressalva",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "catch up on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "colocar-se em dia com",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "catching me off guard",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me pegando desprevenido",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "caught Nate off guard",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pegou Nate desprevenido",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "challenging",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desafiador",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "change his mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudar de ideia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "change your tune",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudar de opinião ou atitude",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "channel stuffing",
+        "partOfSpeech": "expression",
+        "ptDefinition": "registrar vendas antecipadas para inflar resultados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cheap shot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comentário ou ação injusta e ofensiva",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cheating on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "traindo o parceiro amoroso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cherry-picked",
+        "partOfSpeech": "expression",
+        "ptDefinition": "selecionados a dedo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "chugging along",
+        "partOfSpeech": "expression",
+        "ptDefinition": "seguindo em frente lentamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "churning out knockoffs",
+        "partOfSpeech": "expression",
+        "ptDefinition": "produzindo cópias baratas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "circle back with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "retomar o contato com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "clamp down on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reprimir; impor restrições mais rígidas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "clear the air",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resolver a tensão com uma conversa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cleared my calendar",
+        "partOfSpeech": "expression",
+        "ptDefinition": "liberei minha agenda",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "close the deal",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fechar o negócio",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cock-and-bull story",
+        "partOfSpeech": "expression",
+        "ptDefinition": "história absurda e inventada",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cold calls",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ligações de vendas não solicitadas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "come around",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudar de opinião; acabar aceitando",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "come back to haunt us",
+        "partOfSpeech": "expression",
+        "ptDefinition": "voltar para nos prejudicar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "come clean",
+        "partOfSpeech": "expression",
+        "ptDefinition": "contar a verdade",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "come clean on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "confessar a verdade sobre",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "come down in price",
+        "partOfSpeech": "expression",
+        "ptDefinition": "baixar o preço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "come on board",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar para a equipe",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "come out with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "lançar; apresentar algo novo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "coming on board",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrando para a equipe",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "coming out with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "lançando; apresentando algo novo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "common courtesy",
+        "partOfSpeech": "expression",
+        "ptDefinition": "educação básica; cortesia comum",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "concentrated",
+        "partOfSpeech": "expression",
+        "ptDefinition": "concentrado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "conflict",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conflito",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "connect with our customers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "criar uma conexão com nossos clientes",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "contaminated",
+        "partOfSpeech": "term",
+        "enDefinition": "containing substances that do not belong; mixed with something unclean",
+        "ptDefinition": "contaminado; misturado com substâncias indesejadas",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "contends",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sustenta; afirma",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "control freak",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa controladora demais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cooking the books",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falsificando os registros contábeis",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cool",
+        "partOfSpeech": "term",
+        "enDefinition": "appealing; attractive (often said of a new product or concept)",
+        "ptDefinition": "atraente; interessante, em uso informal",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cost a small fortune",
+        "partOfSpeech": "expression",
+        "ptDefinition": "custar uma pequena fortuna",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "costs an arm and a leg",
+        "partOfSpeech": "expression",
+        "ptDefinition": "custa uma fortuna",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "couch potato",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa sedentária que passa muito tempo no sofá",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "couldn’t keep his eyes off her",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não conseguia tirar os olhos dela",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "cross that bridge when we come to it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resolveremos esse problema quando ele surgir",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "crossed the line",
+        "partOfSpeech": "expression",
+        "ptDefinition": "passou dos limites",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cut a deal",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fechar um acordo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cut us off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "interrompeu nosso fornecimento ou apoio",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cutting back on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduzindo gastos ou atividades",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cutting corners",
+        "partOfSpeech": "expression",
+        "ptDefinition": "economizando de forma que prejudica a qualidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "cutting him off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "parando de fornecer ou financiar a ele",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "day in, day out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "todos os dias, sem parar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "dead end",
+        "partOfSpeech": "expression",
+        "ptDefinition": "beco sem saída; opção sem futuro",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "dead weight",
+        "partOfSpeech": "expression",
+        "ptDefinition": "peso morto; pessoa que não contribui",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "deadbeats",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoas que não pagam suas dívidas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "deal breaker",
+        "partOfSpeech": "expression",
+        "ptDefinition": "condição que inviabiliza o acordo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "declare Chapter 11",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pedir recuperação judicial nos Estados Unidos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "deep discounts",
+        "partOfSpeech": "expression",
+        "ptDefinition": "descontos grandes",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "deep-six",
+        "partOfSpeech": "expression",
+        "ptDefinition": "descartar; cancelar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "deliver a sales pitch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer uma apresentação de vendas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "different angle",
+        "partOfSpeech": "expression",
+        "ptDefinition": "perspectiva diferente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "differentiate ourselves from",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nos diferenciar de",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "dig up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "descobrir após investigar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "dip our toes into the test prep space",
+        "partOfSpeech": "expression",
+        "ptDefinition": "testar com cautela o mercado de preparação para provas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ditch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abandonar; descartar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ditching",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abandonando; descartando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Do I have to spell it out for you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "preciso explicar tudo nos mínimos detalhes?",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "do the math",
+        "partOfSpeech": "expression",
+        "ptDefinition": "faça as contas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "doesn’t belong",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não deve",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "doing your dirty work",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazendo o trabalho desagradável de outra pessoa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Don’t bother",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nem se dê ao trabalho",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "don’t drag your feet",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não enrole; não demore",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Don’t go there",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não toque nesse assunto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Don’t put all your eggs in one basket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não aposte tudo em uma opção",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "double whammy",
+        "partOfSpeech": "expression",
+        "ptDefinition": "problema duplo; dois golpes ao mesmo tempo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "downplayed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "minimizou a importância de",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "downsizing",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduzindo o quadro de funcionários",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "downturn",
+        "partOfSpeech": "expression",
+        "ptDefinition": "retração econômica",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "drag their heels",
+        "partOfSpeech": "expression",
+        "ptDefinition": "demorar de propósito",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "drag your feet",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enrolar; demorar de propósito",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "dragged",
+        "partOfSpeech": "expression",
+        "ptDefinition": "arrastou",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "dragging his feet",
+        "partOfSpeech": "expression",
+        "ptDefinition": "está enrolando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "draw up the paperwork",
+        "partOfSpeech": "expression",
+        "ptDefinition": "redigir a documentação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "drink like a fish",
+        "partOfSpeech": "expression",
+        "ptDefinition": "beber álcool em excesso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "drive some foot traffic",
+        "partOfSpeech": "expression",
+        "ptDefinition": "atrair clientes às lojas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "drop in the bucket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "quantia insignificante diante do total",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "drop-off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "queda; redução",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "dropped off the face of the earth",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sumiu completamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "drove it into the ground",
+        "partOfSpeech": "expression",
+        "ptDefinition": "levou a empresa à ruína",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "dug up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "descobriu após investigar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "dwell on the past",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar preso ao passado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "e-learning",
+        "partOfSpeech": "term",
+        "enDefinition": "instruction delivered electronically, such as by Internet, computer-based learning, CD-ROMs, and video conferencing",
+        "ptDefinition": "ensino realizado por meios eletrônicos",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "earned his stripes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "provou sua capacidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "eat into",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduzir parte de",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "eat like a bird",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comer muito pouco",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "eat our lunch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "superar nossa empresa e tomar nossos clientes",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "eaten into",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduzido; consumido parte de",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "eating their lunch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "superando a concorrência e tomando clientes",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "embossed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em relevo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "empty-",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de mãos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "empty-handed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de mãos vazias",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "engaged in fraud",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cometeu fraude",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "enter the market",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar no mercado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "eye candy",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa atraente de se olhar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "eye-opener",
+        "partOfSpeech": "expression",
+        "ptDefinition": "revelação importante",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "face headwinds",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enfrentar condições desfavoráveis",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "face to face",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoalmente; cara a cara",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "fall flat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não causar o efeito esperado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "FDA",
+        "partOfSpeech": "term",
+        "enDefinition": "Food and Drug Administration",
+        "ptDefinition": "agência dos Estados Unidos que regula alimentos e medicamentos",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "feather in",
+        "partOfSpeech": "expression",
+        "ptDefinition": "uma conquista",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fiddled with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "adulterou; mexeu indevidamente em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "fiddling with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mexendo indevidamente em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "fill up on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "encher-se de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fill you in",
+        "partOfSpeech": "expression",
+        "ptDefinition": "colocar você a par",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fine-tooth comb",
+        "partOfSpeech": "expression",
+        "ptDefinition": "análise minuciosa",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "first-mover advantage",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vantagem de lançar primeiro",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "fiscal year",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ano fiscal",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "flak",
+        "partOfSpeech": "expression",
+        "ptDefinition": "críticas duras",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "flocking to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "indo em grande número para",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "flying off the shelves",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vendendo muito rapidamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "follow suit",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer o mesmo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "food for thought",
+        "partOfSpeech": "expression",
+        "ptDefinition": "algo para refletir",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "for the birds",
+        "partOfSpeech": "expression",
+        "ptDefinition": "horrível; sem valor",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fork over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desembolsar dinheiro",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fought like cats and dogs",
+        "partOfSpeech": "expression",
+        "ptDefinition": "brigaram muito",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "fulfill",
+        "partOfSpeech": "term",
+        "enDefinition": "carry out the processing of an order",
+        "ptDefinition": "processar e entregar um pedido",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "funny business",
+        "partOfSpeech": "expression",
+        "ptDefinition": "atividade suspeita",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "futzing around",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enrolando; perdendo tempo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "gain a competitive edge",
+        "partOfSpeech": "expression",
+        "ptDefinition": "obter uma vantagem competitiva",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "gave Bill his walking papers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "demitiu Bill",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "gave them a piece of my mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "disse a eles exatamente o que penso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "generate some leads",
+        "partOfSpeech": "expression",
+        "ptDefinition": "gerar contatos de possíveis clientes",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "get",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conseguir; obter",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get a leg up on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "obter vantagem sobre",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get a second wind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "recuperar a energia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get back together",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reatar o relacionamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get bent out of shape",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar excessivamente chateado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get cracking",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começar logo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get cracking on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começar a trabalhar em",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get down to brass tacks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ir direto ao que importa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get hitched",
+        "partOfSpeech": "expression",
+        "ptDefinition": "casar-se",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get in shape",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar em forma",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get in the middle of employee turf wars",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar no meio de disputas entre funcionários",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Get off your high horse",
+        "partOfSpeech": "expression",
+        "ptDefinition": "deixe de agir com superioridade",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar; entrar em",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get on the stick",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tomar uma atitude logo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "get our hands on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conseguir obter",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Get over it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "supere isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get right on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cuidar disso imediatamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get right to the point then",
+        "partOfSpeech": "expression",
+        "ptDefinition": "então vá direto ao assunto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get something off my chest",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tirar algo do peito; desabafar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "get the word out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "divulgar a informação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "get this meeting underway",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começar esta reunião",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "get your feedback",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ouvir sua opinião",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "getting back together",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reatando o relacionamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "give him a piece of my mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "dizer-lhe claramente o que penso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "give me the creeps",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me dá arrepios; me deixa desconfortável",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "give you a heads up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "avisar com antecedência",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "give you the lowdown on it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "dar a você todos os detalhes sobre isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "given a pink slip",
+        "partOfSpeech": "expression",
+        "ptDefinition": "foi demitido",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "giving me the ax",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me demitindo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "giving me the runaround",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me enrolando; me dando desculpas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "giving me the silent treatment",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me tratando com silêncio",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "giving notice",
+        "partOfSpeech": "expression",
+        "ptDefinition": "avisando que vai sair do emprego",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "giving us the lowdown",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nos dando todos os detalhes",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "globetrotting",
+        "partOfSpeech": "expression",
+        "ptDefinition": "viajando pelo mundo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "go along with it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "concordar com isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "go for it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vá em frente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "go head to head",
+        "partOfSpeech": "expression",
+        "ptDefinition": "competir diretamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "go out on the town",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sair para se divertir na cidade",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "go under",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "go-to guy",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa a quem todos recorrem",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "go-to guy for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa de referência para",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "going green",
+        "partOfSpeech": "expression",
+        "ptDefinition": "adotando práticas ambientais",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "going up against",
+        "partOfSpeech": "expression",
+        "ptDefinition": "competindo com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "gone downhill",
+        "partOfSpeech": "expression",
+        "ptDefinition": "piorou muito",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "gone native",
+        "partOfSpeech": "expression",
+        "ptDefinition": "adotou os costumes locais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "good catch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "bom partido",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "goodies",
+        "partOfSpeech": "expression",
+        "ptDefinition": "brindes; coisas boas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "got a few screws loose",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não bate bem da cabeça",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got butterflies in my stomach",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fiquei com frio na barriga",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got canned",
+        "partOfSpeech": "expression",
+        "ptDefinition": "foi demitido",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "got held up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficou retido; atrasou-se",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got held up in traffic",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficou preso no trânsito",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got her walking papers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ela foi demitida",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got the scoop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conseguiu informação exclusiva",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conseguiu",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got your number",
+        "partOfSpeech": "expression",
+        "ptDefinition": "percebeu suas intenções; sabe como você é",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "got your work cut out for you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ter uma tarefa difícil pela frente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "gotten our wires crossed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nos entendemos mal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "grab a bite",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comer alguma coisa rapidamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "grab a slice of the test prep market",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conquistar uma parte do mercado de preparação para provas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "graveyard shift",
+        "partOfSpeech": "expression",
+        "ptDefinition": "turno da madrugada",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "great pains",
+        "partOfSpeech": "expression",
+        "ptDefinition": "muito cuidado ou esforço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "greatest thing since sliced bread",
+        "partOfSpeech": "expression",
+        "ptDefinition": "a melhor novidade de todos os tempos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "had a change of heart",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudou de ideia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "had one too many",
+        "partOfSpeech": "expression",
+        "ptDefinition": "bebeu demais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "had some nerve",
+        "partOfSpeech": "expression",
+        "ptDefinition": "teve muita ousadia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hammered",
+        "partOfSpeech": "expression",
+        "ptDefinition": "muito afetado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "handed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vazias",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hang onto",
+        "partOfSpeech": "expression",
+        "ptDefinition": "guardar; manter",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "has an attitude",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tem uma atitude difícil; se comporta mal",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "has hit a snag",
+        "partOfSpeech": "expression",
+        "ptDefinition": "encontrou um obstáculo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "has just gotten underway",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acabou de começar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "has some issues with him",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tem problemas com ele",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "has the hots for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "está a fim de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "has up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tem algo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "have a change of heart",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudar de ideia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "having some issues with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tendo alguns problemas com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "He can be a wet blanket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ele pode estragar o clima",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "He must’ve woken up on the wrong side of the",
+        "partOfSpeech": "expression",
+        "ptDefinition": "Ele deve ter acordado de mau humor",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "He’s booked solid",
+        "partOfSpeech": "expression",
+        "ptDefinition": "Ele está com a agenda lotada.",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "head honcho",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chefão; pessoa no comando",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "highway robbery",
+        "partOfSpeech": "expression",
+        "ptDefinition": "preço abusivo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hiring freeze",
+        "partOfSpeech": "expression",
+        "ptDefinition": "congelamento de contratações",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "his bad side",
+        "partOfSpeech": "expression",
+        "ptDefinition": "seu lado ruim; sua antipatia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "his love handles",
+        "partOfSpeech": "expression",
+        "ptDefinition": "as gordurinhas na cintura dele",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "his sleeve",
+        "partOfSpeech": "expression",
+        "ptDefinition": "na manga dele",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit a snag",
+        "partOfSpeech": "expression",
+        "ptDefinition": "encontrar um obstáculo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit hard by",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fortemente afetado por",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "hit it off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "se dar bem de imediato",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit the hay",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ir dormir",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit the roof",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar furioso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit the shelves",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chegar às lojas; ser lançado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hit the spot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "satisfazer exatamente o que se queria",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hold out for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "esperar por algo melhor",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hold their feet to the fire",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cobrá-los com firmeza",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "holding that against you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "usando isso contra você",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hot buttons",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assuntos que provocam forte reação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "How about",
+        "partOfSpeech": "expression",
+        "ptDefinition": "que tal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "How could someone stoop so low",
+        "partOfSpeech": "expression",
+        "ptDefinition": "como alguém pode agir de forma tão baixa?",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "hush-hush",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sigiloso; secreto",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "hyping it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "promovendo isso com exagero",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "I could see it coming",
+        "partOfSpeech": "expression",
+        "ptDefinition": "eu já esperava que acontecesse",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "I have my sources",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sei por fontes próprias",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I heard it through the grapevine",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ouvi pelos boatos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I should’ve known better than to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "iria saber que não deveria ter feito isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I should’ve known better than to ask",
+        "partOfSpeech": "expression",
+        "ptDefinition": "já devia saber que perguntar seria má ideia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I wouldn’t dream of it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "eu jamais faria isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I wouldn’t go that far",
+        "partOfSpeech": "expression",
+        "ptDefinition": "eu não iria tão longe",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I’m afraid",
+        "partOfSpeech": "expression",
+        "ptDefinition": "temo que; infelizmente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I’m all ears",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sou todo ouvidos!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "I’m so time-crunched",
+        "partOfSpeech": "expression",
+        "ptDefinition": "estou com o tempo muito apertado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in accordance with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em conformidade com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "In all honesty",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sendo sincero",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in arrears",
+        "partOfSpeech": "expression",
+        "ptDefinition": "com pagamentos atrasados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in bad shape",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em mau estado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in cahoots with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em conluio com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in free fall",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em queda livre",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in such dire straits",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em situação tão grave",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in talks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em negociação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in the",
+        "partOfSpeech": "expression",
+        "ptDefinition": "no; na",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in the doghouse with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em apuros com",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in the dumps",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em crise; em situação ruim",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in the loop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "informado sobre o que acontece",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "in the running",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entre os candidatos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "in the works",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em desenvolvimento",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "incorporate",
+        "partOfSpeech": "expression",
+        "ptDefinition": "incorporar; incluir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "injection",
+        "partOfSpeech": "term",
+        "enDefinition": "putting medicine or other liquids into the body with a syringe",
+        "ptDefinition": "aplicação de líquido no corpo por seringa",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "inquiry",
+        "partOfSpeech": "term",
+        "enDefinition": "request for more information; question",
+        "ptDefinition": "pedido de informação; consulta",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "inside information",
+        "partOfSpeech": "expression",
+        "ptDefinition": "informação privilegiada",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ironed out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resolvidos; acertados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "irregularities",
+        "partOfSpeech": "term",
+        "enDefinition": "incorrect information in accounting or financial records",
+        "ptDefinition": "irregularidades em registros ou procedimentos",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "it pays to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vale a pena",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "it was an eye-opener",
+        "partOfSpeech": "expression",
+        "ptDefinition": "foi uma revelação importante",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "It’s about time",
+        "partOfSpeech": "expression",
+        "ptDefinition": "já estava na hora",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "it’s going to cost you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso vai ter um custo para você",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "It’s no skin off my nose",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso não me afeta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "It’s only a matter of time before the police find him",
+        "partOfSpeech": "expression",
+        "ptDefinition": "é só questão de tempo até a polícia encontrá-lo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "It’s over between us",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acabou entre nós",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "jet lag",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cansaço causado pelo fuso horário",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "jump in and introduce its own version",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar no mercado e lançar sua própria versão",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "jump into the fray",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar na disputa",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "jump on the bandwagon",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aderir à moda; seguir a tendência",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "jumped down my throat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reagiu de forma agressiva comigo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "just the ticket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "exatamente o que era necessário",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "keep closer tabs on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acompanhar mais de perto",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "keep it down",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falar mais baixo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Keep your chin up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "anime-se; não desista",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "keeping tabs on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acompanhando de perto",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "keeping up with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acompanhando; mantendo o mesmo ritmo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "kicking myself",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me arrependendo muito",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "kiss of death",
+        "partOfSpeech": "expression",
+        "ptDefinition": "algo que causa o fracasso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "knockoffs",
+        "partOfSpeech": "expression",
+        "ptDefinition": "imitações; cópias baratas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "knockout",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa muito atraente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ladies’ man",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conquistador; homem que sai com muitas mulheres",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "lag behind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar para trás",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "land new accounts",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conquistar novos clientes empresariais",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "last-ditch effort",
+        "partOfSpeech": "expression",
+        "ptDefinition": "última tentativa",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "last-minute",
+        "partOfSpeech": "expression",
+        "ptDefinition": "feito na última hora",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "learned your lesson",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aprendeu a lição",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "leave your comfort zone",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sair da zona de conforto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "let bygones be bygones",
+        "partOfSpeech": "expression",
+        "ptDefinition": "deixar o passado para trás",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "let you off the hook",
+        "partOfSpeech": "expression",
+        "ptDefinition": "livrar você da obrigação ou culpa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "let’s not push the panic button",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não vamos entrar em pânico",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "leveraging",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aproveitando recursos para obter vantagem",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "light a fire under",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pressionar alguém a agir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Like hell",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de jeito nenhum!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Like hell he will",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de jeito nenhum que ele vai!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "lining his pockets",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enriquecendo às custas da empresa",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "lip service to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apoio apenas da boca para fora",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "live up to all the hype",
+        "partOfSpeech": "expression",
+        "ptDefinition": "corresponder a toda a publicidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "lived it up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aproveitou a vida",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "living it up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aproveitando a vida",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "lose ground to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "perder espaço para",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "lose my temper",
+        "partOfSpeech": "expression",
+        "ptDefinition": "perder a paciência",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "love handles",
+        "partOfSpeech": "expression",
+        "ptDefinition": "gordurinhas na cintura",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "lover’s spat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "briguinha de casal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "made up my mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "já tomei minha decisão",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "make small talk",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversar sobre assuntos leves",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "make the call",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tomar a decisão",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "make waves",
+        "partOfSpeech": "expression",
+        "ptDefinition": "causar agitação; desafiar o status quo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "makes my blood boil",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me deixa furioso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "makes the big bucks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "recebe muito dinheiro",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "makes up his mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "toma uma decisão",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "making any headway",
+        "partOfSpeech": "expression",
+        "ptDefinition": "progredindo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "making do with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "se virando com o que tem",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "management ranks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cargos de gerência",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "marketing blitz",
+        "partOfSpeech": "expression",
+        "ptDefinition": "campanha intensa de marketing",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "match made in heaven",
+        "partOfSpeech": "expression",
+        "ptDefinition": "combinação perfeita",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Meet me halfway",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chegar a um meio-termo comigo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "melt in your mouth",
+        "partOfSpeech": "expression",
+        "ptDefinition": "derreter na boca",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "miss the boat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "perder a oportunidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "money talks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "o dinheiro tem poder",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "monkey business",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comportamento suspeito ou brincadeiras",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "move full force ahead",
+        "partOfSpeech": "expression",
+        "ptDefinition": "avançar com toda a força",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "move full steam ahead",
+        "partOfSpeech": "expression",
+        "ptDefinition": "seguir em frente com toda a força",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "move the needle",
+        "partOfSpeech": "expression",
+        "ptDefinition": "produzir uma mudança perceptível nos resultados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "moving full steam ahead with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "avançando com toda a força com",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Mr. Right",
+        "partOfSpeech": "expression",
+        "ptDefinition": "parceiro ideal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "mull this over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pensar melhor sobre isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "my treat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "por minha conta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "naysayer",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa que sempre diz não",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "newfangled",
+        "partOfSpeech": "expression",
+        "ptDefinition": "moderno de forma estranha; novo e complicado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "next generation",
+        "partOfSpeech": "expression",
+        "ptDefinition": "próxima geração",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "next thing you know",
+        "partOfSpeech": "expression",
+        "ptDefinition": "quando você menos espera",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "nip this in the bud",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resolver isso logo no início",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "nipped this in the bud",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resolveu o problema logo no início",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "nitpicks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "implica com detalhes pequenos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "no conflict of interest",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nenhum conflito de interesses",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "no great shakes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nada de extraordinário",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "no-win situation",
+        "partOfSpeech": "expression",
+        "ptDefinition": "situação sem solução favorável",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "None of your business",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não é da sua conta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "not",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Not a chance",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de jeito nenhum!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "not for all the tea in China",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nem por todo o chá da China",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "not going to sit well with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não vai ser bem recebido por",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "not the only game in town",
+        "partOfSpeech": "expression",
+        "ptDefinition": "não somos a única opção disponível",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "nothing to write home about",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nada de especial",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "of his own accord",
+        "partOfSpeech": "expression",
+        "ptDefinition": "por vontade própria",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "off her rocker",
+        "partOfSpeech": "expression",
+        "ptDefinition": "completamente maluca",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "off the market",
+        "partOfSpeech": "expression",
+        "ptDefinition": "retirado do mercado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "off the top of my head",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem pensar muito; de memória",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "off to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "indo para",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "disso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on my case",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pegando no meu pé",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on our toes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "alertas; preparados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "on the cheap",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de forma barata; economizando na qualidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "on the company’s dime",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pago pela empresa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on the dating scene",
+        "partOfSpeech": "expression",
+        "ptDefinition": "procurando um parceiro amoroso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on the market",
+        "partOfSpeech": "expression",
+        "ptDefinition": "à venda; disponível no mercado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "on the sidelines",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem participar; observando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "on the spur of the moment",
+        "partOfSpeech": "expression",
+        "ptDefinition": "por impulso; sem planejar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "on the warpath",
+        "partOfSpeech": "expression",
+        "ptDefinition": "procurando briga; muito irritado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "once-in-a-lifetime",
+        "partOfSpeech": "expression",
+        "ptDefinition": "que acontece uma vez na vida",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "only a matter of time before",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ser apenas questão de tempo até",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "open a can of",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abrir uma lata de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "org chart",
+        "partOfSpeech": "expression",
+        "ptDefinition": "organograma",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "our bread and butter",
+        "partOfSpeech": "expression",
+        "ptDefinition": "nosso ganha-pão",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ousted",
+        "partOfSpeech": "expression",
+        "ptDefinition": "destituído do cargo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "out of the woods",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fora de perigo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Out with it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fale logo!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "outside the ranks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fora da equipe atual",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "outstanding payment",
+        "partOfSpeech": "term",
+        "enDefinition": "payment that is still owed",
+        "ptDefinition": "pagamento ainda devido",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "packed to the rafters",
+        "partOfSpeech": "expression",
+        "ptDefinition": "lotado até o teto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "paint the town red",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sair para se divertir bastante",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "paled in comparison",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pareceu inferior em comparação",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "part with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abrir mão de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "part with it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abrir mão disso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "party pooper",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa que estraga a diversão",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "patch things up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer as pazes",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pay her dues first",
+        "partOfSpeech": "expression",
+        "ptDefinition": "primeiro conquistar sua posição com esforço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pay through the nose",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagar caro demais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "payment terms",
+        "partOfSpeech": "term",
+        "enDefinition": "when the buyer and seller agree the payment for an order will be due",
+        "ptDefinition": "condições e prazo acordados para o pagamento",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "payment upfront",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagamento antecipado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pays up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "paga o que deve",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "peddling",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vendendo de forma insistente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pent-up demand",
+        "partOfSpeech": "expression",
+        "ptDefinition": "demanda reprimida",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pick her brain",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pedir a opinião dela",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pick up the tab",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagar a conta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "picked up on the story",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começou a divulgar a história",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "picking up the tab",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagando a conta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "picture",
+        "partOfSpeech": "expression",
+        "ptDefinition": "situação geral",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "piece of the pie",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fatia do mercado ou dos lucros",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pin it on me",
+        "partOfSpeech": "expression",
+        "ptDefinition": "colocar a culpa em mim",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pin this on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "colocar a culpa disso em",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pinching pennies",
+        "partOfSpeech": "expression",
+        "ptDefinition": "economizando cada centavo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pinpoint",
+        "partOfSpeech": "expression",
+        "ptDefinition": "identificar com precisão",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pissing off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "irritando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pitch the idea",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apresentar a ideia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "place an order",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer um pedido; encomendar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "plain Jane",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mulher considerada sem graça ou comum",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "plaintiffs",
+        "partOfSpeech": "expression",
+        "ptDefinition": "requerentes de uma ação judicial",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Plan B",
+        "partOfSpeech": "expression",
+        "ptDefinition": "plano alternativo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "play ball",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cooperar; entrar no jogo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "play devil’s advocate",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer o papel de quem questiona a proposta",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "play to our strengths",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aproveitar nossos pontos fortes",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "played the field",
+        "partOfSpeech": "expression",
+        "ptDefinition": "saiu com várias pessoas sem compromisso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "playing with fire",
+        "partOfSpeech": "expression",
+        "ptDefinition": "correndo um grande risco",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "plays favorites",
+        "partOfSpeech": "expression",
+        "ptDefinition": "favorece algumas pessoas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "plow any more money into",
+        "partOfSpeech": "expression",
+        "ptDefinition": "investir mais dinheiro em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "plow any more money into this",
+        "partOfSpeech": "expression",
+        "ptDefinition": "investir mais dinheiro nisso",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "plum",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cargo ou oportunidade muito desejável",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "PO’ed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "irritado; furioso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pony up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagar; desembolsar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pop the question",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pedir alguém em casamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "PR",
+        "partOfSpeech": "term",
+        "enDefinition": "public relations",
+        "ptDefinition": "relações públicas",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "PR campaign",
+        "partOfSpeech": "expression",
+        "ptDefinition": "campanha de relações públicas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "preserve",
+        "partOfSpeech": "term",
+        "enDefinition": "to conserve; to save",
+        "ptDefinition": "preservar; conservar",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "preserving",
+        "partOfSpeech": "expression",
+        "ptDefinition": "preservando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "price break",
+        "partOfSpeech": "expression",
+        "ptDefinition": "redução no preço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "price sensitive",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sensível a mudanças de preço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "proactive",
+        "partOfSpeech": "expression",
+        "ptDefinition": "que age antecipadamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "procurement",
+        "partOfSpeech": "term",
+        "enDefinition": "the purchasing department of a company",
+        "ptDefinition": "setor de compras de uma empresa",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "product recall",
+        "partOfSpeech": "expression",
+        "ptDefinition": "recall de produto",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "promote from within",
+        "partOfSpeech": "expression",
+        "ptDefinition": "promover alguém da própria empresa",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "proven myself",
+        "partOfSpeech": "expression",
+        "ptDefinition": "provei minha capacidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pull Smoothitall off the shelves",
+        "partOfSpeech": "expression",
+        "ptDefinition": "retirar Smoothitall das prateleiras",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "pulling my leg",
+        "partOfSpeech": "expression",
+        "ptDefinition": "brincando comigo; me enganando",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pump me for information",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tentar tirar informações de mim",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "pumping her for information",
+        "partOfSpeech": "expression",
+        "ptDefinition": "extraindo informações dela",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "push back",
+        "partOfSpeech": "expression",
+        "ptDefinition": "adiar; resistir; reagir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "push the panic button",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entrar em pânico",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "put a damper on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "estragar o clima",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "put a positive spin on things",
+        "partOfSpeech": "expression",
+        "ptDefinition": "dar uma interpretação positiva às coisas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "put a premium on eco-friendly products",
+        "partOfSpeech": "expression",
+        "ptDefinition": "dar grande importância a produtos ecológicos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "put all our eggs in one basket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apostar tudo em uma única opção",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "put my cards on the table",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abrir o jogo; mostrar minhas intenções",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "put off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "adiar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "put off by",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desanimado por; afastado por",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "put on a few pounds",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ganhou alguns quilos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "put our heads together",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pensar em soluções juntos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "put the heat on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pressionar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "rack up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acumular",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "racked up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acumularam",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "raise a red flag",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acender um sinal de alerta",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "raise capital",
+        "partOfSpeech": "expression",
+        "ptDefinition": "captar capital",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "raised some eyebrows",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chamou a atenção; despertou suspeitas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "raised the issue",
+        "partOfSpeech": "expression",
+        "ptDefinition": "levantou a questão",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ramp up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aumentar rapidamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "razor-thin margins",
+        "partOfSpeech": "expression",
+        "ptDefinition": "margens de lucro muito pequenas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ready to drop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "muito cansado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "recipe for disaster",
+        "partOfSpeech": "expression",
+        "ptDefinition": "receita para o desastre",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "regulations",
+        "partOfSpeech": "term",
+        "enDefinition": "rules; laws",
+        "ptDefinition": "regras; normas; regulamentos",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "rein her in",
+        "partOfSpeech": "expression",
+        "ptDefinition": "contê-la; controlá-la",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "rep",
+        "partOfSpeech": "term",
+        "enDefinition": "short for representative",
+        "ptDefinition": "abreviação de representante",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "right on the money",
+        "partOfSpeech": "expression",
+        "ptDefinition": "exatamente certo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "right up your alley",
+        "partOfSpeech": "expression",
+        "ptDefinition": "perfeito para você",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "rings a bell",
+        "partOfSpeech": "expression",
+        "ptDefinition": "soa familiar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "rise through the ranks",
+        "partOfSpeech": "expression",
+        "ptDefinition": "subir na hierarquia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "risk worth taking",
+        "partOfSpeech": "expression",
+        "ptDefinition": "risco que vale a pena correr",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "road warriors",
+        "partOfSpeech": "expression",
+        "ptDefinition": "profissionais que viajam muito a trabalho",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "roll out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "lançar; disponibilizar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ruffled feathers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "irritou outras pessoas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ruffling feathers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "causando irritação; melindrando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Rules are meant to be broken",
+        "partOfSpeech": "expression",
+        "ptDefinition": "regras foram feitas para serem quebradas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "run it by",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apresentar para alguém avaliar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "run-of-",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comum; sem nada especial",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "run-of-the-mill",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comum; corriqueiro",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "rush into",
+        "partOfSpeech": "expression",
+        "ptDefinition": "se precipitar em",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "rushing into things",
+        "partOfSpeech": "expression",
+        "ptDefinition": "se precipitando nas coisas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "saddled with debt",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sobrecarregado de dívidas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sales figures",
+        "partOfSpeech": "expression",
+        "ptDefinition": "números das vendas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sank $5 million into",
+        "partOfSpeech": "expression",
+        "ptDefinition": "investiu 5 milhões de dólares em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Save room for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reserve espaço para",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "scaled back",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduziu; diminuiu",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "scaling back",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduzindo a escala",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "schmooze",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversar de forma interessada para criar contatos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "scouting out",
+        "partOfSpeech": "expression",
+        "ptDefinition": "procurando; investigando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "scrimping on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "economizando demais em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "scuttlebutt",
+        "partOfSpeech": "expression",
+        "ptDefinition": "boatos; conversa de bastidores",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "seal the deal",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fechar o negócio",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "sees it coming",
+        "partOfSpeech": "expression",
+        "ptDefinition": "prevê que vai acontecer",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sell me a bill of goods",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me enganar com uma promessa falsa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "set eyes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pôr os olhos em; ver",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "set me up with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me apresentar a alguém para um encontro",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "set up shop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abrir um negócio",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "settle for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aceitar menos do que queria",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "settle up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "quitar o que deve",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "shoot down your idea",
+        "partOfSpeech": "expression",
+        "ptDefinition": "rejeitar sua ideia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "shooting the breeze",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversando à toa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "shop around",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comparar preços em várias lojas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "shot down my idea",
+        "partOfSpeech": "expression",
+        "ptDefinition": "rejeitou minha ideia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "show her the ropes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ensinar a ela como o trabalho funciona",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "show my stuff",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mostrar minha capacidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "side effect",
+        "partOfSpeech": "term",
+        "enDefinition": "a health problem caused by a drug; an effect of a drug other than the one intended",
+        "ptDefinition": "efeito colateral de um medicamento",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sign on the dotted line",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assinar o contrato",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "skeptical",
+        "partOfSpeech": "term",
+        "enDefinition": "having doubt; questioning; not convinced of something",
+        "ptDefinition": "cético; que tem dúvidas",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "skyrocketed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "subiu vertiginosamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "slap on the wrist",
+        "partOfSpeech": "expression",
+        "ptDefinition": "punição leve demais",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "slashed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "reduziu drasticamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "slaving away",
+        "partOfSpeech": "expression",
+        "ptDefinition": "trabalhando arduamente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "sleazy",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem escrúpulos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "slipshod",
+        "partOfSpeech": "term",
+        "enDefinition": "not well done; careless",
+        "ptDefinition": "malfeito; descuidado",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "small talk",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversa fiada sobre assuntos leves",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "smell a rat",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desconfiar de algo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "sneak peek",
+        "partOfSpeech": "expression",
+        "ptDefinition": "prévia exclusiva",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "social networking",
+        "partOfSpeech": "term",
+        "enDefinition": "using websites such as Facebook to share information among a group of linked people",
+        "ptDefinition": "uso de redes sociais para trocar informações",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "soft",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fraco; abaixo do esperado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "something came up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "surgiu um imprevisto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "speak to you in confidence",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversar com você em sigilo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "spell trouble",
+        "partOfSpeech": "expression",
+        "ptDefinition": "indicar problemas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "spinning her wheels",
+        "partOfSpeech": "expression",
+        "ptDefinition": "trabalhando sem avançar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "spinning his wheels",
+        "partOfSpeech": "expression",
+        "ptDefinition": "trabalhando sem progredir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "spinning my wheels",
+        "partOfSpeech": "expression",
+        "ptDefinition": "trabalhando sem avançar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "split",
+        "partOfSpeech": "expression",
+        "ptDefinition": "separar-se",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "split up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "terminaram o relacionamento",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "splurging",
+        "partOfSpeech": "expression",
+        "ptDefinition": "esbanjando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "spread ourselves too thin",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assumir coisas demais ao mesmo tempo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "spreading ourselves too",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assumindo tarefas demais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stabbed me in the back",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me traiu",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "staffers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "funcionários",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "staked our reputation on",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apostamos nossa reputação em",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stand by",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apoiar; manter-se firme em relação a",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stand still",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar parado; deixar de progredir",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "state of the art",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tecnologia de ponta",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Stay over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "passar a noite na casa de alguém",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stay the course",
+        "partOfSpeech": "expression",
+        "ptDefinition": "manter o plano; não mudar de rumo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "step on your toes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "invadir sua área de responsabilidade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "step up our efforts",
+        "partOfSpeech": "expression",
+        "ptDefinition": "intensificar nossos esforços",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "step up our game",
+        "partOfSpeech": "expression",
+        "ptDefinition": "melhorar nosso desempenho",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stepping down",
+        "partOfSpeech": "expression",
+        "ptDefinition": "renunciando ao cargo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stepping on toes",
+        "partOfSpeech": "expression",
+        "ptDefinition": "invadindo a área de responsabilidade dos outros",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stick around",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficar por aqui",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stick my nose where it doesn’t belong",
+        "partOfSpeech": "expression",
+        "ptDefinition": "meter o nariz onde não devo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stick with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "permanecer com; apoiar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Stick with us",
+        "partOfSpeech": "expression",
+        "ptDefinition": "continue conosco",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sticker shock",
+        "partOfSpeech": "expression",
+        "ptDefinition": "susto ao ver o preço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sticking her nose where it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "metendo o nariz onde",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "sticking to my guns",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mantendo minha posição",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stoop so low",
+        "partOfSpeech": "expression",
+        "ptDefinition": "agir de forma tão baixa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Stop stuffing your face with cookies",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pare de comer tantos biscoitos!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "strapped for cash",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem dinheiro disponível",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "streamlining operations",
+        "partOfSpeech": "expression",
+        "ptDefinition": "simplificando as operações",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "stringing me along",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enrolando-me com falsas esperanças",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stuff our faces",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comer até ficar cheio",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "stuffed shirts",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoas rígidas e pomposas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "such a naysayer",
+        "partOfSpeech": "expression",
+        "ptDefinition": "uma pessoa tão negativa",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Suck it up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aguente firme; aceite a situação",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "suffered a blow",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sofreu um revés",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "sugarcoating",
+        "partOfSpeech": "expression",
+        "ptDefinition": "suavizando a notícia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "suit yourself",
+        "partOfSpeech": "expression",
+        "ptDefinition": "faça como quiser",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "supply chain",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cadeia de suprimentos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "swing by",
+        "partOfSpeech": "expression",
+        "ptDefinition": "passar rapidamente por algum lugar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "take a hit",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sofrer um prejuízo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "take a price cut",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aceitar uma redução de preço",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "take the bull by the horns",
+        "partOfSpeech": "expression",
+        "ptDefinition": "agir com determinação diante do problema",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "take the reins",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assumir o comando",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "take you up on your offer",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aceitar sua oferta",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "taken a beating",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sofrido perdas ou críticas intensas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "taken a nosedive",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sofrido uma queda brusca",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "taken the bull by the horns",
+        "partOfSpeech": "expression",
+        "ptDefinition": "enfrentou o problema diretamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "talk shop",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falar de trabalho em momento social",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "talk this over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "conversar sobre isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "talk turkey",
+        "partOfSpeech": "expression",
+        "ptDefinition": "falar francamente sobre negócios",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tasteful",
+        "partOfSpeech": "expression",
+        "ptDefinition": "de bom gosto",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "teamed up with",
+        "partOfSpeech": "expression",
+        "ptDefinition": "formaram uma parceria com",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "tech-savvy consumers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "consumidores familiarizados com tecnologia",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "that",
+        "partOfSpeech": "expression",
+        "ptDefinition": "disso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "That makes my blood boil",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso me deixa furioso!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "That’s the $64,000 question",
+        "partOfSpeech": "expression",
+        "ptDefinition": "essa é a grande questão",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "that’s the furthest thing from my mind",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso é a última coisa em que estou pensando",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "That’s not going to cut it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso não vai ser suficiente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "That’s par for the course with him",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso é típico dele",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "The ball’s in your court",
+        "partOfSpeech": "expression",
+        "ptDefinition": "agora a decisão é sua",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "the greatest thing since sliced bread",
+        "partOfSpeech": "expression",
+        "ptDefinition": "a melhor coisa desde o pão fatiado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "The jig is up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "a farsa acabou; você foi descoberto",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "The least you can do is",
+        "partOfSpeech": "expression",
+        "ptDefinition": "o mínimo que você pode fazer é",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "the picture",
+        "partOfSpeech": "expression",
+        "ptDefinition": "entende a situação",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "the pinch",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aperto financeiro",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "the-mill",
+        "partOfSpeech": "expression",
+        "ptDefinition": "comum",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "their sleeve",
+        "partOfSpeech": "expression",
+        "ptDefinition": "na manga",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "thick skin",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resistência a críticas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "thin",
+        "partOfSpeech": "expression",
+        "ptDefinition": "e sem foco",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "This is not in my job description",
+        "partOfSpeech": "expression",
+        "ptDefinition": "isso não faz parte das minhas funções!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "this is the thanks I get",
+        "partOfSpeech": "expression",
+        "ptDefinition": "e é assim que me agradecem?",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "thorn in my side",
+        "partOfSpeech": "expression",
+        "ptDefinition": "um incômodo constante para mim",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "thorn in our side",
+        "partOfSpeech": "expression",
+        "ptDefinition": "incômodo constante para nós",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "those days are over",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aquela fase acabou",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "throwing me a curve",
+        "partOfSpeech": "expression",
+        "ptDefinition": "me surpreendendo com uma dificuldade inesperada",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "ticked off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "irritado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "ticked off at",
+        "partOfSpeech": "expression",
+        "ptDefinition": "irritado com",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tied the knot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "casaram-se",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tight-lipped",
+        "partOfSpeech": "expression",
+        "ptDefinition": "discreto; que não revela informações",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "tighten their purse strings",
+        "partOfSpeech": "expression",
+        "ptDefinition": "apertar os cintos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Time is of the essence",
+        "partOfSpeech": "expression",
+        "ptDefinition": "o tempo é essencial",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "time-crunched",
+        "partOfSpeech": "expression",
+        "ptDefinition": "com muito pouco tempo disponível",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "To add insult to injury",
+        "partOfSpeech": "expression",
+        "ptDefinition": "para piorar ainda mais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "to die for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "delicioso; bom demais",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "To make a long story short",
+        "partOfSpeech": "expression",
+        "ptDefinition": "resumindo a história",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "told him off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "deu uma bronca nele",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 1."
+          }
+        ]
+      },
+      {
+        "word": "tongue-tied",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sem conseguir falar por nervosismo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "took a hit",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sofreu um prejuízo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "took a nosedive",
+        "partOfSpeech": "expression",
+        "ptDefinition": "caiu bruscamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "took a write-off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "registrou uma baixa contábil",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "touchy subject",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assunto delicado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tough act to follow",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sucesso difícil de igualar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "tough cookie",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa forte ou difícil de lidar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tourist trap",
+        "partOfSpeech": "expression",
+        "ptDefinition": "armadilha para turistas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "trading down to private label products",
+        "partOfSpeech": "expression",
+        "ptDefinition": "passando a comprar produtos de marcas próprias mais baratas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "treat you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pagar algo para você",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tried-and-true way",
+        "partOfSpeech": "expression",
+        "ptDefinition": "método testado e confiável",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "troubleshoot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "identificar e resolver problemas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "turn around",
+        "partOfSpeech": "expression",
+        "ptDefinition": "melhorar; mudar de direção",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "turn on the charm",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tentar conquistar com simpatia",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "turn the corner",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começar a melhorar",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "turn the tables",
+        "partOfSpeech": "expression",
+        "ptDefinition": "inverter a situação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "turning a profit",
+        "partOfSpeech": "expression",
+        "ptDefinition": "obtendo lucro",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "turning over a new leaf",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mudando de comportamento para melhor",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "twentysomethings",
+        "partOfSpeech": "expression",
+        "ptDefinition": "jovens na faixa dos vinte anos",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "two-timers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoas infiéis em relacionamentos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "tying the knot",
+        "partOfSpeech": "expression",
+        "ptDefinition": "casando-se",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "under the impression",
+        "partOfSpeech": "expression",
+        "ptDefinition": "com a impressão de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "undercut",
+        "partOfSpeech": "expression",
+        "ptDefinition": "vender por um preço menor que o concorrente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "undercut them on price",
+        "partOfSpeech": "expression",
+        "ptDefinition": "oferecer preço menor que o deles",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "underperformers",
+        "partOfSpeech": "expression",
+        "ptDefinition": "funcionários com desempenho abaixo do esperado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "up",
+        "partOfSpeech": "expression",
+        "ptDefinition": "para cima; parte de verbo frasal",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "up for",
+        "partOfSpeech": "expression",
+        "ptDefinition": "a fim de; disposto a",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "up for it",
+        "partOfSpeech": "expression",
+        "ptDefinition": "disposto a isso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "up in arms",
+        "partOfSpeech": "expression",
+        "ptDefinition": "indignados",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "up the creek without a paddle",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em apuros, sem saída fácil",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "up to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ocupado com; fazendo",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "UPC label",
+        "partOfSpeech": "expression",
+        "ptDefinition": "etiqueta de código de barras UPC",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "upcharge",
+        "partOfSpeech": "term",
+        "enDefinition": "an additional charge",
+        "ptDefinition": "cobrança adicional; acréscimo no preço",
+        "notes": [
+          {
+            "enNote": "Explained in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "upped the ante",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aumentou as apostas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "valued customer",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cliente valorizado",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "Wake up and smell the coffee",
+        "partOfSpeech": "expression",
+        "ptDefinition": "encare a realidade",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "wake-up call",
+        "partOfSpeech": "expression",
+        "ptDefinition": "chamada de atenção; alerta importante",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "walk all over me",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tirar vantagem de mim",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "walk all over you",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abusar da sua boa vontade",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "walk away",
+        "partOfSpeech": "expression",
+        "ptDefinition": "abandonar a negociação",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "wannabe",
+        "partOfSpeech": "expression",
+        "ptDefinition": "aspirante; pessoa que quer ser algo",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "warm up to",
+        "partOfSpeech": "expression",
+        "ptDefinition": "começar a gostar de",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "watching my waistline",
+        "partOfSpeech": "expression",
+        "ptDefinition": "cuidando do meu peso",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "water under the",
+        "partOfSpeech": "expression",
+        "ptDefinition": "águas passadas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "water under the bridge",
+        "partOfSpeech": "expression",
+        "ptDefinition": "assunto do passado",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "went ballistic",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ficou furioso",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "went to pieces",
+        "partOfSpeech": "expression",
+        "ptDefinition": "desmoronou emocionalmente",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "wet blanket",
+        "partOfSpeech": "expression",
+        "ptDefinition": "pessoa que estraga o clima",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "What’s that supposed to mean",
+        "partOfSpeech": "expression",
+        "ptDefinition": "o que você quer dizer com isso?",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "What’s the big deal",
+        "partOfSpeech": "expression",
+        "ptDefinition": "qual é o problema?",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "wheeling and dealing",
+        "partOfSpeech": "expression",
+        "ptDefinition": "negociando intensamente",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "When in Rome, do as the Romans do",
+        "partOfSpeech": "expression",
+        "ptDefinition": "em Roma, faça como os romanos",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "whistleblower",
+        "partOfSpeech": "expression",
+        "ptDefinition": "denunciante de irregularidades",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "white lie",
+        "partOfSpeech": "expression",
+        "ptDefinition": "mentira inofensiva",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "Wishful thinking",
+        "partOfSpeech": "expression",
+        "ptDefinition": "puro desejo sem base na realidade",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "woke up on the wrong side of the bed",
+        "partOfSpeech": "expression",
+        "ptDefinition": "acordou de mau humor",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "work wonders",
+        "partOfSpeech": "expression",
+        "ptDefinition": "fazer maravilhas",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "worms",
+        "partOfSpeech": "expression",
+        "ptDefinition": "problemas difíceis de resolver",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "write-off",
+        "partOfSpeech": "expression",
+        "ptDefinition": "baixa contábil",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "yet",
+        "partOfSpeech": "expression",
+        "ptDefinition": "ainda; porém",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "you get",
+        "partOfSpeech": "expression",
+        "ptDefinition": "você entende",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "You must be pulling my leg",
+        "partOfSpeech": "expression",
+        "ptDefinition": "você deve estar brincando comigo!",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "you’re going to get on your boss’ bad side",
+        "partOfSpeech": "expression",
+        "ptDefinition": "você vai irritar seu chefe",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "younger demographic",
+        "partOfSpeech": "expression",
+        "ptDefinition": "público mais jovem",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "your cap",
+        "partOfSpeech": "expression",
+        "ptDefinition": "para se orgulhar",
+        "notes": [
+          {
+            "enNote": "Used in Everyday 2."
+          }
+        ]
+      },
+      {
+        "word": "your sales target",
+        "partOfSpeech": "expression",
+        "ptDefinition": "sua meta de vendas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      },
+      {
+        "word": "zero tolerance for infighting",
+        "partOfSpeech": "expression",
+        "ptDefinition": "tolerância zero a brigas internas",
+        "notes": [
+          {
+            "enNote": "Used in Business 2."
+          }
+        ]
+      }
+    ]
+  }
+]

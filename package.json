@@ -8,6 +8,7 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "audit:course": "node ./scripts/audit-course-content.mjs",
+    "audit:expressions": "node ./scripts/audit-expression-dictionary.mjs",
     "audiobooks:sync": "node ./scripts/sync-audiobook-durations.mjs",
     "media:upload": "bash ./scripts/upload-media.sh",
     "deploy": "git add . && git commit -m \"wip\" && git push"
