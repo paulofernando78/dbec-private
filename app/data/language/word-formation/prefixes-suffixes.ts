@@ -75,6 +75,22 @@ export const prefixesSuffixes = {
       ],
     },
     {
+      title: "Adjetivos com -y: palavras terminadas em -e",
+      meaning: "O sufixo -y pode formar adjetivos com sentido de 'cheio de' ou 'com característica de'. Em muitos casos, o -e final da base desaparece antes de -y. Aprenda cada par como vocabulário: a semelhança entre heave e heavy não basta para aplicar essa formação a toda palavra terminada em -e.",
+      pattern: "ease → easy · noise → noisy · grease → greasy · spice → spicy · ice → icy · shine → shiny · smoke → smoky · taste → tasty · wave → wavy",
+      examples: [
+        { english: "The instructions are easy to follow.", englishContent: ["The instructions are ", mark("easy"), " to follow."], portuguese: "As instruções são fáceis de seguir." },
+        { english: "The street is noisy at night.", englishContent: ["The street is ", mark("noisy"), " at night."], portuguese: "A rua é barulhenta à noite." },
+        { english: "The pan is greasy.", englishContent: ["The pan is ", mark("greasy"), "."], portuguese: "A frigideira está engordurada." },
+        { english: "This soup is spicy.", englishContent: ["This soup is ", mark("spicy"), "."], portuguese: "Esta sopa é apimentada." },
+        { english: "Be careful on the icy road.", englishContent: ["Be careful on the ", mark("icy"), " road."], portuguese: "Tenha cuidado na estrada coberta de gelo." },
+        { english: "She has shiny shoes.", englishContent: ["She has ", mark("shiny"), " shoes."], portuguese: "Ela tem sapatos brilhantes." },
+        { english: "The room was smoky.", englishContent: ["The room was ", mark("smoky"), "."], portuguese: "O cômodo estava cheio de fumaça." },
+        { english: "This sauce is tasty.", englishContent: ["This sauce is ", mark("tasty"), "."], portuguese: "Este molho é saboroso." },
+        { english: "She has wavy hair.", englishContent: ["She has ", mark("wavy"), " hair."], portuguese: "Ela tem cabelo ondulado." },
+      ],
+    },
+    {
       title: "Verbos com -en, -ize e -ify",
       meaning: "-en forma verbos a partir de alguns adjetivos e indica tornar ou ficar de determinada maneira. -ize e -ify também podem formar verbos.",
       examples: [],
@@ -198,6 +214,9 @@ export const prefixesSuffixesExercises = [
       { block: [{ text: "He spent most of his " }, { blank: "childhood", placeholder: "child" }, { text: " in a small town. (child)" }] },
       { block: [{ text: "Can you " }, { blank: "simplify", placeholder: "simple" }, { text: " this explanation? (simple)" }] },
       { block: [{ text: "The tiny print is barely " }, { blank: "readable", placeholder: "read" }, { text: ". (read)" }] },
+      { block: [{ text: "The kitchen became " }, { blank: "smoky", placeholder: "smoke" }, { text: ". (smoke)" }] },
+      { block: [{ text: "The road was " }, { blank: "icy", placeholder: "ice" }, { text: " this morning. (ice)" }] },
+      { block: [{ text: "The room was too " }, { blank: "noisy", placeholder: "noise" }, { text: " to study. (noise)" }] },
       { block: [{ text: "The team discussed the " }, { blank: "development", placeholder: "develop" }, { text: " of the new app. (develop)" }] },
       { block: [{ text: "I felt " }, { blank: "bored", placeholder: "bore" }, { text: " during the lecture. (bore)" }] },
       { block: [{ text: "The lecture was " }, { blank: "boring", placeholder: "bore" }, { text: " enough to make me yawn. (bore)" }] },
@@ -288,6 +307,14 @@ export const prefixesSuffixesExercises = [
           { option: "-ness" },
           { option: "-ment" },
           { option: "-ly", isCorrect: true },
+        ],
+      },
+      {
+        question: "Which adjective is formed from the noun spice?",
+        options: [
+          { option: "spicey" },
+          { option: "spicy", isCorrect: true },
+          { option: "spicely" },
         ],
       },
       {

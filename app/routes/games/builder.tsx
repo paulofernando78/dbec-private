@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Map, X } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 
 import { PageHeader } from "@/components/content/PageHeader";
@@ -14,6 +14,8 @@ import { GameManualDetails } from "@/components/games/GameManualDetails";
 import { getGameSlug } from "@/data/content/games/old-pc-games/games-slug";
 import { gamesLucasArtsCardData } from "@/data/content/games/old-pc-games/lucas-arts/games-lucas-arts-card-data";
 import { gamesSierraCardData } from "@/data/content/games/old-pc-games/sierra/games-sierra-card-data";
+
+const daventryMapUrl = "/media/games/sierra/kings-quest-i/daventry-map.webp";
 
 export default function GameBuilder() {
   const navigate = useNavigate();
@@ -31,7 +33,16 @@ export default function GameBuilder() {
   const [progress, setProgress] = useState<{ gameId: string; checked: boolean[] }>();
   const [saving, setSaving] = useState(false);
   const [progressError, setProgressError] = useState("");
+  const [isMapOpen, setIsMapOpen] = useState(false);
+  const mapDialogRef = useRef<HTMLDialogElement>(null);
   const checked = progress?.gameId === gameHref ? progress.checked : undefined;
+
+  useEffect(() => {
+    if (!isMapOpen) return;
+    const dialog = mapDialogRef.current;
+    dialog?.showModal();
+    return () => dialog?.close();
+  }, [isMapOpen]);
 
   useEffect(() => {
     if (!itemCount) return;
@@ -126,6 +137,16 @@ export default function GameBuilder() {
 
             <div className="min-w-0 lg:col-start-1 lg:row-start-1">
               <TableOfContents
+                subtitle={gameHref === "/games/sierra/kings-quest-i" ? (
+                  <Button
+                    ariaLabel="Open Daventry map"
+                    icon={<Map aria-hidden="true" />}
+                    onClick={() => setIsMapOpen(true)}
+                    className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
+                  >
+                    Daventry map
+                  </Button>
+                ) : undefined}
                 items={game.sections.map(({ id, title }) => ({ href: id, label: title }))}
               />
               {game.manualUrl && (
@@ -163,6 +184,31 @@ export default function GameBuilder() {
           </div>
         )}
       </div>
+      {isMapOpen && (
+        <dialog
+          ref={mapDialogRef}
+          aria-label="Daventry map"
+          onClose={() => setIsMapOpen(false)}
+          className="m-0 h-dvh max-h-none w-screen max-w-none bg-slate-950 p-4 text-white"
+        >
+          <div className="flex h-full min-h-0 flex-col gap-4">
+            <div className="flex shrink-0 items-center justify-between gap-4">
+              <h2 className="text-xl font-bold">Daventry map</h2>
+              <Button
+                ariaLabel="Close Daventry map"
+                icon={<X />}
+                onClick={() => setIsMapOpen(false)}
+                className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              />
+            </div>
+            <img
+              src={daventryMapUrl}
+              alt="Map of Daventry in King's Quest I"
+              className="min-h-0 w-full flex-1 object-contain [image-rendering:pixelated]"
+            />
+          </div>
+        </dialog>
+      )}
     </main>
   );
 }
