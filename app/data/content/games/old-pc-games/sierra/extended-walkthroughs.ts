@@ -172,33 +172,36 @@ export const policeQuestIII = walkthrough(
   ],
 );
 
-export const spaceQuestI = walkthrough(
-  "Help janitor Roger Wilco escape the Arcada, survive Kerona, recover transportation and money at Ulence Flats, and destroy the Sariens' Star Generator. This guide follows the VGA remake.",
-  "1986",
-  [
-    ["Escape from the Arcada", [
-      "Hide whenever Sarien footsteps are announced, talk to the dying crewman, retrieve the named data cartridge from the automated archive, and search Jerry's body for the keycard.",
-      "Take the magnetic widget from the generator room, open the bay controls, use the keycard at the restricted elevator, and collect the spacesuit and survival gear.",
-      "Enter the escape pod, fasten the seat belt, power the pod, engage the throttle and autonav, and escape before the Arcada explodes.",
-    ]],
-    ["Kerona", [
-      "After crashing, unfasten the belt, take and open the survival kit, and pick up the reflective glass near the pod.",
-      "Cross the desert by following the beacon while avoiding the sand creature; use the dehydrated water and supplies before Roger collapses.",
-      "In the caves, use the glass to redirect the laser beam, cross the acid-drip chamber with careful timing, and accept the Keronian's task.",
-      "Defeat the Orat with the explosive or by exploiting the cave environment, then return with proof to receive the skimmer.",
-    ]],
-    ["Ulence Flats", [
-      "Sell the skimmer but keep enough value by negotiating, enter the bar, and buy a drink to learn about the Sariens and the Deltaur.",
-      "Use the slot machine carefully to build enough buckazoids without triggering its fatal result; buy the navigation robot from the used-ship dealer.",
-      "Purchase the ship, install the robot, and use the correct sector coordinates to reach the Deltaur.",
-    ]],
-    ["The Deltaur", [
-      "Dock secretly, avoid guards, acquire a Sarien uniform, and use it to pass restricted areas without drawing attention.",
-      "Reach the Star Generator, insert the Arcada cartridge to understand the device, and set the self-destruct sequence.",
-      "Escape through the launch bay before detonation and return as the hero who stopped the Sarien weapon.",
-    ]],
-  ],
-);
+export const spaceQuestI = {
+  ...walkthrough(
+    "Help janitor Roger Wilco escape the Arcada, survive Kerona, recover transportation and money at Ulence Flats, and destroy the Sariens’ Star Generator. This guide follows the original 1986 game.",
+    "1986",
+    [
+      ["Escape from the Arcada", [
+        "Hide whenever Sarien footsteps are announced, talk to the dying crewman, retrieve the named data cartridge from the automated archive, and search Jerry's body for the keycard.",
+        "Take the magnetic widget from the generator room, open the bay controls, use the keycard at the restricted elevator, and collect the spacesuit and survival gear.",
+        "Enter the escape pod, fasten the seat belt, power the pod, engage the throttle and autonav, and escape before the Arcada explodes.",
+      ]],
+      ["Kerona", [
+        "After crashing, unfasten the belt, take and open the survival kit, and pick up the reflective glass near the pod.",
+        "Cross the desert by following the beacon while avoiding the sand creature; use the dehydrated water and supplies before Roger collapses.",
+        "In the caves, use the glass to redirect the laser beam, cross the acid-drip chamber with careful timing, and accept the Keronian's task.",
+        "Defeat the Orat with the explosive or by exploiting the cave environment, then return with proof to receive the skimmer.",
+      ]],
+      ["Ulence Flats", [
+        "Sell the skimmer but keep enough value by negotiating, enter the bar, and buy a drink to learn about the Sariens and the Deltaur.",
+        "Use the slot machine carefully to build enough buckazoids without triggering its fatal result; buy the navigation robot from the used-ship dealer.",
+        "Purchase the ship, install the robot, and use the correct sector coordinates to reach the Deltaur.",
+      ]],
+      ["The Deltaur", [
+        "Dock secretly, avoid guards, acquire a Sarien uniform, and use it to pass restricted areas without drawing attention.",
+        "Reach the Star Generator, insert the Arcada cartridge to understand the device, and set the self-destruct sequence.",
+        "Escape through the launch bay before detonation and return as the hero who stopped the Sarien weapon.",
+      ]],
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/space-quest-i/sq1.jsdos?v=1",
+};
 
 export const spaceQuestII = {
   ...walkthrough(
@@ -229,55 +232,61 @@ export const spaceQuestII = {
   bundleUrl: "/media/games/sierra/space-quest-ii/sq2.jsdos?v=1",
 };
 
-export const spaceQuestIII = walkthrough(
-  "Repair the Aluminum Mallard inside a garbage freighter, evade Arnoid, decode the Two Guys' distress message, and rescue them from ScumSoft on Pestulon.",
-  "1989",
-  [
-    ["Garbage Freighter", [
-      "Use the conveyor and grabber to reach the lower chutes; retrieve the reactor, wire, ladder, and warp motivator from separate areas of the freighter.",
-      "Reach the Aluminum Mallard through the giant robot head, install the reactor and wire, then use the grabber controls to drop the motivator into the ship.",
-      "Run diagnostics, launch with the navigation sequence, and set course for Phleebhut.",
-    ]],
-    ["Phleebhut and Monolith Burger", [
-      "Sell the orium gem after haggling, buy the Orat-on-a-Stick and useful clothing, then defeat Arnoid by luring him beneath the pods or into the machinery.",
-      "Recover Arnoid's invisibility belt and return to the Mallard.",
-      "At Monolith Burger, order food, play Astro Chicken until the hidden message appears, and decode it with the ring to learn the Two Guys are prisoners.",
-    ]],
-    ["Ortega", [
-      "Land on Ortega, wear the thermal underwear, observe the ScumSoft team through the telescope, and take the pole and detonator after they leave.",
-      "Reach the unstable generator, place the detonator, retreat by the safe path, and use the pole to cross the final hazard before the planet explodes.",
-    ]],
-    ["Pestulon", [
-      "Wear Arnoid's belt to enter ScumSoft, take the janitor uniform, and vaporize overflowing trash as cover while moving through the building.",
-      "Copy the wall portrait, obtain the keycard from Elmo's office, use both at the secure door, and free the Two Guys.",
-      "Defeat Elmo in the robot fight, then operate shields and weapons to destroy the pursuing ScumSoft ships.",
-    ]],
-  ],
-);
+export const spaceQuestIII = {
+  ...walkthrough(
+    "Repair the Aluminum Mallard inside a garbage freighter, evade Arnoid, decode the Two Guys' distress message, and rescue them from ScumSoft on Pestulon.",
+    "1989",
+    [
+      ["Garbage Freighter", [
+        "Use the conveyor and grabber to reach the lower chutes; retrieve the reactor, wire, ladder, and warp motivator from separate areas of the freighter.",
+        "Reach the Aluminum Mallard through the giant robot head, install the reactor and wire, then use the grabber controls to drop the motivator into the ship.",
+        "Run diagnostics, launch with the navigation sequence, and set course for Phleebhut.",
+      ]],
+      ["Phleebhut and Monolith Burger", [
+        "Sell the orium gem after haggling, buy the Orat-on-a-Stick and useful clothing, then defeat Arnoid by luring him beneath the pods or into the machinery.",
+        "Recover Arnoid's invisibility belt and return to the Mallard.",
+        "At Monolith Burger, order food, play Astro Chicken until the hidden message appears, and decode it with the ring to learn the Two Guys are prisoners.",
+      ]],
+      ["Ortega", [
+        "Land on Ortega, wear the thermal underwear, observe the ScumSoft team through the telescope, and take the pole and detonator after they leave.",
+        "Reach the unstable generator, place the detonator, retreat by the safe path, and use the pole to cross the final hazard before the planet explodes.",
+      ]],
+      ["Pestulon", [
+        "Wear Arnoid's belt to enter ScumSoft, take the janitor uniform, and vaporize overflowing trash as cover while moving through the building.",
+        "Copy the wall portrait, obtain the keycard from Elmo's office, use both at the secure door, and free the Two Guys.",
+        "Defeat Elmo in the robot fight, then operate shields and weapons to destroy the pursuing ScumSoft ships.",
+      ]],
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/space-quest-iii/sq3.jsdos?v=1",
+};
 
-export const spaceQuestIV = walkthrough(
-  "Follow Roger Wilco through corrupted futures and bargain-bin pasts, rescue his younger self, defeat the sequel police, and stop Vohaul's virus inside the Super Computer.",
-  "1991",
-  [
-    ["Xenon in Space Quest XII", [
-      "Escape the sequel police in ruined Xenon, search the streets for useful items, and use the time pod before the patrol corners Roger.",
-      "In Space Quest X, avoid the hostile cyborg women, obtain clothing and transportation, and retrieve the first required time code.",
-    ]],
-    ["Galaxy Galleria", [
-      "Travel to Space Quest X: Latex Babes, enter the Galaxy Galleria, and earn or obtain enough money for the software and disguise puzzles.",
-      "Use the ATM after obtaining the correct identity, visit Hz. So Good, Monolith Burger, and Software Excess, and collect the unstable PocketPal laptop battery.",
-      "Buy the SQ IV hint book only as part of the in-game puzzle, note its deliberately unhelpful clues, and keep the required sales receipt and items.",
-    ]],
-    ["Back to Space Quest I", [
-      "Travel to the Space Quest I era, blend into the monochrome setting, and locate the younger Roger before the sequel police do.",
-      "Use the disguise and environmental objects to rescue Roger's younger self and recover the final time coordinates.",
-    ]],
-    ["The Super Computer", [
-      "Return to Space Quest XII, enter the Super Computer, and navigate the security programs without touching lethal data paths.",
-      "Use the PocketPal battery as the key component in defeating Vohaul's virus, rescue Roger Jr., and restore Xenon's future.",
-    ]],
-  ],
-);
+export const spaceQuestIV = {
+  ...walkthrough(
+    "Follow Roger Wilco through corrupted futures and bargain-bin pasts, rescue his younger self, defeat the sequel police, and stop Vohaul's virus inside the Super Computer.",
+    "1991",
+    [
+      ["Xenon in Space Quest XII", [
+        "Escape the sequel police in ruined Xenon, search the streets for useful items, and use the time pod before the patrol corners Roger.",
+        "In Space Quest X, avoid the hostile cyborg women, obtain clothing and transportation, and retrieve the first required time code.",
+      ]],
+      ["Galaxy Galleria", [
+        "Travel to Space Quest X: Latex Babes, enter the Galaxy Galleria, and earn or obtain enough money for the software and disguise puzzles.",
+        "Use the ATM after obtaining the correct identity, visit Hz. So Good, Monolith Burger, and Software Excess, and collect the unstable PocketPal laptop battery.",
+        "Buy the SQ IV hint book only as part of the in-game puzzle, note its deliberately unhelpful clues, and keep the required sales receipt and items.",
+      ]],
+      ["Back to Space Quest I", [
+        "Travel to the Space Quest I era, blend into the monochrome setting, and locate the younger Roger before the sequel police do.",
+        "Use the disguise and environmental objects to rescue Roger's younger self and recover the final time coordinates.",
+      ]],
+      ["The Super Computer", [
+        "Return to Space Quest XII, enter the Super Computer, and navigate the security programs without touching lethal data paths.",
+        "Use the PocketPal battery as the key component in defeating Vohaul's virus, rescue Roger Jr., and restore Xenon's future.",
+      ]],
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/space-quest-iv/sq4.jsdos?v=1",
+};
 
 export const spaceQuestV = walkthrough(
   "Graduate from StarCon Academy, command the garbage scow Eureka, investigate a mutagenic waste conspiracy, rescue Beatrice, and defeat Captain Quirk.",
