@@ -15,3 +15,9 @@ export const avatarColors: Record<
     dot: "#16a34a",
   },
 };
+
+export const offlineStudentAvatarColors = {
+  background: "#e5e7eb",
+  border: "#d1d5db",
+  dot: "#6b7280",
+};

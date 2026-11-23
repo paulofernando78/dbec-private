@@ -37,7 +37,7 @@ export function StudentReport({ studentId }: { studentId: string }) {
 
   return (
     <Card title="Report">
-      {error && <p className="text-red-600">{error}</p>}
+      {error && <p className="rounded-lg bg-(--background) p-3 text-red-600">{error}</p>}
       {!report && !error && <p className="text-gray-500">Carregando relatório…</p>}
       {report && (
         <div className="grid gap-6">

@@ -1,5 +1,4 @@
 import { RichTextArea } from "@/components/ui/RichTextArea";
-import { NoteAuthorLegend } from "@/components/content/NoteAuthorLegend";
 import type { NoteAuthor } from "@/utils/note-authors";
 
 type DashboardNotesProps = {
@@ -21,7 +20,6 @@ export const DashboardNotes = ({
 }: DashboardNotesProps) => {
   return (
     <div className="flex h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem] w-full min-w-0 flex-col rounded-xl bg-(--background) p-4">
-      <NoteAuthorLegend value={value} currentAuthor={author} participants={participants} />
       <RichTextArea
         value={value}
         readOnly={readOnly}

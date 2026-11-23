@@ -144,6 +144,7 @@ export const Header = () => {
                 <AccountSummary
                   name={session.displayName}
                   role={session.role}
+                  online={session.role === "student"}
                   subtitle={
                     session.role === "student" ? "Full access" : "Teacher"
                   }
@@ -166,6 +167,7 @@ export const Header = () => {
                   <AccountSummary
                     name={selectedStudent.name}
                     role="student"
+                    online={Boolean(selectedStudent.lastSeenMs && Date.now() - selectedStudent.lastSeenMs < 90_000)}
                     subtitle={`${selectedStudent.schedule} · ${selectedStudent.time}`}
                   />
                 )}
@@ -178,6 +180,7 @@ export const Header = () => {
               <AccountSummary
                 name={session.displayName}
                 role={session.role}
+                online={session.role === "student"}
                 subtitle={
                   session.role === "student" ? "Full access" : "Teacher"
                 }

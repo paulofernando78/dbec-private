@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
-import { Save } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
 
 export function CalendarNotes({ studentId, readOnly }: { studentId: string; readOnly: boolean }) {
   const [content, setContent] = useState("");
   const [savedContent, setSavedContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
   const [error, setError] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [reload, setReload] = useState(0);
@@ -35,8 +34,9 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
     return () => controller.abort();
   }, [studentId, reload]);
 
-  async function save() {
-    if (saving || readOnly || !loaded) return;
+  const save = useCallback(async () => {
+    if (savingRef.current || readOnly || !loaded || content === savedContent) return;
+    savingRef.current = true;
     setSaving(true);
     setError("");
     const text = content;
@@ -50,8 +50,17 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
       setSavedContent(text);
     } catch {
       setError("Unable to save notes. Your text has been kept.");
-    } finally { setSaving(false); }
-  }
+    } finally {
+      savingRef.current = false;
+      setSaving(false);
+    }
+  }, [content, loaded, readOnly, savedContent, studentId]);
+
+  useEffect(() => {
+    if (!loaded || readOnly || saving || error || content === savedContent) return;
+    const timeoutId = window.setTimeout(() => void save(), 700);
+    return () => window.clearTimeout(timeoutId);
+  }, [content, error, loaded, readOnly, savedContent, save, saving]);
 
   return (
     <>
@@ -60,7 +69,11 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
         <textarea
           aria-label="Important Notes"
           value={content}
-          onChange={(event) => setContent(event.target.value)}
+          onChange={(event) => {
+            setContent(event.target.value);
+            setError("");
+          }}
+          onBlur={() => void save()}
           readOnly={readOnly}
           disabled={loading || !loaded}
           maxLength={10000}
@@ -68,12 +81,6 @@ export function CalendarNotes({ studentId, readOnly }: { studentId: string; read
           placeholder={loading ? "Loading…" : readOnly ? "No notes yet." : "..."}
           className="block min-h-24 w-full resize-y rounded-lg border border-gray-300 bg-(--background) p-3 text-(--text-color) focus-visible:outline-2 disabled:opacity-60"
         />
-        <div className="mt-2 flex items-center gap-2">
-          {!readOnly && loaded && <Button icon={<Save />} ariaLabel="Save notes" onClick={save} disabled={saving || content === savedContent} />}
-          <span role="status" className="text-sm text-gray-500">
-            {loading ? "Loading…" : saving ? "Saving…" : loaded && !readOnly ? content === savedContent ? "Saved" : "Unsaved changes" : ""}
-          </span>
-        </div>
         {error && (
           <p role="alert" className="mt-2 text-sm text-red-600">
             {error}{" "}

@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { ChevronDown, GraduationCap, Trash2, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
 
 type StudentPlan = "free" | "plus";
 
@@ -472,7 +473,11 @@ export const StudentForm = ({
                     className="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     <span
-                      className={`flex size-10 shrink-0 items-center justify-center rounded-full ${isOnline ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-500"}`}
+                      className="flex size-10 shrink-0 items-center justify-center rounded-full"
+                      style={{
+                        backgroundColor: (isOnline ? avatarColors.student : offlineStudentAvatarColors).background,
+                        color: (isOnline ? avatarColors.student : offlineStudentAvatarColors).dot,
+                      }}
                       title={isOnline ? "Online" : "Offline"}
                       aria-label={isOnline ? "Online" : "Offline"}
                     >
