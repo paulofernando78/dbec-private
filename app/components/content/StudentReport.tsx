@@ -42,14 +42,14 @@ export function StudentReport({ studentId }: { studentId: string }) {
       {report && (
         <div className="grid gap-6">
           <div className="grid gap-2 sm:grid-cols-3">
-            <p><strong>{report.visits.length}</strong> visitas</p>
-            <p><strong>{report.attempts.length}</strong> tentativas</p>
-            <p><strong>{[...latestByExercise.values()].reduce((sum, attempt) => sum + attempt.score, 0)} / {[...latestByExercise.values()].reduce((sum, attempt) => sum + attempt.total, 0)}</strong> acertos nas últimas tentativas</p>
+            <p className="rounded-lg bg-(--background) p-3"><strong>{report.visits.length}</strong> visitas</p>
+            <p className="rounded-lg bg-(--background) p-3"><strong>{report.attempts.length}</strong> tentativas</p>
+            <p className="rounded-lg bg-(--background) p-3"><strong>{[...latestByExercise.values()].reduce((sum, attempt) => sum + attempt.score, 0)} / {[...latestByExercise.values()].reduce((sum, attempt) => sum + attempt.total, 0)}</strong> acertos nas últimas tentativas</p>
           </div>
 
           <section>
             <h3 className="mb-2 text-lg font-bold">Páginas acessadas</h3>
-            {report.visits.length === 0 ? <p className="text-gray-500">Nenhuma visita registrada ainda.</p> : (
+            {report.visits.length === 0 ? <p className="rounded-lg bg-(--background) p-3 text-gray-500">Nenhuma visita registrada ainda.</p> : (
               <div className="grid gap-2">
                 {report.visits.map((visit) => (
                   <div key={visit.id} className="min-w-0 rounded-lg bg-(--background) p-3">
@@ -64,7 +64,7 @@ export function StudentReport({ studentId }: { studentId: string }) {
 
           <section>
             <h3 className="mb-2 text-lg font-bold">Exercícios</h3>
-            {report.attempts.length === 0 ? <p className="text-gray-500">Nenhuma tentativa registrada ainda.</p> : (
+            {report.attempts.length === 0 ? <p className="rounded-lg bg-(--background) p-3 text-gray-500">Nenhuma tentativa registrada ainda.</p> : (
               <div className="grid gap-2">
                 {report.attempts.map((attempt) => (
                   <details key={attempt.id} className="min-w-0 rounded-lg bg-(--background) p-3">
