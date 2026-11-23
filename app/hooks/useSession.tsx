@@ -128,11 +128,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         .some((media) => !media.paused && !media.ended && media.readyState >= 3);
       if (playing || (speech?.speaking && !speech.paused)) void renewOnActivity();
     }, 15_000);
+    const presenceCheck = window.setInterval(() => {
+      if (document.visibilityState === "visible") void refresh();
+    }, 45_000);
     return () => {
       controller.abort();
       window.clearTimeout(retry);
       window.clearTimeout(expiration);
       window.clearInterval(playbackCheck);
+      window.clearInterval(presenceCheck);
       for (const event of activityEvents) {
         document.removeEventListener(event, renewOnActivity, true);
       }

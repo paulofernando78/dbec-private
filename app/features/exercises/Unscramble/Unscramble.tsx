@@ -4,6 +4,7 @@ import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 
 import { Check, Eye, EyeClosed, RotateCcw } from "lucide-react";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 type UnscrambleBlock = {
   prompt: string;
@@ -92,6 +93,12 @@ export const Unscramble = ({
     setResults(newResults);
     setTotalScore(score);
     setChecked(true);
+    recordExerciseAttempt(`${instruction} · ${items[0]?.prompt ?? ""}`, items.map((item, index) => ({
+      question: item.prompt,
+      response: answers[String(index)]?.trim() || "No answer",
+      correctAnswer: item.answer,
+      correct: newResults[String(index)],
+    })));
     onCompletionChange?.(items.length > 0 && score === items.length);
   };
 

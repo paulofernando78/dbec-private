@@ -5,6 +5,7 @@ import { Audio } from "@/components/ui/Audio";
 import { Button } from "@/components/ui/Button";
 
 import { Check, Eye, EyeClosed, RotateCcw } from "lucide-react";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 type FillBlankBlockItem = {
   text?: string;
@@ -167,6 +168,18 @@ export const FillInTheBlanks = ({
     setTotalScore(score);
     setCrossWords(correctWords)
     setChecked(true);
+    recordExerciseAttempt(`${instruction} · ${blocks[0]?.block?.find((item) => item.text)?.text ?? ""}`, blocks.flatMap((block, blockIndex) =>
+      (block.block || []).flatMap((item, itemIndex) => {
+        if (!item.blank) return [];
+        const key = `${blockIndex}-${itemIndex}`;
+        return [{
+          question: (block.block || []).map((part) => part.blank ? "___" : part.text || "").join("").slice(0, 500),
+          response: answers[key]?.trim() || "No answer",
+          correctAnswer: (Array.isArray(item.blank) ? item.blank : [item.blank]).join(" / "),
+          correct: newResults[key],
+        }];
+      }),
+    ));
   };
 
   const handleReset = () => {

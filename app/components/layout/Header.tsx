@@ -135,6 +135,7 @@ export const Header = () => {
               <>
                 <AccountSummary
                   name={session.displayName}
+                  role={session.role}
                   subtitle={
                     session.role === "student" ? "Full access" : "Teacher"
                   }
@@ -147,6 +148,7 @@ export const Header = () => {
                 {selectedStudent && (
                   <AccountSummary
                     name={selectedStudent.name}
+                    role="student"
                     subtitle={`${selectedStudent.schedule} · ${selectedStudent.time}`}
                   />
                 )}
@@ -158,6 +160,7 @@ export const Header = () => {
             {session && isPresentationPage && (
               <AccountSummary
                 name={session.displayName}
+                role={session.role}
                 subtitle={
                   session.role === "student" ? "Full access" : "Teacher"
                 }

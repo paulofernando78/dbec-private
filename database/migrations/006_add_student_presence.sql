@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS student_presence (
+  student_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  last_seen_ms INTEGER NOT NULL
+);

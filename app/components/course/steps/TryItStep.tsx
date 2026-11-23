@@ -3,6 +3,7 @@ import { Check, Eye, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import type { TryItData } from "@/data/learn/course/lesson-step-types";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 type Token = { id: string; word: string };
 type ContainerName = "bank" | "answer";
@@ -183,6 +184,12 @@ export function SentenceBuilder({
       answer.length === correctAnswer.length &&
       answer.every((token, index) => token.word === correctAnswer[index]);
     setResult(isCorrect ? "correct" : "incorrect");
+    recordExerciseAttempt(`Try it · Sentence ${number}`, [{
+      question: prompt || `Sentence ${number}`,
+      response: answer.map((token) => token.word).join(" ") || "No answer",
+      correctAnswer: correctAnswer.join(" "),
+      correct: isCorrect,
+    }]);
   };
 
   return (

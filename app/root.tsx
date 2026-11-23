@@ -28,6 +28,7 @@ import { House, Info, LogIn, LogOut, Menu, MoonStar, Sun } from "lucide-react";
 import { BrandLogo } from "./components/layout/BrandLogo";
 import { Card } from "./components/ui/Card";
 import { Contact } from "./components/layout/Contact";
+import { StudentActivityTracker } from "./components/layout/StudentActivityTracker";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -50,6 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <SessionProvider>
+      <StudentActivityTracker />
       <AppContent />
     </SessionProvider>
   );

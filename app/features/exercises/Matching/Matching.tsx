@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Check, Eye, EyeClosed, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 export type MatchingPair = {
   left: string;
@@ -152,7 +153,15 @@ export function Matching({
           variant="check"
           ariaLabel="Verificar associações"
           icon={<Check />}
-          onClick={() => setChecked(true)}
+          onClick={() => {
+            setChecked(true);
+            recordExerciseAttempt(`${instruction} · ${pairs[0]?.left ?? ""}`, pairs.map((pair, index) => ({
+              question: pair.left,
+              response: pairs[matches[index]]?.right ?? "No answer",
+              correctAnswer: pair.right,
+              correct: matches[index] === index,
+            })));
+          }}
         />
         <Button
           variant="answer"

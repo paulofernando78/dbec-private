@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, GraduationCap, Trash2, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 
@@ -21,6 +21,7 @@ type Student = {
   schedule: string;
   time: string;
   plan: StudentPlan;
+  lastSeenMs?: number;
 };
 
 type StudentFormState = {
@@ -114,6 +115,8 @@ export const StudentForm = ({
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const [deletingStudentId, setDeletingStudentId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const isEditing = Boolean(selectedStudentId);
   const selectedStudent = students.find(
     (student) => student.studentId === selectedStudentId,
@@ -167,6 +170,29 @@ export const StudentForm = ({
     setMessage("");
     setError("");
     onStudentSelect(studentId);
+  };
+
+  const handleDeleteStudent = async (studentId: string) => {
+    setIsDeleting(true);
+    setError("");
+    setMessage("");
+    try {
+      const response = await fetch("/api/students", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ studentId }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error ?? "Could not delete the student.");
+      if (selectedStudentId === studentId) onStudentSelect("");
+      await onStudentSaved();
+      setMessage("Student deleted.");
+      setDeletingStudentId(null);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Could not delete the student.");
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -429,38 +455,56 @@ export const StudentForm = ({
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl bg-(--background) p-4">
-        <div className="space-y-4">
+      <div className="min-w-0 rounded-xl bg-(--background) p-4">
+        <div className="min-w-0 space-y-4">
           <span className="block text-sm font-semibold">Students</span>
 
           {students.map((student) => {
             const isSelected = selectedStudentId === student.studentId;
+            const isOnline = Boolean(student.lastSeenMs && Date.now() - student.lastSeenMs < 90_000);
 
             return (
-              <button
-                key={student.studentId}
-                type="button"
-                onClick={() => handleStudentSelection(student.studentId)}
-                className={`
-                      flex w-full items-center gap-3 rounded-xl p-2 text-left
-                      transition-colors hover:bg-(--surface)
-                      ${isSelected ? "bg-(--surface)" : ""}
-                    `}
-              >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow-200 font-bold">
-                  {student.name.charAt(0).toUpperCase()}
+              <div key={student.studentId} className="min-w-0">
+                <div className={`flex w-full min-w-0 items-center gap-1 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
+                  <button
+                    type="button"
+                    onClick={() => handleStudentSelection(student.studentId)}
+                    className="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  >
+                    <span
+                      className={`flex size-10 shrink-0 items-center justify-center rounded-full ${isOnline ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-500"}`}
+                      title={isOnline ? "Online" : "Offline"}
+                      aria-label={isOnline ? "Online" : "Offline"}
+                    >
+                      <GraduationCap className="size-5" aria-hidden="true" />
+                    </span>
+
+                    <span className="block min-w-0 flex-1">
+                      <span className="block max-w-full truncate text-sm font-semibold" title={student.name}>{student.name}</span>
+                      <span className="block max-w-full truncate text-xs font-normal text-gray-500" title={`${student.schedule} · ${student.time}`}>
+                        {student.schedule} · {student.time}
+                      </span>
+                    </span>
+                  </button>
+                  <Button
+                    icon={<Trash2 />}
+                    ariaLabel={`Delete ${student.name}`}
+                    onClick={() => setDeletingStudentId(student.studentId)}
+                  />
                 </div>
 
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold">
-                    {student.name}
-                  </p>
-
-                  <p className="truncate text-xs font-normal text-gray-500">
-                    {student.schedule} · {student.time}
-                  </p>
-                </div>
-              </button>
+                {deletingStudentId === student.studentId && (
+                  <div className="ml-2 rounded-lg border border-red-200 bg-red-50 p-2 text-xs text-red-900">
+                    <p>Delete {student.name} and their saved data?</p>
+                    <div className="mt-2 flex gap-2">
+                      <Button disabled={isDeleting} onClick={() => void handleDeleteStudent(student.studentId)} icon={<Trash2 />}>
+                        {isDeleting ? "Deleting..." : "Delete student"}
+                      </Button>
+                      <Button disabled={isDeleting} onClick={() => setDeletingStudentId(null)} icon={<X />} ariaLabel="Cancel deletion" />
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>

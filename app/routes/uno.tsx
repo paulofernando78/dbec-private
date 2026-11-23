@@ -328,6 +328,7 @@ export default function Uno() {
           <Card className="mb-4 shadow-sm">
             <AccountSummary
               name={session.displayName}
+              role={session.role}
               subtitle={session.role === "student" ? "Full access" : "Teacher"}
             />
           </Card>

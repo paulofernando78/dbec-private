@@ -1,10 +1,14 @@
 import { createSession, readCookie, sessionCookie, verifySession } from "../_auth.js";
+import { touchStudentPresence } from "../_presence.js";
 
 export async function onRequestPost(context) {
   const secret = context.env.SESSION_SECRET;
   const session = await verifySession(readCookie(context.request, "dbec_session"), secret);
   const headers = { "Cache-Control": "no-store" };
   if (!session) return Response.json({ error: "Não autorizado." }, { status: 401, headers });
+  if (session.role === "student" && (!context.env.DB || !await touchStudentPresence(context.env.DB, session.studentId))) {
+    return Response.json({ error: "Não autorizado." }, { status: 401, headers });
+  }
 
   const token = await createSession(session, secret);
   headers["Set-Cookie"] = sessionCookie(token);
@@ -20,6 +24,10 @@ export async function onRequestGet(context) {
       { error: "Não autorizado." },
       { status: 401, headers: { "Cache-Control": "no-store" } },
     );
+  }
+
+  if (session.role === "student" && (!context.env.DB || !await touchStudentPresence(context.env.DB, session.studentId))) {
+    return Response.json({ error: "Não autorizado." }, { status: 401, headers: { "Cache-Control": "no-store" } });
   }
 
   const dashboardPath =

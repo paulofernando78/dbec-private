@@ -7,6 +7,7 @@ import { DashboardProgress } from "@/components/content/DashboardProgress";
 import { Calendar } from "@/components/content/Calendar";
 import { PageHeader } from "@/components/content/PageHeader";
 import { StudentForm } from "@/components/content/StudentForm";
+import { StudentReport } from "@/components/content/StudentReport";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { Card } from "@/components/ui/Card";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
@@ -119,6 +120,10 @@ export default function TeacherDashboard() {
 
   useEffect(() => {
     void loadStudents();
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === "visible") void loadStudents();
+    }, 30_000);
+    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -314,6 +319,7 @@ export default function TeacherDashboard() {
             items={[
               { href: "calendar", label: "Calendar" },
               { href: "progress", label: "Progress" },
+              { href: "report", label: "Report" },
               { href: "notes", label: "Notes / AI Tutor" },
             ]}
           />
@@ -355,6 +361,9 @@ export default function TeacherDashboard() {
                 <DashboardProgress progress={progress} />
               </div>
             )}
+            <div id="report" className="scroll-mt-4">
+              <StudentReport studentId={studentId} />
+            </div>
             <div id="notes" className="relative scroll-mt-4">
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />

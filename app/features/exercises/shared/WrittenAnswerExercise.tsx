@@ -2,6 +2,7 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import { Check, Eye, EyeClosed, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 export type WrittenAnswerItem = {
   prompt: string;
@@ -43,17 +44,22 @@ export function WrittenAnswerExercise({
   }, [itemsSignature]);
 
   const checkAnswers = () => {
-    setResults(
-      Object.fromEntries(
+    const nextResults = Object.fromEntries(
         items.map((item, index) => [
           index,
           item.answers
             .map(normalizeAnswer)
             .includes(normalizeAnswer(responses[index] ?? "")),
         ]),
-      ),
-    );
+      );
+    setResults(nextResults);
     setChecked(true);
+    recordExerciseAttempt(`${instruction} · ${items[0]?.prompt ?? ""}`, items.map((item, index) => ({
+      question: item.prompt,
+      response: responses[index]?.trim() || "No answer",
+      correctAnswer: item.answers.join(" / "),
+      correct: nextResults[index],
+    })));
   };
 
   const reset = () => {

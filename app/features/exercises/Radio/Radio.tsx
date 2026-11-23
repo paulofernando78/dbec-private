@@ -7,6 +7,7 @@ import { Text } from "@/components/content/Text";
 import type { RichContent } from "@/helpers/content";
 
 import { Check, RotateCcw } from "lucide-react";
+import { recordExerciseAttempt } from "@/utils/student-report";
 
 type RadioOption = {
   option?: string;
@@ -64,6 +65,17 @@ const RadioComponent = ({
 
     setTotalScore(score);
     setChecked(true);
+    recordExerciseAttempt(instruction || exercise.description || `Multiple choice: ${typeof questions[0]?.question === "string" ? questions[0].question : "Question"}`, questions.map((question, index) => {
+      const selectedOption = question.options?.[selected[index]];
+      return {
+        question: typeof question.question === "string"
+          ? question.question
+          : question.question?.map((part) => typeof part === "string" ? part : part.part ?? "").join("") || `Question ${index + 1}`,
+        response: selectedOption?.option ?? "No answer",
+        correctAnswer: question.options?.find((option) => option.isCorrect)?.option ?? "",
+        correct: Boolean(selectedOption?.isCorrect),
+      };
+    }));
     onCompletionChange?.(questions.length > 0 && score === questions.length);
   };
 

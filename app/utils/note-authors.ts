@@ -1,3 +1,5 @@
+import { avatarColors } from "@/utils/avatar-theme";
+
 export type NoteAuthor = {
   id: string;
   name: string;
@@ -42,28 +44,9 @@ export function getNoteAuthors(
 
 export const getNoteAuthorKey = (author: NoteAuthor) => `${author.role}:${author.id}`;
 
-const studentHues = [135, 34, 280, 330, 170, 6, 53, 92];
-
 export function getNoteAuthorColors(authors: readonly NoteAuthor[]) {
-  const studentIds = authors
-    .filter((author) => author.role === "student")
-    .map((author) => author.id)
-    .sort();
-
-  return new Map(authors.map((author) => {
-    if (author.role === "teacher") {
-      return [getNoteAuthorKey(author), {
-        background: "#eff6ff", border: "#3b82f6", dot: "#3b82f6",
-      }];
-    }
-
-    const index = studentIds.indexOf(author.id);
-    // Keep the first student green and distribute larger groups outside the blue range.
-    const hue = studentHues[index] ?? (260 + (index * 137.508) % 280) % 360;
-    return [getNoteAuthorKey(author), {
-      background: `hsl(${hue} 85% 96%)`,
-      border: `hsl(${hue} 65% 55%)`,
-      dot: `hsl(${hue} 65% 48%)`,
-    }];
-  }));
+  return new Map(authors.map((author) => [
+    getNoteAuthorKey(author),
+    avatarColors[author.role],
+  ]));
 }

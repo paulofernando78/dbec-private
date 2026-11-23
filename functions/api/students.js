@@ -2,6 +2,8 @@
 
 import { readCookie, verifySession } from "../_auth.js";
 import { createPassword } from "../_password.js";
+import { ensurePresenceStorage } from "../_presence.js";
+import { ensureReportStorage } from "../_reports.js";
 
 const noStoreHeaders = {
   "Cache-Control": "no-store",
@@ -92,6 +94,8 @@ export async function onRequestGet(context) {
     );
   }
 
+  await ensurePresenceStorage(context.env.DB);
+  await ensureReportStorage(context.env.DB);
   const { results: students } = await context.env.DB.prepare(
     `SELECT
       student_slug AS studentId,
@@ -102,8 +106,10 @@ export async function onRequestGet(context) {
       schedule,
       class_time AS time,
       plan,
-      active
+      active,
+      COALESCE(student_presence.last_seen_ms, 0) AS lastSeenMs
     FROM users
+    LEFT JOIN student_presence ON student_presence.student_id = users.id
     WHERE role = 'student'
     ORDER BY display_name`,
   ).all();
@@ -333,6 +339,62 @@ export async function onRequestPut(context) {
       { error: "Aluno não encontrado." },
       { status: 404, headers: noStoreHeaders },
     );
+  }
+
+  return Response.json({ ok: true }, { headers: noStoreHeaders });
+}
+
+export async function onRequestDelete(context) {
+  const teacher = await authenticateTeacher(context);
+  if (!teacher) return Response.json({ error: "Não autorizado." }, { status: 401, headers: noStoreHeaders });
+  if (!context.env.DB) return Response.json({ error: "O banco D1 não está configurado." }, { status: 503, headers: noStoreHeaders });
+
+  let studentId;
+  try {
+    ({ studentId } = await context.request.json());
+  } catch {
+    return Response.json({ error: "JSON inválido." }, { status: 400, headers: noStoreHeaders });
+  }
+  if (typeof studentId !== "string" || !studentId) {
+    return Response.json({ error: "Aluno inválido." }, { status: 400, headers: noStoreHeaders });
+  }
+
+  const student = await context.env.DB.prepare(
+    "SELECT id FROM users WHERE student_slug = ? AND role = 'student'",
+  ).bind(studentId).first();
+  if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404, headers: noStoreHeaders });
+
+  await ensurePresenceStorage(context.env.DB);
+  await ensureReportStorage(context.env.DB);
+  const { results: auxiliaryTables } = await context.env.DB.prepare(
+    "SELECT name FROM sqlite_master WHERE type = 'table' AND name IN ('ai_tutor_requests', 'ai_tutor_history')",
+  ).all();
+  const existingTables = new Set(auxiliaryTables.map((table) => table.name));
+  await context.env.DB.batch([
+    context.env.DB.prepare("DELETE FROM notes WHERE student_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM calendar_notes WHERE student_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM calendar_entries WHERE student_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM lesson_progress WHERE user_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM student_presence WHERE student_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM page_visits WHERE student_id = ?").bind(student.id),
+    context.env.DB.prepare("DELETE FROM exercise_attempts WHERE student_id = ?").bind(student.id),
+    ...(existingTables.has("ai_tutor_requests") ? [context.env.DB.prepare("DELETE FROM ai_tutor_requests WHERE user_key = ?").bind(`student:${studentId}`)] : []),
+    ...(existingTables.has("ai_tutor_history") ? [context.env.DB.prepare("DELETE FROM ai_tutor_history WHERE user_key = ?").bind(`student:${studentId}`)] : []),
+    context.env.DB.prepare("DELETE FROM users WHERE id = ? AND role = 'student'").bind(student.id),
+  ]);
+
+  if (context.env.MEDIA) {
+    const prefix = `game-saves/${student.id}/`;
+    let cursor;
+    try {
+      do {
+        const page = await context.env.MEDIA.list({ prefix, cursor });
+        await Promise.all(page.objects.map((object) => context.env.MEDIA.delete(object.key)));
+        cursor = page.truncated ? page.cursor : undefined;
+      } while (cursor);
+    } catch (error) {
+      console.error("Could not remove student game saves", error);
+    }
   }
 
   return Response.json({ ok: true }, { headers: noStoreHeaders });
