@@ -54,7 +54,7 @@ export const gamesSierraCardData = {
     href: "/games/sierra/space-quest-i",
     label: "Space Quest I",
     description: "Help Roger Wilco escape the Arcada and stop the Sariens from using the Star Generator.",
-    date: "1991",
+    date: "1986",
   },
   spaceQuestII: {
     href: "/games/sierra/space-quest-ii",

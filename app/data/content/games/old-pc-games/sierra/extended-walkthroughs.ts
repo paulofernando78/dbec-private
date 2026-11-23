@@ -116,31 +116,34 @@ export const policeQuestI = {
   bundleUrl: "/media/games/sierra/police-quest-i/pq1-ega.jsdos?v=1",
 };
 
-export const policeQuestII = walkthrough(
-  "Track escaped murderer Jessie Bains through Lytton while following homicide procedure, processing evidence, diving for a weapon, and surviving the final confrontation.",
-  "1988",
-  [
-    ["Homicide Assignment", [
-      "Report to the station, collect the homicide kit and equipment, inspect the unmarked car, and meet Keith before responding to the jail emergency.",
-      "At the jail, assess the hostage scene, search the escape route, and collect the makeshift knife and other evidence without skipping documentation.",
-      "Process the getaway vehicle and crime scene carefully; photograph, fingerprint, bag, and submit every relevant item.",
-    ]],
-    ["The River and Evidence", [
-      "Follow the trail to the river, obtain the diving equipment, inspect it, and perform the required safety checks before entering the water.",
-      "Use the underwater search pattern to find Bains's weapon and recover it before the air supply becomes dangerous.",
-      "Return the weapon to the evidence room and use ballistics and fingerprint results to strengthen the case.",
-    ]],
-    ["Following Bains", [
-      "Interview witnesses and Bains's associates, verify statements through the computer, and follow each new address rather than guessing.",
-      "Respond to the airport lead, board the aircraft, and react correctly when Bains's plan puts passengers in danger.",
-      "Render first aid when required and preserve all new evidence from the confrontation.",
-    ]],
-    ["Final Confrontation", [
-      "Trace Bains to his final hiding place, coordinate with Keith, and approach using cover.",
-      "Identify Bains before firing, survive the attack, arrest or neutralize him under correct procedure, and complete the reports.",
-    ]],
-  ],
-);
+export const policeQuestII = {
+  ...walkthrough(
+    "Track escaped murderer Jessie Bains through Lytton while following homicide procedure, processing evidence, diving for a weapon, and surviving the final confrontation.",
+    "1988",
+    [
+      ["Homicide Assignment", [
+        "Report to the station, collect the homicide kit and equipment, inspect the unmarked car, and meet Keith before responding to the jail emergency.",
+        "At the jail, assess the hostage scene, search the escape route, and collect the makeshift knife and other evidence without skipping documentation.",
+        "Process the getaway vehicle and crime scene carefully; photograph, fingerprint, bag, and submit every relevant item.",
+      ]],
+      ["The River and Evidence", [
+        "Follow the trail to the river, obtain the diving equipment, inspect it, and perform the required safety checks before entering the water.",
+        "Use the underwater search pattern to find Bains's weapon and recover it before the air supply becomes dangerous.",
+        "Return the weapon to the evidence room and use ballistics and fingerprint results to strengthen the case.",
+      ]],
+      ["Following Bains", [
+        "Interview witnesses and Bains's associates, verify statements through the computer, and follow each new address rather than guessing.",
+        "Respond to the airport lead, board the aircraft, and react correctly when Bains's plan puts passengers in danger.",
+        "Render first aid when required and preserve all new evidence from the confrontation.",
+      ]],
+      ["Final Confrontation", [
+        "Trace Bains to his final hiding place, coordinate with Keith, and approach using cover.",
+        "Identify Bains before firing, survive the attack, arrest or neutralize him under correct procedure, and complete the reports.",
+      ]],
+    ],
+  ),
+  bundleUrl: "/media/games/sierra/police-quest-ii/pq2.jsdos?v=1",
+};
 
 export const policeQuestIII = walkthrough(
   "Lead Sonny Bonds through internal discipline, traffic duty, a brutal murder investigation, gang evidence, and the pursuit of Steve Rocklin.",
@@ -171,7 +174,7 @@ export const policeQuestIII = walkthrough(
 
 export const spaceQuestI = walkthrough(
   "Help janitor Roger Wilco escape the Arcada, survive Kerona, recover transportation and money at Ulence Flats, and destroy the Sariens' Star Generator. This guide follows the VGA remake.",
-  "1991",
+  "1986",
   [
     ["Escape from the Arcada", [
       "Hide whenever Sarien footsteps are announced, talk to the dying crewman, retrieve the named data cartridge from the automated archive, and search Jerry's body for the keycard.",
