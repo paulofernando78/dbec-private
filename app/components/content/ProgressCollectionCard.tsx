@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import { BookOpen, Check, Headphones, LockKeyhole, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
@@ -41,6 +42,7 @@ type ProgressCollectionCardProps = {
   levelTheme?: LevelTheme;
   emptyMessage?: string;
   emptyMessageItalic?: boolean;
+  itemIcon?: ReactNode;
 };
 
 export function ProgressCollectionCard({
@@ -60,6 +62,7 @@ export function ProgressCollectionCard({
   levelTheme,
   emptyMessage,
   emptyMessageItalic = false,
+  itemIcon,
 }: ProgressCollectionCardProps) {
   const [isResetConfirmationOpen, setIsResetConfirmationOpen] = useState(false);
 
@@ -143,7 +146,7 @@ export function ProgressCollectionCard({
                     ) : item.isCompleted ? (
                       <Check aria-hidden="true" />
                     ) : (
-                      <BookOpen aria-hidden="true" />
+                      itemIcon ?? <BookOpen aria-hidden="true" />
                     )
                   }
                   onClick={item.onClick}

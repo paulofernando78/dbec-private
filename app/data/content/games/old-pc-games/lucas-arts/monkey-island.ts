@@ -4,7 +4,7 @@ export const monkeyIsland = {
     descriptions: [
       "Follow Guybrush Threepwood from his first pirate trials on Mêlée Island to his confrontation with the ghost pirate LeChuck. Use the checklist to follow the story, solve the major puzzles, and review the English used throughout the adventure.",
     ],
-    date: "Oct 1990",
+    date: "1990",
   },
   sections: [
     {

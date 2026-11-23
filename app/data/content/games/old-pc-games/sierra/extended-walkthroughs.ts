@@ -82,35 +82,39 @@ export const kingsQuestV = {
   bundleUrl: "/media/games/sierra/kings-quest-v/kq5.jsdos?v=2",
 };
 
-export const policeQuestI = walkthrough(
-  "Follow correct police procedure as Sonny Bonds progresses from routine patrol work to the undercover operation that exposes Jessie Bains, the Death Angel. This guide follows the VGA remake.",
-  "1992 VGA",
+export const policeQuestI = {
+  ...walkthrough(
+  "Play the original 1987 AGI version with typed commands. Follow police procedure as Sonny Bonds moves from patrol work to the undercover operation against Jessie Bains, the Death Angel.",
+  "1987",
   [
     ["Briefing and Patrol", [
-      "At the station, shower, open locker 269, dress fully, and take the nightstick, ticket book, keys, radio extender, newspaper, and pigeonhole note.",
-      "Attend briefing, walk completely around the patrol car for the required safety inspection, then begin patrol.",
-      "At the accident, examine the driver, check the pulse, question the witness for the plate number, radio dispatch, and secure the scene until backup arrives.",
-      "At Caffeine Carol's, meet Steve, answer the telephone when called, and return to patrol only after the conversation finishes.",
+      "At the station, open Sonny’s locker and take the gun, ammunition, handcuffs, and briefcase. In the briefing room, inspect the pigeonholes, read the newspaper, and stand at your assigned desk for roll call.",
+      "Take the patrol car keys and radio extender, then walk around the patrol car to complete its safety inspection before driving. Use the original game’s text parser and the driving controls shown in its reference card.",
+      "At the accident, examine the driver, question the bystanders for the partial plate number, and radio dispatch with the information. Stay until Sergeant Dooley and Detective Hamilton arrive.",
+      "When Steve calls, visit Carol’s Caffeine Castle, sit with him, and answer the telephone when Hamilton calls.",
     ]],
     ["Traffic Stops", [
-      "When the red car runs the light, activate the siren, inspect the vehicle, radio the plate, approach safely, and issue the driver a ticket with pen and ticket book.",
-      "For the drunk driver, request the license, administer the field sobriety test, search and handcuff the suspect, then secure him in the patrol car.",
-      "At the jail, lock the firearm in the gun locker before entering, follow booking procedure, and recover the weapon when leaving.",
+      "Stop the red car after the traffic violation. Ask the driver for her license, write the ticket, have her sign it, and give her the ticket.",
+      "At Carol’s, speak with Carol about the bikers, then clear them from Wino Willy’s. Speak with Marie to learn more about the Death Angel.",
+      "Stop the erratic driver with the siren, request his license, administer a sobriety test, handcuff him, read his rights, and place him in the patrol car.",
+      "At the jail, lock away Sonny’s gun before entering, book the prisoner, and retrieve the gun on the way out.",
     ]],
     ["Narcotics Investigation", [
-      "After promotion, change into plain clothes, obtain the unmarked car, and meet Detective Laura Watts at the Blue Room.",
-      "Investigate the stolen car, collect evidence without contaminating it, arrest the suspect, and book him correctly.",
-      "At Bert's Park, coordinate the drug arrest, search the suspects, and preserve the evidence for the narcotics case.",
-      "Use the informant and courthouse leads to connect the street dealers to the Death Angel organization.",
+      "Return to the station after the patrol shift, file the required memo, and attend Jack’s gathering at the Blue Room before reporting back for duty.",
+      "After the felony arrest, search the suspect’s car and book him correctly. Read Dooley’s memo to receive the narcotics assignment.",
+      "Meet Laura in the narcotics office, inspect the Hoffman file and FBI information, then obtain the warrant that keeps the suspect in custody.",
+      "At the city park, coordinate the drug arrest with Laura, search and question the suspects, and book them at the jail.",
     ]],
     ["The Hotel Delphoria", [
-      "Recruit Marie Wilkans at the Blue Room and arrange the undercover poker game at the Hotel Delphoria.",
-      "Prepare the transmitter and weapon, enter under the correct cover identity, and play without exposing Sonny as an officer.",
-      "When Jessie Bains reveals himself, wait for the correct moment, draw the gun, make the arrest, and secure the evidence.",
-      "Complete the operation and return to the station for the conclusion.",
+      "Read the evidence room’s black book, speak with Marie at the jail, and investigate the body at Cotton Cove before the undercover assignment.",
+      "Prepare Sonny’s disguise at the station, obtain the marked money and contact instructions, and drive the unmarked car to the Hotel Delphoria.",
+      "Register at the hotel, meet Marie and the bartender, and reach the private poker game without revealing Sonny’s identity.",
+      "Save between poker rounds. When the Death Angel reveals himself, keep Sonny’s cover until the planned police intervention ends the operation.",
     ]],
   ],
-);
+  ),
+  bundleUrl: "/media/games/sierra/police-quest-i/pq1-ega.jsdos?v=1",
+};
 
 export const policeQuestII = walkthrough(
   "Track escaped murderer Jessie Bains through Lytton while following homicide procedure, processing evidence, diving for a weapon, and surviving the final confrontation.",
@@ -167,7 +171,7 @@ export const policeQuestIII = walkthrough(
 
 export const spaceQuestI = walkthrough(
   "Help janitor Roger Wilco escape the Arcada, survive Kerona, recover transportation and money at Ulence Flats, and destroy the Sariens' Star Generator. This guide follows the VGA remake.",
-  "1991 VGA",
+  "1991",
   [
     ["Escape from the Arcada", [
       "Hide whenever Sarien footsteps are announced, talk to the dying crewman, retrieve the named data cartridge from the automated archive, and search Jerry's body for the keycard.",

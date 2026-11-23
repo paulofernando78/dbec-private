@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Monitor } from "lucide-react";
 
 import { ProgressCollectionCard } from "@/components/content/ProgressCollectionCard";
 
@@ -49,6 +50,7 @@ export function GameStudioCard({
       resetAriaLabel={`Reset progress for ${studio}`}
       onReset={resetStudio}
       disableResetWhenEmpty
+      itemIcon={<Monitor aria-hidden="true" />}
       items={games.map((game) => ({
         id: game.href,
         eyebrow: game.date,

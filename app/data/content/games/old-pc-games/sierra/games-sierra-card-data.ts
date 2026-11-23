@@ -35,8 +35,8 @@ export const gamesSierraCardData = {
   policeQuestI: {
     href: "/games/sierra/police-quest-i",
     label: "Police Quest I",
-    description: "Follow Sonny Bonds from routine patrol duty to the undercover operation against the Death Angel.",
-    date: "1992 VGA",
+    description: "Play the original text-parser adventure as Sonny Bonds moves from patrol duty to the undercover operation against the Death Angel.",
+    date: "1987",
   },
   policeQuestII: {
     href: "/games/sierra/police-quest-ii",
@@ -54,7 +54,7 @@ export const gamesSierraCardData = {
     href: "/games/sierra/space-quest-i",
     label: "Space Quest I",
     description: "Help Roger Wilco escape the Arcada and stop the Sariens from using the Star Generator.",
-    date: "1991 VGA",
+    date: "1991",
   },
   spaceQuestII: {
     href: "/games/sierra/space-quest-ii",

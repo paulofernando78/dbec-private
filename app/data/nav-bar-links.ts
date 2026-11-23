@@ -3,6 +3,7 @@ import {
   CircleUserRound,
   BookOpenCheck,
   Gamepad2,
+  Monitor,
   Plane,
   BookMarked,
   MessageSquareQuote,
@@ -331,7 +332,7 @@ export const links: NavItem[] = [
         subgroup: "games",
         children: [
           { href: "/games/uno", label: "UNO", icon: Gamepad2 },
-          { href: "/games", label: "old PC games", icon: Gamepad2 },
+          { href: "/games", label: "old PC games", icon: Monitor },
         ],
       },
     ],
