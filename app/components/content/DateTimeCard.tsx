@@ -33,8 +33,7 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
 
   return (
     <div className={`text-[clamp(0.875rem,calc(100cqw/13),1.5rem)] ${className}`}>
-      <div className="flex flex-nowrap items-center justify-start gap-3 whitespace-nowrap
-      max-[919px]:justify-center
+      <div className="flex flex-nowrap items-center justify-center gap-3 whitespace-nowrap
       max-[450px]:flex-col
       max-[450px]:gap-0
       max-[450px]:text-sm">

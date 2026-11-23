@@ -33,7 +33,8 @@ export const indianaJonesLastCrusade = walkthrough(
   ],
 );
 
-export const fateOfAtlantis = walkthrough(
+export const fateOfAtlantis = {
+  ...walkthrough(
   "Investigate Plato's lost dialogue with Sophia Hapgood, recover the three Atlantean stones, enter the lost city, and stop the Nazis. This checklist follows the puzzle-rich Team Path.",
   "1992",
   [
@@ -64,7 +65,9 @@ export const fateOfAtlantis = walkthrough(
       "At the colossus, manipulate Kerner and Ubermann through dialogue, refuse the transformation, and trigger the machine so their plan destroys itself.",
     ]],
   ],
-);
+  ),
+  bundleUrl: "/media/games/lucasarts/indiana-jones-and-the-fate-of-atlantis/atlantis.jsdos?v=1",
+};
 
 export const monkeyIsland2 = walkthrough(
   "Help Guybrush escape Largo's embargo, resurrect LeChuck by mistake, assemble the four map pieces to Big Whoop, survive LeChuck's fortress, and solve the tunnels beneath Dinky Island.",

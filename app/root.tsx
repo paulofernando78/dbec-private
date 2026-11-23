@@ -176,36 +176,38 @@ function AppContent() {
           <div className="ml-auto shrink-0"><Contact /></div>
         </Card>
         <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
-          {!isPresentationPage && (
-            <Button
-              ariaLabel="Menu"
-              icon={<Menu />}
-              onClick={toggleNav}
-              className="size-10! justify-self-start p-0.75! min-[920px]:hidden!"
-            />
-          )}
-          {isPresentationPage && (
-            <div className="flex items-center gap-2 justify-self-start">
+          <div className={`flex shrink-0 items-center gap-2 ${isPresentationPage ? "w-22" : "w-10 min-[920px]:w-22"}`}>
+            {!isPresentationPage && (
               <Button
-                ariaLabel="Home"
-                icon={<House />}
-                pressed={location.pathname === "/"}
-                onClick={() => navigate("/")}
-                className="size-10! p-0.75!"
+                ariaLabel="Menu"
+                icon={<Menu />}
+                onClick={toggleNav}
+                className="size-10! p-0.75! min-[920px]:hidden!"
               />
-              <Button
-                ariaLabel="About"
-                icon={<Info />}
-                pressed={location.pathname === "/about"}
-                onClick={() => navigate("/about")}
-                className="size-10! p-0.75!"
-              />
-            </div>
-          )}
+            )}
+            {isPresentationPage && (
+              <>
+                <Button
+                  ariaLabel="Home"
+                  icon={<House />}
+                  pressed={location.pathname === "/"}
+                  onClick={() => navigate("/")}
+                  className="size-10! p-0.75!"
+                />
+                <Button
+                  ariaLabel="About"
+                  icon={<Info />}
+                  pressed={location.pathname === "/about"}
+                  onClick={() => navigate("/about")}
+                  className="size-10! p-0.75!"
+                />
+              </>
+            )}
+          </div>
           <div className="min-w-0 flex-1 [container-type:inline-size]">
             <DateTimeCard />
           </div>
-          <div className="ml-auto flex shrink-0 items-center justify-end gap-2">
+          <div className={`flex shrink-0 items-center justify-end gap-2 ${isPresentationPage ? "w-10" : "w-22"}`}>
             <Button
               ariaLabel={isDarkMode ? "Light mode" : "Dark mode"}
               icon={isDarkMode ? <Sun /> : <MoonStar />}

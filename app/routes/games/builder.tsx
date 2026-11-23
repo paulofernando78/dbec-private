@@ -129,7 +129,7 @@ export default function GameBuilder() {
                   />
                 ) : (
                   <div className="grid aspect-4/3 place-items-center rounded-lg bg-slate-950 px-4 text-center text-sm text-slate-200">
-                    Player not configured
+                    Coming soon
                   </div>
                 )}
               </Card>

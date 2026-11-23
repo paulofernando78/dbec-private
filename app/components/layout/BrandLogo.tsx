@@ -42,7 +42,9 @@ export function BrandLogo({
                 : ""
           }`}
         >
-          <span>DAILY BASIS</span>
+          <span className={!compact && layout === "column" ? "block origin-left scale-x-[1.05]" : undefined}>
+            DAILY BASIS
+          </span>
           <span
             className={
               isRow
