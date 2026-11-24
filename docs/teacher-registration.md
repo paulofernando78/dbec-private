@@ -97,6 +97,8 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Admin vê o responsável de cada aluno na lista (ele enxerga alunos de outros professores)
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
 - [x] **Linhas à prova de largura** (correção pós-deploy): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-40`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,1fr)`. Verificado por medição: a 1400px o nome fica com 254px em uma linha; a 1000px as ações descem para a segunda linha; sem transbordo horizontal em nenhuma largura
+- [x] **Ações da linha do professor como ícones** (`Eye` / `UserX`-`UserCheck` / `Trash2`), cada uma com `title` (tooltip) e `aria-label`; o estado do professor já aparece escrito na linha (`· inactive`) e o ícone muda entre desativar e ativar
+- [x] **Olho abre um modal** com os alunos daquele professor (somente leitura, fecha com Esc, clique no fundo ou no X). A sua própria linha (admin) tem só o olho — “My students”, sem editar/remover
 
 ## Fase 4 — Verificação e entrega
 

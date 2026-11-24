@@ -7,19 +7,10 @@ import {
   teacherOptionLabel,
   type Teacher,
 } from "@/utils/teachers";
-
-export type AssignableStudent = {
-  studentId: string;
-  name: string;
-  username: string;
-  schedule: string;
-  time: string;
-  plan: "free" | "plus";
-  teacherId: number | null;
-};
+import type { RosterStudent } from "@/utils/students";
 
 type UnassignedStudentsProps = {
-  students: AssignableStudent[];
+  students: RosterStudent[];
   teachers: Teacher[];
   /** Id do professor logado, usado pelo atalho "atribuir todos a mim". */
   viewerId?: number;
@@ -30,7 +21,7 @@ type UnassignedStudentsProps = {
 // A partir deste tamanho, a fila ganha campo de busca.
 const searchThreshold = 10;
 
-const matchesQuery = (student: AssignableStudent, query: string) =>
+const matchesQuery = (student: RosterStudent, query: string) =>
   `${student.name} ${student.username} ${student.schedule}`
     .toLowerCase()
     .includes(query);

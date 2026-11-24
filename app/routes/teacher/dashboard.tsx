@@ -405,6 +405,7 @@ export default function TeacherDashboard() {
             <Card title="Teacher Registration">
               <TeacherForm
                 teachers={teachers}
+                students={students}
                 selectedTeacherId={selectedTeacherId}
                 onTeacherSelect={setSelectedTeacherId}
                 onTeacherSaved={refreshRoster}
