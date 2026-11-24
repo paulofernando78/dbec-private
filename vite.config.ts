@@ -1173,6 +1173,41 @@ const localAuth = (): Plugin => ({
     );
 
     server.middlewares.use(
+      "/api/student-report",
+      (request, response, next) => {
+        if (request.method !== "GET") return next();
+
+        response.setHeader("Content-Type", "application/json");
+        response.setHeader("Cache-Control", "no-store");
+
+        const viewer = localSession;
+
+        if (!viewer || viewer.role !== "teacher") {
+          response.statusCode = 401;
+          response.end(JSON.stringify({ error: "Não autorizado." }));
+          return;
+        }
+
+        const studentId = new URL(
+          request.url ?? "",
+          "http://localhost",
+        ).searchParams.get("studentId");
+        const student =
+          typeof studentId === "string" ? localStudents.get(studentId) : undefined;
+
+        if (!student || !ownsLocalStudent(viewer, student)) {
+          response.statusCode = 404;
+          response.end(JSON.stringify({ error: "Aluno não encontrado." }));
+          return;
+        }
+
+        // O dev não registra visitas nem verificações de exercícios.
+        response.statusCode = 200;
+        response.end(JSON.stringify({ visits: [], attempts: [] }));
+      },
+    );
+
+    server.middlewares.use(
       "/api/teachers",
       async (request, response, next) => {
         if (

@@ -12,6 +12,7 @@ import { TableOfContents } from "@/components/content/TableOfContents";
 import { TeacherForm } from "@/components/content/TeacherForm";
 import { UnassignedStudents } from "@/components/content/UnassignedStudents";
 import { Card } from "@/components/ui/Card";
+import { Modal } from "@/components/ui/Modal";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
 import type { Teacher } from "@/utils/teachers";
@@ -77,6 +78,12 @@ export default function TeacherDashboard() {
   const [studentError, setStudentError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
   const [progress, setProgress] = useState<CourseProgressSummary | null>(null);
+  const [reportStudent, setReportStudent] = useState<{
+    studentId: string;
+    name: string;
+    schedule: string;
+    time: string;
+  } | null>(null);
   const student = data?.student;
   // Alunos sem professor ficam numa fila de reatribuição; os demais pertencem a
   // alguém (o próprio professor logado ou, no caso do admin, a outro professor).
@@ -434,6 +441,7 @@ export default function TeacherDashboard() {
               onStudentSelect={handleStudentChange}
               onStudentSaved={refreshRoster}
               onStudentAssign={assignStudent}
+              onStudentReport={setReportStudent}
             />
           </Card>
         </div>
@@ -443,7 +451,6 @@ export default function TeacherDashboard() {
             items={[
               { href: "calendar", label: "Calendar" },
               { href: "progress", label: "Progress" },
-              { href: "report", label: "Report" },
               { href: "notes", label: "Notes / AI Tutor" },
             ]}
           />
@@ -485,9 +492,6 @@ export default function TeacherDashboard() {
                 <DashboardProgress progress={progress} />
               </div>
             )}
-            <div id="report" className="scroll-mt-4">
-              <StudentReport studentId={studentId} />
-            </div>
             <div id="notes" className="relative scroll-mt-4">
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />
@@ -531,6 +535,21 @@ export default function TeacherDashboard() {
             </div>
           </div>
         ) : null}
+
+        {reportStudent && (
+          <Modal
+            className="max-w-3xl"
+            onClose={() => setReportStudent(null)}
+            title={`Report — ${reportStudent.name}`}
+            subtitle={
+              reportStudent.schedule
+                ? `${reportStudent.schedule} · ${reportStudent.time}`
+                : undefined
+            }
+          >
+            <StudentReport studentId={reportStudent.studentId} />
+          </Modal>
+        )}
       </div>
     </>
   );

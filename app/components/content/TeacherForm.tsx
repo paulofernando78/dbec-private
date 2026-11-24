@@ -3,11 +3,12 @@ import {
   useRef,
   useState,
   type FormEvent,
-  type ReactNode,
 } from "react";
 import { Eye, Trash2, UserCheck, UserRound, Users, UserX, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { IconAction } from "@/components/ui/IconAction";
+import { Modal } from "@/components/ui/Modal";
 import { avatarColors } from "@/utils/avatar-theme";
 import {
   canAcceptStudents,
@@ -78,18 +79,6 @@ export const TeacherForm = ({
   const viewedStudents = viewingTeacher
     ? students.filter((student) => student.teacherId === viewingTeacher.id)
     : [];
-
-  // Um modal que não fecha com Esc é uma armadilha.
-  useEffect(() => {
-    if (!viewingTeacher) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setViewingTeacher(null);
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [viewingTeacher]);
 
   const selectedTeacher = teachers.find(
     (teacher) => teacher.id === selectedTeacherId,
@@ -492,113 +481,64 @@ export const TeacherForm = ({
       </div>
 
       {viewingTeacher && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="teacher-roster-title"
+        <Modal
+          onClose={() => setViewingTeacher(null)}
+          title={
+            viewingTeacher.isAdmin
+              ? "My students"
+              : `Students of ${viewingTeacher.displayName}`
+          }
+          subtitle={`@${viewingTeacher.username} · ${
+            viewingTeacher.isUnlimited
+              ? `${viewedStudents.length} students · no limit`
+              : `${viewedStudents.length} / ${viewingTeacher.studentLimit} students`
+          }`}
         >
-          <button
-            type="button"
-            aria-label="Close"
-            className="absolute inset-0 cursor-default bg-black/40"
-            onClick={() => setViewingTeacher(null)}
-          />
+          <ul className="grid gap-2">
+            {viewedStudents.length === 0 && (
+              <li className="rounded-lg bg-(--background) px-3 py-2 text-sm text-gray-500">
+                {viewingTeacher.isAdmin
+                  ? "You have no students yet."
+                  : "This teacher has no students yet."}
+              </li>
+            )}
 
-          <div className="relative z-10 max-h-[80vh] w-full max-w-lg overflow-y-auto rounded-xl bg-(--surface) p-4 shadow-xl">
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <h3
-                  id="teacher-roster-title"
-                  className="truncate text-lg font-bold"
+            {viewedStudents.map((student) => (
+              <li
+                key={student.studentId}
+                className="flex min-w-0 items-center gap-3 rounded-lg bg-(--background) px-3 py-2"
+              >
+                <span
+                  className="flex size-10 shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    backgroundColor: avatarColors.student.background,
+                    color: avatarColors.student.dot,
+                  }}
+                  aria-hidden="true"
                 >
-                  {viewingTeacher.isAdmin
-                    ? "My students"
-                    : `Students of ${viewingTeacher.displayName}`}
-                </h3>
-                <p className="text-xs text-gray-500">
-                  @{viewingTeacher.username} ·{" "}
-                  {viewingTeacher.isUnlimited
-                    ? `${viewedStudents.length} students · no limit`
-                    : `${viewedStudents.length} / ${viewingTeacher.studentLimit} students`}
-                </p>
-              </div>
+                  <Users className="size-5" />
+                </span>
 
-              <Button
-                icon={<X />}
-                ariaLabel="Close"
-                onClick={() => setViewingTeacher(null)}
-              />
-            </div>
-
-            <ul className="mt-4 grid gap-2">
-              {viewedStudents.length === 0 && (
-                <li className="rounded-lg bg-(--background) px-3 py-2 text-sm text-gray-500">
-                  {viewingTeacher.isAdmin
-                    ? "You have no students yet."
-                    : "This teacher has no students yet."}
-                </li>
-              )}
-
-              {viewedStudents.map((student) => (
-                <li
-                  key={student.studentId}
-                  className="flex min-w-0 items-center gap-3 rounded-lg bg-(--background) px-3 py-2"
-                >
+                <span className="block min-w-0 flex-1">
                   <span
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full"
-                    style={{
-                      backgroundColor: avatarColors.student.background,
-                      color: avatarColors.student.dot,
-                    }}
-                    aria-hidden="true"
+                    className="block truncate text-sm font-semibold"
+                    title={student.name}
                   >
-                    <Users className="size-5" />
+                    {student.name}
                   </span>
-
-                  <span className="block min-w-0 flex-1">
-                    <span
-                      className="block truncate text-sm font-semibold"
-                      title={student.name}
-                    >
-                      {student.name}
-                    </span>
-                    <span className="block truncate text-xs text-gray-500">
-                      @{student.username} · {student.plan} · {student.schedule} ·{" "}
-                      {student.time}
-                    </span>
+                  <span className="block truncate text-xs text-gray-500">
+                    @{student.username} · {student.plan} · {student.schedule} ·{" "}
+                    {student.time}
                   </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Modal>
       )}
     </form>
   );
 };
-
-// Ação só de ícone: o tooltip (title) e o aria-label dizem o que ela faz.
-const IconAction = ({
-  icon,
-  label,
-  disabled,
-  onClick,
-}: {
-  icon: ReactNode;
-  label: string;
-  disabled?: boolean;
-  onClick: () => void;
-}) => (
-  <span title={label} className="inline-flex">
-    <Button
-      icon={icon}
-      ariaLabel={label}
-      disabled={disabled}
-      onClick={onClick}
-    />
-  </span>
-);
 
 const TeacherAvatar = ({
   background,

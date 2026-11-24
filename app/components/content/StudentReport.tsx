@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Card } from "@/components/ui/Card";
 
 type Answer = { question: string; response: string; correctAnswer: string; correct: boolean };
 type Visit = { id: number; path: string; title: string; startedAtMs: number; lastSeenMs: number };
@@ -61,7 +60,7 @@ export function StudentReport({ studentId }: { studentId: string }) {
   const pages = report ? groupByPage(report) : [];
 
   return (
-    <Card title="Report">
+    <div className="grid gap-4">
       {error && <p className="rounded-lg bg-(--background) p-3 text-red-600">{error}</p>}
       {!report && !error && <p className="text-gray-500">Carregando relatório…</p>}
       {report && pages.length === 0 && (
@@ -125,6 +124,6 @@ export function StudentReport({ studentId }: { studentId: string }) {
           })}
         </div>
       )}
-    </Card>
+    </div>
   );
 }

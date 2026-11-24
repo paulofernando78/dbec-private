@@ -1,7 +1,15 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ChevronDown, GraduationCap, Trash2, UserMinus, X } from "lucide-react";
+import {
+  ChevronDown,
+  Eye,
+  GraduationCap,
+  Trash2,
+  UserMinus,
+  X,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { IconAction } from "@/components/ui/IconAction";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
 import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
 
@@ -19,6 +27,8 @@ type StudentFormProps = {
     studentId: string,
     teacherId: number | null,
   ) => Promise<void>;
+  /** Abre o relatório do aluno (página visitada + exercícios verificados). */
+  onStudentReport: (student: Student) => void;
 };
 
 type Student = {
@@ -127,6 +137,7 @@ export const StudentForm = ({
   onStudentSelect,
   onStudentSaved,
   onStudentAssign,
+  onStudentReport,
 }: StudentFormProps) => {
   const [form, setForm] = useState(initialForm);
   const [message, setMessage] = useState("");
@@ -569,6 +580,12 @@ export const StudentForm = ({
                   </button>
 
                   <div className="flex shrink-0 items-center gap-1">
+                    <IconAction
+                      icon={<Eye />}
+                      label={`View report of ${student.name}`}
+                      onClick={() => onStudentReport(student)}
+                    />
+
                     {transferTargets.length > 0 && (
                       <div className="relative w-36 shrink-0">
                         <select
@@ -605,20 +622,19 @@ export const StudentForm = ({
                       </div>
                     )}
 
-                    <Button
+                    <IconAction
                       icon={<UserMinus />}
+                      label={`Remove ${student.name} from the list`}
                       disabled={isPending}
                       onClick={() =>
                         setUnassigningStudentId(student.studentId)
                       }
-                    >
-                      Remove
-                    </Button>
+                    />
 
                     {viewer.isAdmin && (
-                      <Button
+                      <IconAction
                         icon={<Trash2 />}
-                        ariaLabel={`Delete ${student.name}`}
+                        label={`Delete ${student.name}`}
                         disabled={isPending}
                         onClick={() => setDeletingStudentId(student.studentId)}
                       />
