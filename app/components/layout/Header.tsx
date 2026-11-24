@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/Button/Button";
 
 import { X } from "lucide-react";
 import { AccountSummary } from "./AccountSummary";
+import {
+  DASHBOARD_PATH_STORAGE_KEY,
+  SELECTED_STUDENT_STORAGE_KEY,
+} from "@/utils/session-storage";
 
 type SelectedStudent = {
   studentId: string;
@@ -32,7 +36,10 @@ export const Header = () => {
   const sessionExpired = loginParams.get("login") === "expired";
 
   useEffect(() => {
-    if (sessionExpired || new URLSearchParams(location.search).get("login") === "required") {
+    if (
+      sessionExpired ||
+      new URLSearchParams(location.search).get("login") === "required"
+    ) {
       setIsLoginOpen(true);
     }
   }, [location.search, sessionExpired]);
@@ -56,26 +63,36 @@ export const Header = () => {
       return;
     }
 
-    const selectedStudentId = localStorage.getItem("dbec_selected_student_id");
+    const selectedStudentId = localStorage.getItem(
+      SELECTED_STUDENT_STORAGE_KEY,
+    );
     if (!selectedStudentId) setSelectedStudent(null);
 
-    const loadStudents = () => fetch("/api/students", { headers: { Accept: "application/json" } })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        const result = (await response.json()) as {
-          students?: SelectedStudent[];
-        };
-        return result.students ?? [];
-      })
-      .then((students) => {
-        if (!isCurrent || !students) return;
-        const now = Date.now();
-        setConnectedStudentCount(students.filter((student) =>
-          student.lastSeenMs && now - student.lastSeenMs < 90_000,
-        ).length);
-        setSelectedStudent(students.find((student) => student.studentId === selectedStudentId) ?? null);
-      })
-      .catch(() => {});
+    const loadStudents = () =>
+      fetch("/api/students", { headers: { Accept: "application/json" } })
+        .then(async (response) => {
+          if (!response.ok) return null;
+          const result = (await response.json()) as {
+            students?: SelectedStudent[];
+          };
+          return result.students ?? [];
+        })
+        .then((students) => {
+          if (!isCurrent || !students) return;
+          const now = Date.now();
+          setConnectedStudentCount(
+            students.filter(
+              (student) =>
+                student.lastSeenMs && now - student.lastSeenMs < 90_000,
+            ).length,
+          );
+          setSelectedStudent(
+            students.find(
+              (student) => student.studentId === selectedStudentId,
+            ) ?? null,
+          );
+        })
+        .catch(() => {});
 
     void loadStudents();
     const intervalId = window.setInterval(() => void loadStudents(), 30_000);
@@ -109,9 +126,11 @@ export const Header = () => {
     if (response.ok) {
       const result = (await response.json()) as { redirectTo?: string };
       const redirectTo = result.redirectTo ?? "/dashboard";
-      localStorage.setItem("dbec_dashboard_path", redirectTo);
+      localStorage.setItem(DASHBOARD_PATH_STORAGE_KEY, redirectTo);
       const next = loginParams.get("next");
-      const destination = next?.startsWith("/") ? URL.parse(next, window.location.origin) : null;
+      const destination = next?.startsWith("/")
+        ? URL.parse(next, window.location.origin)
+        : null;
       window.location.assign(
         sessionExpired && destination?.origin === window.location.origin
           ? destination.href
@@ -130,17 +149,57 @@ export const Header = () => {
   return (
     <>
       {(!isPresentationPage || session) && (
-      <div className="w-full shrink-0 overflow-hidden rounded-xl bg-(--surface) p-4">
-        <div
-          className={`grid min-h-10 items-center ${
-            isPresentationPage
-              ? "grid-cols-[auto_minmax(0,1fr)] gap-4"
-              : "grid-cols-1"
-          }`}
-        >
-          <div className={`flex min-w-0 items-center gap-4 justify-self-start ${isPresentationPage ? "" : "w-full overflow-x-auto overflow-y-hidden"}`}>
-            {!isPresentationPage && session && (
-              <>
+        <div className="w-full shrink-0 overflow-hidden rounded-xl bg-(--surface) p-4">
+          <div
+            className={`grid min-h-10 items-center ${
+              isPresentationPage
+                ? "grid-cols-[auto_minmax(0,1fr)] gap-4"
+                : "grid-cols-1"
+            }`}
+          >
+            <div
+              className={`flex min-w-0 items-center gap-4 justify-self-start ${isPresentationPage ? "" : "w-full overflow-x-auto overflow-y-hidden"}`}
+            >
+              {!isPresentationPage && session && (
+                <>
+                  <AccountSummary
+                    name={session.displayName}
+                    role={session.role}
+                    online={session.role === "student"}
+                    subtitle={
+                      session.role === "student" ? "Full access" : "Teacher"
+                    }
+                    className={
+                      selectedStudent
+                        ? "border-r border-gray-300 pr-4 dark:border-gray-600"
+                        : ""
+                    }
+                  />
+                  {session.role === "teacher" && (
+                    <span
+                      className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedStudentCount > 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
+                      aria-label={`${connectedStudentCount} alunos conectados`}
+                      title={`${connectedStudentCount} alunos conectados`}
+                    >
+                      {connectedStudentCount}
+                    </span>
+                  )}
+                  {selectedStudent && (
+                    <AccountSummary
+                      name={selectedStudent.name}
+                      role="student"
+                      online={Boolean(
+                        selectedStudent.lastSeenMs &&
+                        Date.now() - selectedStudent.lastSeenMs < 90_000,
+                      )}
+                      subtitle={`${selectedStudent.schedule} · ${selectedStudent.time}`}
+                    />
+                  )}
+                </>
+              )}
+            </div>
+            <div className="flex min-w-0 items-center gap-4 justify-self-end">
+              {session && isPresentationPage && (
                 <AccountSummary
                   name={session.displayName}
                   role={session.role}
@@ -148,48 +207,11 @@ export const Header = () => {
                   subtitle={
                     session.role === "student" ? "Full access" : "Teacher"
                   }
-                  className={
-                    selectedStudent
-                      ? "border-r border-gray-300 pr-4 dark:border-gray-600"
-                      : ""
-                  }
                 />
-                {session.role === "teacher" && (
-                  <span
-                    className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedStudentCount > 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
-                    aria-label={`${connectedStudentCount} alunos conectados`}
-                    title={`${connectedStudentCount} alunos conectados`}
-                  >
-                    {connectedStudentCount}
-                  </span>
-                )}
-                {selectedStudent && (
-                  <AccountSummary
-                    name={selectedStudent.name}
-                    role="student"
-                    online={Boolean(selectedStudent.lastSeenMs && Date.now() - selectedStudent.lastSeenMs < 90_000)}
-                    subtitle={`${selectedStudent.schedule} · ${selectedStudent.time}`}
-                  />
-                )}
-              </>
-            )}
-
-          </div>
-          <div className="flex min-w-0 items-center gap-4 justify-self-end">
-            {session && isPresentationPage && (
-              <AccountSummary
-                name={session.displayName}
-                role={session.role}
-                online={session.role === "student"}
-                subtitle={
-                  session.role === "student" ? "Full access" : "Teacher"
-                }
-              />
-            )}
-
+              )}
+            </div>
           </div>
         </div>
-      </div>
       )}
 
       {isLoginOpen && (
@@ -221,7 +243,8 @@ export const Header = () => {
 
               {sessionExpired && (
                 <p className="mb-4 text-sm" role="status">
-                  Você foi desconectado após 10 minutos de inatividade. Faça login novamente para continuar.
+                  Você foi desconectado após 10 minutos de inatividade. Faça
+                  login novamente para continuar.
                 </p>
               )}
 

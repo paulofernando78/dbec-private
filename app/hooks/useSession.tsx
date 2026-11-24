@@ -1,4 +1,13 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+
+import { clearPersistedSessionState } from "@/utils/session-storage";
 
 type Session = {
   username: string;
@@ -42,7 +51,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       expiresAt = nextExpiration;
       lastExpiration.current = nextExpiration;
       window.clearTimeout(expiration);
-      expiration = window.setTimeout(refresh, Math.max(0, expiresAt - Date.now()) + 100);
+      expiration = window.setTimeout(
+        refresh,
+        Math.max(0, expiresAt - Date.now()) + 100,
+      );
     }
 
     async function refresh() {
@@ -58,9 +70,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         if (response.status === 401) {
           expiresAt = 0;
           window.clearTimeout(expiration);
+          clearPersistedSessionState();
           setSession(null);
         } else if (response.ok) {
-          const current = await response.json() as Session & { expiresAt: number };
+          const current = (await response.json()) as Session & {
+            expiresAt: number;
+          };
           if (!controller.signal.aborted) {
             scheduleExpiration(current.expiresAt);
             setSession(current);
@@ -69,17 +84,28 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           throw new Error("Session check failed");
         }
       } catch {
-        if (!controller.signal.aborted && expiresAt && Date.now() >= expiresAt) {
+        if (
+          !controller.signal.aborted &&
+          expiresAt &&
+          Date.now() >= expiresAt
+        ) {
           setSession(null);
         }
-        if (!controller.signal.aborted) retry = window.setTimeout(refresh, 5_000);
+        if (!controller.signal.aborted)
+          retry = window.setTimeout(refresh, 5_000);
       } finally {
         checking = false;
       }
     }
 
     async function renewOnActivity() {
-      if (!expiresAt || checking || renewing || Date.now() - lastRenewal < 15_000) return;
+      if (
+        !expiresAt ||
+        checking ||
+        renewing ||
+        Date.now() - lastRenewal < 15_000
+      )
+        return;
       renewing = true;
       try {
         const response = await fetch("/api/session", {
@@ -87,7 +113,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           signal: controller.signal,
         });
         if (response.ok) {
-          const renewed = await response.json() as { expiresAt: number };
+          const renewed = (await response.json()) as { expiresAt: number };
           if (!controller.signal.aborted) {
             lastRenewal = Date.now();
             scheduleExpiration(renewed.expiresAt);
@@ -95,13 +121,18 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         } else if (response.status === 401 && !controller.signal.aborted) {
           expiresAt = 0;
           window.clearTimeout(expiration);
+          clearPersistedSessionState();
           setSession(null);
         }
       } catch {
         // The next interaction can retry while the session is still valid.
       } finally {
         renewing = false;
-        if (!controller.signal.aborted && expiresAt && Date.now() >= expiresAt) {
+        if (
+          !controller.signal.aborted &&
+          expiresAt &&
+          Date.now() >= expiresAt
+        ) {
           void refresh();
         }
       }
@@ -117,16 +148,26 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     window.addEventListener("online", refresh);
     window.addEventListener(SESSION_ACTIVITY_EVENT, renewOnActivity);
     document.addEventListener("visibilitychange", onVisibilityChange);
-    const activityEvents = ["pointerdown", "keydown", "scroll", "play"] as const;
+    const activityEvents = [
+      "pointerdown",
+      "keydown",
+      "scroll",
+      "play",
+    ] as const;
     for (const event of activityEvents) {
-      document.addEventListener(event, renewOnActivity, { capture: true, passive: true });
+      document.addEventListener(event, renewOnActivity, {
+        capture: true,
+        passive: true,
+      });
     }
     const playbackCheck = window.setInterval(() => {
       if (document.visibilityState !== "visible") return;
       const speech = window.speechSynthesis;
-      const playing = Array.from(document.querySelectorAll<HTMLMediaElement>("audio, video"))
-        .some((media) => !media.paused && !media.ended && media.readyState >= 3);
-      if (playing || (speech?.speaking && !speech.paused)) void renewOnActivity();
+      const playing = Array.from(
+        document.querySelectorAll<HTMLMediaElement>("audio, video"),
+      ).some((media) => !media.paused && !media.ended && media.readyState >= 3);
+      if (playing || (speech?.speaking && !speech.paused))
+        void renewOnActivity();
     }, 15_000);
     const presenceCheck = window.setInterval(() => {
       if (document.visibilityState === "visible") void refresh();
@@ -149,11 +190,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <SessionExpiryContext.Provider value={() => {
-      const deadline = lastExpiration.current;
-      return deadline > 0 && (session === null || Date.now() >= deadline);
-    }}>
-      <SessionContext.Provider value={session}>{children}</SessionContext.Provider>
+    <SessionExpiryContext.Provider
+      value={() => {
+        const deadline = lastExpiration.current;
+        return deadline > 0 && (session === null || Date.now() >= deadline);
+      }}
+    >
+      <SessionContext.Provider value={session}>
+        {children}
+      </SessionContext.Provider>
     </SessionExpiryContext.Provider>
   );
 }

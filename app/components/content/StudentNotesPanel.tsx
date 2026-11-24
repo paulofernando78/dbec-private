@@ -12,6 +12,7 @@ import { NoteAuthorLegend } from "@/components/content/NoteAuthorLegend";
 import { RichTextArea } from "@/components/ui/RichTextArea";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
+import { SELECTED_STUDENT_STORAGE_KEY } from "@/utils/session-storage";
 
 type Notes = {
   teacher: string;
@@ -25,10 +26,7 @@ type StudentNotesPanelProps = {
   onClose: () => void;
 };
 
-export function StudentNotesPanel({
-  isOpen,
-  onClose,
-}: StudentNotesPanelProps) {
+export function StudentNotesPanel({ isOpen, onClose }: StudentNotesPanelProps) {
   const location = useLocation();
   const session = useSession();
   const [studentId, setStudentId] = useState("");
@@ -57,9 +55,9 @@ export function StudentNotesPanel({
   useEffect(() => {
     setStudentId(
       session?.role === "student"
-        ? session.studentId ?? ""
+        ? (session.studentId ?? "")
         : session?.role === "teacher"
-          ? localStorage.getItem("dbec_selected_student_id") ?? ""
+          ? (localStorage.getItem(SELECTED_STUDENT_STORAGE_KEY) ?? "")
           : "",
     );
   }, [location.pathname, session?.role, session?.studentId]);
@@ -136,73 +134,86 @@ export function StudentNotesPanel({
         role: session.role,
       }
     : undefined;
-  const noteParticipants = currentAuthor && session
-    ? [
-        currentAuthor,
-        session.role === "teacher"
-          ? { id: studentId, name: studentName || "Aluno", role: "student" as const }
-          : { id: "teacher", name: "Professor", role: "teacher" as const },
-      ]
-    : [];
+  const noteParticipants =
+    currentAuthor && session
+      ? [
+          currentAuthor,
+          session.role === "teacher"
+            ? {
+                id: studentId,
+                name: studentName || "Aluno",
+                role: "student" as const,
+              }
+            : { id: "teacher", name: "Professor", role: "teacher" as const },
+        ]
+      : [];
 
   if (!session || !panelHost) return null;
 
   return createPortal(
-        <div className={`${isOpen ? "flex" : "hidden"} pointer-events-auto h-full max-h-full w-full translate-y-[0.05rem] touch-pan-y flex-col overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]`}>
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-black">Notes</h2>
-              {studentName && (
-                <p className="text-sm text-slate-500">{studentName}</p>
-              )}
-              <p className="text-xs text-slate-400">
-                {connectionState === "connected"
-                  ? "Live"
-                  : connectionState === "polling"
-                    ? "Live sync"
-                    : "Reconnecting…"}
-              </p>
-            </div>
-            {isLoading && <LoaderCircle className="animate-spin text-slate-400" />}
-            <Button
-              ariaLabel="Close notes"
-              onClick={onClose}
-              icon={<X />}
-              className="size-10! p-0.75!"
+    <div
+      className={`${isOpen ? "flex" : "hidden"} pointer-events-auto h-full max-h-full w-full translate-y-[0.05rem] touch-pan-y flex-col overflow-x-hidden overflow-y-auto overscroll-contain rounded-xl bg-(--surface) p-3 shadow-2xl ring-1 ring-slate-300 [-webkit-overflow-scrolling:touch]`}
+    >
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-black">Notes</h2>
+          {studentName && (
+            <p className="text-sm text-slate-500">{studentName}</p>
+          )}
+          <p className="text-xs text-slate-400">
+            {connectionState === "connected"
+              ? "Live"
+              : connectionState === "polling"
+                ? "Live sync"
+                : "Reconnecting…"}
+          </p>
+        </div>
+        {isLoading && <LoaderCircle className="animate-spin text-slate-400" />}
+        <Button
+          ariaLabel="Close notes"
+          onClick={onClose}
+          icon={<X />}
+          className="size-10! p-0.75!"
+        />
+      </div>
+
+      {/* <DateTimeCard className="mb-3 bg-(--background)" compact /> */}
+
+      {error && (
+        <p className="mb-3 text-sm font-semibold text-red-600">{error}</p>
+      )}
+
+      {studentId && (
+        <>
+          <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:flex-none max-[930px]:grid-cols-1">
+            <Card className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
+              <NoteAuthorLegend
+                value={notes.student}
+                currentAuthor={currentAuthor}
+                participants={noteParticipants}
+              />
+              <RichTextArea
+                value={notes.student}
+                author={currentAuthor}
+                participants={noteParticipants}
+                onChange={(content) => {
+                  setNotes((current) => ({ ...current, student: content }));
+                  sendNote("student", content, true);
+                }}
+                onBlur={() => void saveNote()}
+                className="min-h-0 max-h-none flex-1"
+              />
+            </Card>
+            <AiTutor
+              key={`${session.role}:${studentId}`}
+              className="mt-0 h-full min-h-0 max-[930px]:min-h-[24rem]"
+              fill
+              visible={isOpen}
             />
           </div>
-
-          {/* <DateTimeCard className="mb-3 bg-(--background)" compact /> */}
-
-          {error && <p className="mb-3 text-sm font-semibold text-red-600">{error}</p>}
-
-          {studentId && (
-            <>
-              <div className="grid min-h-0 flex-1 grid-cols-2 items-stretch gap-3 max-[930px]:flex-none max-[930px]:grid-cols-1">
-                <Card className="flex min-h-0 flex-col overflow-hidden bg-(--background) max-[930px]:min-h-[24rem]">
-                  <NoteAuthorLegend value={notes.student} currentAuthor={currentAuthor} participants={noteParticipants} />
-                  <RichTextArea
-                    value={notes.student}
-                    author={currentAuthor}
-                    participants={noteParticipants}
-                    onChange={(content) => {
-                      setNotes((current) => ({ ...current, student: content }));
-                      sendNote("student", content, true);
-                    }}
-                    onBlur={() => void saveNote()}
-                    className="min-h-0 max-h-none flex-1"
-                  />
-                </Card>
-                <AiTutor
-                  key={`${session.role}:${studentId}`}
-                  className="mt-0 h-full min-h-0 max-[930px]:min-h-[24rem]"
-                  fill
-                  visible={isOpen}
-                />
-              </div>
-            </>
-          )}
-        </div>,
-        panelHost,
+        </>
+      )}
+    </div>,
+    panelHost,
   );
 }

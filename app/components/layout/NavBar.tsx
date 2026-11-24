@@ -6,6 +6,7 @@ import { LockKeyhole, NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GlobalSearch } from "./GlobalSearch";
 import { ActionTextRow } from "@/components/content/ActionTextRow";
+import { DASHBOARD_PATH_STORAGE_KEY } from "@/utils/session-storage";
 
 type NavBarProps = {
   isOpen: boolean;
@@ -21,12 +22,16 @@ export function NavBar({
   toggleNotes,
 }: NavBarProps) {
   const session = useSession();
-  const dashboardPath = session ? session.dashboardPath ?? "/dashboard" : null;
+  const dashboardPath = session
+    ? (session.dashboardPath ?? "/dashboard")
+    : null;
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    if (dashboardPath) localStorage.setItem("dbec_dashboard_path", dashboardPath);
-    else if (session === null) localStorage.removeItem("dbec_dashboard_path");
+    if (dashboardPath)
+      localStorage.setItem(DASHBOARD_PATH_STORAGE_KEY, dashboardPath);
+    else if (session === null)
+      localStorage.removeItem(DASHBOARD_PATH_STORAGE_KEY);
   }, [dashboardPath, session]);
 
   const renderNavigationButton = (
@@ -46,13 +51,20 @@ export function NavBar({
           onClick={closeNavBar}
           className={`block rounded-xl no-underline focus-visible:outline-2 focus-visible:outline-offset-2 ${className}`}
         >
-          <ActionTextRow as="div" gap="gap-2" action={
-            <span aria-hidden="true" className="relative grid size-10 shrink-0 place-items-center rounded-xl border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-0.75 text-(--button-text) shadow-sm">
-              <span className="absolute inset-1 grid place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
-                <Icon className="size-4.5 stroke-(--button-icon)" />
+          <ActionTextRow
+            as="div"
+            gap="gap-2"
+            action={
+              <span
+                aria-hidden="true"
+                className="relative grid size-10 shrink-0 place-items-center rounded-xl border border-(--button-border) bg-linear-to-b from-(--button-outer-start) to-(--button-outer-end) p-0.75 text-(--button-text) shadow-sm"
+              >
+                <span className="absolute inset-1 grid place-items-center rounded-lg bg-linear-to-b from-(--button-inner-start) to-(--button-inner-end)">
+                  <Icon className="size-4.5 stroke-(--button-icon)" />
+                </span>
               </span>
-            </span>
-          }>
+            }
+          >
             <span className="font-bold uppercase">{label}</span>
           </ActionTextRow>
         </a>
@@ -71,21 +83,21 @@ export function NavBar({
         className={className}
         action={
           <Button
-          ariaLabel={label}
-          pressed={
-            href === dashboardPath
-              ? location.pathname.startsWith(hrefPath)
-              : isCurrentDestination
-          }
-          icon={locked ? <LockKeyhole /> : <Icon />}
-          onClick={() => {
-            if (locked) return;
-            navigate(href);
-            closeNavBar();
-          }}
-          disabled={locked}
-          ariaDisabled={locked}
-          className="size-10! p-0.75!"
+            ariaLabel={label}
+            pressed={
+              href === dashboardPath
+                ? location.pathname.startsWith(hrefPath)
+                : isCurrentDestination
+            }
+            icon={locked ? <LockKeyhole /> : <Icon />}
+            onClick={() => {
+              if (locked) return;
+              navigate(href);
+              closeNavBar();
+            }}
+            disabled={locked}
+            ariaDisabled={locked}
+            className="size-10! p-0.75!"
           />
         }
       >
@@ -99,8 +111,7 @@ export function NavBar({
   };
   const navbarBlockStyle = `
     p-4 rounded-xl bg-gray-200
-  `
-
+  `;
 
   return (
     <nav
@@ -125,12 +136,19 @@ export function NavBar({
                           {child.subgroup}
                         </p>
                         <div className="space-y-2">
-                          {child.children.map(({ href, label, icon: Icon, locked }) =>
-                            Icon ? (
-                              <div key={href}>
-                                {renderNavigationButton(href, label, Icon, "", locked)}
-                              </div>
-                            ) : null,
+                          {child.children.map(
+                            ({ href, label, icon: Icon, locked }) =>
+                              Icon ? (
+                                <div key={href}>
+                                  {renderNavigationButton(
+                                    href,
+                                    label,
+                                    Icon,
+                                    "",
+                                    locked,
+                                  )}
+                                </div>
+                              ) : null,
                           )}
                         </div>
                       </div>
@@ -163,11 +181,11 @@ export function NavBar({
                 gap="gap-2"
                 action={
                   <Button
-                  ariaLabel={isNotesOpen ? "Close notes" : "Open notes"}
-                  pressed={isNotesOpen}
-                  icon={<NotebookPen />}
-                  onClick={toggleNotes}
-                  className="size-10! p-0.75!"
+                    ariaLabel={isNotesOpen ? "Close notes" : "Open notes"}
+                    pressed={isNotesOpen}
+                    icon={<NotebookPen />}
+                    onClick={toggleNotes}
+                    className="size-10! p-0.75!"
                   />
                 }
               >

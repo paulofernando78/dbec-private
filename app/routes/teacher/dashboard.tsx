@@ -18,6 +18,7 @@ import {
 } from "@/utils/course-progress";
 
 import { students as developmentStudents } from "@/data/students";
+import { SELECTED_STUDENT_STORAGE_KEY } from "@/utils/session-storage";
 
 const localStudents = Object.entries(developmentStudents).map(
   ([studentId, student]) => ({
@@ -61,7 +62,9 @@ export default function TeacherDashboard() {
   const [notes, setNotes] = useState({ teacher: "", student: "" });
   const [teacherDisplayName, setTeacherDisplayName] = useState("Professor");
   const [calendar, setCalendar] = useState<Record<string, string>>({});
-  const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
+  const [replacementDates, setReplacementDates] = useState<
+    Record<string, string>
+  >({});
   const calendarSaves = useRef(new Map<string, Promise<void>>());
   const [isLoadingStudent, setIsLoadingStudent] = useState(false);
   const [studentError, setStudentError] = useState("");
@@ -76,9 +79,10 @@ export default function TeacherDashboard() {
   useEffect(() => {
     let active = true;
     fetch("/api/session", { headers: { Accept: "application/json" } })
-      .then((response) => response.ok ? response.json() : null)
+      .then((response) => (response.ok ? response.json() : null))
       .then((session) => {
-        if (active && session?.displayName) setTeacherDisplayName(session.displayName);
+        if (active && session?.displayName)
+          setTeacherDisplayName(session.displayName);
       })
       .catch(() => {});
     return () => {
@@ -128,7 +132,7 @@ export default function TeacherDashboard() {
 
   useEffect(() => {
     if (studentId) {
-      localStorage.setItem("dbec_selected_student_id", studentId);
+      localStorage.setItem(SELECTED_STUDENT_STORAGE_KEY, studentId);
     }
   }, [studentId]);
 
@@ -208,7 +212,10 @@ export default function TeacherDashboard() {
                 Object.fromEntries(
                   localData.calendar
                     .filter((entry) => entry.replacementDate)
-                    .map((entry) => [entry.date, entry.replacementDate as string]),
+                    .map((entry) => [
+                      entry.date,
+                      entry.replacementDate as string,
+                    ]),
                 ),
               );
               setIsLoadingStudent(false);
@@ -256,24 +263,36 @@ export default function TeacherDashboard() {
     if (!studentId) return;
     const key = `${studentId}:${lessonDate}`;
     const previous = calendarSaves.current.get(key) ?? Promise.resolve();
-    const save = previous.then(async () => {
-      const response = await fetch("/api/calendar", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ studentId, lessonDate, status, replacementDate }),
-      });
-      if (!response.ok) throw new Error(`Calendar HTTP ${response.status}`);
-    }).catch((error) => console.error("Calendar save failed", error));
+    const save = previous
+      .then(async () => {
+        const response = await fetch("/api/calendar", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            studentId,
+            lessonDate,
+            status,
+            replacementDate,
+          }),
+        });
+        if (!response.ok) throw new Error(`Calendar HTTP ${response.status}`);
+      })
+      .catch((error) => console.error("Calendar save failed", error));
 
     calendarSaves.current.set(key, save);
     void save.then(() => {
-      if (calendarSaves.current.get(key) === save) calendarSaves.current.delete(key);
+      if (calendarSaves.current.get(key) === save)
+        calendarSaves.current.delete(key);
     });
   };
 
   const saveCalendar = (lessonDate: string, status: string) => {
     setCalendar((current) => ({ ...current, [lessonDate]: status }));
-    persistCalendarEntry(lessonDate, status, replacementDates[lessonDate] ?? null);
+    persistCalendarEntry(
+      lessonDate,
+      status,
+      replacementDates[lessonDate] ?? null,
+    );
   };
 
   const saveReplacementDate = (lessonDate: string, replacementDate: string) => {
@@ -281,14 +300,18 @@ export default function TeacherDashboard() {
       ...current,
       [lessonDate]: replacementDate,
     }));
-    persistCalendarEntry(lessonDate, calendar[lessonDate] ?? "R", replacementDate || null);
+    persistCalendarEntry(
+      lessonDate,
+      calendar[lessonDate] ?? "R",
+      replacementDate || null,
+    );
   };
 
   const handleStudentChange = (nextStudentId: string) => {
     if (nextStudentId) {
-      localStorage.setItem("dbec_selected_student_id", nextStudentId);
+      localStorage.setItem(SELECTED_STUDENT_STORAGE_KEY, nextStudentId);
     } else {
-      localStorage.removeItem("dbec_selected_student_id");
+      localStorage.removeItem(SELECTED_STUDENT_STORAGE_KEY);
     }
 
     navigate(
@@ -324,11 +347,11 @@ export default function TeacherDashboard() {
             ]}
           />
         )}
-  
+
         {isLoadingStudent && studentId && (
           <p className="text-gray-500">Carregando aluno…</p>
         )}
-  
+
         {studentError && studentId && (
           <div className="flex items-center gap-3">
             <p className="text-red-600">{studentError}</p>
@@ -341,7 +364,7 @@ export default function TeacherDashboard() {
             </button>
           </div>
         )}
-  
+
         {student && studentId ? (
           <div className="grid gap-4">
             <div id="calendar" className="scroll-mt-4">
@@ -371,11 +394,25 @@ export default function TeacherDashboard() {
                 <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
                   <DashboardNotes
                     value={notes.student}
-                    author={{ id: "teacher", name: teacherDisplayName, role: "teacher" }}
+                    author={{
+                      id: "teacher",
+                      name: teacherDisplayName,
+                      role: "teacher",
+                    }}
                     participants={[
-                      { id: "teacher", name: teacherDisplayName, role: "teacher" },
+                      {
+                        id: "teacher",
+                        name: teacherDisplayName,
+                        role: "teacher",
+                      },
                       ...(student?.name
-                        ? [{ id: studentId ?? student.name, name: student.name, role: "student" as const }]
+                        ? [
+                            {
+                              id: studentId ?? student.name,
+                              name: student.name,
+                              role: "student" as const,
+                            },
+                          ]
                         : []),
                     ]}
                     onChange={(value) => {
@@ -384,7 +421,10 @@ export default function TeacherDashboard() {
                     }}
                     onSave={saveSharedNote}
                   />
-                  <AiTutor className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]" fill />
+                  <AiTutor
+                    className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]"
+                    fill
+                  />
                 </div>
               </Card>
             </div>

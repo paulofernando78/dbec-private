@@ -29,6 +29,7 @@ import { BrandLogo } from "./components/layout/BrandLogo";
 import { Card } from "./components/ui/Card";
 import { Contact } from "./components/layout/Contact";
 import { StudentActivityTracker } from "./components/layout/StudentActivityTracker";
+import { clearPersistedSessionState } from "@/utils/session-storage";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -110,8 +111,7 @@ function AppContent() {
     }
 
     await fetch("/api/logout", { method: "POST" });
-    localStorage.removeItem("dbec_dashboard_path");
-    localStorage.removeItem("dbec_selected_student_id");
+    clearPersistedSessionState();
     window.location.assign("/");
   };
 
@@ -173,10 +173,14 @@ function AppContent() {
               />
             </div>
           )}
-          <div className="ml-auto shrink-0"><Contact /></div>
+          <div className="ml-auto shrink-0">
+            <Contact />
+          </div>
         </Card>
         <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
-          <div className={`flex shrink-0 items-center gap-2 ${isPresentationPage ? "w-22" : "w-10 min-[920px]:w-22"}`}>
+          <div
+            className={`flex shrink-0 items-center gap-2 ${isPresentationPage ? "w-22" : "w-10 min-[920px]:w-22"}`}
+          >
             {!isPresentationPage && (
               <Button
                 ariaLabel="Menu"
@@ -207,7 +211,9 @@ function AppContent() {
           <div className="min-w-0 flex-1 [container-type:inline-size]">
             <DateTimeCard />
           </div>
-          <div className={`flex shrink-0 items-center justify-end gap-2 ${isPresentationPage ? "w-10" : "w-22"}`}>
+          <div
+            className={`flex shrink-0 items-center justify-end gap-2 ${isPresentationPage ? "w-10" : "w-22"}`}
+          >
             <Button
               ariaLabel={isDarkMode ? "Light mode" : "Dark mode"}
               icon={isDarkMode ? <Sun /> : <MoonStar />}
