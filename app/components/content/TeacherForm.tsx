@@ -175,7 +175,7 @@ export const TeacherForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-[auto_auto] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[auto_auto] max-[710px]:grid-cols-1"
+      className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-[710px]:grid-cols-1"
     >
       <div className="grid gap-4 rounded-xl bg-(--background) p-4">
         <label className="grid min-w-0 gap-1">
@@ -333,12 +333,12 @@ export const TeacherForm = ({
             return (
               <div key={teacher.id} className="min-w-0">
                 <div
-                  className={`flex w-full min-w-0 items-center gap-1 rounded-xl px-2 transition-colors hover:bg-(--surface) ${
+                  className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 rounded-xl px-2 transition-colors hover:bg-(--surface) ${
                     isSelected ? "bg-(--surface)" : ""
                   }`}
                 >
                   {teacher.isAdmin ? (
-                    <div className="flex min-w-0 flex-1 items-center gap-3 py-2 pr-2">
+                    <div className="flex min-w-40 flex-1 items-center gap-3 py-2 pr-2">
                       <TeacherAvatar
                         background={avatarColors.teacher.background}
                         foreground={avatarColors.teacher.dot}
@@ -366,7 +366,7 @@ export const TeacherForm = ({
                           setError("");
                           onTeacherSelect(teacher.id);
                         }}
-                        className="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                        className="flex min-w-40 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                       >
                         <TeacherAvatar
                           background={

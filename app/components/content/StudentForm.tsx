@@ -300,7 +300,7 @@ export const StudentForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-[auto_auto] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[auto_auto] max-[710px]:grid-cols-1"
+      className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-[710px]:grid-cols-1"
     >
     <div className="grid gap-4 rounded-xl bg-(--background) p-4">
         {/* Name */}
@@ -541,11 +541,11 @@ export const StudentForm = ({
 
             return (
               <div key={student.studentId} className="min-w-0">
-                <div className={`flex w-full min-w-0 px-2 items-center gap-1 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
+                <div className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 px-2 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
                   <button
                     type="button"
                     onClick={() => handleStudentSelection(student.studentId)}
-                    className="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    className="flex min-w-40 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     <span
                       className="flex size-10 shrink-0 items-center justify-center rounded-full"
@@ -570,7 +570,7 @@ export const StudentForm = ({
 
                   <div className="flex shrink-0 items-center gap-1">
                     {transferTargets.length > 0 && (
-                      <div className="relative min-w-0">
+                      <div className="relative w-36 shrink-0">
                         <select
                           value=""
                           disabled={isPending}
@@ -584,7 +584,7 @@ export const StudentForm = ({
                               `Student transferred to ${teacherName(teachers, teacherId)}.`,
                             );
                           }}
-                          className="w-full min-w-36 appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-10 pl-3 text-sm disabled:opacity-55"
+                          className="w-full appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-10 pl-3 text-sm disabled:opacity-55"
                         >
                           <option value="">Transfer to…</option>
 

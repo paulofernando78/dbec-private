@@ -79,7 +79,7 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Admin não é editável nem removível por estes endpoints (`is_admin = 1` → 403)
 - [x] `app/components/content/TeacherForm.tsx` (padrão do `StudentForm`): Nome, Username, Senha, Limite; lista com `3 / 10 alunos`, ativar/desativar e remoção com confirmação
 - [x] `app/routes/teacher/dashboard.tsx`: card **Teacher Registration** acima de Student Registration, só se `isAdmin`; título vira “Admin Dashboard”
-- [ ] `Header.tsx` / `NavBar.tsx`: badge “Admin” (opcional — o título do painel já sinaliza)
+- [x] `Header.tsx`: o rótulo do cartão de conta passa a **“Admin”** quando a sessão é admin (professor continua “Teacher”, aluno “Full access”) — vêm do mesmo helper em ambos os pontos de render
 - [x] Emular os novos endpoints no dev (`vite.config.ts`)
 
 > Limitação do dev: professores criados localmente não conseguem entrar, porque o
@@ -96,6 +96,7 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Lixeira de exclusão definitiva só aparece para admin — e o `DELETE` agora é **admin-only no servidor** (professor recebe 403)
 - [x] Admin vê o responsável de cada aluno na lista (ele enxerga alunos de outros professores)
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
+- [x] **Linhas à prova de largura** (correção pós-deploy): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-40`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,1fr)`. Verificado por medição: a 1400px o nome fica com 254px em uma linha; a 1000px as ações descem para a segunda linha; sem transbordo horizontal em nenhuma largura
 
 ## Fase 4 — Verificação e entrega
 

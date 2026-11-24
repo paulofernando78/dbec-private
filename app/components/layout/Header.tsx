@@ -19,6 +19,15 @@ type SelectedStudent = {
   lastSeenMs?: number;
 };
 
+// O admin também entra como role "teacher"; só o rótulo diferencia os dois.
+const accountSubtitle = (session: {
+  role: "teacher" | "student";
+  isAdmin?: boolean;
+}) => {
+  if (session.role === "student") return "Full access";
+  return session.isAdmin ? "Admin" : "Teacher";
+};
+
 export const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -166,9 +175,7 @@ export const Header = () => {
                     name={session.displayName}
                     role={session.role}
                     online={session.role === "student"}
-                    subtitle={
-                      session.role === "student" ? "Full access" : "Teacher"
-                    }
+                    subtitle={accountSubtitle(session)}
                     className={
                       selectedStudent
                         ? "border-r border-gray-300 pr-4 dark:border-gray-600"
@@ -204,9 +211,7 @@ export const Header = () => {
                   name={session.displayName}
                   role={session.role}
                   online={session.role === "student"}
-                  subtitle={
-                    session.role === "student" ? "Full access" : "Teacher"
-                  }
+                  subtitle={accountSubtitle(session)}
                 />
               )}
             </div>
