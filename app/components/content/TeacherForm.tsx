@@ -199,9 +199,9 @@ export const TeacherForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-[710px]:grid-cols-1"
+      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
     >
-      <div className="grid gap-4 rounded-xl bg-(--background) p-4">
+      <div className="grid content-start gap-4 rounded-xl bg-(--background) p-4">
         <label className="grid min-w-0 gap-1">
           <span className="text-sm font-semibold">Name</span>
           <input
@@ -351,6 +351,8 @@ export const TeacherForm = ({
             ariaLabel="Search teachers"
           />
 
+          {/* A lista rola dentro do card: não deixa o formulário esticar junto. */}
+          <div className="grid max-h-[70vh] gap-4 overflow-y-auto pr-1">
           {teachers.length === 0 && (
             <p className="text-sm text-gray-500">
               No teachers yet. Create one so students can be assigned to someone
@@ -500,6 +502,7 @@ export const TeacherForm = ({
               </div>
             );
           })}
+          </div>
         </div>
       </div>
 

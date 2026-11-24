@@ -99,9 +99,16 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] **Report saiu da página e virou modal** pelo olho do aluno (`Report — {nome}`), liberando o espaço vertical que ele ocupava; a entrada “Report” do índice da página foi removida
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
+- [x] **O painel estica, não corta e não deforma** (correção pós-deploy):
+  - os **campos estavam esticados verticalmente**: o `grid` da coluna dos formulários usa `align-content: stretch` por padrão, então ele esticava junto com a lista alta. Correção: `content-start` na coluna de campos → input volta a 42px (era 54px) e o bloco do label a 66px (era 90px)
+  - as colunas passaram de 50/50 para **2fr / 3fr**: formulário 554px, lista 830px (a lista é quem precisa de espaço)
+  - a lista de alunos/professores ganhou **scroll próprio**: `max-h-[70vh] overflow-y-auto`, com o campo de busca **fora** do scroller (fica fixo). Medido com 18 alunos: `clientHeight 512` × `scrollHeight 2144`, rolando ✓
+  - o app estava limitado a `max-width: 1280px` para o site inteiro — o dashboard agora usa a classe `app--wide` (1600px), aplicada só em `/teacher/dashboard`, via `isWideLayout` no `root.tsx`
+  - as linhas de aluno e de professor passaram de `min-w-40` para `min-w-64`: quando falta espaço, as ações descem para a segunda linha em vez de espremer/truncar o nome e o horário
+  - medido: a 1400px as linhas ficam em 56px (uma linha) com **zero** texto truncado; a 1000px e 700px viram 104px (ações embaixo) **sem truncar**; em `/guide` o app continua com 1280px
 - [x] **Busca no topo de cada lista** (`SearchField` compartilhado, com a mesma linguagem visual do `GlobalSearch`: ícone `Search` + input sem borda): Professores (nome/usuário), Alunos (nome, usuário, horário, plano e **nome do responsável** — então o admin filtra “quem tem quem”) e o grupo “Sem professor”. Estado vazio “No students match …”
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
-- [x] **Linhas à prova de largura** (correção pós-deploy): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-40`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,1fr)`. Medido no navegador: com as ações em ícone, as linhas ficam em **uma única altura (56px) a 558px, 1000px e 1400px**; sem transbordo horizontal em nenhuma largura; em coluna estreita o nome longo ellipsa com tooltip (comportamento normal)
+- [x] **Linhas à prova de largura** (correção pós-deploy, superada pela correção acima): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-64`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,2fr)_minmax(0,3fr)`. Medido: linhas de 56px (uma linha) a 1400px e de 104px (ações embaixo) a 1000px/700px, sempre **sem texto truncado**
 - [x] **Ações da linha do professor como ícones** (`Eye` / `UserX`-`UserCheck` / `Trash2`), cada uma com `title` (tooltip) e `aria-label`; o estado do professor já aparece escrito na linha (`· inactive`) e o ícone muda entre desativar e ativar
 - [x] **Olho abre um modal** com os alunos daquele professor (somente leitura, fecha com Esc, clique no fundo ou no X). A sua própria linha (admin) tem só o olho — “My students”, sem editar/remover
 
