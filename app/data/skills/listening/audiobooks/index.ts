@@ -1,4 +1,4 @@
-import { type ContentToken } from "@/helpers/content";
+import { type ContentToken, type ContentValue } from "@/helpers/content";
 
 export type AudiobookImage = {
   localMedia?: string;
@@ -8,7 +8,7 @@ export type AudiobookImage = {
 
 export type AudiobookBlock =
   | {
-      text: string | ContentToken;
+      text: string | ContentToken | readonly ContentValue[];
       r2?: never;
     }
   | (AudiobookImage & { r2: string; text?: never });
@@ -40,6 +40,7 @@ import { theLeopardAndTheLighthouse } from "./starter/the-leopard-and-the-lighth
 import { thePearlGirl } from "./starter/the-pearl-girl";
 import { theTroyStone } from "./starter/the-troy-stone";
 import { theWhiteOryx } from "./starter/the-white-oryx";
+import { tinkersIsland } from "./starter/tinkers-island";
 import { whoWantsToBeAStar } from "./starter/who-wants-to-be-a-star";
 
 // Beginner
@@ -51,6 +52,9 @@ import { donQuixote } from "./elementary/don-quixote";
 import { mobyDick } from "./elementary/moby-dick";
 import { projectOmega } from "./elementary/project-omega";
 import { treasureIsland } from "./elementary/treasure-island";
+
+// Pre-intermediate
+import { piratesOfCaribbeanAtWorldsEnd } from "./pre-intermediate/pirates-of-caribbean-at-worlds-end";
 
 // Lower-intermediate
 
@@ -73,6 +77,7 @@ const withSectionAudioPaths = <
     | "starter"
     | "beginner"
     | "elementary"
+    | "pre-intermediate"
     | "low-intermediate"
     | "intermediate"
     | "upper-intermediate"
@@ -106,6 +111,7 @@ export const audiobooks = {
   [thePearlGirl.slug]: withSectionAudioPaths(thePearlGirl),
   [theTroyStone.slug]: withSectionAudioPaths(theTroyStone),
   [theWhiteOryx.slug]: withSectionAudioPaths(theWhiteOryx),
+  [tinkersIsland.slug]: withSectionAudioPaths(tinkersIsland),
   [whoWantsToBeAStar.slug]: withSectionAudioPaths(whoWantsToBeAStar),
 
   // Beginner
@@ -123,6 +129,10 @@ export const audiobooks = {
   [donQuixote.slug]: withSectionAudioPaths(donQuixote, "elementary", 2),
   [mobyDick.slug]: withSectionAudioPaths(mobyDick, "elementary"),
   [projectOmega.slug]: withSectionAudioPaths(projectOmega, "elementary"),
+  [piratesOfCaribbeanAtWorldsEnd.slug]: withSectionAudioPaths(
+    piratesOfCaribbeanAtWorldsEnd,
+    "pre-intermediate",
+  ),
   [braveNewWorld.slug]: withSectionAudioPaths(braveNewWorld, "advanced"),
 };
 
@@ -148,6 +158,7 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   "the-pearl-girl",
   "the-troy-stone",
   "the-white-oryx",
+  "tinkers-island",
   "who-wants-to-be-a-star",
 
   // Beginner
@@ -159,6 +170,9 @@ export const availableAudiobookSlugs: ReadonlySet<AudiobookSlug> = new Set([
   donQuixote.slug,
   mobyDick.slug,
   projectOmega.slug,
+
+  // Pre-Intermediate
+  piratesOfCaribbeanAtWorldsEnd.slug,
 
   // Lower-Intermediate
 

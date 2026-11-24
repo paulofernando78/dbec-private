@@ -124,7 +124,7 @@ export default function GameBuilder() {
                 {game.bundleUrl ? (
                   <JsDosPlayer
                     bundleUrl={game.bundleUrl}
-                    gameId={gameHref}
+                    gameId={game.saveId ?? gameHref}
                     title={gameCard?.label ?? game.whiteboard.title}
                   />
                 ) : (

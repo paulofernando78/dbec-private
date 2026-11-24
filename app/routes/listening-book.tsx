@@ -122,7 +122,7 @@ export default function ListeningBookPage() {
   >({});
   const isAuthenticated = session === undefined ? null : Boolean(session);
   const isPreview = book === audiobookPreview.slug;
-  const isLocalDraft = import.meta.env.DEV && book === "treasure-island";
+  const isLocalDraft = import.meta.env.DEV && (book === "treasure-island" || book === "tinkers-island");
 
   useEffect(() => {
     if (audiobook)

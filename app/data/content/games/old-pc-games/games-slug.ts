@@ -34,6 +34,7 @@ type GameSection = {
 
 export type GameData = {
   bundleUrl?: string;
+  saveId?: string;
   manualUrl?: string;
   manualPageCount?: number;
   manualPageOffset?: number;

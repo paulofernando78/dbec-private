@@ -99,6 +99,13 @@ export const listeningLevels: readonly ListeningLevel[] = [
         duration: "--",
       },
       {
+        slug: "tinkers-island",
+        title: "Tinkers Island",
+        description:
+          "A girl disguises herself as a boy to rescue her father from a prison ship bound for Australia.",
+        duration: "--",
+      },
+      {
         slug: "who-wants-to-be-a-star",
         title: "Who Wants to Be a Star?",
         description: "A young star runs away to find a quieter, happier life.",
@@ -112,7 +119,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
     title: "Beginner",
     wordCount: "300 headwords",
     titles: [
-            {
+      {
         slug: "marcel-and-the-shakespeare-letters",
         title: "Marcel and the Shakespeare Letters",
         description:
@@ -139,8 +146,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
       {
         slug: "alice-in-wonderland",
         title: "Alice in Wonderland",
-        description:
-          "Lewis Carroll’s story retold by Mary Tomalin.",
+        description: "Lewis Carroll’s story retold by Mary Tomalin.",
         duration: "1:13:06",
       },
       {
@@ -170,13 +176,21 @@ export const listeningLevels: readonly ListeningLevel[] = [
       },
     ],
   },
-  // Lower-Intermediate
+  // Pre-Intermediate
   {
-    slug: "lower-intermediate-a2-b1",
-    title: "Lower-intermediate",
+    slug: "pre-intermediate-a2-b1",
+    title: "Pre-intermediate",
     exam: "PET",
     wordCount: "1200 headwords",
-    titles: [],
+    titles: [
+      {
+        slug: "pirates-of-caribbean-at-worlds-end",
+        title: "Pirates of the Caribbean: At World’s End",
+        description:
+          "Captain Jack Sparrow returns as the Pirate Lords gather to fight Lord Beckett and the East India Trading Company.",
+        duration: "--",
+      },
+    ],
   },
   // Intermediate
   {

@@ -27,7 +27,7 @@ export const kingsQuestI = {
       items: [
         { content: ["At the old well, cut the rope with the dagger to take the bucket, or lower the bucket and climb down its rope."] },
         { content: ["Fill the bucket with water, dive into the well, and swim through the underwater opening into the cave."] },
-        { content: ["Approach the dragon carefully and throw the bucket of water over it; this earns more points than killing it."] },
+        { content: ["Approach the dragon carefully and throw the of water over it; this earns more points than killing it."] },
         { content: ["Take the magic mirror after the dragon retreats, then leave the cave through the passage."] },
       ],
     },
