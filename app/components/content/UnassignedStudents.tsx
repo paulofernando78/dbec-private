@@ -2,12 +2,13 @@ import { useState } from "react";
 import { ChevronDown, UserPlus } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { SearchField } from "@/components/ui/SearchField";
 import {
   canAcceptStudents,
   teacherOptionLabel,
   type Teacher,
 } from "@/utils/teachers";
-import type { RosterStudent } from "@/utils/students";
+import { matchesStudent, type RosterStudent } from "@/utils/students";
 
 type UnassignedStudentsProps = {
   students: RosterStudent[];
@@ -20,11 +21,6 @@ type UnassignedStudentsProps = {
 
 // A partir deste tamanho, a fila ganha campo de busca.
 const searchThreshold = 10;
-
-const matchesQuery = (student: RosterStudent, query: string) =>
-  `${student.name} ${student.username} ${student.schedule}`
-    .toLowerCase()
-    .includes(query);
 
 export const UnassignedStudents = ({
   students,
@@ -48,7 +44,7 @@ export const UnassignedStudents = ({
   const normalizedQuery = query.trim().toLowerCase();
   const visibleStudents =
     showSearch && normalizedQuery
-      ? students.filter((student) => matchesQuery(student, normalizedQuery))
+      ? students.filter((student) => matchesStudent(student, normalizedQuery))
       : students;
 
   const runAssignment = async (
@@ -104,13 +100,12 @@ export const UnassignedStudents = ({
 
         <div className="flex flex-wrap items-center gap-2">
           {showSearch && (
-            <input
-              type="search"
+            <SearchField
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={setQuery}
               placeholder="Buscar aluno…"
-              aria-label="Buscar aluno sem professor"
-              className="w-40 min-w-0 rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm"
+              ariaLabel="Buscar aluno sem professor"
+              className="w-44 border-amber-300 bg-white"
             />
           )}
 

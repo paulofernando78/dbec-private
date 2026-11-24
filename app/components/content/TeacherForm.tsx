@@ -9,9 +9,11 @@ import { Eye, Trash2, UserCheck, UserRound, Users, UserX, X } from "lucide-react
 import { Button } from "@/components/ui/Button";
 import { IconAction } from "@/components/ui/IconAction";
 import { Modal } from "@/components/ui/Modal";
+import { SearchField } from "@/components/ui/SearchField";
 import { avatarColors } from "@/utils/avatar-theme";
 import {
   canAcceptStudents,
+  matchesTeacher,
   teacherCapacityLabel,
   type Teacher,
 } from "@/utils/teachers";
@@ -75,6 +77,12 @@ export const TeacherForm = ({
   const [pendingTeacherId, setPendingTeacherId] = useState<number | null>(null);
   const [deletingTeacherId, setDeletingTeacherId] = useState<number | null>(null);
   const [viewingTeacher, setViewingTeacher] = useState<Teacher | null>(null);
+  const [query, setQuery] = useState("");
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const visibleTeachers = normalizedQuery
+    ? teachers.filter((teacher) => matchesTeacher(teacher, normalizedQuery))
+    : teachers;
 
   const viewedStudents = viewingTeacher
     ? students.filter((student) => student.teacherId === viewingTeacher.id)
@@ -332,7 +340,16 @@ export const TeacherForm = ({
 
       <div className="min-w-0 rounded-xl bg-(--background) p-4">
         <div className="min-w-0 space-y-4">
-          <span className="block text-sm font-semibold">Teachers</span>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="block text-sm font-semibold">Teachers</span>
+          </div>
+
+          <SearchField
+            value={query}
+            onChange={setQuery}
+            placeholder="Search teachers…"
+            ariaLabel="Search teachers"
+          />
 
           {teachers.length === 0 && (
             <p className="text-sm text-gray-500">
@@ -341,7 +358,13 @@ export const TeacherForm = ({
             </p>
           )}
 
-          {teachers.map((teacher) => {
+          {teachers.length > 0 && visibleTeachers.length === 0 && (
+            <p className="text-sm text-gray-500">
+              No teachers match “{query.trim()}”.
+            </p>
+          )}
+
+          {visibleTeachers.map((teacher) => {
             const isSelected = selectedTeacherId === teacher.id;
             const isPending = pendingTeacherId === teacher.id;
             const isInactive = teacher.active === 0;

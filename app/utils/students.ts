@@ -10,3 +10,12 @@ export type RosterStudent = {
   plan: "free" | "plus";
   teacherId?: number | null;
 };
+
+export const matchesStudent = (
+  student: RosterStudent,
+  query: string,
+  ownerName = "",
+) =>
+  `${student.name} ${student.username} ${student.schedule} ${student.plan} ${ownerName}`
+    .toLowerCase()
+    .includes(query);

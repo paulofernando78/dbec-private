@@ -22,3 +22,6 @@ export const teacherOptionLabel = (teacher: Teacher) =>
 
 export const canAcceptStudents = (teacher: Teacher) =>
   teacher.isUnlimited || teacher.studentCount < teacher.studentLimit;
+
+export const matchesTeacher = (teacher: Teacher, query: string) =>
+  `${teacher.displayName} ${teacher.username}`.toLowerCase().includes(query);

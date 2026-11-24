@@ -10,8 +10,10 @@ import {
 
 import { Button } from "@/components/ui/Button";
 import { IconAction } from "@/components/ui/IconAction";
+import { SearchField } from "@/components/ui/SearchField";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
 import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
+import { matchesStudent } from "@/utils/students";
 
 type StudentPlan = "free" | "plus";
 
@@ -149,6 +151,7 @@ export const StudentForm = ({
   >(null);
   const [pendingStudentId, setPendingStudentId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [query, setQuery] = useState("");
   const isEditing = Boolean(selectedStudentId);
   const selectedStudent = students.find(
     (student) => student.studentId === selectedStudentId,
@@ -163,6 +166,15 @@ export const StudentForm = ({
       ? `${students.length} students · no limit`
       : `${students.length} / ${viewerTeacher.studentLimit} students`
     : `${students.length} students`;
+  const normalizedQuery = query.trim().toLowerCase();
+  const visibleStudents = normalizedQuery
+    ? students.filter((student) => {
+        const owner = teachers.find(
+          (teacher) => teacher.id === student.teacherId,
+        );
+        return matchesStudent(student, normalizedQuery, owner?.displayName ?? "");
+      })
+    : students;
 
   useEffect(() => {
     const student = students.find(
@@ -537,7 +549,20 @@ export const StudentForm = ({
             </span>
           </div>
 
-          {students.map((student) => {
+          <SearchField
+            value={query}
+            onChange={setQuery}
+            placeholder="Search students…"
+            ariaLabel="Search students"
+          />
+
+          {students.length > 0 && visibleStudents.length === 0 && (
+            <p className="text-sm text-gray-500">
+              No students match “{query.trim()}”.
+            </p>
+          )}
+
+          {visibleStudents.map((student) => {
             const isSelected = selectedStudentId === student.studentId;
             const isOnline = Boolean(student.lastSeenMs && Date.now() - student.lastSeenMs < 90_000);
             const isPending = pendingStudentId === student.studentId;

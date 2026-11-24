@@ -99,8 +99,9 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] **Report saiu da página e virou modal** pelo olho do aluno (`Report — {nome}`), liberando o espaço vertical que ele ocupava; a entrada “Report” do índice da página foi removida
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
+- [x] **Busca no topo de cada lista** (`SearchField` compartilhado, com a mesma linguagem visual do `GlobalSearch`: ícone `Search` + input sem borda): Professores (nome/usuário), Alunos (nome, usuário, horário, plano e **nome do responsável** — então o admin filtra “quem tem quem”) e o grupo “Sem professor”. Estado vazio “No students match …”
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
-- [x] **Linhas à prova de largura** (correção pós-deploy): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-40`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,1fr)`. Medido no navegador: com as ações em ícone, as linhas ficam em **uma única altura (56px) a 558px, 1000px e 1400px**; sem transbordo horizontal em nenhuma largura; em coluna estreita o nome longe ellipsa com tooltip (comportamento normal)
+- [x] **Linhas à prova de largura** (correção pós-deploy): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-40`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,1fr)`. Medido no navegador: com as ações em ícone, as linhas ficam em **uma única altura (56px) a 558px, 1000px e 1400px**; sem transbordo horizontal em nenhuma largura; em coluna estreita o nome longo ellipsa com tooltip (comportamento normal)
 - [x] **Ações da linha do professor como ícones** (`Eye` / `UserX`-`UserCheck` / `Trash2`), cada uma com `title` (tooltip) e `aria-label`; o estado do professor já aparece escrito na linha (`· inactive`) e o ícone muda entre desativar e ativar
 - [x] **Olho abre um modal** com os alunos daquele professor (somente leitura, fecha com Esc, clique no fundo ou no X). A sua própria linha (admin) tem só o olho — “My students”, sem editar/remover
 
@@ -202,7 +203,7 @@ primeira tabela.
 
 **Functions:** `_auth.js`, `_ownership.js` (novo), `api/login.js`, `api/session.js`, `api/students.js`, `api/teachers.js` (novo), `api/dashboard.js`, `api/notes.js`, `api/notes-live.js`, `api/calendar.js`, `api/calendar-notes.js`, `api/student-report.js`
 
-**App:** `hooks/useSession.tsx`, `routes/teacher/dashboard.tsx`, `components/content/UnassignedStudents.tsx` (novo), `components/content/TeacherForm.tsx` (novo), `components/content/StudentForm.tsx`, `components/content/StudentReport.tsx`, `components/layout/Header.tsx`, `components/ui/IconAction.tsx` (novo), `components/ui/Modal.tsx` (novo), `utils/teachers.ts` (novo), `utils/students.ts` (novo)
+**App:** `hooks/useSession.tsx`, `routes/teacher/dashboard.tsx`, `components/content/UnassignedStudents.tsx` (novo), `components/content/TeacherForm.tsx` (novo), `components/content/StudentForm.tsx`, `components/content/StudentReport.tsx`, `components/layout/Header.tsx`, `components/ui/IconAction.tsx` (novo), `components/ui/Modal.tsx` (novo), `components/ui/SearchField.tsx` (novo), `utils/teachers.ts` (novo), `utils/students.ts` (novo)
 
 **Dev/config:** `vite.config.ts` (emulação dos endpoints no dev)
 
