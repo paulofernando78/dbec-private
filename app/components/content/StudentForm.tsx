@@ -526,8 +526,8 @@ export const StudentForm = ({
 
           <Button
             type="submit"
+            fullWidth
             disabled={isSaving || (!isEditing && isViewerFull)}
-            className="w-full"
           >
             {isSaving
               ? isEditing

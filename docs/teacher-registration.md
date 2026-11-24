@@ -99,6 +99,7 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] **Report saiu da página e virou modal** pelo olho do aluno (`Report — {nome}`), liberando o espaço vertical que ele ocupava; a entrada “Report” do índice da página foi removida
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
+- [x] **“Add student” / “Add teacher” agora esticam** (correção pós-deploy): o `Button` compartilhado aplica `!w-fit` (importante) em botões com texto, então o `className="w-full"` que existia ali **nunca teve efeito** — o botão sempre ficou do tamanho do texto. Adicionado o prop opcional **`fullWidth`** ao `Button` (troca `!w-fit` por `!w-full`, sem declarações conflitantes) e usado nos dois formulários. Medido: botão 448px = container 448px, nos dois
 - [x] **O painel estica, não corta e não deforma** (correção pós-deploy):
   - os **campos estavam esticados verticalmente**: o `grid` da coluna dos formulários usa `align-content: stretch` por padrão, então ele esticava junto com a lista alta. Correção: `content-start` na coluna de campos → input volta a 42px (era 54px) e o bloco do label a 66px (era 90px)
   - as colunas passaram de 50/50 para **2fr / 3fr**: formulário 554px, lista 830px (a lista é quem precisa de espaço)

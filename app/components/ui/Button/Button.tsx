@@ -14,6 +14,12 @@ type ButtonProps = {
   style?: CSSProperties;
   variant?: "default" | "check" | "answer" | "reset" | "list";
   type?: "button" | "submit" | "reset";
+  /**
+   * Ocupa toda a largura do container. Sem isto, um botão com texto é
+   * `w-fit` — e `className="w-full"` sozinho não vence, porque o componente já
+   * traz `!w-fit` (importante).
+   */
+  fullWidth?: boolean;
 };
 
 export const Button = ({
@@ -30,6 +36,7 @@ export const Button = ({
   className = "",
   style,
   variant = "default",
+  fullWidth = false,
 }: ButtonProps) => {
   const hasChildren = children != null;
   const hasText = typeof children === "string" || typeof children === "number";
@@ -41,7 +48,7 @@ export const Button = ({
   const textClasses = hasChildren
     ? isList
       ? ""
-      : "!inline-flex !h-[60px] !w-fit !min-w-[60px] items-center justify-center whitespace-nowrap font-bold"
+      : `!inline-flex !h-[60px] ${fullWidth ? "!w-full" : "!w-fit !min-w-[60px]"} items-center justify-center whitespace-nowrap font-bold`
     : "";
 
   const content = (

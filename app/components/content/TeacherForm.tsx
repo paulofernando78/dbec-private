@@ -330,8 +330,8 @@ export const TeacherForm = ({
         <div>
           <Button
             type="submit"
+            fullWidth
             disabled={isSaving}
-            className="w-full"
           >
             {isEditing ? "Update teacher" : "Add teacher"}
           </Button>
