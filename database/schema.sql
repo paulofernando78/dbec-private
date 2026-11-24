@@ -15,8 +15,18 @@ CREATE TABLE IF NOT EXISTS users (
     CHECK (plan IN ('free', 'plus')),
   role TEXT NOT NULL DEFAULT 'student'
     CHECK (role IN ('teacher', 'student')),
+  is_admin INTEGER NOT NULL DEFAULT 0
+    CHECK (is_admin IN (0, 1)),
+  -- NULL significa "sem professor": o aluno existe, com todo o histórico dele,
+  -- apenas aguardando um responsável. Admin reatribui pela interface.
+  teacher_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+  -- Ignorado quando is_admin = 1: o admin não tem cota de alunos.
+  student_limit INTEGER NOT NULL DEFAULT 10,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_users_teacher
+  ON users (teacher_id);
 
 CREATE TABLE IF NOT EXISTS notes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

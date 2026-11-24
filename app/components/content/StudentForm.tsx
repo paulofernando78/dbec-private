@@ -1,16 +1,24 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ChevronDown, GraduationCap, Trash2, X } from "lucide-react";
+import { ChevronDown, GraduationCap, Trash2, UserMinus, X } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
+import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
 
 type StudentPlan = "free" | "plus";
 
 type StudentFormProps = {
   students: Student[];
+  teachers: Teacher[];
+  viewer: { isAdmin: boolean; teacherId?: number };
   selectedStudentId: string;
   onStudentSelect: (studentId: string) => void;
   onStudentSaved: () => void | Promise<void>;
+  /** teacherId null devolve o aluno para a fila "sem professor". */
+  onStudentAssign: (
+    studentId: string,
+    teacherId: number | null,
+  ) => Promise<void>;
 };
 
 type Student = {
@@ -22,6 +30,7 @@ type Student = {
   schedule: string;
   time: string;
   plan: StudentPlan;
+  teacherId?: number | null;
   lastSeenMs?: number;
 };
 
@@ -92,6 +101,10 @@ const initialForm: StudentFormState = {
   plan: "free",
 };
 
+const teacherName = (teachers: Teacher[], teacherId: number) =>
+  teachers.find((teacher) => teacher.id === teacherId)?.displayName ??
+  "another teacher";
+
 const formatBrazilianPhone = (value: string) => {
   const digits = value.replace(/\D/g, "").slice(0, 11);
   if (!digits) return "";
@@ -108,20 +121,37 @@ const formatBrazilianPhone = (value: string) => {
 
 export const StudentForm = ({
   students,
+  teachers,
+  viewer,
   selectedStudentId,
   onStudentSelect,
   onStudentSaved,
+  onStudentAssign,
 }: StudentFormProps) => {
   const [form, setForm] = useState(initialForm);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [deletingStudentId, setDeletingStudentId] = useState<string | null>(null);
+  const [unassigningStudentId, setUnassigningStudentId] = useState<
+    string | null
+  >(null);
+  const [pendingStudentId, setPendingStudentId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const isEditing = Boolean(selectedStudentId);
   const selectedStudent = students.find(
     (student) => student.studentId === selectedStudentId,
   );
+  // O admin não tem cota; o professor vê a própria cota.
+  const viewerTeacher = teachers.find(
+    (teacher) => teacher.id === viewer.teacherId,
+  );
+  const isViewerFull = viewerTeacher ? !canAcceptStudents(viewerTeacher) : false;
+  const quotaLabel = viewerTeacher
+    ? viewerTeacher.isUnlimited
+      ? `${students.length} students · no limit`
+      : `${students.length} / ${viewerTeacher.studentLimit} students`
+    : `${students.length} students`;
 
   useEffect(() => {
     const student = students.find(
@@ -193,6 +223,30 @@ export const StudentForm = ({
       setError(error instanceof Error ? error.message : "Could not delete the student.");
     } finally {
       setIsDeleting(false);
+    }
+  };
+
+  const handleRosterChange = async (
+    studentId: string,
+    teacherId: number | null,
+    successMessage: string,
+  ) => {
+    setError("");
+    setMessage("");
+    setPendingStudentId(studentId);
+
+    try {
+      await onStudentAssign(studentId, teacherId);
+      setUnassigningStudentId(null);
+      setMessage(successMessage);
+    } catch (assignError) {
+      setError(
+        assignError instanceof Error
+          ? assignError.message
+          : "Could not update the student.",
+      );
+    } finally {
+      setPendingStudentId(null);
     }
   };
 
@@ -440,9 +494,16 @@ export const StudentForm = ({
         )}
 
         <div>
+          {!isEditing && isViewerFull && (
+            <p className="mb-2 text-xs font-semibold text-amber-800">
+              You reached your limit of {viewerTeacher?.studentLimit} students.
+              Ask the admin to raise it.
+            </p>
+          )}
+
           <Button
             type="submit"
-            disabled={isSaving}
+            disabled={isSaving || (!isEditing && isViewerFull)}
             className="w-full"
           >
             {isSaving
@@ -458,11 +519,25 @@ export const StudentForm = ({
 
       <div className="min-w-0 rounded-xl bg-(--background) p-4">
         <div className="min-w-0 space-y-4">
-          <span className="block text-sm font-semibold">Students</span>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="block text-sm font-semibold">Students</span>
+            <span className="text-xs font-semibold text-gray-500">
+              {quotaLabel}
+            </span>
+          </div>
 
           {students.map((student) => {
             const isSelected = selectedStudentId === student.studentId;
             const isOnline = Boolean(student.lastSeenMs && Date.now() - student.lastSeenMs < 90_000);
+            const isPending = pendingStudentId === student.studentId;
+            const transferTargets = teachers.filter(
+              (teacher) =>
+                teacher.active !== 0 && teacher.id !== student.teacherId,
+            );
+            // O admin vê alunos de outros professores, então mostra o responsável.
+            const owner = viewer.isAdmin
+              ? teachers.find((teacher) => teacher.id === student.teacherId)
+              : undefined;
 
             return (
               <div key={student.studentId} className="min-w-0">
@@ -488,15 +563,99 @@ export const StudentForm = ({
                       <span className="block max-w-full truncate text-sm font-semibold" title={student.name}>{student.name}</span>
                       <span className="block max-w-full truncate text-xs font-normal text-gray-500" title={`${student.schedule} · ${student.time}`}>
                         {student.schedule} · {student.time}
+                        {owner ? ` · ${owner.displayName}` : ""}
                       </span>
                     </span>
                   </button>
-                  <Button
-                    icon={<Trash2 />}
-                    ariaLabel={`Delete ${student.name}`}
-                    onClick={() => setDeletingStudentId(student.studentId)}
-                  />
+
+                  <div className="flex shrink-0 items-center gap-1">
+                    {transferTargets.length > 0 && (
+                      <div className="relative min-w-0">
+                        <select
+                          value=""
+                          disabled={isPending}
+                          aria-label={`Transfer ${student.name} to another teacher`}
+                          onChange={(event) => {
+                            const teacherId = Number(event.target.value);
+                            if (!Number.isInteger(teacherId)) return;
+                            void handleRosterChange(
+                              student.studentId,
+                              teacherId,
+                              `Student transferred to ${teacherName(teachers, teacherId)}.`,
+                            );
+                          }}
+                          className="w-full min-w-36 appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-10 pl-3 text-sm disabled:opacity-55"
+                        >
+                          <option value="">Transfer to…</option>
+
+                          {transferTargets.map((teacher) => (
+                            <option
+                              key={teacher.id}
+                              value={teacher.id}
+                              disabled={!canAcceptStudents(teacher)}
+                            >
+                              {teacherOptionLabel(teacher)}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown
+                          className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-slate-500"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    )}
+
+                    <Button
+                      icon={<UserMinus />}
+                      disabled={isPending}
+                      onClick={() =>
+                        setUnassigningStudentId(student.studentId)
+                      }
+                    >
+                      Remove
+                    </Button>
+
+                    {viewer.isAdmin && (
+                      <Button
+                        icon={<Trash2 />}
+                        ariaLabel={`Delete ${student.name}`}
+                        disabled={isPending}
+                        onClick={() => setDeletingStudentId(student.studentId)}
+                      />
+                    )}
+                  </div>
                 </div>
+
+                {unassigningStudentId === student.studentId && (
+                  <div className="ml-2 rounded-lg border border-amber-200 bg-amber-50 p-2 text-xs text-amber-900">
+                    <p>
+                      Remove {student.name} from your list? Their notes,
+                      calendar and progress stay in the course; the student goes
+                      back to “no teacher”.
+                    </p>
+                    <div className="mt-2 flex gap-2">
+                      <Button
+                        disabled={isPending}
+                        icon={<UserMinus />}
+                        onClick={() =>
+                          void handleRosterChange(
+                            student.studentId,
+                            null,
+                            "Student moved to “no teacher”.",
+                          )
+                        }
+                      >
+                        Remove from list
+                      </Button>
+                      <Button
+                        disabled={isPending}
+                        onClick={() => setUnassigningStudentId(null)}
+                        icon={<X />}
+                        ariaLabel="Cancel removal"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {deletingStudentId === student.studentId && (
                   <div className="ml-2 rounded-lg border border-red-200 bg-red-50 p-2 text-xs text-red-900">

@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { loadAccessibleStudent } from "../_ownership.js";
 
 export async function onRequestGet(context) {
   if (context.request.headers.get("Upgrade") !== "websocket") {
@@ -29,12 +30,14 @@ export async function onRequestGet(context) {
     return new Response("Aluno não informado.", { status: 400 });
   }
 
-  if (session.role === "teacher" && context.env.DB) {
-    const student = await context.env.DB.prepare(
-      "SELECT id FROM users WHERE role = 'student' AND student_slug = ?",
-    )
-      .bind(studentId)
-      .first();
+  // O professor só abre os próprios alunos; o admin, qualquer um; o aluno,
+  // apenas a própria sala.
+  if (context.env.DB) {
+    const student = await loadAccessibleStudent(
+      context.env.DB,
+      session,
+      studentId,
+    );
 
     if (!student) {
       return new Response("Aluno não encontrado.", { status: 404 });

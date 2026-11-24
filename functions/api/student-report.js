@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { loadAccessibleStudent } from "../_ownership.js";
 import { ensureReportStorage } from "../_reports.js";
 
 const headers = { "Cache-Control": "no-store" };
@@ -13,9 +14,11 @@ export async function onRequestGet(context) {
   if (!context.env.DB) return json({ error: "Banco não configurado." }, 503);
   const studentId = new URL(context.request.url).searchParams.get("studentId");
   if (!studentId) return json({ error: "Aluno não informado." }, 400);
-  const student = await context.env.DB.prepare(
-    "SELECT id FROM users WHERE student_slug = ? AND role = 'student'",
-  ).bind(studentId).first();
+  const student = await loadAccessibleStudent(
+    context.env.DB,
+    session,
+    studentId,
+  );
   if (!student) return json({ error: "Aluno não encontrado." }, 404);
   await ensureReportStorage(context.env.DB);
   const [visits, attempts] = await Promise.all([

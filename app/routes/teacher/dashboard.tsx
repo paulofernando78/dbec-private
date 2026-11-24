@@ -9,9 +9,12 @@ import { PageHeader } from "@/components/content/PageHeader";
 import { StudentForm } from "@/components/content/StudentForm";
 import { StudentReport } from "@/components/content/StudentReport";
 import { TableOfContents } from "@/components/content/TableOfContents";
+import { TeacherForm } from "@/components/content/TeacherForm";
+import { UnassignedStudents } from "@/components/content/UnassignedStudents";
 import { Card } from "@/components/ui/Card";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
+import type { Teacher } from "@/utils/teachers";
 import {
   getCourseProgressSummary,
   type CourseProgressSummary,
@@ -61,6 +64,10 @@ export default function TeacherDashboard() {
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
   const [teacherDisplayName, setTeacherDisplayName] = useState("Professor");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [viewerId, setViewerId] = useState<number | undefined>(undefined);
+  const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [selectedTeacherId, setSelectedTeacherId] = useState<number | null>(null);
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<
     Record<string, string>
@@ -71,6 +78,12 @@ export default function TeacherDashboard() {
   const [reloadKey, setReloadKey] = useState(0);
   const [progress, setProgress] = useState<CourseProgressSummary | null>(null);
   const student = data?.student;
+  // Alunos sem professor ficam numa fila de reatribuição; os demais pertencem a
+  // alguém (o próprio professor logado ou, no caso do admin, a outro professor).
+  const unassignedStudents = students.filter(
+    (entry) => entry.teacherId == null,
+  );
+  const assignedStudents = students.filter((entry) => entry.teacherId != null);
 
   useEffect(() => {
     setProgress(getCourseProgressSummary());
@@ -81,8 +94,10 @@ export default function TeacherDashboard() {
     fetch("/api/session", { headers: { Accept: "application/json" } })
       .then((response) => (response.ok ? response.json() : null))
       .then((session) => {
-        if (active && session?.displayName)
-          setTeacherDisplayName(session.displayName);
+        if (!active || !session) return;
+        if (session.displayName) setTeacherDisplayName(session.displayName);
+        setIsAdmin(session.isAdmin === true);
+        setViewerId(Number.isInteger(session.userId) ? session.userId : undefined);
       })
       .catch(() => {});
     return () => {
@@ -122,10 +137,66 @@ export default function TeacherDashboard() {
     }
   };
 
+  const loadTeachers = async () => {
+    try {
+      const response = await fetch("/api/teachers");
+
+      // Professor não-admin não recebe a lista de colegas.
+      if (!response.ok) {
+        setTeachers([]);
+        return;
+      }
+
+      const result = await response.json();
+      setTeachers(result.teachers ?? []);
+    } catch (error) {
+      setTeachers([]);
+      console.error(error);
+    }
+  };
+
+  const refreshRoster = () =>
+    Promise.all([loadStudents(), loadTeachers()]).then(() => undefined);
+
+  // Atribuir, transferir ou desvincular é um único PATCH em users.teacher_id.
+  const requestAssignment = async (
+    assignmentStudentId: string,
+    teacherId: number | null,
+  ) => {
+    const response = await fetch("/api/students", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ studentId: assignmentStudentId, teacherId }),
+    });
+    const result = (await response.json().catch(() => ({}))) as {
+      error?: string;
+    };
+
+    if (!response.ok) {
+      throw new Error(result.error ?? "Não foi possível atribuir o aluno.");
+    }
+  };
+
+  const assignStudent = async (
+    assignmentStudentId: string,
+    teacherId: number | null,
+  ) => {
+    await requestAssignment(assignmentStudentId, teacherId);
+    await refreshRoster();
+  };
+
+  const assignAllStudents = async (teacherId: number) => {
+    for (const entry of unassignedStudents) {
+      await requestAssignment(entry.studentId, teacherId);
+    }
+
+    await refreshRoster();
+  };
+
   useEffect(() => {
-    void loadStudents();
+    void refreshRoster();
     const interval = window.setInterval(() => {
-      if (document.visibilityState === "visible") void loadStudents();
+      if (document.visibilityState === "visible") void refreshRoster();
     }, 30_000);
     return () => window.clearInterval(interval);
   }, []);
@@ -323,16 +394,45 @@ export default function TeacherDashboard() {
 
   return (
     <>
-      <PageHeader title="Teacher's Dashboard" variant="dashboard" />
+      <PageHeader
+        title={isAdmin ? "Admin Dashboard" : "Teacher's Dashboard"}
+        variant="dashboard"
+      />
 
       <div className="grid gap-4">
+        {isAdmin && (
+          <div id="teacher-registration" className="scroll-mt-4">
+            <Card title="Teacher Registration">
+              <TeacherForm
+                teachers={teachers}
+                selectedTeacherId={selectedTeacherId}
+                onTeacherSelect={setSelectedTeacherId}
+                onTeacherSaved={refreshRoster}
+              />
+            </Card>
+          </div>
+        )}
+
         <div id="student-registration" className="scroll-mt-4">
           <Card title="Student Registration">
+            {isAdmin && (
+              <UnassignedStudents
+                students={unassignedStudents}
+                teachers={teachers}
+                viewerId={viewerId}
+                onAssign={assignStudent}
+                onAssignAll={assignAllStudents}
+              />
+            )}
+
             <StudentForm
-              students={students}
+              students={assignedStudents}
+              teachers={teachers}
+              viewer={{ isAdmin, teacherId: viewerId }}
               selectedStudentId={studentId ?? ""}
               onStudentSelect={handleStudentChange}
-              onStudentSaved={loadStudents}
+              onStudentSaved={refreshRoster}
+              onStudentAssign={assignStudent}
             />
           </Card>
         </div>

@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { loadAccessibleStudent } from "../_ownership.js";
 
 export async function onRequestPut(context) {
   const session = await verifySession(
@@ -18,9 +19,11 @@ export async function onRequestPut(context) {
     return Response.json({ error: "Operação não permitida." }, { status: 403 });
   }
 
-  const student = await context.env.DB.prepare(
-    "SELECT id FROM users WHERE role = 'student' AND student_slug = ?",
-  ).bind(allowedStudentId).first();
+  const student = await loadAccessibleStudent(
+    context.env.DB,
+    session,
+    allowedStudentId,
+  );
   if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404 });
 
   const saveShared = shared === true && noteType === "student";

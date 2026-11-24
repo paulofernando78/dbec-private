@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { loadAccessibleStudent } from "../_ownership.js";
 
 const headers = { "Cache-Control": "no-store" };
 
@@ -28,9 +29,7 @@ export async function onRequest(context) {
   if (typeof studentId !== "string" || !studentId) {
     return Response.json({ error: "Aluno não informado." }, { status: 400, headers });
   }
-  const student = await env.DB.prepare(
-    "SELECT id FROM users WHERE role = 'student' AND student_slug = ?",
-  ).bind(studentId).first();
+  const student = await loadAccessibleStudent(env.DB, session, studentId);
   if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404, headers });
 
   // Initialize independently of existing notes and calendar records.

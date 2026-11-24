@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { isAdmin, loadAccessibleStudent } from "../_ownership.js";
 
 const noStoreHeaders = {
   "Cache-Control": "no-store",
@@ -26,8 +27,20 @@ export async function onRequestGet(context) {
   const requestedStudentId = url.searchParams.get("studentId");
 
   if (session.role === "teacher" && !requestedStudentId) {
-    const { results: students } = await context.env.DB.prepare(
-      `SELECT
+    // Admin monta a lista completa; professor recebe apenas o próprio roster.
+    if (!isAdmin(session) && !Number.isInteger(session.userId)) {
+      return Response.json(
+        {
+          viewer: { username: session.username, role: session.role },
+          students: [],
+        },
+        { headers: noStoreHeaders },
+      );
+    }
+
+    const { results: students } = await (isAdmin(session)
+      ? context.env.DB.prepare(
+          `SELECT
         student_slug AS studentId,
         display_name AS name,
         schedule,
@@ -36,7 +49,20 @@ export async function onRequestGet(context) {
       FROM users
       WHERE role = 'student'
       ORDER BY display_name`,
-    ).all();
+        ).all()
+      : context.env.DB.prepare(
+          `SELECT
+        student_slug AS studentId,
+        display_name AS name,
+        schedule,
+        class_time AS time,
+        plan
+      FROM users
+      WHERE role = 'student' AND teacher_id = ?
+      ORDER BY display_name`,
+        )
+          .bind(session.userId)
+          .all());
 
     return Response.json(
       {
@@ -57,20 +83,12 @@ export async function onRequestGet(context) {
     );
   }
 
-  const student = await context.env.DB.prepare(
-    `SELECT
-      id,
-      username,
-      student_slug AS studentId,
-      display_name AS name,
-      schedule,
-      class_time AS time,
-      plan
-    FROM users
-    WHERE role = 'student' AND student_slug = ?`,
-  )
-    .bind(studentId)
-    .first();
+  // O professor só abre os próprios alunos; o admin, qualquer um.
+  const student = await loadAccessibleStudent(
+    context.env.DB,
+    session,
+    studentId,
+  );
 
   if (!student) {
     return Response.json(

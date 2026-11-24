@@ -1,6 +1,12 @@
 // Essa função impede que alunos ou visitantes cadastrem outros alunos. Somente a sessão do professor será aceita.
 
 import { readCookie, verifySession } from "../_auth.js";
+import {
+  capacityMessage,
+  isAdmin,
+  loadAccessibleStudent,
+  loadTeacherCapacity,
+} from "../_ownership.js";
 import { createPassword } from "../_password.js";
 import { ensurePresenceStorage } from "../_presence.js";
 import { ensureReportStorage } from "../_reports.js";
@@ -8,6 +14,19 @@ import { ensureReportStorage } from "../_reports.js";
 const noStoreHeaders = {
   "Cache-Control": "no-store",
 };
+
+const studentColumns = `
+      student_slug AS studentId,
+      username,
+      display_name AS name,
+      COALESCE(email, '') AS email,
+      COALESCE(phone, '') AS phone,
+      schedule,
+      class_time AS time,
+      plan,
+      active,
+      teacher_id AS teacherId,
+      COALESCE(student_presence.last_seen_ms, 0) AS lastSeenMs`;
 
 const authenticateTeacher = async (context) => {
   const token = readCookie(context.request, "dbec_session");
@@ -96,23 +115,29 @@ export async function onRequestGet(context) {
 
   await ensurePresenceStorage(context.env.DB);
   await ensureReportStorage(context.env.DB);
-  const { results: students } = await context.env.DB.prepare(
-    `SELECT
-      student_slug AS studentId,
-      username,
-      display_name AS name,
-      COALESCE(email, '') AS email,
-      COALESCE(phone, '') AS phone,
-      schedule,
-      class_time AS time,
-      plan,
-      active,
-      COALESCE(student_presence.last_seen_ms, 0) AS lastSeenMs
-    FROM users
-    LEFT JOIN student_presence ON student_presence.student_id = users.id
-    WHERE role = 'student'
-    ORDER BY display_name`,
-  ).all();
+
+  // Admin reatribui alunos, então precisa enxergar os "sem professor" também.
+  if (!isAdmin(teacher) && !Number.isInteger(teacher.userId)) {
+    return Response.json({ students: [] }, { headers: noStoreHeaders });
+  }
+
+  const { results: students } = await (isAdmin(teacher)
+    ? context.env.DB.prepare(
+        `SELECT ${studentColumns}
+         FROM users
+         LEFT JOIN student_presence ON student_presence.student_id = users.id
+         WHERE role = 'student'
+         ORDER BY display_name`,
+      ).all()
+    : context.env.DB.prepare(
+        `SELECT ${studentColumns}
+         FROM users
+         LEFT JOIN student_presence ON student_presence.student_id = users.id
+         WHERE role = 'student' AND teacher_id = ?
+         ORDER BY display_name`,
+      )
+        .bind(teacher.userId)
+        .all());
 
   return Response.json({ students }, { headers: noStoreHeaders });
 }
@@ -160,6 +185,18 @@ export async function onRequestPost(context) {
   const username = input.username.trim().toLowerCase();
   const studentId = createStudentSlug(name);
   const { hash, salt } = await createPassword(input.password);
+  const ownerId = teacher.userId ?? null;
+
+  if (ownerId !== null) {
+    const capacity = await loadTeacherCapacity(context.env.DB, ownerId);
+
+    if (capacity?.isFull) {
+      return Response.json(
+        { error: capacityMessage(capacity) },
+        { status: 409, headers: noStoreHeaders },
+      );
+    }
+  }
 
   try {
     await context.env.DB.prepare(
@@ -174,9 +211,10 @@ export async function onRequestPost(context) {
         plan,
         password_hash,
         password_salt,
-        role
+        role,
+        teacher_id
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'student')`,
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'student', ?)`,
     )
       .bind(
         username,
@@ -189,6 +227,7 @@ export async function onRequestPost(context) {
         input.plan,
         hash,
         salt,
+        ownerId,
       )
       .run();
 
@@ -286,6 +325,13 @@ export async function onRequestPut(context) {
     );
   }
 
+  if (!(await loadAccessibleStudent(context.env.DB, teacher, studentId))) {
+    return Response.json(
+      { error: "Aluno não encontrado." },
+      { status: 404, headers: noStoreHeaders },
+    );
+  }
+
   const existingUsername = await context.env.DB.prepare(
     `SELECT student_slug
      FROM users
@@ -344,10 +390,118 @@ export async function onRequestPut(context) {
   return Response.json({ ok: true }, { headers: noStoreHeaders });
 }
 
+// Atribui, transfere ou desvincula um aluno. teacherId = null devolve o aluno
+// para "sem professor". É um único UPDATE em users.teacher_id, então nada do
+// histórico do aluno é tocado.
+export async function onRequestPatch(context) {
+  const teacher = await authenticateTeacher(context);
+
+  if (!teacher) {
+    return Response.json(
+      { error: "Não autorizado." },
+      { status: 401, headers: noStoreHeaders },
+    );
+  }
+
+  if (!context.env.DB) {
+    return Response.json(
+      { error: "O banco D1 não está configurado." },
+      { status: 503, headers: noStoreHeaders },
+    );
+  }
+
+  let input;
+
+  try {
+    input = await context.request.json();
+  } catch {
+    return Response.json(
+      { error: "JSON inválido." },
+      { status: 400, headers: noStoreHeaders },
+    );
+  }
+
+  const hasTeacherId =
+    input !== null && typeof input === "object" && "teacherId" in input;
+  const studentId = input?.studentId;
+  const teacherId = hasTeacherId ? (input.teacherId ?? null) : undefined;
+
+  if (
+    typeof studentId !== "string" ||
+    !studentId ||
+    !hasTeacherId ||
+    (teacherId !== null && !Number.isInteger(teacherId))
+  ) {
+    return Response.json(
+      { error: "Dados inválidos." },
+      { status: 400, headers: noStoreHeaders },
+    );
+  }
+
+  // Professor movimenta apenas os próprios alunos. Admin movimenta qualquer um,
+  // inclusive os que estão sem professor.
+  const student = await loadAccessibleStudent(context.env.DB, teacher, studentId);
+
+  if (!student) {
+    return Response.json(
+      { error: "Aluno não encontrado." },
+      { status: 404, headers: noStoreHeaders },
+    );
+  }
+
+  if (teacherId !== null) {
+    const capacity = await loadTeacherCapacity(context.env.DB, teacherId);
+
+    if (!capacity) {
+      return Response.json(
+        { error: "Professor não encontrado." },
+        { status: 404, headers: noStoreHeaders },
+      );
+    }
+
+    if (capacity.isFull) {
+      return Response.json(
+        { error: capacityMessage(capacity) },
+        { status: 409, headers: noStoreHeaders },
+      );
+    }
+  }
+
+  const result = await context.env.DB.prepare(
+    "UPDATE users SET teacher_id = ? WHERE id = ? AND role = 'student'",
+  )
+    .bind(teacherId, student.id)
+    .run();
+
+  if (result.meta.changes === 0) {
+    return Response.json(
+      { error: "Aluno não encontrado." },
+      { status: 404, headers: noStoreHeaders },
+    );
+  }
+
+  return Response.json(
+    { ok: true, studentId, teacherId },
+    { headers: noStoreHeaders },
+  );
+}
+
 export async function onRequestDelete(context) {
   const teacher = await authenticateTeacher(context);
   if (!teacher) return Response.json({ error: "Não autorizado." }, { status: 401, headers: noStoreHeaders });
   if (!context.env.DB) return Response.json({ error: "O banco D1 não está configurado." }, { status: 503, headers: noStoreHeaders });
+
+  // Exclusão definitiva é destrutiva (apaga notas, calendário e progresso).
+  // O professor usa "desvincular", que devolve o aluno para "sem professor".
+  if (!isAdmin(teacher)) {
+    return Response.json(
+      {
+        error:
+          "Somente o admin pode excluir um aluno. Use desvincular para devolvê-lo à fila.",
+      },
+      { status: 403, headers: noStoreHeaders },
+    );
+  }
 
   let studentId;
   try {
@@ -359,9 +513,7 @@ export async function onRequestDelete(context) {
     return Response.json({ error: "Aluno inválido." }, { status: 400, headers: noStoreHeaders });
   }
 
-  const student = await context.env.DB.prepare(
-    "SELECT id FROM users WHERE student_slug = ? AND role = 'student'",
-  ).bind(studentId).first();
+  const student = await loadAccessibleStudent(context.env.DB, teacher, studentId);
   if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404, headers: noStoreHeaders });
 
   await ensurePresenceStorage(context.env.DB);

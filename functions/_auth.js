@@ -59,7 +59,12 @@ export const getUsers = (env) => {
       if (typeof value === "string" && value) {
         return [
           username,
-          { password: value, role: "student", studentId: username },
+          {
+            password: value,
+            role: "student",
+            studentId: username,
+            isAdmin: false,
+          },
         ];
       }
 
@@ -69,6 +74,7 @@ export const getUsers = (env) => {
         typeof value.password !== "string" ||
         !value.password ||
         !["teacher", "student"].includes(value.role) ||
+        (value.admin !== undefined && typeof value.admin !== "boolean") ||
         (value.role === "student" &&
           (typeof value.studentId !== "string" || !value.studentId))
       ) {
@@ -81,6 +87,10 @@ export const getUsers = (env) => {
           password: value.password,
           role: value.role,
           studentId: value.role === "student" ? value.studentId : undefined,
+          // AUTH_USERS é o canal privilegiado do dono (definido por variável de
+          // ambiente), então professor vira admin por padrão. "admin": false cria
+          // um professor sem privilégios.
+          isAdmin: value.role === "teacher" && value.admin !== false,
         },
       ];
     }),
@@ -96,6 +106,10 @@ export const createSession = async (user, secret) => {
       username: user.username,
       role: user.role,
       studentId: user.studentId,
+      // userId identifica o professor no banco D1 e é o valor gravado em
+      // users.teacher_id. Sessões antigas podem não ter os dois campos.
+      userId: Number.isInteger(user.userId) ? user.userId : undefined,
+      isAdmin: user.isAdmin === true,
       expiresAt: Date.now() + SESSION_IDLE_SECONDS * 1000,
     }),
   );
@@ -115,6 +129,8 @@ export const verifySession = async (token, secret) => {
     if (
       typeof session.username !== "string" ||
       !["teacher", "student"].includes(session.role) ||
+      (session.userId !== undefined && !Number.isInteger(session.userId)) ||
+      (session.isAdmin !== undefined && typeof session.isAdmin !== "boolean") ||
       typeof session.expiresAt !== "number" ||
       session.expiresAt <= Date.now() ||
       session.expiresAt > Date.now() + SESSION_IDLE_SECONDS * 1000

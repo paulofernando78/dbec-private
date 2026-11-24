@@ -1,4 +1,5 @@
 import { readCookie, verifySession } from "../_auth.js";
+import { loadAccessibleStudent } from "../_ownership.js";
 
 const statuses = new Set(["...", "P", "OK", "ROK", "SC", "TC", "R", "H"]);
 
@@ -27,9 +28,11 @@ export async function onRequestPut(context) {
     return Response.json({ error: "Dados inválidos." }, { status: 400 });
   }
 
-  const student = await context.env.DB.prepare(
-    "SELECT id FROM users WHERE role = 'student' AND student_slug = ?",
-  ).bind(studentId).first();
+  const student = await loadAccessibleStudent(
+    context.env.DB,
+    session,
+    studentId,
+  );
   if (!student) return Response.json({ error: "Aluno não encontrado." }, { status: 404 });
 
   await context.env.DB.prepare(

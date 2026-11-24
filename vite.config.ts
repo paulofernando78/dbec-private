@@ -22,8 +22,14 @@ const localDictionaryTtsCache = new Map<
   string,
   { audio: Buffer; model: string; usedFallback: boolean; contentType?: string }
 >();
-let localSession: { username: string; role: string; studentId?: string; expiresAt: number } | null =
-  null;
+let localSession: {
+  username: string;
+  role: string;
+  studentId?: string;
+  userId?: number;
+  isAdmin?: boolean;
+  expiresAt: number;
+} | null = null;
 
 const aiTutorSystemInstruction = `You are DBEC's friendly English tutor.
 Help teachers and English learners explain words and expressions, check grammar and spelling, explain corrections politely, give short examples, and practice age-appropriate conversation.
@@ -36,7 +42,20 @@ type LocalStudent = {
   schedule: string;
   time: string;
   plan: "free" | "plus";
+  /** null espelha "sem professor" (users.teacher_id IS NULL). */
+  teacherId: number | null;
 };
+
+type LocalTeacher = {
+  id: number;
+  username: string;
+  displayName: string;
+  isAdmin: boolean;
+  studentLimit: number;
+  active: number;
+};
+
+let nextLocalUserId = 1;
 
 const localStudents = new Map<string, LocalStudent>(
   Object.entries(developmentStudents).map(([studentId, student]) => [
@@ -48,9 +67,104 @@ const localStudents = new Map<string, LocalStudent>(
       schedule: student.schedule,
       time: student.time,
       plan: "free",
+      teacherId: null,
     },
   ]),
 );
+
+const localTeachersByUsername = new Map<string, LocalTeacher>();
+const localTeachersById = new Map<number, LocalTeacher>();
+
+const ensureLocalTeacher = (username: string, isAdmin: boolean) => {
+  const existing = localTeachersByUsername.get(username);
+
+  if (existing) {
+    existing.isAdmin = existing.isAdmin || isAdmin;
+    return existing;
+  }
+
+  const teacher: LocalTeacher = {
+    id: nextLocalUserId++,
+    username,
+    displayName: username,
+    isAdmin,
+    studentLimit: 10,
+    active: 1,
+  };
+
+  localTeachersByUsername.set(teacher.username, teacher);
+  localTeachersById.set(teacher.id, teacher);
+  return teacher;
+};
+
+const localStudentCountFor = (teacherId: number) =>
+  [...localStudents.values()].filter((student) => student.teacherId === teacherId)
+    .length;
+
+const localTeacherCapacity = (teacherId: number) => {
+  const teacher = localTeachersById.get(teacherId);
+  if (!teacher) return null;
+
+  const used = localStudentCountFor(teacher.id);
+
+  return {
+    used,
+    limit: teacher.studentLimit,
+    isFull: !teacher.isAdmin && used >= teacher.studentLimit,
+  };
+};
+
+const localTeacherPayload = (teacher: LocalTeacher) => ({
+  id: teacher.id,
+  username: teacher.username,
+  displayName: teacher.displayName,
+  isAdmin: teacher.isAdmin,
+  isUnlimited: teacher.isAdmin,
+  studentLimit: teacher.studentLimit,
+  studentCount: localStudentCountFor(teacher.id),
+  active: teacher.active,
+});
+
+type LocalTeacherInput = {
+  displayName: string;
+  username: string;
+  studentLimit: number;
+};
+
+const normalizeLocalTeacherInput = (
+  input: any,
+): { ok: true; value: LocalTeacherInput } | { ok: false; error: string } => {
+  const displayName =
+    typeof input?.displayName === "string" ? input.displayName.trim() : "";
+  const username =
+    typeof input?.username === "string" ? input.username.trim().toLowerCase() : "";
+  const studentLimit = input?.studentLimit;
+
+  if (displayName.length < 3) {
+    return { ok: false, error: "Informe o nome do professor." };
+  }
+  if (username.length < 3) {
+    return { ok: false, error: "Informe um usuário com pelo menos 3 caracteres." };
+  }
+  if (!Number.isInteger(studentLimit) || studentLimit < 0 || studentLimit > 500) {
+    return { ok: false, error: "Informe um limite de alunos entre 0 e 500." };
+  }
+
+  return { ok: true, value: { displayName, username, studentLimit } };
+};
+
+const isLocalAdmin = (session: { isAdmin?: boolean } | null) =>
+  session?.isAdmin === true;
+
+const ownsLocalStudent = (
+  session: { userId?: number; isAdmin?: boolean } | null,
+  student: LocalStudent,
+) => {
+  if (isLocalAdmin(session)) return true;
+
+  const userId = session?.userId;
+  return userId !== undefined && student.teacherId === userId;
+};
 
 const createStudentSlug = (name: string) =>
   name
@@ -189,10 +303,17 @@ const localAuth = (): Plugin => ({
             ? "/teacher/dashboard"
             : `/dashboard/${encodeURIComponent(user.studentId ?? username)}`;
 
+        const teacher =
+          user.role === "teacher"
+            ? ensureLocalTeacher(username, user.admin !== false)
+            : null;
+
         localSession = {
           username,
           role: user.role,
           studentId: user.studentId,
+          userId: teacher?.id,
+          isAdmin: teacher?.isAdmin ?? false,
           expiresAt: Date.now() + SESSION_IDLE_SECONDS * 1000,
         };
 
@@ -664,8 +785,12 @@ const localAuth = (): Plugin => ({
           ? requestedStudentId
           : localSession.studentId;
       const student = studentId ? localStudents.get(studentId) : undefined;
+      const canReadStudent =
+        student &&
+        (localSession.role !== "teacher" ||
+          ownsLocalStudent(localSession, student));
 
-      if (!studentId || !student) {
+      if (!studentId || !canReadStudent) {
         response.statusCode = 404;
         response.end(JSON.stringify({ error: "Aluno não encontrado." }));
         return;
@@ -715,13 +840,18 @@ const localAuth = (): Plugin => ({
         }
         const requestedId = body.studentId ?? new URL(request.url ?? "", "http://localhost").searchParams.get("studentId");
         const studentId = session.role === "teacher" ? requestedId : session.studentId;
-        if (!studentId || !localStudents.has(studentId)) {
+        const student = typeof studentId === "string" ? localStudents.get(studentId) : undefined;
+        const canReachStudent =
+          student &&
+          (session.role !== "teacher" || ownsLocalStudent(session, student));
+
+        if (!canReachStudent) {
           response.statusCode = 404;
           response.end(JSON.stringify({ error: "Aluno não encontrado." }));
           return;
         }
-        if (request.method === "PUT") localCalendarNotes.set(studentId, body.content!);
-        response.end(JSON.stringify(request.method === "GET" ? { content: localCalendarNotes.get(studentId) ?? "" } : { ok: true }));
+        if (request.method === "PUT") localCalendarNotes.set(student.studentId, body.content!);
+        response.end(JSON.stringify(request.method === "GET" ? { content: localCalendarNotes.get(student.studentId) ?? "" } : { ok: true }));
       } catch {
         response.statusCode = 400;
         response.end(JSON.stringify({ error: "Dados inválidos." }));
@@ -755,9 +885,14 @@ const localAuth = (): Plugin => ({
             ? noteType === "teacher" || noteType === "student"
             : noteType === "student";
 
+        const targetStudent = localStudents.get(allowedStudentId);
+        const canReachStudent =
+          targetStudent &&
+          (localSession.role !== "teacher" ||
+            ownsLocalStudent(localSession, targetStudent));
+
         if (
-          !allowedStudentId ||
-          !localStudents.has(allowedStudentId) ||
+          !canReachStudent ||
           !canEditNote ||
           typeof content !== "string"
         ) {
@@ -788,28 +923,31 @@ const localAuth = (): Plugin => ({
     server.middlewares.use(
       "/api/students",
       async (request, response, next) => {
-        if (!request.method || !["GET", "POST", "PUT"].includes(request.method)) {
+        if (
+          !request.method ||
+          !["GET", "POST", "PUT", "PATCH", "DELETE"].includes(request.method)
+        ) {
           return next();
         }
 
         response.setHeader("Content-Type", "application/json");
         response.setHeader("Cache-Control", "no-store");
 
-        if (localSession?.role !== "teacher") {
+        const viewer = localSession;
+
+        if (!viewer || viewer.role !== "teacher") {
           response.statusCode = 401;
           response.end(JSON.stringify({ error: "Não autorizado." }));
           return;
         }
 
         if (request.method === "GET") {
+          const students = [...localStudents.values()]
+            .filter((student) => ownsLocalStudent(viewer, student))
+            .sort((a, b) => a.name.localeCompare(b.name));
+
           response.statusCode = 200;
-          response.end(
-            JSON.stringify({
-              students: [...localStudents.values()].sort((a, b) =>
-                a.name.localeCompare(b.name),
-              ),
-            }),
-          );
+          response.end(JSON.stringify({ students }));
           return;
         }
 
@@ -819,6 +957,103 @@ const localAuth = (): Plugin => ({
           for await (const chunk of request) body += chunk;
 
           const input = JSON.parse(body);
+
+          // Atribuir, transferir ou desvincular: muda apenas o responsável.
+          if (request.method === "PATCH") {
+            const patchStudentId = input.studentId;
+            const hasTeacherId = "teacherId" in input;
+            const targetTeacherId: number | null = hasTeacherId
+              ? (input.teacherId ?? null)
+              : null;
+
+            if (
+              typeof patchStudentId !== "string" ||
+              !hasTeacherId ||
+              (targetTeacherId !== null && !Number.isInteger(targetTeacherId))
+            ) {
+              response.statusCode = 400;
+              response.end(JSON.stringify({ error: "Dados inválidos." }));
+              return;
+            }
+
+            const target = localStudents.get(patchStudentId);
+
+            if (!target || !ownsLocalStudent(viewer, target)) {
+              response.statusCode = 404;
+              response.end(JSON.stringify({ error: "Aluno não encontrado." }));
+              return;
+            }
+
+            if (targetTeacherId !== null) {
+              const capacity = localTeacherCapacity(targetTeacherId);
+
+              if (!capacity) {
+                response.statusCode = 404;
+                response.end(
+                  JSON.stringify({ error: "Professor não encontrado." }),
+                );
+                return;
+              }
+
+              if (capacity.isFull) {
+                response.statusCode = 409;
+                response.end(
+                  JSON.stringify({
+                    error: `Este professor já está com ${capacity.used}/${capacity.limit} alunos.`,
+                  }),
+                );
+                return;
+              }
+            }
+
+            localStudents.set(patchStudentId, {
+              ...target,
+              teacherId: targetTeacherId,
+            });
+            response.statusCode = 200;
+            response.end(
+              JSON.stringify({
+                ok: true,
+                studentId: patchStudentId,
+                teacherId: targetTeacherId,
+              }),
+            );
+            return;
+          }
+
+          // Exclusão definitiva: admin-only, porque é destrutiva.
+          if (request.method === "DELETE") {
+            if (!isLocalAdmin(viewer)) {
+              response.statusCode = 403;
+              response.end(
+                JSON.stringify({
+                  error:
+                    "Somente o admin pode excluir um aluno. Use desvincular para devolvê-lo à fila.",
+                }),
+              );
+              return;
+            }
+
+            const deleteStudentId = input.studentId;
+            const target =
+              typeof deleteStudentId === "string"
+                ? localStudents.get(deleteStudentId)
+                : undefined;
+
+            if (!target) {
+              response.statusCode = 404;
+              response.end(JSON.stringify({ error: "Aluno não encontrado." }));
+              return;
+            }
+
+            localStudents.delete(deleteStudentId);
+            localNotes.delete(deleteStudentId);
+            localCalendarNotes.delete(deleteStudentId);
+            response.statusCode = 200;
+            response.end(JSON.stringify({ ok: true }));
+            return;
+          }
+
           const name = input.name?.trim();
           const username = input.username?.trim().toLowerCase();
           const schedule = input.schedule;
@@ -835,6 +1070,23 @@ const localAuth = (): Plugin => ({
             response.statusCode = 400;
             response.end(JSON.stringify({ error: "Preencha os dados do aluno." }));
             return;
+          }
+
+          // Aluno novo entra no roster do professor da sessão. Admin é ilimitado.
+          const ownerId = viewer.userId ?? null;
+
+          if (ownerId !== null) {
+            const capacity = localTeacherCapacity(ownerId);
+
+            if (capacity?.isFull) {
+              response.statusCode = 409;
+              response.end(
+                JSON.stringify({
+                  error: `Este professor já está com ${capacity.used}/${capacity.limit} alunos.`,
+                }),
+              );
+              return;
+            }
           }
 
           if (request.method === "POST") {
@@ -862,13 +1114,14 @@ const localAuth = (): Plugin => ({
               return;
             }
 
-            const student = {
+            const student: LocalStudent = {
               studentId,
               username,
               name,
               schedule,
               time,
               plan,
+              teacherId: ownerId,
             };
             localStudents.set(studentId, student);
             response.statusCode = 201;
@@ -877,7 +1130,12 @@ const localAuth = (): Plugin => ({
           }
 
           const studentId = input.studentId;
-          if (!studentId || !localStudents.has(studentId)) {
+          const current =
+            typeof studentId === "string"
+              ? localStudents.get(studentId)
+              : undefined;
+
+          if (!current || !ownsLocalStudent(viewer, current)) {
             response.statusCode = 404;
             response.end(JSON.stringify({ error: "Aluno não encontrado." }));
             return;
@@ -897,6 +1155,7 @@ const localAuth = (): Plugin => ({
           }
 
           localStudents.set(studentId, {
+            ...current,
             studentId,
             username,
             name,
@@ -910,6 +1169,157 @@ const localAuth = (): Plugin => ({
           response.statusCode = 400;
           response.end(JSON.stringify({ error: "JSON inválido." }));
         }
+      },
+    );
+
+    server.middlewares.use(
+      "/api/teachers",
+      async (request, response, next) => {
+        if (
+          !request.method ||
+          !["GET", "POST", "PUT", "DELETE"].includes(request.method)
+        ) {
+          return next();
+        }
+
+        response.setHeader("Content-Type", "application/json");
+        response.setHeader("Cache-Control", "no-store");
+
+        const viewer = localSession;
+
+        if (!viewer || viewer.role !== "teacher") {
+          response.statusCode = 401;
+          response.end(JSON.stringify({ error: "Não autorizado." }));
+          return;
+        }
+
+        const respond = (status: number, body: unknown) => {
+          response.statusCode = status;
+          response.end(JSON.stringify(body));
+        };
+
+        if (request.method === "GET") {
+          const teachers = isLocalAdmin(viewer)
+            ? [...localTeachersById.values()]
+            : [...localTeachersById.values()].filter(
+                (teacher) => teacher.id === viewer.userId,
+              );
+
+          respond(200, { teachers: teachers.map(localTeacherPayload) });
+          return;
+        }
+
+        if (!isLocalAdmin(viewer)) {
+          respond(403, { error: "Somente o admin pode gerenciar professores." });
+          return;
+        }
+
+        let input: any;
+
+        try {
+          request.setEncoding("utf8");
+          let raw = "";
+          for await (const chunk of request) raw += chunk;
+          input = JSON.parse(raw);
+        } catch {
+          respond(400, { error: "JSON inválido." });
+          return;
+        }
+
+        const usernameTaken = (username: string, exceptId?: number) =>
+          [...localTeachersById.values()].some(
+            (teacher) =>
+              teacher.username === username && teacher.id !== exceptId,
+          );
+
+        const teacherId = input?.teacherId;
+        const managedTeacher = Number.isInteger(teacherId)
+          ? localTeachersById.get(teacherId)
+          : undefined;
+
+        if (request.method === "POST") {
+          const normalized = normalizeLocalTeacherInput(input);
+
+          if (!normalized.ok) {
+            respond(400, { error: normalized.error });
+            return;
+          }
+
+          if (typeof input.password !== "string" || input.password.length < 8) {
+            respond(400, { error: "A senha deve ter pelo menos 8 caracteres." });
+            return;
+          }
+
+          if (usernameTaken(normalized.value.username)) {
+            respond(409, { error: "Esse usuário já está sendo utilizado." });
+            return;
+          }
+
+          const teacher: LocalTeacher = {
+            id: nextLocalUserId++,
+            username: normalized.value.username,
+            displayName: normalized.value.displayName,
+            isAdmin: false,
+            studentLimit: normalized.value.studentLimit,
+            active: 1,
+          };
+
+          localTeachersByUsername.set(teacher.username, teacher);
+          localTeachersById.set(teacher.id, teacher);
+          respond(201, { ok: true, teacher: localTeacherPayload(teacher) });
+          return;
+        }
+
+        if (!managedTeacher) {
+          respond(404, { error: "Professor não encontrado." });
+          return;
+        }
+
+        if (managedTeacher.isAdmin) {
+          respond(403, {
+            error:
+              request.method === "DELETE"
+                ? "O admin não pode ser removido."
+                : "O admin não pode ser editado por aqui.",
+          });
+          return;
+        }
+
+        if (request.method === "DELETE") {
+          const unassignedStudents = localStudentCountFor(managedTeacher.id);
+
+          for (const [slug, student] of localStudents) {
+            if (student.teacherId === managedTeacher.id) {
+              localStudents.set(slug, { ...student, teacherId: null });
+            }
+          }
+
+          if (localTeachersByUsername.get(managedTeacher.username) === managedTeacher) {
+            localTeachersByUsername.delete(managedTeacher.username);
+          }
+          localTeachersById.delete(managedTeacher.id);
+          respond(200, { ok: true, unassignedStudents });
+          return;
+        }
+
+        const normalized = normalizeLocalTeacherInput(input);
+
+        if (!normalized.ok) {
+          respond(400, { error: normalized.error });
+          return;
+        }
+
+        if (usernameTaken(normalized.value.username, managedTeacher.id)) {
+          respond(409, { error: "Esse usuário já está sendo utilizado." });
+          return;
+        }
+
+        managedTeacher.displayName = normalized.value.displayName;
+        managedTeacher.username = normalized.value.username;
+        managedTeacher.studentLimit = normalized.value.studentLimit;
+        managedTeacher.active =
+          input.active === 0 || input.active === false ? 0 : 1;
+        respond(200, { ok: true });
       },
     );
 

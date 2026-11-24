@@ -63,6 +63,8 @@ export async function onRequestGet(context) {
       username: session.username,
       role: session.role,
       studentId: session.studentId,
+      userId: session.userId,
+      isAdmin: session.isAdmin === true,
       expiresAt: session.expiresAt,
       dashboardPath,
       ...profile,

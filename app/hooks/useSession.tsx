@@ -13,6 +13,10 @@ type Session = {
   username: string;
   role: "teacher" | "student";
   studentId?: string;
+  /** Id do professor no banco D1; é o valor gravado em users.teacher_id. */
+  userId?: number;
+  /** Admin enxerga todos os alunos, reatribui qualquer um e não tem cota. */
+  isAdmin?: boolean;
   dashboardPath: string;
   displayName: string;
   schedule: string | null;
