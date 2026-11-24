@@ -581,7 +581,7 @@ export const StudentForm = ({
                   <button
                     type="button"
                     onClick={() => handleStudentSelection(student.studentId)}
-                    className="flex min-w-40 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     <span
                       className="flex size-10 shrink-0 items-center justify-center rounded-full"

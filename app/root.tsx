@@ -68,6 +68,9 @@ function AppContent() {
   const navigate = useNavigate();
   const isPresentationPage =
     location.pathname === "/" || location.pathname === "/about";
+  // O painel do professor tem formulário + lista lado a lado: precisa de mais
+  // largura que as páginas de leitura.
+  const isWideLayout = location.pathname.startsWith("/teacher/dashboard");
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -161,7 +164,7 @@ function AppContent() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${isWideLayout ? "app--wide" : ""}`}>
       <div className="app-container">
         <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
           {location.pathname !== "/" && (

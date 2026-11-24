@@ -49,6 +49,11 @@ body {
   flex-direction: column;
 }
 
+/* Painel do professor: formulários + listas lado a lado pedem mais largura. */
+.app--wide {
+  max-width: 1600px;
+}
+
 .app-container {
   margin: 16px;
   height: 100%;
