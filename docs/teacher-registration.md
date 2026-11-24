@@ -96,7 +96,11 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Lixeira de exclusão definitiva só aparece para admin — e o `DELETE` é **admin-only no servidor** (professor recebe 403)
 - [x] Admin vê o responsável de cada aluno na lista (ele enxerga alunos de outros professores)
 - [x] **Ações da linha do aluno**: `[👁 report] [Transfer to… ▾] [⊖ remove] [🗑 delete]` — o “Remove” virou só ícone, o transfer continua dropdown e a lixeira segue só para admin; todos com tooltip (`title`) e `aria-label`. As linhas ficam em uma única altura (56px) em qualquer largura, medido no navegador
-- [x] **Report saiu da página e virou modal** pelo olho do aluno (`Report — {nome}`), liberando o espaço vertical que ele ocupava; a entrada “Report” do índice da página foi removida
+- [x] **O olho do aluno abre o aluno inteiro em modal** — não só o Report: Calendário, Progress, Report e Notes/AI Tutor, exatamente o que antes aparecia abaixo na página. A página ficou só com os dois cards (Teacher Registration + Student Registration)
+  - o modal é dirigido pelo aluno **na URL** (`/teacher/dashboard/<aluno>`): dá para favoritar, dar F5 e usar o botão voltar. Fechar (Esc, X ou clique no fundo) volta para `/teacher/dashboard` e limpa a seleção
+  - clicar no **nome** do aluno e clicar no **olho** fazem a mesma coisa (selecionar → abrir o modal)
+  - o índice da página (TableOfContents) saiu: as seções ficam na ordem Calendário → Progress → Report → Notes dentro do modal, que rola
+  - o Report voltou a ser um `Card` como o Calendar e o Notes, agora dentro do modal (o modal de Report separado foi removido)
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
 - [x] **“Add student” / “Add teacher” agora esticam** (correção pós-deploy): o `Button` compartilhado aplica `!w-fit` (importante) em botões com texto, então o `className="w-full"` que existia ali **nunca teve efeito** — o botão sempre ficou do tamanho do texto. Adicionado o prop opcional **`fullWidth`** ao `Button` (troca `!w-fit` por `!w-full`, sem declarações conflitantes) e usado nos dois formulários. Medido: botão 448px = container 448px, nos dois

@@ -29,8 +29,6 @@ type StudentFormProps = {
     studentId: string,
     teacherId: number | null,
   ) => Promise<void>;
-  /** Abre o relatório do aluno (página visitada + exercícios verificados). */
-  onStudentReport: (student: Student) => void;
 };
 
 type Student = {
@@ -139,7 +137,6 @@ export const StudentForm = ({
   onStudentSelect,
   onStudentSaved,
   onStudentAssign,
-  onStudentReport,
 }: StudentFormProps) => {
   const [form, setForm] = useState(initialForm);
   const [message, setMessage] = useState("");
@@ -609,8 +606,8 @@ export const StudentForm = ({
                   <div className="flex shrink-0 items-center gap-1">
                     <IconAction
                       icon={<Eye />}
-                      label={`View report of ${student.name}`}
-                      onClick={() => onStudentReport(student)}
+                      label={`View ${student.name}`}
+                      onClick={() => handleStudentSelection(student.studentId)}
                     />
 
                     {transferTargets.length > 0 && (

@@ -8,10 +8,10 @@ import { Calendar } from "@/components/content/Calendar";
 import { PageHeader } from "@/components/content/PageHeader";
 import { StudentForm } from "@/components/content/StudentForm";
 import { StudentReport } from "@/components/content/StudentReport";
-import { TableOfContents } from "@/components/content/TableOfContents";
 import { TeacherForm } from "@/components/content/TeacherForm";
 import { UnassignedStudents } from "@/components/content/UnassignedStudents";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
 import { combineNotes } from "@/utils/shared-notes";
@@ -78,12 +78,6 @@ export default function TeacherDashboard() {
   const [studentError, setStudentError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
   const [progress, setProgress] = useState<CourseProgressSummary | null>(null);
-  const [reportStudent, setReportStudent] = useState<{
-    studentId: string;
-    name: string;
-    schedule: string;
-    time: string;
-  } | null>(null);
   const student = data?.student;
   // Alunos sem professor ficam numa fila de reatribuição; os demais pertencem a
   // alguém (o próprio professor logado ou, no caso do admin, a outro professor).
@@ -421,8 +415,7 @@ export default function TeacherDashboard() {
           </div>
         )}
 
-        <div id="student-registration" className="scroll-mt-4">
-          <Card title="Student Registration">
+        <div id="student-registration" className="scroll-mt-4">          <Card title="Student Registration">
             {isAdmin && (
               <UnassignedStudents
                 students={unassignedStudents}
@@ -441,39 +434,35 @@ export default function TeacherDashboard() {
               onStudentSelect={handleStudentChange}
               onStudentSaved={refreshRoster}
               onStudentAssign={assignStudent}
-              onStudentReport={setReportStudent}
             />
           </Card>
         </div>
 
-        {student && studentId && (
-          <TableOfContents
-            items={[
-              { href: "calendar", label: "Calendar" },
-              { href: "progress", label: "Progress" },
-              { href: "notes", label: "Notes / AI Tutor" },
-            ]}
-          />
-        )}
+      </div>
 
-        {isLoadingStudent && studentId && (
-          <p className="text-gray-500">Carregando aluno…</p>
-        )}
+      {/* O aluno selecionado abre em modal: é exatamente o que antes aparecia
+          abaixo na página (calendário, progresso, report e notas/AI Tutor). */}
+      {studentId && (
+        <Modal
+          className="max-w-6xl"
+          onClose={() => handleStudentChange("")}
+          title={student?.name ?? "Aluno"}
+          subtitle={
+            student ? `${student.schedule} · ${student.time}` : undefined
+          }
+        >
+          {isLoadingStudent && <p className="text-gray-500">Carregando aluno…</p>}
 
-        {studentError && studentId && (
-          <div className="flex items-center gap-3">
-            <p className="text-red-600">{studentError}</p>
-            <button
-              type="button"
-              onClick={() => setReloadKey((current) => current + 1)}
-              className="rounded bg-gray-900 px-3 py-1 text-sm font-semibold text-white"
-            >
-              Tentar novamente
-            </button>
-          </div>
-        )}
+          {studentError && (
+            <div className="flex items-center gap-3">
+              <p className="text-red-600">{studentError}</p>
+              <Button onClick={() => setReloadKey((current) => current + 1)}>
+                Tentar novamente
+              </Button>
+            </div>
+          )}
 
-        {student && studentId ? (
+          {student && (
           <div className="grid gap-4">
             <div id="calendar" className="scroll-mt-4">
               <Calendar
@@ -492,6 +481,13 @@ export default function TeacherDashboard() {
                 <DashboardProgress progress={progress} />
               </div>
             )}
+
+            <div id="report" className="scroll-mt-4">
+              <Card title="Report">
+                <StudentReport studentId={studentId} />
+              </Card>
+            </div>
+
             <div id="notes" className="relative scroll-mt-4">
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />
@@ -534,23 +530,9 @@ export default function TeacherDashboard() {
               </Card>
             </div>
           </div>
-        ) : null}
-
-        {reportStudent && (
-          <Modal
-            className="max-w-3xl"
-            onClose={() => setReportStudent(null)}
-            title={`Report — ${reportStudent.name}`}
-            subtitle={
-              reportStudent.schedule
-                ? `${reportStudent.schedule} · ${reportStudent.time}`
-                : undefined
-            }
-          >
-            <StudentReport studentId={reportStudent.studentId} />
-          </Modal>
-        )}
-      </div>
+          )}
+        </Modal>
+      )}
     </>
   );
 }
