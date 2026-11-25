@@ -38,7 +38,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         title: "Marcel and the Mona Lisa",
         description:
           "A French mouse detective follows the thief who stole the Mona Lisa.",
-        duration: "00:45",
+        duration: "01:10",
       },
       {
         slug: "marcel-and-the-white-star",
