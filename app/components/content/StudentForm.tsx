@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import {
   ChevronDown,
   Eye,
@@ -13,7 +13,12 @@ import { IconAction } from "@/components/ui/IconAction";
 import { SearchField } from "@/components/ui/SearchField";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
 import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
-import { matchesStudent } from "@/utils/students";
+import {
+  formatBrazilianPhone,
+  matchesStudent,
+  scheduleOptions,
+  timeOptions,
+} from "@/utils/students";
 
 type StudentPlan = "free" | "plus";
 
@@ -55,51 +60,6 @@ type StudentFormState = {
   plan: StudentPlan;
 };
 
-const scheduleOptions = [
-  "Mon",
-  "Tue",
-  "Wed",
-  "Thu",
-  "Fri",
-  "Mon / Wed",
-  "Tue / Fri",
-  "Tue / Thu",
-  "Wed / Fri",
-  "Mon / Wed / Fri",
-];
-
-const timeOptions = [
-  "06:00 - 07:00",
-  "06:30 - 07:30",
-  "07:00 - 08:00",
-  "07:30 - 08:30",
-  "08:00 - 09:00",
-  "08:30 - 09:30",
-  "09:00 - 10:00",
-  "09:30 - 10:30",
-  "10:00 - 11:00",
-  "10:30 - 11:30",
-  "12:00 - 13:00",
-  "12:30 - 13:30",
-  "13:00 - 14:00",
-  "13:30 - 14:30",
-  "14:00 - 15:00",
-  "14:30 - 15:30",
-  "15:00 - 16:00",
-  "15:30 - 16:30",
-  "16:00 - 17:00",
-  "16:30 - 17:30",
-  "17:00 - 18:00",
-  "17:30 - 18:30",
-  "18:00 - 19:00",
-  "18:30 - 19:30",
-  "19:00 - 20:00",
-  "19:30 - 20:30",
-  "20:00 - 21:00",
-  "20:30 - 21:30",
-  "21:30 - 22:30",
-];
-
 const initialForm: StudentFormState = {
   name: "",
   email: "",
@@ -114,20 +74,6 @@ const initialForm: StudentFormState = {
 const teacherName = (teachers: Teacher[], teacherId: number) =>
   teachers.find((teacher) => teacher.id === teacherId)?.displayName ??
   "another teacher";
-
-const formatBrazilianPhone = (value: string) => {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (!digits) return "";
-  if (digits.length < 3) return `(${digits}`;
-
-  const areaCode = digits.slice(0, 2);
-  const number = digits.slice(2);
-  const prefixLength = number.length > 8 ? 5 : 4;
-  const prefix = number.slice(0, prefixLength);
-  const suffix = number.slice(prefixLength);
-
-  return `(${areaCode}) ${prefix}${suffix ? `-${suffix}` : ""}`;
-};
 
 export const StudentForm = ({
   students,
@@ -149,10 +95,6 @@ export const StudentForm = ({
   const [pendingStudentId, setPendingStudentId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [query, setQuery] = useState("");
-  const isEditing = Boolean(selectedStudentId);
-  const selectedStudent = students.find(
-    (student) => student.studentId === selectedStudentId,
-  );
   // O admin não tem cota; o professor vê a própria cota.
   const viewerTeacher = teachers.find(
     (teacher) => teacher.id === viewer.teacherId,
@@ -177,60 +119,6 @@ export const StudentForm = ({
   const unassigningStudent =
     students.find((student) => student.studentId === unassigningStudentId) ??
     null;
-
-  // Só recarrega o formulário quando a seleção muda: a lista se renova a cada
-  // 30s e não pode apagar o que está sendo digitado.
-  const formStudentId = useRef<string | null>(null);
-
-  useEffect(() => {
-    const student = students.find(
-      (currentStudent) => currentStudent.studentId === selectedStudentId,
-    );
-
-    // A seleção pode chegar pela URL antes da lista; espera o aluno existir.
-    if (selectedStudentId && !student) return;
-
-    if (formStudentId.current === selectedStudentId) return;
-
-    formStudentId.current = selectedStudentId;
-    setForm(
-      student
-        ? {
-            name: student.name,
-            email: student.email ?? "",
-            phone: formatBrazilianPhone(student.phone ?? ""),
-            username: student.username,
-            password: "",
-            schedule: student.schedule,
-            time: student.time,
-            plan: student.plan,
-          }
-        : initialForm,
-    );
-  }, [selectedStudentId, students]);
-
-  useEffect(() => {
-    const username = form.username.trim().toLowerCase();
-
-    if (!username) return;
-
-    const timeout = window.setTimeout(() => {
-      const existingStudent = students.find(
-        (student) => student.username.trim().toLowerCase() === username,
-      );
-
-      if (
-        existingStudent &&
-        existingStudent.studentId !== selectedStudentId
-      ) {
-        setMessage("");
-        setError("");
-        onStudentSelect(existingStudent.studentId);
-      }
-    }, 400);
-
-    return () => window.clearTimeout(timeout);
-  }, [form.username, onStudentSelect, selectedStudentId, students]);
 
   const handleStudentSelection = (studentId: string) => {
     setMessage("");
@@ -285,6 +173,7 @@ export const StudentForm = ({
     }
   };
 
+  // A coluna da esquerda só cria alunos: a edição acontece no modal do aluno.
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -294,7 +183,7 @@ export const StudentForm = ({
 
     try {
       const response = await fetch("/api/students", {
-        method: isEditing ? "PUT" : "POST",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -317,11 +206,8 @@ export const StudentForm = ({
       }
 
       await onStudentSaved();
-      setMessage(isEditing ? "Student updated." : "Student created.");
-
-      if (!isEditing) {
-        onStudentSelect(result.student.studentId);
-      }
+      setForm(initialForm);
+      setMessage("Student created.");
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "Could not save the student.",
@@ -426,7 +312,7 @@ export const StudentForm = ({
                   password: event.target.value,
                 }))
               }
-              required={!isEditing}
+              required
               minLength={8}
               autoComplete="off"
               className="w-full min-w-0 rounded-lg border border-gray-300 bg-white px-3 py-2"
@@ -504,50 +390,16 @@ export const StudentForm = ({
           </p>
         )}
 
-        {selectedStudent && (
-          <div
-            role="status"
-            className="flex flex-col items-stretch gap-4 rounded-lg border border-amber-300 bg-amber-50 p-3"
-          >
-            <div>
-              <p className="text-sm font-bold text-amber-950">
-                Existing student found — editing {selectedStudent.name}.
-              </p>
-              <p className="text-xs text-amber-800">
-                Leave the password blank to keep the current password.
-              </p>
-            </div>
-
-            <Button
-              type="button"
-              onClick={() => handleStudentSelection("")}
-              className="shrink-0!"
-            >
-              Cancel editing
-            </Button>
-          </div>
-        )}
-
         <div>
-          {!isEditing && isViewerFull && (
+          {isViewerFull && (
             <p className="mb-2 text-xs font-semibold text-amber-800">
               You reached your limit of {viewerTeacher?.studentLimit} students.
               Ask the admin to raise it.
             </p>
           )}
 
-          <Button
-            type="submit"
-            fullWidth
-            disabled={isSaving || (!isEditing && isViewerFull)}
-          >
-            {isSaving
-              ? isEditing
-                ? "Updating student..."
-                : "Adding student..."
-              : isEditing
-                ? "Update student"
-                : "Add student"}
+          <Button type="submit" fullWidth disabled={isSaving || isViewerFull}>
+            {isSaving ? "Adding student..." : "Add student"}
           </Button>
         </div>
       </div>

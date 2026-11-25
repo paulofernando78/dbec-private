@@ -7,6 +7,7 @@ import { DashboardProgress } from "@/components/content/DashboardProgress";
 import { Calendar } from "@/components/content/Calendar";
 import { PageHeader } from "@/components/content/PageHeader";
 import { StudentForm } from "@/components/content/StudentForm";
+import { StudentEditFields } from "@/components/content/StudentEditFields";
 import { StudentReport } from "@/components/content/StudentReport";
 import { TeacherForm } from "@/components/content/TeacherForm";
 import { UnassignedStudents } from "@/components/content/UnassignedStudents";
@@ -81,6 +82,13 @@ export default function TeacherDashboard() {
   // Última assinatura conhecida da lista; comparada no ciclo curto.
   const rosterVersionRef = useRef<string | null>(null);
   const student = data?.student;
+  // O cadastro completo (username, email, phone) vem do roster; o
+  // /api/dashboard devolve só o necessário para calendário e notas.
+  const rosterStudent =
+    students.find((entry) => entry.studentId === studentId) ?? null;
+  const modalStudentName = rosterStudent?.name ?? student?.name;
+  const modalStudentSchedule = rosterStudent?.schedule ?? student?.schedule;
+  const modalStudentTime = rosterStudent?.time ?? student?.time;
   // Alunos sem professor ficam numa fila de reatribuição; os demais pertencem a
   // alguém (o próprio professor logado ou, no caso do admin, a outro professor).
   const unassignedStudents = students.filter(
@@ -502,9 +510,11 @@ export default function TeacherDashboard() {
         <Modal
           className="max-w-6xl"
           onClose={() => handleStudentChange("")}
-          title={student?.name ?? "Aluno"}
+          title={modalStudentName ?? "Aluno"}
           subtitle={
-            student ? `${student.schedule} · ${student.time}` : undefined
+            modalStudentSchedule
+              ? `${modalStudentSchedule} · ${modalStudentTime}`
+              : undefined
           }
         >
           {isLoadingStudent && <p className="text-gray-500">Carregando aluno…</p>}
@@ -520,11 +530,19 @@ export default function TeacherDashboard() {
 
           {student && (
           <div className="grid gap-4">
+            {rosterStudent && (
+              <StudentEditFields
+                key={rosterStudent.studentId}
+                student={rosterStudent}
+                onSaved={refreshRoster}
+              />
+            )}
+
             <div id="calendar" className="scroll-mt-4">
               <Calendar
                 key={studentId}
                 studentId={studentId}
-                schedule={student.schedule}
+                schedule={modalStudentSchedule ?? student.schedule}
                 statuses={calendar}
                 replacementDates={replacementDates}
                 onStatusChange={saveCalendar}
@@ -562,11 +580,11 @@ export default function TeacherDashboard() {
                         name: teacherDisplayName,
                         role: "teacher",
                       },
-                      ...(student?.name
+                      ...(modalStudentName
                         ? [
                             {
-                              id: studentId ?? student.name,
-                              name: student.name,
+                              id: studentId ?? modalStudentName,
+                              name: modalStudentName,
                               role: "student" as const,
                             },
                           ]
