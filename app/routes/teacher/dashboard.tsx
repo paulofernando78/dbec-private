@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import { DashboardNotes } from "@/components/content/DashboardNotes";
+import { DashboardSkeleton } from "@/components/content/DashboardSkeleton";
 import { AiTutor } from "@/components/content/AiTutor";
 import { DashboardProgress } from "@/components/content/DashboardProgress";
 import { Calendar } from "@/components/content/Calendar";
@@ -15,6 +16,12 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { useNotesRealtime } from "@/hooks/useNotesRealtime";
+import {
+  fetchDashboard,
+  getCachedDashboard,
+  invalidateDashboard,
+  prefetchDashboard,
+} from "@/utils/dashboard-cache";
 import { combineNotes } from "@/utils/shared-notes";
 import type { Teacher } from "@/utils/teachers";
 import {
@@ -65,6 +72,9 @@ export default function TeacherDashboard() {
   const { studentId } = useParams();
   const [students, setStudents] = useState<any[]>([]);
   const [data, setData] = useState<any>(null);
+  // A qual aluno pertence o `data` atual: evita mostrar o aluno anterior
+  // por um frame ao trocar de aluno no modal.
+  const [loadedStudentId, setLoadedStudentId] = useState<string | null>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
   const [teacherDisplayName, setTeacherDisplayName] = useState("Professor");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -274,58 +284,69 @@ export default function TeacherDashboard() {
     }
   }, [studentId]);
 
+  // Aplica um payload do dashboard (cache ou rede) de uma vez, para o modal
+  // nunca renderizar metade dos dados de um aluno e metade de outro.
+  const applyStudentData = (result: any, id: string) => {
+    setData(result);
+    setLoadedStudentId(id);
+    setNotes({
+      teacher: "",
+      student: combineNotes(result.notes ?? {}, {
+        id,
+        name: result.student?.name,
+      }),
+    });
+    setCalendar(
+      Object.fromEntries(
+        (result.calendar ?? []).map((entry: any) => [
+          entry.lessonDate,
+          entry.status,
+        ]),
+      ),
+    );
+    setReplacementDates(
+      Object.fromEntries(
+        (result.calendar ?? [])
+          .filter((entry: any) => entry.replacementDate)
+          .map((entry: any) => [entry.lessonDate, entry.replacementDate]),
+      ),
+    );
+    setIsLoadingStudent(false);
+  };
+
   useEffect(() => {
     let cancelled = false;
 
     if (!studentId) {
       setData(null);
+      setLoadedStudentId(null);
       setIsLoadingStudent(false);
       setStudentError("");
       return;
     }
 
-    setData(null);
-    setIsLoadingStudent(true);
     setStudentError("");
+
+    // Cache do prefetch: pinta o aluno na hora e revalida em seguida.
+    const cached = getCachedDashboard(studentId);
+    const hasCachedData = cached != null;
+    if (cached) {
+      applyStudentData(cached, studentId);
+    } else {
+      setData(null);
+      setLoadedStudentId(null);
+      setIsLoadingStudent(true);
+    }
 
     const loadStudent = async () => {
       let lastError: unknown;
 
       for (let attempt = 0; attempt < 2; attempt += 1) {
         try {
-          const response = await fetch(
-            `/api/dashboard?studentId=${encodeURIComponent(studentId)}`,
-          );
-          if (!response.ok)
-            throw new Error(`Dashboard HTTP ${response.status}`);
-
-          const result = await response.json();
+          const result = await fetchDashboard(studentId);
           if (cancelled) return;
 
-          setData(result);
-          setNotes({
-            teacher: "",
-            student: combineNotes(result.notes ?? {}, {
-              id: studentId,
-              name: result.student?.name,
-            }),
-          });
-          setCalendar(
-            Object.fromEntries(
-              (result.calendar ?? []).map((entry: any) => [
-                entry.lessonDate,
-                entry.status,
-              ]),
-            ),
-          );
-          setReplacementDates(
-            Object.fromEntries(
-              (result.calendar ?? [])
-                .filter((entry: any) => entry.replacementDate)
-                .map((entry: any) => [entry.lessonDate, entry.replacementDate]),
-            ),
-          );
-          setIsLoadingStudent(false);
+          applyStudentData(result, studentId);
           return;
         } catch (error) {
           lastError = error;
@@ -334,6 +355,7 @@ export default function TeacherDashboard() {
             const localData = getLocalStudent(studentId);
             if (localData && !cancelled) {
               setData(localData);
+              setLoadedStudentId(studentId);
               setNotes({
                 teacher: "",
                 student: combineNotes(localData.notes, {
@@ -370,7 +392,10 @@ export default function TeacherDashboard() {
       if (!cancelled) {
         console.error(lastError);
         setIsLoadingStudent(false);
-        setStudentError("Não foi possível carregar o aluno.");
+        // Se já havia cache na tela, mantém o conteúdo em vez de trocar por erro.
+        if (!hasCachedData) {
+          setStudentError("Não foi possível carregar o aluno.");
+        }
       }
     };
 
@@ -391,6 +416,9 @@ export default function TeacherDashboard() {
         content: notes.student,
         shared: true,
       }),
+    }).then((response) => {
+      if (response.ok && studentId) invalidateDashboard(studentId);
+      return response;
     });
 
   const persistCalendarEntry = (
@@ -414,6 +442,7 @@ export default function TeacherDashboard() {
           }),
         });
         if (!response.ok) throw new Error(`Calendar HTTP ${response.status}`);
+        invalidateDashboard(studentId);
       })
       .catch((error) => console.error("Calendar save failed", error));
 
@@ -496,6 +525,7 @@ export default function TeacherDashboard() {
               viewer={{ isAdmin, teacherId: viewerId }}
               selectedStudentId={studentId ?? ""}
               onStudentSelect={handleStudentChange}
+              onStudentPreview={prefetchDashboard}
               onStudentSaved={refreshRoster}
               onStudentAssign={assignStudent}
             />
@@ -508,7 +538,7 @@ export default function TeacherDashboard() {
           abaixo na página (calendário, progresso, report e notas/AI Tutor). */}
       {studentId && (
         <Modal
-          className="max-w-6xl"
+          className="max-w-6xl h-[85vh]"
           onClose={() => handleStudentChange("")}
           title={modalStudentName ?? "Aluno"}
           subtitle={
@@ -517,94 +547,90 @@ export default function TeacherDashboard() {
               : undefined
           }
         >
-          {isLoadingStudent && <p className="text-gray-500">Carregando aluno…</p>}
-
-          {studentError && (
+          {studentError ? (
             <div className="flex items-center gap-3">
               <p className="text-red-600">{studentError}</p>
               <Button onClick={() => setReloadKey((current) => current + 1)}>
                 Tentar novamente
               </Button>
             </div>
-          )}
+          ) : student && !isLoadingStudent && loadedStudentId === studentId ? (
+            <div className="grid gap-4">
+              {rosterStudent && (
+                <StudentEditFields
+                  key={rosterStudent.studentId}
+                  student={rosterStudent}
+                  onSaved={refreshRoster}
+                />
+              )}
 
-          {student && (
-          <div className="grid gap-4">
-            {rosterStudent && (
-              <StudentEditFields
-                key={rosterStudent.studentId}
-                student={rosterStudent}
-                onSaved={refreshRoster}
-              />
-            )}
-
-            <div id="calendar" className="scroll-mt-4">
-              <Calendar
-                key={studentId}
-                studentId={studentId}
-                schedule={modalStudentSchedule ?? student.schedule}
-                statuses={calendar}
-                replacementDates={replacementDates}
-                onStatusChange={saveCalendar}
-                onReplacementDateChange={saveReplacementDate}
-              />
-            </div>
-
-            {progress && (
-              <div id="progress" className="scroll-mt-4">
-                <DashboardProgress progress={progress} />
+              <div id="calendar" className="scroll-mt-4">
+                <Calendar
+                  key={studentId}
+                  studentId={studentId}
+                  schedule={modalStudentSchedule ?? student.schedule}
+                  statuses={calendar}
+                  replacementDates={replacementDates}
+                  onStatusChange={saveCalendar}
+                  onReplacementDateChange={saveReplacementDate}
+                />
               </div>
-            )}
 
-            <div id="report" className="scroll-mt-4">
-              <Card title="Report" className="p-0!">
-                <StudentReport studentId={studentId} />
-              </Card>
-            </div>
+              {progress && (
+                <div id="progress" className="scroll-mt-4">
+                  <DashboardProgress progress={progress} />
+                </div>
+              )}
 
-            <div id="notes" className="relative scroll-mt-4">
-              <span id="teacher-notes" className="absolute top-0" />
-              <span id="student-notes" className="absolute top-0" />
-              <Card title="Notes" className="p-0!">
-                <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
-                  <DashboardNotes
-                    value={notes.student}
-                    author={{
-                      id: "teacher",
-                      name: teacherDisplayName,
-                      role: "teacher",
-                    }}
-                    participants={[
-                      {
+              <div id="report" className="scroll-mt-4">
+                <Card title="Report" className="p-0!">
+                  <StudentReport studentId={studentId} />
+                </Card>
+              </div>
+
+              <div id="notes" className="relative scroll-mt-4">
+                <span id="teacher-notes" className="absolute top-0" />
+                <span id="student-notes" className="absolute top-0" />
+                <Card title="Notes" className="p-0!">
+                  <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
+                    <DashboardNotes
+                      value={notes.student}
+                      author={{
                         id: "teacher",
                         name: teacherDisplayName,
                         role: "teacher",
-                      },
-                      ...(modalStudentName
-                        ? [
-                            {
-                              id: studentId ?? modalStudentName,
-                              name: modalStudentName,
-                              role: "student" as const,
-                            },
-                          ]
-                        : []),
-                    ]}
-                    onChange={(value) => {
-                      setNotes((current) => ({ ...current, student: value }));
-                      sendNote("student", value, true);
-                    }}
-                    onSave={saveSharedNote}
-                  />
-                  <AiTutor
-                    className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]"
-                    fill
-                  />
-                </div>
-              </Card>
+                      }}
+                      participants={[
+                        {
+                          id: "teacher",
+                          name: teacherDisplayName,
+                          role: "teacher",
+                        },
+                        ...(modalStudentName
+                          ? [
+                              {
+                                id: studentId ?? modalStudentName,
+                                name: modalStudentName,
+                                role: "student" as const,
+                              },
+                            ]
+                          : []),
+                      ]}
+                      onChange={(value) => {
+                        setNotes((current) => ({ ...current, student: value }));
+                        sendNote("student", value, true);
+                      }}
+                      onSave={saveSharedNote}
+                    />
+                    <AiTutor
+                      className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]"
+                      fill
+                    />
+                  </div>
+                </Card>
+              </div>
             </div>
-          </div>
-          )}
+          ) : null}
         </Modal>
       )}
     </>

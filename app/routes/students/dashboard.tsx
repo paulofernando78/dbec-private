@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import { DashboardNotes } from "@/components/content/DashboardNotes";
+import { DashboardSkeleton } from "@/components/content/DashboardSkeleton";
 import { AiTutor } from "@/components/content/AiTutor";
 import { Calendar } from "@/components/content/Calendar";
 import { PageHeader } from "@/components/content/PageHeader";
@@ -139,7 +140,20 @@ export default function Dashboard() {
 
   const student = data?.student;
   if (error) return <p className="font-semibold text-red-600">{error}</p>;
-  if (!student) return <p>Loading dashboard…</p>;
+  if (!student) {
+    return (
+      <>
+        <PageHeader
+          eyebrow={formattedDate}
+          title={greeting}
+          variant="dashboard"
+        />
+        <div className="grid gap-4">
+          <DashboardSkeleton />
+        </div>
+      </>
+    );
+  }
 
   const firstName = student.name.split(" ")[0];
 

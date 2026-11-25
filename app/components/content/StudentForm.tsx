@@ -28,6 +28,8 @@ type StudentFormProps = {
   viewer: { isAdmin: boolean; teacherId?: number };
   selectedStudentId: string;
   onStudentSelect: (studentId: string) => void;
+  /** Aquece o cache do aluno ao passar o mouse/foco na lista. */
+  onStudentPreview?: (studentId: string) => void;
   onStudentSaved: () => void | Promise<void>;
   /** teacherId null devolve o aluno para a fila "sem professor". */
   onStudentAssign: (
@@ -81,6 +83,7 @@ export const StudentForm = ({
   viewer,
   selectedStudentId,
   onStudentSelect,
+  onStudentPreview,
   onStudentSaved,
   onStudentAssign,
 }: StudentFormProps) => {
@@ -123,6 +126,7 @@ export const StudentForm = ({
   const handleStudentSelection = (studentId: string) => {
     setMessage("");
     setError("");
+    onStudentPreview?.(studentId);
     onStudentSelect(studentId);
   };
 
@@ -442,7 +446,12 @@ export const StudentForm = ({
               : undefined;
 
             return (
-              <div key={student.studentId} className="min-w-0">
+              <div
+                key={student.studentId}
+                className="min-w-0"
+                onMouseEnter={() => onStudentPreview?.(student.studentId)}
+                onFocus={() => onStudentPreview?.(student.studentId)}
+              >
                 <div className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 px-2 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
                   {/* O nome não é clicável: só o olho abre o aluno. O hover
                       cinza continua na linha inteira. */}
