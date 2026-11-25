@@ -338,11 +338,9 @@ export const TeacherForm = ({
                     </div>
                   ) : (
                     <>
-                      <button
-                        type="button"
-                        onClick={() => openTeacher(teacher)}
-                        className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                      >
+                      {/* O nome não é clicável: só o olho abre o modal. O hover
+                          cinza continua na linha inteira. */}
+                      <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2">
                         <TeacherAvatar
                           background={
                             isInactive
@@ -370,7 +368,7 @@ export const TeacherForm = ({
                             {canAcceptStudents(teacher) ? "" : " · full"}
                           </span>
                         </span>
-                      </button>
+                      </div>
 
                       <div className="flex shrink-0 items-center gap-1">
                         <IconAction
@@ -429,6 +427,7 @@ export const TeacherForm = ({
             </>
           }
           confirmLabel="Remove teacher"
+          confirmationText={deletingTeacher.username}
           isPending={pendingTeacherId === deletingTeacher.id}
           error={error}
           onConfirm={() => void handleDelete(deletingTeacher)}

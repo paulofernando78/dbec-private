@@ -592,11 +592,9 @@ export const StudentForm = ({
             return (
               <div key={student.studentId} className="min-w-0">
                 <div className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 px-2 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
-                  <button
-                    type="button"
-                    onClick={() => handleStudentSelection(student.studentId)}
-                    className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  >
+                  {/* O nome não é clicável: só o olho abre o aluno. O hover
+                      cinza continua na linha inteira. */}
+                  <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2">
                     <span
                       className="flex size-10 shrink-0 items-center justify-center rounded-full"
                       style={{
@@ -616,7 +614,7 @@ export const StudentForm = ({
                         {owner ? ` · ${owner.displayName}` : ""}
                       </span>
                     </span>
-                  </button>
+                  </div>
 
                   <div className="flex shrink-0 items-center gap-1">
                     <IconAction
@@ -717,6 +715,7 @@ export const StudentForm = ({
           title={`Delete ${deletingStudent.name}?`}
           description="The student and their saved data will be deleted."
           confirmLabel="Delete student"
+          confirmationText={deletingStudent.username}
           isPending={isDeleting}
           error={error}
           onConfirm={() => void handleDeleteStudent(deletingStudent.studentId)}

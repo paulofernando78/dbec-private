@@ -98,11 +98,12 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] **Ações da linha do aluno**: `[👁 report] [Transfer to… ▾] [⊖ remove] [🗑 delete]` — o “Remove” virou só ícone, o transfer continua dropdown e a lixeira segue só para admin; todos com tooltip (`title`) e `aria-label`. As linhas ficam em uma única altura (56px) em qualquer largura, medido no navegador
 - [x] **O olho do aluno abre o aluno inteiro em modal** — não só o Report: Calendário, Progress, Report e Notes/AI Tutor, exatamente o que antes aparecia abaixo na página. A página ficou só com os dois cards (Teacher Registration + Student Registration)
   - o modal é dirigido pelo aluno **na URL** (`/teacher/dashboard/<aluno>`): dá para favoritar, dar F5 e usar o botão voltar. Fechar (Esc, X ou clique no fundo) volta para `/teacher/dashboard` e limpa a seleção
-  - clicar no **nome** do aluno e clicar no **olho** fazem a mesma coisa (selecionar → abrir o modal)
+  - só o **olho** abre o aluno (o nome/avatar não é clicável; o hover cinza continua na linha inteira)
   - o índice da página (TableOfContents) saiu: as seções ficam na ordem Calendário → Progress → Report → Notes dentro do modal, que rola
   - o Report voltou a ser um `Card` como o Calendar e o Notes, agora dentro do modal (o modal de Report separado foi removido)
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
 - [x] **Confirmações em modal** (`components/ui/ConfirmDialog.tsx`): remover professor, excluir aluno e desvincular aluno deixaram de abrir uma caixa embaixo da linha (que empurrava a lista) e agora abrem um modal com a mesma mensagem e dois botões só de ícone — **check verde** confirma, **X vermelho** cancela (spinner verde enquanto a ação roda); erro da ação aparece dentro do próprio modal
+  - no **remove teacher** e no **delete student**, o check só habilita depois de digitar o username exato (ex.: `Type “denise_gomes” to confirm`, padrão de exclusão de repositório do GitHub); Enter também confirma quando o texto bate. O desvincular (que não apaga nada) continua só com check/X
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
 - [x] **“Add student” / “Add teacher” agora esticam** (correção pós-deploy): o `Button` compartilhado aplica `!w-fit` (importante) em botões com texto, então o `className="w-full"` que existia ali **nunca teve efeito** — o botão sempre ficou do tamanho do texto. Adicionado o prop opcional **`fullWidth`** ao `Button` (troca `!w-fit` por `!w-full`, sem declarações conflitantes) e usado nos dois formulários. Medido: botão 448px = container 448px, nos dois
 - [x] **O painel estica, não corta e não deforma** (correção pós-deploy):
@@ -120,7 +121,8 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
 - [x] **Linhas à prova de largura** (correção pós-deploy, superada pela correção acima): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-64`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,2fr)_minmax(0,3fr)`. Medido: linhas de 56px (uma linha) a 1400px e de 104px (ações embaixo) a 1000px/700px, sempre **sem texto truncado**
 - [x] **Ações da linha do professor como ícones** (`Eye` / `UserX`-`UserCheck` / `Trash2`), cada uma com `title` (tooltip) e `aria-label`; o estado do professor já aparece escrito na linha (`· inactive`) e o ícone muda entre desativar e ativar
-- [x] **O olho (e o nome) do professor abrem um modal de edição**: no topo os mesmos campos do cadastro (Name, Username, Password com “leave blank to keep”, Student limit) e o botão **Update teacher**; abaixo a lista de alunos (somente leitura). Fecha com Esc, clique no fundo ou no X
+- [x] **O olho do professor abre um modal de edição**: no topo os mesmos campos do cadastro (Name, Username, Password com “leave blank to keep”, Student limit) e o botão **Update teacher**; abaixo a lista de alunos (somente leitura). Fecha com Esc, clique no fundo ou no X
+  - o **nome/avatar não é clicável** (só o olho abre o modal); o hover cinza continua na linha inteira
   - a coluna da esquerda passou a **só criar** professores (“Add teacher”); a edição vive no modal
   - o professor do modal é buscado **por id na lista** (não é uma cópia), então o modal acompanha o roster e some sozinho se o professor for removido
   - a edição é montada com `key={teacher.id}`: o refresh do roster não apaga o que está sendo digitado
