@@ -3,9 +3,11 @@ import { Eye, Trash2, UserCheck, UserRound, Users, UserX } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
+import { FeedbackModal } from "@/components/ui/FeedbackModal";
 import { IconAction } from "@/components/ui/IconAction";
 import { Modal } from "@/components/ui/Modal";
 import { SearchField } from "@/components/ui/SearchField";
+import { useElementHeight } from "@/hooks/useElementHeight";
 import { avatarColors } from "@/utils/avatar-theme";
 import {
   canAcceptStudents,
@@ -70,6 +72,10 @@ export const TeacherForm = ({
   const [deletingTeacherId, setDeletingTeacherId] = useState<number | null>(null);
   const [viewingTeacherId, setViewingTeacherId] = useState<number | null>(null);
   const [query, setQuery] = useState("");
+
+  // No mobile as colunas empilham: a lista usa a altura do formulário para não
+  // ficar mais alta do que ficaria no layout lado a lado.
+  const [formRef, formHeight] = useElementHeight<HTMLFormElement>();
 
   const normalizedQuery = query.trim().toLowerCase();
   const visibleTeachers = normalizedQuery
@@ -175,10 +181,11 @@ export const TeacherForm = ({
     });
 
   return (
-    <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1">
+    <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-stretch gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1">
       {/* O form fecha antes da lista: o modal tem um form próprio e forms
           aninhados são inválidos. */}
       <form
+        ref={formRef}
         onSubmit={handleCreate}
         autoComplete="off"
         className="grid content-start gap-4 rounded-xl bg-(--background) p-4"
@@ -258,18 +265,6 @@ export const TeacherForm = ({
           />
         </label>
 
-        {error && (
-          <p role="alert" className="text-sm font-semibold text-red-600">
-            {error}
-          </p>
-        )}
-
-        {message && (
-          <p role="status" className="text-sm font-semibold text-green-700">
-            {message}
-          </p>
-        )}
-
         <div>
           <Button
             type="submit"
@@ -281,8 +276,15 @@ export const TeacherForm = ({
         </div>
       </form>
 
-      <div className="min-w-0 rounded-xl bg-(--background) p-4">
-        <div className="min-w-0 space-y-4">
+      {/* A coluna da direita acompanha a altura da esquerda: em telas largas ela
+          é posicionada sobre a linha do grid (que tem a altura do formulário) e,
+          empilhada no mobile, recebe essa mesma altura. Assim a lista rola
+          dentro dela e nunca estica o card. */}
+      <div
+        className="relative min-w-0 max-[710px]:static min-[921px]:max-[1130px]:static"
+        style={formHeight ? { height: formHeight } : undefined}
+      >
+        <div className="absolute inset-0 flex min-h-0 min-w-0 flex-col gap-4 overflow-hidden rounded-xl bg-(--background) p-4 max-[710px]:static max-[710px]:h-full min-[921px]:max-[1130px]:static min-[921px]:max-[1130px]:h-full">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="block text-sm font-semibold">Teachers</span>
           </div>
@@ -295,7 +297,7 @@ export const TeacherForm = ({
           />
 
           {/* A lista rola dentro do card: não deixa o formulário esticar junto. */}
-          <div className="grid max-h-[70vh] gap-4 overflow-y-auto pr-1">
+          <div className="grid min-h-0 flex-1 content-start gap-4 overflow-y-auto pr-1">
           {teachers.length === 0 && (
             <p className="text-sm text-gray-500">
               No teachers yet. Create one so students can be assigned to someone
@@ -432,6 +434,20 @@ export const TeacherForm = ({
           error={error}
           onConfirm={() => void handleDelete(deletingTeacher)}
           onCancel={() => setDeletingTeacherId(null)}
+        />
+      )}
+
+      {/* Avisos em modal: nada aparece embaixo do formulário, então o layout
+          não se desloca ao criar, ativar ou remover um professor. O erro de
+          exclusão continua dentro do ConfirmDialog. */}
+      {!deletingTeacher && (error || message) && (
+        <FeedbackModal
+          tone={error ? "error" : "success"}
+          message={error || message}
+          onClose={() => {
+            setError("");
+            setMessage("");
+          }}
         />
       )}
 
@@ -655,21 +671,20 @@ const TeacherEditFields = ({
         </p>
       )}
 
-      {error && (
-        <p role="alert" className="text-sm font-semibold text-red-600">
-          {error}
-        </p>
-      )}
-
-      {message && (
-        <p role="status" className="text-sm font-semibold text-green-700">
-          {message}
-        </p>
-      )}
-
       <Button type="submit" fullWidth disabled={isSaving}>
         Update teacher
       </Button>
+
+      {(error || message) && (
+        <FeedbackModal
+          tone={error ? "error" : "success"}
+          message={error || message}
+          onClose={() => {
+            setError("");
+            setMessage("");
+          }}
+        />
+      )}
     </form>
   );
 };

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { FeedbackModal } from "@/components/ui/FeedbackModal";
 import {
   formatBrazilianPhone,
   scheduleOptions,
@@ -215,21 +216,20 @@ export const StudentEditFields = ({
         </label>
       </div>
 
-      {error && (
-        <p role="alert" className="text-sm font-semibold text-red-600">
-          {error}
-        </p>
-      )}
-
-      {message && (
-        <p role="status" className="text-sm font-semibold text-green-700">
-          {message}
-        </p>
-      )}
-
       <Button type="submit" fullWidth disabled={isSaving}>
         Update student
       </Button>
+
+      {(error || message) && (
+        <FeedbackModal
+          tone={error ? "error" : "success"}
+          message={error || message}
+          onClose={() => {
+            setError("");
+            setMessage("");
+          }}
+        />
+      )}
     </form>
   );
 };

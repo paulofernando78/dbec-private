@@ -9,8 +9,10 @@ import {
 
 import { Button } from "@/components/ui/Button";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
+import { FeedbackModal } from "@/components/ui/FeedbackModal";
 import { IconAction } from "@/components/ui/IconAction";
 import { SearchField } from "@/components/ui/SearchField";
+import { useElementHeight } from "@/hooks/useElementHeight";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
 import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
 import {
@@ -98,6 +100,9 @@ export const StudentForm = ({
   const [pendingStudentId, setPendingStudentId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [query, setQuery] = useState("");
+  // No mobile as colunas empilham: a lista usa a altura do formulário para não
+  // ficar mais alta do que ficaria no layout lado a lado.
+  const [formRef, formHeight] = useElementHeight<HTMLDivElement>();
   // O admin não tem cota; o professor vê a própria cota.
   const viewerTeacher = teachers.find(
     (teacher) => teacher.id === viewer.teacherId,
@@ -225,9 +230,9 @@ export const StudentForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
+      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-stretch gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
     >
-    <div className="grid content-start gap-4 rounded-xl bg-(--background) p-4">
+    <div ref={formRef} className="grid content-start gap-4 rounded-xl bg-(--background) p-4">
         {/* Name */}
         <label className="grid min-w-0 gap-1">
           <span className="text-sm font-semibold">Name</span>
@@ -382,18 +387,6 @@ export const StudentForm = ({
           </label>
         </div>
 
-        {error && (
-          <p role="alert" className="text-sm font-semibold text-red-600">
-            {error}
-          </p>
-        )}
-
-        {message && (
-          <p role="status" className="text-sm font-semibold text-green-700">
-            {message}
-          </p>
-        )}
-
         <div>
           {isViewerFull && (
             <p className="mb-2 text-xs font-semibold text-amber-800">
@@ -408,8 +401,15 @@ export const StudentForm = ({
         </div>
       </div>
 
-      <div className="min-w-0 rounded-xl bg-(--background) p-4">
-        <div className="min-w-0 space-y-4">
+      {/* A coluna da direita acompanha a altura da esquerda: em telas largas ela
+          é posicionada sobre a linha do grid (que tem a altura do formulário) e,
+          empilhada no mobile, recebe essa mesma altura. Assim a lista rola
+          dentro dela e nunca estica o card. */}
+      <div
+        className="relative min-w-0 max-[710px]:static min-[921px]:max-[1130px]:static"
+        style={formHeight ? { height: formHeight } : undefined}
+      >
+        <div className="absolute inset-0 flex min-h-0 min-w-0 flex-col gap-4 overflow-hidden rounded-xl bg-(--background) p-4 max-[710px]:static max-[710px]:h-full min-[921px]:max-[1130px]:static min-[921px]:max-[1130px]:h-full">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="block text-sm font-semibold">Students</span>
             <span className="text-xs font-semibold text-gray-500">
@@ -425,7 +425,7 @@ export const StudentForm = ({
           />
 
           {/* A lista rola dentro do card: não deixa o formulário esticar junto. */}
-          <div className="grid max-h-[70vh] gap-4 overflow-y-auto pr-1">
+          <div className="grid min-h-0 flex-1 content-start gap-4 overflow-y-auto pr-1">
           {students.length > 0 && visibleStudents.length === 0 && (
             <p className="text-sm text-gray-500">
               No students match “{query.trim()}”.
@@ -581,6 +581,19 @@ export const StudentForm = ({
           error={error}
           onConfirm={() => void handleDeleteStudent(deletingStudent.studentId)}
           onCancel={() => setDeletingStudentId(null)}
+        />
+      )}
+      {/* Avisos em modal: nada aparece embaixo do formulário, então o layout
+          não se desloca ao criar, mover ou excluir um aluno. O erro das
+          confirmações continua dentro do ConfirmDialog. */}
+      {!unassigningStudent && !deletingStudent && (error || message) && (
+        <FeedbackModal
+          tone={error ? "error" : "success"}
+          message={error || message}
+          onClose={() => {
+            setError("");
+            setMessage("");
+          }}
         />
       )}
     </form>
