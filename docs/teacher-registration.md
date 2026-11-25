@@ -119,7 +119,11 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Busca no grupo “Sem professor” a partir de 11 alunos
 - [x] **Linhas à prova de largura** (correção pós-deploy, superada pela correção acima): as ações nunca esmagam o nome — a linha usa `flex-wrap`, o nome tem `min-w-64`, o select de transferência tem largura fixa (`w-36`) e as colunas do grid são `minmax(0,2fr)_minmax(0,3fr)`. Medido: linhas de 56px (uma linha) a 1400px e de 104px (ações embaixo) a 1000px/700px, sempre **sem texto truncado**
 - [x] **Ações da linha do professor como ícones** (`Eye` / `UserX`-`UserCheck` / `Trash2`), cada uma com `title` (tooltip) e `aria-label`; o estado do professor já aparece escrito na linha (`· inactive`) e o ícone muda entre desativar e ativar
-- [x] **Olho abre um modal** com os alunos daquele professor (somente leitura, fecha com Esc, clique no fundo ou no X). A sua própria linha (admin) tem só o olho — “My students”, sem editar/remover
+- [x] **O olho (e o nome) do professor abrem um modal de edição**: no topo os mesmos campos do cadastro (Name, Username, Password com “leave blank to keep”, Student limit) e o botão **Update teacher**; abaixo a lista de alunos (somente leitura). Fecha com Esc, clique no fundo ou no X
+  - a coluna da esquerda passou a **só criar** professores (“Add teacher”); a edição vive no modal
+  - o professor do modal é buscado **por id na lista** (não é uma cópia), então o modal acompanha o roster e some sozinho se o professor for removido
+  - a edição é montada com `key={teacher.id}`: o refresh do roster não apaga o que está sendo digitado
+  - a linha do admin continua só com o olho e o modal “My students”, sem campos editáveis (o endpoint recusa editar admin)
 
 ## Fase 4 — Verificação e entrega
 

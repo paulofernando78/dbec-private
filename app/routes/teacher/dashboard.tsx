@@ -69,7 +69,6 @@ export default function TeacherDashboard() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [viewerId, setViewerId] = useState<number | undefined>(undefined);
   const [teachers, setTeachers] = useState<Teacher[]>([]);
-  const [selectedTeacherId, setSelectedTeacherId] = useState<number | null>(null);
   const [calendar, setCalendar] = useState<Record<string, string>>({});
   const [replacementDates, setReplacementDates] = useState<
     Record<string, string>
@@ -466,8 +465,6 @@ export default function TeacherDashboard() {
               <TeacherForm
                 teachers={teachers}
                 students={students}
-                selectedTeacherId={selectedTeacherId}
-                onTeacherSelect={setSelectedTeacherId}
                 onTeacherSaved={refreshRoster}
               />
             </Card>
