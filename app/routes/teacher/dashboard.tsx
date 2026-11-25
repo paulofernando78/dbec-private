@@ -22,6 +22,7 @@ import {
 } from "@/utils/course-progress";
 
 import { students as developmentStudents } from "@/data/students";
+import { ROSTER_POLL_MS } from "../../../shared/roster-version.mjs";
 import { SELECTED_STUDENT_STORAGE_KEY } from "@/utils/session-storage";
 
 const localStudents = Object.entries(developmentStudents).map(
@@ -78,6 +79,8 @@ export default function TeacherDashboard() {
   const [studentError, setStudentError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
   const [progress, setProgress] = useState<CourseProgressSummary | null>(null);
+  // Última assinatura conhecida da lista; comparada no ciclo curto.
+  const rosterVersionRef = useRef<string | null>(null);
   const student = data?.student;
   // Alunos sem professor ficam numa fila de reatribuição; os demais pertencem a
   // alguém (o próprio professor logado ou, no caso do admin, a outro professor).
@@ -156,8 +159,31 @@ export default function TeacherDashboard() {
     }
   };
 
-  const refreshRoster = () =>
-    Promise.all([loadStudents(), loadTeachers()]).then(() => undefined);
+  // Assinatura da lista: consultada a cada poucos segundos, só baixa a lista
+  // completa quando muda. É o que faz um aluno criado por outro professor
+  // aparecer em segundos sem trafegar a lista inteira a cada ciclo.
+  const loadRosterVersion = async () => {
+    try {
+      const response = await fetch("/api/roster-version");
+
+      if (!response.ok) return null;
+
+      const result = (await response.json()) as { version?: string };
+      return typeof result.version === "string" ? result.version : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const refreshRoster = async () => {
+    const [students, teachers, version] = await Promise.all([
+      loadStudents(),
+      loadTeachers(),
+      loadRosterVersion(),
+    ]);
+
+    if (version) rosterVersionRef.current = version;
+  };
 
   // Atribuir, transferir ou desvincular é um único PATCH em users.teacher_id.
   const requestAssignment = async (
@@ -196,10 +222,43 @@ export default function TeacherDashboard() {
 
   useEffect(() => {
     void refreshRoster();
-    const interval = window.setInterval(() => {
+
+    // A lista se atualiza sozinha para pegar o que outra pessoa fez (outro
+    // professor cadastrou um aluno, o admin atribuiu, presença online):
+    //
+    // - ciclo curto: consulta só a assinatura; se mudou, baixa a lista completa
+    //   (é isto que faz um aluno novo aparecer em segundos);
+    // - ciclo longo: baixa a lista de qualquer forma, para manter a presença
+    //   (online/offline) e servir de rede de segurança.
+    const versionInterval = window.setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+
+      void loadRosterVersion().then((version) => {
+        if (!version || version === rosterVersionRef.current) return;
+
+        rosterVersionRef.current = version;
+        void refreshRoster();
+      });
+    }, ROSTER_POLL_MS);
+
+    const fullInterval = window.setInterval(() => {
       if (document.visibilityState === "visible") void refreshRoster();
     }, 30_000);
-    return () => window.clearInterval(interval);
+
+    // Ao voltar para a aba/janela, busca na hora em vez de esperar o ciclo.
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") void refreshRoster();
+    };
+
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+    window.addEventListener("focus", refreshWhenVisible);
+
+    return () => {
+      window.clearInterval(versionInterval);
+      window.clearInterval(fullInterval);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+      window.removeEventListener("focus", refreshWhenVisible);
+    };
   }, []);
 
   useEffect(() => {

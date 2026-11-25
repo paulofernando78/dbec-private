@@ -8,6 +8,7 @@ import { defineConfig, type Plugin } from "vite";
 import { synthesizeDictionaryTts } from "./functions/_dictionary-tts.mjs";
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
 import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
+import { rosterSignature } from "./shared/roster-version.mjs";
 
 import { students as developmentStudents } from "./app/data/students";
 
@@ -1204,6 +1205,41 @@ const localAuth = (): Plugin => ({
         // O dev não registra visitas nem verificações de exercícios.
         response.statusCode = 200;
         response.end(JSON.stringify({ visits: [], attempts: [] }));
+      },
+    );
+
+    server.middlewares.use(
+      "/api/roster-version",
+      (request, response, next) => {
+        if (request.method !== "GET") return next();
+
+        response.setHeader("Content-Type", "application/json");
+        response.setHeader("Cache-Control", "no-store");
+
+        const viewer = localSession;
+
+        if (!viewer || viewer.role !== "teacher") {
+          response.statusCode = 401;
+          response.end(JSON.stringify({ error: "Não autorizado." }));
+          return;
+        }
+
+        const students = [...localStudents.values()]
+          .filter((student) => ownsLocalStudent(viewer, student))
+          .map(
+            (student) =>
+              `${student.studentId}:${student.teacherId ?? "-"}:${student.name}:${student.schedule ?? "-"}:${student.time ?? "-"}`,
+          );
+
+        const teachers = [...localTeachersById.values()].map(
+          (teacher) =>
+            `${teacher.id}:${teacher.displayName}:${teacher.active}:${teacher.studentLimit}`,
+        );
+
+        response.statusCode = 200;
+        response.end(
+          JSON.stringify({ version: rosterSignature(students, teachers) }),
+        );
       },
     );
 

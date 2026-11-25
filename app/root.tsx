@@ -10,6 +10,7 @@ import {
   useBlocker,
   useLocation,
   useNavigate,
+  useNavigation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -24,7 +25,16 @@ import { Header } from "@/components/layout/Header";
 import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button/Button";
-import { House, Info, LogIn, LogOut, Menu, MoonStar, Sun } from "lucide-react";
+import {
+  House,
+  Info,
+  LoaderCircle,
+  LogIn,
+  LogOut,
+  Menu,
+  MoonStar,
+  Sun,
+} from "lucide-react";
 import { BrandLogo } from "./components/layout/BrandLogo";
 import { Card } from "./components/ui/Card";
 import { Contact } from "./components/layout/Contact";
@@ -81,6 +91,11 @@ function AppContent() {
   const showCoffee = !session;
   const showTopBar = location.pathname !== "/" || showCoffee;
 
+  // Spinner central enquanto a próxima página carrega. O atraso evita o
+  // piscar em navegações rápidas.
+  const navigation = useNavigation();
+  const [isPageLoading, setIsPageLoading] = useState(false);
+
   const isSessionExpired = useSessionExpired();
   const expiredNavigation = useBlocker(
     ({ currentLocation, nextLocation }) =>
@@ -109,6 +124,16 @@ function AppContent() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
+
+  useEffect(() => {
+    if (navigation.state === "idle") {
+      setIsPageLoading(false);
+      return;
+    }
+
+    const timeout = window.setTimeout(() => setIsPageLoading(true), 150);
+    return () => window.clearTimeout(timeout);
+  }, [navigation.state]);
 
   const handleAuthentication = async () => {
     if (session === undefined) return;
@@ -260,6 +285,22 @@ function AppContent() {
         </div>
         {location.pathname !== "/" && <Footer />}
       </div>
+
+      {isPageLoading && (
+        <div
+          className="pointer-events-none fixed inset-0 z-50 grid place-items-center"
+          role="status"
+          aria-live="polite"
+        >
+          <span className="grid size-16 place-items-center rounded-full border border-(--button-border) bg-(--surface) shadow-xl">
+            <LoaderCircle
+              aria-hidden="true"
+              className="size-6 animate-spin text-(--text-color)"
+            />
+          </span>
+          <span className="sr-only">Carregando página…</span>
+        </div>
+      )}
     </div>
   );
 }

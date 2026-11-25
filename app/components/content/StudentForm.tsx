@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ChevronDown,
   Eye,
@@ -173,11 +173,21 @@ export const StudentForm = ({
       })
     : students;
 
+  // Só recarrega o formulário quando a seleção muda: a lista se renova a cada
+  // 30s e não pode apagar o que está sendo digitado.
+  const formStudentId = useRef<string | null>(null);
+
   useEffect(() => {
     const student = students.find(
       (currentStudent) => currentStudent.studentId === selectedStudentId,
     );
 
+    // A seleção pode chegar pela URL antes da lista; espera o aluno existir.
+    if (selectedStudentId && !student) return;
+
+    if (formStudentId.current === selectedStudentId) return;
+
+    formStudentId.current = selectedStudentId;
     setForm(
       student
         ? {
