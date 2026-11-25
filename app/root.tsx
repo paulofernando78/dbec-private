@@ -76,6 +76,10 @@ function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const session = useSession();
   const isAuthenticated = Boolean(session);
+  // O “buy me a coffee” é um convite para quem ainda não entrou (“start free”).
+  // Depois do login ele sai do topo em todas as páginas.
+  const showCoffee = !session;
+  const showTopBar = location.pathname !== "/" || showCoffee;
 
   const isSessionExpired = useSessionExpired();
   const expiredNavigation = useBlocker(
@@ -166,20 +170,26 @@ function AppContent() {
   return (
     <div className={`app ${isWideLayout ? "app--wide" : ""}`}>
       <div className="app-container">
-        <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
-          {location.pathname !== "/" && (
-            <div className="min-w-0 flex-1">
-              <BrandLogo
-                compact
-                layout="responsive"
-                className="pl-0.5 max-w-full translate-y-[0.1rem] dark:invert"
-              />
-            </div>
-          )}
-          <div className="ml-auto shrink-0">
-            <Contact />
-          </div>
-        </Card>
+        {/* A barra superior leva o logotipo fora da página inicial e o
+            “buy me a coffee” enquanto não há sessão. */}
+        {showTopBar && (
+          <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
+            {location.pathname !== "/" && (
+              <div className="min-w-0 flex-1">
+                <BrandLogo
+                  compact
+                  layout="responsive"
+                  className="pl-0.5 max-w-full translate-y-[0.1rem] dark:invert"
+                />
+              </div>
+            )}
+            {showCoffee && (
+              <div className="ml-auto shrink-0">
+                <Contact />
+              </div>
+            )}
+          </Card>
+        )}
         <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
           <div
             className={`flex shrink-0 items-center gap-2 ${isPresentationPage ? "w-22" : "w-10 min-[920px]:w-22"}`}
