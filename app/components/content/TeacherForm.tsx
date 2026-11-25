@@ -175,7 +175,7 @@ export const TeacherForm = ({
     });
 
   return (
-    <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1">
+    <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1">
       {/* O form fecha antes da lista: o modal tem um form próprio e forms
           aninhados são inválidos. */}
       <form

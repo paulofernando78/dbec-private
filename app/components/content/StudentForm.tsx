@@ -225,7 +225,7 @@ export const StudentForm = ({
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
+      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
     >
     <div className="grid content-start gap-4 rounded-xl bg-(--background) p-4">
         {/* Name */}
