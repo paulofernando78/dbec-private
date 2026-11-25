@@ -6,7 +6,7 @@
 
 import { readCookie, verifySession } from "../_auth.js";
 import { isAdmin } from "../_ownership.js";
-import { rosterSignature } from "../shared/roster-version.mjs";
+import { rosterSignature } from "../../shared/roster-version.mjs";
 
 const noStoreHeaders = {
   "Cache-Control": "no-store",
