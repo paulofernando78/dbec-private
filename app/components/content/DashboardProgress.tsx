@@ -57,7 +57,7 @@ export function DashboardProgress({ progress }: { progress: CourseProgressSummar
   ];
 
   return (
-    <Card title="Progress" className="min-w-0">
+    <Card title="Progress" className="min-w-0 p-0!">
       <div className="mb-4 flex flex-col items-center gap-1 rounded-xl bg-(--background) p-4 text-center">
         <Flame aria-hidden="true" className="mb-2 size-7 text-orange-600" />
         <span className="font-bold">Day Streak</span>

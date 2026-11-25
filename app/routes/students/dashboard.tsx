@@ -193,7 +193,7 @@ export default function Dashboard() {
                 }}
                 onSave={saveStudentNote}
               />
-              <AiTutor className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-[32rem]" fill />
+              <AiTutor className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-128" fill />
             </div>
           </Card>
         </div>

@@ -557,7 +557,7 @@ export default function TeacherDashboard() {
             )}
 
             <div id="report" className="scroll-mt-4">
-              <Card title="Report">
+              <Card title="Report" className="p-0!">
                 <StudentReport studentId={studentId} />
               </Card>
             </div>
@@ -565,7 +565,7 @@ export default function TeacherDashboard() {
             <div id="notes" className="relative scroll-mt-4">
               <span id="teacher-notes" className="absolute top-0" />
               <span id="student-notes" className="absolute top-0" />
-              <Card title="Notes">
+              <Card title="Notes" className="p-0!">
                 <div className="grid min-h-0 w-full grid-cols-2 items-stretch gap-4 max-[900px]:grid-cols-1">
                   <DashboardNotes
                     value={notes.student}

@@ -191,7 +191,14 @@ export const Calendar = ({
 
   return (
     <>
-      <Card title="Legend" className="max-[420px]:[contain:inline-size]">
+      {studentId && (
+        <CalendarNotes
+          key={studentId}
+          studentId={studentId}
+          readOnly={readOnly}
+        />
+      )}
+      <Card title="Legend" className="max-[420px]:[contain:inline-size] p-0!">
         <Card className="bg-(--background) max-[420px]:overflow-x-auto">
           <ul
             className="
@@ -239,12 +246,10 @@ export const Calendar = ({
         </Card>
       </Card>
 
-
       <Card
         title="Calendar"
-        className="mt-4 w-full min-w-0 overflow-hidden [contain:inline-size]"
+        className="mt-4 w-full min-w-0 overflow-hidden [contain:inline-size] p-0!"
       >
-        {studentId && <CalendarNotes key={studentId} studentId={studentId} readOnly={readOnly} />}
         {!showAllDates && scheduledWeekdays.size === 0 && (
           <p className="text-sm text-gray-500">
             Selecione os dias no Schedule para exibir as datas das aulas.
@@ -361,17 +366,6 @@ export const Calendar = ({
             })}
           </div>
         </div>
-        {/* {!showAllDates && scheduledWeekdays.size === 0 && (
-          <p className="mt-3 text-sm text-gray-500">Selecione os dias no Schedule para exibir as datas das aulas.</p>
-        )}
-        <div className="mt-4 flex items-center gap-2">
-          <Checkbox
-            checked={showAllDates}
-            onCheckedChange={setShowAllDates}
-            ariaLabel="Mostrar todas as datas"
-          />
-          <span>Mostrar todas as datas</span>
-        </div> */}
       </Card>
     </>
   );
