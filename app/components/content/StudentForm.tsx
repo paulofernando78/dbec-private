@@ -5,10 +5,10 @@ import {
   GraduationCap,
   Trash2,
   UserMinus,
-  X,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { IconAction } from "@/components/ui/IconAction";
 import { SearchField } from "@/components/ui/SearchField";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
@@ -172,6 +172,11 @@ export const StudentForm = ({
         return matchesStudent(student, normalizedQuery, owner?.displayName ?? "");
       })
     : students;
+  const deletingStudent =
+    students.find((student) => student.studentId === deletingStudentId) ?? null;
+  const unassigningStudent =
+    students.find((student) => student.studentId === unassigningStudentId) ??
+    null;
 
   // Só recarrega o formulário quando a seleção muda: a lista se renova a cada
   // 30s e não pode apagar o que está sendo digitado.
@@ -660,9 +665,11 @@ export const StudentForm = ({
                       icon={<UserMinus />}
                       label={`Remove ${student.name} from the list`}
                       disabled={isPending}
-                      onClick={() =>
-                        setUnassigningStudentId(student.studentId)
-                      }
+                      onClick={() => {
+                        setMessage("");
+                        setError("");
+                        setUnassigningStudentId(student.studentId);
+                      }}
                     />
 
                     {viewer.isAdmin && (
@@ -670,60 +677,52 @@ export const StudentForm = ({
                         icon={<Trash2 />}
                         label={`Delete ${student.name}`}
                         disabled={isPending}
-                        onClick={() => setDeletingStudentId(student.studentId)}
+                        onClick={() => {
+                          setMessage("");
+                          setError("");
+                          setDeletingStudentId(student.studentId);
+                        }}
                       />
                     )}
                   </div>
                 </div>
-
-                {unassigningStudentId === student.studentId && (
-                  <div className="ml-2 rounded-lg border border-amber-200 bg-amber-50 p-2 text-xs text-amber-900">
-                    <p>
-                      Remove {student.name} from your list? Their notes,
-                      calendar and progress stay in the course; the student goes
-                      back to “no teacher”.
-                    </p>
-                    <div className="mt-2 flex gap-2">
-                      <Button
-                        disabled={isPending}
-                        icon={<UserMinus />}
-                        onClick={() =>
-                          void handleRosterChange(
-                            student.studentId,
-                            null,
-                            "Student moved to “no teacher”.",
-                          )
-                        }
-                      >
-                        Remove from list
-                      </Button>
-                      <Button
-                        disabled={isPending}
-                        onClick={() => setUnassigningStudentId(null)}
-                        icon={<X />}
-                        ariaLabel="Cancel removal"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {deletingStudentId === student.studentId && (
-                  <div className="ml-2 rounded-lg border border-red-200 bg-red-50 p-2 text-xs text-red-900">
-                    <p>Delete {student.name} and their saved data?</p>
-                    <div className="mt-2 flex gap-2">
-                      <Button disabled={isDeleting} onClick={() => void handleDeleteStudent(student.studentId)} icon={<Trash2 />}>
-                        {isDeleting ? "Deleting..." : "Delete student"}
-                      </Button>
-                      <Button disabled={isDeleting} onClick={() => setDeletingStudentId(null)} icon={<X />} ariaLabel="Cancel deletion" />
-                    </div>
-                  </div>
-                )}
               </div>
             );
           })}
           </div>
         </div>
       </div>
+
+      {unassigningStudent && (
+        <ConfirmDialog
+          title={`Remove ${unassigningStudent.name} from your list?`}
+          description="Their notes, calendar and progress stay in the course; the student goes back to “no teacher”."
+          confirmLabel="Remove from list"
+          isPending={pendingStudentId === unassigningStudent.studentId}
+          tone="warning"
+          error={error}
+          onConfirm={() =>
+            void handleRosterChange(
+              unassigningStudent.studentId,
+              null,
+              "Student moved to “no teacher”.",
+            )
+          }
+          onCancel={() => setUnassigningStudentId(null)}
+        />
+      )}
+
+      {deletingStudent && (
+        <ConfirmDialog
+          title={`Delete ${deletingStudent.name}?`}
+          description="The student and their saved data will be deleted."
+          confirmLabel="Delete student"
+          isPending={isDeleting}
+          error={error}
+          onConfirm={() => void handleDeleteStudent(deletingStudent.studentId)}
+          onCancel={() => setDeletingStudentId(null)}
+        />
+      )}
     </form>
   );
 };

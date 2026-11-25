@@ -91,7 +91,7 @@ cota de 10 alunos e editável/removível pela interface.
 - [x] Grupo **“Sem professor (N)”** no card Student Registration (admin): contagem, seleção de responsável por aluno, **“Atribuir todos a mim”** e **“Atribuir todos a…”**
 - [x] `PATCH /api/students` (`teacherId` numérico ou `null` = desvincular) — um único `UPDATE users.teacher_id`
 - [x] `StudentForm.tsx`: badge de cota (`3 / 10 students`, admin `no limit`), “Add student” desabilitado no teto com aviso
-- [x] Botão **“Remove”** → desvincular (com confirmação inline), nunca apaga
+- [x] Botão **“Remove”** → desvincular (com confirmação em modal), nunca apaga
 - [x] Botão **“Transfer to…”** (lista de professores, sem o responsável atual; professor no teto fica desabilitado)
 - [x] Lixeira de exclusão definitiva só aparece para admin — e o `DELETE` é **admin-only no servidor** (professor recebe 403)
 - [x] Admin vê o responsável de cada aluno na lista (ele enxerga alunos de outros professores)
@@ -102,6 +102,7 @@ cota de 10 alunos e editável/removível pela interface.
   - o índice da página (TableOfContents) saiu: as seções ficam na ordem Calendário → Progress → Report → Notes dentro do modal, que rola
   - o Report voltou a ser um `Card` como o Calendar e o Notes, agora dentro do modal (o modal de Report separado foi removido)
 - [x] Componentes compartilhados: `components/ui/IconAction.tsx` (botão só de ícone com tooltip) e `components/ui/Modal.tsx` (fecha com Esc, X ou clique no fundo) — usados pela linha do professor, pela do aluno e pelo Report
+- [x] **Confirmações em modal** (`components/ui/ConfirmDialog.tsx`): remover professor, excluir aluno e desvincular aluno deixaram de abrir uma caixa embaixo da linha (que empurrava a lista) e agora abrem um modal com a mesma mensagem e dois botões só de ícone — **check verde** confirma, **X vermelho** cancela (spinner verde enquanto a ação roda); erro da ação aparece dentro do próprio modal
 - [x] Dev: `/api/student-report` passou a ser emulado (devolve vazio), então o modal do Report é testável localmente
 - [x] **“Add student” / “Add teacher” agora esticam** (correção pós-deploy): o `Button` compartilhado aplica `!w-fit` (importante) em botões com texto, então o `className="w-full"` que existia ali **nunca teve efeito** — o botão sempre ficou do tamanho do texto. Adicionado o prop opcional **`fullWidth`** ao `Button` (troca `!w-fit` por `!w-full`, sem declarações conflitantes) e usado nos dois formulários. Medido: botão 448px = container 448px, nos dois
 - [x] **O painel estica, não corta e não deforma** (correção pós-deploy):

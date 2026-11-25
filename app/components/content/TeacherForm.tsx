@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
-import { Eye, Trash2, UserCheck, UserRound, Users, UserX, X } from "lucide-react";
+import { Eye, Trash2, UserCheck, UserRound, Users, UserX } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { IconAction } from "@/components/ui/IconAction";
 import { Modal } from "@/components/ui/Modal";
 import { SearchField } from "@/components/ui/SearchField";
@@ -82,6 +83,9 @@ export const TeacherForm = ({
   const viewedStudents = viewingTeacher
     ? students.filter((student) => student.teacherId === viewingTeacher.id)
     : [];
+
+  const deletingTeacher =
+    teachers.find((teacher) => teacher.id === deletingTeacherId) ?? null;
 
   const openTeacher = (teacher: Teacher) => {
     setMessage("");
@@ -390,7 +394,11 @@ export const TeacherForm = ({
                           icon={<Trash2 />}
                           label={`Delete ${teacher.displayName}`}
                           disabled={isPending}
-                          onClick={() => setDeletingTeacherId(teacher.id)}
+                          onClick={() => {
+                            setMessage("");
+                            setError("");
+                            setDeletingTeacherId(teacher.id);
+                          }}
                         />
                       </div>
                     </>
@@ -404,37 +412,29 @@ export const TeacherForm = ({
                     />
                   )}
                 </div>
-
-                {deletingTeacherId === teacher.id && (
-                  <div className="ml-2 rounded-lg border border-red-200 bg-red-50 p-2 text-xs text-red-900">
-                    <p>
-                      Remove {teacher.displayName}? Their{" "}
-                      {teacher.studentCount} student(s) stay in the course and go
-                      back to “no teacher”. Nothing is deleted.
-                    </p>
-                    <div className="mt-2 flex gap-2">
-                      <Button
-                        disabled={isPending}
-                        onClick={() => void handleDelete(teacher)}
-                        icon={<Trash2 />}
-                      >
-                        Remove teacher
-                      </Button>
-                      <Button
-                        disabled={isPending}
-                        onClick={() => setDeletingTeacherId(null)}
-                        icon={<X />}
-                        ariaLabel="Cancel removal"
-                      />
-                    </div>
-                  </div>
-                )}
               </div>
             );
           })}
           </div>
         </div>
       </div>
+
+      {deletingTeacher && (
+        <ConfirmDialog
+          title={`Remove ${deletingTeacher.displayName}?`}
+          description={
+            <>
+              Their {deletingTeacher.studentCount} student(s) stay in the
+              course and go back to “no teacher”. Nothing is deleted.
+            </>
+          }
+          confirmLabel="Remove teacher"
+          isPending={pendingTeacherId === deletingTeacher.id}
+          error={error}
+          onConfirm={() => void handleDelete(deletingTeacher)}
+          onCancel={() => setDeletingTeacherId(null)}
+        />
+      )}
 
       {viewingTeacher && (
         <Modal
