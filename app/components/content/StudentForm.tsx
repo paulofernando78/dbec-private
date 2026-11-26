@@ -14,13 +14,18 @@ import { IconAction } from "@/components/ui/IconAction";
 import { SearchField } from "@/components/ui/SearchField";
 import { useElementHeight } from "@/hooks/useElementHeight";
 import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
-import { canAcceptStudents, teacherOptionLabel, type Teacher } from "@/utils/teachers";
+import {
+  canAcceptStudents,
+  teacherOptionLabel,
+  type Teacher,
+} from "@/utils/teachers";
 import {
   formatBrazilianPhone,
   matchesStudent,
   scheduleOptions,
   timeOptions,
 } from "@/utils/students";
+import { Card } from "../ui/Card";
 
 type StudentPlan = "free" | "plus";
 
@@ -93,7 +98,9 @@ export const StudentForm = ({
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [deletingStudentId, setDeletingStudentId] = useState<string | null>(null);
+  const [deletingStudentId, setDeletingStudentId] = useState<string | null>(
+    null,
+  );
   const [unassigningStudentId, setUnassigningStudentId] = useState<
     string | null
   >(null);
@@ -107,7 +114,9 @@ export const StudentForm = ({
   const viewerTeacher = teachers.find(
     (teacher) => teacher.id === viewer.teacherId,
   );
-  const isViewerFull = viewerTeacher ? !canAcceptStudents(viewerTeacher) : false;
+  const isViewerFull = viewerTeacher
+    ? !canAcceptStudents(viewerTeacher)
+    : false;
   const quotaLabel = viewerTeacher
     ? viewerTeacher.isUnlimited
       ? `${students.length} students · no limit`
@@ -119,7 +128,11 @@ export const StudentForm = ({
         const owner = teachers.find(
           (teacher) => teacher.id === student.teacherId,
         );
-        return matchesStudent(student, normalizedQuery, owner?.displayName ?? "");
+        return matchesStudent(
+          student,
+          normalizedQuery,
+          owner?.displayName ?? "",
+        );
       })
     : students;
   const deletingStudent =
@@ -146,13 +159,18 @@ export const StudentForm = ({
         body: JSON.stringify({ studentId }),
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error ?? "Could not delete the student.");
+      if (!response.ok)
+        throw new Error(result.error ?? "Could not delete the student.");
       if (selectedStudentId === studentId) onStudentSelect("");
       await onStudentSaved();
       setMessage("Student deleted.");
       setDeletingStudentId(null);
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Could not delete the student.");
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Could not delete the student.",
+      );
     } finally {
       setIsDeleting(false);
     }
@@ -232,7 +250,10 @@ export const StudentForm = ({
       autoComplete="off"
       className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-stretch gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1"
     >
-    <div ref={formRef} className="grid content-start gap-4 rounded-xl bg-(--background) p-4">
+      <div
+        ref={formRef}
+        className="grid content-start gap-4 rounded-xl bg-(--background) p-4"
+      >
         {/* Name */}
         <label className="grid min-w-0 gap-1">
           <span className="text-sm font-semibold">Name</span>
@@ -401,10 +422,7 @@ export const StudentForm = ({
         </div>
       </div>
 
-      {/* A coluna da direita acompanha a altura da esquerda: em telas largas ela
-          é posicionada sobre a linha do grid (que tem a altura do formulário) e,
-          empilhada no mobile, recebe essa mesma altura. Assim a lista rola
-          dentro dela e nunca estica o card. */}
+      {/* Students */}
       <div
         className="relative min-w-0 max-[710px]:static min-[921px]:max-[1130px]:static"
         style={formHeight ? { height: formHeight } : undefined}
@@ -424,130 +442,146 @@ export const StudentForm = ({
             ariaLabel="Search students"
           />
 
-          {/* A lista rola dentro do card: não deixa o formulário esticar junto. */}
           <div className="grid min-h-0 flex-1 content-start gap-4 overflow-y-auto pr-1">
-          {students.length > 0 && visibleStudents.length === 0 && (
-            <p className="text-sm text-gray-500">
-              No students match “{query.trim()}”.
-            </p>
-          )}
+            {students.length > 0 && visibleStudents.length === 0 && (
+              <p className="text-sm text-gray-500">
+                No students match “{query.trim()}”.
+              </p>
+            )}
 
-          {visibleStudents.map((student) => {
-            const isSelected = selectedStudentId === student.studentId;
-            const isOnline = Boolean(student.lastSeenMs && Date.now() - student.lastSeenMs < 90_000);
-            const isPending = pendingStudentId === student.studentId;
-            const transferTargets = teachers.filter(
-              (teacher) =>
-                teacher.active !== 0 && teacher.id !== student.teacherId,
-            );
-            // O admin vê alunos de outros professores, então mostra o responsável.
-            const owner = viewer.isAdmin
-              ? teachers.find((teacher) => teacher.id === student.teacherId)
-              : undefined;
+            {visibleStudents.map((student) => {
+              const isSelected = selectedStudentId === student.studentId;
+              const isOnline = Boolean(
+                student.lastSeenMs && Date.now() - student.lastSeenMs < 90_000,
+              );
+              const isPending = pendingStudentId === student.studentId;
+              const transferTargets = teachers.filter(
+                (teacher) =>
+                  teacher.active !== 0 && teacher.id !== student.teacherId,
+              );
+              // O admin vê alunos de outros professores, então mostra o responsável.
+              const owner = viewer.isAdmin
+                ? teachers.find((teacher) => teacher.id === student.teacherId)
+                : undefined;
 
-            return (
-              <div
-                key={student.studentId}
-                className="min-w-0"
-                onMouseEnter={() => onStudentPreview?.(student.studentId)}
-                onFocus={() => onStudentPreview?.(student.studentId)}
-              >
-                <div className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 px-2 rounded-xl transition-colors hover:bg-(--surface) ${isSelected ? "bg-(--surface)" : ""}`}>
-                  {/* O nome não é clicável: só o olho abre o aluno. O hover
-                      cinza continua na linha inteira. */}
-                  <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2">
-                    <span
-                      className="flex size-10 shrink-0 items-center justify-center rounded-full"
-                      style={{
-                        backgroundColor: (isOnline ? avatarColors.student : offlineStudentAvatarColors).background,
-                        color: (isOnline ? avatarColors.student : offlineStudentAvatarColors).dot,
-                      }}
-                      title={isOnline ? "Online" : "Offline"}
-                      aria-label={isOnline ? "Online" : "Offline"}
-                    >
-                      <GraduationCap className="size-5" aria-hidden="true" />
-                    </span>
-
-                    <span className="block min-w-0 flex-1">
-                      <span className="block max-w-full truncate text-sm font-semibold" title={student.name}>{student.name}</span>
-                      <span className="block max-w-full truncate text-xs font-normal text-gray-500" title={`${student.schedule} · ${student.time}`}>
-                        {student.schedule} · {student.time}
-                        {owner ? ` · ${owner.displayName}` : ""}
+              return (
+                <div
+                  key={student.studentId}
+                  className="min-w-0"
+                  onMouseEnter={() => onStudentPreview?.(student.studentId)}
+                  onFocus={() => onStudentPreview?.(student.studentId)}
+                >
+                  <Card
+                    className={`flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2`}
+                  >
+                    <div className="flex min-w-64 flex-1 items-center gap-3">
+                      <span
+                        className="flex size-10 shrink-0 items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: (isOnline
+                            ? avatarColors.student
+                            : offlineStudentAvatarColors
+                          ).background,
+                          color: (isOnline
+                            ? avatarColors.student
+                            : offlineStudentAvatarColors
+                          ).dot,
+                        }}
+                        title={isOnline ? "Online" : "Offline"}
+                        aria-label={isOnline ? "Online" : "Offline"}
+                      >
+                        <GraduationCap className="size-5" aria-hidden="true" />
                       </span>
-                    </span>
-                  </div>
 
-                  <div className="flex shrink-0 items-center gap-1">
-                    <IconAction
-                      icon={<Eye />}
-                      label={`View ${student.name}`}
-                      onClick={() => handleStudentSelection(student.studentId)}
-                    />
-
-                    {transferTargets.length > 0 && (
-                      <div className="relative w-36 shrink-0">
-                        <select
-                          value=""
-                          disabled={isPending}
-                          aria-label={`Transfer ${student.name} to another teacher`}
-                          onChange={(event) => {
-                            const teacherId = Number(event.target.value);
-                            if (!Number.isInteger(teacherId)) return;
-                            void handleRosterChange(
-                              student.studentId,
-                              teacherId,
-                              `Student transferred to ${teacherName(teachers, teacherId)}.`,
-                            );
-                          }}
-                          className="w-full appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-10 pl-3 text-sm disabled:opacity-55"
+                      <span className="block min-w-0 flex-1">
+                        <span
+                          className="block max-w-full truncate text-sm font-semibold"
+                          title={student.name}
                         >
-                          <option value="">Transfer to…</option>
+                          {student.name}
+                        </span>
+                        <span
+                          className="block max-w-full truncate text-xs font-normal text-gray-500"
+                          title={`${student.schedule} · ${student.time}`}
+                        >
+                          {student.schedule} · {student.time}
+                          {owner ? ` · ${owner.displayName}` : ""}
+                        </span>
+                      </span>
+                    </div>
 
-                          {transferTargets.map((teacher) => (
-                            <option
-                              key={teacher.id}
-                              value={teacher.id}
-                              disabled={!canAcceptStudents(teacher)}
-                            >
-                              {teacherOptionLabel(teacher)}
-                            </option>
-                          ))}
-                        </select>
-                        <ChevronDown
-                          className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-slate-500"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    )}
+                    <div className="flex shrink-0 items-center gap-3">
+                      {transferTargets.length > 0 && (
+                        <div className="relative w-36 shrink-0">
+                          <select
+                            value=""
+                            disabled={isPending}
+                            aria-label={`Transfer ${student.name} to another teacher`}
+                            onChange={(event) => {
+                              const teacherId = Number(event.target.value);
+                              if (!Number.isInteger(teacherId)) return;
+                              void handleRosterChange(
+                                student.studentId,
+                                teacherId,
+                                `Student transferred to ${teacherName(teachers, teacherId)}.`,
+                              );
+                            }}
+                            className="w-full appearance-none rounded-lg border border-gray-300 bg-white py-2 pr-10 pl-3 text-sm disabled:opacity-55"
+                          >
+                            <option value="">Transfer to…</option>
 
-                    <IconAction
-                      icon={<UserMinus />}
-                      label={`Remove ${student.name} from the list`}
-                      disabled={isPending}
-                      onClick={() => {
-                        setMessage("");
-                        setError("");
-                        setUnassigningStudentId(student.studentId);
-                      }}
-                    />
-
-                    {viewer.isAdmin && (
+                            {transferTargets.map((teacher) => (
+                              <option
+                                key={teacher.id}
+                                value={teacher.id}
+                                disabled={!canAcceptStudents(teacher)}
+                              >
+                                {teacherOptionLabel(teacher)}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown
+                            className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-slate-500"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      )}
                       <IconAction
-                        icon={<Trash2 />}
-                        label={`Delete ${student.name}`}
+                        icon={<Eye />}
+                        label={`View ${student.name}`}
+                        onClick={() =>
+                          handleStudentSelection(student.studentId)
+                        }
+                      />
+
+                      <IconAction
+                        icon={<UserMinus />}
+                        label={`Remove ${student.name} from the list`}
                         disabled={isPending}
                         onClick={() => {
                           setMessage("");
                           setError("");
-                          setDeletingStudentId(student.studentId);
+                          setUnassigningStudentId(student.studentId);
                         }}
                       />
-                    )}
-                  </div>
+
+                      {viewer.isAdmin && (
+                        <IconAction
+                          icon={<Trash2 />}
+                          label={`Delete ${student.name}`}
+                          disabled={isPending}
+                          onClick={() => {
+                            setMessage("");
+                            setError("");
+                            setDeletingStudentId(student.studentId);
+                          }}
+                        />
+                      )}
+                    </div>
+                  </Card>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
           </div>
         </div>
       </div>

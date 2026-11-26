@@ -16,6 +16,7 @@ import {
   type Teacher,
 } from "@/utils/teachers";
 import type { RosterStudent } from "@/utils/students";
+import { Card } from "../ui/Card";
 
 type TeacherFormProps = {
   teachers: Teacher[];
@@ -317,9 +318,9 @@ export const TeacherForm = ({
 
             return (
               <div key={teacher.id} className="min-w-0">
-                <div className="flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 rounded-xl px-2 transition-colors hover:bg-(--surface)">
+                <Card className="flex w-full min-w-0 flex-wrap items-center gap-x-1 gap-y-2 rounded-xl transition-colors bg-(--surface)">
                   {teacher.isAdmin ? (
-                    <div className="flex min-w-64 flex-1 items-center gap-3 py-2 pr-2">
+                    <div className="flex min-w-64 flex-1 items-center gap-3">
                       <TeacherAvatar
                         background={avatarColors.teacher.background}
                         foreground={avatarColors.teacher.dot}
@@ -342,7 +343,7 @@ export const TeacherForm = ({
                     <>
                       {/* O nome não é clicável: só o olho abre o modal. O hover
                           cinza continua na linha inteira. */}
-                      <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl py-2 pr-2">
+                      <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl">
                         <TeacherAvatar
                           background={
                             isInactive
@@ -372,7 +373,7 @@ export const TeacherForm = ({
                         </span>
                       </div>
 
-                      <div className="flex shrink-0 items-center gap-1">
+                      <div className="flex shrink-0 items-center gap-2">
                         <IconAction
                           icon={<Eye />}
                           label={`View ${teacher.displayName}`}
@@ -411,7 +412,7 @@ export const TeacherForm = ({
                       onClick={() => openTeacher(teacher)}
                     />
                   )}
-                </div>
+                </Card>
               </div>
             );
           })}
@@ -453,7 +454,7 @@ export const TeacherForm = ({
 
       {viewingTeacher && (
         <Modal
-          className="max-w-2xl"
+          className="max-w-xs"
           onClose={() => setViewingTeacherId(null)}
           title={viewingTeacher.isAdmin ? "My students" : viewingTeacher.displayName}
           subtitle={`@${viewingTeacher.username} · ${

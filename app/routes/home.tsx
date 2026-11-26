@@ -125,8 +125,7 @@ export default function Home() {
               Acompanhamento personalizado
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-200">
-              Quer acompanhamento mais próximo? Conheça as opções extras e
-              encontre o formato ideal para seus objetivos.
+              Quer acompanhamento mais próximo?
             </p>
             <ul className="mt-5 grid gap-2 text-sm text-slate-700 dark:text-slate-100">
               <li>
@@ -134,9 +133,6 @@ export default function Home() {
               </li>
               <li>
                 <CheckText plan="plus" text="Orientação personalizada de estudos" />
-              </li>
-              <li>
-                <CheckText plan="plus" text="Planos para necessidades específicas" />
               </li>
               <li>
                 <CheckText plan="plus" text="Audio com vozes mais naturais" />
