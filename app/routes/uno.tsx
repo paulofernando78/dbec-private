@@ -329,7 +329,7 @@ export default function Uno() {
             <AccountSummary
               name={session.displayName}
               role={session.role}
-              online={session.role === "student"}
+              online
               subtitle={session.role === "student" ? "Full access" : "Teacher"}
             />
           </Card>

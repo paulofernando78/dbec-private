@@ -8,7 +8,11 @@ import { IconAction } from "@/components/ui/IconAction";
 import { Modal } from "@/components/ui/Modal";
 import { SearchField } from "@/components/ui/SearchField";
 import { useElementHeight } from "@/hooks/useElementHeight";
-import { avatarColors } from "@/utils/avatar-theme";
+import {
+  offlineAvatarClasses,
+  onlineAvatarClasses,
+  type AvatarRole,
+} from "@/utils/avatar-theme";
 import {
   canAcceptStudents,
   matchesTeacher,
@@ -322,8 +326,8 @@ export const TeacherForm = ({
                   {teacher.isAdmin ? (
                     <div className="flex min-w-64 flex-1 items-center gap-3">
                       <TeacherAvatar
-                        background={avatarColors.teacher.background}
-                        foreground={avatarColors.teacher.dot}
+                        role="teacher"
+                        online
                         title="Admin"
                         isAdmin
                       />
@@ -345,16 +349,8 @@ export const TeacherForm = ({
                           cinza continua na linha inteira. */}
                       <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl">
                         <TeacherAvatar
-                          background={
-                            isInactive
-                              ? avatarColors.teacher.background
-                              : avatarColors.student.background
-                          }
-                          foreground={
-                            isInactive
-                              ? avatarColors.teacher.dot
-                              : avatarColors.student.dot
-                          }
+                          role="teacher"
+                          online={!isInactive}
                           title={isInactive ? "Inactive" : "Active"}
                         />
                         <span className="block min-w-0 flex-1">
@@ -373,7 +369,7 @@ export const TeacherForm = ({
                         </span>
                       </div>
 
-                      <div className="flex shrink-0 items-center gap-2">
+                      <div className="flex shrink-0 items-center gap-3">
                         <IconAction
                           icon={<Eye />}
                           label={`View ${teacher.displayName}`}
@@ -495,11 +491,7 @@ export const TeacherForm = ({
                     className="flex min-w-0 items-center gap-3 rounded-lg bg-(--background) px-3 py-2"
                   >
                     <span
-                      className="flex size-10 shrink-0 items-center justify-center rounded-full"
-                      style={{
-                        backgroundColor: avatarColors.student.background,
-                        color: avatarColors.student.dot,
-                      }}
+                      className={`flex size-10 shrink-0 items-center justify-center rounded-full ${onlineAvatarClasses.student.container} ${onlineAvatarClasses.student.icon}`}
                       aria-hidden="true"
                     >
                       <Users className="size-5" />
@@ -691,26 +683,29 @@ const TeacherEditFields = ({
 };
 
 const TeacherAvatar = ({
-  background,
-  foreground,
+  role,
+  online,
   title,
   isAdmin = false,
 }: {
-  background: string;
-  foreground: string;
+  role: AvatarRole;
+  online: boolean;
   title: string;
   isAdmin?: boolean;
-}) => (
-  <span
-    className="flex size-10 shrink-0 items-center justify-center rounded-full"
-    style={{ backgroundColor: background, color: foreground }}
-    title={title}
-    aria-label={title}
-  >
-    {isAdmin ? (
-      <UserRound className="size-5" aria-hidden="true" />
-    ) : (
-      <Users className="size-5" aria-hidden="true" />
-    )}
-  </span>
-);
+}) => {
+  const colors = online ? onlineAvatarClasses[role] : offlineAvatarClasses;
+
+  return (
+    <span
+      className={`flex size-10 shrink-0 items-center justify-center rounded-full ${colors.container} ${colors.icon}`}
+      title={title}
+      aria-label={title}
+    >
+      {isAdmin ? (
+        <UserRound className="size-5" aria-hidden="true" />
+      ) : (
+        <Users className="size-5" aria-hidden="true" />
+      )}
+    </span>
+  );
+};

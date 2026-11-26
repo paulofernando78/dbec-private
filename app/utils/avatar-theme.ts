@@ -1,6 +1,30 @@
 export type AvatarRole = "teacher" | "student";
 
-export const avatarColors: Record<
+export type AvatarColorClasses = {
+  container: string;
+  icon: string;
+};
+
+// Avatar de quem está logado: azul para professor, verde para aluno.
+export const onlineAvatarClasses: Record<AvatarRole, AvatarColorClasses> = {
+  teacher: {
+    container: "bg-blue-100",
+    icon: "text-blue-600",
+  },
+  student: {
+    container: "bg-green-100",
+    icon: "text-green-600",
+  },
+};
+
+// Cinza para quem não está logado (ou está inativo), em qualquer papel.
+export const offlineAvatarClasses: AvatarColorClasses = {
+  container: "bg-gray-200",
+  icon: "text-gray-500",
+};
+
+// Cores em hex dos blocos de nota, que usam estilos inline (fundo e borda).
+export const noteAuthorColors: Record<
   AvatarRole,
   { background: string; border: string; dot: string }
 > = {
@@ -14,10 +38,4 @@ export const avatarColors: Record<
     border: "#22c55e",
     dot: "#16a34a",
   },
-};
-
-export const offlineStudentAvatarColors = {
-  background: "#e5e7eb",
-  border: "#d1d5db",
-  dot: "#6b7280",
 };

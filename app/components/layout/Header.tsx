@@ -174,7 +174,7 @@ export const Header = () => {
                   <AccountSummary
                     name={session.displayName}
                     role={session.role}
-                    online={session.role === "student"}
+                    online
                     subtitle={accountSubtitle(session)}
                     className={
                       selectedStudent
@@ -210,7 +210,7 @@ export const Header = () => {
                 <AccountSummary
                   name={session.displayName}
                   role={session.role}
-                  online={session.role === "student"}
+                  online
                   subtitle={accountSubtitle(session)}
                 />
               )}

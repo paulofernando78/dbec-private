@@ -53,7 +53,7 @@ export function NavBar({
         >
           <ActionTextRow
             as="div"
-            gap="gap-2"
+            gap="gap-3"
             action={
               <span
                 aria-hidden="true"
@@ -78,7 +78,7 @@ export function NavBar({
     return (
       <ActionTextRow
         as="div"
-        gap="gap-2"
+        gap="gap-3"
         textAtTop={locked}
         className={className}
         action={
@@ -178,7 +178,7 @@ export function NavBar({
               {renderNavigationButton(dashboardPath, "Dashboard", User, "mb-2")}
               <ActionTextRow
                 as="div"
-                gap="gap-2"
+                gap="gap-3"
                 action={
                   <Button
                     ariaLabel={isNotesOpen ? "Close notes" : "Open notes"}

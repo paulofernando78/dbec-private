@@ -1,5 +1,9 @@
 import { GraduationCap, Presentation } from "lucide-react";
-import { avatarColors, offlineStudentAvatarColors, type AvatarRole } from "@/utils/avatar-theme";
+import {
+  offlineAvatarClasses,
+  onlineAvatarClasses,
+  type AvatarRole,
+} from "@/utils/avatar-theme";
 
 type AccountSummaryProps = {
   name: string;
@@ -10,13 +14,14 @@ type AccountSummaryProps = {
 };
 
 export const AccountSummary = ({ name, subtitle, role, online = false, className }: AccountSummaryProps) => {
-  const colors = role === "student" && !online ? offlineStudentAvatarColors : avatarColors[role];
+  // Professor logado fica azul e aluno logado fica verde; quem não está
+  // logado fica cinza, independentemente do papel.
+  const colors = online ? onlineAvatarClasses[role] : offlineAvatarClasses;
 
   return (
     <div className={`flex min-w-max shrink-0 items-center gap-3 ${className}`}>
       <span
-        className="flex size-10 shrink-0 items-center justify-center rounded-full"
-        style={{ backgroundColor: colors.background, color: colors.dot }}
+        className={`flex size-10 shrink-0 items-center justify-center rounded-full ${colors.container} ${colors.icon}`}
         aria-hidden="true"
       >
         {role === "teacher" ? <Presentation className="size-5" /> : <GraduationCap className="size-5" />}

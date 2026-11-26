@@ -1,4 +1,4 @@
-import { avatarColors } from "@/utils/avatar-theme";
+import { noteAuthorColors } from "@/utils/avatar-theme";
 
 export type NoteAuthor = {
   id: string;
@@ -47,6 +47,6 @@ export const getNoteAuthorKey = (author: NoteAuthor) => `${author.role}:${author
 export function getNoteAuthorColors(authors: readonly NoteAuthor[]) {
   return new Map(authors.map((author) => [
     getNoteAuthorKey(author),
-    avatarColors[author.role],
+    noteAuthorColors[author.role],
   ]));
 }

@@ -13,7 +13,7 @@ import { FeedbackModal } from "@/components/ui/FeedbackModal";
 import { IconAction } from "@/components/ui/IconAction";
 import { SearchField } from "@/components/ui/SearchField";
 import { useElementHeight } from "@/hooks/useElementHeight";
-import { avatarColors, offlineStudentAvatarColors } from "@/utils/avatar-theme";
+import { offlineAvatarClasses, onlineAvatarClasses } from "@/utils/avatar-theme";
 import {
   canAcceptStudents,
   teacherOptionLabel,
@@ -476,17 +476,11 @@ export const StudentForm = ({
                   >
                     <div className="flex min-w-64 flex-1 items-center gap-3">
                       <span
-                        className="flex size-10 shrink-0 items-center justify-center rounded-full"
-                        style={{
-                          backgroundColor: (isOnline
-                            ? avatarColors.student
-                            : offlineStudentAvatarColors
-                          ).background,
-                          color: (isOnline
-                            ? avatarColors.student
-                            : offlineStudentAvatarColors
-                          ).dot,
-                        }}
+                        className={`flex size-10 shrink-0 items-center justify-center rounded-full ${
+                          isOnline
+                            ? `${onlineAvatarClasses.student.container} ${onlineAvatarClasses.student.icon}`
+                            : `${offlineAvatarClasses.container} ${offlineAvatarClasses.icon}`
+                        }`}
                         title={isOnline ? "Online" : "Offline"}
                         aria-label={isOnline ? "Online" : "Offline"}
                       >
