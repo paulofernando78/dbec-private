@@ -319,6 +319,9 @@ export const TeacherForm = ({
           {visibleTeachers.map((teacher) => {
             const isPending = pendingTeacherId === teacher.id;
             const isInactive = teacher.active === 0;
+            const isOnline = Boolean(
+              teacher.lastSeenMs && Date.now() - teacher.lastSeenMs < 90_000,
+            );
 
             return (
               <div key={teacher.id} className="min-w-0">
@@ -327,8 +330,8 @@ export const TeacherForm = ({
                     <div className="flex min-w-64 flex-1 items-center gap-3">
                       <TeacherAvatar
                         role="teacher"
-                        online
-                        title="Admin"
+                        online={isOnline}
+                        title={isOnline ? "Online" : "Offline"}
                         isAdmin
                       />
                       <span className="block min-w-0 flex-1">
@@ -350,8 +353,8 @@ export const TeacherForm = ({
                       <div className="flex min-w-64 flex-1 items-center gap-3 rounded-xl">
                         <TeacherAvatar
                           role="teacher"
-                          online={!isInactive}
-                          title={isInactive ? "Inactive" : "Active"}
+                          online={isOnline}
+                          title={isOnline ? "Online" : "Offline"}
                         />
                         <span className="block min-w-0 flex-1">
                           <span
