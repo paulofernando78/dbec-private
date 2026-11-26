@@ -33,9 +33,9 @@ export const marcelAndTheMonaLisa = {
     {
       id: "paragraph-2",
       title: "Paragraph 2",
-      text: `The two friends eat, drink and talk all evening. Céline shows Marcel her new paintings. They talk about their summer holiday in Los Angeles. They laugh, play jazz records and tell lots of stories. Then at 11 o'clock Marcel puts on his coat. 'It's late,' he says. 'I must go home.' Two minutes later he leaves. 'Good night,' says Céline. Then she closes her front door.`,
+      text: `The two friends eat, drink and talk all evening. Céline shows Marcel her new paintings. They talk about their summer holiday in New York. They laugh, play jazz records and tell lots of stories. Then at 11 o'clock Marcel puts on his coat. 'It's late,' he says. 'I must go home.' Two minutes later he leaves. 'Good night,' says Céline. Then she closes her front door.`,
       questions: ["What do Marcel and Céline talk about?", "What time does Marcel leave?"],
-      answers: ["Their summer holiday in Los Angeles.", "At 11 o'clock."],
+      answers: ["Their summer holiday in New York.", "At 11 o'clock."],
       localMedia: `${localBase}/paragraph-2.avif`,
       r2: `${imageBase}/paragraph-2.avif`,
       imageAlt: "Marcel and Céline talking in her home at the Louvre.",
