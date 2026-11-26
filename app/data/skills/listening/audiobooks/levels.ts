@@ -31,7 +31,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         slug: "flying-home",
         title: "Flying Home",
         description: "A bird escapes from New York and flies home to Brazil.",
-        duration: "--",
+        duration: "00:46",
       },
       {
         slug: "marcel-and-the-mona-lisa",

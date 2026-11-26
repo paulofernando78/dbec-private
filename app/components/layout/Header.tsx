@@ -110,17 +110,20 @@ export const Header = () => {
         .then(async (response) => {
           if (!response.ok) return null;
           const result = (await response.json()) as {
-            teachers?: { lastSeenMs?: number }[];
+            teachers?: { id?: number; lastSeenMs?: number }[];
           };
           return result.teachers ?? [];
         })
         .then((teachers) => {
           if (!isCurrent || !teachers) return;
           const now = Date.now();
+          // O próprio professor não conta: o número mostra só os outros online.
           setConnectedTeacherCount(
             teachers.filter(
               (teacher) =>
-                teacher.lastSeenMs && now - teacher.lastSeenMs < 90_000,
+                teacher.id !== session?.userId &&
+                teacher.lastSeenMs &&
+                now - teacher.lastSeenMs < 90_000,
             ).length,
           );
         })
