@@ -88,12 +88,9 @@ export const TableOfContents = ({
                       className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
                     />
                     {item.label && (
-                      <a
-                        href={`#${item.href}`}
-                        className="rounded text-(--text-color) no-underline hover:no-underline focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
-                      >
+                      <span className="text-(--text-color)">
                         <InlineRichContent value={toValue(item.label)} />
-                      </a>
+                      </span>
                     )}
                   </li>
                 )}
@@ -111,16 +108,11 @@ export const TableOfContents = ({
                       onClick={() => navigate(item.to!)}
                     />
                     <div>
-                      <Button
-                        variant="list"
-                        ariaLabel={typeof item.label === "string" ? item.label : "Open page"}
-                        className="w-auto! no-underline hover:no-underline focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--text-color)"
-                        onClick={() => navigate(item.to!)}
-                      >
-                        {item.label && (
+                      {item.label && (
+                        <span className="block text-(--text-color)">
                           <InlineRichContent value={toValue(item.label)} />
-                        )}
-                      </Button>
+                        </span>
+                      )}
                       {item.description && (
                         <span className="block text-sm uppercase text-slate-500">
                           <InlineRichContent value={toValue(item.description)} />

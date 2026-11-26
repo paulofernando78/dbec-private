@@ -40,7 +40,7 @@ export const links: NavItem[] = [
   },
   // LEARN
   {
-    group: "learn",
+    group: "learn (start here)",
     children: [
       // COURSES
       {
