@@ -459,6 +459,7 @@ export function LanguageFocusStep({ data }: { data: LanguageFocusData }) {
                         src={audioSource}
                         fallbackText={titleText}
                         speechLang={speechLang}
+                        serverTts={accent !== "uk"}
                         className="stroke-0!"
                         wrapperClassName="shrink-0"
                       />}

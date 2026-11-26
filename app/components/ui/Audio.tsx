@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { LoaderCircle, Lock, Pause, Play, Rabbit, Turtle } from "lucide-react";
 import { Button } from "@/components/ui/Button/Button";
+import { useSession } from "@/hooks/useSession";
+import { ttsAudioUrlForText } from "@/utils/tts-audio-url";
 
 type AudioSource = string | { src: string; fallbackText?: string };
 
@@ -21,12 +23,17 @@ type AudioProps = {
   allowSpeechFallback?: boolean;
   showPlayerControls?: boolean;
   locked?: boolean;
+  /** Use the server TTS voice for sources that carry text instead of audio. */
+  serverTts?: boolean;
 };
 
 let currentGlobalAudio: HTMLAudioElement | null = null;
 let currentUtterance: SpeechSynthesisUtterance | null = null;
 let currentUtteranceReset: (() => void) | null = null;
 let speechRequestId = 0;
+
+const isAudioFileSource = (source: string) =>
+  /\.(mp3|wav|ogg)(?:[?#]|$)/i.test(source);
 
 const stopCurrentSpeech = () => {
   speechRequestId += 1;
@@ -103,6 +110,7 @@ export const Audio = ({
   allowSpeechFallback = true,
   showPlayerControls = false,
   locked = false,
+  serverTts = true,
 }: AudioProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -111,6 +119,7 @@ export const Audio = ({
   const playbackRequestRef = useRef(0);
   const playbackActiveRef = useRef(false);
   const fallbackStartedRef = useRef(false);
+  const ttsFallbackRef = useRef<"idle" | "loading" | "done">("idle");
   const speechFullTextRef = useRef("");
   const speechCompleteRef = useRef<(() => void) | undefined>(undefined);
   const playbackRateRef = useRef<1 | 0.75>(1);
@@ -121,17 +130,26 @@ export const Audio = ({
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState<1 | 0.75>(1);
 
-  const sources = (typeof src === "string" ? [src] : [...src]).map((source) =>
+  const session = useSession();
+  const rawSources = (typeof src === "string" ? [src] : [...src]).map((source) =>
     typeof source === "string" ? { src: source } : source,
   );
-  const primarySource = sources[0]?.src ?? "";
+  const rawPrimarySource = rawSources[0]?.src ?? "";
   const defaultFallbackText =
     fallbackText ?? ariaLabel?.replace(/^play\s+/i, "").trim();
+  // Buttons that only carry text (no mp3) speak through the server TTS voice;
+  // the browser voice stays as the last resort when TTS is unavailable.
+  const ttsSource =
+    session && serverTts && !locked && !isAudioFileSource(rawPrimarySource)
+      ? ttsAudioUrlForText(rawPrimarySource.trim() || defaultFallbackText || "")
+      : "";
+  const sources = ttsSource
+    ? [{ ...rawSources[0], src: ttsSource }, ...rawSources.slice(1)]
+    : rawSources;
+  const primarySource = sources[0]?.src ?? "";
   const isAudioFile =
     sources.length > 0 &&
-    sources.every(({ src: source }) =>
-      /\.(mp3|wav|ogg)(?:[?#]|$)/i.test(source),
-    );
+    sources.every(({ src: source }) => isAudioFileSource(source));
 
   useEffect(() => {
     if (isAudioFile) {
@@ -176,6 +194,7 @@ export const Audio = ({
     advancingPlaylistRef.current = false;
     playbackActiveRef.current = false;
     fallbackStartedRef.current = false;
+    ttsFallbackRef.current = "idle";
 
     if (el && el.getAttribute("src") !== primarySource) {
       el.src = primarySource;
@@ -215,6 +234,7 @@ export const Audio = ({
     playlistIndexRef.current = nextIndex;
     advancingPlaylistRef.current = true;
     fallbackStartedRef.current = false;
+    ttsFallbackRef.current = "idle";
     setLoading(true);
     el.src = sources[nextIndex].src;
     el.load();
@@ -345,12 +365,39 @@ export const Audio = ({
       sources[playlistIndexRef.current]?.fallbackText ??
       (playlistIndexRef.current === 0 ? defaultFallbackText : undefined);
 
-    if (sourceFallbackText) {
-      void playSpeech(sourceFallbackText, () => void playNextSource());
+    if (!sourceFallbackText) {
+      void playNextSource();
       return;
     }
 
-    void playNextSource();
+    // A missing or broken mp3 still gets a voice: try the server TTS first,
+    // then the browser voice as the last resort.
+    const el = audioRef.current;
+    const ttsUrl =
+      session && serverTts && ttsFallbackRef.current === "idle"
+        ? ttsAudioUrlForText(sourceFallbackText)
+        : "";
+
+    if (ttsUrl && el) {
+      ttsFallbackRef.current = "loading";
+      el.src = ttsUrl;
+      el.load();
+
+      void el
+        .play()
+        .then(() => {
+          ttsFallbackRef.current = "done";
+          currentGlobalAudio = el;
+        })
+        .catch(() => {
+          if (ttsFallbackRef.current !== "loading") return;
+          ttsFallbackRef.current = "done";
+          void playSpeech(sourceFallbackText, () => void playNextSource());
+        });
+      return;
+    }
+
+    void playSpeech(sourceFallbackText, () => void playNextSource());
   };
 
   const handlePlay = async (e?: React.MouseEvent<Element>) => {
@@ -382,6 +429,7 @@ export const Audio = ({
     playbackRequestRef.current += 1;
     playbackActiveRef.current = true;
     fallbackStartedRef.current = false;
+    ttsFallbackRef.current = "idle";
     playlistIndexRef.current = 0;
     advancingPlaylistRef.current = false;
 
@@ -569,6 +617,18 @@ export const Audio = ({
       onPause={handlePause}
       onError={() => {
         setReady(true);
+
+        if (ttsFallbackRef.current === "loading") {
+          ttsFallbackRef.current = "done";
+          const fallbackSourceText =
+            sources[playlistIndexRef.current]?.fallbackText ??
+            defaultFallbackText;
+          if (fallbackSourceText) {
+            void playSpeech(fallbackSourceText, () => void playNextSource());
+            return;
+          }
+        }
+
         playCurrentSourceFallback();
       }}
     />

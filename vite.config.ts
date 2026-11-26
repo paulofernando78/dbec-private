@@ -21,7 +21,7 @@ const localAiTutorRequests = new Map<string, number[]>();
 const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
 const localDictionaryTtsCache = new Map<
   string,
-  { audio: Buffer; model: string; usedFallback: boolean; contentType?: string }
+  { audio: Buffer; model: string; contentType?: string }
 >();
 let localSession: {
   username: string;
@@ -418,9 +418,6 @@ const localAuth = (): Plugin => ({
             variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
 
           const env = {
-            ELEVENLABS_API_KEY: readVariable("ELEVENLABS_API_KEY"),
-            ELEVENLABS_VOICE_ID: readVariable("ELEVENLABS_VOICE_ID"),
-            ELEVENLABS_MODEL_ID: readVariable("ELEVENLABS_MODEL_ID"),
             OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
             OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
             OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
@@ -428,11 +425,7 @@ const localAuth = (): Plugin => ({
             GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
           };
 
-          if (
-            !env.ELEVENLABS_API_KEY &&
-            !env.OPENROUTER_API_KEY &&
-            !env.GEMINI_API_KEY
-          ) {
+          if (!env.OPENROUTER_API_KEY && !env.GEMINI_API_KEY) {
             response.statusCode = 503;
             response.end(
               JSON.stringify({ error: "Dictionary TTS is not configured." }),
@@ -463,7 +456,6 @@ const localAuth = (): Plugin => ({
           localDictionaryTtsCache.set(text, {
             audio,
             model: provider,
-            usedFallback: provider !== "elevenlabs",
             contentType: result.contentType,
           });
 

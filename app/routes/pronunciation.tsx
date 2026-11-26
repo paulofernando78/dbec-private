@@ -246,6 +246,7 @@ export default function Pronunciation() {
                     speechLang="en-US"
                     fallbackText={example}
                     ariaLabel={`Play American English: ${example}`}
+                    serverTts={false}
                     showIcon={false}
                     wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
                   >
@@ -256,6 +257,7 @@ export default function Pronunciation() {
                     speechLang="en-GB"
                     fallbackText={example}
                     ariaLabel={`Play British English: ${example}`}
+                    serverTts={false}
                     showIcon={false}
                     wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
                   >

@@ -1,16 +1,12 @@
-import { dictionaryElevenLabs } from "./_dictionary-elevenlabs.mjs";
 import { dictionaryGemini } from "./_dictionary-gemini.mjs";
 import { dictionaryOpenRouter } from "./_dictionary-openrouter.mjs";
 
 export const defaultCooldownSeconds = 300;
 
-// Free quotas are limited, so short texts start at the highest-quality voice,
-// while long texts start where a single request buys the most characters.
-export const providerOrder = (length) => {
-  if (length <= 30) return ["elevenlabs", "openrouter", "gemini"];
-  if (length <= 250) return ["openrouter", "elevenlabs", "gemini"];
-  return ["gemini", "openrouter", "elevenlabs"];
-};
+// Free quotas are limited, so short texts prefer the Fish voice, while long
+// texts start with Gemini, where a single request buys the most characters.
+export const providerOrder = (length) =>
+  length > 250 ? ["gemini", "openrouter"] : ["openrouter", "gemini"];
 
 /**
  * @param {string} text
@@ -26,14 +22,7 @@ export async function synthesizeDictionaryTts(text, env, hooks = {}) {
 
     let result = null;
 
-    if (provider === "elevenlabs") {
-      result = await dictionaryElevenLabs(
-        text,
-        env.ELEVENLABS_API_KEY,
-        env.ELEVENLABS_VOICE_ID,
-        env.ELEVENLABS_MODEL_ID,
-      );
-    } else if (provider === "openrouter") {
+    if (provider === "openrouter") {
       result = await dictionaryOpenRouter(
         text,
         env.OPENROUTER_API_KEY,

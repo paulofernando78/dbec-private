@@ -1,4 +1,4 @@
-export type DictionaryTtsProvider = "elevenlabs" | "openrouter" | "gemini";
+export type DictionaryTtsProvider = "openrouter" | "gemini";
 
 export type DictionaryTtsResult = {
   audio: ArrayBuffer | Uint8Array;

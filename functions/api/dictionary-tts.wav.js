@@ -3,7 +3,7 @@ import { synthesizeDictionaryTts } from "../_dictionary-tts.mjs";
 
 const maxTextLength = 500;
 const cacheControl = "public, max-age=31536000, immutable";
-const cachePrefix = "tts-cache/v2";
+const cachePrefix = "tts-cache/v3";
 
 const encoder = new TextEncoder();
 
@@ -60,9 +60,7 @@ export async function onRequestGet(context) {
   }
 
   const hasProvider = Boolean(
-    context.env.ELEVENLABS_API_KEY ||
-      context.env.OPENROUTER_API_KEY ||
-      context.env.GEMINI_API_KEY,
+    context.env.OPENROUTER_API_KEY || context.env.GEMINI_API_KEY,
   );
   if (!hasProvider) {
     return Response.json(
