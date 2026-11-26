@@ -36,6 +36,7 @@ export const Header = () => {
   const [selectedStudent, setSelectedStudent] =
     useState<SelectedStudent | null>(null);
   const [connectedStudentCount, setConnectedStudentCount] = useState(0);
+  const [connectedTeacherCount, setConnectedTeacherCount] = useState(0);
 
   const location = useLocation();
 
@@ -69,6 +70,7 @@ export const Header = () => {
     if (session?.role !== "teacher") {
       setSelectedStudent(null);
       setConnectedStudentCount(0);
+      setConnectedTeacherCount(0);
       return;
     }
 
@@ -103,10 +105,36 @@ export const Header = () => {
         })
         .catch(() => {});
 
-    void loadStudents();
-    const intervalId = window.setInterval(() => void loadStudents(), 30_000);
+    const loadTeachers = () =>
+      fetch("/api/teachers", { headers: { Accept: "application/json" } })
+        .then(async (response) => {
+          if (!response.ok) return null;
+          const result = (await response.json()) as {
+            teachers?: { lastSeenMs?: number }[];
+          };
+          return result.teachers ?? [];
+        })
+        .then((teachers) => {
+          if (!isCurrent || !teachers) return;
+          const now = Date.now();
+          setConnectedTeacherCount(
+            teachers.filter(
+              (teacher) =>
+                teacher.lastSeenMs && now - teacher.lastSeenMs < 90_000,
+            ).length,
+          );
+        })
+        .catch(() => {});
+
+    const loadPresence = () => {
+      void loadStudents();
+      void loadTeachers();
+    };
+
+    void loadPresence();
+    const intervalId = window.setInterval(() => void loadPresence(), 30_000);
     const refreshWhenVisible = () => {
-      if (document.visibilityState === "visible") void loadStudents();
+      if (document.visibilityState === "visible") void loadPresence();
     };
     document.addEventListener("visibilitychange", refreshWhenVisible);
 
@@ -183,13 +211,22 @@ export const Header = () => {
                     }
                   />
                   {session.role === "teacher" && (
-                    <span
-                      className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedStudentCount > 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
-                      aria-label={`${connectedStudentCount} alunos conectados`}
-                      title={`${connectedStudentCount} alunos conectados`}
-                    >
-                      {connectedStudentCount}
-                    </span>
+                    <>
+                      <span
+                        className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedTeacherCount > 0 ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
+                        aria-label={`${connectedTeacherCount} professores logados`}
+                        title={`${connectedTeacherCount} professores logados`}
+                      >
+                        {connectedTeacherCount}
+                      </span>
+                      <span
+                        className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${connectedStudentCount > 0 ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200"}`}
+                        aria-label={`${connectedStudentCount} alunos conectados`}
+                        title={`${connectedStudentCount} alunos conectados`}
+                      >
+                        {connectedStudentCount}
+                      </span>
+                    </>
                   )}
                   {selectedStudent && (
                     <AccountSummary

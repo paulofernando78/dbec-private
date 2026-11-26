@@ -1,13 +1,17 @@
 import { readCookie, verifySession } from "../_auth.js";
-import { clearStudentPresence } from "../_presence.js";
+import { clearStudentPresence, clearTeacherPresence } from "../_presence.js";
 
 export async function onRequestPost(context) {
   const session = await verifySession(
     readCookie(context.request, "dbec_session"),
     context.env.SESSION_SECRET,
   );
-  if (session?.role === "student" && context.env.DB) {
-    await clearStudentPresence(context.env.DB, session.studentId);
+  if (context.env.DB) {
+    if (session?.role === "student") {
+      await clearStudentPresence(context.env.DB, session.studentId);
+    } else if (session?.role === "teacher" && Number.isInteger(session.userId)) {
+      await clearTeacherPresence(context.env.DB, session.userId);
+    }
   }
   return Response.json(
     { ok: true },

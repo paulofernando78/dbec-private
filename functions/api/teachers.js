@@ -10,6 +10,7 @@
 import { readCookie, verifySession } from "../_auth.js";
 import { isAdmin } from "../_ownership.js";
 import { createPassword } from "../_password.js";
+import { ensureTeacherPresenceStorage } from "../_presence.js";
 
 const noStoreHeaders = {
   "Cache-Control": "no-store",
@@ -25,7 +26,8 @@ const teacherColumns = `
        users.is_admin AS isAdmin,
        users.student_limit AS studentLimit,
        users.active,
-       COALESCE(students.total, 0) AS studentCount`;
+       COALESCE(students.total, 0) AS studentCount,
+       COALESCE(teacher_presence.last_seen_ms, 0) AS lastSeenMs`;
 
 const teacherSource = `
      FROM users
@@ -34,7 +36,8 @@ const teacherSource = `
        FROM users
        WHERE role = 'student' AND teacher_id IS NOT NULL
        GROUP BY teacher_id
-     ) AS students ON students.teacher_id = users.id`;
+     ) AS students ON students.teacher_id = users.id
+     LEFT JOIN teacher_presence ON teacher_presence.teacher_id = users.id`;
 
 const presentTeacher = (teacher) => ({
   ...teacher,
@@ -126,6 +129,8 @@ export async function onRequestGet(context) {
   if (!context.env.DB) {
     return json({ error: "O banco D1 não está configurado." }, 503);
   }
+
+  await ensureTeacherPresenceStorage(context.env.DB);
 
   // Admin vê todos; professor vê apenas o próprio perfil, limite e cota.
   if (!isAdmin(session) && !Number.isInteger(session.userId)) {

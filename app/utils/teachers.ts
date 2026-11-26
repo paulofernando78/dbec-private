@@ -8,6 +8,8 @@ export type Teacher = {
   studentLimit: number;
   studentCount: number;
   active: number;
+  /** Último acesso em ms; recente = professor logado agora. */
+  lastSeenMs?: number;
 };
 
 export const defaultStudentLimit = 10;

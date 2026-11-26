@@ -1,12 +1,28 @@
 import { createSession, readCookie, sessionCookie, verifySession } from "../_auth.js";
-import { touchStudentPresence } from "../_presence.js";
+import { touchStudentPresence, touchTeacherPresence } from "../_presence.js";
+
+// Registra a presença de quem está com a sessão ativa. O header usa isso para
+// mostrar quantos professores e alunos estão logados agora.
+const touchPresence = async (db, session) => {
+  if (session.role === "student") {
+    return Boolean(db) && touchStudentPresence(db, session.studentId);
+  }
+
+  if (!db) return true;
+
+  // Sessões antigas de professor podem não ter userId: seguem válidas, só não
+  // entram na contagem de professores logados.
+  if (!Number.isInteger(session.userId)) return true;
+
+  return touchTeacherPresence(db, session.userId);
+};
 
 export async function onRequestPost(context) {
   const secret = context.env.SESSION_SECRET;
   const session = await verifySession(readCookie(context.request, "dbec_session"), secret);
   const headers = { "Cache-Control": "no-store" };
   if (!session) return Response.json({ error: "Não autorizado." }, { status: 401, headers });
-  if (session.role === "student" && (!context.env.DB || !await touchStudentPresence(context.env.DB, session.studentId))) {
+  if (!await touchPresence(context.env.DB, session)) {
     return Response.json({ error: "Não autorizado." }, { status: 401, headers });
   }
 
@@ -26,7 +42,7 @@ export async function onRequestGet(context) {
     );
   }
 
-  if (session.role === "student" && (!context.env.DB || !await touchStudentPresence(context.env.DB, session.studentId))) {
+  if (!await touchPresence(context.env.DB, session)) {
     return Response.json({ error: "Não autorizado." }, { status: 401, headers: { "Cache-Control": "no-store" } });
   }
 
