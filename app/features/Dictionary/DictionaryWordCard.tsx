@@ -10,7 +10,11 @@ import { Image } from "@/components/ui/Image";
 import { dictionary } from "@/helpers/content";
 import { useSession } from "@/hooks/useSession";
 import type { DictionaryDefinition } from "@/utils/loadDictionaryWord";
-import { ttsAudioUrl } from "@/utils/tts-audio-url";
+import {
+  dictionaryTtsFolder,
+  ttsAudioName,
+  ttsAudioUrl,
+} from "@/utils/tts-audio-url";
 
 type DictionaryWordCardProps = {
   entry: DictionaryDefinition;
@@ -25,6 +29,8 @@ export function DictionaryWordCard({
   compact = false,
 }: DictionaryWordCardProps) {
   const session = useSession();
+  const ttsFolder = dictionaryTtsFolder(entry.word);
+  const ttsName = ttsAudioName(entry.word);
   const [expandedImage, setExpandedImage] = useState<{
     src: string;
     alt: string;
@@ -54,10 +60,16 @@ export function DictionaryWordCard({
         <div className="flex items-center gap-2">
           <Audio
             asButton
-            src={session ? ttsAudioUrl(entry.word) : ""}
+            src={
+              session
+                ? ttsAudioUrl(entry.word, { folder: ttsFolder, name: ttsName })
+                : ""
+            }
             fallbackText={entry.word}
             speechLang="en-US"
             ariaLabel={`Play ${entry.word}`}
+            ttsFolder={ttsFolder}
+            ttsName={ttsName}
             wrapperClassName="shrink-0"
           />
           <h3 className="font-black">{entry.word}</h3>
@@ -94,10 +106,19 @@ export function DictionaryWordCard({
               action={example.enExample ? (
                 <Audio
                   asButton
-                  src={session ? ttsAudioUrl(example.enExample) : ""}
+                  src={
+                    session
+                      ? ttsAudioUrl(example.enExample, {
+                          folder: ttsFolder,
+                          name: `${ttsName}-example${index === 0 ? "" : `-${index + 1}`}`,
+                        })
+                      : ""
+                  }
                   fallbackText={example.enExample}
                   speechLang="en-US"
                   ariaLabel={`Play example: ${example.enExample}`}
+                  ttsFolder={ttsFolder}
+                  ttsName={`${ttsName}-example${index === 0 ? "" : `-${index + 1}`}`}
                   wrapperClassName="shrink-0"
                 />
               ) : null}

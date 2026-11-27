@@ -85,6 +85,7 @@ const withSectionAudioPaths = <
   audioVersion?: number,
 ) => ({
   ...audiobook,
+  mediaFolder: `skills/listening/audiobooks/${level}/${audiobook.slug}`,
   sections: audiobook.sections.map((section) => ({
     ...section,
     localAudio: `local-media/audio/skills/listening/audiobooks/${level}/${audiobook.slug}/${section.id}.mp3`,

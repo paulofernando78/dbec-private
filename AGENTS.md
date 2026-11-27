@@ -47,6 +47,13 @@
 - Store reusable vocabulary images in the dictionary image collection instead of a lesson folder, using the existing first-letter routing: `/media/images/dictionary/{first-letter}/{filename}.avif`.
 - Before adding an image, decide whether it is lesson-specific or reusable vocabulary content and choose the destination accordingly.
 
+## Generated TTS audio
+
+- TTS audio is stored as MP3 (48 kbps mono) and mirrors the navigation under `audio/`: `audio/dictionary/{letter}/{word}.mp3`, `audio/skills/listening/audiobooks/{level}/{book}/{section}.mp3` and `audio/learn/course/{level}/unit-{n}/lesson-{n}/{step}/{name}.mp3`.
+- In development the generated file lands in `local-media/audio/...`; in production the same key is written straight to R2. Keep names stable and readable, and let the `?h=` text hash in the request URL handle cache invalidation.
+- Never store the WAV returned by Gemini: development converts with `ffmpeg` and production converts in the Worker (`functions/_mp3.mjs`). `TTS_MP3=off` in the Pages environment falls back to WAV. `npm run tts:mp3` converts leftovers in `local-media/audio`.
+- A generated file that exists without stored TTS metadata (no text hash) is authoritative: replace or edit it by hand and the app keeps serving it instead of regenerating.
+
 ## Recurring character continuity
 
 - Use [docs/characters.md](docs/characters.md) as the per-character reference guide, including the generated portrait references. Keep those documentation images in `docs/characters/references/`; they are not lesson assets and must not be uploaded to R2.

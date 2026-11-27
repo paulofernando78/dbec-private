@@ -206,6 +206,8 @@ export default function ListeningBookPage() {
                       locked={audioLocked}
                       ariaLabel={`${audioLocked ? "Log in to play" : "Play"} ${audiobook.title}: ${section.title}`}
                       background="background"
+                      ttsFolder={audiobook.mediaFolder}
+                      ttsName={section.id}
                     />
                   </div>
                 )}

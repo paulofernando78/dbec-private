@@ -3,9 +3,14 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { LoaderCircle, Lock, Pause, Play, Rabbit, Turtle } from "lucide-react";
+import { useLocation } from "react-router";
+
 import { Button } from "@/components/ui/Button/Button";
 import { useSession } from "@/hooks/useSession";
-import { ttsAudioUrlForText } from "@/utils/tts-audio-url";
+import {
+  ttsAudioUrlForText,
+  ttsFolderForPath,
+} from "@/utils/tts-audio-url";
 
 type AudioSource = string | { src: string; fallbackText?: string };
 
@@ -25,6 +30,10 @@ type AudioProps = {
   locked?: boolean;
   /** Use the server TTS voice for sources that carry text instead of audio. */
   serverTts?: boolean;
+  /** Pasta do R2 onde o TTS gravado deve ficar; por padrão vem da rota. */
+  ttsFolder?: string;
+  /** Nome do arquivo gerado; por padrão vem do texto falado. */
+  ttsName?: string;
 };
 
 let currentGlobalAudio: HTMLAudioElement | null = null;
@@ -111,6 +120,8 @@ export const Audio = ({
   showPlayerControls = false,
   locked = false,
   serverTts = true,
+  ttsFolder,
+  ttsName,
 }: AudioProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -131,6 +142,11 @@ export const Audio = ({
   const [playbackRate, setPlaybackRate] = useState<1 | 0.75>(1);
 
   const session = useSession();
+  const location = useLocation();
+  const ttsOptions =
+    ttsFolder || ttsName
+      ? { folder: ttsFolder, name: ttsName }
+      : { folder: ttsFolderForPath(location.pathname) };
   const rawSources = (typeof src === "string" ? [src] : [...src]).map((source) =>
     typeof source === "string" ? { src: source } : source,
   );
@@ -141,7 +157,10 @@ export const Audio = ({
   // the browser voice stays as the last resort when TTS is unavailable.
   const ttsSource =
     session && serverTts && !locked && !isAudioFileSource(rawPrimarySource)
-      ? ttsAudioUrlForText(rawPrimarySource.trim() || defaultFallbackText || "")
+      ? ttsAudioUrlForText(
+          rawPrimarySource.trim() || defaultFallbackText || "",
+          ttsOptions,
+        )
       : "";
   const sources = ttsSource
     ? [{ ...rawSources[0], src: ttsSource }, ...rawSources.slice(1)]
@@ -375,7 +394,7 @@ export const Audio = ({
     const el = audioRef.current;
     const ttsUrl =
       session && serverTts && ttsFallbackRef.current === "idle"
-        ? ttsAudioUrlForText(sourceFallbackText)
+        ? ttsAudioUrlForText(sourceFallbackText, ttsOptions)
         : "";
 
     if (ttsUrl && el) {

@@ -7,10 +7,13 @@ import { extraListeningByUnit } from "@/data/learn/course/extra-listening";
 import { levels } from "@/data/learn/course";
 import { Radio } from "@/features/exercises/Radio";
 import { useSession } from "@/hooks/useSession";
-import { ttsAudioUrl } from "@/utils/tts-audio-url";
+import { ttsAudioUrl, ttsFolderForPath } from "@/utils/tts-audio-url";
 
 export default function ExtraListeningPage() {
   const { level, unit } = useParams();
+  const ttsFolder = ttsFolderForPath(
+    `/course/${level}/unit/${unit}/extra-listening`,
+  );
   const session = useSession();
   const activity = extraListeningByUnit[`${level}/${unit}`];
   const unitData = levels[level as keyof typeof levels]?.units.find(
@@ -33,10 +36,12 @@ export default function ExtraListeningPage() {
             <section key={title} className="rounded-xl bg-(--surface) p-4">
               <h2 className="mb-3 text-xl font-bold">{title}</h2>
               <AudioPlayer
-                src={session ? ttsAudioUrl(speech) : ""}
+                src={session ? ttsAudioUrl(speech, { folder: ttsFolder }) : ""}
                 fallbackText={speech}
                 ariaLabel={`Play ${title}`}
                 background="background"
+                ttsFolder={ttsFolder}
+                ttsName={`dialogue-${index + 1}`}
               />
               <Radio
                 className="rounded-xl bg-(--background) p-4"

@@ -8,6 +8,10 @@ type AudioPlayerProps = {
   withBottomPadding?: boolean;
   background?: "surface" | "background";
   locked?: boolean;
+  /** Pasta do R2 onde o TTS gravado deve ficar. */
+  ttsFolder?: string;
+  /** Nome do arquivo gerado por TTS. */
+  ttsName?: string;
 };
 
 export const AudioPlayer = ({
@@ -18,6 +22,8 @@ export const AudioPlayer = ({
   withBottomPadding = true,
   background = "surface",
   locked = false,
+  ttsFolder,
+  ttsName,
 }: AudioPlayerProps) => {
   return (
     <div
@@ -32,6 +38,8 @@ export const AudioPlayer = ({
         speechLang="en-US"
         ariaLabel={ariaLabel}
         showPlayerControls
+        ttsFolder={ttsFolder}
+        ttsName={ttsName}
         wrapperClassName="flex w-full items-center gap-3"
       />
     </div>

@@ -10,10 +10,13 @@
     "audit:course": "node ./scripts/audit-course-content.mjs",
     "audit:expressions": "node ./scripts/audit-expression-dictionary.mjs",
     "audiobooks:sync": "node ./scripts/sync-audiobook-durations.mjs",
+    "tts:mp3": "node ./scripts/tts-to-mp3.mjs",
+    "tts:migrate": "node ./scripts/tts-migrate-legacy.mjs",
     "media:upload": "bash ./scripts/upload-media.sh",
     "deploy": "git add . && git commit -m \"wip\" && git push"
   },
   "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",

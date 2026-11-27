@@ -1,9 +1,21 @@
 import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
+import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
 import { createReadStream, existsSync, watch } from "node:fs";
-import { mkdir, readFile, stat, unlink, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  stat,
+  unlink,
+  writeFile,
+} from "node:fs/promises";
+import type { IncomingMessage, ServerResponse } from "node:http";
+import { tmpdir } from "node:os";
 import { dirname, extname, resolve, sep } from "node:path";
+import { promisify } from "node:util";
 import { defineConfig, type Plugin } from "vite";
 import { synthesizeDictionaryTts } from "./functions/_dictionary-tts.mjs";
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
@@ -21,8 +33,274 @@ const localAiTutorRequests = new Map<string, number[]>();
 const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
 const localDictionaryTtsCache = new Map<
   string,
-  { audio: Buffer; model: string; contentType?: string }
+  {
+    audio: Buffer;
+    model: string;
+    contentType: string;
+    textHash?: string;
+  }
 >();
+
+// Mesmo Cache-Control usado pela rota de produção: o navegador pode guardar o
+// áudio para sempre, porque o texto faz parte da URL.
+const ttsCacheControl = "public, max-age=31536000, immutable";
+
+const ttsContentType = (value?: string) =>
+  (value ?? "").split(";")[0].trim().toLowerCase() || "audio/wav";
+
+const ttsFileExtension = (contentType: string) => {
+  if (contentType === "audio/mpeg" || contentType === "audio/mp3") return "mp3";
+  if (contentType === "audio/ogg") return "ogg";
+  if (contentType === "audio/mp4" || contentType === "audio/m4a") return "m4a";
+  return "wav";
+};
+
+// Grava no mesmo lugar do R2, espelhando a navegação: assim o áudio gerado
+// aparece em local-media/audio junto dos arquivos curados e pode ser revisado
+// ou substituído à mão.
+// Mesmo bitrate usado no MP3 curado dos audiobooks: ~48 kbps mono, cerca de
+// 10x menor que o WAV de 24 kHz devolvido pelo Gemini.
+const ttsMp3Bitrate = "48k";
+const runFile = promisify(execFile);
+
+const wavToMp3 = async (audio: Buffer) => {
+  const directory = await mkdtemp(resolve(tmpdir(), "dbec-tts-"));
+
+  try {
+    const input = resolve(directory, "input.wav");
+    const output = resolve(directory, "output.mp3");
+    await writeFile(input, audio);
+    await runFile(
+      "ffmpeg",
+      [
+        "-hide_banner",
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        input,
+        "-codec:a",
+        "libmp3lame",
+        "-b:a",
+        ttsMp3Bitrate,
+        "-ac",
+        "1",
+        "-ar",
+        "24000",
+        output,
+      ],
+      { timeout: 30_000 },
+    );
+
+    const mp3 = await readFile(output);
+    return mp3.length ? mp3 : null;
+  } catch (error) {
+    console.warn("Could not convert local TTS WAV to MP3", error);
+    return null;
+  } finally {
+    await rm(directory, { recursive: true, force: true }).catch(() => {});
+  }
+};
+
+const localTtsCacheRoot = () => resolve(process.cwd(), ".local-tts-cache");
+const localTtsMetaRoot = () => resolve(localTtsCacheRoot(), "meta");
+const localMediaAudioRoot = () => resolve(process.cwd(), "local-media", "audio");
+
+const ttsSegmentPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+const normalizeTtsFolder = (value?: string | null) => {
+  if (!value) return null;
+  const parts = value.trim().toLowerCase().split("/");
+  if (parts.length > 8) return null;
+  if (!parts.every((part) => ttsSegmentPattern.test(part))) return null;
+  const folder = parts.join("/");
+  return folder.length <= 120 ? folder : null;
+};
+
+const normalizeTtsName = (value?: string | null) => {
+  if (!value) return null;
+  const name = value.trim().toLowerCase();
+  return ttsSegmentPattern.test(name) && name.length <= 60 ? name : null;
+};
+
+const normalizeTtsTextHash = (value?: string | null) => {
+  if (!value) return null;
+  const hash = value.trim().toLowerCase();
+  return /^[0-9a-f]{8,64}$/.test(hash) ? hash : null;
+};
+
+const localTtsFileBase = (folder: string, name: string) =>
+  resolve(localMediaAudioRoot(), folder, name);
+
+const localTtsMetaPath = (folder: string, name: string) =>
+  resolve(localTtsMetaRoot(), folder, `${name}.json`);
+
+const readLegacyLocalTts = async (hash: string) => {
+  try {
+    const root = localTtsCacheRoot();
+    const metadata = JSON.parse(
+      await readFile(resolve(root, `${hash}.json`), "utf8"),
+    ) as { contentType?: string; model?: string; textHash?: string } | null;
+    const contentType = ttsContentType(metadata?.contentType);
+    const audio = await readFile(
+      resolve(root, `${hash}.${ttsFileExtension(contentType)}`),
+    );
+    return {
+      audio,
+      model: metadata?.model?.trim() || "cache",
+      contentType,
+      textHash: metadata?.textHash,
+    };
+  } catch {
+    return null;
+  }
+};
+
+const writeLegacyLocalTts = async (
+  hash: string,
+  audio: Buffer,
+  model: string,
+  contentType: string,
+  textHash?: string,
+) => {
+  try {
+    const root = localTtsCacheRoot();
+    await mkdir(root, { recursive: true });
+    await writeFile(
+      resolve(root, `${hash}.${ttsFileExtension(contentType)}`),
+      audio,
+    );
+    await writeFile(
+      resolve(root, `${hash}.json`),
+      JSON.stringify({ contentType, model, textHash }),
+    );
+  } catch (error) {
+    console.warn("Could not persist local TTS audio", error);
+  }
+};
+
+const readNamedLocalTts = async (folder: string, name: string) => {
+  const base = localTtsFileBase(folder, name);
+  let filePath: string | null = null;
+
+  for (const extension of ["mp3", "wav", "ogg", "m4a"]) {
+    const candidate = `${base}.${extension}`;
+    try {
+      const file = await stat(candidate);
+      if (file.isFile()) {
+        filePath = candidate;
+        break;
+      }
+    } catch {
+      // Tenta a próxima extensão.
+    }
+  }
+
+  if (!filePath) return null;
+
+  let metadata: {
+    contentType?: string;
+    provider?: string;
+    textHash?: string;
+  } | null = null;
+
+  try {
+    metadata = JSON.parse(
+      await readFile(localTtsMetaPath(folder, name), "utf8"),
+    );
+  } catch {
+    // Sem sidecar o arquivo foi colocado ali à mão: usa o que está no disco.
+  }
+
+  // A extensão do disco é a fonte da verdade: o arquivo pode ter sido
+  // convertido para MP3 depois que o sidecar foi gravado.
+  const contentType = ttsContentType(`audio/${extname(filePath).slice(1)}`);
+
+  return {
+    audio: await readFile(filePath),
+    model: metadata?.provider?.trim() || "local",
+    contentType,
+    textHash: metadata?.textHash,
+  };
+};
+
+const writeNamedLocalTts = async (
+  folder: string,
+  name: string,
+  audio: Buffer,
+  model: string,
+  contentType: string,
+  textHash?: string,
+) => {
+  const base = localTtsFileBase(folder, name);
+  const filePath = `${base}.${ttsFileExtension(contentType)}`;
+  const metaPath = localTtsMetaPath(folder, name);
+
+  try {
+    await mkdir(dirname(filePath), { recursive: true });
+    await writeFile(filePath, audio);
+    await mkdir(dirname(metaPath), { recursive: true });
+    await writeFile(
+      metaPath,
+      JSON.stringify({ contentType, provider: model, textHash }),
+    );
+
+    // Se o provider mudou, a extensão muda: remove a sobra anterior.
+    for (const extension of ["wav", "mp3", "ogg", "m4a"]) {
+      const candidate = `${base}.${extension}`;
+      if (candidate === filePath) continue;
+      await unlink(candidate).catch(() => {});
+    }
+  } catch (error) {
+    console.warn("Could not persist local TTS audio", error);
+  }
+};
+
+const sendLocalTtsAudio = (
+  request: IncomingMessage,
+  response: ServerResponse,
+  audio: Buffer,
+  contentType: string,
+) => {
+  response.setHeader("Content-Type", contentType);
+  response.setHeader("Cache-Control", ttsCacheControl);
+  response.setHeader("Accept-Ranges", "bytes");
+
+  const match = /^bytes=(\d*)-(\d*)$/.exec(request.headers.range ?? "");
+  if (!match) {
+    response.statusCode = 200;
+    response.setHeader("Content-Length", String(audio.length));
+    response.end(request.method === "HEAD" ? undefined : audio);
+    return;
+  }
+
+  const size = audio.length;
+  const suffix = !match[1] && match[2] ? Number(match[2]) : null;
+  const start =
+    suffix === null ? (match[1] ? Number(match[1]) : 0) : Math.max(size - suffix, 0);
+  const end =
+    suffix === null
+      ? match[2]
+        ? Math.min(Number(match[2]), size - 1)
+        : size - 1
+      : size - 1;
+
+  if (size === 0 || start > end || start >= size) {
+    response.statusCode = 416;
+    response.setHeader("Content-Range", `bytes */${size}`);
+    response.setHeader("Content-Length", "0");
+    response.end();
+    return;
+  }
+
+  response.statusCode = 206;
+  response.setHeader("Content-Range", `bytes ${start}-${end}/${size}`);
+  response.setHeader("Content-Length", String(end - start + 1));
+  response.end(
+    request.method === "HEAD" ? undefined : audio.subarray(start, end + 1),
+  );
+};
+
 let localSession: {
   username: string;
   role: string;
@@ -198,7 +476,14 @@ const localMedia = (): Plugin => ({
   config: () => ({
     server: {
       fs: {
-        deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "**/.local-audiobooks/**"],
+        deny: [
+          ".env",
+          ".env.*",
+          "*.{crt,pem}",
+          "**/.git/**",
+          "**/.local-audiobooks/**",
+          "**/.local-tts-cache/**",
+        ],
       },
     },
   }),
@@ -279,6 +564,21 @@ const localAuth = (): Plugin => ({
         const { username, password } = JSON.parse(body);
         const variables = await readFile(resolve(process.cwd(), ".dev.vars"), "utf8");
         const authUsers = variables.match(/^AUTH_USERS=(.*)$/m)?.[1]?.trim();
+
+        // Sem AUTH_USERS o login local fica desligado de propósito: a senha
+        // existe apenas no secret da Cloudflare. Avisa em vez de fingir que a
+        // credencial digitada está errada.
+        if (!authUsers) {
+          response.statusCode = 503;
+          response.end(
+            JSON.stringify({
+              error:
+                "Login desabilitado no ambiente local. Teste a área autenticada no site.",
+            }),
+          );
+          return;
+        }
+
         const users = authUsers ? JSON.parse(authUsers) : undefined;
         const rawUser = users?.[username];
         const user =
@@ -384,7 +684,7 @@ const localAuth = (): Plugin => ({
     server.middlewares.use(
       "/api/dictionary-tts.wav",
       async (request, response, next) => {
-        if (request.method !== "GET") return next();
+        if (!["GET", "HEAD"].includes(request.method ?? "")) return next();
         if (!localSession) {
           response.statusCode = 401;
           response.end(JSON.stringify({ error: "Unauthorized." }));
@@ -392,79 +692,137 @@ const localAuth = (): Plugin => ({
         }
 
         try {
-          const text = new URL(request.url ?? "", "http://localhost")
-            .searchParams.get("text")
-            ?.trim();
+          const url = new URL(request.url ?? "", "http://localhost");
+          const text = url.searchParams
+            .get("text")
+            ?.replace(/\s+/g, " ")
+            .trim();
           if (!text || text.length > 500) {
             response.statusCode = 400;
             response.end(JSON.stringify({ error: "Invalid text." }));
             return;
           }
 
-          const cached = localDictionaryTtsCache.get(text);
-          if (cached) {
-            response.setHeader("Content-Type", cached.contentType ?? "audio/wav");
-            response.setHeader("Content-Length", String(cached.audio.length));
-            response.setHeader("X-TTS-Provider", cached.model);
-            response.end(cached.audio);
-            return;
+          const folder = normalizeTtsFolder(url.searchParams.get("folder"));
+          const name = normalizeTtsName(url.searchParams.get("name"));
+          const textHash = normalizeTtsTextHash(url.searchParams.get("h"));
+          const named = folder && name ? { folder, name } : null;
+
+          const hash = createHash("sha256").update(text).digest("hex");
+          const cacheKey = named ? `${named.folder}/${named.name}` : hash;
+
+          // Sem hash gravado o arquivo é tratado como a versão oficial (foi
+          // colocado ali à mão); com hash diferente, o texto mudou.
+          const matchesText = (entry: { textHash?: string }) =>
+            !entry.textHash || !textHash || entry.textHash === textHash;
+
+          let entry = localDictionaryTtsCache.get(cacheKey) ?? null;
+          if (entry && !matchesText(entry)) entry = null;
+          let cacheStatus = entry ? "hit" : "miss";
+
+          if (!entry) {
+            entry = named
+              ? await readNamedLocalTts(named.folder, named.name)
+              : await readLegacyLocalTts(hash);
+            if (entry && !matchesText(entry)) entry = null;
+
+            if (entry) {
+              cacheStatus = "hit";
+              localDictionaryTtsCache.set(cacheKey, entry);
+            }
           }
 
-          const variables = await readFile(
-            resolve(process.cwd(), ".dev.vars"),
-            "utf8",
-          );
-          const readVariable = (name: string) =>
-            variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
-
-          const env = {
-            OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
-            OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
-            OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
-            GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
-            GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
-            GEMINI_TTS_VOICE: readVariable("GEMINI_TTS_VOICE"),
-          };
-
-          if (!env.OPENROUTER_API_KEY && !env.GEMINI_API_KEY) {
-            response.statusCode = 503;
-            response.end(
-              JSON.stringify({ error: "Dictionary TTS is not configured." }),
+          if (!entry) {
+            const variables = await readFile(
+              resolve(process.cwd(), ".dev.vars"),
+              "utf8",
             );
-            return;
+            const readVariable = (name: string) =>
+              variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
+
+            const env = {
+              OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
+              OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
+              OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
+              GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
+              GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
+              GEMINI_TTS_VOICE: readVariable("GEMINI_TTS_VOICE"),
+            };
+
+            if (!env.OPENROUTER_API_KEY && !env.GEMINI_API_KEY) {
+              response.statusCode = 503;
+              response.end(
+                JSON.stringify({ error: "Dictionary TTS is not configured." }),
+              );
+              return;
+            }
+
+            const result = await synthesizeDictionaryTts(text, env);
+            if (!result) {
+              response.statusCode = 503;
+              response.end(
+                JSON.stringify({
+                  error: "Dictionary TTS is temporarily unavailable.",
+                }),
+              );
+              return;
+            }
+
+            const bytes =
+              result.audio instanceof Uint8Array
+                ? result.audio
+                : new Uint8Array(result.audio);
+            const provider = result.model
+              ? `${result.provider}:${result.model}`
+              : result.provider;
+
+            let audio = Buffer.from(bytes);
+            let contentType = ttsContentType(result.contentType);
+
+            if (contentType === "audio/wav") {
+              const mp3 = await wavToMp3(audio);
+              if (mp3) {
+                audio = mp3;
+                contentType = "audio/mpeg";
+              }
+            }
+
+            const storedTextHash = textHash ?? hash.slice(0, 8);
+
+            entry = {
+              audio,
+              model: provider,
+              contentType,
+              textHash: storedTextHash,
+            };
+
+            localDictionaryTtsCache.set(cacheKey, entry);
+
+            if (named) {
+              void writeNamedLocalTts(
+                named.folder,
+                named.name,
+                audio,
+                provider,
+                entry.contentType,
+                storedTextHash,
+              );
+            } else {
+              void writeLegacyLocalTts(
+                hash,
+                audio,
+                provider,
+                entry.contentType,
+                storedTextHash,
+              );
+            }
           }
-
-          const result = await synthesizeDictionaryTts(text, env);
-          if (!result) {
-            response.statusCode = 503;
-            response.end(
-              JSON.stringify({
-                error: "Dictionary TTS is temporarily unavailable.",
-              }),
-            );
-            return;
-          }
-
-          const bytes =
-            result.audio instanceof Uint8Array
-              ? result.audio
-              : new Uint8Array(result.audio);
-          const audio = Buffer.from(bytes);
-          const provider = result.model
-            ? `${result.provider}:${result.model}`
-            : result.provider;
-
-          localDictionaryTtsCache.set(text, {
-            audio,
-            model: provider,
-            contentType: result.contentType,
-          });
 
           response.statusCode = 200;
-          response.setHeader("Content-Type", result.contentType);
-          response.setHeader("Content-Length", String(audio.length));
-          response.setHeader("X-TTS-Provider", provider);
-          response.end(audio);
+          response.setHeader("X-TTS-Provider", entry.model);
+          response.setHeader("X-TTS-Cache", cacheStatus);
+          response.setHeader("X-TTS-Format", ttsFileExtension(entry.contentType));
+          sendLocalTtsAudio(request, response, entry.audio, entry.contentType);
         } catch (error) {
           console.error("Local Dictionary TTS error", error);
           response.statusCode = 500;

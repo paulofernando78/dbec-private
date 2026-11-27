@@ -1,8 +1,10 @@
+import { useLocation } from "react-router";
+
 import { ActionTextRow } from "@/components/content/ActionTextRow";
 import { Portuguese } from "@/components/content/Portuguese";
 import { Audio } from "@/components/ui/Audio";
 import { useSession } from "@/hooks/useSession";
-import { ttsAudioUrl } from "@/utils/tts-audio-url";
+import { ttsAudioUrl, ttsFolderForPath } from "@/utils/tts-audio-url";
 
 export function PhoneticText({ text }: { text: string }) {
   return <>{text.split(/(\/[^/\n]+\/)/g).map((part, index) => (
@@ -14,16 +16,18 @@ export function PhoneticText({ text }: { text: string }) {
 
 export function VocabularyExample({ english, portuguese }: { english: string; portuguese?: string }) {
   const session = useSession();
+  const ttsFolder = ttsFolderForPath(useLocation().pathname);
   const spokenText = english.replace(/\s*\(\/[^/]+\/\)/g, "");
 
   return (
     <ActionTextRow action={
       <Audio
         asButton
-        src={session ? ttsAudioUrl(spokenText) : ""}
+        src={session ? ttsAudioUrl(spokenText, { folder: ttsFolder }) : ""}
         fallbackText={spokenText}
         speechLang="en-US"
         ariaLabel={`Listen: ${spokenText}`}
+        ttsFolder={ttsFolder}
       />
     }>
       <span lang="en"><PhoneticText text={english} /></span>
