@@ -9,8 +9,17 @@ const defaultModels = [
 // fallback audio always sounds the same.
 const defaultVoice = "Charon";
 
+// Audiobooks get a narrator instead of the neutral dictionary voice. Algieba is
+// a male low-pitch voice listed as "General American" and recommended for
+// smooth, polished narration.
+export const defaultAudiobookVoice = "Algieba";
+
 // Kept short on purpose: short style strings stay stable across generations.
 const neutralStyle = "neutral, clear, matter-of-fact";
+// The accent is part of the request: audiobook narration is always American
+// English, both in the style prompt and in the speech config language.
+export const audiobookStyle = "American English narrator, warm and unhurried";
+export const audiobookLanguage = "en-US";
 
 const supportsStyle = (model) => model.startsWith("gemini-3.8");
 
@@ -54,8 +63,10 @@ const pcmToWav = (pcm, sampleRate = 24_000) => {
  * @param {string | undefined} apiKey
  * @param {string | undefined} models
  * @param {string | undefined} voice
+ * @param {string | undefined} style
+ * @param {string | undefined} language
  */
-export async function dictionaryGemini(input, apiKey, models, voice) {
+export async function dictionaryGemini(input, apiKey, models, voice, style, language) {
   if (!apiKey) return null;
 
   const modelList = (models || defaultModels.join(","))
@@ -64,6 +75,8 @@ export async function dictionaryGemini(input, apiKey, models, voice) {
     .filter(Boolean);
 
   const voiceName = voice?.trim() || defaultVoice;
+  const speechStyle = style?.trim() || neutralStyle;
+  const languageCode = language?.trim();
 
   let sawRetryableError = false;
 
@@ -90,7 +103,7 @@ export async function dictionaryGemini(input, apiKey, models, voice) {
                     ...(supportsStyle(model)
                       ? {
                           annotations: [
-                            { type: "speech_metadata", style: neutralStyle },
+                            { type: "speech_metadata", style: speechStyle },
                           ],
                         }
                       : {}),
@@ -100,7 +113,12 @@ export async function dictionaryGemini(input, apiKey, models, voice) {
             ],
             response_format: { type: "audio", mime_type: "audio/wav" },
             generation_config: {
-              speech_config: [{ voice: voiceName }],
+              speech_config: [
+                {
+                  voice: voiceName,
+                  ...(languageCode ? { language: languageCode } : {}),
+                },
+              ],
             },
           }),
           signal: AbortSignal.timeout(20_000),

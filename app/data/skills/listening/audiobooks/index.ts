@@ -95,9 +95,15 @@ const withSectionAudioPaths = <
 
 export const audiobooks = {
   // Starter
-  [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure),
-  [flyingHome.slug]: withSectionAudioPaths(flyingHome),
-  [marcelAndTheMonaLisa.slug]: withSectionAudioPaths(marcelAndTheMonaLisa),
+  // v=1: o áudio destes livros foi apagado para ser regerado com a voz de
+  // audiobook, então a URL precisa mudar para o cache antigo ser descartado.
+  [newZealandAdventure.slug]: withSectionAudioPaths(newZealandAdventure, "starter", 1),
+  [flyingHome.slug]: withSectionAudioPaths(flyingHome, "starter", 1),
+  [marcelAndTheMonaLisa.slug]: withSectionAudioPaths(
+    marcelAndTheMonaLisa,
+    "starter",
+    1,
+  ),
   [marcelAndTheShakespeareLetters.slug]: withSectionAudioPaths(
     marcelAndTheShakespeareLetters,
   ),

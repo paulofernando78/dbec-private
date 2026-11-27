@@ -1,5 +1,9 @@
 import { readCookie, verifySession } from "../_auth.js";
-import { synthesizeDictionaryTts } from "../_dictionary-tts.mjs";
+import {
+  isAudiobookFolder,
+  synthesizeDictionaryTts,
+  ttsVoiceTag,
+} from "../_dictionary-tts.mjs";
 import { wavToMp3 } from "../_mp3.mjs";
 
 const maxTextLength = 500;
@@ -206,13 +210,23 @@ export async function onRequestGet(context) {
   const namedPath = folder && name ? `audio/${folder}/${name}` : null;
   const textHash = normalizeTextHash(url.searchParams.get("h"));
 
+  // Audiobooks usam uma voz de narrador. A voz entra na identidade do áudio:
+  // trocar de voz muda a chave do cache e o textHash gravado no R2, então o
+  // áudio antigo é descartado em vez de continuar sendo servido.
+  const audiobook = isAudiobookFolder(folder);
+  const voiceTag = ttsVoiceTag(context.env, { folder });
+  const withVoice = (value) => (audiobook ? `${value}:${voiceTag}` : value);
+  const cacheKeyUrl = new URL(context.request.url);
+  if (audiobook) cacheKeyUrl.searchParams.set("ttsVoice", voiceTag);
+  const cacheKey = cacheKeyUrl.toString();
+
   const cache = caches.default;
   const rangeRequested = context.request.headers.has("Range");
 
   // Um 206 nunca é guardado na Cache API, então ranges vão direto ao R2 (que
   // responde por faixa) ou ao buffer sintetizado.
   if (!rangeRequested) {
-    const cached = await cache.match(context.request);
+    const cached = await cache.match(cacheKey);
     if (cached) {
       const headers = new Headers(cached.headers);
       headers.set("X-TTS-Cache", "hit");
@@ -253,31 +267,41 @@ export async function onRequestGet(context) {
 
     if (stored.object) {
       // Sem textHash o arquivo foi colocado ali à mão (ou é do cache antigo) e
-      // passa a ser a versão oficial. Com hash diferente, o texto mudou e o
-      // áudio precisa ser regerado.
+      // passa a ser a versão oficial. Com hash diferente, o texto (ou a voz do
+      // audiobook) mudou e o áudio precisa ser regerado.
       // O rclone grava a metadata em minúsculas; aceita as duas formas.
       const custom = stored.object.customMetadata ?? {};
       const storedHash = custom.textHash ?? custom.texthash ?? null;
-      const upToDate = !storedHash || !textHash || storedHash === textHash;
+      const upToDate =
+        !storedHash || !textHash || storedHash === withVoice(textHash);
 
       if (upToDate) {
         const response = storedResponse(context.request, stored.object, "hit");
         if (response.status === 200) {
-          context.waitUntil(cache.put(context.request, response.clone()));
+          context.waitUntil(cache.put(cacheKey, response.clone()));
         }
         return response;
       }
     }
   }
 
-  const result = await synthesizeDictionaryTts(text, context.env, {
-    isCoolingDown,
-    markCooldown,
-  });
+  const result = await synthesizeDictionaryTts(
+    text,
+    context.env,
+    {
+      isCoolingDown,
+      markCooldown,
+    },
+    { folder },
+  );
 
   if (!result) {
     return Response.json(
-      { error: "Dictionary TTS is temporarily unavailable." },
+      {
+        error: audiobook
+          ? "Audiobook narration is temporarily unavailable."
+          : "Dictionary TTS is temporarily unavailable.",
+      },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
@@ -315,7 +339,7 @@ export async function onRequestGet(context) {
         },
         customMetadata: {
           provider,
-          textHash: textHash ?? hash.slice(0, 8),
+          textHash: withVoice(textHash ?? hash.slice(0, 8)),
         },
       }),
     );
@@ -343,7 +367,7 @@ export async function onRequestGet(context) {
 
   // A Cache API só aceita respostas 200; um 206 fica fora do cache.
   if (response.status === 200) {
-    context.waitUntil(cache.put(context.request, response.clone()));
+    context.waitUntil(cache.put(cacheKey, response.clone()));
   }
 
   return response;

@@ -52,7 +52,14 @@
 - TTS audio is stored as MP3 (48 kbps mono) and mirrors the navigation under `audio/`: `audio/dictionary/{letter}/{word}.mp3`, `audio/skills/listening/audiobooks/{level}/{book}/{section}.mp3` and `audio/learn/course/{level}/unit-{n}/lesson-{n}/{step}/{name}.mp3`.
 - In development the generated file lands in `local-media/audio/...`; in production the same key is written straight to R2. Keep names stable and readable, and let the `?h=` text hash in the request URL handle cache invalidation.
 - Never store the WAV returned by Gemini: development converts with `ffmpeg` and production converts in the Worker (`functions/_mp3.mjs`). `TTS_MP3=off` in the Pages environment falls back to WAV. `npm run tts:mp3` converts leftovers in `local-media/audio`.
+- Audiobook narration uses its own narrator voice (`Algieba`, overridable with `GEMINI_TTS_AUDIOBOOK_VOICE`) in American English: style `American English narrator, warm and unhurried` plus `language: "en-US"` in the speech config. Dictionary and page audio keep the neutral `Charon` voice. The resolved voice, style, language and model are part of the cache identity, so changing any of them discards previously synthesized audiobook audio automatically.
+- Audiobook audio must keep a single voice from start to finish: it uses only the first configured Gemini model (`GEMINI_TTS_AUDIOBOOK_MODEL` exists as an override) and never falls back to another model or provider. Failing loudly is better than mixing voices inside one book.
+- When replacing or regenerating audiobook audio, bump the `audioVersion` in `app/data/skills/listening/audiobooks/index.ts`: the file keeps the same R2 key and is served with an immutable cache, so the URL is the only way to discard the old audio from browsers and the CDN.
 - A generated file that exists without stored TTS metadata (no text hash) is authoritative: replace or edit it by hand and the app keeps serving it instead of regenerating.
+- `media:upload` skips files that have a sidecar in `.local-tts-cache/meta` (written by the dev server), because uploading them with rclone strips the `textHash` and freezes the audio. Use `--list-generated` to inspect and `--include-generated` to upload anyway.
+- `npm run media:diff` compares `local-media/` with R2 and, with `--download`, fetches only what is missing or has a different size. `--prune-local` moves files that no longer exist in R2 to `.local-media-pruned/<timestamp>/` instead of deleting them.
+- `npm run media:delete -- <path>` removes a file (or a `path/` prefix) from both `local-media/` and R2; it also accepts `--remote-only` (useful to force the TTS fallback in production) and `--local-only`.
+- `npm run media:upload -- --delete` switches copy to sync: files missing locally are removed from R2. Private prefixes and TTS files with a sidecar stay untouched; `--dry-run` previews the deletions.
 
 ## Recurring character continuity
 

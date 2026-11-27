@@ -13,6 +13,8 @@
     "tts:mp3": "node ./scripts/tts-to-mp3.mjs",
     "tts:migrate": "node ./scripts/tts-migrate-legacy.mjs",
     "media:upload": "bash ./scripts/upload-media.sh",
+    "media:diff": "node ./scripts/media-diff.mjs",
+    "media:delete": "node ./scripts/media-delete.mjs",
     "deploy": "git add . && git commit -m \"wip\" && git push"
   },
   "dependencies": {

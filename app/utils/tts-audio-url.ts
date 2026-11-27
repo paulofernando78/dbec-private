@@ -1,5 +1,7 @@
 export const maxTtsTextLength = 500;
-export const ttsAudioVersion = 6;
+// A versão faz parte da URL: suba o número quando a voz ou o formato do áudio
+// mudar, para navegadores e CDN descartarem o áudio sintetizado anterior.
+export const ttsAudioVersion = 10;
 
 export type TtsAudioOptions = {
   /** Pasta de destino no R2, espelhando a navegação do site. */

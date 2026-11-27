@@ -25,7 +25,7 @@ export const listeningLevels: readonly ListeningLevel[] = [
         title: "A New Zealand Adventure",
         description:
           "Two friends search New Zealand for the owner of a lost phone.",
-        duration: "05:29",
+        duration: "05:12",
       },
       {
         slug: "flying-home",

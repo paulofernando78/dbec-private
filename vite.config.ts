@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { dirname, extname, resolve, sep } from "node:path";
 import { promisify } from "node:util";
 import { defineConfig, type Plugin } from "vite";
-import { synthesizeDictionaryTts } from "./functions/_dictionary-tts.mjs";
+import { isAudiobookFolder, synthesizeDictionaryTts, ttsVoiceTag } from "./functions/_dictionary-tts.mjs";
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
 import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 import { rosterSignature } from "./shared/roster-version.mjs";
@@ -708,13 +708,44 @@ const localAuth = (): Plugin => ({
           const textHash = normalizeTtsTextHash(url.searchParams.get("h"));
           const named = folder && name ? { folder, name } : null;
 
+          // Audiobooks usam uma voz de narrador. A voz entra na identidade do
+          // áudio, então trocar de voz descarta o arquivo gerado antes.
+          let variables = "";
+          try {
+            variables = await readFile(resolve(process.cwd(), ".dev.vars"), "utf8");
+          } catch {
+            // Sem .dev.vars o provider fica desconfigurado e o 503 abaixo cobre.
+          }
+          const readVariable = (name: string) =>
+            variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
+
+          const env = {
+            OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
+            OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
+            OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
+            GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
+            GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
+            GEMINI_TTS_VOICE: readVariable("GEMINI_TTS_VOICE"),
+            GEMINI_TTS_AUDIOBOOK_VOICE: readVariable("GEMINI_TTS_AUDIOBOOK_VOICE"),
+            GEMINI_TTS_AUDIOBOOK_MODEL: readVariable("GEMINI_TTS_AUDIOBOOK_MODEL"),
+            GEMINI_TTS_AUDIOBOOK_MODELS: readVariable("GEMINI_TTS_AUDIOBOOK_MODELS"),
+          };
+
+          const audiobook = isAudiobookFolder(folder);
+          const voiceTag = ttsVoiceTag(env, { folder });
+          const withVoice = (value: string) =>
+            audiobook ? `${value}:${voiceTag}` : value;
+
           const hash = createHash("sha256").update(text).digest("hex");
-          const cacheKey = named ? `${named.folder}/${named.name}` : hash;
+          const cacheKey = named
+            ? `${named.folder}/${named.name}${audiobook ? `:${voiceTag}` : ""}`
+            : hash;
 
           // Sem hash gravado o arquivo é tratado como a versão oficial (foi
-          // colocado ali à mão); com hash diferente, o texto mudou.
+          // colocado ali à mão); com hash diferente, o texto (ou a voz do
+          // audiobook) mudou.
           const matchesText = (entry: { textHash?: string }) =>
-            !entry.textHash || !textHash || entry.textHash === textHash;
+            !entry.textHash || !textHash || entry.textHash === withVoice(textHash);
 
           let entry = localDictionaryTtsCache.get(cacheKey) ?? null;
           if (entry && !matchesText(entry)) entry = null;
@@ -733,22 +764,6 @@ const localAuth = (): Plugin => ({
           }
 
           if (!entry) {
-            const variables = await readFile(
-              resolve(process.cwd(), ".dev.vars"),
-              "utf8",
-            );
-            const readVariable = (name: string) =>
-              variables.match(new RegExp(`^${name}=(.*)$`, "m"))?.[1]?.trim();
-
-            const env = {
-              OPENROUTER_API_KEY: readVariable("OPENROUTER_API_KEY"),
-              OPENROUTER_TTS_MODELS: readVariable("OPENROUTER_TTS_MODELS"),
-              OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
-              GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
-              GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
-              GEMINI_TTS_VOICE: readVariable("GEMINI_TTS_VOICE"),
-            };
-
             if (!env.OPENROUTER_API_KEY && !env.GEMINI_API_KEY) {
               response.statusCode = 503;
               response.end(
@@ -757,7 +772,7 @@ const localAuth = (): Plugin => ({
               return;
             }
 
-            const result = await synthesizeDictionaryTts(text, env);
+            const result = await synthesizeDictionaryTts(text, env, {}, { folder });
             if (!result) {
               response.statusCode = 503;
               response.end(
@@ -787,7 +802,7 @@ const localAuth = (): Plugin => ({
               }
             }
 
-            const storedTextHash = textHash ?? hash.slice(0, 8);
+            const storedTextHash = withVoice(textHash ?? hash.slice(0, 8));
 
             entry = {
               audio,
