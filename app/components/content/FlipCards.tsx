@@ -27,6 +27,7 @@ type FlipCardItem = {
   backImg?: string;
   backAlt?: string;
   backLine?: ContentValue[];
+  className?: string
 };
 
 type FlipCardsProps = {
@@ -76,6 +77,7 @@ const SingleFlipCard = ({
   backImg,
   backAlt,
   backLine,
+  className
 }: FlipCardItem) => {
   const [flipped, setFlipped] = useState(false);
   const [resolvedFrontImg, setResolvedFrontImg] =
@@ -108,80 +110,29 @@ const SingleFlipCard = ({
   }, [backAlt, backImg]);
 
   return (
-    <div className="
-      relative
-      w-full
-      aspect-square
-      perspective-[5000px]
-      p-1.25
-      ">
+    <div className={`relative w-full aspect-square perspective-[5000px] p-1.25 ${className}`}>
       <div
-        className={`
-          relative
-          w-full
-          h-full
-          border-10
-          transition-transform duration-1000
-          border-slate-300
-          rounded-lg
-          transform-3d
-          ${flipped ?
-            "transform-[rotateY(180deg)]"
-            :
-            ""}`
-          }
+        className={`relative w-full h-full border-10 transition-transform duration-1000 border-slate-300 rounded-lg transform-3d ${flipped ? "transform-[rotateY(180deg)]" : ""}`}
         onClick={() => setFlipped((prev) => !prev)}
       >
-        <div className="
-          absolute
-          w-full
-          h-full
-          backface-hidden
-          grid
-          place-items-center
-        bg-slate-200
-          transform-[rotateY(0deg)]
-        ">
-          <FlipHorizontal2 className="
-            absolute
-            top-1.5
-            right-1.25
-            border-2 
-            border-slate-400
-            rounded-full
-            outline-2
-            outline-white
-            bg-[aliceblue]
-            z-2"
-          />
+        <div className="absolute w-full h-full backface-hidden grid place-items-center bg-slate-200 transform-[rotateY(0deg)]">
+          <FlipHorizontal2 className="absolute top-1.5 right-1.25 border-2 border-slate-400 rounded-full outline-2 outline-white bg-[aliceblue] z-2"/>
           {frontContent ? (
-            <span className="
-              text-center 
-              text-black 
-              text-[1rem]
-            ">
+            <span className="text-center text-black text-[1rem]">
               {frontContent}
             </span>
           ) : frontLine ? (
-            <span className="
-              text-center
-              text-black
-              text-[1rem]
+            <span className="text-center text-black text-[1rem]
             ">
               <Text value={frontLine} />
             </span>
           ) : resolvedFrontImg ? (
-            <Image
+            <img
               src={resolvedFrontImg.src}
               alt={resolvedFrontImg.alt}
-              className="
-                w-full
-                h-full
-                object-contain
-                border-0
-              "
-                />
-              ) : (
+              loading="lazy"
+              className="absolute inset-0 block w-full h-full object-cover"/>
+          ) : (
                 <Image
                 src="/media/images/icons/question-mark.gif"
                 alt="Question mark gif"
@@ -190,38 +141,19 @@ const SingleFlipCard = ({
             />
           )}
         </div>
-        <div className="
-          absolute
-          w-full
-          h-full
-          grid place-items-center
-          bg-slate-200 rounded-1.25
-          backface-hidden
-          transform-[rotateY(180deg)]
-          ">
+        <div className="absolute w-full h-full grid place-items-center bg-slate-200 rounded-1.25 backface-hidden transform-[rotateY(180deg)]">
           {backContent ? (
-            <div className="
-              text-center 
-              text-black
-              text-[1rem]
-              ">{backContent}</div>
+            <div className="text-center text-black text-[1rem]">{backContent}</div>
           ) : backLine ? (
-            <div className="
-              text-center 
-              text-black
-              text-[1rem]
-              ">
+            <div className="text-center text-black text-[1rem]">
               <Text value={backLine} />
             </div>
           ) : resolvedBackImg ? (
-            <Image
+            <img
               src={resolvedBackImg.src}
               alt={resolvedBackImg.alt}
-              className="
-                border-0
-                object-contain
-                "
-            />
+              loading="lazy"
+              className="absolute inset-0 block w-full h-full object-cover"/>
           ) : null}
         </div>
       </div>

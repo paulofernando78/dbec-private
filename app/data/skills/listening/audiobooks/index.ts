@@ -13,13 +13,35 @@ export type AudiobookBlock =
     }
   | (AudiobookImage & { r2: string; text?: never });
 
+export type AudiobookQuestionOption = {
+  option: string;
+  isCorrect?: boolean;
+};
+
+export type AudiobookQuestion = {
+  question: string;
+  options: readonly AudiobookQuestionOption[];
+};
+
+export type AudiobookRetellCard = {
+  img: string;
+  alt?: string;
+  summary: string;
+};
+
+export type AudiobookRetell = {
+  instruction: string;
+  cards: readonly AudiobookRetellCard[];
+};
+
 export type AudiobookSection = AudiobookImage & {
   id: string;
   title: string;
   timestamp?: string;
   text: string | readonly AudiobookBlock[];
-  questions?: readonly string[];
+  questions?: readonly (string | AudiobookQuestion)[];
   answers?: readonly string[];
+  retell?: AudiobookRetell;
   footnotes?: readonly string[];
   mediaPosition?: "left" | "right" | "top" | "bottom";
   localAudio?: string;

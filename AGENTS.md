@@ -15,7 +15,15 @@
 
 # Audiobook questions
 
-- Every audiobook section with comprehension questions must include a complete answer key and the shared `AudiobookQuestions` component with its show/hide answers button. Keep answers hidden initially and reveal them independently per section. Apply this to every audiobook, including future additions.
+- Every audiobook section with comprehension questions must use the shared `AudiobookQuestions` component, including future additions.
+- Comprehension questions are multiple choice: the `Radio` component with 2–3 options per question and exactly one option marked `isCorrect`. Every option must be a complete sentence so the student practises answering in full sentences, for example “They are going to New Zealand.”
+- Options are shuffled on every page load by the component, so author them in any order as long as exactly one option per question is marked `isCorrect`.
+- Sections still written with plain string questions and the `answers` array keep the show/hide answer key until they are migrated to the multiple-choice format.
+
+# Audiobook retell
+
+- Close an audiobook with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, the summary the student should say, always as complete sentences.
+- The retell section is a speaking exercise: it has no narration audio, so do not expect a player above the cards.
 
 - Use Tailwind's spacing scale for dimensions and spacing instead of arbitrary pixel values. For example, use `min-h-17` for `68px` and `w-15` for `60px` at the default root font size. When the scale cannot express the intended value, use an equivalent relative unit such as `rem`.
 

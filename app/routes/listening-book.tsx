@@ -7,6 +7,7 @@ import { Navigate, useParams } from "react-router";
 
 import { MediaWrapper } from "@/components/content/MediaWrapper";
 import { AudiobookQuestions } from "@/components/content/AudiobookQuestions";
+import { FlipCards } from "@/components/content/FlipCards";
 import { PageHeader } from "@/components/content/PageHeader";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
@@ -198,7 +199,7 @@ export default function ListeningBookPage() {
             )}
             <MediaWrapper.Content className="min-w-0 flex-1">
               <div>
-                {(section.r2Audio || narration.trim()) && (
+                {!section.retell && (section.r2Audio || narration.trim()) && (
                   <div className="sticky top-0 z-10">
                     <AudioPlayer
                       src={section.r2Audio ?? ""}
@@ -250,6 +251,19 @@ export default function ListeningBookPage() {
                 questions={questions}
                 answers={answers}
               />
+              {section.retell && (
+                <div className="mt-3 rounded-lg bg-(--background) p-3">
+                  <FlipCards
+                    instruction={section.retell.instruction}
+                    cards={section.retell.cards.map((card) => ({
+                      frontImg: card.img,
+                      frontAlt: card.alt,
+                      backContent: card.summary,
+                      className: "aspect-3/4!"
+                    }))}
+                  />
+                </div>
+              )}
               {section.id !== summary?.id && (
                 <div className="mt-3 flex items-center gap-2 rounded-lg bg-(--background) p-3 text-left text-sm font-bold">
                   <Checkbox
