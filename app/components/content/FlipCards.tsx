@@ -31,7 +31,7 @@ type FlipCardItem = {
 };
 
 type FlipCardsProps = {
-  instruction: string
+  instruction?: string
   cards?: FlipCardItem[];
 };
 
@@ -167,7 +167,7 @@ export const FlipCards = ({
 }: FlipCardsProps) => {
   return (
     <>
-      <p className="mb-4 font-bold">{instruction}</p>
+      {instruction && <p className="mb-4 font-bold">{instruction}</p>}
       <div className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center mb-4">
         {cards.map((card, index) => (
           <div

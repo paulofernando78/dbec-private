@@ -200,9 +200,8 @@ export const theLastPhoto = {
     {
       id: "retell-the-story",
       title: "Retell the Story",
-      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      text: "Look at each picture and retell that part of the story in complete sentences. Tell the story first, then flip the card to check.",
       retell: {
-        instruction: "Flip the cards and retell the story.",
         cards: [
           {
             img: `${imageBase}/paragraph-1.avif`,

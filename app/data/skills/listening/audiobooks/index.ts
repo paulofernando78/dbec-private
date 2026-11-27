@@ -30,7 +30,7 @@ export type AudiobookRetellCard = {
 };
 
 export type AudiobookRetell = {
-  instruction: string;
+  instruction?: string;
   cards: readonly AudiobookRetellCard[];
 };
 
