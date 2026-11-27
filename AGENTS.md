@@ -16,13 +16,14 @@
 # Audiobook questions
 
 - Every audiobook section with comprehension questions must use the shared `AudiobookQuestions` component, including future additions.
-- Comprehension questions are multiple choice: the `Radio` component with 2–3 options per question and exactly one option marked `isCorrect`. Every option must be a complete sentence so the student practises answering in full sentences, for example “They are going to New Zealand.”
+- Every audiobook section with comprehension questions uses the multiple-choice format: the `Radio` component with 2–3 options per question and exactly one option marked `isCorrect`. Every option must be a complete sentence so the student practises answering in full sentences, for example “They are going to New Zealand.”
 - Options are shuffled on every page load by the component, so author them in any order as long as exactly one option per question is marked `isCorrect`.
-- Sections still written with plain string questions and the `answers` array keep the show/hide answer key until they are migrated to the multiple-choice format.
+- Do not keep an `answers` array on a section that has multiple-choice questions; the Radio shows correctness itself. The plain-string questions plus `answers` fallback in `AudiobookQuestions` exists only for blank templates and drafts not yet migrated.
 
 # Audiobook retell
 
-- Close every audiobook with per-paragraph images with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, the summary the student should say, always as complete sentences.
+- Close every audiobook with per-paragraph images with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, one short summary sentence (maximum 14 words, 18 for a card that covers two paragraphs) of what the student should say.
+- The summary is a reminder, not a retelling: one main event per card, present tense, simple A1–A2 English, no dialogue quotes and no secondary details.
 - The retell intro lives once in `app/routes/listening-book.tsx` (`retellIntro`): “Look at each picture and retell that part of the story, then flip the card to check.” Never repeat that text in the audiobook data files; each retell section only declares `id`, `title` and `retell.cards`.
 - When two paragraphs share a single image (for example `paragraph-8-9.avif`), create one card for that image with a summary covering both paragraphs; never repeat the same image on two cards.
 - The retell section is a speaking exercise: it has no narration audio, so do not expect a player above the cards.

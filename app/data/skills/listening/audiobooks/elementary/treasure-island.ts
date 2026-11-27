@@ -33,14 +33,41 @@ export const treasureIsland = {
       id: "chapter-1",
       title: "Chapter 1 · Jim Hawkins' Story I",
       questions: [
-        "Who is the old captain afraid of?",
-        "What does Jim take from the captain's box?",
-        "What does Jim hear when he is inside the fruit barrel?",
-      ],
-      answers: [
-        "A sailor with one leg.",
-        "An envelope with a map showing where Flint's treasure is.",
-        "Silver plans to let the captain, the doctor and Mr Trelawney find the treasure, then kill them.",
+        {
+          question: "Who is the old captain afraid of?",
+          options: [
+            { option: "He is afraid of the doctor." },
+            {
+              option: "He is afraid of a sailor with one leg.",
+              isCorrect: true,
+            },
+            { option: "He is afraid of Jim’s father." },
+          ],
+        },
+        {
+          question: "What does Jim take from the captain's box?",
+          options: [
+            { option: "He takes a bag of money." },
+            { option: "He takes the captain’s old blue coat." },
+            {
+              option:
+                "He takes an envelope with a map showing where Flint’s treasure is.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Jim hear when he is inside the fruit barrel?",
+          options: [
+            {
+              option:
+                "He hears Silver plan to let the captain, the doctor and Mr Trelawney find the treasure and then kill them.",
+              isCorrect: true,
+            },
+            { option: "He hears the sailors talking about the weather." },
+            { option: "He hears Captain Smollett giving orders to the men." },
+          ],
+        },
       ],
       text: [
         {
@@ -504,14 +531,46 @@ export const treasureIsland = {
       id: "chapter-2",
       title: "Chapter 2 · Dr Livesey's Story",
       questions: [
-        "Why does Dr Livesey want to stay in the house on the island?",
-        "What happens to most of the food and guns when they leave the small boat?",
-        "Who arrives at the house at the end of the chapter?",
-      ],
-      answers: [
-        "The house is strong, it is in a good place, and there is water.",
-        "They go down into the sea with the boat.",
-        "Jim Hawkins.",
+        {
+          question:
+            "Why does Dr Livesey want to stay in the house on the island?",
+          options: [
+            {
+              option:
+                "He wants to stay because the house is near the ship and the beach.",
+            },
+            {
+              option:
+                "He wants to stay because the pirates cannot see the house.",
+            },
+            {
+              option:
+                "He wants to stay because the house is strong, it is in a good place and there is water.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "What happens to most of the food and guns when they leave the small boat?",
+          options: [
+            {
+              option:
+                "Most of the food and guns go down into the sea with the boat.",
+              isCorrect: true,
+            },
+            { option: "The pirates take them back to the ship." },
+            { option: "They are carried safely to the house." },
+          ],
+        },
+        {
+          question: "Who arrives at the house at the end of the chapter?",
+          options: [
+            { option: "Ben Gunn arrives at the house." },
+            { option: "Jim Hawkins arrives at the house.", isCorrect: true },
+            { option: "Long John Silver arrives at the house." },
+          ],
+        },
       ],
       text: [
         {
@@ -577,14 +636,52 @@ export const treasureIsland = {
       id: "chapter-3",
       title: "Chapter 3 · Jim's Story II",
       questions: [
-        "Where does Jim take the Hispaniola with Israel Hands' help?",
-        "Why is there no treasure under the big tree?",
-        "What does Silver do when they reach the nearest town?",
-      ],
-      answers: [
-        "To the North Inlet, in the north of the island.",
-        "Ben Gunn found the treasure earlier and moved it to his home on the island.",
-        "He escapes and takes some of the treasure with him.",
+        {
+          question:
+            "Where does Jim take the Hispaniola with Israel Hands' help?",
+          options: [
+            { option: "He takes it to Bristol." },
+            {
+              option:
+                "He takes it to the North Inlet, in the north of the island.",
+              isCorrect: true,
+            },
+            { option: "He takes it to the beach near the house." },
+          ],
+        },
+        {
+          question: "Why is there no treasure under the big tree?",
+          options: [
+            {
+              option:
+                "There is no treasure because the pirates took it to the ship.",
+            },
+            {
+              option:
+                "There is no treasure because Flint never hid any treasure there.",
+            },
+            {
+              option:
+                "There is no treasure because Ben Gunn found it earlier and moved it to his home on the island.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Silver do when they reach the nearest town?",
+          options: [
+            {
+              option: "He escapes and takes some of the treasure with him.",
+              isCorrect: true,
+            },
+            {
+              option: "He stays with the doctor and helps the others.",
+            },
+            {
+              option: "He sails back to Treasure Island with the pirates.",
+            },
+          ],
+        },
       ],
       text: [
         { text: "'Your friends are in the house now,' said Ben Gunn." },

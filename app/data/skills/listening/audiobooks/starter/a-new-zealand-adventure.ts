@@ -50,7 +50,7 @@ export const newZealandAdventure = {
           options: [
             { option: "They are going to New Zealand.", isCorrect: true },
             { option: "They are going to Australia." },
-            { option: "They are going to the bus station." },
+            { option: "They are going to Japan." },
           ],
         },
         {
@@ -542,85 +542,85 @@ export const newZealandAdventure = {
             img: `${imageBase}/paragraph-1.avif`,
             alt: "Sarah and Jessica arriving in New Zealand by plane.",
             summary:
-              "Sarah and Jessica are going to New Zealand for a holiday. They are late, so they will get a taxi from the airport to the bus station.",
+              "They take a taxi from the airport to the bus station.",
           },
           {
             img: `${imageBase}/paragraph-2.avif`,
             alt: "The girls finding a taxi outside the airport.",
             summary:
-              "At the airport, a boy offers them his taxi. Sarah asks the driver to take them to the bus station.",
+              "A boy at the airport gives them his taxi to the bus station.",
           },
           {
             img: `${imageBase}/paragraph-3.avif`,
             alt: "Sarah and Jessica discovering a mobile phone in the taxi.",
             summary:
-              "In the taxi, Jessica finds a mobile phone. It is the boy's phone. His name is Michael, and tomorrow he will be at Ninety Mile Beach.",
+              "In the taxi, Jessica finds Michael's mobile phone on the floor.",
           },
           {
             img: `${imageBase}/paragraph-4.avif`,
             alt: "The girls watching buses drive along Ninety Mile Beach.",
             summary:
-              "At Ninety Mile Beach, the buses drive on the long beach. Jessica sees Michael on a bus, but the bus does not stop.",
+              "Jessica sees Michael on a bus, but the bus does not stop.",
           },
           {
             img: `${imageBase}/paragraph-5.avif`,
             alt: "Sarah reading Michael's message on a bus.",
             summary:
-              "On the bus, they hear a beep from the mobile. Sarah reads a message and thinks they can find Michael at the Sky Tower in Auckland.",
+              "Sarah reads a message and they look for Michael at the Sky Tower.",
           },
           {
             img: `${imageBase}/paragraph-6.avif`,
             alt: "Sarah and Jessica at Auckland's Sky Tower.",
             summary:
-              "At the Sky Tower, Michael is not there. Sarah wants to bungy jump, and Jessica says she will watch her bag.",
+              "Sarah bungy jumps from the Sky Tower while Jessica watches her bag.",
           },
           {
             img: `${imageBase}/paragraph-7.avif`,
             alt: "Sarah bungy jumping from the Sky Tower.",
             summary:
-              "Sarah sees Michael near the street. Jessica runs after him to give him his mobile, but she forgets Sarah's bag.",
+              "Jessica runs after Michael and forgets Sarah's bag.",
           },
           {
             img: `${imageBase}/paragraph-8.avif`,
             alt: "Sarah and Jessica in their room planning the next day.",
             summary:
-              "The girls are unhappy because they cannot find Michael or the bag. They have tickets for the glow-worm caves, so they will look for him there.",
+              "They lose Sarah's bag and plan to go to the glow-worm caves.",
           },
           {
             img: `${imageBase}/paragraph-9.avif`,
             alt: "Visitors riding a boat through the glow-worm caves.",
             summary:
-              "In the cave, the glow-worms make a beautiful light. Michael's mobile beeps and the people are angry. Sarah thinks they can find him in Rotorua.",
+              "Michael's phone beeps in the cave, so they look for him in Rotorua.",
           },
           {
             img: `${imageBase}/paragraph-10.avif`,
             alt: "Sarah and Jessica visiting Rotorua.",
             summary:
-              "In Rotorua, Jessica likes the hot water. Sarah reads that Michael will be in the South Island, and Jessica can pay for the boat tickets.",
+              "They learn Michael is in the South Island and buy boat tickets.",
           },
           {
             img: `${imageBase}/paragraph-11.avif`,
             alt: "Sarah and Jessica travelling by boat to the South Island.",
             summary:
-              "On the boat, they read that Michael's parents are worried about him. The girls decide to take his mobile to the police station in Kaikoura.",
+              "They take Michael's phone to the police station in Kaikoura.",
           },
           {
             img: `${imageBase}/paragraph-12.avif`,
             alt: "The girls near a whale-watching ticket office.",
             summary:
-              "The girls take the phone to the police station. They cannot go whale watching because the tickets are expensive, but Jessica sees Michael near the sea.",
+              "Jessica finds Michael near the sea and tells him about his phone.",
           },
           {
             img: `${imageBase}/paragraph-13.avif`,
             alt: "Michael meeting Sarah and Jessica outside the police station.",
             summary:
-              "Michael calls home. His parents have won £100,000 in the lottery, and he walks to the Whale Watch ticket office.",
+              "Michael calls home, and his parents win £100,000 in the lottery.",
           },
           {
             img: `${imageBase}/paragraph-14.avif`,
             alt: "The friends enjoying a whale-watching trip.",
             summary:
-              "Michael thanks the girls for his mobile and gives them a whale-watching trip. Sarah says New Zealand is beautiful.",
+              "Michael thanks the girls and takes them whale watching.",
           },
         ],
       },

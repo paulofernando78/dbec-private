@@ -34,14 +34,36 @@ export const mobyDick = {
       id: "chapter-1",
       title: "Chapter 1 · My Story Begins",
       questions: [
-        "Who tells the story?",
-        "Where does Ishmael meet Queequeg?",
-        "Where did Queequeg come from?",
-      ],
-      answers: [
-        "Ishmael.",
-        "At an inn in Nantucket, where they share a room.",
-        "Kokovoko in the Pacific Ocean.",
+        {
+          question: "Who tells the story?",
+          options: [
+            { option: "Ishmael tells the story.", isCorrect: true },
+            { option: "Queequeg tells the story." },
+            { option: "Captain Ahab tells the story." },
+          ],
+        },
+        {
+          question: "Where does Ishmael meet Queequeg?",
+          options: [
+            { option: "He meets him on the street in Nantucket." },
+            {
+              option: "He meets him at an inn in Nantucket.",
+              isCorrect: true,
+            },
+            { option: "He meets him in Kokovoko." },
+          ],
+        },
+        {
+          question: "Where did Queequeg come from?",
+          options: [
+            { option: "He came from Nantucket in America." },
+            { option: "He came from a small island in the Atlantic." },
+            {
+              option: "He came from Kokovoko in the Pacific Ocean.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "He is out there—in the ocean. But he is here too—in my dreams, always in my dreams. He will never leave me. He is whiter than the first beautiful snow in winter—whiter than the stars in the sky on a warm summer’s night. But he brings only death. He is Moby Dick—the white whale." },
@@ -70,14 +92,34 @@ export const mobyDick = {
       id: "chapter-2",
       title: "Chapter 2 · We Find Our Ship",
       questions: [
-        "What is the name of the ship Ishmael and Queequeg join?",
-        "Who is the ship's captain?",
-        "What warning does Elijah give Ishmael?",
-      ],
-      answers: [
-        "The Pequod.",
-        "Captain Ahab.",
-        "He says Ahab is like the Devil and warns about his men.",
+        {
+          question: "What is the name of the ship Ishmael and Queequeg join?",
+          options: [
+            { option: "They join the Albatross." },
+            { option: "They join the Pequod.", isCorrect: true },
+            { option: "They join the Rachel." },
+          ],
+        },
+        {
+          question: "Who is the ship's captain?",
+          options: [
+            { option: "Starbuck is the captain." },
+            { option: "Fedallah is the captain." },
+            { option: "Captain Ahab is the captain.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What warning does Elijah give Ishmael?",
+          options: [
+            { option: "He warns him that the Pequod is too old to sail." },
+            { option: "He warns him that the whalers will not pay him." },
+            {
+              option:
+                "He warns him that Ahab is like the Devil and that his men are the Devil’s helpers.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "That morning I looked around Nantucket for a good whaling ship. I stopped looking when I saw the Pequod. It was tall and strong. Its wood was dark from many years on the wild oceans." },
@@ -123,12 +165,26 @@ export const mobyDick = {
       id: "chapter-3",
       title: "Chapter 3 · Captain Ahab's Story",
       questions: [
-        "What happened to Captain Ahab's leg?",
-        "What does he offer to the first sailor who sees Moby Dick?",
-      ],
-      answers: [
-        "Moby Dick took it in an earlier fight.",
-        "A gold coin.",
+        {
+          question: "What happened to Captain Ahab's leg?",
+          options: [
+            { option: "He lost it in a storm at sea." },
+            {
+              option: "Moby Dick took it in an earlier fight.",
+              isCorrect: true,
+            },
+            { option: "A shark took it while he was swimming." },
+          ],
+        },
+        {
+          question:
+            "What does he offer to the first sailor who sees Moby Dick?",
+          options: [
+            { option: "He offers him a new boat." },
+            { option: "He offers him a barrel of oil." },
+            { option: "He offers him some gold.", isCorrect: true },
+          ],
+        },
       ],
       text: [
         { text: "For three weeks Captain Ahab stayed below. Then one day, suddenly, he was there in front of us. He was a thin man, but he was strong. He had a hard face with lines on it from years of sun and wind. His hair was gray and wild. His clothes were black." },
@@ -170,12 +226,29 @@ export const mobyDick = {
       id: "chapter-4",
       title: "Chapter 4 · Our First Whale",
       questions: [
-        "Who are the men Captain Ahab keeps hidden?",
-        "What happens to the whaling boats after the first chase?",
-      ],
-      answers: [
-        "Fedallah and four other men.",
-        "They become separated in bad weather, but the Pequod eventually rescues the crews.",
+        {
+          question: "Who are the men Captain Ahab keeps hidden?",
+          options: [
+            {
+              option: "They are Fedallah and four other men.",
+              isCorrect: true,
+            },
+            { option: "They are Starbuck and Stubb." },
+            { option: "They are Queequeg and Tashtego." },
+          ],
+        },
+        {
+          question: "What happens to the whaling boats after the first chase?",
+          options: [
+            { option: "They go back to Nantucket with the whale." },
+            { option: "They stay together and kill the whale." },
+            {
+              option:
+                "They become separated in bad weather, but the Pequod rescues the crews.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "“Whale!” shouted Tashtego from the top of the ship. “Whale!” Captain Ahab came quickly. “Get the boats!” he shouted. The whale sent a shower of water up into the sky." },
@@ -200,12 +273,25 @@ export const mobyDick = {
       id: "chapter-5",
       title: "Chapter 5 · The Albatross and the Samuel Enderby",
       questions: [
-        "What do the whalers make from whale fat?",
-        "What happened to Captain Boomer when he met Moby Dick?",
-      ],
-      answers: [
-        "Oil.",
-        "He lost an arm.",
+        {
+          question: "What do the whalers make from whale fat?",
+          options: [
+            { option: "They make soap from the whale fat." },
+            { option: "They make oil from the whale fat.", isCorrect: true },
+            { option: "They make food from the whale fat." },
+          ],
+        },
+        {
+          question: "What happened to Captain Boomer when he met Moby Dick?",
+          options: [
+            {
+              option: "He lost an arm to the white whale.",
+              isCorrect: true,
+            },
+            { option: "He lost a leg to the white whale." },
+            { option: "He lost his ship to the white whale." },
+          ],
+        },
       ],
       text: [
         { text: "We fought and killed many whales after that first night. But our work didn’t finish when we killed them. We then had to climb down onto the dead whale and cut off the fat. We had to work quickly because sharks came for the whale meat. Sharks could eat a whale in one night, and some of these whales were almost as big as our ship." },
@@ -235,12 +321,25 @@ export const mobyDick = {
       id: "chapter-6",
       title: "Chapter 6 · Moby Dick",
       questions: [
-        "What does Captain Ahab study while searching for Moby Dick?",
-        "Who does Ahab talk to about his plans?",
-      ],
-      answers: [
-        "Maps and sea routes.",
-        "Fedallah.",
+        {
+          question: "What does Captain Ahab study while searching for Moby Dick?",
+          options: [
+            { option: "He studies the stars every night." },
+            { option: "He studies the other captains’ books." },
+            {
+              option: "He studies his maps and plans the route.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Who does Ahab talk to about his plans?",
+          options: [
+            { option: "He talks to Starbuck about his plans." },
+            { option: "He talks to Fedallah about his plans.", isCorrect: true },
+            { option: "He talks to Pip about his plans." },
+          ],
+        },
       ],
       text: [
         { text: "Captain Ahab didn’t sleep very often now. We saw the light from his room on many nights. He sat at his table. He looked at his maps and planned. Where was Moby Dick? How could we find him? He only talked to Fedallah. We could hear the two men in Captain Ahab’s room. Captain Ahab often shouted angrily, but Fedallah always spoke quietly. Fedallah was different from other" },
@@ -270,12 +369,29 @@ export const mobyDick = {
       id: "chapter-7",
       title: "Chapter 7 · Pip's Story",
       questions: [
-        "Who falls into the sea during a whale hunt?",
-        "How does the experience affect him?",
-      ],
-      answers: [
-        "Pip, the young cook's boy.",
-        "He becomes frightened and confused after being left alone in the water.",
+        {
+          question: "Who falls into the sea during a whale hunt?",
+          options: [
+            {
+              option: "Pip, the young cook’s boy, falls into the sea.",
+              isCorrect: true,
+            },
+            { option: "Stubb falls into the sea." },
+            { option: "Tashtego falls into the sea." },
+          ],
+        },
+        {
+          question: "How does the experience affect him?",
+          options: [
+            { option: "He becomes angry and leaves the ship." },
+            { option: "He becomes a strong whaler after it." },
+            {
+              option:
+                "He becomes frightened and confused after being left alone in the water.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "You met our cook’s boy, Pip, earlier in my story. Pip was a young black American boy. He was only fourteen. A whaling ship wasn’t a nice place for a boy, but Pip liked his work. He sang in the kitchen when he helped the cook. But things changed for him." },
@@ -302,12 +418,29 @@ export const mobyDick = {
       id: "chapter-8",
       title: "Chapter 8 · Queequeg's Coffin",
       questions: [
-        "Why does Queequeg ask for a coffin?",
-        "What happens after the coffin is made?",
-      ],
-      answers: [
-        "He thinks he is going to die.",
-        "He recovers and returns to work.",
+        {
+          question: "Why does Queequeg ask for a coffin?",
+          options: [
+            { option: "He asks for a coffin because he wants to sleep outside." },
+            {
+              option:
+                "He asks for a coffin because he thinks he is going to die.",
+              isCorrect: true,
+            },
+            { option: "He asks for a coffin because the captain orders one." },
+          ],
+        },
+        {
+          question: "What happens after the coffin is made?",
+          options: [
+            {
+              option: "He recovers and goes back to work.",
+              isCorrect: true,
+            },
+            { option: "He dies and the men put him in the ocean." },
+            { option: "He leaves the ship and sails home." },
+          ],
+        },
       ],
       text: [
         { text: "Some days later we heard shouts from below: “Captain! Captain Ahab!”" },
@@ -346,12 +479,28 @@ export const mobyDick = {
       id: "chapter-9",
       title: "Chapter 9 · Captain Ahab's Dream",
       questions: [
-        "What does Captain Ahab dream about?",
-        "What does Starbuck consider doing while Ahab sleeps?",
-      ],
-      answers: [
-        "He dreams about his own death and coffin.",
-        "He considers killing Ahab, but cannot do it.",
+        {
+          question: "What does Captain Ahab dream about?",
+          options: [
+            { option: "He dreams about the gold and the whale." },
+            { option: "He dreams about his wife and son at home." },
+            {
+              option: "He dreams about his own death and his coffin.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Starbuck consider doing while Ahab sleeps?",
+          options: [
+            { option: "He considers taking the maps away." },
+            {
+              option: "He considers killing Ahab, but he cannot do it.",
+              isCorrect: true,
+            },
+            { option: "He considers waking the other men." },
+          ],
+        },
       ],
       text: [
         { text: "We sailed into the Pacific Ocean and the whaling was good. One day we killed four whales. We couldn’t cut the fat off four whales in one day, so we had to watch them that night." },
@@ -394,12 +543,30 @@ export const mobyDick = {
       id: "chapter-10",
       title: "Chapter 10 · The Rachel",
       questions: [
-        "Why does the Rachel's captain ask Ahab for help?",
-        "Does Ahab agree to search?",
-      ],
-      answers: [
-        "One of the Rachel's boats is missing, with the captain's son aboard.",
-        "No. He refuses because he wants to keep searching for Moby Dick.",
+        {
+          question: "Why does the Rachel's captain ask Ahab for help?",
+          options: [
+            {
+              option:
+                "He asks for help because one of his boats is missing with his son aboard.",
+              isCorrect: true,
+            },
+            { option: "He asks for help because his ship is full of water." },
+            { option: "He asks for help because he has no food or water." },
+          ],
+        },
+        {
+          question: "Does Ahab agree to search?",
+          options: [
+            { option: "Yes, he agrees and they search all night." },
+            { option: "Yes, but he asks for money first." },
+            {
+              option:
+                "No, he refuses because he wants to keep searching for Moby Dick.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "Later that day our ship met the Rachel. The Rachel looked as bad as the Pequod after the strong winds. But Captain Ahab didn’t talk to the Rachel’s captain about the weather. He asked the same question: “Did you see the white whale?”" },
@@ -433,12 +600,29 @@ export const mobyDick = {
       id: "chapter-11",
       title: "Chapter 11 · The Fight Begins",
       questions: [
-        "What does Starbuck ask Ahab to do instead of pursuing Moby Dick?",
-        "Who first spots the white whale?",
-      ],
-      answers: [
-        "Go home to their families.",
-        "Captain Ahab.",
+        {
+          question:
+            "What does Starbuck ask Ahab to do instead of pursuing Moby Dick?",
+          options: [
+            { option: "He asks him to rest and see a doctor." },
+            {
+              option: "He asks him to go home to their families.",
+              isCorrect: true,
+            },
+            { option: "He asks him to sail back to Nantucket for oil." },
+          ],
+        },
+        {
+          question: "Who first spots the white whale?",
+          options: [
+            {
+              option: "Captain Ahab first spots the white whale.",
+              isCorrect: true,
+            },
+            { option: "Tashtego first spots the white whale." },
+            { option: "Fedallah first spots the white whale." },
+          ],
+        },
       ],
       text: [
         { text: "Some days later Captain Ahab and Starbuck stood and watched for whales." },
@@ -481,12 +665,28 @@ export const mobyDick = {
       id: "chapter-12",
       title: "Chapter 12 · The Second Day",
       questions: [
-        "Who disappears during the second day's fight?",
-        "What does Ahab expect on the third day?",
-      ],
-      answers: [
-        "Fedallah.",
-        "He expects Moby Dick to return for another fight.",
+        {
+          question: "Who disappears during the second day's fight?",
+          options: [
+            { option: "Starbuck disappears during the fight." },
+            { option: "Queequeg disappears during the fight." },
+            {
+              option: "Fedallah disappears during the fight.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Ahab expect on the third day?",
+          options: [
+            {
+              option: "He expects Moby Dick to return for another fight.",
+              isCorrect: true,
+            },
+            { option: "He expects the Rachel to bring help." },
+            { option: "He expects the wind to stop." },
+          ],
+        },
       ],
       text: [
         { text: "“White whale! White whale!”" },
@@ -519,14 +719,36 @@ export const mobyDick = {
       id: "chapter-13",
       title: "Chapter 13 · The End",
       questions: [
-        "What happens to the Pequod?",
-        "How does Ishmael survive in the water?",
-        "Which ship rescues Ishmael?",
-      ],
-      answers: [
-        "Moby Dick strikes it and it sinks.",
-        "He climbs onto Queequeg's floating coffin.",
-        "The Rachel.",
+        {
+          question: "What happens to the Pequod?",
+          options: [
+            { option: "The wind breaks it and it sinks." },
+            {
+              option: "Moby Dick strikes it and it sinks.",
+              isCorrect: true,
+            },
+            { option: "The Rachel takes it back to Nantucket." },
+          ],
+        },
+        {
+          question: "How does Ishmael survive in the water?",
+          options: [
+            {
+              option: "He climbs onto Queequeg’s floating coffin.",
+              isCorrect: true,
+            },
+            { option: "He swims to a small island." },
+            { option: "He holds on to a whaling boat." },
+          ],
+        },
+        {
+          question: "Which ship rescues Ishmael?",
+          options: [
+            { option: "The Albatross rescues him." },
+            { option: "The Samuel Enderby rescues him." },
+            { option: "The Rachel rescues him.", isCorrect: true },
+          ],
+        },
       ],
       text: [
         { text: "On the morning of the third day the sun shone in the blue sky and the ocean shone in the sunlight. The Pequod sailed well. It was the most beautiful day, but the saddest day." },

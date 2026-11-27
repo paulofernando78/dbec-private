@@ -34,12 +34,25 @@ export const braveNewWorld = {
       id: "chapter-1",
       title: "Chapter 1 The Centre",
       questions: [
-        "What is the World State's motto?",
-        "What process does the Director explain to the students?",
-      ],
-      answers: [
-        "Community, Identity, Stability.",
-        "The scientific production and conditioning of human beings at the Centre.",
+        {
+          question: "What is the World State’s motto?",
+          options: [
+            { option: "The motto is Peace, Work, Happiness." },
+            { option: "The motto is Community, Identity, Stability.", isCorrect: true },
+            { option: "The motto is Science, Progress, Order." },
+          ],
+        },
+        {
+          question: "What process does the Director explain to the students?",
+          options: [
+            {
+              option: "He explains the scientific production and conditioning of human beings at the Centre.",
+              isCorrect: true,
+            },
+            { option: "He explains how babies are born to their mothers in hospital." },
+            { option: "He explains how the Centre grows food for the whole population." },
+          ],
+        },
       ],
       text: [
         { text: "A low grey building, of only 34 floors. Over the main entrance the words CENTRAL LONDON HATCHING AND CONDITIONING CENTRE, and below that the motto of the World State, COMMUNITY, IDENTITY, STABILITY." },
@@ -99,12 +112,30 @@ export const braveNewWorld = {
       id: "chapter-2",
       title: "Chapter 2 State Conditioning",
       questions: [
-        "Why are the babies taught to fear books and flowers?",
-        "What is sleep-teaching used for?",
-      ],
-      answers: [
-        "To shape their behaviour and make them consume manufactured goods instead.",
-        "To repeat the State's ideas until children accept them as their own.",
+        {
+          question: "Why are the babies taught to fear books and flowers?",
+          options: [
+            {
+              option: "So that they will become more intelligent than the other children.",
+            },
+            { option: "So that they will enjoy their lessons in natural science." },
+            {
+              option: "So that they will grow up to consume manufactured goods instead.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What is sleep-teaching used for?",
+          options: [
+            { option: "It teaches the children new languages while they sleep." },
+            {
+              option: "It repeats the State’s ideas until children accept them as their own.",
+              isCorrect: true,
+            },
+            { option: "It helps the children recover from illness more quickly." },
+          ],
+        },
       ],
       text: [
         { text: "Mr Foster left them at the door of the Unbottling Room, where the embryos were taken from their bottles to go through the all-important process of passing into the condition of babies, the first real stage on their way through life as human beings. The DHC and his students took the nearest lift and were carried up to the fifth floor." },
@@ -180,12 +211,28 @@ export const braveNewWorld = {
       id: "chapter-3",
       title: "Chapter 3 Off Duty",
       questions: [
-        "How does Lenina differ from Bernard in her attitude to relationships?",
-        "What do the bottles moving through the Centre represent?",
-      ],
-      answers: [
-        "Lenina accepts the World State's social rules, while Bernard is uneasy with them.",
-        "Embryos being produced and prepared for life in the World State.",
+        {
+          question: "How does Lenina’s opinion of Bernard differ from Fanny’s?",
+          options: [
+            {
+              option: "Lenina finds Bernard appealing, while Fanny thinks he is a poor choice.",
+              isCorrect: true,
+            },
+            { option: "Both women agree that Bernard is an ideal Alpha-Plus." },
+            { option: "Lenina is frightened of Bernard, while Fanny wants a holiday with him." },
+          ],
+        },
+        {
+          question: "What do the bottles moving through the Centre represent?",
+          options: [
+            { option: "They represent the food that is given to the workers each day." },
+            { option: "They represent the medicines that are made for the Deltas." },
+            {
+              option: "They represent embryos being produced and prepared for life in the World State.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "In the four thousand rooms of the Centre, the four thousand electric clocks struck four. From the loudspeakers came the order:" },
@@ -237,12 +284,28 @@ export const braveNewWorld = {
       id: "chapter-4",
       title: "Chapter 4 Bernard Marx",
       questions: [
-        "Why does Bernard feel different from other Alphas?",
-        "Who is Helmholtz Watson?",
-      ],
-      answers: [
-        "He feels physically and socially out of place and prefers independent thought.",
-        "Bernard's friend, a gifted writer who also feels dissatisfied.",
+        {
+          question: "Why does Bernard feel different from other Alphas?",
+          options: [
+            { option: "He is taller and stronger than every other Alpha at the Centre." },
+            {
+              option: "He feels physically and socially out of place and prefers independent thought.",
+              isCorrect: true,
+            },
+            { option: "He was born outside the Centre and brought there as a child." },
+          ],
+        },
+        {
+          question: "Who is Helmholtz Watson?",
+          options: [
+            { option: "He is the Director of Hatching and Conditioning." },
+            { option: "He is Lenina’s partner, who works in the Bottling Room." },
+            {
+              option: "He is Bernard’s friend, a gifted writer who also feels dissatisfied.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "The lift was crowded with men from the Alpha Changing Rooms, and Lenina was greeted with many nods and smiles as she stepped into it. She was a popular girl and, at one time or another, had spent a night with almost all of them." },
@@ -312,12 +375,28 @@ export const braveNewWorld = {
       id: "chapter-5",
       title: "Chapter 5 The Social Sea",
       questions: [
-        "What does Lenina do with Henry Foster?",
-        "Why does Bernard feel unhappy during the Solidarity Service?",
-      ],
-      answers: [
-        "They spend an evening together, including a game of Obstacle Golf.",
-        "He cannot share the group feeling that the others seem to experience.",
+        {
+          question: "What does Lenina do with Henry Foster?",
+          options: [
+            { option: "She flies with him to the North Pole for the summer holiday." },
+            {
+              option: "She spends an evening with him, including a game of Obstacle Golf.",
+              isCorrect: true,
+            },
+            { option: "She visits the Savage Reservation with him for a week." },
+          ],
+        },
+        {
+          question: "Why does Bernard feel unhappy during the Solidarity Service?",
+          options: [
+            { option: "He is angry because Lenina has refused to go out with him." },
+            { option: "He is worried that he will be sent to the Falkland Islands." },
+            {
+              option: "He cannot share the group feeling that the others seem to experience.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "By eight o’clock the light was failing. The loudspeakers in the tower of the Obstacle Golf Club House began, in a more than human voice, to announce the closing of the courses. Lenina and Henry gave up their game and walked back towards the Club. An endless humming of helicopters filled the darkening air. Every two and a half minutes a bell and the scream of whistles announced the departure of one of the light trains which carried the lower-class golfers back from their separate course to the city. Lenina and Henry climbed into their machine and started off. At 240 metres feet Henry slowed down the lifting blades, and they hung for a moment or two above the landscape. The forest of Burnham Beeches stretched like a great pool of darkness" },
@@ -386,12 +465,28 @@ export const braveNewWorld = {
       id: "chapter-6",
       title: "Chapter 6 Passion",
       questions: [
-        "Why does Lenina find Bernard strange?",
-        "Where do Bernard and Lenina travel on holiday?",
-      ],
-      answers: [
-        "He wants privacy and genuine feelings instead of the usual entertainments and soma.",
-        "To the Savage Reservation in New Mexico.",
+        {
+          question: "Why does Lenina find Bernard strange?",
+          options: [
+            { option: "He refuses to do any work at the Centre and stays at home." },
+            {
+              option: "He wants privacy and genuine feelings instead of the usual entertainments and soma.",
+              isCorrect: true,
+            },
+            { option: "He spends all his money on holidays and new clothes." },
+          ],
+        },
+        {
+          question: "Where do Bernard and Lenina travel on holiday?",
+          options: [
+            { option: "They travel to the North Pole for a week." },
+            { option: "They travel to a popular bathing beach on the south coast." },
+            {
+              option: "They travel to the Savage Reservation in New Mexico.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "Odd, odd, odd, was Lenina’s opinion of Bernard Marx. So odd, indeed, that during the next few weeks she wondered more than once whether she shouldn’t change her mind about the New Mexico holiday and go instead to the North Pole with another man. The trouble was that she knew the North Pole. She had been there last summer and, what was more, had found it pretty uncomfortable. Nothing to do and the hotel was terribly old-fashioned with no television in any of the bedrooms. No, certainly she couldn’t face the North Pole again. And she had only been to America once before, and even then, only for a cheap weekend in New York with a man whose name she had forgotten. The idea of flying west again, and for a whole week, was very inviting. Moreover, for three days of that week they would be in the Savage Reservation. Not more than half a dozen people in the whole Centre had ever been inside a Savage Reservation. As an Alpha-Plus psychologist, Bernard was one of the few men she knew who had official permission to go there. It was the chance of a lifetime for Lenina. And yet Bernard was so odd that she had worried about taking it." },
@@ -498,12 +593,30 @@ export const braveNewWorld = {
       id: "chapter-7",
       title: "Chapter 7 Among the Savages",
       questions: [
-        "What shocks Lenina about the people on the Reservation?",
-        "Who are Linda and John?",
-      ],
-      answers: [
-        "She sees old age, illness, childbirth, and unfamiliar customs.",
-        "Linda is a woman from the World State who stayed on the Reservation; John is her son.",
+        {
+          question: "What shocks Lenina about the people on the Reservation?",
+          options: [
+            { option: "She sees machines and factories that she does not recognise." },
+            {
+              option: "She sees old age, illness, dirt and customs that horrify her.",
+              isCorrect: true,
+            },
+            { option: "She sees clean houses and modern hospitals like those in London." },
+          ],
+        },
+        {
+          question: "Who are Linda and John?",
+          options: [
+            {
+              option: "Linda is a woman from the World State who stayed on the Reservation, and John is her son.",
+              isCorrect: true,
+            },
+            { option: "Linda is a Reservation guide, and John is her husband." },
+            {
+              option: "Linda is Bernard’s mother, and John is Bernard’s younger brother.",
+            },
+          ],
+        },
       ],
       text: [
         { text: "The flat-topped rock rose up from the yellow, dusty plain of a valley through which ran a river between high, steep banks. On the top of this rock was the Indian village of Malpais. Block above block, each storey smaller than the one below, the tall houses rose in great stone steps into the blue sky. At their feet lay an untidy group of low buildings, and on three sides the tall rocks fell straight down into the plain. A few columns of smoke rose into the still air and were lost." },
@@ -578,12 +691,28 @@ export const braveNewWorld = {
       id: "chapter-8",
       title: "Chapter 8 John",
       questions: [
-        "How did John learn about the world beyond the Reservation?",
-        "What does Bernard offer John and Linda?",
-      ],
-      answers: [
-        "From Linda's stories and the books he read while growing up.",
-        "A chance to travel with him to the World State.",
+        {
+          question: "How did John learn about the world beyond the Reservation?",
+          options: [
+            { option: "From television programmes that the Reservation received." },
+            { option: "From Bernard, who explained everything on his first visit." },
+            {
+              option: "From Linda’s stories and the books he read while growing up.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Bernard offer John and Linda?",
+          options: [
+            { option: "He offers them soma and a comfortable holiday in London." },
+            {
+              option: "He offers them a chance to travel with him to the World State.",
+              isCorrect: true,
+            },
+            { option: "He offers them work in the Fertilizing Room at the Centre." },
+          ],
+        },
       ],
       text: [
         { text: "Outside, in the dust and among the rubbish (there were four dogs now) Bernard and John were walking slowly up and down." },
@@ -661,12 +790,28 @@ export const braveNewWorld = {
       id: "chapter-9",
       title: "Chapter 9 My Father!",
       questions: [
-        "Why is the Director embarrassed before the Centre's workers?",
-        "Who publicly calls the Director his father?",
-      ],
-      answers: [
-        "Linda and John reveal his past and their relationship to him.",
-        "John.",
+        {
+          question: "Why is the Director embarrassed before the Centre’s workers?",
+          options: [
+            {
+              option: "Linda and John reveal his past and their relationship to him.",
+              isCorrect: true,
+            },
+            { option: "He has been accused of stealing soma from the hospital." },
+            { option: "He has forgotten the motto of the World State." },
+          ],
+        },
+        {
+          question: "Who publicly calls the Director his father?",
+          options: [
+            { option: "Linda calls him her husband in front of everyone." },
+            { option: "Bernard calls him his father in front of everyone." },
+            {
+              option: "John calls him his father in front of everyone.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "The hands of all the four thousand electric clocks in the Bloomsbury Centre’s four thousand rooms marked twenty-seven minutes past two. The Centre was full of activity. Everyone was busy, everything went on in an orderly manner. The moving rows of bottles, each with its developing embryo, followed one another slowly but surely through all the stages of treatment and out into the Unbottling Room, where the newly-unbottled babies gave their first cry of horror and shock." },
@@ -705,12 +850,25 @@ export const braveNewWorld = {
       id: "chapter-10",
       title: "Chapter 10 New Lives",
       questions: [
-        "Why does Bernard become popular?",
-        "How does John react to being displayed to Bernard's guests?",
-      ],
-      answers: [
-        "People are curious about John, the Savage, and Bernard controls access to him.",
-        "He increasingly refuses to appear for them.",
+        {
+          question: "Why does Bernard become popular?",
+          options: [
+            { option: "He becomes a better worker and is promoted by the Director." },
+            {
+              option: "People are curious about John, and Bernard controls access to him.",
+              isCorrect: true,
+            },
+            { option: "He starts giving soma parties at his flat every night." },
+          ],
+        },
+        {
+          question: "How does John react to the film that Lenina takes him to see?",
+          options: [
+            { option: "He finds it shameful and disgusting.", isCorrect: true },
+            { option: "He enjoys it and asks Lenina to see it again." },
+            { option: "He is bored by it and falls asleep in the cinema." },
+          ],
+        },
       ],
       text: [
         { text: "After the scene in the Fertilizing Room, all upper-class London was anxious to see this funny creature who had fallen on his knees before the Director of Hatching and Conditioning — or rather the ex-Director, for the poor man had resigned immediately afterwards and never set foot inside the Centre again — had fallen on his knees and called him (the joke was almost too good to be true!) “my father”. Linda, on the other hand, was of no interest at all to them. Nobody had the smallest desire to see Linda. To say one was a mother — that was no joke, it was disgusting. Moreover, she wasn’t a real savage. She had come out of a bottle and been conditioned like anyone else, so she couldn’t have any unusual ideas. Lastly — and this was by far the strongest reason for people’s not wanting to see poor Linda — there was her appearance. Fat, having lost her youth, with a discoloured skin, bad teeth and that figure (Ford!) — you simply couldn’t look at her without feeling sick, yes, really sick. So the best people were quite determined not to see Linda. And Linda, for her part, had no desire to see them. The return to civilization was for her the return to soma, the possibility of lying in bed and taking holiday after holiday, without ever having to come back to a headache or sickness, without ever being made to feel as you always felt after mescal, as though you’d done something so shameful that you could never hold up your head again. Soma played none of these unpleasant tricks. The holiday it gave was perfect, and if waking up from it was unpleasant, it was so not in itself but only by comparison with the joys of the holiday. The answer was to make the holiday continuous. She demanded" },
@@ -777,12 +935,30 @@ export const braveNewWorld = {
       id: "chapter-11",
       title: "Chapter 11 Emotional Problems",
       questions: [
-        "Why is Lenina troubled by John?",
-        "What does Helmholtz seek in his writing?",
-      ],
-      answers: [
-        "She is attracted to John but does not understand his feelings or behaviour.",
-        "A stronger, more meaningful subject that can create real emotion.",
+        {
+          question: "Why is Lenina troubled by John?",
+          options: [
+            {
+              option: "She is attracted to John but does not understand his feelings or behaviour.",
+              isCorrect: true,
+            },
+            { option: "She is afraid that John will report her to the Director." },
+            { option: "She finds John boring because he refuses to talk about soma." },
+          ],
+        },
+        {
+          question: "What does Helmholtz seek in his writing?",
+          options: [
+            { option: "He seeks praise from the World Controller for his new plays." },
+            {
+              option: "He seeks a stronger, more meaningful subject that can create real emotion.",
+              isCorrect: true,
+            },
+            {
+              option: "He seeks a way to write faster so that he can sell more stories.",
+            },
+          ],
+        },
       ],
       text: [
         { text: "Bernard had to shout through the locked door. The Savage would not open." },
@@ -826,12 +1002,28 @@ export const braveNewWorld = {
       id: "chapter-12",
       title: "Chapter 12 Love and Hate",
       questions: [
-        "What does Lenina hope will happen when she visits John?",
-        "How does John respond to her advances?",
-      ],
-      answers: [
-        "She hopes they will become physically close.",
-        "He is torn between love and disgust, and she runs away frightened.",
+        {
+          question: "What does Lenina hope will happen when she visits John?",
+          options: [
+            { option: "She hopes that John will agree to marry her." },
+            { option: "She hopes that John will take her to the Savage Reservation." },
+            {
+              option: "She hopes that they will become physically close.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "How does John respond to her advances?",
+          options: [
+            { option: "He is delighted and asks her to stay the night." },
+            {
+              option: "He is torn between love and disgust, and she runs away frightened.",
+              isCorrect: true,
+            },
+            { option: "He is amused and calls Bernard to come and meet her." },
+          ],
+        },
       ],
       text: [
         { text: "Henry Foster appeared at Lenina’s side in the faint red light of the Embryo Store. “Like to come to the cinema this evening?”" },
@@ -914,12 +1106,25 @@ export const braveNewWorld = {
       id: "chapter-13",
       title: "Chapter 13 Death",
       questions: [
-        "Why does John visit the hospital?",
-        "How does he react to the children's attitude towards death?",
-      ],
-      answers: [
-        "His mother Linda is dying there.",
-        "He is distressed by their curiosity and lack of grief.",
+        {
+          question: "Why does John visit the hospital?",
+          options: [
+            { option: "He visits the hospital to collect soma for Bernard." },
+            { option: "He visits the hospital because he feels ill himself." },
+            { option: "His mother Linda is dying there.", isCorrect: true },
+          ],
+        },
+        {
+          question: "How does he react to the children’s attitude towards death?",
+          options: [
+            {
+              option: "He is distressed by their curiosity and lack of grief.",
+              isCorrect: true,
+            },
+            { option: "He is pleased that they are so well trained." },
+            { option: "He is amused by the games they play in the ward." },
+          ],
+        },
       ],
       text: [
         { text: "The Park Lane Hospital for the Dying was a sixty-floor tower of bright yellow. As the Savage stepped out of his taxicopter, a line of brightly coloured funeral helicopters rose from the roof and went off across the Park, westwards, on their way to the Slough Crematorium. At the lift gates an official gave him the information he required, and he dropped down to the seventeenth floor. The ward where Linda was lying was a large room bright with sunshine and yellow paint, and contained 20 beds, all occupied. Linda was dying in company — in company and with all modern conveniences. The air was continuously alive with happy tunes coming from loudspeakers. At the foot of every bed, facing the dying person who occupied it, was a television set. Television was left on like a running water tap from morning till night." },
@@ -968,12 +1173,30 @@ export const braveNewWorld = {
       id: "chapter-14",
       title: "Chapter 14 Realities",
       questions: [
-        "What does John try to stop at the hospital?",
-        "Who arrives to support him?",
-      ],
-      answers: [
-        "He tries to prevent the workers from taking soma.",
-        "Helmholtz and Bernard arrive during the disturbance.",
+        {
+          question: "What does John try to stop at the hospital?",
+          options: [
+            {
+              option: "He tries to prevent the nurses from moving Linda to another ward.",
+            },
+            {
+              option: "He tries to prevent the workers from taking soma.",
+              isCorrect: true,
+            },
+            { option: "He tries to prevent the Deltas from leaving the hospital." },
+          ],
+        },
+        {
+          question: "Who comes to the hospital when the Savage is in trouble?",
+          options: [
+            {
+              option: "Helmholtz and Bernard arrive during the disturbance.",
+              isCorrect: true,
+            },
+            { option: "The World Controller arrives with a group of guards." },
+            { option: "Lenina arrives with a doctor from the Centre." },
+          ],
+        },
       ],
       text: [
         { text: "The domestic staff of the Park Lane Hospital for the Dying consisted of one hundred and sixty-two Deltas divided into two Bokanovsky Groups of eighty-four red-headed female and seventy-eight dark-haired male twins. At six, when their working day was over, the two Groups gathered in the front hall of the Hospital and were served by a higher official with their soma tablets." },
@@ -1050,12 +1273,25 @@ export const braveNewWorld = {
       id: "chapter-15",
       title: "Chapter 15 In the Service of Happiness",
       questions: [
-        "Who explains the World State's choices to John and his friends?",
-        "Where does Helmholtz choose to go?",
-      ],
-      answers: [
-        "Mustapha Mond, the World Controller.",
-        "To the Falkland Islands.",
+        {
+          question: "Who explains the World State’s choices to John and his friends?",
+          options: [
+            { option: "The Director of Hatching and Conditioning explains them." },
+            { option: "Dr Shaw, the hospital doctor, explains them." },
+            {
+              option: "Mustapha Mond, the World Controller, explains them.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Where does Helmholtz choose to go?",
+          options: [
+            { option: "He chooses to go to the Savage Reservation." },
+            { option: "He chooses to go to the Falkland Islands.", isCorrect: true },
+            { option: "He chooses to stay in London and work for the Controller." },
+          ],
+        },
       ],
       text: [
         { text: "The room into which the three were shown was the Controller’s study." },
@@ -1141,12 +1377,28 @@ export const braveNewWorld = {
       id: "chapter-16",
       title: "Chapter 16 The New God",
       questions: [
-        "Which human experiences does John say the World State has sacrificed?",
-        "What does John claim at the end of the discussion?",
-      ],
-      answers: [
-        "Among them art, science, religion, freedom, and the right to suffer.",
-        "He claims the right to experience hardship, danger, and unhappiness.",
+        {
+          question: "Which human experiences does John say the World State has sacrificed?",
+          options: [
+            {
+              option: "He says it has sacrificed art, science, religion, freedom and the right to suffer.",
+              isCorrect: true,
+            },
+            { option: "He says it has sacrificed comfort, safety and a stable society." },
+            { option: "He says it has sacrificed soma, sports and long holidays." },
+          ],
+        },
+        {
+          question: "What does John claim at the end of the discussion?",
+          options: [
+            { option: "He claims the right to become the next World Controller." },
+            {
+              option: "He claims the right to experience hardship, danger and unhappiness.",
+              isCorrect: true,
+            },
+            { option: "He claims the right to return to the Reservation with Linda." },
+          ],
+        },
       ],
       text: [
         { text: "“Art, science — you seem to have paid a fairly high price for your happiness, said the Savage when they were alone. “Anything else?”" },
@@ -1186,12 +1438,25 @@ export const braveNewWorld = {
       id: "chapter-17",
       title: "Chapter 17 John Alone",
       questions: [
-        "Where does John go to live alone?",
-        "What happens at the end of the story?",
-      ],
-      answers: [
-        "To an abandoned lighthouse.",
-        "After the crowds and the events there, John is found dead.",
+        {
+          question: "Where does John go to live alone?",
+          options: [
+            { option: "He goes to live in a cottage on the Reservation." },
+            { option: "He goes to live in Bernard’s flat in London." },
+            { option: "He goes to live in an abandoned lighthouse.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What happens at the end of the story?",
+          options: [
+            {
+              option: "After the crowds and the events there, John is found dead.",
+              isCorrect: true,
+            },
+            { option: "John returns to the World State and becomes a Controller." },
+            { option: "John and Lenina leave London together for a new life." },
+          ],
+        },
       ],
       text: [
         { text: "The door was half open. They entered. “John!” From the bathroom came the unpleasant sound of somebody being violently sick." },

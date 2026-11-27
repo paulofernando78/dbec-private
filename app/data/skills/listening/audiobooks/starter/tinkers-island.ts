@@ -23,14 +23,34 @@ export const tinkersIsland = {
       id: "paragraph-1",
       title: "Paragraph 1",
       questions: [
-        "How old is Jenny?",
-        "Where do Jenny and Sam work?",
-        "What has the running man got in his hand?",
-      ],
-      answers: [
-        "Fourteen.",
-        "In Covent Garden market, selling fruit and vegetables.",
-        "A watch.",
+        {
+          question: "How old is Jenny?",
+          options: [
+            { option: "She is twelve years old." },
+            { option: "She is fourteen years old.", isCorrect: true },
+            { option: "She is sixteen years old." },
+          ],
+        },
+        {
+          question: "Where do Jenny and Sam work?",
+          options: [
+            {
+              option:
+                "They work in Covent Garden market, selling fruit and vegetables.",
+              isCorrect: true,
+            },
+            { option: "They work on the River Thames, near the ships." },
+            { option: "They work in a small shop near their house." },
+          ],
+        },
+        {
+          question: "What has the running man got in his hand?",
+          options: [
+            { option: "He has got a bag in his hand." },
+            { option: "He has got some money in his hand." },
+            { option: "He has got a watch in his hand.", isCorrect: true },
+          ],
+        },
       ],
       text: [
         { text: italic("London, November 1798") },
@@ -51,11 +71,34 @@ export const tinkersIsland = {
       id: "paragraph-2",
       title: "Paragraph 2",
       questions: [
-        "What does the man give Sam?",
-        "Why do the people run after Sam?",
-        "Do the policemen listen to Jenny?",
+        {
+          question: "What does the man give Sam?",
+          options: [
+            { option: "He gives Sam a watch.", isCorrect: true },
+            { option: "He gives Sam a bag." },
+            { option: "He gives Sam a coat." },
+          ],
+        },
+        {
+          question: "Why do the people run after Sam?",
+          options: [
+            { option: "They run after him because he has got their money." },
+            { option: "They run after him because he is a policeman." },
+            {
+              option: "They run after him because they think he is a thief.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Do the policemen listen to Jenny?",
+          options: [
+            { option: "Yes, they listen to her carefully." },
+            { option: "No, they do not listen to her story.", isCorrect: true },
+            { option: "Yes, they listen to her and let Sam go." },
+          ],
+        },
       ],
-      answers: ["A watch.", "They think he is a thief.", "No, they do not."],
       text: "“Here – take this,” he says, and gives Sam the watch. Five seconds later a lot of angry people run down the street after Sam. “There’s the thief! He’s got my watch – stop him!” says an old man. “You’re coming with us,” two policemen say to Sam. They do not listen to Jenny’s story.",
       localMedia: `local-media/images/skills/listening/audiobooks/starter/tinkers-island/paragraph-2.avif`,
       r2: `${imageBase}/paragraph-2.avif`,
@@ -67,14 +110,38 @@ export const tinkersIsland = {
       id: "paragraph-3",
       title: "Paragraph 3",
       questions: [
-        "Who does Jenny go to for help?",
-        "Where do they send thieves?",
-        "Where is Sam a week later?",
-      ],
-      answers: [
-        "Peter Stone, a man who works in the market.",
-        "To Australia.",
-        "On a big ship, the Black Star, on the River Thames.",
+        {
+          question: "Who does Jenny go to for help?",
+          options: [
+            { option: "She goes to her mother for help." },
+            { option: "She goes to the ship’s captain for help." },
+            {
+              option:
+                "She goes to Peter Stone, a man who works in the market.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Where do they send thieves?",
+          options: [
+            { option: "They send thieves to Australia.", isCorrect: true },
+            { option: "They send thieves to America." },
+            { option: "They send thieves to the River Thames." },
+          ],
+        },
+        {
+          question: "Where is Sam a week later?",
+          options: [
+            { option: "He is at home in Covent Garden." },
+            {
+              option:
+                "He is on a big ship, the Black Star, on the River Thames.",
+              isCorrect: true,
+            },
+            { option: "He is in a small boat with Peter Stone." },
+          ],
+        },
       ],
       text: [
         {
@@ -101,14 +168,37 @@ export const tinkersIsland = {
       id: "paragraph-4",
       title: "Paragraph 4",
       questions: [
-        "What does Jenny see on a line above the street?",
-        "What name does she give the captain?",
-        "What job does she get on the Black Star?",
-      ],
-      answers: [
-        "A pair of trousers and a shirt.",
-        "Ned Bell.",
-        "She helps the cook.",
+        {
+          question: "What does Jenny see on a line above the street?",
+          options: [
+            { option: "She sees a bag and a hat on the line." },
+            {
+              option:
+                "She sees a pair of trousers and a shirt on the line.",
+              isCorrect: true,
+            },
+            { option: "She sees a flag and a coat on the line." },
+          ],
+        },
+        {
+          question: "What name does she give the captain?",
+          options: [
+            { option: "She gives the captain the name Jenny Tinker." },
+            { option: "She gives the captain the name Sam Bell." },
+            {
+              option: "She gives the captain the name Ned Bell.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What job does she get on the Black Star?",
+          options: [
+            { option: "She gets a job helping the cook.", isCorrect: true },
+            { option: "She gets a job cleaning the captain’s room." },
+            { option: "She gets a job working with the prisoners." },
+          ],
+        },
       ],
       text: "“How can I help him?” thinks Jenny. Then she sees a pair of trousers and a shirt on a line above the street. “Yes,” she says. “That’s it!” Five minutes later she talks to the ship’s captain. “I want a job,” she says. “My name’s Ned Bell.” “Well ... why not,” says the captain. “OK, Ned – you can help the cook.”",
       localMedia: `local-media/images/skills/listening/audiobooks/starter/tinkers-island/paragraph-4.avif`,
@@ -121,11 +211,37 @@ export const tinkersIsland = {
       id: "paragraph-5",
       title: "Paragraph 5",
       questions: [
-        "How long does Jenny work on the ship?",
-        "What does she take from the captain’s room?",
-        "Where does she find her father?",
+        {
+          question: "How long does Jenny work on the ship?",
+          options: [
+            { option: "She works on the ship for six weeks.", isCorrect: true },
+            { option: "She works on the ship for six days." },
+            { option: "She works on the ship for six months." },
+          ],
+        },
+        {
+          question: "What does she take from the captain’s room?",
+          options: [
+            { option: "She takes his shirt from the captain’s room." },
+            {
+              option: "She takes the keys from the captain’s room.",
+              isCorrect: true,
+            },
+            { option: "She takes a gun from the captain’s room." },
+          ],
+        },
+        {
+          question: "Where does she find her father?",
+          options: [
+            { option: "She finds him in the captain’s room." },
+            { option: "She finds him on the beach near the ship." },
+            {
+              option: "She finds him at the bottom of the ship.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
-      answers: ["For six weeks.", "The keys.", "At the bottom of the ship."],
       text: [
         {
           text: [
@@ -145,14 +261,38 @@ export const tinkersIsland = {
       id: "paragraph-6",
       title: "Paragraph 6",
       questions: [
-        "Where are the Tinkers fifteen minutes later?",
-        "What can they hear?",
-        "What does Jenny say to her father?",
-      ],
-      answers: [
-        "In a small boat, with the Black Star behind them.",
-        "Nothing but the sea and the wind.",
-        "“You’re free!”",
+        {
+          question: "Where are the Tinkers fifteen minutes later?",
+          options: [
+            { option: "They are at home in Covent Garden." },
+            { option: "They are on the Black Star." },
+            {
+              option:
+                "They are in a small boat, with the Black Star behind them.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What can they hear?",
+          options: [
+            { option: "They can hear the men on the Black Star." },
+            {
+              option:
+                "They can hear nothing but the sea and the wind.",
+              isCorrect: true,
+            },
+            { option: "They can hear a big bird above the boat." },
+          ],
+        },
+        {
+          question: "What does Jenny say to her father?",
+          options: [
+            { option: "She says, “You’re free!”", isCorrect: true },
+            { option: "She says, “We’re going home!”" },
+            { option: "She says, “The captain helped me.”" },
+          ],
+        },
       ],
       text: [
         {
@@ -180,11 +320,42 @@ export const tinkersIsland = {
       id: "paragraph-7",
       title: "Paragraph 7",
       questions: [
-        "How long are they in the small boat before they see the bird?",
-        "What is the bird carrying?",
-        "Who sees the island first?",
+        {
+          question:
+            "How long are they in the small boat before they see the bird?",
+          options: [
+            {
+              option: "They are in the small boat for five days.",
+              isCorrect: true,
+            },
+            { option: "They are in the small boat for three days." },
+            { option: "They are in the small boat for ten days." },
+          ],
+        },
+        {
+          question: "What is the bird carrying?",
+          options: [
+            { option: "It is carrying a fish." },
+            { option: "It is carrying a watch." },
+            { option: "It is carrying some grass.", isCorrect: true },
+          ],
+        },
+        {
+          question:
+            "Who stands up in the small boat and says he can see the island?",
+          options: [
+            {
+              option: "Sam stands up in the boat and sees the island.",
+              isCorrect: true,
+            },
+            { option: "Jenny stands up in the boat and sees the island." },
+            {
+              option:
+                "The captain of the Black Star stands up and sees the island.",
+            },
+          ],
+        },
       ],
-      answers: ["Five days.", "Some grass.", "Sam."],
       text: [
         {
           text: "After three days Sam and Jenny are very hungry and thirsty. Then, after five days Jenny sees a big white bird. It is carrying some grass. “Look Dad,” she says. “Do you think there’s an island near here?”",
@@ -207,14 +378,34 @@ export const tinkersIsland = {
       id: "paragraph-8",
       title: "Paragraph 8",
       questions: [
-        "What do Sam and Jenny look for first?",
-        "What do they find?",
-        "Who gets the first coconut?",
-      ],
-      answers: [
-        "Food and water.",
-        "A small river with cold, clean water.",
-        "Jenny.",
+        {
+          question: "What do Sam and Jenny look for first?",
+          options: [
+            { option: "They look for the captain first." },
+            { option: "They look for food and water first.", isCorrect: true },
+            { option: "They look for their boat first." },
+          ],
+        },
+        {
+          question: "What do they find?",
+          options: [
+            { option: "They find a big house near the beach." },
+            { option: "They find a village between the trees." },
+            {
+              option:
+                "They find a small river with cold, clean water.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Who gets the first coconut?",
+          options: [
+            { option: "Jenny gets the first coconut.", isCorrect: true },
+            { option: "Sam gets the first coconut." },
+            { option: "They save the first coconut for the next day." },
+          ],
+        },
       ],
       text: "The island is big and has lots of tall, thick trees. First Sam and Jenny look for food and water. They find a small river. The water is cold and clean. They drink and drink and drink. There are coconuts on the island, too. The Tinkers know coconuts from Covent Garden market. Sam opens two of them and gives the first one to Jenny.",
       localMedia: `local-media/images/skills/listening/audiobooks/starter/tinkers-island/paragraph-8.avif`,
@@ -227,14 +418,39 @@ export const tinkersIsland = {
       id: "paragraph-9",
       title: "Paragraph 9",
       questions: [
-        "Where do they sleep on the first night?",
-        "What do they make their new house with?",
-        "How does Sam make the flag, and where does he put it?",
-      ],
-      answers: [
-        "On the beach.",
-        "Grass and wood.",
-        "He makes it with his shirt and puts it on the roof.",
+        {
+          question: "Where do they sleep on the first night?",
+          options: [
+            { option: "They sleep in the small house." },
+            { option: "They sleep in a big tree." },
+            { option: "They sleep on the beach.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What do they make their new house with?",
+          options: [
+            { option: "They make it with stones and grass." },
+            { option: "They make it with grass and wood.", isCorrect: true },
+            { option: "They make it with wood from the ship." },
+          ],
+        },
+        {
+          question: "How does Sam make the flag, and where does he put it?",
+          options: [
+            {
+              option:
+                "He makes it with his shirt and puts it on the roof.",
+              isCorrect: true,
+            },
+            {
+              option: "He makes it with grass and puts it on the beach.",
+            },
+            {
+              option:
+                "He makes it with a coconut leaf and puts it next to the door.",
+            },
+          ],
+        },
       ],
       text: "That night Sam and Jenny sleep on the beach. They are very tired. In the morning they start to make a small house with grass and wood. They work very hard. After four days they finish. Then Sam makes a flag with his shirt and puts it on the roof. He and Jenny look up at the flag. “This is ‘Tinkers Island’ now,” Sam says. “It’s our new home and we’re going to be happy here.”",
       localMedia: `local-media/images/skills/listening/audiobooks/starter/tinkers-island/paragraph-9.avif`,
@@ -247,14 +463,33 @@ export const tinkersIsland = {
       id: "paragraph-10",
       title: "Paragraph 10",
       questions: [
-        "How long are Sam and Jenny happy on the island?",
-        "What is Sam looking for when the snake bites him?",
-        "What happens to Sam?",
-      ],
-      answers: [
-        "For the first year.",
-        "Coconuts.",
-        "He puts his foot on a snake and it bites him.",
+        {
+          question: "How long are Sam and Jenny happy on the island?",
+          options: [
+            { option: "They are happy for the first year.", isCorrect: true },
+            { option: "They are happy for the first month." },
+            { option: "They are happy for ten days." },
+          ],
+        },
+        {
+          question: "What is Sam looking for when the snake bites him?",
+          options: [
+            { option: "He is looking for fish." },
+            { option: "He is looking for water." },
+            { option: "He is looking for coconuts.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What happens to Sam?",
+          options: [
+            { option: "He falls into the river and cannot swim." },
+            {
+              option: "He puts his foot on a snake and it bites him.",
+              isCorrect: true,
+            },
+            { option: "He cuts his foot on a big stone." },
+          ],
+        },
       ],
       text: [
         {
@@ -278,14 +513,36 @@ export const tinkersIsland = {
       id: "paragraph-11",
       title: "Paragraph 11",
       questions: [
-        "How does Jenny get her father back to the house?",
-        "How long does Jenny sit next to his bed?",
-        "What does Sam ask when he opens his eyes?",
-      ],
-      answers: [
-        "She pulls him along the beach to the house.",
-        "For three days and nights.",
-        "“Jenny – is that you?”",
+        {
+          question: "How does Jenny get her father back to the house?",
+          options: [
+            { option: "She carries him on her back to the house." },
+            { option: "She asks the captain to help her." },
+            {
+              option: "She pulls him along the beach to the house.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "How long does Jenny sit next to his bed?",
+          options: [
+            {
+              option: "She sits next to his bed for three days and nights.",
+              isCorrect: true,
+            },
+            { option: "She sits next to his bed for three hours." },
+            { option: "She sits next to his bed for ten days and nights." },
+          ],
+        },
+        {
+          question: "What does Sam ask when he opens his eyes?",
+          options: [
+            { option: "He asks, “Where is the ship?”" },
+            { option: "He asks, “Jenny – is that you?”", isCorrect: true },
+            { option: "He asks, “Are we on the Black Star?”" },
+          ],
+        },
       ],
       text: [
         {
@@ -305,14 +562,40 @@ export const tinkersIsland = {
       id: "paragraph-12",
       title: "Paragraph 12",
       questions: [
-        "How does Sam feel after ten days?",
-        "What work does Jenny do?",
-        "What does Jenny see one morning?",
-      ],
-      answers: [
-        "He is well again, but not very strong.",
-        "She catches fish, finds coconuts, makes fires and cooks.",
-        "A ship coming to the island.",
+        {
+          question: "How does Sam feel after ten days?",
+          options: [
+            { option: "He is very strong again." },
+            {
+              option: "He is well again, but not very strong.",
+              isCorrect: true,
+            },
+            { option: "He is worse than before." },
+          ],
+        },
+        {
+          question: "What work does Jenny do?",
+          options: [
+            { option: "She works on the ship with the men." },
+            { option: "She builds a new house on the beach." },
+            {
+              option:
+                "She catches fish, finds coconuts, makes fires and cooks.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Jenny see one morning?",
+          options: [
+            {
+              option: "She sees a ship coming to the island.",
+              isCorrect: true,
+            },
+            { option: "She sees a big white bird above the trees." },
+            { option: "She sees a boat from the Black Star on the beach." },
+          ],
+        },
       ],
       text: [
         {
@@ -333,14 +616,33 @@ export const tinkersIsland = {
       id: "paragraph-13",
       title: "Paragraph 13",
       questions: [
-        "What ship does Sam think it is?",
-        "How many men can Sam see?",
-        "What are the men doing?",
-      ],
-      answers: [
-        "The Black Star.",
-        "Three men.",
-        "They are putting a boat in the water.",
+        {
+          question: "What ship does Sam think it is?",
+          options: [
+            { option: "He thinks it is the Black Star.", isCorrect: true },
+            { option: "He thinks it is the Red Rose." },
+            { option: "He thinks it is a ship from America." },
+          ],
+        },
+        {
+          question: "How many men can Sam see?",
+          options: [
+            { option: "He can see two men." },
+            { option: "He can see three men.", isCorrect: true },
+            { option: "He can see five men." },
+          ],
+        },
+        {
+          question: "What are the men doing?",
+          options: [
+            { option: "They are fishing near the island." },
+            { option: "They are looking for food and water." },
+            {
+              option: "They are putting a boat in the water.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         {
@@ -367,11 +669,31 @@ export const tinkersIsland = {
       id: "paragraph-14",
       title: "Paragraph 14",
       questions: [
-        "Where do Sam and Jenny hide?",
-        "What is the man carrying?",
-        "What does the man say when he sees Jenny?",
+        {
+          question: "Where do Sam and Jenny hide?",
+          options: [
+            { option: "They hide in the small house." },
+            { option: "They hide behind a boat on the beach." },
+            { option: "They hide behind a big tree.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What is the man carrying?",
+          options: [
+            { option: "He is carrying a gun.", isCorrect: true },
+            { option: "He is carrying a bag." },
+            { option: "He is carrying a watch." },
+          ],
+        },
+        {
+          question: "What does the man say when he sees Jenny?",
+          options: [
+            { option: "He says, “Don’t be afraid.”" },
+            { option: "He says, “You’re English!!”", isCorrect: true },
+            { option: "He says, “Where are your parents?”" },
+          ],
+        },
       ],
-      answers: ["Behind a big tree.", "A gun.", "“You’re English!!”"],
       text: [
         {
           text: [
@@ -393,14 +715,40 @@ export const tinkersIsland = {
       id: "paragraph-15",
       title: "Paragraph 15",
       questions: [
-        "Where is the men’s ship, the Red Rose, going?",
-        "What date is it the next day?",
-        "Why are Sam and Jenny happy but sad?",
-      ],
-      answers: [
-        "To America.",
-        "January 1st, 1800.",
-        "They are happy to start a new life, but sad to leave Tinkers Island.",
+        {
+          question: "Where is the men’s ship, the Red Rose, going?",
+          options: [
+            { option: "It is going to America.", isCorrect: true },
+            { option: "It is going to Australia." },
+            { option: "It is going back to England." },
+          ],
+        },
+        {
+          question: "What date is it the next day?",
+          options: [
+            { option: "It is January 1st, 1798." },
+            { option: "It is November 1st, 1799." },
+            { option: "It is January 1st, 1800.", isCorrect: true },
+          ],
+        },
+        {
+          question: "Why are Sam and Jenny happy but sad?",
+          options: [
+            {
+              option:
+                "They are happy to go home, but sad to leave the Red Rose.",
+            },
+            {
+              option:
+                "They are happy to start a new life, but sad to leave Tinkers Island.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "They are happy to find food, but sad to leave the beach.",
+            },
+          ],
+        },
       ],
       text: [
         {
@@ -435,92 +783,87 @@ export const tinkersIsland = {
           {
             img: `${imageBase}/paragraph-1.avif`,
             alt: "Jenny and her father Sam selling fruit and vegetables in Covent Garden market.",
-            summary:
-              "Jenny is fourteen and she works in Covent Garden market with her father, Sam. One day after work she sees a man running with a watch in his hand.",
+            summary: "Jenny and Sam sell fruit and vegetables in the market.",
           },
           {
             img: `${imageBase}/paragraph-2.avif`,
             alt: "Angry people running down the street after Sam while two policemen hold his arms.",
             summary:
-              "The man gives Sam the watch, and angry people run after Sam because they think he is a thief. Two policemen take him away and they do not listen to Jenny.",
+              "People think Sam is a thief, so two policemen take him away.",
           },
           {
             img: `${imageBase}/paragraph-3.avif`,
             alt: "Jenny talking to Peter Stone, with the Black Star waiting on the River Thames.",
             summary:
-              "Jenny goes to Peter Stone’s house for help. Peter says that thieves are sent to Australia, and a week later Jenny sees her father on the Black Star.",
+              "Jenny asks Peter Stone for help and learns thieves go to Australia.",
           },
           {
             img: `${imageBase}/paragraph-4.avif`,
             alt: "Jenny, dressed as a boy, talking to the captain of the Black Star.",
             summary:
-              "Jenny sees trousers and a shirt on a line and dresses as a boy. She tells the captain her name is Ned Bell, and he gives her a job helping the cook.",
+              "Jenny dresses as a boy and gets a job helping the ship’s cook.",
           },
           {
             img: `${imageBase}/paragraph-5.avif`,
             alt: "Jenny unlocking the prisoners’ room deep in the bottom of the Black Star.",
             summary:
-              "For six weeks Jenny works very hard on the ship. One night she takes the captain’s keys, goes to the bottom of the ship and finds her father.",
+              "One night Jenny takes the captain’s keys and goes to her father.",
           },
           {
             img: `${imageBase}/paragraph-6.avif`,
             alt: "Jenny and Sam escaping in a small boat under a big moon, the Black Star behind them.",
-            summary:
-              "Fifteen minutes later Jenny and Sam are in a small boat, and the Black Star is behind them. It is a beautiful night with a big moon, and Jenny tells her father that he is free.",
+            summary: "Jenny and Sam escape from the ship in a small boat.",
           },
           {
             img: `${imageBase}/paragraph-7.avif`,
             alt: "Sam standing up in the small boat and pointing to an island on the horizon.",
             summary:
-              "After five days Jenny sees a big white bird carrying some grass. Sam stands up in the boat and sees an island on the horizon.",
+              "After five days they see a bird carrying grass, then an island.",
           },
           {
             img: `${imageBase}/paragraph-8.avif`,
             alt: "Sam and Jenny drinking from a small river on the wooded island.",
             summary:
-              "On the island, Sam and Jenny look for food and water and find a small river with cold, clean water. Sam opens two coconuts and gives the first one to Jenny.",
+              "On the island they find a river with clean water and coconuts.",
           },
           {
             img: `${imageBase}/paragraph-9.avif`,
             alt: "Sam and Jenny looking up at their new grass-and-wood house with Sam’s shirt as a flag on the roof.",
             summary:
-              "That night they sleep on the beach. In the morning they build a small house with grass and wood, and after four days Sam puts his shirt on the roof as a flag.",
+              "They build a small house, and Sam makes a flag from his shirt.",
           },
           {
             img: `${imageBase}/paragraph-10.avif`,
             alt: "Sam stepping on a long snake on the ground while Jenny fishes nearby.",
-            summary:
-              "Sam and Jenny are very happy for the first year. Then one morning, while Jenny is fishing, Sam steps on a snake and it bites him.",
+            summary: "Sam steps on a snake one morning and it bites him.",
           },
           {
             img: `${imageBase}/paragraph-11.avif`,
             alt: "Jenny sitting beside her father’s bed in the island house, watching over him.",
             summary:
-              "Jenny pulls her father along the beach to the house. He is very weak, and she sits next to his bed for three days and nights until he opens his eyes.",
+              "Jenny pulls Sam to the house and sits by his bed for three days.",
           },
           {
             img: `${imageBase}/paragraph-12.avif`,
             alt: "Jenny running to the house to tell her father about the ship coming to the island.",
-            summary:
-              "After ten days Sam is well again but not very strong, so Jenny does all the work. One morning she sees a ship coming to the island and runs to tell her father.",
+            summary: "Jenny sees a ship coming to the island one morning.",
           },
           {
             img: `${imageBase}/paragraph-13.avif`,
             alt: "Sam and Jenny watching from the house as three men lower a boat from the ship.",
             summary:
-              "Sam asks if the ship is the Black Star. He sees three men putting a boat in the water, and he and Jenny start to run away.",
+              "Sam sees three men from the ship putting a boat in the water.",
           },
           {
             img: `${imageBase}/paragraph-14.avif`,
             alt: "Sam and Jenny hiding behind a big tree as a man with a gun turns toward them.",
-            summary:
-              "Sam and Jenny hide behind a big tree. A man with a gun turns and asks who is there, and he is surprised when he sees that Jenny is English.",
+            summary: "A man with a gun sees Sam and Jenny behind a big tree.",
           },
           {
             img: `${imageBase}/paragraph-15.avif`,
             alt: "Sam and Jenny on the deck of the Red Rose, looking back at Tinkers Island for the last time.",
             summary:
-              "That evening the men invite the Tinkers to sail to America with them on the Red Rose. The next day, January 1st, 1800, Sam and Jenny are happy but sad as they say goodbye to Tinkers Island.",
+              "Sam and Jenny leave Tinkers Island on the Red Rose for America.",
           },
         ],
       },

@@ -23,14 +23,41 @@ export const projectOmega = {
       id: "chapter-1",
       title: "Chapter 1 · A Rich Man Disappears",
       questions: [
-        "Where was Charles Hatfield Baker III going when he disappeared?",
-        "What did the police think had happened to him?",
-        "Did anyone ask for money after he disappeared?",
-      ],
-      answers: [
-        "He was walking through Central Park to his office on Columbus Avenue.",
-        "They thought kidnappers had taken him for money.",
-        "No. No message, letter or telephone call came.",
+        {
+          question:
+            "Where was Charles Hatfield Baker III going when he disappeared?",
+          options: [
+            { option: "He was driving to the airport." },
+            {
+              option:
+                "He was walking through Central Park to his office on Columbus Avenue.",
+              isCorrect: true,
+            },
+            { option: "He was taking a taxi to the train station." },
+          ],
+        },
+        {
+          question: "What did the police think had happened to him?",
+          options: [
+            { option: "They thought he had gone away on a long holiday." },
+            { option: "They thought he had left the country by plane." },
+            {
+              option: "They thought kidnappers had taken him for money.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Did anyone ask for money after he disappeared?",
+          options: [
+            {
+              option: "No. No message, letter or telephone call came.",
+              isCorrect: true,
+            },
+            { option: "Yes, the kidnappers asked for millions of dollars." },
+            { option: "Yes, a stranger telephoned and asked for $10,000." },
+          ],
+        },
       ],
       text: [
         { text: "Charles Hatfield Baker III was a very rich man. There wasn't a richer man in all of New York City. He was the head of a large number of important companies. He had land and buildings and houses in the country. He had boats and horses and an aeroplane. But he was a simple man. He liked the simple things of life: a good cup of coffee, a kiss from a pretty girl, a walk through the park on a fine autumn day." },
@@ -58,14 +85,41 @@ export const projectOmega = {
       id: "chapter-2",
       title: "Chapter 2 · The New Boss",
       questions: [
-        "What did Julia learn while walking through New York?",
-        "What time did Julia ask the directors to meet her?",
-        "What did she ask the directors to show her?",
-      ],
-      answers: [
-        "She saw how poor people lived and began to understand what she could do with her father's money.",
-        "At ten o'clock.",
-        "The company accounts, investment files and plans for the future.",
+        {
+          question: "What did Julia learn while walking through New York?",
+          options: [
+            { option: "She learnt how to drive her father’s cars." },
+            { option: "She learnt where her father was hiding." },
+            {
+              option:
+                "She saw how poor people lived and began to understand what she could do with her father’s money.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What time did Julia ask the directors to meet her?",
+          options: [
+            { option: "She asked the directors to meet her at nine o’clock." },
+            {
+              option: "She asked the directors to meet her at ten o’clock.",
+              isCorrect: true,
+            },
+            { option: "She asked the directors to meet her at eleven o’clock." },
+          ],
+        },
+        {
+          question: "What did she ask the directors to show her?",
+          options: [
+            {
+              option:
+                "The company accounts, investment files and plans for the future.",
+              isCorrect: true,
+            },
+            { option: "The keys to her father’s office and his aeroplane." },
+            { option: "The names of the men who had kidnapped her father." },
+          ],
+        },
       ],
       text: [
         { text: "For days, and then weeks, Julia hoped for news. But there was no news of Charles Hatfield Baker III. After a time the newspapers were tired of the disappearance story. Their reporters wrote about other things. The police stopped asking questions." },
@@ -104,14 +158,48 @@ export const projectOmega = {
       id: "chapter-3",
       title: "Chapter 3 · Power",
       questions: [
-        "What was written on the red file Julia found?",
-        "What did Julia find inside the file?",
-        "Why did Julia think the girl in Miss Bentley's office was hiding something?",
-      ],
-      answers: [
-        "PROJECT OMEGA.",
-        "The file was empty, but her father had written 'Never!' inside its cover.",
-        "The girl sounded frightened and said she knew nothing about Project Omega, but Julia could tell she was lying.",
+        {
+          question: "What was written on the red file Julia found?",
+          options: [
+            { option: "The cover of the red file said “HATFIELD INTERNATIONAL”." },
+            {
+              option: "The cover of the red file said “PROJECT OMEGA”.",
+              isCorrect: true,
+            },
+            { option: "The cover of the red file said “FUTURE PLANS”." },
+          ],
+        },
+        {
+          question: "What did Julia find inside the file?",
+          options: [
+            {
+              option:
+                "The file was empty, but her father had written “Never!” inside its cover.",
+              isCorrect: true,
+            },
+            { option: "The file was full of plans for new investments." },
+            {
+              option:
+                "The file held a letter from her father to Miss Bentley.",
+            },
+          ],
+        },
+        {
+          question:
+            "Why did Julia think the girl in Miss Bentley's office was hiding something?",
+          options: [
+            { option: "The girl refused to answer the telephone at all." },
+            {
+              option:
+                "The girl told Julia everything she knew about the project.",
+            },
+            {
+              option:
+                "The girl sounded frightened and said she knew nothing about Project Omega, but Julia could tell she was lying.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "For two days, Julia looked at long lists of figures and read long reports. The figures were in thousands and millions, and the reports were heavy and full of facts." },
@@ -149,14 +237,46 @@ export const projectOmega = {
       id: "chapter-4",
       title: "Chapter 4 · Danger",
       questions: [
-        "Where did Miss Harper get the Project Omega papers?",
-        "What did Miss Harper warn Julia about on the telephone?",
-        "What happened to the call before Julia could ask who was threatening her?",
-      ],
-      answers: [
-        "From a safe hidden behind a portrait in the office.",
-        "She warned that people who did not want Julia to know about Project Omega were going to kill her.",
-        "The line went silent and Miss Harper stopped answering.",
+        {
+          question: "Where did Miss Harper get the Project Omega papers?",
+          options: [
+            { option: "She got them from a drawer in her desk." },
+            {
+              option:
+                "She got them from a safe hidden behind a portrait in the office.",
+              isCorrect: true,
+            },
+            { option: "She got them from the police." },
+          ],
+        },
+        {
+          question: "What did Miss Harper warn Julia about on the telephone?",
+          options: [
+            {
+              option:
+                "She warned that Mr Berger was going to send her away to Atlanta.",
+            },
+            { option: "She warned that her father had been kidnapped." },
+            {
+              option:
+                "She warned that people who did not want Julia to know about Project Omega were going to kill her.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "What happened to the call before Julia could ask who was threatening her?",
+          options: [
+            {
+              option:
+                "The line went silent and Miss Harper stopped answering.",
+              isCorrect: true,
+            },
+            { option: "Mr Berger took the telephone and laughed at her." },
+            { option: "Miss Harper told her the names of the men." },
+          ],
+        },
       ],
       text: [
         { text: "Julia stood and looked at the girl." },
@@ -197,14 +317,51 @@ export const projectOmega = {
       id: "chapter-5",
       title: "Chapter 5 · An Evil Plan",
       questions: [
-        "What was Project Omega designed to give Hatfield International?",
-        "What did Julia decide to do after reading the file?",
-        "What did Julia discover when she opened the elevator door?",
-      ],
-      answers: [
-        "Money and power in other countries, at the cost of millions of people's freedom.",
-        "She decided to tell the police, the newspapers and the world about Project Omega.",
-        "The elevator car was missing, leaving an open shaft forty floors above the ground.",
+        {
+          question: "What was Project Omega designed to give Hatfield International?",
+          options: [
+            { option: "New offices and factories in New York." },
+            { option: "Free homes and jobs for poor people." },
+            {
+              option:
+                "Money and power in other countries, at the cost of millions of people’s freedom.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What did Julia decide to do after reading the file?",
+          options: [
+            {
+              option:
+                "She decided to tell the police, the newspapers and the world about Project Omega.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "She decided to sell her shares and leave New York for ever.",
+            },
+            {
+              option:
+                "She decided to ask Mr Berger to explain the plan to her.",
+            },
+          ],
+        },
+        {
+          question: "What did Julia discover when she opened the elevator door?",
+          options: [
+            {
+              option:
+                "The elevator was full of men dressed as Father Christmas.",
+            },
+            {
+              option:
+                "The elevator car was missing, leaving an open shaft forty floors above the ground.",
+              isCorrect: true,
+            },
+            { option: "The elevator stopped between two floors." },
+          ],
+        },
       ],
       text: [
         { text: "Julia put the telephone down. For the first time, she felt very lonely. She wasn't frightened, just lonely." },
@@ -241,14 +398,43 @@ export const projectOmega = {
       id: "chapter-6",
       title: "Chapter 6 · A Friend",
       questions: [
-        "Who saved Julia from the empty elevator shaft?",
-        "Where did Edward suggest taking the Omega file?",
-        "Why could Julia not show the papers to the newspapers?",
-      ],
-      answers: [
-        "Edward West.",
-        "To the New York Times.",
-        "Her briefcase, which held the papers, had disappeared.",
+        {
+          question: "Who saved Julia from the empty elevator shaft?",
+          options: [
+            { option: "Clara saved her." },
+            { option: "Edward West saved her.", isCorrect: true },
+            { option: "Mr Berger saved her." },
+          ],
+        },
+        {
+          question: "Where did Edward suggest taking the Omega file?",
+          options: [
+            {
+              option: "He suggested taking it to the New York Times.",
+              isCorrect: true,
+            },
+            { option: "He suggested taking it to the police." },
+            {
+              option:
+                "He suggested taking it to Miss Harper’s family in Atlanta.",
+            },
+          ],
+        },
+        {
+          question: "Why could Julia not show the papers to the newspapers?",
+          options: [
+            {
+              option:
+                "The papers were written in a language she could not read.",
+            },
+            { option: "Edward had already given the papers to Mr Berger." },
+            {
+              option:
+                "Her briefcase, which held the papers, had disappeared.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "Julia didn't fall. Two strong arms took hold of her, and pulled her back from dark death - back to life." },
@@ -290,14 +476,44 @@ export const projectOmega = {
       id: "chapter-7",
       title: "Chapter 7 · Happy Christmas!",
       questions: [
-        "What did Julia learn when she called Miss Harper's office?",
-        "Why did Julia return to Hatfield International?",
-        "Who seized her outside the building?",
-      ],
-      answers: [
-        "Miss Harper had not come to work that morning.",
-        "She hoped to find another copy of the Project Omega file.",
-        "Two tall men dressed as Father Christmas.",
+        {
+          question: "What did Julia learn when she called Miss Harper's office?",
+          options: [
+            {
+              option:
+                "Miss Harper had gone to the police with another copy of the file.",
+            },
+            { option: "Miss Harper had been arrested by the FBI." },
+            {
+              option: "Miss Harper had not come to work that morning.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Why did Julia return to Hatfield International?",
+          options: [
+            { option: "She wanted to sell her shares to the directors." },
+            {
+              option:
+                "She hoped to find another copy of the Project Omega file.",
+              isCorrect: true,
+            },
+            { option: "She wanted to say goodbye to Miss Bentley." },
+          ],
+        },
+        {
+          question: "Who seized her outside the building?",
+          options: [
+            {
+              option:
+                "Two tall men dressed as Father Christmas seized her.",
+              isCorrect: true,
+            },
+            { option: "Two policemen seized her." },
+            { option: "Mr Berger and Edward seized her." },
+          ],
+        },
       ],
       text: [
         { text: "'What are we going to do?' Julia asked. She was glad - so glad - that she could say 'we'." },
@@ -339,14 +555,51 @@ export const projectOmega = {
       id: "chapter-8",
       title: "Chapter 8 · Father and Daughter",
       questions: [
-        "Why did Edward take Julia away from New York?",
-        "Where was Julia's father waiting for her?",
-        "What did Julia want to do with the company's money?",
-      ],
-      answers: [
-        "Mr Berger and his friends were planning another attempt on her life.",
-        "On a small island off the coast of Florida.",
-        "She wanted to use it for good projects that would help people.",
+        {
+          question: "Why did Edward take Julia away from New York?",
+          options: [
+            { option: "He wanted to show her his new plane." },
+            {
+              option:
+                "Mr Berger and his friends were planning another attempt on her life.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He was taking her to see Miss Harper in Atlanta.",
+            },
+          ],
+        },
+        {
+          question: "Where was Julia's father waiting for her?",
+          options: [
+            {
+              option:
+                "He was waiting on a small island off the coast of Florida.",
+              isCorrect: true,
+            },
+            { option: "He was waiting in a hotel in New York." },
+            { option: "He was waiting on a farm in Texas." },
+          ],
+        },
+        {
+          question: "What did Julia want to do with the company's money?",
+          options: [
+            {
+              option:
+                "She wanted to buy more companies and more power.",
+            },
+            {
+              option:
+                "She wanted to keep it in the bank for her children.",
+            },
+            {
+              option:
+                "She wanted to use it for good projects that would help people.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         { text: "Julia opened her eyes. The world was going round and round. And there were noises in her head." },

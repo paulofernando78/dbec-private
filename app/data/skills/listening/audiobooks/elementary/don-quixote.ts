@@ -29,8 +29,28 @@ export const donQuixote = {
     {
       id: "chapter-1",
       title: "Chapter 1 · Don Quixote Begins his Life of Adventure",
-      questions: ["Why did Alonso Quixada decide to become a knight?", "Who knighted Don Quixote?"],
-      answers: ["He read many books about knights and wanted adventures of his own.", "The innkeeper."],
+      questions: [
+        {
+          question: "Why did Alonso Quixada decide to become a knight?",
+          options: [
+            { option: "He wanted to earn more money than his friends." },
+            {
+              option:
+                "He read many books about knights and wanted adventures of his own.",
+              isCorrect: true,
+            },
+            { option: "His friends asked him to leave the village." },
+          ],
+        },
+        {
+          question: "Who knighted Don Quixote?",
+          options: [
+            { option: "Sancho Panza knighted him." },
+            { option: "A priest at the church knighted him." },
+            { option: "The innkeeper knighted him.", isCorrect: true },
+          ],
+        },
+      ],
       text: [
         { text: "He wanted to be one of the men in his books. He wanted to be a knight. He wanted to leave his home and have adventures." },
         { text: "Mr Alonso Quixada lived quietly for many years in a village in La Mancha in the middle of Spain. He was a tall, thin man, nearly fifty years old. He didn't have a lot of money, but he had friends, a nice house, an old horse, a good dog and food on his table." },
@@ -96,8 +116,27 @@ export const donQuixote = {
     {
       id: "chapter-2",
       title: "Chapter 2 · First Adventures with Sancho Panza",
-      questions: ["Who became Don Quixote's squire?", "What did Don Quixote think the windmills were?"],
-      answers: ["Sancho Panza.", "Dangerous giants."],
+      questions: [
+        {
+          question: "Who became Don Quixote's squire?",
+          options: [
+            { option: "Sancho Panza became his squire.", isCorrect: true },
+            { option: "Pero became his squire." },
+            { option: "Nicolás became his squire." },
+          ],
+        },
+        {
+          question: "What did Don Quixote think the windmills were?",
+          options: [
+            { option: "He thought they were castles." },
+            {
+              option: "He thought they were dangerous giants.",
+              isCorrect: true,
+            },
+            { option: "He thought they were sheep." },
+          ],
+        },
+      ],
       text: [
         { text: "'Look over there, Sancho,' said Don Quixote. 'We'll be busy now. Thirty or more dangerous giants are waiting for us.'" },
         { text: "Don Quixote was at home, but he was weak and very ill. He stayed in bed for a long time. Pero and Nicolás visited him often. 'Those books about knights are bad for our friend,' Pero said after one visit. 'He gets dangerous ideas from them. Let's build a big fire and throw them on it. Then he'll forget about a knight's life.' 'And let's take away the door to the room too,' Nicolás said. 'We can build a wall there. Then he can't put any more books in that room.'" },
@@ -164,8 +203,24 @@ export const donQuixote = {
     {
       id: "chapter-3",
       title: "Chapter 3 · Old Friends or the Work of Frestón?",
-      questions: ["Why did Don Quixote go to El Toboso?", "Who challenged Don Quixote while disguised as a knight?"],
-      answers: ["He wanted to see Dulcinea.", "Sansón Carrasco."],
+      questions: [
+        {
+          question: "Why did Don Quixote go to El Toboso?",
+          options: [
+            { option: "He wanted to find a castle for Sancho." },
+            { option: "He wanted to fight Sansón Carrasco." },
+            { option: "He wanted to see Dulcinea.", isCorrect: true },
+          ],
+        },
+        {
+          question: "Who challenged Don Quixote while disguised as a knight?",
+          options: [
+            { option: "Sansón Carrasco challenged him.", isCorrect: true },
+            { option: "Tomé Cecial challenged him." },
+            { option: "Don Carlos challenged him." },
+          ],
+        },
+      ],
       text: [
         { text: "'This is not good,' Don Quixote said to Sancho Panza. 'This is the work of the wizard, Frestón.'" },
         { text: "After another long stay at home, Don Quixote wanted more adventures. His first conversation with Sancho Panza on their new journey was about his love, the beautiful Dulcinea." },
@@ -240,8 +295,24 @@ export const donQuixote = {
     {
       id: "chapter-4",
       title: "Chapter 4 · Exciting Adventures with Animals",
-      questions: ["What animal did Don Quixote want to challenge?", "Who travelled with the performing monkey?"],
-      answers: ["A lion.", "Pedro."],
+      questions: [
+        {
+          question: "What animal did Don Quixote want to challenge?",
+          options: [
+            { option: "He wanted to challenge a bull." },
+            { option: "He wanted to challenge a lion.", isCorrect: true },
+            { option: "He wanted to challenge a monkey." },
+          ],
+        },
+        {
+          question: "Who travelled with the performing monkey?",
+          options: [
+            { option: "An innkeeper travelled with the monkey." },
+            { option: "A doctor travelled with the monkey." },
+            { option: "Pedro travelled with the monkey.", isCorrect: true },
+          ],
+        },
+      ],
       text: [
         { text: "'It's after the lion's dinner time. He's getting very hungry. And lions are dangerous when they're hungry.'" },
         { text: "Don Quixote and his squire happily began their journey again. The knight sat on Rocinante and thought about his life of adventures. When he remembered his many fights, they always ended well. He forgot about his problems and accidents, and about their many difficult journeys." },
@@ -305,8 +376,28 @@ export const donQuixote = {
     {
       id: "chapter-5",
       title: "Chapter 5 · Good King Sancho",
-      questions: ["What country did Sancho govern?", "Why did Sancho leave his new position?"],
-      answers: ["Baratario.", "He did not feel born to be a king and wanted to return to Don Quixote."],
+      questions: [
+        {
+          question: "What country did Sancho govern?",
+          options: [
+            { option: "He governed the country of Baratario.", isCorrect: true },
+            { option: "He governed the country of La Mancha." },
+            { option: "He governed the country of El Toboso." },
+          ],
+        },
+        {
+          question: "Why did Sancho leave his new position?",
+          options: [
+            { option: "He left because the people of Baratario asked him to go." },
+            {
+              option:
+                "He left because he did not feel born to be a king and wanted to return to Don Quixote.",
+              isCorrect: true,
+            },
+            { option: "He left because Don Carlos gave him a bag of money." },
+          ],
+        },
+      ],
       text: [
         { text: "'I have a small country!' shouted Don Carlos excitedly. 'The old king died this year. Sancho Panza can be the king of Baratario.'" },
         { text: "Don Quixote and Sancho Panza left the inn and forgot about the monkey and the theatre company. They were happier on the road. But Sancho began to think about his home and family." },
@@ -386,8 +477,29 @@ export const donQuixote = {
     {
       id: "chapter-6",
       title: "Chapter 6 · The Last Days of Don Quixote",
-      questions: ["What did Sancho receive for his work in Baratario?", "What name did Don Quixote use when he said goodbye to his friends?"],
-      answers: ["A bag of money.", "Alonso Quixada."],
+      questions: [
+        {
+          question: "What did Don Carlos give Sancho before they left his castle?",
+          options: [
+            { option: "He gave Sancho a new suit of armour." },
+            { option: "He gave Sancho a horse to take home to La Mancha." },
+            {
+              option:
+                "He gave Sancho a bag of money for his work in Baratario.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "What name did Don Quixote use when he said goodbye to his friends?",
+          options: [
+            { option: "He used the name Alonso Quixada.", isCorrect: true },
+            { option: "He used the name Don Quixote de la Mancha." },
+            { option: "He used the name the Knight of the Lions." },
+          ],
+        },
+      ],
       text: [
         { text: "'My books about knights were wrong, and I was stupid. I, Alonso Quixada - not Don Quixote - am going to die, and I am ready.'" },
         { text: "Before Don Quixote and Sancho Panza left Don Carlos' castle, Don Carlos gave Sancho a bag of money for his work in Baratario. The knight and his squire liked Don Carlos and Doña Maria very much, but they were happier on the road. That same day, they met some young people and had an adventure." },

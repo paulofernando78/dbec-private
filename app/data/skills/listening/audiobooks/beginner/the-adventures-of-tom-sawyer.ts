@@ -1,4 +1,5 @@
 import { italic, type ContentToken } from "@/helpers/content";
+import type { AudiobookQuestion } from "../index";
 
 type AudiobookImage = {
   localMedia?: string;
@@ -15,7 +16,7 @@ export type AudiobookSection = AudiobookImage & {
   title: string;
   timestamp?: string;
   text?: string | readonly AudiobookBlock[];
-  questions?: readonly string[];
+  questions?: readonly (string | AudiobookQuestion)[];
   answers?: readonly string[];
   mediaPosition?: "left" | "right" | "top" | "bottom";
   localAudio?: string;
@@ -33,8 +34,24 @@ export const theAdventuresOfTomSawyer = {
     {
       id: "introduction",
       title: "Introduction",
-      questions: ["What was Mark Twain's real name?", "In which town did he grow up?"],
-      answers: ["Samuel Clemens.", "Hannibal, Missouri."],
+      questions: [
+        {
+          question: "What was Mark Twain’s real name?",
+          options: [
+            { option: "His real name was Tom Sawyer." },
+            { option: "His real name was Huck Finn." },
+            { option: "His real name was Samuel Clemens.", isCorrect: true },
+          ],
+        },
+        {
+          question: "In which town did he grow up?",
+          options: [
+            { option: "He grew up in New York." },
+            { option: "He grew up in Hannibal, Missouri.", isCorrect: true },
+            { option: "He grew up in Nevada." },
+          ],
+        },
+      ],
       text: [
         {
           text: italic(
@@ -66,11 +83,39 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-1",
       title: "Chapter 1 The Fence",
       questions: [
-        "Why was Aunt Polly angry with Tom?",
-        "What work did Aunt Polly give Tom to do on Saturday?",
-        "What did Tom get from Ben and the other boys so they could paint the fence?",
+        {
+          question: "Why was Aunt Polly angry with Tom?",
+          options: [
+            { option: "She was angry because he was late for dinner." },
+            {
+              option:
+                "She was angry because he went to the river instead of school.",
+              isCorrect: true,
+            },
+            { option: "She was angry because he broke a window." },
+          ],
+        },
+        {
+          question: "What work did Aunt Polly give Tom to do on Saturday?",
+          options: [
+            { option: "She told him to get water from the river." },
+            { option: "She told him to paint the fence.", isCorrect: true },
+            { option: "She told him to wash the windows." },
+          ],
+        },
+        {
+          question:
+            "What did Tom get from Ben and the other boys so they could paint the fence?",
+          options: [
+            {
+              option: "He got food, including fruit, from the boys.",
+              isCorrect: true,
+            },
+            { option: "He got money from the boys." },
+            { option: "He got a new knife from the boys." },
+          ],
+        },
       ],
-      answers: ["He skipped school and went to the river.", "She told him to paint the fence.", "Food, including fruit."],
       text: [
         {
           text: "Tom Sawyer lived with his aunt because his mother and father were dead. Tom didn’t like going to school, and he didn’t like working. He liked playing and having adventures. One Friday, he didn’t go to school—he went to the river.",
@@ -135,11 +180,37 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-2",
       title: "Chapter 2 In the Graveyard",
       questions: [
-        "What adventure did Huck ask Tom to do at twelve o’clock?",
-        "Who did Tom sit near at school, and what was her name?",
-        "What did Tom and Huck see Injun Joe do in the graveyard?",
+        {
+          question: "What adventure did Huck ask Tom to do at twelve o’clock?",
+          options: [
+            { option: "He asked Tom to go to the river at midnight." },
+            { option: "He asked Tom to go to the school yard at midnight." },
+            {
+              option: "He asked Tom to go to the graveyard at midnight.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Who did Tom sit near at school, and what was her name?",
+          options: [
+            { option: "He sat near Becky Thatcher.", isCorrect: true },
+            { option: "He sat near Amy Lawrence." },
+            { option: "He sat near Susy Harper." },
+          ],
+        },
+        {
+          question: "What did Tom and Huck see Injun Joe do in the graveyard?",
+          options: [
+            { option: "They saw him dig for treasure under a tree." },
+            {
+              option: "They saw him kill the doctor with a knife.",
+              isCorrect: true,
+            },
+            { option: "They saw him take a box of money." },
+          ],
+        },
       ],
-      answers: ["They planned to go to the graveyard at midnight.", "Becky Thatcher.", "He killed the doctor."],
       text: [
         {
           text: "One morning before school, Tom’s friend Huck Finn waited for him in the street. Huck didn’t have a home, and he never went to school. People in the town didn’t like him. But Tom liked Huck.",
@@ -219,11 +290,35 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-3",
       title: "Chapter 3 A Bad Day",
       questions: [
-        "Why did Tom want to stay home from school one morning?",
-        "Who got Tom’s medicine instead of Tom?",
-        "What did Tom and Joe Harper decide to do together?",
+        {
+          question: "Why did Tom want to stay home from school one morning?",
+          options: [
+            { option: "He wanted to paint the fence again." },
+            {
+              option:
+                "He told Aunt Polly that he was sick and wanted to stay home.",
+              isCorrect: true,
+            },
+            { option: "He wanted to go fishing with Huck." },
+          ],
+        },
+        {
+          question: "Who got Tom’s medicine instead of Tom?",
+          options: [
+            { option: "Peter the cat got the medicine.", isCorrect: true },
+            { option: "Aunt Polly got the medicine." },
+            { option: "Jim got the medicine." },
+          ],
+        },
+        {
+          question: "What did Tom and Joe Harper decide to do together?",
+          options: [
+            { option: "They decided to paint the fence together." },
+            { option: "They decided to go to school together." },
+            { option: "They decided to run away together.", isCorrect: true },
+          ],
+        },
       ],
-      answers: ["Becky was sick and absent from school.", "Peter the cat.", "They decided to run away together."],
       text: [
         {
           text: "Becky was sick and didn’t go to school for many days. Tom was very sad. One morning, he said to Aunt Polly, “I’m very sick, and I want to stay home from school.”",
@@ -270,11 +365,43 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-4",
       title: "Chapter 4 Across the River",
       questions: [
-        "Where did Tom, Joe, and Huck go in the small boat?",
-        "What did Tom do quietly at night when the men on the big boat talked about them?",
-        "When did the three boys walk into the church together?",
+        {
+          question: "Where did Tom, Joe, and Huck go in the small boat?",
+          options: [
+            {
+              option:
+                "They went across the river to a place where they could play all day.",
+              isCorrect: true,
+            },
+            { option: "They went down the river to a big town." },
+            { option: "They went across the river to the graveyard." },
+          ],
+        },
+        {
+          question:
+            "What did Tom do that night while Huck and Joe were asleep?",
+          options: [
+            { option: "He swam across the river to the big boat." },
+            {
+              option: "He went home quietly in the small boat.",
+              isCorrect: true,
+            },
+            { option: "He woke Huck and Joe to tell them about the men." },
+          ],
+        },
+        {
+          question: "When did the three boys walk into the church together?",
+          options: [
+            { option: "They walked into the church on Saturday evening." },
+            {
+              option:
+                "They walked into the church on Sunday morning, while people were mourning them.",
+              isCorrect: true,
+            },
+            { option: "They walked into the church on Monday morning." },
+          ],
+        },
       ],
-      answers: ["They went across the river to an island.", "He went home quietly to see Aunt Polly.", "On Sunday morning, while people were mourning them."],
       text: [
         {
           text: "Tom, Joe, and Huck went to the river. There was a small boat there. The boys went across the river in the small boat. They said, “This is a good place because we can play all day. There’s no school here.”",
@@ -327,11 +454,41 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-5",
       title: "Chapter 5 At School",
       questions: [
-        "Why was Becky angry with Tom in the morning at school?",
-        "What happened to the teacher’s new book?",
-        "Why did Tom say, 'I did it. I tore your book'?",
+        {
+          question: "Why was Becky angry with Tom in the morning at school?",
+          options: [
+            {
+              option:
+                "She was angry because Tom spoke to Amy and did not look at her.",
+              isCorrect: true,
+            },
+            { option: "She was angry because Tom tore the teacher’s book." },
+            { option: "She was angry because Tom was late for school." },
+          ],
+        },
+        {
+          question: "What happened to the teacher’s new book?",
+          options: [
+            { option: "Tom tore it by accident." },
+            {
+              option: "Becky tore it while she was looking at the pictures.",
+              isCorrect: true,
+            },
+            { option: "Alfred tore it in the school yard." },
+          ],
+        },
+        {
+          question: "Why did Tom say, “I did it. I tore your book”?",
+          options: [
+            { option: "He wanted to make the teacher angry with Becky." },
+            { option: "He wanted to show the class that he was brave." },
+            {
+              option: "He wanted to protect Becky from punishment.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
-      answers: ["Tom spoke to Amy and ignored Becky.", "Becky tore it.", "He wanted to protect Becky from punishment."],
       text: [
         {
           text: "Monday morning, Tom went to school. The children wanted to hear about his adventure, and Tom liked talking about it. Becky wanted to talk to Tom, but he didn’t look at her.",
@@ -384,11 +541,39 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-6",
       title: "Chapter 6 The Trial",
       questions: [
-        "Who did the men say killed the doctor?",
-        "Why was Tom afraid after he talked on day three of the trial?",
-        "What did Injun Joe do when people at the trial were surprised?",
+        {
+          question: "Who did the men say killed the doctor?",
+          options: [
+            { option: "They said Injun Joe killed the doctor." },
+            {
+              option: "They said Muff Potter killed the doctor.",
+              isCorrect: true,
+            },
+            { option: "They said Tom Sawyer killed the doctor." },
+          ],
+        },
+        {
+          question:
+            "Why was Tom afraid after he talked on day three of the trial?",
+          options: [
+            { option: "He was afraid the teacher would punish him." },
+            { option: "He was afraid Muff Potter was angry with him." },
+            {
+              option: "He was afraid Injun Joe might kill him.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "What did Injun Joe do when people at the trial were surprised?",
+          options: [
+            { option: "He quickly went out of the building.", isCorrect: true },
+            { option: "He stayed in the building and listened to Tom." },
+            { option: "He asked the men to let Muff Potter go." },
+          ],
+        },
       ],
-      answers: ["They said Muff Potter killed the doctor.", "He was afraid Injun Joe might kill him.", "He escaped through a window."],
       text: [
         {
           text: "Summer vacation started, and Becky went away with her family. Tom was unhappy.",
@@ -453,11 +638,41 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-7",
       title: "Chapter 7 Injun Joe’s Treasure",
       questions: [
-        "Where did Tom and Huck go to look for treasure?",
-        "What did Injun Joe find under the floor of the old house?",
-        "Where did Injun Joe say he was going to take the money?",
+        {
+          question: "Where did Tom and Huck go to look for treasure?",
+          options: [
+            { option: "They went to the graveyard near the river." },
+            {
+              option: "They went to an old house near Mrs. Douglas’s house.",
+              isCorrect: true,
+            },
+            { option: "They went to Injun Joe’s house." },
+          ],
+        },
+        {
+          question: "What did Injun Joe find under the floor of the old house?",
+          options: [
+            { option: "He found a knife under the floor." },
+            { option: "He found an old picture under the floor." },
+            {
+              option: "He found a box full of money under the floor.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Where did Injun Joe say he was going to take the money?",
+          options: [
+            { option: "He said he was going to take it to his house." },
+            {
+              option:
+                "He said he was going to take it to the place under the cross.",
+              isCorrect: true,
+            },
+            { option: "He said he was going to take it across the river." },
+          ],
+        },
       ],
-      answers: ["An old house near Mrs. Douglas's house.", "A box full of money.", "Under the cross."],
       text: [
         {
           text: "One Saturday afternoon, Tom wanted to have an adventure because he didn’t want to think about Injun Joe. He went to Huck and said, “I’m going to look for treasure. Do you want to come with me?”",
@@ -510,11 +725,41 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-8",
       title: "Chapter 8 Becky’s Adventure Day",
       questions: [
-        "Where did the children go in the afternoon on Becky’s adventure day?",
-        "Why did Aunt Polly and Becky’s mother talk to Mrs. Harper at church on Sunday?",
-        "How many men looked for Tom and Becky in the cave, and for how many days?",
+        {
+          question:
+            "Where did the children go in the afternoon on Becky’s adventure day?",
+          options: [
+            { option: "They went to the big cave.", isCorrect: true },
+            { option: "They went to Susy Harper’s house." },
+            { option: "They went to the school yard." },
+          ],
+        },
+        {
+          question:
+            "Why did Aunt Polly and Becky’s mother talk to Mrs. Harper at church on Sunday?",
+          options: [
+            { option: "They wanted to go on the boat with her." },
+            {
+              option:
+                "They could not find Tom and Becky after the trip, so they asked her about them.",
+              isCorrect: true,
+            },
+            { option: "They wanted to tell her that Becky was sick." },
+          ],
+        },
+        {
+          question:
+            "How many men looked for Tom and Becky in the cave, and for how many days?",
+          options: [
+            { option: "One hundred men searched for three days." },
+            { option: "Two hundred men searched for two days." },
+            {
+              option: "Two hundred men searched for three days.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
-      answers: ["They went into a cave.", "They could not find Tom and Becky after the trip.", "Two hundred men searched for three days."],
       text: [
         {
           text: "In August Becky’s family came back from their vacation. Tom was very happy and he didn’t think about Injun Joe’s treasure.",
@@ -561,11 +806,38 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-9",
       title: "Chapter 9 Huck’s Adventure",
       questions: [
-        "Where did Injun Joe and his friend go at eleven o’clock at night?",
-        "Who did Huck run to for help so he could save Mrs. Douglas?",
-        "Why did Huck ask Mr. Jones not to say his name to Mrs. Douglas?",
+        {
+          question:
+            "Where did Injun Joe and his friend go at eleven o’clock at night?",
+          options: [
+            { option: "They went to Mrs. Douglas’s house.", isCorrect: true },
+            { option: "They went to Mr. Jones’s house." },
+            { option: "They went to the old house near the river." },
+          ],
+        },
+        {
+          question:
+            "Who did Huck run to for help so he could save Mrs. Douglas?",
+          options: [
+            { option: "He ran to Tom for help." },
+            { option: "He ran to Mr. Jones for help.", isCorrect: true },
+            { option: "He ran to Aunt Polly for help." },
+          ],
+        },
+        {
+          question:
+            "Why did Huck ask Mr. Jones not to say his name to Mrs. Douglas?",
+          options: [
+            { option: "He did not want Mrs. Douglas to give him money." },
+            { option: "He did not want to go to church with her." },
+            {
+              option:
+                "He was afraid Injun Joe would find out that he had warned them.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
-      answers: ["To Mrs. Douglas's house.", "Mr. Jones.", "He was afraid Injun Joe would find out he had warned them."],
       text: [
         {
           text: "Huck didn’t go on Becky’s adventure. He stayed home and watched Injun Joe’s house that night. At eleven o’clock Injun Joe and his friend came out and walked down the street. There was a box in his friend’s hands.",
@@ -630,11 +902,41 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-10",
       title: "Chapter 10 In the Cave",
       questions: [
-        "How many days were Tom and Becky in the cave?",
-        "What did Tom find that led them out of the cave?",
-        "How did Tom and Becky get home after coming out of the cave?",
+        {
+          question: "How many days were Tom and Becky in the cave?",
+          options: [
+            { option: "They were in the cave for two days." },
+            {
+              option: "They were in the cave for three days.",
+              isCorrect: true,
+            },
+            { option: "They were in the cave for four days." },
+          ],
+        },
+        {
+          question: "What did Tom find that led them out of the cave?",
+          options: [
+            { option: "He found Injun Joe’s treasure box." },
+            { option: "He found a small boat near the water." },
+            {
+              option: "He found light coming through a small door in the cave.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "How did Tom and Becky get home after coming out of the cave?",
+          options: [
+            {
+              option: "Some men took them home in a small boat.",
+              isCorrect: true,
+            },
+            { option: "They walked home along the river." },
+            { option: "Mr. Thatcher took them home in his boat." },
+          ],
+        },
       ],
-      answers: ["Three days.", "Light coming through a small cave opening.", "Men took them home in a boat."],
       text: [
         {
           text: "Saturday, Tom and Becky walked and played in the cave. Then they stopped near some water.",
@@ -684,11 +986,39 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-11",
       title: "Chapter 11 In the Cave Again",
       questions: [
-        "Why couldn’t people go into the cave easily when Tom visited Becky’s father?",
-        "What did Tom and Huck find in the cave under the cross?",
-        "Why did Tom use small bags to take the money instead of the box?",
+        {
+          question:
+            "Why couldn’t people go into the cave easily when Tom visited Becky’s father?",
+          options: [
+            { option: "The cave was full of water." },
+            {
+              option: "A new big door had been put on the cave.",
+              isCorrect: true,
+            },
+            { option: "The cave was too small for people to go inside." },
+          ],
+        },
+        {
+          question: "What did Tom and Huck find in the cave under the cross?",
+          options: [
+            {
+              option: "They found Injun Joe’s treasure box under the cross.",
+              isCorrect: true,
+            },
+            { option: "They found a small door under the cross." },
+            { option: "They found some food under the cross." },
+          ],
+        },
+        {
+          question:
+            "Why did Tom use small bags to take the money instead of the box?",
+          options: [
+            { option: "The box was too big for the boat." },
+            { option: "The box was too heavy to carry.", isCorrect: true },
+            { option: "The bags were a present from Mrs. Douglas." },
+          ],
+        },
       ],
-      answers: ["A new large door had been put on the cave.", "Injun Joe's treasure box.", "The box was too heavy to carry."],
       text: [
         {
           text: "Tom and Becky stayed home for many days. Then, two weeks after their adventure, Tom visited Becky and talked to her father.",
@@ -747,11 +1077,38 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-12",
       title: "Chapter 12 At Mrs. Douglas’s House",
       questions: [
-        "What did Mrs. Douglas give Tom and Huck to put on in the bedroom?",
-        "What did Mrs. Douglas want to give Huck?",
-        "How much money was in the bags from the cave?",
+        {
+          question:
+            "What did Mrs. Douglas give Tom and Huck to put on in the bedroom?",
+          options: [
+            { option: "She gave them new shoes." },
+            { option: "She gave them new caps." },
+            {
+              option: "She gave them new shirts and jeans.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What did Mrs. Douglas want to give Huck?",
+          options: [
+            { option: "She wanted to give him a new boat." },
+            {
+              option: "She wanted to give him a home and some money.",
+              isCorrect: true,
+            },
+            { option: "She wanted to give him a job in her house." },
+          ],
+        },
+        {
+          question: "How much money was in the bags from the cave?",
+          options: [
+            { option: "There was $1,200 in the bags." },
+            { option: "There was $12,000 in the bags.", isCorrect: true },
+            { option: "There was $120,000 in the bags." },
+          ],
+        },
       ],
-      answers: ["New shirts and jeans.", "A home with her.", "$12,000."],
       text: [
         {
           text: "Tom said, “Let’s take the money to the old house near Mrs. Douglas’s house. That’s a good place for it.”",
@@ -798,11 +1155,44 @@ export const theAdventuresOfTomSawyer = {
       id: "chapter-13",
       title: "Chapter 13 Huck’s New Home",
       questions: [
-        "Why wasn’t Huck happy living in the big house with Mrs. Douglas?",
-        "What did Tom ask Huck to do so the boys at school could play with him?",
-        "When were the boys meeting at the end of the chapter?",
+        {
+          question:
+            "Why wasn’t Huck happy living in the big house with Mrs. Douglas?",
+          options: [
+            {
+              option:
+                "He did not like washing every day or going to school and church.",
+              isCorrect: true,
+            },
+            { option: "He did not like Mrs. Douglas." },
+            { option: "He did not like the food in the big house." },
+          ],
+        },
+        {
+          question:
+            "What did Tom ask Huck to do so the boys at school could play with him?",
+          options: [
+            { option: "He asked him to give his money to the boys." },
+            { option: "He asked him to run away with him." },
+            {
+              option:
+                "He asked him to live with Mrs. Douglas and come to school.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "When were the boys meeting at the end of the chapter?",
+          options: [
+            { option: "The boys were meeting in the afternoon." },
+            {
+              option: "The boys were meeting at twelve o’clock at night.",
+              isCorrect: true,
+            },
+            { option: "The boys were meeting after school." },
+          ],
+        },
       ],
-      answers: ["He disliked washing every day and going to school and church.", "To live with Mrs. Douglas and attend school.", "At midnight."],
       text: [
         {
           text: "Huck lived in the big house with Mrs. Douglas. He was a new person. He washed every day, and he went to school and church. But he wasn’t happy. He stayed there for three weeks, and then he ran away.",

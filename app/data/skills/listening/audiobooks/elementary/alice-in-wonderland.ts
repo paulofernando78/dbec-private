@@ -20,8 +20,38 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-1",
-      questions: ["Why does Alice follow the White Rabbit?", "What does the little key open?", "What happens to Alice after she drinks from the bottle?"],
-      "answers": ["Because she is curious and wants to see where the Rabbit goes.", "It opens the little door to the garden.", "She becomes smaller and smaller."],
+      "questions": [
+        {
+          question: "Why does Alice follow the White Rabbit?",
+          options: [
+            {
+              option: "She follows it because she wants to see where it is going.",
+              isCorrect: true,
+            },
+            { option: "She follows it because it takes her book." },
+            { option: "She follows it because her sister asks her to." },
+          ],
+        },
+        {
+          question: "What does the little key open?",
+          options: [
+            { option: "It opens one of the four big doors in the room." },
+            {
+              option: "It opens the little door to the beautiful garden.",
+              isCorrect: true,
+            },
+            { option: "It opens the box with the cake under the table." },
+          ],
+        },
+        {
+          question: "What happens to Alice after she drinks from the bottle?",
+          options: [
+            { option: "She becomes taller and taller." },
+            { option: "She stays the same size." },
+            { option: "She becomes smaller and smaller.", isCorrect: true },
+          ],
+        },
+      ],
       "title": "Chapter 1 · Down the Rabbit-hole",
       "text": [
         {
@@ -68,8 +98,39 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-2",
-      questions: ["Why can't Alice go through the little door when she takes the key again?", "Where does the water come from?", "Why does the Mouse get angry with Alice?"],
-      "answers": ["Because she is too big to go through the door.", "It comes from Alice’s tears.", "Because Alice talks about cats and dogs."],
+      "questions": [
+        {
+          question: "Why can't Alice go through the little door when she takes the key again?",
+          options: [
+            {
+              option: "She can't go through it because she is too big.",
+              isCorrect: true,
+            },
+            { option: "She can't go through it because the door is locked." },
+            { option: "She can't go through it because the key is too small." },
+          ],
+        },
+        {
+          question: "Where does the water come from?",
+          options: [
+            { option: "The water comes from the sea outside the room." },
+            { option: "The water comes from a bottle on the table." },
+            { option: "The water comes from Alice’s tears.", isCorrect: true },
+          ],
+        },
+        {
+          question: "Why does the Mouse get angry with Alice?",
+          options: [
+            { option: "The Mouse gets angry because Alice speaks to it in French." },
+            {
+              option:
+                "The Mouse gets angry because Alice talks about cats and dogs.",
+              isCorrect: true,
+            },
+            { option: "The Mouse gets angry because Alice laughs at it." },
+          ],
+        },
+      ],
       "title": "Chapter 2 · Alice's Tears",
       "text": [
         { text: "‘Oh! What’s happening?’ cried Alice. ‘I’m getting taller and taller!’ She looked down. ‘Goodbye, feet! Who will put your shoes on for you now? I can’t do it! I’ll give you some new shoes for Christmas. I’ll have to send them to you!’" },
@@ -109,8 +170,45 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-3",
-      questions: ["How does the Dodo start the race?", "Who wins the race, according to the Dodo?", "What does the Dodo give Alice?"],
-      "answers": ["He says, ‘One, two, three, go!’ and everybody runs.", "Everybody wins, according to the Dodo.", "He gives Alice a box of chocolates."],
+      "questions": [
+        {
+          question: "How does the Dodo start the race?",
+          options: [
+            {
+              option:
+                "He says, ‘One, two, three, go!’ and everybody runs together.",
+            },
+            {
+              option:
+                "He puts everybody in different places, and they start running at different times.",
+              isCorrect: true,
+            },
+            { option: "He asks the Mouse to say when the race begins." },
+          ],
+        },
+        {
+          question: "Who wins the race, according to the Dodo?",
+          options: [
+            { option: "According to the Dodo, the Mouse wins the race." },
+            {
+              option: "According to the Dodo, everybody wins the race.",
+              isCorrect: true,
+            },
+            { option: "According to the Dodo, Alice wins the race." },
+          ],
+        },
+        {
+          question: "What does the Dodo give Alice?",
+          options: [
+            { option: "He gives her a chocolate from the box." },
+            { option: "He gives her a new hat." },
+            {
+              option: "He gives her the empty box from the chocolates.",
+              isCorrect: true,
+            },
+          ],
+        },
+      ],
       "title": "Chapter 3 · A Race",
       "text": [
         { text: "Alice and the birds and animals felt cold and wet. The largest bird spoke to Alice." },
@@ -153,8 +251,41 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-4",
-      questions: ["Who does the White Rabbit think Alice is?", "Why can't the Rabbit open the door?", "What happens after Alice eats the little cake?"],
-      "answers": ["He thinks she is Mary Ann, his housemaid.", "Alice is blocking the door with her arm.", "She gets smaller and runs away."],
+      "questions": [
+        {
+          question: "Who does the White Rabbit think Alice is?",
+          options: [
+            {
+              option: "He thinks she is Mary Ann, his housemaid.",
+              isCorrect: true,
+            },
+            { option: "He thinks she is the Duchess." },
+            { option: "He thinks she is Alice’s sister." },
+          ],
+        },
+        {
+          question: "Why can't the Rabbit open the door?",
+          options: [
+            { option: "He can't open it because the door is locked." },
+            {
+              option: "He can't open it because Alice’s back is next to the door.",
+              isCorrect: true,
+            },
+            { option: "He can't open it because his hands are full." },
+          ],
+        },
+        {
+          question: "What happens after Alice eats the little cake?",
+          options: [
+            { option: "She gets bigger and cannot move." },
+            {
+              option: "She gets smaller and runs out of the house.",
+              isCorrect: true,
+            },
+            { option: "She falls asleep in the little room." },
+          ],
+        },
+      ],
       "title": "Chapter 4 · The White Rabbit's House",
       "text": [
         { text: "It was not the Mouse. It was the White Rabbit. He came slowly into the room." },
@@ -198,8 +329,51 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-5",
-      questions: ["Why does Alice find it difficult to answer 'Who are you?'", "What does the Caterpillar ask Alice to repeat?", "Which mushroom makes Alice bigger, and which makes her smaller?"],
-      "answers": ["Because she changes size and does not know who she is anymore.", "He asks her to repeat ‘You are old, Father William.’", "The white mushroom makes her bigger; the brown mushroom makes her smaller."],
+      "questions": [
+        {
+          question: "Why does Alice find it difficult to answer 'Who are you?'",
+          options: [
+            {
+              option: "She finds it difficult because the Caterpillar is angry.",
+            },
+            {
+              option:
+                "She finds it difficult because she keeps changing size and does not know who she is.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "She finds it difficult because she has forgotten the way home.",
+            },
+          ],
+        },
+        {
+          question: "What does the Caterpillar ask Alice to repeat?",
+          options: [
+            {
+              option: "He asks her to repeat ‘You are old, Father William.’",
+              isCorrect: true,
+            },
+            { option: "He asks her to repeat the names of her friends." },
+            { option: "He asks her to repeat what the White Rabbit said." },
+          ],
+        },
+        {
+          question: "Which mushroom makes Alice bigger, and which makes her smaller?",
+          options: [
+            {
+              option:
+                "The brown mushroom makes her bigger, and the white mushroom makes her smaller.",
+            },
+            { option: "Both mushrooms make her smaller." },
+            {
+              option:
+                "The white mushroom makes her bigger, and the brown mushroom makes her smaller.",
+              isCorrect: true,
+            },
+          ],
+        },
+      ],
       "title": "Chapter 5 · The Caterpillar",
       "text": [
         { text: "The Caterpillar looked at Alice for some time before it spoke. Then it said slowly, ‘Who are you?’" },
@@ -249,8 +423,39 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-6",
-      questions: ["What happens to the baby after Alice takes it outside?", "Who does the Cheshire Cat tell Alice she can visit?", "What is the last part of the Cat to vanish?"],
-      "answers": ["It changes into a pig.", "The March Hare and the Mad Hatter.", "Its smile is the last part to vanish."],
+      "questions": [
+        {
+          question: "What happens to the baby after Alice takes it outside?",
+          options: [
+            { option: "It stays a baby and cries." },
+            { option: "It changes into a pig.", isCorrect: true },
+            { option: "It changes into a cat." },
+          ],
+        },
+        {
+          question: "Who does the Cheshire Cat tell Alice she can visit?",
+          options: [
+            {
+              option:
+                "The Cat tells her she can visit the White Rabbit and the Duchess.",
+            },
+            { option: "The Cat tells her she can visit the Queen and the King." },
+            {
+              option:
+                "The Cat tells her she can visit the Mad Hatter and the March Hare.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What is the last part of the Cat to vanish?",
+          options: [
+            { option: "Its smile is the last part to vanish.", isCorrect: true },
+            { option: "Its tail is the last part to vanish." },
+            { option: "Its ears are the last part to vanish." },
+          ],
+        },
+      ],
       "title": "Chapter 6 · The Duchess and the Cheshire Cat",
       "text": [
         { text: "Inside, a large, ugly woman sat with a baby in her arms. There was a cook by the fire and there was food on the table. Near the fire, there was a large cat with a big smile. This smile went from ear to ear on its face." },
@@ -309,8 +514,49 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-7",
-      questions: ["Who is sitting at the tea table when Alice arrives?", "What did the March Hare put in the Mad Hatter's watch?", "How does Alice finally get into the garden?"],
-      "answers": ["The March Hare, the Mad Hatter and the sleeping Dormouse.", "He put some butter in it.", "She eats some white mushroom and grows bigger."],
+      "questions": [
+        {
+          question: "Who is sitting at the tea table when Alice arrives?",
+          options: [
+            {
+              option:
+                "The White Rabbit and the Duchess are sitting at the table.",
+            },
+            {
+              option:
+                "The Queen, the King and the Knave of Hearts are sitting at the table.",
+            },
+            {
+              option:
+                "The March Hare, the Mad Hatter and the sleeping Mouse are at the table.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What did the March Hare put in the Mad Hatter's watch?",
+          options: [
+            { option: "He put some tea in it." },
+            { option: "He put some butter in it.", isCorrect: true },
+            { option: "He put some sugar in it." },
+          ],
+        },
+        {
+          question: "How does Alice finally get into the garden?",
+          options: [
+            {
+              option:
+                "She eats some of the white mushroom, gets bigger and climbs over the wall.",
+            },
+            { option: "She asks the Queen to open the little door for her." },
+            {
+              option:
+                "She eats some of the brown mushroom, gets smaller and walks through the little door.",
+              isCorrect: true,
+            },
+          ],
+        },
+      ],
       "title": "Chapter 7 · A Tea Party",
       "text": [
         { text: "There was a tree in front of the house. Under the tree was a big table with a lot of chairs round it. But there were only three at the table: the Mad Hatter, the March Hare and a large brown mouse. The Mouse sat between the Mad Hatter and the March Hare. It was asleep, so they talked over its head." },
@@ -365,8 +611,46 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-8",
-      questions: ["Why are the gardeners painting the roses red?", "Where does Alice hide the gardeners?", "Why does the man with the knife say he can't cut off the Cat's head?"],
-      "answers": ["They planted white roses by mistake.", "She hides them behind some trees.", "The Cat has no body, so there is nothing to cut off."],
+      "questions": [
+        {
+          question: "Why are the gardeners painting the roses red?",
+          options: [
+            {
+              option:
+                "They are painting them red because the tree has white flowers and the Queen wants red ones.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "They are painting them red because the Queen likes blue flowers.",
+            },
+            { option: "They are painting them red because the tree is dying." },
+          ],
+        },
+        {
+          question: "Where does Alice hide the gardeners?",
+          options: [
+            { option: "She hides them under the tea table." },
+            { option: "She hides them behind some trees.", isCorrect: true },
+            { option: "She hides them in the Duchess’s house." },
+          ],
+        },
+        {
+          question: "Why does the man with the knife say he can't cut off the Cat's head?",
+          options: [
+            {
+              option:
+                "He says he can't do it because there is no body under the Cat’s head.",
+              isCorrect: true,
+            },
+            { option: "He says he can't do it because the Cat is the Duchess’s." },
+            {
+              option:
+                "He says he can't do it because the King tells him not to.",
+            },
+          ],
+        },
+      ],
       "title": "Chapter 8 · Inside the Garden",
       "text": [
         { text: "Near Alice was a small tree with flowers on it. There were three gardeners by the tree." },
@@ -458,8 +742,46 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-9",
-      questions: ["Who is on trial, and what does the White Rabbit say he took?", "What is the Mad Hatter carrying when he comes into the room?", "Who is called after the Duchess's cook?"],
-      "answers": ["The Knave of Hearts is on trial for taking the Queen’s tarts.", "He is carrying a cup of tea.", "The White Rabbit calls the Cheshire Cat."],
+      "questions": [
+        {
+          question: "Who is on trial, and what does the White Rabbit say he took?",
+          options: [
+            {
+              option:
+                "The Knave of Hearts is on trial, and the paper says he took the Queen’s tarts.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "The Mad Hatter is on trial, and the paper says he took the Queen’s hats.",
+            },
+            {
+              option:
+                "The Duchess is on trial, and the paper says she took the Queen’s tarts.",
+            },
+          ],
+        },
+        {
+          question: "What is the Mad Hatter carrying when he comes into the room?",
+          options: [
+            { option: "He is carrying his watch and a new hat." },
+            { option: "He is carrying a plate of tarts for the Queen." },
+            {
+              option:
+                "He is carrying a teacup and some bread-and-butter.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Who is called after the Duchess's cook?",
+          options: [
+            { option: "The King calls the March Hare." },
+            { option: "The White Rabbit calls the Cheshire Cat." },
+            { option: "The White Rabbit calls Alice.", isCorrect: true },
+          ],
+        },
+      ],
       "title": "Chapter 9 · Who Took the Tarts?",
       "text": [
         { text: "Alice and the Duchess followed everybody into a house with one very large room. The King and Queen were there. They sat on big chairs above all the animals and birds. All the cards were there too. Near the King was the White Rabbit. He had a paper in his hand and looked very important. The Knave of Hearts stood in front of the King and Queen. He stood between two men and his head was down. It was his trial. In the middle of the room was a table with a large plate of tarts on it." },
@@ -520,8 +842,49 @@ export const aliceInWonderland = {
     },
     {
       "id": "chapter-10",
-      questions: ["Why does the King say Alice has to leave the room?", "What happens after Alice tells the Queen and the others that they are only cards?", "Who wakes Alice, and what do they decide to do?"],
-      "answers": ["Because she is getting bigger and bigger.", "The cards fly up into the air and fall on her.", "Her sister wakes her, and they go home for tea."],
+      "questions": [
+        {
+          question: "Why does the King say Alice has to leave the room?",
+          options: [
+            { option: "He says she is too small for him to see." },
+            {
+              option: "He says she is more than a kilometre high.",
+              isCorrect: true,
+            },
+            { option: "He says she has taken the tarts." },
+          ],
+        },
+        {
+          question: "What happens after Alice tells the Queen and the others that they are only cards?",
+          options: [
+            { option: "The Queen says sorry and gives her the tarts." },
+            {
+              option:
+                "The cards come down on top of her and she starts to fight them.",
+              isCorrect: true,
+            },
+            { option: "Everybody laughs and leaves the room." },
+          ],
+        },
+        {
+          question: "Who wakes Alice, and what do they decide to do?",
+          options: [
+            {
+              option:
+                "The White Rabbit wakes her, and they decide to go back to the trial.",
+            },
+            {
+              option:
+                "The Duchess wakes her, and they decide to walk in the garden.",
+            },
+            {
+              option:
+                "Her sister wakes her, and they decide to go home for tea.",
+              isCorrect: true,
+            },
+          ],
+        },
+      ],
       "title": "Chapter 10 · The End of the Trial",
       "text": [
         { text: "‘Here!’ cried Alice and stood up quickly. But she was tall now, and chairs, tables and people fell here, there and everywhere." },

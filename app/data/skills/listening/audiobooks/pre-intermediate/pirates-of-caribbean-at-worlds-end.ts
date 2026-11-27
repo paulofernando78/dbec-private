@@ -71,14 +71,60 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-1",
       title: "Chapter 1 · Death to All Pirates!",
       questions: [
-        "Who commands the Flying Dutchman now, and how does Lord Beckett control Davy Jones?",
-        "What does Lord Beckett tell Governor Swann about Elizabeth?",
-        "Why does Governor Swann stop before he kills Jones’s heart?",
-      ],
-      answers: [
-        "Lord Beckett. He controls Jones because he has Jones’s heart in a wooden box.",
-        "He tells him that Elizabeth is dead — pulled under the ocean by the Kraken.",
-        "Jones warns him that if he kills the heart, Swann’s own heart must take its place and he will have to be the captain of the Dutchman.",
+        {
+          question:
+            "Who is still captain of the Flying Dutchman, and why does he obey Lord Beckett?",
+          options: [
+            {
+              option:
+                "Davy Jones is still captain of the Dutchman, because he keeps Lord Beckett’s heart in a wooden box.",
+            },
+            {
+              option:
+                "Davy Jones is still captain of the Dutchman, but he obeys Lord Beckett because Beckett keeps his heart in a wooden box.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Admiral Norrington is the captain of the Dutchman, because he keeps Jones’s heart in a wooden box.",
+            },
+          ],
+        },
+        {
+          question:
+            "Who tells Governor Swann that Elizabeth is dead, and what does he ask?",
+          options: [
+            {
+              option:
+                "Davy Jones tells him that Elizabeth was pulled under the ocean by the Kraken, and he asks whether Lord Beckett told him.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Lord Beckett tells him that Elizabeth is dead, and he asks whether Davy Jones told him.",
+            },
+            {
+              option:
+                "Admiral Norrington tells him that Elizabeth is safe in Singapore, and he asks whether he should search for her.",
+            },
+          ],
+        },
+        {
+          question:
+            "Why does Governor Swann stop before he kills Jones’s heart?",
+          options: [
+            { option: "He stops because Norrington points a gun at him." },
+            {
+              option:
+                "He stops because the box is locked and he cannot open it.",
+            },
+            {
+              option:
+                "He stops because Jones warns him that he would have to take Jones’s place as captain.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -306,11 +352,48 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-2",
       title: "Chapter 2 · The Pirate Lord of Singapore",
       questions: [
-        "Where are Elizabeth and Barbossa looking for the Pirate Lord?",
-        "What does Barbossa ask Sao Feng for?",
-        "Who is the prisoner that the guards pull out from under the water?",
+        {
+          question:
+            "Where are Elizabeth and Barbossa looking for the Pirate Lord?",
+          options: [
+            {
+              option: "They are looking for him in Singapore.",
+              isCorrect: true,
+            },
+            { option: "They are looking for him in Shipwreck Cove." },
+            { option: "They are looking for him in Tortuga." },
+          ],
+        },
+        {
+          question: "What does Barbossa ask Sao Feng for?",
+          options: [
+            {
+              option: "He asks him for the maps to the world of the dead.",
+            },
+            { option: "He asks him for a Piece of Eight." },
+            {
+              option: "He asks him for a ship and some men.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "Who is the prisoner that the guards pull out from under the water?",
+          options: [
+            {
+              option: "The guards pull Jack Sparrow out from under the water.",
+            },
+            {
+              option: "The guards pull Will Turner out from under the water.",
+              isCorrect: true,
+            },
+            {
+              option: "The guards pull Tai Huang out from under the water.",
+            },
+          ],
+        },
       ],
-      answers: ["In Singapore.", "A ship and some men.", "Will Turner."],
       text: [
         picture(
           2,
@@ -413,14 +496,59 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-3",
       title: "Chapter 3 · Captain Barbossa’s Plan",
       questions: [
-        "Why does Will Turner need the Black Pearl?",
-        "What does Barbossa throw to Sao Feng, and what does it mean?",
-        "What interrupts Barbossa when he says they must go and get Jack?",
-      ],
-      answers: [
-        "Because he wants to save his father, who is a prisoner on the Flying Dutchman.",
-        "A silver coin — a Piece of Eight — to call the Brethren Court.",
-        "Jack Sparrow’s pirates push swords up through the floor, and East India Trading Company agents break through the windows.",
+        {
+          question: "Why does Will Turner need the Black Pearl?",
+          options: [
+            {
+              option:
+                "He needs it because he wants to take Elizabeth to England.",
+            },
+            {
+              option:
+                "He needs it because he wants to save his father from the Flying Dutchman.",
+              isCorrect: true,
+            },
+            {
+              option: "He needs it because he wants to steal Sao Feng’s maps.",
+            },
+          ],
+        },
+        {
+          question:
+            "What does Barbossa throw to Sao Feng, and what does it mean?",
+          options: [
+            {
+              option:
+                "He throws him a Piece of Eight, to call the Brethren Court.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He throws him a key, to open the wooden box with Jones’s heart.",
+            },
+            {
+              option:
+                "He throws him a map, to show him the way to Davy Jones’s Locker.",
+            },
+          ],
+        },
+        {
+          question:
+            "What interrupts Barbossa when he says they must go and get Jack?",
+          options: [
+            {
+              option: "Elizabeth throws a sword to Will and cuts him free.",
+            },
+            {
+              option: "Sao Feng’s guards take Barbossa away to prison.",
+            },
+            {
+              option:
+                "Jack Sparrow’s pirates push swords up through the floor, and Company agents break through the windows.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       footnotes: [
         "Piece of Eight: a Spanish silver coin, made in the Americas and taken across the ocean to Spain. Pirates often attacked ships for these coins.",
@@ -534,14 +662,58 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-4",
       title: "Chapter 4 · The Escape from Singapore",
       questions: [
-        "What does Will get from Sao Feng?",
-        "What does Mercer hear from the shadows?",
-        "What happens when the Hai Peng reaches the edge of the world?",
-      ],
-      answers: [
-        "The maps to the world of the dead, and a ship with some sailors.",
-        "That the pirates are meeting at Shipwreck Cove.",
-        "It falls over the edge of a huge waterfall and crashes down into the darkness.",
+        {
+          question: "What does Will get from Sao Feng?",
+          options: [
+            {
+              option:
+                "He gets a Piece of Eight and a promise of help from the Brethren Court.",
+            },
+            {
+              option: "He gets Jack Sparrow’s Compass and a small boat.",
+            },
+            {
+              option:
+                "He gets the maps to the world of the dead, and a ship with some sailors.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Mercer hear from the shadows?",
+          options: [
+            {
+              option: "He hears that Sao Feng is dead.",
+            },
+            {
+              option:
+                "He hears that the pirates are meeting at Shipwreck Cove.",
+              isCorrect: true,
+            },
+            {
+              option: "He hears that Jack Sparrow has returned from the dead.",
+            },
+          ],
+        },
+        {
+          question:
+            "What happens when the Hai Peng reaches the edge of the world?",
+          options: [
+            {
+              option:
+                "It falls over the edge of a huge waterfall and crashes down into the darkness.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "It sails through a green light and arrives back in the Caribbean.",
+            },
+            {
+              option:
+                "It stops at the edge of the world and waits for the sun to go down.",
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -729,14 +901,54 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-5",
       title: "Chapter 5 · Captain Jack Returns",
       questions: [
-        "Where is Jack Sparrow at the start of the chapter?",
-        "How does the Black Pearl move across the sand?",
-        "Why does Jack need Barbossa on the Pearl?",
-      ],
-      answers: [
-        "In Davy Jones’s Locker, alone with the Black Pearl on an ocean of sand.",
-        "Thousands of crabs carry it on their backs across the sand.",
-        "Because Barbossa has Sao Feng’s old maps, and they can take the pirates back to the world of the living.",
+        {
+          question: "Where is Jack Sparrow at the start of the chapter?",
+          options: [
+            {
+              option:
+                "He is in Davy Jones’s Locker, alone with the Black Pearl on an ocean of sand.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He is in Shipwreck Cove, waiting for the Brethren Court.",
+            },
+            {
+              option: "He is in Singapore, hiding from Sao Feng’s guards.",
+            },
+          ],
+        },
+        {
+          question: "How does the Black Pearl move across the sand?",
+          options: [
+            { option: "A strong wind pushes it across the sand." },
+            {
+              option: "The pirates pull it across the sand with long ropes.",
+            },
+            {
+              option:
+                "Thousands of crabs carry it on their backs across the sand.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "Why does Jack need Barbossa on the Pearl?",
+          options: [
+            {
+              option: "Because Barbossa knows how to sail through the storm.",
+            },
+            {
+              option:
+                "Because Barbossa has Sao Feng’s old maps, and they can take the pirates back to the world of the living.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Because Barbossa is the only pirate who can call the Brethren Court.",
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -926,14 +1138,54 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-6",
       title: "Chapter 6 · Back to the Real World",
       questions: [
-        "Why is Will angry with Elizabeth?",
-        "Who does Elizabeth see in the small boats?",
-        "What is the answer to the words on Sao Feng’s maps?",
-      ],
-      answers: [
-        "Because she killed Jack and never told him, and because he thinks she loves Jack.",
-        "Her father, Governor Swann.",
-        "“Up is down” — the pirates must turn the ship upside down to escape.",
+        {
+          question: "Why is Will angry with Elizabeth?",
+          options: [
+            {
+              option:
+                "Because she killed Jack and never told him, and because he thinks she loves Jack.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Because she gave Sao Feng the maps to the world of the dead.",
+            },
+            {
+              option: "Because she refused to help him save his father.",
+            },
+          ],
+        },
+        {
+          question: "Who does Elizabeth see in the small boats?",
+          options: [
+            {
+              option: "She sees Sao Feng in the small boats.",
+            },
+            {
+              option:
+                "She sees her father, Governor Swann, in the small boats.",
+              isCorrect: true,
+            },
+            {
+              option: "She sees Davy Jones in the small boats.",
+            },
+          ],
+        },
+        {
+          question: "What is the answer to the words on Sao Feng’s maps?",
+          options: [
+            {
+              option: "The pirates must wait for the green light in the sky.",
+            },
+            {
+              option: "The pirates must sail back over the edge of the world.",
+            },
+            {
+              option: "The pirates must turn the ship upside down to escape.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -1123,14 +1375,59 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-7",
       title: "Chapter 7 · Under Attack!",
       questions: [
-        "Why don’t the pirates’ guns work?",
-        "What does Sao Feng do to Jack, and what does he call Will?",
-        "Whose ship comes round the island at the end of the chapter?",
-      ],
-      answers: [
-        "Because they are too wet after the ship went under the water.",
-        "He hits Jack hard in the face, and he calls Will “Captain Turner”.",
-        "Lord Cutler Beckett’s ship, the Endeavour.",
+        {
+          question: "Why don’t the pirates’ guns work?",
+          options: [
+            {
+              option: "Because there is no gunpowder left on the ship.",
+            },
+            {
+              option:
+                "Because they are too wet after the ship went under the water.",
+              isCorrect: true,
+            },
+            {
+              option: "Because Barbossa took the guns away from the pirates.",
+            },
+          ],
+        },
+        {
+          question:
+            "What does Sao Feng do to Jack, and what does he call Will?",
+          options: [
+            {
+              option:
+                "He hits Jack hard in the face, and he calls Will “Captain Turner”.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He ties Jack to the ship’s wheel, and he calls Will “a thief”.",
+            },
+            {
+              option:
+                "He puts Jack in prison, and he calls Will “the last pirate”.",
+            },
+          ],
+        },
+        {
+          question:
+            "Whose ship comes round the island at the end of the chapter?",
+          options: [
+            {
+              option: "Sao Feng’s ship, the Empress, comes round the island.",
+            },
+            {
+              option:
+                "Davy Jones’s ship, the Flying Dutchman, comes round the island.",
+            },
+            {
+              option:
+                "Lord Cutler Beckett’s ship, the Endeavour, comes round the island.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -1325,14 +1622,61 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-8",
       title: "Chapter 8 · The Goddess Calypso",
       questions: [
-        "What does Beckett offer Jack, and what does Jack offer him?",
-        "Who takes the Black Pearl from Will, and why?",
-        "What does Sao Feng want in return for the Pearl and the Brethren Court?",
-      ],
-      answers: [
-        "Beckett offers Jack a job with the East India Trading Company. Jack offers him Barbossa, Turner, and the Pirate Lords at Shipwreck Cove.",
-        "Mercer and sailors from the Endeavour, because Beckett will not give up the only ship that can fight the Dutchman.",
-        "Elizabeth — she must sail away with him on the Empress.",
+        {
+          question:
+            "What does Beckett offer Jack, and what does Jack offer him?",
+          options: [
+            {
+              option:
+                "Beckett offers Jack his ship back, and Jack offers him the Black Pearl.",
+            },
+            {
+              option:
+                "Beckett offers Jack a job with the East India Trading Company, and Jack offers to take him to Shipwreck Cove and give him the Pirate Lords.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Beckett offers Jack a Piece of Eight, and Jack offers him the way to Davy Jones’s Locker.",
+            },
+          ],
+        },
+        {
+          question: "Who takes the Black Pearl from Will, and why?",
+          options: [
+            {
+              option:
+                "Sao Feng takes it, because he wants the maps to the world of the dead.",
+            },
+            {
+              option:
+                "Tai Huang takes it, because he wants to help Elizabeth escape.",
+            },
+            {
+              option:
+                "Mercer and sailors from the Endeavour take it, because Beckett will not give up the only ship that can fight the Dutchman.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question:
+            "What does Sao Feng want in return for the Pearl and the Brethren Court?",
+          options: [
+            {
+              option:
+                "He wants Elizabeth, so she must sail away with him on the Empress.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He wants Jack Sparrow, so he can kill him for his old hurt feelings.",
+            },
+            {
+              option: "He wants the maps to the world of the dead.",
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -1538,14 +1882,59 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-9",
       title: "Chapter 9 · The New Pirate Lord",
       questions: [
-        "What does the Compass show Beckett when he opens it?",
-        "How does Jack get back to the Black Pearl?",
-        "Why does Bootstrap Bill say that Will will not come to save him?",
-      ],
-      answers: [
-        "It points at Jack — Beckett wants Jack dead more than anything else.",
-        "He climbs into a cannon, has it fired, and flies across the water holding the cannonball.",
-        "Because if Will kills Davy Jones he must become captain of the Dutchman for ever, and then he would lose Elizabeth.",
+        {
+          question: "What does the Compass show Beckett when he opens it?",
+          options: [
+            {
+              option:
+                "It points at Jack, because Beckett wants Jack dead more than anything else.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "It points at Shipwreck Cove, because that is what Beckett wants most.",
+            },
+            {
+              option:
+                "It points at Elizabeth, because Beckett wants to catch her.",
+            },
+          ],
+        },
+        {
+          question: "How does Jack get back to the Black Pearl?",
+          options: [
+            {
+              option: "He sails back in a small boat with Beckett’s men.",
+            },
+            {
+              option:
+                "He climbs into a cannon, has it fired, and flies across the water holding the cannonball.",
+              isCorrect: true,
+            },
+            {
+              option: "He swims across the ocean from the Endeavour.",
+            },
+          ],
+        },
+        {
+          question:
+            "Why does Bootstrap Bill say that Will will not come to save him?",
+          options: [
+            {
+              option:
+                "Because Will does not know that his father is still alive.",
+            },
+            {
+              option:
+                "Because Will has promised Elizabeth that he will stay with her.",
+            },
+            {
+              option:
+                "Because if Will kills Davy Jones he must become captain of the Dutchman for ever, and then he would lose Elizabeth.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -1820,14 +2209,57 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-10",
       title: "Chapter 10 · Jack’s Plan",
       questions: [
-        "How does Beckett follow the Black Pearl?",
-        "What is Jack’s plan to free Will’s father?",
-        "What happens to Norrington at the end of the chapter?",
-      ],
-      answers: [
-        "He follows the dead bodies that Will ties to pieces of wood and leaves in the water.",
-        "Jack will go onto the Dutchman, put a knife through Davy Jones’s heart, and take Jones’s place, so that Will can be free for Elizabeth.",
-        "Bootstrap Bill pushes his sword through Norrington’s heart, and he dies on the deck of the Dutchman.",
+        {
+          question: "How does Beckett follow the Black Pearl?",
+          options: [
+            {
+              option: "He follows Jack’s Compass across the ocean.",
+            },
+            {
+              option: "He follows Sao Feng’s old maps to Shipwreck Cove.",
+            },
+            {
+              option:
+                "He follows the dead bodies that Will ties to pieces of wood and leaves in the water.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What is Jack’s plan to free Will’s father?",
+          options: [
+            {
+              option:
+                "He will ask Beckett to free Bootstrap Bill from the Dutchman.",
+            },
+            {
+              option:
+                "Jack will go onto the Dutchman, put a knife through Davy Jones’s heart, and take Jones’s place, so that Will can be free for Elizabeth.",
+              isCorrect: true,
+            },
+            {
+              option: "He will help Will to steal the key to the wooden box.",
+            },
+          ],
+        },
+        {
+          question: "What happens to Norrington at the end of the chapter?",
+          options: [
+            {
+              option:
+                "Bootstrap Bill pushes his sword through Norrington’s heart, and he dies on the deck of the Dutchman.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Mercer puts him in the prison of the Dutchman with Elizabeth.",
+            },
+            {
+              option:
+                "Davy Jones takes him to the Endeavour to work for Beckett.",
+            },
+          ],
+        },
       ],
       text: [
         picture(
@@ -2052,14 +2484,60 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-11",
       title: "Chapter 11 · The Brethren Court",
       questions: [
-        "Who becomes the new Pirate King, and why?",
-        "Why does Barbossa want the pirates to free Calypso?",
-        "What does Lord Beckett say Jack’s prize will be?",
-      ],
-      answers: [
-        "Elizabeth Swann, because Jack votes for her. The Pirate Law says the king is chosen by a vote, and every other pirate voted for himself.",
-        "Because Calypso is the only power that can fight the Dutchman — and, in his own plan, a grateful goddess will make him the greatest pirate on the ocean.",
-        "Elizabeth — when the Brethren are dead, Jack will sail away on the Pearl with Elizabeth in his arms.",
+        {
+          question: "Who becomes the new Pirate King, and why?",
+          options: [
+            {
+              option:
+                "Jack Sparrow becomes the new Pirate King, because every pirate votes for him.",
+            },
+            {
+              option:
+                "Elizabeth Swann becomes the new Pirate King, because Jack votes for her and the Pirate Law says the king is chosen by a vote.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "Barbossa becomes the new Pirate King, because he calls the Brethren Court together.",
+            },
+          ],
+        },
+        {
+          question: "Why does Barbossa want the pirates to free Calypso?",
+          options: [
+            {
+              option:
+                "Because Calypso has promised to give him Davy Jones’s heart.",
+            },
+            {
+              option:
+                "Because Calypso is the only person who knows the way to Shipwreck Cove.",
+            },
+            {
+              option:
+                "Because Calypso is the only power that can fight the Dutchman, and he thinks a grateful goddess will make him the greatest pirate on the ocean.",
+              isCorrect: true,
+            },
+          ],
+        },
+        {
+          question: "What does Lord Beckett say Jack’s prize will be?",
+          options: [
+            {
+              option:
+                "He says Jack’s prize will be Elizabeth, and Jack will sail away on the Pearl with her in his arms.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He says Jack’s prize will be the Black Pearl, and he can sail away alone.",
+            },
+            {
+              option:
+                "He says Jack’s prize will be a job with the East India Trading Company.",
+            },
+          ],
+        },
       ],
       footnotes: ["Barbary Coast: the coastal area of north Africa."],
       text: [
@@ -2516,14 +2994,61 @@ export const piratesOfCaribbeanAtWorldsEnd = {
       id: "chapter-12",
       title: "Chapter 12 · Fight to the Death!",
       questions: [
-        "What does Barbossa do with the nine Pieces of Eight?",
-        "What happens to Calypso when Barbossa frees her?",
-        "Who becomes the new captain of the Flying Dutchman, and why?",
-      ],
-      answers: [
-        "He puts all nine pieces in the bowl and frees Calypso — the bowl bursts into fire and the goddess appears on the deck.",
-        "She grows taller and taller, then falls apart into thousands of crabs that run into the sea. She refuses to help Barbossa and disappears completely.",
-        "Will Turner — he puts Jack’s sword through Davy Jones’s heart, so he must take Jones’s place and serve on the Dutchman.",
+        {
+          question: "What does Barbossa do with the nine Pieces of Eight?",
+          options: [
+            {
+              option:
+                "He puts all nine pieces in the bowl and frees Calypso, and the bowl bursts into fire.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "He gives all nine pieces back to the Pirate Lords of the Court.",
+            },
+            {
+              option:
+                "He throws all nine pieces into the sea as an offering to Calypso.",
+            },
+          ],
+        },
+        {
+          question: "What happens to Calypso when Barbossa frees her?",
+          options: [
+            {
+              option:
+                "She grows into a great storm and destroys the Endeavour.",
+            },
+            {
+              option:
+                "She grows taller and taller, then falls apart into thousands of crabs that run into the sea, and she refuses to help Barbossa.",
+              isCorrect: true,
+            },
+            {
+              option:
+                "She becomes a woman again and sails away with Davy Jones.",
+            },
+          ],
+        },
+        {
+          question:
+            "Who becomes the new captain of the Flying Dutchman, and why?",
+          options: [
+            {
+              option:
+                "Jack Sparrow becomes the captain, because he takes Jones’s place on the Dutchman.",
+            },
+            {
+              option:
+                "Bootstrap Bill becomes the captain, because he serves on the Dutchman for ever.",
+            },
+            {
+              option:
+                "Will Turner becomes the captain, because he puts Jack’s sword through Davy Jones’s heart, so he must take Jones’s place.",
+              isCorrect: true,
+            },
+          ],
+        },
       ],
       text: [
         picture(

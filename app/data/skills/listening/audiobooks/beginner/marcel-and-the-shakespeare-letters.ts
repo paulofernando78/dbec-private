@@ -1,3 +1,5 @@
+import type { AudiobookQuestion } from "../index";
+
 type AudiobookImage = {
   localMedia?: string;
   r2?: string;
@@ -16,7 +18,7 @@ export type AudiobookSection = AudiobookImage & {
   title: string;
   timestamp?: string;
   text?: string | readonly AudiobookBlock[];
-  questions?: readonly string[];
+  questions?: readonly (string | AudiobookQuestion)[];
   answers?: readonly string[];
 };
 
@@ -56,12 +58,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What is Marcel’s job, where does he live, and when does he visit London?",
-        "What does Marcel love in London, and what is he doing at three o’clock on a Tuesday afternoon?",
-      ],
-      answers: [
-        "He is a detective who lives in Paris and visits London every November.",
-        "He loves the beautiful buildings, the big, black taxis, and the museums and shops, and he is walking from Knightsbridge station to Henry’s flat with two heavy bags.",
+        {
+          question: "What is Marcel’s job, where does he live, and when does he visit London?",
+          options: [
+            { option: "He is a teacher who lives in London and visits Paris every November." },
+            { option: "He is a detective who lives in Paris and visits London every November.", isCorrect: true },
+            { option: "He is a detective who lives in London and visits Paris every summer." },
+          ],
+        },
+        {
+          question: "What does Marcel love in London, and what is he doing at three o’clock on a Tuesday afternoon?",
+          options: [
+            { option: "He loves the museums and shops, and he is taking a taxi to the British Museum." },
+            { option: "He loves the fireworks and the museums, and he is waiting for a train at Knightsbridge station." },
+            { option: "He loves the beautiful buildings, the big, black taxis, and the museums and shops, and he is walking from Knightsbridge station to Henry’s flat with two heavy bags.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -98,12 +110,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What is Henry’s address, and what name is on the new sign?",
-        "What does Henry take from Marcel, and what does he suggest they have?",
-      ],
-      answers: [
-        "Henry’s address is 42 Old Wilton Street, and the sign says “Professor J. T. Barton”.",
-        "He takes Marcel’s coat and suggests having some tea.",
+        {
+          question: "What is Henry’s address, and what name is on the new sign?",
+          options: [
+            { option: "Henry’s address is 42 Old Wilton Street, and the sign says “Professor J. T. Barton”.", isCorrect: true },
+            { option: "Henry’s address is 36 Old Wilton Street, and the sign says “Professor J. T. Barton”." },
+            { option: "Henry’s address is 42 Old Wilton Street, and the sign says “Charles Dickens”." },
+          ],
+        },
+        {
+          question: "What does Henry take from Marcel, and what does he suggest they have?",
+          options: [
+            { option: "He takes Marcel’s bags and suggests having some coffee." },
+            { option: "He takes Marcel’s coat and suggests having some tea.", isCorrect: true },
+            { option: "He takes Marcel’s coat and suggests going to the cinema." },
+          ],
+        },
       ],
     },
     {
@@ -143,12 +165,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "Where were the letters found, and who were they from?",
-        "Where does the old woman want to give the letters?",
-      ],
-      answers: [
-        "They were found under the floor of an old woman’s house in Oxford, and they are from Shakespeare to his son.",
-        "She wants to give them to the British Museum in London.",
+        {
+          question: "Where were the letters found, and who were they from?",
+          options: [
+            { option: "They were found in an old bookcase in London, and they are from Shakespeare to his daughter." },
+            { option: "They were found under the floor of an old woman’s house in London, and they are from Professor Barton to his son." },
+            { option: "They were found under the floor of an old woman’s house in Oxford, and they are from Shakespeare to his son.", isCorrect: true },
+          ],
+        },
+        {
+          question: "Where does the old woman want to give the letters?",
+          options: [
+            { option: "She wants to give them to the British Museum in London.", isCorrect: true },
+            { option: "She wants to give them to a museum in Oxford." },
+            { option: "She wants to give them to Professor Barton." },
+          ],
+        },
       ],
     },
     {
@@ -194,12 +226,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "When is Professor Barton going to give the letters to the British Museum, and what day is it?",
-        "Where does Professor Barton always go on Tuesday evenings?",
-      ],
-      answers: [
-        "He is going to give them tomorrow morning at ten o’clock, and it is the 5th of November (Guy Fawkes Day).",
-        "He always goes to the cinema on Tuesday evenings.",
+        {
+          question: "When is Professor Barton going to give the letters to the British Museum, and what day is it?",
+          options: [
+            { option: "He is going to give them this evening at five o’clock, and it is the 5th of November." },
+            { option: "He is going to give them tomorrow morning at ten o’clock, and it is the 5th of November.", isCorrect: true },
+            { option: "He is going to give them tomorrow morning at nine o’clock, and it is the 25th of December." },
+          ],
+        },
+        {
+          question: "Where does Professor Barton always go on Tuesday evenings?",
+          options: [
+            { option: "He always goes to the museum on Tuesday evenings." },
+            { option: "He always goes to the British Museum on Tuesday mornings." },
+            { option: "He always goes to the cinema on Tuesday evenings.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -239,12 +281,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "Which book does Marcel sit on, and what does Henry press in the bookcase?",
-        "What does Marcel understand when some of the books start to move?",
-      ],
-      answers: [
-        "He sits on Charles Dickens’s book, Little Dorrit, and Henry presses a small, white button in the bookcase.",
-        "He understands that there is a safe.",
+        {
+          question: "Which book does Marcel sit on, and what does Henry press in the bookcase?",
+          options: [
+            { option: "He sits on Charles Dickens’s book, Little Dorrit, and Henry presses a small, white button.", isCorrect: true },
+            { option: "He sits on the professor’s bookcase, and Henry presses a big, black button." },
+            { option: "He sits on Shakespeare’s letters, and Henry presses a small, white button." },
+          ],
+        },
+        {
+          question: "What does Marcel understand when some of the books start to move?",
+          options: [
+            { option: "He understands that the books are going to fall." },
+            { option: "He understands that someone is in the flat." },
+            { option: "He understands that there is a safe in the bookcase.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -287,12 +339,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What are the five numbers on the blue paper, and where does Henry get them from?",
-        "What does Henry discover when he opens the safe?",
-      ],
-      answers: [
-        "The numbers are 55 - 14 - 62 - 29 - 8, and Henry takes the blue paper from his jeans.",
-        "He discovers that the Shakespeare letters are not in the safe.",
+        {
+          question: "What are the five numbers on the blue paper, and where does Henry get them from?",
+          options: [
+            { option: "The numbers are 45 - 14 - 62 - 29 - 8, and Henry takes the blue paper from his jeans." },
+            { option: "The numbers are 55 - 14 - 62 - 29 - 8, and Henry takes the blue paper from his jeans.", isCorrect: true },
+            { option: "The numbers are 55 - 14 - 62 - 29 - 8, and Henry takes the blue paper from his coat." },
+          ],
+        },
+        {
+          question: "What does Henry discover when he opens the safe?",
+          options: [
+            { option: "He discovers that the safe is empty and the letters are on the table." },
+            { option: "He discovers that the American woman is inside the safe." },
+            { option: "He discovers that the Shakespeare letters are not in the safe.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -326,12 +388,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What is at the back of the safe, and who does Marcel see in number 40 Old Wilton Street?",
-        "Where does the woman say she is going this evening, and what does Marcel see in the bag?",
-      ],
-      answers: [
-        "There is a big hole and a lot of smoke at the back of the safe, and Marcel sees a tall woman in a red dress in number 40 Old Wilton Street.",
-        "She says she is going to New York this evening, and Marcel sees some letters in the bag.",
+        {
+          question: "What is at the back of the safe, and who does Marcel see in number 40 Old Wilton Street?",
+          options: [
+            { option: "There is a big hole and a lot of smoke at the back of the safe, and Marcel sees a tall woman in a red dress.", isCorrect: true },
+            { option: "There is a big hole and a lot of smoke at the back of the safe, and Marcel sees two old women on holiday." },
+            { option: "There is a small window and a lot of books at the back of the safe, and Marcel sees a tall woman in a red dress." },
+          ],
+        },
+        {
+          question: "Where does the woman say she is going this evening, and what does Marcel see in the bag?",
+          options: [
+            { option: "She says she is going to Oxford this evening, and Marcel sees some letters in the bag." },
+            { option: "She says she is going to Heathrow this evening, and Marcel sees some books in the bag." },
+            { option: "She says she is going to New York this evening, and Marcel sees some letters in the bag.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -374,12 +446,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "Where are the two old women who usually live in that flat, and what is on the table?",
-        "What does the small, white notepad say under the light?",
-      ],
-      answers: [
-        "They are on holiday in Spain, and there is a yellow light and a small, white notepad on the table.",
-        "It says “Concorde - 7.20”.",
+        {
+          question: "Where are the two old women who usually live in that flat, and what is on the table?",
+          options: [
+            { option: "They are on holiday in Spain, and there is a blue lamp and a newspaper on the table." },
+            { option: "They are on holiday in Spain, and there is a yellow light and a small, white notepad on the table.", isCorrect: true },
+            { option: "They are visiting their family in New York, and there is a yellow light and a small, white notepad on the table." },
+          ],
+        },
+        {
+          question: "What does the small, white notepad say under the light?",
+          options: [
+            { option: "It says “Concorde - 7.20”.", isCorrect: true },
+            { option: "It says “Heathrow - 7.10”." },
+            { option: "It says “Concorde - 6.05”." },
+          ],
+        },
       ],
     },
     {
@@ -416,12 +498,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "Where does Marcel say they are going, and what time are they in Old Wilton Street?",
-        "What does the sign on the front of the train say at Knightsbridge station?",
-      ],
-      answers: [
-        "They are going to Heathrow Airport, and they are in Old Wilton Street at 6.05.",
-        "The sign on the front of the train says “Heathrow”.",
+        {
+          question: "Where does Marcel say they are going, and what time are they in Old Wilton Street?",
+          options: [
+            { option: "They are going to Knightsbridge station, and they are in Old Wilton Street at 6.05." },
+            { option: "They are going to Heathrow Airport, and they are in Old Wilton Street at six o’clock." },
+            { option: "They are going to Heathrow Airport, and they are in Old Wilton Street at 6.05.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What does the sign on the front of the train say at Knightsbridge station?",
+          options: [
+            { option: "The sign on the front of the train says “Concorde”." },
+            { option: "The sign on the front of the train says “Heathrow”.", isCorrect: true },
+            { option: "The sign on the front of the train says “Old Wilton Street”." },
+          ],
+        },
       ],
     },
     {
@@ -464,12 +556,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "How many stations are there before Heathrow, and what does the blue sign say?",
-        "What time is it when Marcel looks at his watch at Heathrow?",
-      ],
-      answers: [
-        "There are fifteen stations before Heathrow, and the blue sign says “Concorde”.",
-        "It is 7.10.",
+        {
+          question: "How many stations are there before Heathrow, and what does the blue sign say?",
+          options: [
+            { option: "There are fifteen stations before Heathrow, and the blue sign says “Concorde”.", isCorrect: true },
+            { option: "There are five stations before Heathrow, and the blue sign says “Concorde”." },
+            { option: "There are fifteen stations before Heathrow, and the blue sign says “Heathrow”." },
+          ],
+        },
+        {
+          question: "What time is it when Marcel looks at his watch at Heathrow?",
+          options: [
+            { option: "It is 6.05." },
+            { option: "It is 7.20." },
+            { option: "It is 7.10.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -512,12 +614,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What is the American woman doing, and where is her bag?",
-        "What does Marcel take from his coat, and what does he tell Henry?",
-      ],
-      answers: [
-        "She is sitting on a chair, listening to her Walkman, and reading a newspaper, and her bag is on the floor.",
-        "He takes a small knife from his coat and tells Henry to walk behind him and be very quiet.",
+        {
+          question: "What is the American woman doing, and where is her bag?",
+          options: [
+            { option: "She is standing at the door, and her bag is on the chair." },
+            { option: "She is sitting on a chair, listening to her Walkman, and reading a newspaper, and her bag is on the floor.", isCorrect: true },
+            { option: "She is sitting on a chair, listening to her Walkman, and writing on a notepad, and her bag is on the table." },
+          ],
+        },
+        {
+          question: "What does Marcel take from his coat, and what does he tell Henry?",
+          options: [
+            { option: "He takes a small knife from his coat and tells Henry to walk behind him and be very quiet.", isCorrect: true },
+            { option: "He takes the blue paper from his coat and tells Henry to telephone the police." },
+            { option: "He takes a small knife from his coat and tells Henry to wait at the door." },
+          ],
+        },
       ],
     },
     {
@@ -542,12 +654,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What does Marcel use to make a hole in the American woman’s bag, and does she look down?",
-        "What does Marcel see inside the bag?",
-      ],
-      answers: [
-        "He uses his knife to make a hole in the bag, and she does not look down.",
-        "He sees some jeans, a radio, some books, and then the Shakespeare letters.",
+        {
+          question: "What does Marcel use to make a hole in the American woman’s bag, and does she look down?",
+          options: [
+            { option: "He uses his teeth to make a hole in the bag, and she does look down." },
+            { option: "He uses his knife to make a hole in the bag, and she does look down." },
+            { option: "He uses his knife to make a hole in the bag, and she does not look down.", isCorrect: true },
+          ],
+        },
+        {
+          question: "What does Marcel see inside the bag?",
+          options: [
+            { option: "He sees some jeans, a radio, some books, and then the Shakespeare letters.", isCorrect: true },
+            { option: "He sees some jeans, a Walkman, some newspapers, and then the Shakespeare letters." },
+            { option: "He sees some jeans, a radio, some books, and then the blue paper." },
+          ],
+        },
       ],
     },
     {
@@ -584,12 +706,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What does the American woman do after hearing “Bing bong!”, and what does she see?",
-        "Who comes in through the open door, and what happens to the American woman?",
-      ],
-      answers: [
-        "She looks at her watch, takes off her Walkman, starts to put it in her bag, and sees two mice.",
-        "A fat man with two bags comes in, the American woman ends up on the floor, and the man asks if she is OK.",
+        {
+          question: "What does the American woman do after hearing “Bing bong!”, and what does she see?",
+          options: [
+            { option: "She looks at her watch, puts on her Walkman, and sees two mice." },
+            { option: "She looks at her watch, takes off her Walkman, starts to put it in her bag, and sees two mice.", isCorrect: true },
+            { option: "She looks at her watch, takes off her Walkman, starts to put it in her bag, and sees Professor Barton." },
+          ],
+        },
+        {
+          question: "Who comes in through the open door, and what happens to the American woman?",
+          options: [
+            { option: "A thin man with one bag comes in, the American woman ends up on the floor, and the man asks if she is OK." },
+            { option: "A fat man with two bags comes in, the American woman ends up on the floor, and the man telephones the police." },
+            { option: "A fat man with two bags comes in, the American woman ends up on the floor, and the man asks if she is OK.", isCorrect: true },
+          ],
+        },
       ],
     },
     {
@@ -614,12 +746,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What are Marcel and Henry doing at nine o’clock, and who does Henry see coming home?",
-        "Where does Professor Barton see the Shakespeare letters, and how does he react?",
-      ],
-      answers: [
-        "Marcel is reading the Shakespeare letters on the table and Henry is watching the fireworks at the window, and Henry sees Professor Barton in a brown coat coming home.",
-        "He sees the letters on the table, puts one hand on his head, and says he does not understand.",
+        {
+          question: "What are Marcel and Henry doing at nine o’clock, and who does Henry see coming home?",
+          options: [
+            { option: "Marcel is reading the Shakespeare letters on the table and Henry is watching the fireworks at the window, and Henry sees Professor Barton in a brown coat coming home.", isCorrect: true },
+            { option: "Marcel is reading the Shakespeare letters on the table and Henry is watching the fireworks at the window, and Henry sees a fat man with two bags coming home." },
+            { option: "Marcel is drinking tea at the table and Henry is reading at the window, and Henry sees Professor Barton in a brown coat coming home." },
+          ],
+        },
+        {
+          question: "Where does Professor Barton see the Shakespeare letters, and how does he react?",
+          options: [
+            { option: "He sees the letters in the safe, puts one hand on his head, and says he does not understand." },
+            { option: "He sees the letters on the table, puts one hand on his head, and says he does not understand.", isCorrect: true },
+            { option: "He sees the letters on the table, smiles, and says thank you very much." },
+          ],
+        },
       ],
     },
     {
@@ -650,12 +792,22 @@ export const marcelAndTheShakespeareLetters = {
         },
       ],
       questions: [
-        "What is the weather like in the morning, and what time does Professor Barton arrive at the British Museum?",
-        "Who does Professor Barton give the letters to, and where are Henry and Marcel standing?",
-      ],
-      answers: [
-        "It is a cold day and it is raining, and Professor Barton arrives at ten o’clock.",
-        "He gives the letters to a man from the museum, and Henry and Marcel are standing at the back of the room.",
+        {
+          question: "What is the weather like in the morning, and what time does Professor Barton arrive at the British Museum?",
+          options: [
+            { option: "It is a hot day and it is sunny, and Professor Barton arrives at ten o’clock." },
+            { option: "It is a cold day and it is raining, and Professor Barton arrives at nine o’clock." },
+            { option: "It is a cold day and it is raining, and Professor Barton arrives at ten o’clock.", isCorrect: true },
+          ],
+        },
+        {
+          question: "Who does Professor Barton give the letters to, and where are Henry and Marcel standing?",
+          options: [
+            { option: "He gives the letters to a man from the museum, and Henry and Marcel are standing at the back of the room.", isCorrect: true },
+            { option: "He gives the letters to a journalist, and Henry and Marcel are standing at the back of the room." },
+            { option: "He gives the letters to a man from the museum, and Henry and Marcel are standing at the front of the room." },
+          ],
+        },
       ],
     },
   ] satisfies AudiobookSection[],
