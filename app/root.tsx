@@ -22,6 +22,7 @@ import {
 } from "@/hooks/useSession";
 
 import { Header } from "@/components/layout/Header";
+import { AccountBar } from "@/components/layout/AccountBar";
 import { DateTimeCard } from "@/components/content/DateTimeCard";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button/Button";
@@ -87,9 +88,9 @@ function AppContent() {
   const session = useSession();
   const isAuthenticated = Boolean(session);
   // O “buy me a coffee” é um convite para quem ainda não entrou (“start free”).
-  // Depois do login ele sai do topo em todas as páginas.
+  // Depois do login ele sai do topo e, no mesmo lugar, entra a faixa da conta.
   const showCoffee = !session;
-  const showTopBar = location.pathname !== "/" || showCoffee;
+  const showTopBar = location.pathname !== "/" || showCoffee || isAuthenticated;
 
   // Spinner central enquanto a próxima página carrega. O atraso evita o
   // piscar em navegações rápidas.
@@ -195,12 +196,14 @@ function AppContent() {
   return (
     <div className={`app ${isWideLayout ? "app--wide" : ""}`}>
       <div className="app-container">
-        {/* A barra superior leva o logotipo fora da página inicial e o
-            “buy me a coffee” enquanto não há sessão. */}
+        {/* A barra superior leva o logotipo fora da página inicial, a faixa da
+            conta quando há sessão e o “buy me a coffee” enquanto não há. */}
         {showTopBar && (
           <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
             {location.pathname !== "/" && (
-              <div className="min-w-0 flex-1">
+              <div
+                className={`min-w-0 flex-1 ${isAuthenticated ? "max-[700px]:hidden" : ""}`}
+              >
                 <BrandLogo
                   compact
                   layout="responsive"
@@ -208,10 +211,14 @@ function AppContent() {
                 />
               </div>
             )}
-            {showCoffee && (
-              <div className="ml-auto shrink-0">
-                <Contact />
-              </div>
+            {session === undefined ? null : isAuthenticated ? (
+              <AccountBar className="ml-auto justify-end" />
+            ) : (
+              showCoffee && (
+                <div className="ml-auto shrink-0">
+                  <Contact />
+                </div>
+              )
             )}
           </Card>
         )}
