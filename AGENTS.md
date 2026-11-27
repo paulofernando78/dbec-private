@@ -12,6 +12,7 @@
 
 - When the user asks for a button, use the shared `Button` component with its standard `default` variant and appearance. Do not substitute a styled link, a plain icon, or the `list` variant for the requested button. If the button navigates to a URL or page anchor, use the `Button` component's `href` support so it remains a semantic link.
 - Links accompanied by a button-style icon must not underline their labels, including on hover or keyboard focus. Preserve a visible keyboard focus outline. Apply this pattern consistently throughout the project.
+- Collection lists (`ProgressCollectionCard`, `ActionTextRow`) use the shared `Button` at its default size (`size-10`). Do not enlarge it with `size-15` and do not draw connector lines between rows.
 
 # Audiobook questions
 

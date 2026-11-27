@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { ActionTextRow } from "@/components/content/ActionTextRow";
 import {
   levelButtonClasses,
-  levelGradientClasses,
   type LevelTheme,
 } from "@/utils/level-theme";
 
@@ -113,28 +112,14 @@ export function ProgressCollectionCard({
 
         {items.length > 0 && (
           <ol className="px-4 py-4">
-            {items.map((item, index) => (
+            {items.map((item) => (
               <ActionTextRow
                 key={item.id}
-                className="relative min-h-36 pb-5 last:min-h-15 last:pb-0"
-                actionSize="size-15"
-                textAtTop
+                className="pb-5 last:pb-0"
                 gap="gap-4"
+                textAtTop
                 action={
                   <>
-                    {index < items.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className={`absolute -bottom-5 left-6.5 top-13 z-0 w-2
-                      ${
-                        item.isCompleted && !item.isLocked
-                          ? levelTheme
-                            ? levelGradientClasses[levelTheme]
-                            : "bg-slate-400 dark:bg-slate-500"
-                          : "bg-slate-300 dark:bg-slate-600"
-                      }`}
-                      />
-                    )}
                     <Button
                   ariaLabel={item.ariaLabel}
                   ariaDisabled={item.isLocked}
@@ -150,7 +135,7 @@ export function ProgressCollectionCard({
                     )
                   }
                   onClick={item.onClick}
-                  className={`z-10 size-15! ${
+                  className={`z-10 ${
                     item.isCompleted && !item.isLocked
                       ? levelTheme
                         ? levelButtonClasses[levelTheme]

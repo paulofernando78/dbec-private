@@ -52,22 +52,17 @@ export default function EverydayCollection() {
             return (
               <ActionTextRow
                 key={number}
-                className="relative min-h-36 pb-5 last:min-h-15 last:pb-0"
+                className="pb-5 last:pb-0"
                 gap="gap-4"
-                actionSize="size-15"
                 textAtTop
-                action={<>
-                {number < lessons.length && (
-                  <span className="absolute -bottom-5 left-6.5 top-13 z-0 w-2 bg-slate-300 dark:bg-slate-600" />
-                )}
-                <Button
-                  ariaLabel={`Locked Lesson ${number}`}
-                  ariaDisabled
-                  disabled
-                  icon={<LockKeyhole aria-hidden="true" />}
-                  className="z-10 size-15!"
-                />
-                </>}
+                action={
+                  <Button
+                    ariaLabel={`Locked Lesson ${number}`}
+                    ariaDisabled
+                    disabled
+                    icon={<LockKeyhole aria-hidden="true" />}
+                  />
+                }
               >
                 <div>
                   <span className="block text-xs font-bold uppercase text-orange-700!">
