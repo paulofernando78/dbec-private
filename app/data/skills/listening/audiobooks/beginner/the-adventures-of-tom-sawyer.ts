@@ -14,7 +14,7 @@ export type AudiobookSection = AudiobookImage & {
   id: string;
   title: string;
   timestamp?: string;
-  text: string | readonly AudiobookBlock[];
+  text?: string | readonly AudiobookBlock[];
   questions?: readonly string[];
   answers?: readonly string[];
   mediaPosition?: "left" | "right" | "top" | "bottom";

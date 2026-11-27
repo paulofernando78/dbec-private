@@ -14,7 +14,7 @@ export type AudiobookSection = AudiobookImage & {
   id: string;
   title: string;
   timestamp?: string;
-  text: string | readonly AudiobookBlock[];
+  text?: string | readonly AudiobookBlock[];
   questions?: readonly string[];
   answers?: readonly string[];
   retell?: AudiobookRetell;
@@ -208,7 +208,6 @@ export const theWhiteOryx = {
     {
       id: "retell-the-story",
       title: "Retell the Story",
-      text: "Look at each picture and retell that part of the story in complete sentences. Tell the story first, then flip the card to check.",
       retell: {
         cards: [
           {

@@ -23,7 +23,7 @@
 # Audiobook retell
 
 - Close every audiobook with per-paragraph images with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, the summary the student should say, always as complete sentences.
-- Use the standard intro “Look at each picture and retell that part of the story in complete sentences. Tell the story first, then flip the card to check.” Do not add a separate instruction line above the cards; the intro already tells the student to flip them.
+- The retell intro lives once in `app/routes/listening-book.tsx` (`retellIntro`): “Look at each picture and retell that part of the story, then flip the card to check.” Never repeat that text in the audiobook data files; each retell section only declares `id`, `title` and `retell.cards`.
 - When two paragraphs share a single image (for example `paragraph-8-9.avif`), create one card for that image with a summary covering both paragraphs; never repeat the same image on two cards.
 - The retell section is a speaking exercise: it has no narration audio, so do not expect a player above the cards.
 

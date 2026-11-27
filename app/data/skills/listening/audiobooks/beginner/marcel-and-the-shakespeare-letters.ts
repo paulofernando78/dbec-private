@@ -15,7 +15,7 @@ export type AudiobookSection = AudiobookImage & {
   r2Audio?: string;
   title: string;
   timestamp?: string;
-  text: string | readonly AudiobookBlock[];
+  text?: string | readonly AudiobookBlock[];
   questions?: readonly string[];
   answers?: readonly string[];
 };

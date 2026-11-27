@@ -30,7 +30,6 @@ export type AudiobookRetellCard = {
 };
 
 export type AudiobookRetell = {
-  instruction?: string;
   cards: readonly AudiobookRetellCard[];
 };
 
@@ -38,7 +37,7 @@ export type AudiobookSection = AudiobookImage & {
   id: string;
   title: string;
   timestamp?: string;
-  text: string | readonly AudiobookBlock[];
+  text?: string | readonly AudiobookBlock[];
   questions?: readonly (string | AudiobookQuestion)[];
   answers?: readonly string[];
   retell?: AudiobookRetell;

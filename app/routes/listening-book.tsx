@@ -112,6 +112,9 @@ function SectionImage({
 
 const chapterImageSize = "mx-auto sm:max-w-[calc(35%+16rem)]";
 
+const retellIntro =
+  "Look at each picture and retell that part of the story, then flip the card to check.";
+
 export default function ListeningBookPage() {
   const { book } = useParams();
   const audiobook = book
@@ -148,9 +151,11 @@ export default function ListeningBookPage() {
 
   const renderSection = (section: AudiobookSection) => {
     const blocks =
-      typeof section.text === "string"
-        ? [{ text: section.text }]
-        : section.text;
+      section.text === undefined
+        ? []
+        : typeof section.text === "string"
+          ? [{ text: section.text }]
+          : section.text;
 
     const narration = blocks
       .flatMap((block) => {
@@ -212,29 +217,31 @@ export default function ListeningBookPage() {
                     />
                   </div>
                 )}
-                <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
-                  {(openingImage ? blocks.slice(1) : blocks).map(
-                    (block, index) => {
-                      if (block.r2) {
+                {(openingImage ? blocks.slice(1) : blocks).length > 0 && (
+                  <div className="space-y-2 rounded-lg bg-(--background) p-3 text-lg leading-8">
+                    {(openingImage ? blocks.slice(1) : blocks).map(
+                      (block, index) => {
+                        if (block.r2) {
+                          return (
+                            <SectionImage
+                              key={index}
+                              section={{ ...block, mediaPosition: "top" }}
+                              className={chapterImageSize}
+                            />
+                          );
+                        }
+
+                        const blockText = "text" in block ? block.text : undefined;
+
                         return (
-                          <SectionImage
-                            key={index}
-                            section={{ ...block, mediaPosition: "top" }}
-                            className={chapterImageSize}
-                          />
+                          <p key={index} className="whitespace-pre-line">
+                            {renderContentPart(blockText, index)}
+                          </p>
                         );
-                      }
-
-                      const blockText = "text" in block ? block.text : undefined;
-
-                      return (
-                        <p key={index} className="whitespace-pre-line">
-                          {renderContentPart(blockText, index)}
-                        </p>
-                      );
-                    },
-                  )}
-                </div>
+                      },
+                    )}
+                  </div>
+                )}
               </div>
               {section.footnotes && section.footnotes.length > 0 && (
                 <aside className="mt-3 rounded-lg bg-(--background) p-3" aria-label="Footnotes">
@@ -253,8 +260,8 @@ export default function ListeningBookPage() {
               />
               {section.retell && (
                 <div className="mt-3 rounded-lg bg-(--background) p-3">
+                  <p className="mb-4">{retellIntro}</p>
                   <FlipCards
-                    instruction={section.retell.instruction}
                     cards={section.retell.cards.map((card) => ({
                       frontImg: card.img,
                       frontAlt: card.alt,
