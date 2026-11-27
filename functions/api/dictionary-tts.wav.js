@@ -3,7 +3,7 @@ import { synthesizeDictionaryTts } from "../_dictionary-tts.mjs";
 
 const maxTextLength = 500;
 const cacheControl = "public, max-age=31536000, immutable";
-const cachePrefix = "tts-cache/v3";
+const cachePrefix = "tts-cache/v4";
 
 const encoder = new TextEncoder();
 

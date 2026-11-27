@@ -14,7 +14,7 @@ export type DictionaryTtsHooks = {
 
 export const defaultCooldownSeconds: number;
 
-export function providerOrder(length: number): DictionaryTtsProvider[];
+export function providerOrder(): DictionaryTtsProvider[];
 
 export function synthesizeDictionaryTts(
   text: string,

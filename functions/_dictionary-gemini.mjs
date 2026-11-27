@@ -5,7 +5,14 @@ const defaultModels = [
   "gemini-2.5-flash-preview-tts",
 ];
 
-const defaultVoice = "Kore";
+// One fixed, neutral voice for every generated word or sentence so the
+// fallback audio always sounds the same.
+const defaultVoice = "Charon";
+
+// Kept short on purpose: short style strings stay stable across generations.
+const neutralStyle = "neutral, clear, matter-of-fact";
+
+const supportsStyle = (model) => model.startsWith("gemini-3.8");
 
 const decodeBase64 = (value) => {
   const binary = atob(value);
@@ -46,14 +53,17 @@ const pcmToWav = (pcm, sampleRate = 24_000) => {
  * @param {string} input
  * @param {string | undefined} apiKey
  * @param {string | undefined} models
+ * @param {string | undefined} voice
  */
-export async function dictionaryGemini(input, apiKey, models) {
+export async function dictionaryGemini(input, apiKey, models, voice) {
   if (!apiKey) return null;
 
   const modelList = (models || defaultModels.join(","))
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
+
+  const voiceName = voice?.trim() || defaultVoice;
 
   let sawRetryableError = false;
 
@@ -73,12 +83,24 @@ export async function dictionaryGemini(input, apiKey, models) {
             input: [
               {
                 type: "user_input",
-                content: [{ type: "text", text: input }],
+                content: [
+                  {
+                    type: "text",
+                    text: input,
+                    ...(supportsStyle(model)
+                      ? {
+                          annotations: [
+                            { type: "speech_metadata", style: neutralStyle },
+                          ],
+                        }
+                      : {}),
+                  },
+                ],
               },
             ],
-            response_format: { type: "audio" },
+            response_format: { type: "audio", mime_type: "audio/wav" },
             generation_config: {
-              speech_config: [{ voice: defaultVoice }],
+              speech_config: [{ voice: voiceName }],
             },
           }),
           signal: AbortSignal.timeout(20_000),

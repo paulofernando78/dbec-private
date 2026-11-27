@@ -423,6 +423,7 @@ const localAuth = (): Plugin => ({
             OPENROUTER_TTS_VOICE: readVariable("OPENROUTER_TTS_VOICE"),
             GEMINI_API_KEY: readVariable("GEMINI_API_KEY"),
             GEMINI_TTS_MODELS: readVariable("GEMINI_TTS_MODELS"),
+            GEMINI_TTS_VOICE: readVariable("GEMINI_TTS_VOICE"),
           };
 
           if (!env.OPENROUTER_API_KEY && !env.GEMINI_API_KEY) {

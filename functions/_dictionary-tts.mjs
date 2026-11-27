@@ -3,10 +3,9 @@ import { dictionaryOpenRouter } from "./_dictionary-openrouter.mjs";
 
 export const defaultCooldownSeconds = 300;
 
-// Free quotas are limited, so short texts prefer the Fish voice, while long
-// texts start with Gemini, where a single request buys the most characters.
-export const providerOrder = (length) =>
-  length > 250 ? ["gemini", "openrouter"] : ["openrouter", "gemini"];
+// Gemini is always tried first so generated audio keeps one fixed voice; the
+// other provider only covers outages.
+export const providerOrder = () => ["gemini", "openrouter"];
 
 /**
  * @param {string} text
@@ -17,7 +16,7 @@ export const providerOrder = (length) =>
  * }} [hooks]
  */
 export async function synthesizeDictionaryTts(text, env, hooks = {}) {
-  for (const provider of providerOrder(text.length)) {
+  for (const provider of providerOrder()) {
     if (hooks.isCoolingDown && (await hooks.isCoolingDown(provider))) continue;
 
     let result = null;
@@ -35,6 +34,7 @@ export async function synthesizeDictionaryTts(text, env, hooks = {}) {
         text,
         env.GEMINI_API_KEY,
         env.GEMINI_TTS_MODELS,
+        env.GEMINI_TTS_VOICE,
       );
     }
 
