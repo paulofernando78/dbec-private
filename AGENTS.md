@@ -22,7 +22,9 @@
 
 # Audiobook retell
 
-- Close an audiobook with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, the summary the student should say, always as complete sentences.
+- Close every audiobook with per-paragraph images with a “Retell the Story” section built with the shared `FlipCards` component. Each card shows one paragraph image on the front and, on the back, the summary the student should say, always as complete sentences.
+- Use the standard instruction “Flip the cards and retell the story.” and the intro “Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.”
+- When two paragraphs share a single image (for example `paragraph-8-9.avif`), create one card for that image with a summary covering both paragraphs; never repeat the same image on two cards.
 - The retell section is a speaking exercise: it has no narration audio, so do not expect a player above the cards.
 
 - Use Tailwind's spacing scale for dimensions and spacing instead of arbitrary pixel values. For example, use `min-h-17` for `68px` and `w-15` for `60px` at the default root font size. When the scale cannot express the intended value, use an equivalent relative unit such as `rem`.

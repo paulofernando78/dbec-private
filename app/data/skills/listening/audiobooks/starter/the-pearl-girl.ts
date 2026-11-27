@@ -185,5 +185,99 @@ export const thePearlGirl = {
       imageAlt: "Kate receiving pearl earrings from the museum director.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Kate and her parents visiting a museum in The Hague.",
+            summary:
+              "Kate Grant is fifteen and comes from Canada. She is at a museum in The Hague with her mother and father, and it is 4:45.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Kate looking at Girl with a Pearl Earring.",
+            summary:
+              "Kate sees a picture of a young girl with an earring. She loves earrings and thinks the picture is beautiful.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "The Grants realizing the guidebook is inside the museum.",
+            summary:
+              "At 4:58 the Grants are drinking coffee near the museum. Mr. Grant's passport is in the guidebook, so Kate goes back to find it.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Kate asking Paul Van Dyck to let her into the museum.",
+            summary:
+              "Kate runs to the museum, but the guard is closing the door. His name is Paul Van Dyck, and he says she can come with him.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Kate and Paul hearing voices inside the dark museum.",
+            summary:
+              "Kate goes into the dark museum with Paul. She says the passport is on a chair near the picture, and then Paul hears voices.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Kate and Paul confronting two thieves in the museum.",
+            summary:
+              "Two men come into the room. The tall man has a big black bag, and the short man has a gun.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "The thieves taking Kate after Paul is injured.",
+            summary:
+              "The short man shoots Paul in the leg. Then he puts his hand over Kate's mouth, and the men take her with them.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Kate inside the thieves' car with the stolen painting.",
+            summary:
+              "The thieves drive Kate away in a car. She sees Girl with a Pearl Earring in the black bag, and a sign says Amsterdam 10.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "The thieves forcing Kate toward the Black Dog.",
+            summary:
+              "At 5:40 the car stops, and the thief tells Kate to smile. They walk to a boat called the Black Dog, and the gun is next to her back.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Kate being held in the kitchen of the Black Dog.",
+            summary:
+              "The thieves lock Kate in the boat's kitchen. They say they will send a note to her family because they want money.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Kate putting her message inside a bottle.",
+            summary:
+              "Kate writes a note and asks someone to call the police. She puts the note in a bottle and throws it into the canal.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "An old man finding Kate's bottle in the canal.",
+            summary:
+              "At 9:15 an old man finds the bottle in the canal. He reads Kate's note and calls the police.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Police rescuing Kate from the Black Dog.",
+            summary:
+              "At 11:25 the police arrive on the Black Dog. They open the kitchen door and tell Kate that they are there now.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Kate receiving pearl earrings from the museum director.",
+            summary:
+              "Two days later the museum's director thanks Kate. He gives her a small bag with two beautiful pearl earrings.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

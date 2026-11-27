@@ -184,5 +184,105 @@ export const theTroyStone = {
       imageAlt: "Mark walking away as the old woman smiles.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "The Jackson family getting on a bus in Istanbul.",
+            summary:
+              "The Jackson family are on holiday in Turkey. They are staying at a hotel in Istanbul, and today they are getting on a bus to visit Troy.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Mark sitting under a tree at Troy.",
+            summary:
+              "Forty people are on the bus. After lunch at Troy it is very hot, so Mark sits under a tree, and then he sees something on the ground.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Mark holding the yellow stone as a bright light appears.",
+            summary:
+              "Mark picks up a flat, yellow stone and cleans it with his hands. Then a strong white light and a loud wind come, and he cannot see or hear anything.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Mark standing on a beach full of ships.",
+            summary:
+              "When the light and the wind stop, Mark is standing on a beach. He can see hundreds of ships, a city with high walls behind him, and a man calls to him.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Mark carrying wood near a black ship.",
+            summary:
+              "Mark walks to a long, black ship and the tall man gives him a lot of wood. Mark tells the man that he is new there.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Andros showing Mark the wooden horse.",
+            summary:
+              "The man says his name is Andros. At the top of a small hill they see a big wooden horse, and Andros says it is going to win the war for the Greeks.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Mark looking at the wooden horse's eye.",
+            summary:
+              "The men cannot find a stone for the second eye of the horse and they must find one before tomorrow. Mark remembers the stone in his pocket and says he can help.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Mark giving the stone to the Greek soldiers.",
+            summary:
+              "Mark gives the yellow stone to the man, and the man is very happy. He says Mark can come with them in the horse tomorrow night.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Mark sitting by the fire with Ana.",
+            summary:
+              "That evening Mark sits near a big fire with Ana, an old cook. She tells him stories about Greece, the war and Helen, and then she goes to bed.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Mark looking out from inside the wooden horse.",
+            summary:
+              "Next morning the Greek soldiers pull the horse to the gates of Troy. Mark sits in the horse's head, and the Trojan soldiers pull the horse inside the city.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "The wooden horse inside the walls of Troy.",
+            summary:
+              "The Trojans think the Greeks are leaving because their ships are going away. They eat, sing and dance, and when Troy is quiet the Greeks climb out of the horse.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Helen running along the burning walls of Troy.",
+            summary:
+              "The Greeks open the gates and thousands of soldiers come into the city. Troy is on fire, and Mark sees Helen running along the city walls.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Two Trojan soldiers with swords in the smoke.",
+            summary:
+              "Andros tells Mark to follow him, but the street is full of smoke. Two Trojans with swords come out of the smoke and Mark asks them not to kill him.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Fay looking down at Mark under the tree.",
+            summary:
+              "Fay wakes Mark up and says the bus is leaving. Mark has the yellow stone in his hand, but he tells Fay it is nothing.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Mark walking away as the old woman smiles.",
+            summary:
+              "Mark buys a small wooden horse from an old woman. She says “Goodbye, boy, come and see me again one day,” and Mark walks to the bus.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

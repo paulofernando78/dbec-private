@@ -197,5 +197,105 @@ export const theLastPhoto = {
       imageAlt: "Pam and Martin receiving a reward from the bank.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Pam and Martin visiting Cambridge.",
+            summary:
+              "It is Saturday afternoon, and Martin and his sister Pam are in Cambridge for the day. Pam has her camera and she likes taking photos.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Pam preparing to take one last photo of Martin.",
+            summary:
+              "At five o’clock, Pam and Martin are tired and they are going home. Pam wants a last photo of Martin because she wants to finish the film in her camera.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "A man with a rucksack walking in front of Pam's camera.",
+            summary:
+              "Martin stands in front of the flowers and Pam takes a photo. A man with a big rucksack walks between them, so the photo is of the man, not of Martin.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "The angry man walking toward the bus station.",
+            summary:
+              "The man is angry and he goes across the road without a word. He has sunglasses and a blue hat, and he goes into the bus station.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "The man getting onto a bus to Aberdeen.",
+            summary:
+              "In the bus station, Pam and Martin see the man again. He is getting into a bus to Aberdeen, in Scotland, and Pam is angry with him.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Pam and Martin looking at the developed photos.",
+            summary:
+              "Three days later, on Tuesday, Pam gets her photos from the shop. They are all very good, but the last one is the man with the rucksack.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Martin recognizing the man in a newspaper photograph.",
+            summary:
+              "In the photo, the man is in front of Martin, so you cannot see Martin behind the rucksack. Martin knows that face, and he finds the same picture in today’s newspaper.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Pam and Martin reading about Alan Rook in the newspaper.",
+            summary:
+              "The man’s name is Alan Rook and he works in a bank in London. He has disappeared with a hundred thousand pounds, and the police are looking for him.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Martin comparing the man's face in the two pictures.",
+            summary:
+              "Pam is not sure because the man in the newspaper has no beard and no hair. Martin looks at his ears and his nose and says it is him, then he starts to draw on the newspaper.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Martin drawing Alan Rook's disguise on the newspaper photo.",
+            summary:
+              "Martin draws dark glasses, a short beard and a hat on the newspaper photo. Pam agrees that it is Alan Rook, and they decide to take the pictures to the police.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Pam and Martin showing the photographs to a policeman.",
+            summary:
+              "At the police station, Pam and Martin show the policeman the photo and the newspaper and tell their story. The policeman asks the big question: where is Alan Rook now?",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "The policeman learning that Alan Rook travelled to Aberdeen.",
+            summary:
+              "Pam and Martin think Alan is near Aberdeen because they saw him get on a bus to Scotland. The policeman sees a rucksack and a tent in the photo, so he thinks Alan is camping.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Police finding Alan Rook in his tent near Aberdeen.",
+            summary:
+              "The policeman telephones the police in Aberdeen. The next day they find Alan Rook in a tent in the mountains near Aberdeen, and the bank’s money is in his rucksack.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Pam and Martin reading their story in the newspaper.",
+            summary:
+              "The next morning, Pam and Martin’s story is in all the newspapers with Pam’s photo. The newspaper says: “Camera girl gets photo of Rook. Police in Aberdeen find bank money.”",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Pam and Martin receiving a reward from the bank.",
+            summary:
+              "The people at the bank are very happy, and they give Pam and Martin a thousand pounds. Pam says that now she can buy a very good new camera.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

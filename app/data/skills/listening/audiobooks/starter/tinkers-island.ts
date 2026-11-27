@@ -427,5 +427,105 @@ export const tinkersIsland = {
         "Sam and Jenny on the deck of the Red Rose, looking back at Tinkers Island for the last time.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Jenny and her father Sam selling fruit and vegetables in Covent Garden market.",
+            summary:
+              "Jenny is fourteen and she works in Covent Garden market with her father, Sam. One day after work she sees a man running with a watch in his hand.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Angry people running down the street after Sam while two policemen hold his arms.",
+            summary:
+              "The man gives Sam the watch, and angry people run after Sam because they think he is a thief. Two policemen take him away and they do not listen to Jenny.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Jenny talking to Peter Stone, with the Black Star waiting on the River Thames.",
+            summary:
+              "Jenny goes to Peter Stone’s house for help. Peter says that thieves are sent to Australia, and a week later Jenny sees her father on the Black Star.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Jenny, dressed as a boy, talking to the captain of the Black Star.",
+            summary:
+              "Jenny sees trousers and a shirt on a line and dresses as a boy. She tells the captain her name is Ned Bell, and he gives her a job helping the cook.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Jenny unlocking the prisoners’ room deep in the bottom of the Black Star.",
+            summary:
+              "For six weeks Jenny works very hard on the ship. One night she takes the captain’s keys, goes to the bottom of the ship and finds her father.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Jenny and Sam escaping in a small boat under a big moon, the Black Star behind them.",
+            summary:
+              "Fifteen minutes later Jenny and Sam are in a small boat, and the Black Star is behind them. It is a beautiful night with a big moon, and Jenny tells her father that he is free.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Sam standing up in the small boat and pointing to an island on the horizon.",
+            summary:
+              "After five days Jenny sees a big white bird carrying some grass. Sam stands up in the boat and sees an island on the horizon.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Sam and Jenny drinking from a small river on the wooded island.",
+            summary:
+              "On the island, Sam and Jenny look for food and water and find a small river with cold, clean water. Sam opens two coconuts and gives the first one to Jenny.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Sam and Jenny looking up at their new grass-and-wood house with Sam’s shirt as a flag on the roof.",
+            summary:
+              "That night they sleep on the beach. In the morning they build a small house with grass and wood, and after four days Sam puts his shirt on the roof as a flag.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Sam stepping on a long snake on the ground while Jenny fishes nearby.",
+            summary:
+              "Sam and Jenny are very happy for the first year. Then one morning, while Jenny is fishing, Sam steps on a snake and it bites him.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Jenny sitting beside her father’s bed in the island house, watching over him.",
+            summary:
+              "Jenny pulls her father along the beach to the house. He is very weak, and she sits next to his bed for three days and nights until he opens his eyes.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Jenny running to the house to tell her father about the ship coming to the island.",
+            summary:
+              "After ten days Sam is well again but not very strong, so Jenny does all the work. One morning she sees a ship coming to the island and runs to tell her father.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Sam and Jenny watching from the house as three men lower a boat from the ship.",
+            summary:
+              "Sam asks if the ship is the Black Star. He sees three men putting a boat in the water, and he and Jenny start to run away.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Sam and Jenny hiding behind a big tree as a man with a gun turns toward them.",
+            summary:
+              "Sam and Jenny hide behind a big tree. A man with a gun turns and asks who is there, and he is surprised when he sees that Jenny is English.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Sam and Jenny on the deck of the Red Rose, looking back at Tinkers Island for the last time.",
+            summary:
+              "That evening the men invite the Tinkers to sail to America with them on the Red Rose. The next day, January 1st, 1800, Sam and Jenny are happy but sad as they say goodbye to Tinkers Island.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 } as const;

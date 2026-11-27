@@ -193,5 +193,99 @@ export const theFireboy = {
       imageAlt: "Hapu smiling after Cleopatra gives him and his father work.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Hapu working as a fireboy in his father's factory.",
+            summary:
+              "Hapu lives in Ancient Egypt in the time of Queen Cleopatra. He is a fireboy in his father’s small factory, and the work is hot and hard because they are poor.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Hapu and Bak talking beside the Nile.",
+            summary:
+              "Every evening Hapu and Bak sit beside the Nile. Bak tells his son that one day they are going to be very rich.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Hapu helping Bak after he falls in the factory.",
+            summary:
+              "Three days later Bak feels ill while they are making a table. He falls on the ground, and Hapu runs to him and puts a hand under his head.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Hapu speaking to his ill father in bed.",
+            summary:
+              "The next day Bak stays in bed because he is ill. Hapu is very sad, but then he has an idea: he must make something for somebody very rich, like the Queen.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Hapu holding the gold necklace he made.",
+            summary:
+              "Bak is ill for two weeks. In that time Hapu makes tables and chairs, and he also makes a beautiful gold necklace. He thinks Queen Cleopatra is going to pay a lot of money for it.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "The palace guards refusing to let Hapu see Cleopatra.",
+            summary:
+              "The next morning Hapu goes to Cleopatra’s palace with the necklace in a bag under his shirt. The two guards laugh at him and do not let him see the Queen.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Hapu hearing two men talk in the market.",
+            summary:
+              "Hapu leaves the palace and walks home. In the market he hears two men say that Cleopatra’s women are coming very early the next morning, and he thinks this is very good news.",
+          },
+          {
+            img: `${imageBase}/paragraph-8-9.avif`,
+            alt: "Hapu stepping in front of Queen Cleopatra's procession in the market.",
+            summary:
+              "The next day Hapu waits in the market with the necklace. A long line of people arrives, and Queen Cleopatra herself comes in a beautiful chair. Hapu runs in front of her chair and asks her to stop.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Hapu giving his necklace to Queen Cleopatra.",
+            summary:
+              "Hapu gives the necklace to Queen Cleopatra. She says it is beautiful and tells her guards to give the boy some money.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Hapu showing Cleopatra's money to his father.",
+            summary:
+              "Hapu runs home and shows the money to his father in bed. Bak does not understand, so Hapu tells him everything, and Bak says he is a good son.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "A palace guard finding Hapu beneath the night sky.",
+            summary:
+              "That night Hapu looks up at the stars and thinks he can pay for a doctor for his father. Then one of Cleopatra’s guards comes and asks if he is Hapu, son of Bak.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "The guard ordering Hapu to come to the palace.",
+            summary:
+              "The guard says Queen Cleopatra wants to give Hapu a job at the palace. Hapu says he cannot leave his father, but the guard tells him he must take the job and say goodbye first.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Hapu explaining his father's illness to Cleopatra.",
+            summary:
+              "At the palace, Cleopatra is wearing the necklace and asks Hapu to live there and make beautiful things for her. Hapu explains that his father is very ill, and he tells her everything.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Hapu smiling after Cleopatra gives him and his father work.",
+            summary:
+              "Cleopatra says Hapu can go home to his father. But from that day, the two of them work only for her, and Hapu is very happy because now they can be rich.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

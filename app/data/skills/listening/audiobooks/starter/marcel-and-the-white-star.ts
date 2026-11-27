@@ -191,5 +191,93 @@ export const marcelAndTheWhiteStar = {
       imageAlt: "Marcel relaxing on his boat after returning the White Star.",
       mediaPosition: "bottom",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Marcel leaving his home on an old boat in Paris.",
+            summary:
+              "Marcel is a French mouse. He lives on an old boat in Paris, and he likes books, restaurants, old films and the opera.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Two suspicious men reading a magazine at the Louvre station.",
+            summary:
+              "At the metro station, Marcel hears two men talking. They are talking about Zaza Dupont’s diamond ring, the White Star.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Zaza Dupont wearing the White Star at the opera.",
+            summary:
+              "Marcel remembers Zaza at the opera with the White Star on her finger. He follows the two men onto the train.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Marcel looking through the window while Zaza calls the police.",
+            summary:
+              "Marcel loses the men in the crowd. When he finds Zaza’s house, she is already telling the police about the men and the ring.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "The thieves escaping in a black car.",
+            summary:
+              "Marcel sees the two men stealing a car. He runs down the street and jumps onto the car’s number-plate.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "The thieves arriving at a Paris café.",
+            summary:
+              "Marcel sits on the number-plate and the thieves drive across Paris very fast. After half an hour, the car stops next to a café.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "The thieves showing the White Star to a woman in the café.",
+            summary:
+              "In the café, the thieves show the White Star to a woman at a table. Marcel sits under the table and listens.",
+          },
+          {
+            img: `${imageBase}/paragraph-8-9.avif`,
+            alt: "Marcel escaping through the crowded café with the White Star.",
+            summary:
+              "Marcel bites the tall man’s leg, and the box and the ring fall on the floor. He puts the White Star around his neck and runs out of the café while the thieves chase him.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Marcel entering Zaza's bedroom while she sleeps.",
+            summary:
+              "Marcel sees the Sacré Coeur and knows where he is. He walks back to Zaza’s house, and she is asleep in bed.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Marcel on Zaza's dressing table trying to remove the ring.",
+            summary:
+              "Marcel climbs onto Zaza’s dressing table, but he cannot take the ring off his neck. He pulls and pulls, but nothing happens.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Marcel using soap to remove the diamond ring.",
+            summary:
+              "Marcel finds some soap in Zaza’s bathroom and puts it on his neck. This time the diamond ring comes off.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Zaza finding the White Star on her bedroom table.",
+            summary:
+              "In the morning, Zaza finds the White Star on her table between two perfume bottles. She does not understand, because the ring has soap on it, and she telephones the police.",
+          },
+          {
+            img: `${imageBase}/paragraph-14-15.avif`,
+            alt: "Marcel relaxing on his boat after returning the White Star.",
+            summary:
+              "The next day, Zaza’s story is in all the newspapers and she looks very happy in the photos. Marcel reads the stories on his boat, sees a thin red line on his neck and smiles at the blue sky.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

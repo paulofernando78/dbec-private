@@ -112,7 +112,7 @@ const SingleFlipCard = ({
   return (
     <div className={`relative w-full aspect-square perspective-[5000px] p-1.25 ${className}`}>
       <div
-        className={`relative w-full h-full border-10 transition-transform duration-1000 border-slate-300 rounded-lg transform-3d ${flipped ? "transform-[rotateY(180deg)]" : ""}`}
+        className={`relative w-full h-full border transition-transform duration-1000 border-slate-300 rounded-lg transform-3d overflow-hidden ${flipped ? "transform-[rotateY(180deg)]" : ""}`}
         onClick={() => setFlipped((prev) => !prev)}
       >
         <div className="absolute w-full h-full backface-hidden grid place-items-center bg-slate-200 transform-[rotateY(0deg)]">

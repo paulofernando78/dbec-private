@@ -198,5 +198,105 @@ export const whoWantsToBeAStar = {
       imageAlt: "Tina enjoying school life with her new friends in Guernsey.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Tina posing for photographers as the star Curls.",
+            summary:
+              "Tina Daniels is thirteen years old and she is a star. She can sing and dance, everyone loves her, and people call her Curls because of her curly hair.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Tina arguing with her mother about eating chocolates.",
+            summary:
+              "Tina's mother tells her not to eat chocolates and says that a fat girl does not get lots of money in Hollywood. Tina is angry with her mother and she cries.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Tina looking at a photograph of Mrs. White's country house.",
+            summary:
+              "Tina is sad because she does not want to be a star. She wants a quiet life, so she decides to go to old Mrs. White's house in Stonechurch.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Tina buying a train ticket to Stonechurch.",
+            summary:
+              "At the city station, Tina is wearing jeans and an old jumper, so people do not know who she is. She buys a ticket, and her train leaves at two o'clock from platform three.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Tina arriving at Mrs. White's house in Stonechurch.",
+            summary:
+              "Tina arrives in Stonechurch and finds the old house from the photo near the river. She rings the bell, and an old lady with white hair opens the door.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Mrs. White welcoming Tina into her house.",
+            summary:
+              "Tina says she is a school friend of Mrs. White's granddaughter, Mary, and that she hates city life. Mrs. White asks her to come in for a cup of tea.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Tina and Mrs. White drinking tea together.",
+            summary:
+              "Mrs. White does not know that Tina is a star because she has no television or radio. Tina does not telephone her mother, and she tells Mrs. White that her mother says yes.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Tina and Mrs. White watching lambs in the country.",
+            summary:
+              "Mrs. White takes Tina for a walk and they see the lambs. Tina wants to be a lamb because lambs can jump and run and be happy, and Mrs. White tells her to run.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Tina and Mrs. White watching hedgehogs in the garden.",
+            summary:
+              "At night, Tina and Mrs. White wait very quietly in the garden. Some hedgehogs come every night, and Mrs. White puts out food for them.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "A fox running away with one of Mrs. White's chickens.",
+            summary:
+              "A big brown fox runs across the garden. At first Tina is happy to see it, but then she sees that the fox has Mrs. White's chicken in its mouth.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Mrs. White and Tina checking the frightened chickens.",
+            summary:
+              "The chickens make a terrible noise and they are not happy, so they cannot give the girls any eggs. For breakfast, Tina has toast and fresh orange juice.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "The postman recognizing Tina beside Bella the horse.",
+            summary:
+              "Three days later, Tina is with Bella the horse and gives her some sugar. The postman sees her, knows she is Curls, and runs to his van because everyone is looking for her.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Mrs. White discovering Tina's identity in the newspaper.",
+            summary:
+              "Mrs. White reads the newspaper and learns that Tina is the lost TV star. Tina asks her not to send her home, and Mrs. White says she has a good idea.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Mrs. White explaining her plan to Tina's mother.",
+            summary:
+              "Tina's mother is very happy to see her again. Mrs. White says Tina can go to her friend's school on the island of Guernsey, where nobody knows she is Curls, because she wants to be happy.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Tina enjoying school life with her new friends in Guernsey.",
+            summary:
+              "Tina is at school in Guernsey with new friends and new interests. Her friend reads a magazine about stars, and Tina smiles because she does not want to be a star.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

@@ -1,3 +1,5 @@
+import type { AudiobookRetell } from "../index";
+
 type AudiobookImage = {
   localMedia?: string;
   r2?: string;
@@ -15,6 +17,7 @@ export type AudiobookSection = AudiobookImage & {
   text: string | readonly AudiobookBlock[];
   questions?: readonly string[];
   answers?: readonly string[];
+  retell?: AudiobookRetell;
   mediaPosition?: "left" | "right" | "top" | "bottom";
   localAudio?: string;
   r2Audio?: string;
@@ -201,6 +204,106 @@ export const theWhiteOryx = {
       r2: `${imageBase}/paragraph-15.avif`,
       imageAlt: "Abdullah holding the young oryx with Mandy and the policeman.",
       mediaPosition: "left",
+    },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Abdullah and Mandy in the desert looking toward trees.",
+            summary:
+              "Mandy Brown and Abdullah are in the desert. Abdullah is an oryx ranger, and Mandy takes photos of the white oryx for her book.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Abdullah talking on the radio next to the car while Mandy watches.",
+            summary:
+              "Abdullah says they put little radios on the oryx. Then the radio in the car calls: there is a problem in Wadi Bidbid, perhaps poachers.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "The car driving fast across the desert.",
+            summary:
+              "Mandy says she can come with Abdullah, and she can perhaps help him. They get into the car and drive quickly across the desert.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "The car in the desert with tracks and blood in the sand.",
+            summary:
+              "Abdullah explains that poachers shoot the oryx and sell the heads, or catch the young oryx and sell them. At Wadi Bidbid they look for tracks in the sand.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Mandy and Abdullah looking at a dead oryx under a tree.",
+            summary:
+              "Mandy sees tracks of a truck and of some oryx. There is blood in the sand, so they follow the tracks of the truck slowly.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Mandy looking out the car window while Abdullah speaks on the radio.",
+            summary:
+              "Under a tree they find a dead mother oryx. The baby oryx is not there, so Mandy asks if they can follow the truck and catch the poachers.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Mandy on top of the car pointing left while Abdullah checks the road.",
+            summary:
+              "Mandy watches the tracks and Abdullah talks on the radio. The police have a helicopter near them, and they are coming, too.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Mandy and Abdullah reacting to a bullet hole in the car window.",
+            summary:
+              "They come to a road and cannot see the truck’s tracks now. Mandy climbs on the car, sees a cloud of sand on the left, and they go left.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "The poachers' truck kicking up sand as Mandy and Abdullah take cover.",
+            summary:
+              "They see the poachers’ truck and a man with a gun near it. The man shoots at them, and there is a hole in the car window.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "A police helicopter hovering above the poachers' truck in the sand.",
+            summary:
+              "Abdullah drives into some small trees and stops the car. Mandy sees the truck coming back, and she calls for help.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "The young oryx in the truck while police arrest the poachers outside.",
+            summary:
+              "The car is stuck in the sand. A police helicopter comes and makes a big cloud of sand, so the truck stops and two men run into the desert.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Abdullah checking the young oryx in the truck while Mandy takes photos.",
+            summary:
+              "The helicopter comes down near the poachers, and they put down their guns and put up their hands. The young oryx is in the back of the truck and it is not moving.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "A policeman talking to Abdullah and Mandy by the young oryx.",
+            summary:
+              "The little oryx opens its eyes and moves its legs, so it is not dead. Abdullah says they can find it a new mother, and Mandy wants some photos.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Abdullah holding the young oryx while talking with the policeman and Mandy.",
+            summary:
+              "Mandy takes photos of Abdullah, the young oryx, the police and the poachers. The policeman says it is not a bad day, because the young oryx is OK and they have two poachers.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Abdullah holding the young oryx with Mandy and the policeman.",
+            summary:
+              "Mandy says it is a good day for her because she has interesting pictures for her book. The policeman thinks she can write a new book about the poachers and Abdullah.",
+          },
+        ],
+      },
     },
   ] satisfies AudiobookSection[],
 };

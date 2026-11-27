@@ -196,5 +196,105 @@ export const flyingHome = {
       imageAlt: "Felix reuniting with his family in the jungle.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Felix in his cage high above New York City.",
+            summary:
+              "Felix is a blue and yellow bird from Brazil. He lives with the Baxter family in a cage in New York, but he isn’t happy. He wants to go home to Brazil.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Felix looking at the moon from his cage at night.",
+            summary:
+              "Every night Felix looks at the big city from his cage. He remembers the big yellow moon in Brazil and his last day in the jungle.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Felix remembering his family in the Brazilian jungle.",
+            summary:
+              "Felix closes his eyes and thinks about his family. He wants to fly home to the jungle, because it is warm and the trees are always green.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Mr Baxter leaving Felix's cage open.",
+            summary:
+              "Mr Baxter opens the cage to give Felix some food. Then the telephone rings and he forgets to shut the cage. Felix sees an open window.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Felix flying through New York above a café.",
+            summary:
+              "Felix flies out of the cage and out of the window. The air is very cold, but he doesn’t go back. A girl in a café sees him, but her mother doesn’t.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Felix resting on the Statue of Liberty.",
+            summary:
+              "Felix stops on the head of the Statue of Liberty. A small grey and white bird asks him where he is going, and Felix says he is going home.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Felix flying south over the Atlantic at sunset.",
+            summary:
+              "Felix flies south over the Atlantic Ocean. The sky is red, yellow and blue at sunset, and Felix is happy because he is free.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Felix spotting a ship during a storm.",
+            summary:
+              "Two hours later it starts to rain and the sky is black. Felix can’t see the moon or the stars, and he asks himself if he is doing the right thing. Then he sees a ship in the water.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Felix leaving a fishing boat after resting.",
+            summary:
+              "Felix flies down to the ship and eats twenty fish in five minutes, then he sleeps. In the morning a man on the ship only wants to take a photograph of him.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Felix meeting a large bird above Machu Picchu.",
+            summary:
+              "Two days later Felix flies across Peru. He sees the old Inca city of Machu Picchu, and then he sees a big bird with black and white feathers.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Felix talking to a large Andean bird.",
+            summary:
+              "Felix tells the bird his story about the cage in New York. The bird says he has a friend called Aca in Rio who knows the jungle.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Felix flying over a colorful celebration in Rio.",
+            summary:
+              "Felix flies to Rio, where he hears music and sees a lot of birds in a tree. He calls Aca, and a boy in the street asks his father if he can have Felix.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Aca rescuing Felix from a man in Rio.",
+            summary:
+              "A warm hand catches Felix’s neck, and he fights with his wings and his feet. Aca helps him and the two birds fly into the sky, and then Felix tells Aca his story.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Felix and Aca discovering road construction in the jungle.",
+            summary:
+              "Felix and Aca fly to the jungle, but they find a lot of men and machines there. They are making a new road, and Felix can’t see his home or his family.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Felix reuniting with his family in the jungle.",
+            summary:
+              "Felix sees a small blue and yellow feather and looks up. Four birds are above the trees: it is his family, and Felix is home at last.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

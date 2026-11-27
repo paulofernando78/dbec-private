@@ -198,5 +198,106 @@ export const newspaperChase = {
       imageAlt: "Janey speaking with a policeman after Harry is arrested.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Harry Black entering the art gallery at night.",
+            summary:
+              "At one o’clock in the morning, Harry Black comes into the Ritesville town art gallery. He is a thief, and he sees the painting across the room.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Harry cutting the painting from its frame.",
+            summary:
+              "Harry takes out a knife and very slowly takes the painting from its frame. He does not understand it, but he thinks it is worth a million dollars.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Harry standing beside the broken glass vase.",
+            summary:
+              "Harry walks into a table and a beautiful blue glass vase breaks into a hundred pieces. He smiles and runs to the window.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Harry carrying the wrapped painting up the stairs.",
+            summary:
+              "Harry goes quietly up to his room in Mrs. Allen’s rooming house. He puts the painting in a newspaper and hides the newspaper under his bed.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Janey recycling bottles while watching the news.",
+            summary:
+              "In the morning, Janey is putting old bottles into a box in the kitchen. On the TV, a reporter is talking about the million-dollar painting.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Janey remembering that the recycling truck is coming.",
+            summary:
+              "The reporter says the blue vase is in a hundred pieces now. Mrs. Allen says the newspaper recycling truck is coming today, and Janey remembers it is Friday.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Harry arguing on the telephone.",
+            summary:
+              "Harry is talking on the telephone to a man in Seattle. The man offers five thousand dollars for the painting, but Harry wants fifty thousand.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Janey finding the newspaper under Harry's bed.",
+            summary:
+              "Janey takes the old newspapers from every room in the house. In Harry’s room, she sees a newspaper under his bed and takes it for recycling.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Janey handing the recycling box to a worker.",
+            summary:
+              "Janey puts the newspapers into a black box and quickly gives it to a man on the recycling truck. Harry sees her and says, “It’s Friday! Oh, no!”",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Harry chasing and jumping onto the recycling truck.",
+            summary:
+              "Harry chases the truck and jumps into the back. He wants his newspaper, but there are thousands of newspapers in the truck.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Janey noticing something in Harry's shoe.",
+            summary:
+              "Janey asks Harry why his newspaper is important, but he does not hear her. He is thinking about his painting, and Janey looks at his shoe.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Janey seeing a piece of blue glass in Harry's shoe.",
+            summary:
+              "Janey sees a piece of blue glass in Harry’s shoe. She remembers the vase in the art gallery and thinks that Harry Black is the thief.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt:
+              "Harry arguing with the recycling workers while Janey calls the police.",
+            summary:
+              "The men from the recycling truck are angry because they are late. In the house, Janey calls the police and tells them about the blue glass.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "A policeman examining the blue glass from Harry's shoe.",
+            summary:
+              "Two policemen look at Harry’s shoe and take out the glass. They say the glass is from a very expensive vase, and Harry understands.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Janey speaking with a policeman after Harry is arrested.",
+            summary:
+              "The police find the newspaper with the painting inside the truck. A policeman says there is a reward, so Janey wants to buy a painting with the money.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

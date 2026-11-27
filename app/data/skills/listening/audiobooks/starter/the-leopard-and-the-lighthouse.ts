@@ -199,5 +199,105 @@ export const theLeopardAndTheLighthouse = {
       imageAlt: "Saied and Tanza visiting the leopard with their children.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "The island of Sindi and its old lighthouse.",
+            summary:
+              "Sindi is an island in East Africa with beautiful beaches and a small village. An old, empty lighthouse stands near the village on the rocks by the sea.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "A leopard swimming from the mainland to Sindi.",
+            summary:
+              "Sindi is about five hundred metres from the African mainland. One day a hungry leopard swims across the sea and walks along the road to the village.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "The leopard running through the crowded marketplace.",
+            summary:
+              "The hungry leopard runs into the marketplace. The children cry and the men throw stones, so he runs out of the market.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Villagers chasing the leopard through the streets.",
+            summary:
+              "The people follow the leopard and throw stones because they do not want him in their village. He is very tired and turns along a small road between two high walls.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "The leopard entering the old lighthouse.",
+            summary:
+              "The leopard cannot go back, but he sees a tall building with an open door. He runs inside and up the stairs, and the building is the old lighthouse.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "The villagers seeing the leopard at the top of the lighthouse.",
+            summary:
+              "The people stop running and look up. They can see the leopard high up on the wall at the top of the lighthouse, and the leopard looks down at them.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "The leopard and villagers waiting outside the lighthouse.",
+            summary:
+              "The leopard stays in the lighthouse for three days and nights with no food or water. The people talk and wait, but they do not go into the lighthouse.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Mohammed announcing a competition to the people of Sindi.",
+            summary:
+              "Mohammed is the Head Man of Sindi and he has a beautiful daughter called Tanza. He says the men can have a competition to kill the leopard, and the winner can marry Tanza.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Ahmed firing his gun at the leopard.",
+            summary:
+              "Ahmed is old, but he brings his gun and fires at the leopard. The leopard does not fall off the wall, and Tanza is very happy.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "Jamal tying a goat near the lighthouse stairs.",
+            summary:
+              "Jamal is big and strong, and he says he can kill the leopard with his knife. He ties a goat to the bottom of the stairs and waits.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "The goat escaping as the leopard comes down the stairs.",
+            summary:
+              "The leopard smells the goat and comes down the stairs. The goat pulls at the rope until it breaks and runs away, so the leopard runs back up the stairs.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "A quiet young man showing Mohammed a tranquilizer dart.",
+            summary:
+              "A quiet young man says he can help, and he shows Mohammed a dart. He puts the dart into his gun.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Saied firing the dart at the leopard.",
+            summary:
+              "The young man’s name is Saied, and Tanza likes him. He fires the dart, but nothing happens, and Ahmed and Jamal laugh. Saied says to wait.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Saied protecting the sleeping leopard from the villagers.",
+            summary:
+              "The leopard falls, but he is not dead — he is only sleeping. Saied says the leopard is beautiful and asks for him, and Mohammed gives the leopard to Saied.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Saied and Tanza visiting the leopard with their children.",
+            summary:
+              "Saied takes the leopard to the Animal Park in Nairobi, and later he marries Tanza. Five years later, their children ask him to tell the story of the leopard and the lighthouse.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

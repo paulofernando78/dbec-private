@@ -198,5 +198,105 @@ export const simonAndTheSpy = {
       imageAlt: "Simon explaining to the police where the letter is.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Simon reading about the spy at the station.",
+            summary:
+              "Simon is at the station and he is going on a train. There are policemen everywhere. A man shows Simon his newspaper, and it says there is a spy.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Simon hurrying through the busy station.",
+            summary:
+              "Simon looks at the people but he can’t see any spies. His train goes at 11.00 and it is 10.57, so he runs to the train. An old woman with an umbrella is near him.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Simon and the old woman dropping their things at the station.",
+            summary:
+              "The old woman’s bag hits Simon’s foot and he falls. A letter falls out of her bag. Simon puts it in his bag with his things, but he doesn’t see it.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "Simon meeting a girl while the old woman watches his bag.",
+            summary:
+              "Simon sits down and there is a beautiful girl beside him. The old woman is looking at Simon’s bag. Then she sees the policemen and walks quickly down the train.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "The disguised spy waiting to trip Simon on the train.",
+            summary:
+              "Simon likes the girl and she likes him. He goes to the restaurant for coffee, and the old woman is waiting for him. Simon doesn’t see her or her foot.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "Simon noticing the old woman's unusual shoes.",
+            summary:
+              "The train is going fast and Simon falls. The old woman falls too, and Simon helps her. He sees her shoes and thinks, “They’re not women’s shoes.”",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Simon and the girl walking toward the boat.",
+            summary:
+              "Simon and the girl walk from the train to the boat. There are policemen here too, but Simon looks and says he can’t see any spies.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Simon and Samantha talking while they wait for the boat.",
+            summary:
+              "It is a beautiful day. Simon and the girl sit near the water and wait for the boat. Her name is Samantha. They are talking and they don’t see the old woman.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "Simon noticing the old woman's trousers near the boat.",
+            summary:
+              "A lorry is coming down the road fast, so Simon and Samantha jump back. The old woman jumps back too. Simon sees her trousers and thinks they are not women’s trousers.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "The old woman reaching for the letter behind Simon and Samantha.",
+            summary:
+              "Simon takes out his lunch and the old woman’s letter, but he doesn’t see the letter. Simon offers Samantha a sandwich and she offers him an apple. The old woman is behind them.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Simon and the old woman chasing the letter on the boat.",
+            summary:
+              "The wind is strong and it takes the letter. Samantha asks if it is Simon’s boat ticket. Simon runs for his ticket and the old woman runs for her letter.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "A dog catching the letter in its mouth.",
+            summary:
+              "A dog runs to the paper and catches it in his mouth. Simon shouts, “My ticket!” and the old woman shouts, “My letter!” The dog runs along the boat.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "Samantha catching the dog with the letter.",
+            summary:
+              "Samantha jumps up and catches the dog. Simon looks at the paper and says it is not his ticket. The old woman says it is her letter.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "The dog's actions revealing the disguised spy.",
+            summary:
+              "The dog pulls the old woman’s coat and the wind takes her hat and her hair. It is not an old woman, it is a man. Simon says, “The spy!” and calls the police.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Simon explaining to the police where the letter is.",
+            summary:
+              "The police have the spy, but they can’t find the letter with the names and addresses. Simon looks at the dog and says the letter is in the dog.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };

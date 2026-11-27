@@ -536,9 +536,9 @@ export const newZealandAdventure = {
     {
       id: "retell-the-story",
       title: "Retell the Story",
-      text: "Look at each picture and retell that part of the story. Speak in complete sentences and use the pictures in order, from the airport to the whale-watching trip.",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
       retell: {
-        instruction: "Tap a card to read what you should say.",
+        instruction: "Flip the cards and retell the story.",
         cards: [
           {
             img: `${imageBase}/paragraph-1.avif`,

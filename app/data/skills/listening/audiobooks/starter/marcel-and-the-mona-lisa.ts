@@ -184,5 +184,105 @@ export const marcelAndTheMonaLisa = {
       imageAlt: "Marcel back in Paris telling Céline the story.",
       mediaPosition: "left",
     },
+    {
+      id: "retell-the-story",
+      title: "Retell the Story",
+      text: "Look at each picture and retell that part of the story. Use complete sentences and follow the pictures in order.",
+      retell: {
+        instruction: "Flip the cards and retell the story.",
+        cards: [
+          {
+            img: `${imageBase}/paragraph-1.avif`,
+            alt: "Marcel arriving at the Louvre with flowers.",
+            summary:
+              "Marcel is a French mouse and a detective. One evening in May he goes to the Louvre to have dinner with his friend Céline, and he sees a new guard at the door.",
+          },
+          {
+            img: `${imageBase}/paragraph-2.avif`,
+            alt: "Marcel and Céline talking in her home at the Louvre.",
+            summary:
+              "The two friends eat, drink and talk all evening. They talk about their summer holiday in New York. At 11 o'clock Marcel puts on his coat and goes home.",
+          },
+          {
+            img: `${imageBase}/paragraph-3.avif`,
+            alt: "Marcel watching the guard steal the Mona Lisa.",
+            summary:
+              "In the dark room Marcel sees a man with a long knife. It is the new guard, and he is stealing the Mona Lisa.",
+          },
+          {
+            img: `${imageBase}/paragraph-4.avif`,
+            alt: "The thief putting the painting into a black bag.",
+            summary:
+              "The thief puts the Mona Lisa in a black bag. Then he stops to look for his car keys, and Marcel jumps inside the bag.",
+          },
+          {
+            img: `${imageBase}/paragraph-5.avif`,
+            alt: "Marcel hidden in the bag with the Mona Lisa.",
+            summary:
+              "In the bag Marcel can see the Mona Lisa's face. The bag starts to move, and it stops at a railway station.",
+          },
+          {
+            img: `${imageBase}/paragraph-6.avif`,
+            alt: "The two thieves talking on the train.",
+            summary:
+              "The guard gets on a train and sits next to a thin man in sunglasses and a white jacket. Marcel hears the words “Italy” and “all those cats”.",
+          },
+          {
+            img: `${imageBase}/paragraph-7.avif`,
+            alt: "Marcel looking worried at the Mona Lisa.",
+            summary:
+              "Marcel is afraid because cats kill and eat mice. Then Antoine puts the bag under the seat, so Marcel cannot hear any more.",
+          },
+          {
+            img: `${imageBase}/paragraph-8.avif`,
+            alt: "Marcel looking out of the train window.",
+            summary:
+              "Early next morning Marcel looks out of the window. He sees a small village and some mountains, and a sign says it is a hundred and eighty kilometres to Venice.",
+          },
+          {
+            img: `${imageBase}/paragraph-9.avif`,
+            alt: "The thieves in a gondola in Venice.",
+            summary:
+              "In Venice the two thieves travel on a gondola. They read a newspaper about the stolen painting and stop at Signor Spandini's house.",
+          },
+          {
+            img: `${imageBase}/paragraph-10.avif`,
+            alt: "The thieves meeting Signor Spandini.",
+            summary:
+              "An old woman opens the front door and takes the thieves to Signor Spandini. Marcel jumps out of the bag and hides behind a chair.",
+          },
+          {
+            img: `${imageBase}/paragraph-11.avif`,
+            alt: "Marcel climbing a red curtain away from the cats.",
+            summary:
+              "There are nine cats in the room, and one of them sees Marcel. He is afraid, so he climbs up a red curtain.",
+          },
+          {
+            img: `${imageBase}/paragraph-12.avif`,
+            alt: "Marcel pushing the candles off the bookcase.",
+            summary:
+              "A cat starts to climb after him. Marcel jumps onto the bookcase and pushes two heavy candles over.",
+          },
+          {
+            img: `${imageBase}/paragraph-13.avif`,
+            alt: "The carpet on fire while Marcel takes the painting.",
+            summary:
+              "The candles fall and the carpet is on fire. Spandini calls for water, and Marcel takes the Mona Lisa and runs out of the room.",
+          },
+          {
+            img: `${imageBase}/paragraph-14.avif`,
+            alt: "Marcel pushing the painting through a letter-box.",
+            summary:
+              "Marcel runs for a long time and stops in a quiet street. In front of him there is a police station, and he pushes the Mona Lisa through the letter-box.",
+          },
+          {
+            img: `${imageBase}/paragraph-15.avif`,
+            alt: "Marcel back in Paris telling Céline the story.",
+            summary:
+              "Two days later Marcel is in Paris again. He tells Céline everything, and he says that the Mona Lisa is fine.",
+          },
+        ],
+      },
+    },
   ] satisfies AudiobookSection[],
 };
