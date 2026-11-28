@@ -27,6 +27,11 @@ const formatLessonDate = (lessonDate: string) => {
   }).format(new Date(year, month - 1, day));
 };
 
+// "15:00 - 16:00" → "15:00". O card já mostra a hora atual por extenso; ao lado
+// da data da aula basta o horário de início.
+const formatLessonTime = (time: string | null) =>
+  time?.match(/\d{1,2}:\d{2}/)?.[0] ?? null;
+
 export const DateTimeCard = ({ className = "" }: { className?: string }) => {
   const session = useSession();
   const isTeacher = session?.role === "teacher";
@@ -130,7 +135,12 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
   const fullTime = new Intl.DateTimeFormat("en-US", {
     timeStyle: "short",
   }).format(now);
-  const showsLessonDate = nextLesson && nextLesson.lessonDate !== today;
+  const lessonTime = formatLessonTime(nextLesson?.time ?? null);
+  const lessonDate =
+    nextLesson && nextLesson.lessonDate !== today
+      ? formatLessonDate(nextLesson.lessonDate)
+      : null;
+  const lessonDetails = [lessonDate, lessonTime].filter(Boolean);
 
   return (
     <div className={`text-[clamp(0.875rem,calc(100cqw/13),1rem)] text-center ${className}`}>
@@ -157,9 +167,9 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
             <>
               <span>upcoming student:</span>
               <span className="font-semibold">{nextLesson.name}</span>
-              {showsLessonDate && (
+              {lessonDetails.length > 0 && (
                 <span className="whitespace-nowrap tabular-nums">
-                  ({formatLessonDate(nextLesson.lessonDate)})
+                  ({lessonDetails.join(" · ")})
                 </span>
               )}
             </>

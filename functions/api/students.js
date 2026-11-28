@@ -1,6 +1,7 @@
 // Essa função impede que alunos ou visitantes cadastrem outros alunos. Somente a sessão do professor será aceita.
 
 import { readCookie, verifySession } from "../_auth.js";
+import { syncPendingLessons } from "../_calendar.js";
 import {
   capacityMessage,
   isAdmin,
@@ -199,7 +200,7 @@ export async function onRequestPost(context) {
   }
 
   try {
-    await context.env.DB.prepare(
+    const inserted = await context.env.DB.prepare(
       `INSERT INTO users (
         username,
         student_slug,
@@ -230,6 +231,13 @@ export async function onRequestPost(context) {
         ownerId,
       )
       .run();
+
+    // As aulas futuras dos dias escolhidos já nascem pendentes no calendário.
+    await syncPendingLessons(
+      context.env.DB,
+      inserted.meta.last_row_id,
+      input.schedule,
+    );
 
     return Response.json(
       {
@@ -325,7 +333,13 @@ export async function onRequestPut(context) {
     );
   }
 
-  if (!(await loadAccessibleStudent(context.env.DB, teacher, studentId))) {
+  const student = await loadAccessibleStudent(
+    context.env.DB,
+    teacher,
+    studentId,
+  );
+
+  if (!student) {
     return Response.json(
       { error: "Aluno não encontrado." },
       { status: 404, headers: noStoreHeaders },
@@ -386,6 +400,10 @@ export async function onRequestPut(context) {
       { status: 404, headers: noStoreHeaders },
     );
   }
+
+  // Em caso de troca de dias de aula, as datas novas entram como pendentes e as
+  // pendências que deixaram de existir são removidas.
+  await syncPendingLessons(context.env.DB, student.id, schedule);
 
   return Response.json({ ok: true }, { headers: noStoreHeaders });
 }

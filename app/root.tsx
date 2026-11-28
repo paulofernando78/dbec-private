@@ -195,35 +195,8 @@ function AppContent() {
   return (
     <div className={`app ${isWideLayout ? "app--wide" : ""}`}>
       <div className="app-container">
-        {/* A barra superior leva o logotipo fora da página inicial, a faixa da conta quando há sessão e o “buy me a coffee” enquanto não há. */}
         {showTopBar && (
           <Card className="flex min-h-10.25 items-center justify-between gap-2">
-            {location.pathname !== "/" && (
-              <div
-                className={`min-w-0 flex-1 ${isAuthenticated ? "max-[700px]:hidden" : ""}`}
-              >
-                <BrandLogo
-                  compact
-                  layout="responsive"
-                  className="pl-0.5 max-w-full translate-y-[0.1rem] dark:invert"
-                />
-              </div>
-            )}
-            {session === undefined ? null : isAuthenticated ? (
-              <AccountBar className="ml-auto justify-end" />
-            ) : (
-              showCoffee && (
-                <div className="ml-auto shrink-0">
-                  <Contact />
-                </div>
-              )
-            )}
-          </Card>
-        )}
-        <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
-          <div
-            className={`flex shrink-0 items-center gap-2 ${isPresentationPage ? "w-22" : "w-10 min-[920px]:w-22"}`}
-          >
             {!isPresentationPage && (
               <Button
                 ariaLabel="Menu"
@@ -233,7 +206,7 @@ function AppContent() {
               />
             )}
             {isPresentationPage && (
-              <>
+              <div className="flex gap-2">
                 <Button
                   ariaLabel="Home"
                   icon={<House />}
@@ -248,28 +221,43 @@ function AppContent() {
                   onClick={() => navigate("/about")}
                   className="size-10! p-0.75!"
                 />
-              </>
+              </div>
             )}
-          </div>
+            {location.pathname !== "/" && (
+              <BrandLogo variant="header" className=" max-w-full translate-y-[0.1rem] dark:invert" />
+            )}
+            {/* {session === undefined ? null : isAuthenticated ? (
+              <div
+                className={`flex shrink-0 items-center justify-end gap-2 ${isPresentationPage ? "w-10" : "w-22"}`}
+              >aaa</div>
+            ) : (
+              showCoffee && (
+                <div className="ml-auto shrink-0">
+                  <Contact />
+                </div>
+              )
+            )} */}
+            <div className="flex gap-2">
+              <Button
+                ariaLabel={isDarkMode ? "Light mode" : "Dark mode"}
+                icon={isDarkMode ? <Sun /> : <MoonStar />}
+                onClick={() => setIsDarkMode((current) => !current)}
+              />
+              {!isPresentationPage && (
+                <Button
+                  ariaLabel={isAuthenticated ? "Log out" : "Log in"}
+                  icon={isAuthenticated ? <LogOut /> : <LogIn />}
+                  disabled={session === undefined}
+                  onClick={handleAuthentication}
+                />
+              )}
+            </div>
+          </Card>
+        )}
+        <Card className="flex flex-nowrap items-center gap-2 min-[920px]:gap-4">
+          <AccountBar className="justify-end" />
           <div className="min-w-0 flex-1 [container-type:inline-size]">
             <DateTimeCard />
-          </div>
-          <div
-            className={`flex shrink-0 items-center justify-end gap-2 ${isPresentationPage ? "w-10" : "w-22"}`}
-          >
-            <Button
-              ariaLabel={isDarkMode ? "Light mode" : "Dark mode"}
-              icon={isDarkMode ? <Sun /> : <MoonStar />}
-              onClick={() => setIsDarkMode((current) => !current)}
-            />
-            {!isPresentationPage && (
-              <Button
-                ariaLabel={isAuthenticated ? "Log out" : "Log in"}
-                icon={isAuthenticated ? <LogOut /> : <LogIn />}
-                disabled={session === undefined}
-                onClick={handleAuthentication}
-              />
-            )}
           </div>
         </Card>
         <Header />

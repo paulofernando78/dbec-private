@@ -21,6 +21,7 @@ import { isAudiobookFolder, synthesizeDictionaryTts, ttsVoiceTag } from "./funct
 import { syncAudiobookDurations } from "./scripts/sync-audiobook-durations.mjs";
 import { SESSION_IDLE_SECONDS } from "./shared/session.mjs";
 import { rosterSignature } from "./shared/roster-version.mjs";
+import { lessonDateKeys, todayDateKey } from "./shared/school-calendar.mjs";
 
 import { students as developmentStudents } from "./app/data/students";
 
@@ -458,6 +459,28 @@ const ownsLocalStudent = (
 
   const userId = session?.userId;
   return userId !== undefined && student.teacherId === userId;
+};
+
+// Mesmo efeito de syncPendingLessons no servidor: as aulas futuras dos dias
+// escolhidos entram como "P" e as pendências que deixaram de existir saem.
+const syncLocalPendingLessons = (student: LocalStudent) => {
+  const today = todayDateKey();
+  const desired = new Set(lessonDateKeys(student.schedule, today));
+  const entries = localCalendar.get(student.studentId) ?? new Map();
+
+  for (const [lessonDate, entry] of [...entries]) {
+    if (entry.status === "P" && lessonDate >= today && !desired.has(lessonDate)) {
+      entries.delete(lessonDate);
+    }
+  }
+
+  for (const lessonDate of desired) {
+    if (!entries.has(lessonDate)) {
+      entries.set(lessonDate, { status: "P", replacementDate: null });
+    }
+  }
+
+  localCalendar.set(student.studentId, entries);
 };
 
 const createStudentSlug = (name: string) =>
@@ -1559,6 +1582,7 @@ const localAuth = (): Plugin => ({
             localStudents.delete(deleteStudentId);
             localNotes.delete(deleteStudentId);
             localCalendarNotes.delete(deleteStudentId);
+            localCalendar.delete(deleteStudentId);
             response.statusCode = 200;
             response.end(JSON.stringify({ ok: true }));
             return;
@@ -1634,6 +1658,7 @@ const localAuth = (): Plugin => ({
               teacherId: ownerId,
             };
             localStudents.set(studentId, student);
+            syncLocalPendingLessons(student);
             response.statusCode = 201;
             response.end(JSON.stringify({ ok: true, student }));
             return;
@@ -1664,7 +1689,7 @@ const localAuth = (): Plugin => ({
             return;
           }
 
-          localStudents.set(studentId, {
+          const updatedStudent: LocalStudent = {
             ...current,
             studentId,
             username,
@@ -1672,7 +1697,9 @@ const localAuth = (): Plugin => ({
             schedule,
             time,
             plan,
-          });
+          };
+          localStudents.set(studentId, updatedStudent);
+          syncLocalPendingLessons(updatedStudent);
           response.statusCode = 200;
           response.end(JSON.stringify({ ok: true }));
         } catch {
