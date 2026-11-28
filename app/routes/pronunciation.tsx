@@ -24,9 +24,9 @@ export function meta() {
 const toPlainText = (value: string | RichContent | undefined) =>
   Array.isArray(value)
     ? value
-        .map((part) => (typeof part === "string" ? part : part.part ?? ""))
+        .map((part) => (typeof part === "string" ? part : (part.part ?? "")))
         .join("")
-    : value ?? "";
+    : (value ?? "");
 
 function PhoneticSoundRows({
   sounds,
@@ -44,10 +44,7 @@ function PhoneticSoundRows({
   return (
     <div className="grid gap-3">
       {sounds.map(({ phoneme, audio, examples }) => (
-        <div
-          key={phoneme}
-          className="flex min-w-0 items-center gap-3"
-        >
+        <div key={phoneme} className="flex min-w-0 items-center gap-3">
           <Audio
             asButton
             src={[
@@ -64,7 +61,7 @@ function PhoneticSoundRows({
             ariaLabel={`Play ${phoneme} and example words`}
             pauseAfterFirstMs={1000}
           />
-          <div className="flex min-w-0 flex-wrap items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center">
             <Phonetics>{phoneme}</Phonetics>
             <span>:</span>
             {examples.map((example, index) => (
@@ -100,7 +97,7 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
 
   if (phonemes.length > 0) {
     return (
-      <li className="flex min-h-17 flex-wrap items-center gap-3">
+      <li className="flex flex-wrap items-center gap-3 mb-2">
         {phonemes.map((phoneme, index) => (
           <Fragment key={`${phoneme}-${index}`}>
             {index > 0 && (
@@ -128,13 +125,15 @@ function PronunciationRow({ item }: { item: PronunciationItem }) {
 
   return (
     <ActionTextRow
-      className="min-h-17 text-sm leading-6 md:text-base"
-      action={<Audio
-        asButton
-        ariaLabel={`Play ${audioLabel}`}
-        src={audioSource}
-        fallbackText={audioLabel}
-      />}
+      className=""
+      action={
+        <Audio
+          asButton
+          ariaLabel={`Play ${audioLabel}`}
+          src={audioSource}
+          fallbackText={audioLabel}
+        />
+      }
     >
       <p>
         <span className="text-black">
@@ -166,7 +165,15 @@ export default function Pronunciation() {
     <div>
       <PageHeader
         eyebrow="Language • Pronunciation"
-        title={isPhonetics ? "Phonetics" : isAccents ? "Accents" : isSites ? "Sites" : "Linking Sounds"}
+        title={
+          isPhonetics
+            ? "Phonetics"
+            : isAccents
+              ? "Accents"
+              : isSites
+                ? "Sites"
+                : "Linking Sounds"
+        }
         description={
           isPhonetics
             ? "Learn English vowel and consonant sounds"
@@ -174,104 +181,137 @@ export default function Pronunciation() {
               ? "Compare common American and British pronunciation differences"
               : isSites
                 ? "Useful websites for listening to and practicing pronunciation"
-              : "Understand how native speakers connect words"
+                : "Understand how native speakers connect words"
         }
       />
 
       {isAccents && (
         <p className="mb-4">
-          <Link className="underline underline-offset-4" to="/culture/history/uk-great-britain-and-ireland">
+          <Link
+            className="underline underline-offset-4"
+            to="/culture/history/uk-great-britain-and-ireland"
+          >
             The UK, Great Britain &amp; Ireland
           </Link>
         </p>
       )}
       <PageSections showTableOfContents={!isSites}>
-        {isPhonetics && phoneticSections.map((section) => (
-          <Section
-            key={section.title}
-            id={`phonetics-${section.title.toLowerCase()}`}
-            label={section.title}
-            heading={2}
-            showHeader={false}
-            className="mb-4"
-          >
-            <Card title={section.title} inset>
-              <PhoneticSoundRows sounds={section.sounds} />
-            </Card>
-          </Section>
-        ))}
-        {isLinkingSounds && pronunciationSections.map((section) => (
-          <Section
-            key={section.title}
-            id={section.title.toLowerCase().replaceAll(" + ", "-").replaceAll(" ", "-")}
-            label={section.title}
-            heading={2}
-            showHeader={false}
-            className="mb-4"
-          >
-            <Card title={section.title} className="grid gap-4">
-              {section.items.map((item, itemIndex) => (
-                <ul
-                  key={`${section.title}-group-${itemIndex}`}
-                  className="grid gap-1 rounded-xl bg-(--background) p-4"
-                >
-                  {item.title && (
-                    <li>
-                      <h3 className="text-lg font-bold">{item.title}</h3>
-                    </li>
-                  )}
-                  {(item.phoneme || item.english || item.audio) && (
-                    <PronunciationRow item={item} />
-                  )}
-                  {item.group?.map((example, exampleIndex) => (
-                    <PronunciationRow
-                      key={`${section.title}-example-${itemIndex}-${exampleIndex}`}
-                      item={example}
-                    />
-                  ))}
-                </ul>
-              ))}
-            </Card>
-          </Section>
-        ))}
-        {isAccents && accentSections.map((section) => (
-          <Section key={section.id} id={section.id} label={section.title} heading={2} showHeader={false} className="mb-4">
-            <Card title={section.title} className="grid gap-4">
-              <p className="text-slate-600">{section.note}</p>
-              {section.examples.map((example) => (
-                <div key={example} className="grid gap-2 rounded-xl bg-(--background) p-3 text-base text-slate-700">
-                  <div className="flex items-center gap-2">
-                  <Audio
-                    src={example}
-                    speechLang="en-US"
-                    fallbackText={example}
-                    ariaLabel={`Play American English: ${example}`}
-                    serverTts={false}
-                    showIcon={false}
-                    wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+        {isPhonetics &&
+          phoneticSections.map((section) => (
+            <Section
+              key={section.title}
+              id={`phonetics-${section.title.toLowerCase()}`}
+              label={section.title}
+              heading={2}
+              showHeader={false}
+              className="mb-4"
+            >
+              <Card title={section.title} inset>
+                <PhoneticSoundRows sounds={section.sounds} />
+              </Card>
+            </Section>
+          ))}
+        {isLinkingSounds &&
+          pronunciationSections.map((section) => (
+            <Section
+              key={section.title}
+              id={section.title
+                .toLowerCase()
+                .replaceAll(" + ", "-")
+                .replaceAll(" ", "-")}
+              label={section.title}
+              heading={2}
+              showHeader={false}
+              className="mb-4"
+            >
+              <Card title={section.title} className="grid gap-4">
+                {section.items.map((item, itemIndex) => (
+                  <ul
+                    key={`${section.title}-group-${itemIndex}`}
+                    className="grid gap-2 rounded-xl bg-(--background) p-4"
                   >
-                    <img src="/media/images/flags/us.png" alt="American English" className="block size-10 translate-y-[-0.1rem] object-contain" />
-                  </Audio>
-                  <Audio
-                    src={example}
-                    speechLang="en-GB"
-                    fallbackText={example}
-                    ariaLabel={`Play British English: ${example}`}
-                    serverTts={false}
-                    showIcon={false}
-                    wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+                    {item.title && (
+                      <li>
+                        <h3 className="text-lg font-bold">{item.title}</h3>
+                      </li>
+                    )}
+                    {(item.phoneme || item.english || item.audio) && (
+                      <PronunciationRow item={item} />
+                    )}
+                    {item.group?.map((example, exampleIndex) => (
+                      <PronunciationRow
+                        key={`${section.title}-example-${itemIndex}-${exampleIndex}`}
+                        item={example}
+                      />
+                    ))}
+                  </ul>
+                ))}
+              </Card>
+            </Section>
+          ))}
+        {isAccents &&
+          accentSections.map((section) => (
+            <Section
+              key={section.id}
+              id={section.id}
+              label={section.title}
+              heading={2}
+              showHeader={false}
+              className="mb-4"
+            >
+              <Card title={section.title} className="grid gap-4">
+                <p className="text-slate-600">{section.note}</p>
+                {section.examples.map((example) => (
+                  <div
+                    key={example}
+                    className="grid gap-2 rounded-xl bg-(--background) p-3 text-base text-slate-700"
                   >
-                    <img src="/media/images/flags/uk.png" alt="British English" className="block size-10 translate-y-[-0.1rem] object-contain" />
-                  </Audio>
+                    <div className="flex items-center gap-2">
+                      <Audio
+                        src={example}
+                        speechLang="en-US"
+                        fallbackText={example}
+                        ariaLabel={`Play American English: ${example}`}
+                        serverTts={false}
+                        showIcon={false}
+                        wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+                      >
+                        <img
+                          src="/media/images/flags/us.png"
+                          alt="American English"
+                          className="block size-10 translate-y-[-0.1rem] object-contain"
+                        />
+                      </Audio>
+                      <Audio
+                        src={example}
+                        speechLang="en-GB"
+                        fallbackText={example}
+                        ariaLabel={`Play British English: ${example}`}
+                        serverTts={false}
+                        showIcon={false}
+                        wrapperClassName="!h-16! !w-16! !min-w-0! shrink-0 p-0.75! [&>span>span]:justify-center"
+                      >
+                        <img
+                          src="/media/images/flags/uk.png"
+                          alt="British English"
+                          className="block size-10 translate-y-[-0.1rem] object-contain"
+                        />
+                      </Audio>
+                    </div>
+                    <span className="min-w-0">{example}</span>
                   </div>
-                  <span className="min-w-0">{example}</span>
-                </div>
-              ))}
-            </Card>
-          </Section>
-        ))}
+                ))}
+              </Card>
+            </Section>
+          ))}
         {isSites && (
-          <Section id="sites" label="Sites" heading={2} showHeader={false} className="mb-4">
+          <Section
+            id="sites"
+            label="Sites"
+            heading={2}
+            showHeader={false}
+            className="mb-4"
+          >
             <Card title="Sites" inset>
               <ul className="grid gap-3">
                 {pronunciationSites.map((site) => (
@@ -284,7 +324,9 @@ export default function Pronunciation() {
                     >
                       {site.name}
                     </a>
-                    <span className="ml-2 text-slate-600">({site.description})</span>
+                    <span className="ml-2 text-slate-600">
+                      ({site.description})
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -295,4 +337,3 @@ export default function Pronunciation() {
     </div>
   );
 }
-

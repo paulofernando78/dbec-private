@@ -29,6 +29,21 @@ const maxGameSaveSize = 10 * 1024 * 1024;
 const gameSaveIdPattern = /^\/games\/(sierra|lucas-arts)\/([a-z0-9-]+)$/;
 const localNotes = new Map<string, { teacher: string; student: string }>();
 const localCalendarNotes = new Map<string, string>();
+// Espelha calendar_entries no dev: { [studentId]: { [lessonDate]: entry } }.
+const localCalendar = new Map<
+  string,
+  Map<string, { status: string; replacementDate: string | null }>
+>();
+const localCalendarStatuses = new Set([
+  "...",
+  "P",
+  "OK",
+  "ROK",
+  "SC",
+  "TC",
+  "R",
+  "H",
+]);
 const localAiTutorRequests = new Map<string, number[]>();
 const localAiTutorHistory = new Map<string, { role: string; text: string }[]>();
 const localDictionaryTtsCache = new Map<
@@ -1172,7 +1187,9 @@ const localAuth = (): Plugin => ({
           },
           student,
           notes: localNotes.get(studentId) ?? { teacher: "", student: "" },
-          calendar: [],
+          calendar: [...(localCalendar.get(studentId) ?? new Map())]
+            .map(([lessonDate, entry]) => ({ lessonDate, ...entry }))
+            .sort((a, b) => a.lessonDate.localeCompare(b.lessonDate)),
         }),
       );
     });
@@ -1224,6 +1241,132 @@ const localAuth = (): Plugin => ({
         response.end(JSON.stringify({ error: "Dados inválidos." }));
       }
     });
+
+    server.middlewares.use("/api/calendar", async (request, response, next) => {
+      if (request.method !== "PUT") return next();
+
+      response.setHeader("Content-Type", "application/json");
+      response.setHeader("Cache-Control", "no-store");
+
+      const session = localSession;
+
+      if (!session) {
+        response.statusCode = 401;
+        response.end(JSON.stringify({ error: "Não autorizado." }));
+        return;
+      }
+
+      if (session.role !== "teacher") {
+        response.statusCode = 403;
+        response.end(
+          JSON.stringify({
+            error: "Somente o professor pode alterar o calendário.",
+          }),
+        );
+        return;
+      }
+
+      try {
+        request.setEncoding("utf8");
+        let raw = "";
+        for await (const chunk of request) raw += chunk;
+
+        const {
+          studentId,
+          lessonDate,
+          status,
+          replacementDate = null,
+        } = JSON.parse(raw);
+
+        if (
+          typeof studentId !== "string" ||
+          typeof lessonDate !== "string" ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(lessonDate) ||
+          !localCalendarStatuses.has(status) ||
+          (replacementDate !== null &&
+            (typeof replacementDate !== "string" || replacementDate.length > 30))
+        ) {
+          response.statusCode = 400;
+          response.end(JSON.stringify({ error: "Dados inválidos." }));
+          return;
+        }
+
+        const student = localStudents.get(studentId);
+
+        if (!student || !ownsLocalStudent(session, student)) {
+          response.statusCode = 404;
+          response.end(JSON.stringify({ error: "Aluno não encontrado." }));
+          return;
+        }
+
+        const entries = localCalendar.get(student.studentId) ?? new Map();
+        entries.set(lessonDate, {
+          status,
+          replacementDate: replacementDate?.trim() || null,
+        });
+        localCalendar.set(student.studentId, entries);
+
+        response.statusCode = 200;
+        response.end(JSON.stringify({ ok: true }));
+      } catch {
+        response.statusCode = 400;
+        response.end(JSON.stringify({ error: "Dados inválidos." }));
+      }
+    });
+
+    server.middlewares.use(
+      "/api/next-lesson",
+      (request, response, next) => {
+        if (request.method !== "GET") return next();
+
+        response.setHeader("Content-Type", "application/json");
+        response.setHeader("Cache-Control", "no-store");
+
+        const viewer = localSession;
+
+        if (!viewer || viewer.role !== "teacher") {
+          response.statusCode = 401;
+          response.end(JSON.stringify({ error: "Não autorizado." }));
+          return;
+        }
+
+        const requestedToday = new URL(
+          request.url ?? "",
+          "http://localhost",
+        ).searchParams.get("today");
+        const today = /^\d{4}-\d{2}-\d{2}$/.test(requestedToday ?? "")
+          ? requestedToday!
+          : new Date().toISOString().slice(0, 10);
+
+        const pending = [...localStudents.values()]
+          .filter((student) => ownsLocalStudent(viewer, student))
+          .flatMap((student) =>
+            [...(localCalendar.get(student.studentId) ?? new Map())].flatMap(
+              ([lessonDate, entry]) =>
+                entry.status === "P" && lessonDate >= today
+                  ? [
+                      {
+                        lessonDate,
+                        status: entry.status,
+                        studentId: student.studentId,
+                        name: student.name,
+                        time: student.time,
+                      },
+                    ]
+                  : [],
+            ),
+          )
+          .sort(
+            (a, b) =>
+              a.lessonDate.localeCompare(b.lessonDate) ||
+              a.time.localeCompare(b.time) ||
+              a.name.localeCompare(b.name),
+          );
+
+        response.statusCode = 200;
+        response.end(JSON.stringify({ lesson: pending[0] ?? null }));
+      },
+    );
 
     server.middlewares.use("/api/notes", async (request, response, next) => {
       if (request.method !== "PUT") return next();

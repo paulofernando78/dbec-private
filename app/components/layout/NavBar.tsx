@@ -124,7 +124,7 @@ export function NavBar({
         if ("group" in item) {
           return (
             <div key={item.group} className={navbarBlockStyle}>
-              <p className="mb-2 font-black uppercase tracking-wider">
+              <p className="mb-5 font-black uppercase tracking-wider">
                 {item.group}
               </p>
               <div className="space-y-2">

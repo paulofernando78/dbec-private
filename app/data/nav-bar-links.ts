@@ -44,9 +44,44 @@ export const links: NavItem[] = [
     children: [
       // COURSES
       {
-        href: "/course",
-        label: "course (A1–C1)",
-        icon: BookOpenCheck,
+        subgroup: "course",
+        children: [
+          {
+            href: "/course",
+            label: "course (A1–C1)",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/a1",
+            label: "a1 beginner",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/a2",
+            label: "a2 elementary",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/a2-b1",
+            label: "a2-b1 pre-intermediate",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/b1",
+            label: "b1 intermediate",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/b2",
+            label: "b2 upper-intermediate",
+            icon: BookOpenCheck,
+          },
+          {
+            href: "/course/c1",
+            label: "c1 advanced",
+            icon: BookOpenCheck,
+          },
+        ],
       },
       // SPECIFIC PURPOSES
       {
@@ -84,19 +119,19 @@ export const links: NavItem[] = [
           {
             href: "/audiobooks",
             label: "audiobooks",
-            icon: Headphones
+            icon: Headphones,
           },
           // KPPC Radio (CA - PA)
           {
             href: "https://www.kpcc.org/listen",
             label: "kpcc radio (pasadena – ca)",
-            icon: Headphones
+            icon: Headphones,
           },
           // BBC WORLD SERVICE
           {
             href: "https://www.bbc.co.uk/sounds/play/live:bbc_world_service",
             label: "bbc world service",
-            icon: Headphones
+            icon: Headphones,
           },
         ],
       },
@@ -316,10 +351,7 @@ export const links: NavItem[] = [
     group: "content",
     children: [
       // SONGS
-      { href: "/songs",
-        label: "songs",
-        icon: Music2
-      },
+      { href: "/songs", label: "songs", icon: Music2 },
       // CULTURE
       {
         subgroup: "culture",

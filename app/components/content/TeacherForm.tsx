@@ -77,9 +77,6 @@ export const TeacherForm = ({
   const [deletingTeacherId, setDeletingTeacherId] = useState<number | null>(null);
   const [viewingTeacherId, setViewingTeacherId] = useState<number | null>(null);
   const [query, setQuery] = useState("");
-
-  // No mobile as colunas empilham: a lista usa a altura do formulário para não
-  // ficar mais alta do que ficaria no layout lado a lado.
   const [formRef, formHeight] = useElementHeight<HTMLFormElement>();
 
   const normalizedQuery = query.trim().toLowerCase();
@@ -87,8 +84,7 @@ export const TeacherForm = ({
     ? teachers.filter((teacher) => matchesTeacher(teacher, normalizedQuery))
     : teachers;
 
-  // O professor vem sempre da lista (e não de uma cópia): o modal acompanha a
-  // atualização do roster e some sozinho se o professor for removido.
+  // O professor vem sempre da lista (e não de uma cópia): o modal acompanha a atualização do roster e some sozinho se o professor for removido.
   const viewingTeacher =
     teachers.find((teacher) => teacher.id === viewingTeacherId) ?? null;
   const viewedStudents = viewingTeacher
@@ -187,8 +183,7 @@ export const TeacherForm = ({
 
   return (
     <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-stretch gap-4 max-[1130px]:grid-cols-1 max-[920px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] max-[710px]:grid-cols-1">
-      {/* O form fecha antes da lista: o modal tem um form próprio e forms
-          aninhados são inválidos. */}
+      {/* O form fecha antes da lista: o modal tem um form próprio e forms aninhados são inválidos. */}
       <form
         ref={formRef}
         onSubmit={handleCreate}

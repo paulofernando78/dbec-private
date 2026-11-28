@@ -22,7 +22,9 @@ export default function Dashboard() {
   const [data, setData] = useState<any>(null);
   const [notes, setNotes] = useState({ teacher: "", student: "" });
   const [calendar, setCalendar] = useState<Record<string, string>>({});
-  const [replacementDates, setReplacementDates] = useState<Record<string, string>>({});
+  const [replacementDates, setReplacementDates] = useState<
+    Record<string, string>
+  >({});
   const [error, setError] = useState("");
   const [progress, setProgress] = useState<CourseProgressSummary | null>(null);
 
@@ -42,7 +44,11 @@ export default function Dashboard() {
     },
     undefined,
     (entries) => {
-      setCalendar(Object.fromEntries(entries.map((entry) => [entry.lessonDate, entry.status])));
+      setCalendar(
+        Object.fromEntries(
+          entries.map((entry) => [entry.lessonDate, entry.status]),
+        ),
+      );
       setReplacementDates(
         Object.fromEntries(
           entries.flatMap(({ lessonDate, replacementDate }) =>
@@ -68,7 +74,9 @@ export default function Dashboard() {
         const result = await response.json();
 
         if (!response.ok) {
-          throw new Error(result.error ?? "Não foi possível carregar o dashboard.");
+          throw new Error(
+            result.error ?? "Não foi possível carregar o dashboard.",
+          );
         }
 
         return result;
@@ -117,20 +125,11 @@ export default function Dashboard() {
       : currentHour < 18
         ? "Good afternoon"
         : "Good evening";
-  const formattedDate = new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  }).format(now ?? new Date(2000, 0, 1));
 
   if (!studentId) {
     return (
       <>
-        <PageHeader
-          eyebrow={formattedDate}
-          title="Welcome!"
-          variant="dashboard"
-        />
+        <PageHeader title="Welcome!" variant="dashboard" />
         <div className="grid gap-4">
           <Emojis />
         </div>
@@ -144,7 +143,6 @@ export default function Dashboard() {
     return (
       <>
         <PageHeader
-          eyebrow={formattedDate}
           title={greeting}
           variant="dashboard"
         />
@@ -160,7 +158,6 @@ export default function Dashboard() {
   return (
     <>
       <PageHeader
-        eyebrow={formattedDate}
         title={`${greeting}, ${firstName}.`}
         date={student.schedule}
         time={student.time}
@@ -207,7 +204,10 @@ export default function Dashboard() {
                 }}
                 onSave={saveStudentNote}
               />
-              <AiTutor className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-128" fill />
+              <AiTutor
+                className="mt-0 h-[min(44rem,calc(100dvh-12rem))] min-h-128"
+                fill
+              />
             </div>
           </Card>
         </div>

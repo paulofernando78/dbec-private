@@ -42,10 +42,7 @@ export const TableOfContents = ({
   return (
     <Card className="mb-4 bg-(--surface) font-oswald text-lg">
       <div
-        className="
-        flex
-        gap-2
-        mb-2"
+        className="flex gap-2"
       >
         {HeaderIcon && (
           <HeaderIcon

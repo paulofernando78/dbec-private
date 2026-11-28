@@ -56,7 +56,7 @@ export const Card = ({
       ${hasCustomBackground ? "" : "bg-(--surface)"}
       ${maxContent ? "w-fit max-w-full" : ""} ${className}`}
     >
-      {title && <Title className="mb-4 text-lg font-bold">{title}</Title>}
+      {title && <Title className="text-lg font-bold mb-4">{title}</Title>}
       {inset ? (
         <div
           className={`rounded-xl bg-(--background) p-4 ${contentClassName}`}

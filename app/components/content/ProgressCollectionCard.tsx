@@ -113,62 +113,64 @@ export function ProgressCollectionCard({
         {items.length > 0 && (
           <ol className="px-4 py-4">
             {items.map((item) => (
-              <ActionTextRow
-                key={item.id}
-                className="pb-5 last:pb-0"
-                gap="gap-4"
-                textAtTop
-                action={
-                  <>
-                    <Button
-                  ariaLabel={item.ariaLabel}
-                  ariaDisabled={item.isLocked}
-                  icon={
-                    item.isLocked ? (
-                      <LockKeyhole aria-hidden="true" />
-                    ) : item.listening ? (
-                      <Headphones aria-hidden="true" />
-                    ) : item.isCompleted ? (
-                      <Check aria-hidden="true" />
-                    ) : (
-                      itemIcon ?? <BookOpen aria-hidden="true" />
-                    )
+              <div className=" mb-4 p-4 rounded-xl bg-(--background)">
+                <ActionTextRow
+                  key={item.id}
+                  className="pb-5 last:pb-0"
+                  gap="gap-4"
+                  textAtTop
+                  action={
+                    <>
+                      <Button
+                    ariaLabel={item.ariaLabel}
+                    ariaDisabled={item.isLocked}
+                    icon={
+                      item.isLocked ? (
+                        <LockKeyhole aria-hidden="true" />
+                      ) : item.listening ? (
+                        <Headphones aria-hidden="true" />
+                      ) : item.isCompleted ? (
+                        <Check aria-hidden="true" />
+                      ) : (
+                        itemIcon ?? <BookOpen aria-hidden="true" />
+                      )
+                    }
+                    onClick={item.onClick}
+                    className={`z-10 ${
+                      item.isCompleted && !item.isLocked
+                        ? levelTheme
+                          ? levelButtonClasses[levelTheme]
+                          : "brightness-90"
+                        : ""
+                    }`}
+                      />
+                    </>
                   }
-                  onClick={item.onClick}
-                  className={`z-10 ${
-                    item.isCompleted && !item.isLocked
-                      ? levelTheme
-                        ? levelButtonClasses[levelTheme]
-                        : "brightness-90"
-                      : ""
-                  }`}
-                    />
-                  </>
-                }
-              >
-                <div>
-                  {item.eyebrow && (
-                    <span className="block text-xs font-bold uppercase text-orange-700!">
-                      {item.eyebrow}
-                    </span>
-                  )}
-                  <h3 className="text-xl font-black text-black dark:text-(--text-color)">
-                    {item.title}
-                  </h3>
-                  <p
-                    className={`text-base md:text-lg ${item.descriptionItalic ? "italic" : ""}`}
-                  >
-                    {item.description}
-                  </p>
-                  {item.meta && (
+                >
+                  <div>
+                    {item.eyebrow && (
+                      <span className="block text-xs font-bold uppercase text-orange-700!">
+                        {item.eyebrow}
+                      </span>
+                    )}
+                    <h3 className="text-xl font-black text-black dark:text-(--text-color)">
+                      {item.title}
+                    </h3>
                     <p
-                      className={`text-lg text-slate-500 ${item.metaItalic ? "italic" : ""}`}
+                      className={`text-base md:text-lg ${item.descriptionItalic ? "italic" : ""}`}
                     >
-                      {item.meta}
+                      {item.description}
                     </p>
-                  )}
-                </div>
-              </ActionTextRow>
+                    {item.meta && (
+                      <p
+                        className={`text-lg text-slate-500 ${item.metaItalic ? "italic" : ""}`}
+                      >
+                        {item.meta}
+                      </p>
+                    )}
+                  </div>
+                </ActionTextRow>
+              </div>
             ))}
           </ol>
         )}

@@ -1,7 +1,40 @@
 import { useEffect, useState } from "react";
 
+import { useSession } from "@/hooks/useSession";
+
+type NextLesson = {
+  studentId: string;
+  name: string;
+  time: string | null;
+  lessonDate: string;
+  status: string;
+};
+
+const getDateKey = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+    date.getDate(),
+  ).padStart(2, "0")}`;
+
+const formatLessonDate = (lessonDate: string) => {
+  const [year, month, day] = lessonDate.split("-").map(Number);
+
+  if (!year || !month || !day) return lessonDate;
+
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  }).format(new Date(year, month - 1, day));
+};
+
 export const DateTimeCard = ({ className = "" }: { className?: string }) => {
+  const session = useSession();
+  const isTeacher = session?.role === "teacher";
+  const teacherId = session?.userId;
   const [now, setNow] = useState<Date | null>(null);
+  const [nextLesson, setNextLesson] = useState<NextLesson | null>(null);
+  const [isLessonLoading, setIsLessonLoading] = useState(true);
+  const [lessonError, setLessonError] = useState(false);
 
   useEffect(() => {
     let intervalId: number | undefined;
@@ -20,8 +53,75 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
     };
   }, []);
 
+  // A aula pendente mais próxima entre os alunos do professor. Só o professor
+  // enxerga outro aluno no topo; para o aluno a linha não faz sentido.
+  useEffect(() => {
+    if (!isTeacher) {
+      setNextLesson(null);
+      setIsLessonLoading(false);
+      setLessonError(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    const loadNextLesson = async () => {
+      try {
+        const response = await fetch(
+          `/api/next-lesson?today=${getDateKey(new Date())}`,
+          { headers: { Accept: "application/json" }, cache: "no-store" },
+        );
+
+        if (cancelled) return;
+
+        if (!response.ok) {
+          setLessonError(true);
+          return;
+        }
+
+        const result = (await response.json()) as {
+          lesson?: NextLesson | null;
+        };
+
+        if (!cancelled) {
+          setNextLesson(result.lesson ?? null);
+          setLessonError(false);
+        }
+      } catch {
+        // Mantém o último valor conhecido em vez de piscar vazio.
+        if (!cancelled) setLessonError(true);
+      } finally {
+        if (!cancelled) setIsLessonLoading(false);
+      }
+    };
+
+    setIsLessonLoading(true);
+    void loadNextLesson();
+
+    // O calendário muda enquanto a página está aberta; confere a cada minuto e
+    // na volta para a aba.
+    const intervalId = window.setInterval(() => {
+      if (document.visibilityState === "visible") void loadNextLesson();
+    }, 60_000);
+
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") void loadNextLesson();
+    };
+
+    window.addEventListener("focus", refreshWhenVisible);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", refreshWhenVisible);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+    };
+  }, [isTeacher, teacherId]);
+
   if (!now) return null;
 
+  const today = getDateKey(now);
   const fullDate = new Intl.DateTimeFormat("en-US", {
     weekday: "short",
     month: "short",
@@ -30,9 +130,10 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
   const fullTime = new Intl.DateTimeFormat("en-US", {
     timeStyle: "short",
   }).format(now);
+  const showsLessonDate = nextLesson && nextLesson.lessonDate !== today;
 
   return (
-    <div className={`text-[clamp(0.875rem,calc(100cqw/13),1.5rem)] ${className}`}>
+    <div className={`text-[clamp(0.875rem,calc(100cqw/13),1rem)] text-center ${className}`}>
       <div className="flex flex-nowrap items-center justify-center gap-3 whitespace-nowrap
       max-[450px]:flex-col
       max-[450px]:gap-0
@@ -45,6 +146,28 @@ export const DateTimeCard = ({ className = "" }: { className?: string }) => {
           {fullTime}
         </time>
       </div>
+      {isTeacher && !lessonError && (
+        <p
+          className="flex flex-wrap items-center justify-center gap-x-1.5"
+          aria-live="polite"
+        >
+          {isLessonLoading ? (
+            <span className="text-gray-500">…</span>
+          ) : nextLesson ? (
+            <>
+              <span>upcoming student:</span>
+              <span className="font-semibold">{nextLesson.name}</span>
+              {showsLessonDate && (
+                <span className="whitespace-nowrap tabular-nums">
+                  ({formatLessonDate(nextLesson.lessonDate)})
+                </span>
+              )}
+            </>
+          ) : (
+            <span className="text-gray-500">no pending lessons</span>
+          )}
+        </p>
+      )}
     </div>
   );
 };

@@ -508,7 +508,8 @@ export default function TeacherDashboard() {
           </div>
         )}
 
-        <div id="student-registration" className="scroll-mt-4">          <Card title="Student Registration">
+        <div id="student-registration" className="scroll-mt-4">
+          <Card title="Student Registration">
             {isAdmin && (
               <UnassignedStudents
                 students={unassignedStudents}

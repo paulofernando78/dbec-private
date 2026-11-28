@@ -92,8 +92,7 @@ function AppContent() {
   const showCoffee = !session;
   const showTopBar = location.pathname !== "/" || showCoffee || isAuthenticated;
 
-  // Spinner central enquanto a próxima página carrega. O atraso evita o
-  // piscar em navegações rápidas.
+  // Spinner central enquanto a próxima página carrega. O atraso evita o piscar em navegações rápidas.
   const navigation = useNavigation();
   const [isPageLoading, setIsPageLoading] = useState(false);
 
@@ -196,10 +195,9 @@ function AppContent() {
   return (
     <div className={`app ${isWideLayout ? "app--wide" : ""}`}>
       <div className="app-container">
-        {/* A barra superior leva o logotipo fora da página inicial, a faixa da
-            conta quando há sessão e o “buy me a coffee” enquanto não há. */}
+        {/* A barra superior leva o logotipo fora da página inicial, a faixa da conta quando há sessão e o “buy me a coffee” enquanto não há. */}
         {showTopBar && (
-          <Card className="flex min-h-10.25 items-center justify-between gap-2 px-2! py-2!">
+          <Card className="flex min-h-10.25 items-center justify-between gap-2">
             {location.pathname !== "/" && (
               <div
                 className={`min-w-0 flex-1 ${isAuthenticated ? "max-[700px]:hidden" : ""}`}
